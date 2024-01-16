@@ -1,19 +1,43 @@
 import pandas as pd
 
-from src.tools.calender import get_event_by_id
+from src.tools.calender import get_event_information_by_id
 
 
 calender_events = pd.read_csv("data/processed/calender_events.csv")
 
 
-def test_get_event_by_id():
+def test_get_event_information_by_id():
     """
-    Tests get_event_by_id.
+    Tests get_event_information_by_id.
+    """
+    args = {"id": "0395", "field": "event_name"}
+    assert get_event_information_by_id(args) == {
+        "event_name": "Digital Transformation Summit"
+    }
+
+
+def test_get_event_information_by_id_no_id():
+    """
+    Tests get_event_information_by_id with no ID.
+    """
+    args = {}
+    event = get_event_information_by_id(args)
+    assert event == "No ID provided."
+
+
+def test_get_event_information_by_id_no_field():
+    """
+    Tests get_event_information_by_id with no field.
     """
     args = {"id": "0395"}
-    event = get_event_by_id(args)
-    assert event["event_id"] == "0395"
-    assert event["event_name"] == "Digital Transformation Summit"
-    assert event["participant_email"] == "Fatima.Khan@company.com"
-    assert event["event_start"] == "2023-10-01 09:00:00"
-    assert event["event_end"] == "2023-10-01 09:30:00"
+    event = get_event_information_by_id(args)
+    assert event == "No field provided."
+
+
+def test_get_event_information_by_id_field_not_found():
+    """
+    Tests get_event_information_by_id with field not found.
+    """
+    args = {"id": "0395", "field": "field_does_not_exist"}
+    event = get_event_information_by_id(args)
+    assert event == "Field not found."
