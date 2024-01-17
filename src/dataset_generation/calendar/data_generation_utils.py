@@ -26,10 +26,14 @@ def create_calendar_event(event_names, emails, existing_events):
             end=pd.to_datetime("2023-12-31T23:59:59"),
         )
         event_end = event_start + pd.Timedelta(hours=generate_event_duration())
-        event_id = str(len(existing_events)).zfill(4)
+        event_id = str(np.random.randint(0, 99999999)).zfill(8)
 
-        # Check if the event time overlaps with an existing event time
-        if not is_overlapping(event_start, event_end, existing_events):
+        # Check if the event time overlaps with an existing event time and if the event ID is already used.
+        # Note that this method is not very efficient, but it is good enough for this purpose. If you want to
+        # generate a large dataset, you should use a more efficient method.
+        if not is_overlapping(event_start, event_end, existing_events) and (
+            event_id not in existing_events["event_id"].tolist()
+        ):
             return event_id, event_name, email, event_start, event_end
 
 
