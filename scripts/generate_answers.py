@@ -1,5 +1,5 @@
 import pandas as pd
-from langchain_openai import OpenAI
+from langchain_openai import ChatOpenAI
 from langchain.agents import initialize_agent, AgentType
 from src.eval.utils import convert_agent_action_to_function_call
 from src.tools import calendar
@@ -11,13 +11,13 @@ questions = pd.read_csv(
 )["question"].tolist()
 
 results = pd.DataFrame(columns=["question", "answer"])
-llm = OpenAI(temperature=0, openai_api_key=OPENAI_KEY)
+llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=OPENAI_KEY, temperature=0)
 
 agent = initialize_agent(
     llm=llm,
     agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
     tools=[calendar.get_event_information_by_id],
-    verbose=False,
+    verbose=True,
     return_intermediate_steps=True,
 )
 
