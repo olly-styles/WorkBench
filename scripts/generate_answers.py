@@ -68,7 +68,7 @@ for question in questions:
     )
     # Reset calendar events after each question
     calendar.CALENDAR_EVENTS = pd.read_csv(
-        "data/processed/calender_events.csv", dtype=str
+        "data/processed/calendar_events.csv", dtype=str
     )
 
 

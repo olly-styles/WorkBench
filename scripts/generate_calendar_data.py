@@ -17,4 +17,4 @@ for _ in tqdm(range(500)):
     events.loc[len(events)] = [event_id, event_name, email, event_start, event_end]
 
 events = events.sort_values(by="event_start").reset_index(drop=True)
-events.to_csv("data/processed/calender_events.csv", index=False)
+events.to_csv("data/processed/calendar_events.csv", index=False)

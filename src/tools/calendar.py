@@ -1,7 +1,7 @@
 import pandas as pd
 from langchain.tools import tool
 
-CALENDAR_EVENTS = pd.read_csv("data/processed/calender_events.csv", dtype=str)
+CALENDAR_EVENTS = pd.read_csv("data/processed/calendar_events.csv", dtype=str)
 
 
 @tool("calendar.get_event_information_by_id", return_direct=False)
@@ -24,10 +24,10 @@ def get_event_information_by_id(event_id=None, field=None):
 
     Examples
     --------
-    >>> get_event_information_by_id("00000000", "event_name")
+    >>> calendar.get_event_information_by_id("00000000", "event_name")
     {{"event_name": "Meeting with Sam"}}
 
-    >>> get_event_information_by_id("00000000", "event_start")
+    >>> calendar.get_event_information_by_id("00000000", "event_start")
     {{"event_start": "2021-06-01 13:00:00"}}
 
     """
@@ -68,7 +68,7 @@ def search_events(query="", time_min=None, time_max=None):
 
     Examples
     --------
-    >>> search_events("Sam")
+    >>> calendar.search_events("Sam")
     [{{"event_id": "00000000", "event_name": "Meeting with Sam", "participant_email: "sam@example.com", "event_start": "2021-06-01 13:00:00", "event_end": "2021-06-01 14:00:00"}},
     {{"event_id": "00000001", "event_name": "Lunch with Sam", "participant_email": "sam@example.com", "event_start": "2021-06-01 13:00:00", "event_end": "2021-06-01 14:00:00}}"
     ]
@@ -120,7 +120,7 @@ def create_event(
 
     Examples
     --------
-    >>> create_event("Meeting with Sam", "sam@example.com", "2021-06-01 13:00:00", "2021-06-01 14:00:00")
+    >>> calendar.create_event("Meeting with Sam", "sam@example.com", "2021-06-01 13:00:00", "2021-06-01 14:00:00")
     "00000000"
     """
     # Working with classes is difficult in LangChain, so we use a global variable instead.
@@ -166,7 +166,7 @@ def delete_event(event_id=None):
 
     Examples
     --------
-    >>> delete_event("00000000")
+    >>> calendar.delete_event("00000000")
     "Event deleted successfully."
 
     """
@@ -203,7 +203,7 @@ def update_event(event_id=None, field=None, new_value=None):
 
     Examples
     --------
-    >>> update_event("00000000", "event_name", "New Event Name")
+    >>> calendar.update_event("00000000", "event_name", "New Event Name")
     "Event updated successfully."
 
     """
