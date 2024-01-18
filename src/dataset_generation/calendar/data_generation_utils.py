@@ -50,3 +50,15 @@ def generate_datetime_between(start, end):
 
 def generate_event_duration():
     return np.random.choice([1, 2, 3, 4, 5, 6]) * 0.5
+
+
+def create_email(email_ids, sample_emails, email_content_pairs):
+    email_id = str(len(email_ids)).zfill(8)
+    recipient = sample_emails.sample().iloc[0, 0]
+    subject = np.random.choice(list(email_content_pairs.keys()))
+    body = email_content_pairs[subject]
+    sent_date = generate_datetime_between(
+        start=pd.to_datetime("2023-10-01T00:00:00"),
+        end=pd.to_datetime("2023-12-31T23:59:59"),
+    )
+    return email_id, recipient, subject, sent_date, body

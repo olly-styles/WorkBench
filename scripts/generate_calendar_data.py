@@ -5,7 +5,7 @@ from src.dataset_generation.calendar.data_generation_utils import create_calenda
 
 
 event_names = pd.read_csv("data/raw/events.csv", header=None)
-emails = pd.read_csv("data/raw/emails.csv", header=None)
+emails = pd.read_csv("data/raw/email_addresses.csv", header=None)
 
 events = pd.DataFrame(
     columns=["event_id", "event_name", "participant_email", "event_start", "event_end"]

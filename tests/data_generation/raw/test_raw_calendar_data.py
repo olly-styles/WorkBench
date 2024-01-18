@@ -1,7 +1,7 @@
 import pandas as pd
 
 event_names = pd.read_csv("data/raw/events.csv", header=None)
-emails = pd.read_csv("data/raw/emails.csv", header=None)
+emails = pd.read_csv("data/raw/email_addresses.csv", header=None)
 
 
 def test_event_names_unique():

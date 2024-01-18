@@ -1,4 +1,8 @@
 question,answer
+What is the content of email with ID 00000187?,"email.get_email_information_by_id({'email_id': '00000187', 'field': 'body'})"
+Delete the email with ID 00000187,"email.delete_email({'email_id': '00000187'})"
+Has Fatima ever sent me an email?,"email.search_emails({'query': 'Fatima'})"
+Send an email to Akira.Sato@company.com with the subject 'Meeting Reminder' and the body 'Just a reminder that we have a meeting tomorrow at 10am',"email.send_email({'recipient': 'Akira.Sato@company.com', 'subject': 'Meeting Reminder', 'body': 'Just a reminder that we have a meeting tomorrow at 10am'})"
 Create a one-hour event called 'Lunch with Amir' on the 20th November 2023 at 12:30pm with Amir.Ali@company.com,"calendar.create_event({'event_name': 'Lunch with Amir', 'participant_email': 'Amir.Ali@company.com', 'event_start': '2023-11-20 12:30:00', 'event_end': '2023-11-20 13:30:00'})"
 What is Carlos' email address?,"calendar.search_events({'query': 'Carlos'})"
 How many events are there on the 20th November 2023?,"calendar.search_events({'time_min': '2023-11-20 00:00:00', 'time_max': '2023-11-20 23:59:59'})"
