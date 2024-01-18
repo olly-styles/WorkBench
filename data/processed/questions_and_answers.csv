@@ -1,5 +1,6 @@
 question,answer
 What is Carlos' email address?,"calendar.search_events({'query': 'Carlos'})"
+How many events are there on the 20th November 2023?,"calendar.search_events({'time_min': '2023-11-20 00:00:00', 'time_max': '2023-11-20 23:59:59'})"
 What is the name of the calandar event with ID 70838584?,"calendar.get_event_information_by_id({'event_id': '70838584', 'field': 'event_name'})"
 What time does event 08879970 start?,"calendar.get_event_information_by_id({'event_id': '08879970', 'field': 'event_start'})"
 What time does event 03744661 finish?,"calendar.get_event_information_by_id({'event_id': '03744661', 'field': 'event_end'})"

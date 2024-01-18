@@ -12,9 +12,13 @@ questions = pd.read_csv(
 
 results = pd.DataFrame(columns=["question", "answer"])
 llm = ChatOpenAI(model_name="gpt-4", openai_api_key=OPENAI_KEY, temperature=0)
-llm = OpenAI(
-    model_name="gpt-3.5-turbo-instruct", openai_api_key=OPENAI_KEY, temperature=0
-)
+# llm = OpenAI(
+#     model_name="gpt-3.5-turbo-instruct", openai_api_key=OPENAI_KEY, temperature=0
+# )
+# llm = ChatOpenAI(
+#     model_name="gpt-3.5-turbo-1106", openai_api_key=OPENAI_KEY, temperature=0
+# )
+
 
 agent = initialize_agent(
     llm=llm,

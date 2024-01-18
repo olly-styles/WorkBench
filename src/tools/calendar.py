@@ -5,15 +5,15 @@ CALENDAR_EVENTS = pd.read_csv("data/processed/calender_events.csv", dtype=str)
 
 
 @tool("calendar.get_event_information_by_id", return_direct=False)
-def get_event_information_by_id(event_id, field):
+def get_event_information_by_id(event_id=None, field=None):
     """
     Returns the event for a given ID.
 
     Parameters
     ----------
-    event_id : str
+    event_id : str, optional
         8-digit ID of the event.
-    field : str
+    field : str, optional
         Field to return. Available fields are: "event_id", "event_name", "participant_email", "event_start", "event_end"
 
     Returns
@@ -31,6 +31,10 @@ def get_event_information_by_id(event_id, field):
     {{"event_start": "2021-06-01 13:00:00"}}
 
     """
+    if not event_id:
+        return "Event ID not provided."
+    if not field:
+        return "Field not provided."
     event = CALENDAR_EVENTS[CALENDAR_EVENTS["event_id"] == event_id].to_dict(
         orient="records"
     )
@@ -44,18 +48,18 @@ def get_event_information_by_id(event_id, field):
 
 
 @tool("calendar.search_events", return_direct=False)
-def search_events(query, time_min=None, time_max=None):
+def search_events(query="", time_min=None, time_max=None):
     """
     Returns the events for a given query.
 
     Parameters
     ----------
-    query: str, required
+    query: str, optional
         Query to search for. Terms will be matched in the event_name and participant_email fields.
     time_min: str, optional
-        Lower bound (exclusive) for an event's end time to filter by. Format: "YYYY-MM-DD HH:MM:SS"
+        Lower bound (inclusive) for an event's end time to filter by. Format: "YYYY-MM-DD HH:MM:SS"
     time_max: str, optional
-        Upper bound (exclusive) for an event's start time to filter by. Format: "YYYY-MM-DD HH:MM:SS
+        Upper bound (inclusive) for an event's start time to filter by. Format: "YYYY-MM-DD HH:MM:SS
 
     Returns
     -------
@@ -77,13 +81,13 @@ def search_events(query, time_min=None, time_max=None):
         events = [
             event
             for event in events
-            if pd.Timestamp(event["event_end"]) > pd.Timestamp(time_min)
+            if pd.Timestamp(event["event_end"]) >= pd.Timestamp(time_min)
         ]
     if time_max:
         events = [
             event
             for event in events
-            if pd.Timestamp(event["event_start"]) < pd.Timestamp(time_max)
+            if pd.Timestamp(event["event_start"]) <= pd.Timestamp(time_max)
         ]
     if events:
         return events[:5]

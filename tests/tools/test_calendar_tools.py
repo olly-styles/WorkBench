@@ -20,16 +20,16 @@ def test_get_event_information_by_id_no_id():
     """
     Tests get_event_information_by_id with no ID.
     """
-    with pytest.raises(TypeError):
-        calendar.get_event_information_by_id.func()
+    assert calendar.get_event_information_by_id.func() == "Event ID not provided."
 
 
 def test_get_event_information_by_id_no_field():
     """
     Tests get_event_information_by_id with no field raises a TypeError.
     """
-    with pytest.raises(TypeError):
-        calendar.get_event_information_by_id.func("70838584")
+    assert (
+        calendar.get_event_information_by_id.func("70838584") == "Field not provided."
+    )
 
 
 def test_get_event_information_by_id_field_not_found():
@@ -66,7 +66,7 @@ def test_search_for_event_time_max():
     """
     Tests search_events with time_min.
     """
-    assert calendar.search_events.func("", time_max="2023-10-01 11:30:00") == [
+    assert calendar.search_events.func(time_max="2023-10-01 11:00:00") == [
         {
             "event_id": "70838584",
             "event_name": "Board of Directors Meeting",
