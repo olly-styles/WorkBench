@@ -93,3 +93,57 @@ def search_events(query="", time_min=None, time_max=None):
         return events[:5]
     else:
         return "No events found."
+
+
+@tool("calendar.create_event", return_direct=False)
+def create_event(
+    event_name=None, participant_email=None, event_start=None, event_end=None
+):
+    """
+    Creates a new event.
+
+    Parameters
+    ----------
+    event_name: str, optional
+        Name of the event.
+    participant_email: str, optional
+        Email of the participant.
+    event_start: str, optional
+        Start time of the event. Format: "YYYY-MM-DD HH:MM:SS"
+    event_end: str, optional
+        End time of the event. Format: "YYYY-MM-DD HH:MM:SS"
+
+    Returns
+    -------
+    event_id : str
+        ID of the newly created event.
+
+    Examples
+    --------
+    >>> create_event("Meeting with Sam", "sam@example.com", "2021-06-01 13:00:00", "2021-06-01 14:00:00")
+    "00000000"
+    """
+    # Working with classes is difficult in LangChain, so we use a global variable instead.
+    global CALENDAR_EVENTS
+
+    if not event_name:
+        return "Event name not provided."
+    if not participant_email:
+        return "Participant email not provided."
+    if not event_start:
+        return "Event start not provided."
+    if not event_end:
+        return "Event end not provided."
+
+    event_id = str(int(CALENDAR_EVENTS["event_id"].max()) + 1).zfill(8)
+    new_event = pd.DataFrame(
+        {
+            "event_id": [event_id],
+            "event_name": [event_name],
+            "participant_email": [participant_email],
+            "event_start": [event_start],
+            "event_end": [event_end],
+        }
+    )
+    CALENDAR_EVENTS = pd.concat([CALENDAR_EVENTS, new_event])
+    return event_id
