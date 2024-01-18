@@ -165,3 +165,25 @@ def test_create_event_missing_args():
         )
         == "Event end not provided."
     )
+
+
+def test_delete_event():
+    """
+    Tests delete_event.
+    """
+    assert calendar.delete_event.func("70838584") == "Event deleted successfully."
+    assert "70838584" not in calendar.CALENDAR_EVENTS["event_id"].values
+
+
+def test_delete_event_no_id_provided():
+    """
+    Tests delete_event with no event_id provided.
+    """
+    assert calendar.delete_event.func() == "Event ID not provided."
+
+
+def test_delete_event_not_found():
+    """
+    Tests delete_event with an event_id that does not exist.
+    """
+    assert calendar.delete_event.func("00000000") == "Event not found."

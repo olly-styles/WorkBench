@@ -147,3 +147,36 @@ def create_event(
     )
     CALENDAR_EVENTS = pd.concat([CALENDAR_EVENTS, new_event])
     return event_id
+
+
+@tool("calendar.delete_event", return_direct=False)
+def delete_event(event_id=None):
+    """
+    Deletes an event.
+
+    Parameters
+    ----------
+    event_id: str, optional
+        8-digit ID of the event.
+
+    Returns
+    -------
+    message : str
+        Message indicating whether the deletion was successful.
+
+    Examples
+    --------
+    >>> delete_event("00000000")
+    "Event deleted successfully."
+
+    """
+    global CALENDAR_EVENTS
+
+    if not event_id:
+        return "Event ID not provided."
+
+    if event_id in CALENDAR_EVENTS["event_id"].values:
+        CALENDAR_EVENTS = CALENDAR_EVENTS[CALENDAR_EVENTS["event_id"] != event_id]
+        return "Event deleted successfully."
+    else:
+        return "Event not found."
