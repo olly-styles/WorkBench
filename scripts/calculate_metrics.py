@@ -17,4 +17,12 @@ assert len(predictions) == len(
 
 df = predictions.merge(ground_truth, on="question")
 
+
+# print out the questions that were not answered correctly
+for i, row in df[df["prediction"] != df["ground_truth"]].iterrows():
+    print(f"Question: {row['question']}")
+    print(f"Prediction  : {row['prediction']}")
+    print(f"Ground truth: {row['ground_truth']}")
+    print()
+
 print(f"Accuracy: {round((df['prediction'] == df['ground_truth']).mean() * 100, 2)}%")

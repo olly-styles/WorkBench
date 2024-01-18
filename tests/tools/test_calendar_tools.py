@@ -3,16 +3,23 @@ import pytest
 
 from src.tools import calendar
 
-test_event = [
+test_events = [
     {
         "event_id": "70838584",
         "event_name": "Board of Directors Meeting",
         "participant_email": "Yuki.Tanaka@company.com",
         "event_start": "2023-10-01 10:00:00",
         "event_end": "2023-10-01 11:00:00",
-    }
+    },
+    {
+        "event_id": "70838585",
+        "event_name": "Meeting with Sam",
+        "participant_email": "sam@company.com",
+        "event_start": "2023-10-02 11:00:00",
+        "event_end": "2023-10-02 12:00:00",
+    },
 ]
-calendar.CALENDAR_EVENTS = pd.DataFrame(test_event)
+calendar.CALENDAR_EVENTS = pd.DataFrame(test_events)
 
 
 def test_get_event_information_by_id():
@@ -141,7 +148,7 @@ def test_create_event():
             "2023-10-01 10:00:00",
             "2023-10-01 11:00:00",
         )
-        == "70838585"
+        == "70838586"
     )
     assert calendar.CALENDAR_EVENTS.iloc[-1]["event_name"] == "Meeting with Sam"
 
@@ -171,8 +178,8 @@ def test_delete_event():
     """
     Tests delete_event.
     """
-    assert calendar.delete_event.func("70838584") == "Event deleted successfully."
-    assert "70838584" not in calendar.CALENDAR_EVENTS["event_id"].values
+    assert calendar.delete_event.func("70838585") == "Event deleted successfully."
+    assert "70838585" not in calendar.CALENDAR_EVENTS["event_id"].values
 
 
 def test_delete_event_no_id_provided():
@@ -187,3 +194,39 @@ def test_delete_event_not_found():
     Tests delete_event with an event_id that does not exist.
     """
     assert calendar.delete_event.func("00000000") == "Event not found."
+
+
+def test_update_event():
+    """
+    Tests update_event.
+    """
+    assert (
+        calendar.update_event.func("70838584", "event_name", "New Event Name")
+        == "Event updated successfully."
+    )
+    assert (
+        calendar.CALENDAR_EVENTS.loc[
+            calendar.CALENDAR_EVENTS["event_id"] == "70838584", "event_name"
+        ].values[0]
+        == "New Event Name"
+    )
+
+
+def test_update_event_no_id_provided():
+    """
+    Tests update_event with no event_id provided.
+    """
+    assert (
+        calendar.update_event.func(None, "event_name", "New Event Name")
+        == "Event ID, field, or new value not provided."
+    )
+
+
+def test_update_event_not_found():
+    """
+    Tests update_event with an event_id that does not exist.
+    """
+    assert (
+        calendar.update_event.func("99999999", "event_name", "New Event Name")
+        == "Event not found."
+    )

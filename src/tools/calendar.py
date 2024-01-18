@@ -180,3 +180,39 @@ def delete_event(event_id=None):
         return "Event deleted successfully."
     else:
         return "Event not found."
+
+
+@tool("calendar.update_event", return_direct=False)
+def update_event(event_id=None, field=None, new_value=None):
+    """
+    Updates an event.
+
+    Parameters
+    ----------
+    event_id: str, optional
+        8-digit ID of the event.
+    field: str, optional
+        Field to update.
+    new_value: str, optional
+        New value for the field.
+
+    Returns
+    -------
+    message : str
+        Message indicating whether the update was successful.
+
+    Examples
+    --------
+    >>> update_event("00000000", "event_name", "New Event Name")
+    "Event updated successfully."
+
+    """
+    global CALENDAR_EVENTS
+
+    if not event_id or not field or not new_value:
+        return "Event ID, field, or new value not provided."
+    if event_id in CALENDAR_EVENTS["event_id"].values:
+        CALENDAR_EVENTS.loc[CALENDAR_EVENTS["event_id"] == event_id, field] = new_value
+        return "Event updated successfully."
+    else:
+        return "Event not found."
