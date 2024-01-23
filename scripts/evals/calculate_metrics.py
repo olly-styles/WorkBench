@@ -2,13 +2,15 @@ import pandas as pd
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--answers_path", type=str, help="path to answers csv")
+parser.add_argument("--predictions_path", type=str, help="path to answers csv")
+parser.add_argument("--ground_truth_path", type=str, help="path to ground truth csv")
 args = parser.parse_args()
 
-predictions = pd.read_csv(args.answers_path)
-predictions = predictions.rename(columns={"answer": "prediction"})
+predictions = pd.read_csv(args.predictions_path)
+predictions = predictions.rename(columns={"function_calls": "prediction"})
+predictions = predictions.fillna("")
 
-ground_truth = pd.read_csv("data/processed/questions_and_answers.csv")
+ground_truth = pd.read_csv(args.ground_truth_path, dtype=str)
 ground_truth = ground_truth.rename(columns={"answer": "ground_truth"})
 
 assert len(predictions) == len(
@@ -17,12 +19,14 @@ assert len(predictions) == len(
 
 df = predictions.merge(ground_truth, on="question")
 
+# a row is correct if the ground truth is in the correction and stopped is False
+df["correct"] = df.apply(
+    lambda row: row["ground_truth"] in row["prediction"] and not row["stopped"],
+    axis=1,
+)
 
 # print out the questions that were not answered correctly
-for i, row in df[df["prediction"] != df["ground_truth"]].iterrows():
-    print(f"Question: {row['question']}")
-    print(f"Prediction  : {row['prediction']}")
-    print(f"Ground truth: {row['ground_truth']}")
-    print()
+print(df[~df["correct"]])
 
-print(f"Accuracy: {round((df['prediction'] == df['ground_truth']).mean() * 100, 2)}%")
+# print accuracy as a percentage to 2dp
+print(f"Accuracy: {round(df['correct'].mean() * 100, 2)}%")

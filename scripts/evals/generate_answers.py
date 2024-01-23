@@ -13,11 +13,12 @@ warnings.filterwarnings("ignore")
 
 OPENAI_KEY = open("openai_key.txt", "r").read()
 questions = pd.read_csv(
-    "data/processed/questions_and_answers.csv", usecols=["question"]
+    "data/processed/calendar_questions_and_answers_multi_action.csv",
+    usecols=["question"],
 )["question"].tolist()
 
 results = pd.DataFrame(
-    columns=["question", "answer", "function_calls", "full_response"]
+    columns=["question", "function_calls", "full_response", "stopped"]
 )
 llm = ChatOpenAI(model_name="gpt-4", openai_api_key=OPENAI_KEY, temperature=0)
 # llm = OpenAI(
@@ -31,6 +32,7 @@ agent = initialize_agent(
     tools=email_toolkit + calendar_toolkit,
     verbose=True,
     return_intermediate_steps=True,
+    max_iterations=5,
 )
 
 print(
@@ -40,32 +42,27 @@ print(
     ),
     "tokens",
 )
-questions = questions[:4]
 for question in questions:
     response = agent({"input": question})
     function_calls = []
     for step in response["intermediate_steps"]:
         function_calls.append(convert_agent_action_to_function_call(step[-2]))
 
-    final_function_call = "" if not function_calls else function_calls[-1]
-    other_function_calls = [] if len(function_calls) < 2 else function_calls[:-1]
+    agent_stopped = (
+        True
+        if response["output"] == "Agent stopped due to iteration limit or time limit."
+        else False
+    )
 
     print(f"### Question: {question}")
-    print(f"### Answer: {final_function_call}")
+    print(f"### Answer: {function_calls}")
     # convert function_calls to string
     results = pd.concat(
         [
             results,
             pd.DataFrame(
-                [
-                    [
-                        question,
-                        final_function_call,
-                        ",".join(other_function_calls),
-                        str(response),
-                    ]
-                ],
-                columns=["question", "answer", "function_calls", "full_response"],
+                [[question, ",".join(function_calls), str(response), agent_stopped]],
+                columns=["question", "function_calls", "full_response", "stopped"],
             ),
         ],
         ignore_index=True,

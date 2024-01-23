@@ -1,0 +1,13 @@
+question,answer
+How many events are there on 2023-12-23 with Carlos?,"calendar.search_events({'query': 'Carlos', 'time_min': '2023-12-23 00:00:00', 'time_max': '2023-12-23 23:59:59'})"
+How many events are there on 2023-10-29 with Carlos?,"calendar.search_events({'query': 'Carlos', 'time_min': '2023-10-29 00:00:00', 'time_max': '2023-10-29 23:59:59'})"
+How many events are there on 2023-12-11 with Carlos?,"calendar.search_events({'query': 'Carlos', 'time_min': '2023-12-11 00:00:00', 'time_max': '2023-12-11 23:59:59'})"
+Create a 1.5 hour event called Quality Assurance Training on 2023-10-04 at 10:30:00 with Carlos.Rodriguez@company.com,"calendar.create_event({'event_name': 'Quality Assurance Training', 'participant_email': 'Carlos.Rodriguez@company.com', 'event_start': '2023-10-04 10:30:00', 'event_end': '2023-10-04 2023-10-04 12:00:00'})"
+Create a 1.5 hour event called Risk Management Roundtable on 2023-12-19 at 09:30:00 with Chenwei.Zhang@company.com,"calendar.create_event({'event_name': 'Risk Management Roundtable', 'participant_email': 'Chenwei.Zhang@company.com', 'event_start': '2023-12-19 09:30:00', 'event_end': '2023-12-19 2023-12-19 11:00:00'})"
+Create a 2 hour event called Client Appreciation Gala on 2023-12-25 at 14:00:00 with Nadia.Moreau@company.com,"calendar.create_event({'event_name': 'Client Appreciation Gala', 'participant_email': 'Nadia.Moreau@company.com', 'event_start': '2023-12-25 14:00:00', 'event_end': '2023-12-25 2023-12-25 16:00:00'})"
+Delete the event 00000283,calendar.delete_event({'event_id': '00000283'})
+Delete the event 00000074,calendar.delete_event({'event_id': '00000074'})
+Delete the event 00000161,calendar.delete_event({'event_id': '00000161'})
+Change the name of the event 00000493 to Customer Service Excellence Training,"calendar.update_event({'event_id': '00000493', 'field': 'event_name', 'new_value': 'Customer Service Excellence Training'})"
+Change the name of the event 00000227 to Organizational Restructuring Briefing,"calendar.update_event({'event_id': '00000227', 'field': 'event_name', 'new_value': 'Organizational Restructuring Briefing'})"
+Change the name of the event 00000103 to Quarterly Sales Review,"calendar.update_event({'event_id': '00000103', 'field': 'event_name', 'new_value': 'Quarterly Sales Review'})"

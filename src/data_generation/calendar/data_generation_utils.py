@@ -52,6 +52,16 @@ def generate_event_duration():
     return np.random.choice([1, 2, 3, 4, 5, 6]) * 0.5
 
 
+def generate_end_time(start_time, duration):
+    """
+    Generate the end time of an event given the start time and duration.
+    """
+    start = pd.to_datetime(start_time)
+    duration_td = pd.Timedelta(duration)
+    end_time = (start + duration_td).strftime("%Y-%m-%d %H:%M:%S")
+    return end_time
+
+
 def create_email(email_ids, sample_emails, email_content_pairs):
     email_id = str(len(email_ids)).zfill(8)
     recipient = sample_emails.sample().iloc[0, 0]
