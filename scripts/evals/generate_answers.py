@@ -1,17 +1,22 @@
 import pandas as pd
+import argparse
+import warnings
 from langchain_openai import ChatOpenAI, OpenAI
 from langchain.agents import initialize_agent, AgentType
 from src.eval.utils import convert_agent_action_to_function_call
 from src.tools.toolkits import calendar_toolkit, email_toolkit
 from src.tools import calendar, email
 
-# supress langchain warnings
-import warnings
+warnings.filterwarnings("ignore")  # supress langchain deprication warnings
 
-warnings.filterwarnings("ignore")
-
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "--model_name", type=str, help="model name, either gpt-3.5 or gpt-4"
+)
+args = parser.parse_args()
 
 OPENAI_KEY = open("openai_key.txt", "r").read()
+
 questions = pd.read_csv(
     "data/processed/calendar_questions_and_answers_multi_action.csv",
     usecols=["question"],
@@ -20,10 +25,17 @@ questions = pd.read_csv(
 results = pd.DataFrame(
     columns=["question", "function_calls", "full_response", "stopped"]
 )
-llm = ChatOpenAI(model_name="gpt-4", openai_api_key=OPENAI_KEY, temperature=0)
-# llm = OpenAI(
-#     model_name="gpt-3.5-turbo-instruct", openai_api_key=OPENAI_KEY, temperature=0
-# )
+
+if args.model_name == "gpt-3.5":
+    llm = OpenAI(
+        model_name="gpt-3.5-turbo-instruct", openai_api_key=OPENAI_KEY, temperature=0
+    )
+elif args.model_name == "gpt-4":
+    llm = ChatOpenAI(
+        model_name="gpt-4-1106-preview", openai_api_key=OPENAI_KEY, temperature=0
+    )
+else:
+    raise ValueError("Invalid --model_name. Must be gpt-3.5 or gpt-4.")
 
 
 agent = initialize_agent(
@@ -35,13 +47,6 @@ agent = initialize_agent(
     max_iterations=5,
 )
 
-print(
-    "Prompt template length (approx):",
-    int(
-        len(agent.agent.llm_chain.prompt[0].__dict__["prompt"].__dict__["template"]) / 4
-    ),
-    "tokens",
-)
 for question in questions:
     response = agent({"input": question})
     function_calls = []
@@ -56,7 +61,7 @@ for question in questions:
 
     print(f"### Question: {question}")
     print(f"### Answer: {function_calls}")
-    # convert function_calls to string
+
     results = pd.concat(
         [
             results,
@@ -75,4 +80,6 @@ for question in questions:
 
 
 current_datetime = str(pd.Timestamp.now())
-results.to_csv("data/results/answers" + current_datetime + ".csv", index=False)
+results.to_csv(
+    "data/results/answers_" + args.model_name + current_datetime + ".csv", index=False
+)

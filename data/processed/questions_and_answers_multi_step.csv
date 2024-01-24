@@ -1,2 +1,0 @@
-question,answer
-Find a one-hour slot where I'm free on the 4th October 2023 event between noon and 3pm and create an event called 'Lunch with Amir' with Amir.Ali@company.com,"calendar.create_event({'event_name': 'Lunch with Amir', 'participant_email': 'Amir.Ali@company.com', 'event_start': '2023-10-04 14:00:00', 'event_end': '2023-10-04 15:00:00'})"  
