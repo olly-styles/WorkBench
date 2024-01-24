@@ -1,5 +1,6 @@
 import pandas as pd
 import argparse
+from src.evals.utils import is_correct
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--predictions_path", type=str, help="path to answers csv")
@@ -19,11 +20,7 @@ assert len(predictions) == len(
 
 df = predictions.merge(ground_truth, on="question")
 
-# a row is correct if the ground truth is in the correction and stopped is False
-df["correct"] = df.apply(
-    lambda row: row["ground_truth"] in row["prediction"] and not row["stopped"],
-    axis=1,
-)
+df["correct"] = df.apply(is_correct, axis=1)
 
 # print out the questions that were not answered correctly
 print(df[~df["correct"]])
