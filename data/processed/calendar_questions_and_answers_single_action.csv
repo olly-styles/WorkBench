@@ -2,12 +2,12 @@ question,answer
 How many events are there on 2023-12-23 with Carlos?,"calendar.search_events({'query': 'Carlos', 'time_min': '2023-12-23 00:00:00', 'time_max': '2023-12-23 23:59:59'})"
 How many events are there on 2023-10-29 with Carlos?,"calendar.search_events({'query': 'Carlos', 'time_min': '2023-10-29 00:00:00', 'time_max': '2023-10-29 23:59:59'})"
 How many events are there on 2023-12-11 with Carlos?,"calendar.search_events({'query': 'Carlos', 'time_min': '2023-12-11 00:00:00', 'time_max': '2023-12-11 23:59:59'})"
-Create a 1.5 hour event called Quality Assurance Training on 2023-10-04 at 10:30:00 with Carlos.Rodriguez@company.com,"calendar.create_event({'event_name': 'Quality Assurance Training', 'participant_email': 'Carlos.Rodriguez@company.com', 'event_start': '2023-10-04 10:30:00', 'event_end': '2023-10-04 2023-10-04 12:00:00'})"
-Create a 1.5 hour event called Risk Management Roundtable on 2023-12-19 at 09:30:00 with Chenwei.Zhang@company.com,"calendar.create_event({'event_name': 'Risk Management Roundtable', 'participant_email': 'Chenwei.Zhang@company.com', 'event_start': '2023-12-19 09:30:00', 'event_end': '2023-12-19 2023-12-19 11:00:00'})"
-Create a 2 hour event called Client Appreciation Gala on 2023-12-25 at 14:00:00 with Nadia.Moreau@company.com,"calendar.create_event({'event_name': 'Client Appreciation Gala', 'participant_email': 'Nadia.Moreau@company.com', 'event_start': '2023-12-25 14:00:00', 'event_end': '2023-12-25 2023-12-25 16:00:00'})"
-Delete the event 00000283,calendar.delete_event({'event_id': '00000283'})
-Delete the event 00000074,calendar.delete_event({'event_id': '00000074'})
-Delete the event 00000161,calendar.delete_event({'event_id': '00000161'})
-Change the name of the event 00000493 to Customer Service Excellence Training,"calendar.update_event({'event_id': '00000493', 'field': 'event_name', 'new_value': 'Customer Service Excellence Training'})"
-Change the name of the event 00000227 to Organizational Restructuring Briefing,"calendar.update_event({'event_id': '00000227', 'field': 'event_name', 'new_value': 'Organizational Restructuring Briefing'})"
-Change the name of the event 00000103 to Quarterly Sales Review,"calendar.update_event({'event_id': '00000103', 'field': 'event_name', 'new_value': 'Quarterly Sales Review'})"
+Create a 2 hour event called Cross-Functional Collaboration Workshop on 2023-10-04 at 10:00:00 with Yuki.Tanaka@company.com,"calendar.create_event({'event_name': 'Cross-Functional Collaboration Workshop', 'participant_email': 'Yuki.Tanaka@company.com', 'event_start': '2023-10-04 10:00:00', 'duration': '120'})"
+Create a 2 hour event called Strategic Planning Retreat on 2023-12-19 at 09:00:00 with Aisha.Chen@company.com,"calendar.create_event({'event_name': 'Strategic Planning Retreat', 'participant_email': 'Aisha.Chen@company.com', 'event_start': '2023-12-19 09:00:00', 'duration': '120'})"
+Create a 1.0 hour event called Digital Marketing Trends Seminar on 2023-12-25 at 11:30:00 with Nia.Johnson@company.com,"calendar.create_event({'event_name': 'Digital Marketing Trends Seminar', 'participant_email': 'Nia.Johnson@company.com', 'event_start': '2023-12-25 11:30:00', 'duration': '60'})"
+Delete the event 00000124,calendar.delete_event({'event_id': '00000124'})
+Delete the event 00000403,calendar.delete_event({'event_id': '00000403'})
+Delete the event 00000291,calendar.delete_event({'event_id': '00000291'})
+Change the name of the event 00000455 to Supply Chain Optimization Workshop,"calendar.update_event({'event_id': '00000455', 'field': 'event_name', 'new_value': 'Supply Chain Optimization Workshop'})"
+Change the name of the event 00000161 to Board of Directors Meeting,"calendar.update_event({'event_id': '00000161', 'field': 'event_name', 'new_value': 'Board of Directors Meeting'})"
+Change the name of the event 00000356 to Health and Wellness Fair,"calendar.update_event({'event_id': '00000356', 'field': 'event_name', 'new_value': 'Health and Wellness Fair'})"

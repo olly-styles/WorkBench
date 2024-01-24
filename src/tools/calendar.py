@@ -14,7 +14,7 @@ def get_event_information_by_id(event_id=None, field=None):
     event_id : str, optional
         8-digit ID of the event.
     field : str, optional
-        Field to return. Available fields are: "event_id", "event_name", "participant_email", "event_start", "event_end"
+        Field to return. Available fields are: "event_id", "event_name", "participant_email", "event_start", "duration"
 
     Returns
     -------
@@ -29,6 +29,9 @@ def get_event_information_by_id(event_id=None, field=None):
 
     >>> calendar.get_event_information_by_id("00000000", "event_start")
     {{"event_start": "2021-06-01 13:00:00"}}
+
+    >>> calendar.get_event_information_by_id("00000000", "duration")
+    {{"duration": "60"}}
 
     """
     if not event_id:
@@ -69,8 +72,8 @@ def search_events(query="", time_min=None, time_max=None):
     Examples
     --------
     >>> calendar.search_events("Sam")
-    [{{"event_id": "00000000", "event_name": "Meeting with Sam", "participant_email: "sam@example.com", "event_start": "2021-06-01 13:00:00", "event_end": "2021-06-01 14:00:00"}},
-    {{"event_id": "00000001", "event_name": "Lunch with Sam", "participant_email": "sam@example.com", "event_start": "2021-06-01 13:00:00", "event_end": "2021-06-01 14:00:00}}"
+    [{{"event_id": "00000000", "event_name": "Meeting with Sam", "participant_email: "sam@example.com", "event_start": "2021-06-01 13:00:00", "duration": "60"}},
+    {{"event_id": "00000001", "event_name": "Lunch with Sam", "participant_email": "sam@example.com", "event_start": "2021-06-01 13:00:00", "duration": "30}}"
     ]
     """
     events = CALENDAR_EVENTS[
@@ -81,13 +84,15 @@ def search_events(query="", time_min=None, time_max=None):
         events = [
             event
             for event in events
-            if pd.Timestamp(event["event_end"]) >= pd.Timestamp(time_min)
+            if pd.Timestamp(event["event_start"]) >= pd.Timestamp(time_min)
         ]
     if time_max:
         events = [
             event
             for event in events
-            if pd.Timestamp(event["event_start"]) <= pd.Timestamp(time_max)
+            if pd.Timestamp(event["event_start"])
+            + pd.Timedelta(minutes=int(event["duration"]))
+            <= pd.Timestamp(time_max)
         ]
     if events:
         return events[:5]
@@ -97,7 +102,7 @@ def search_events(query="", time_min=None, time_max=None):
 
 @tool("calendar.create_event", return_direct=False)
 def create_event(
-    event_name=None, participant_email=None, event_start=None, event_end=None
+    event_name=None, participant_email=None, event_start=None, duration=None
 ):
     """
     Creates a new event.
@@ -110,8 +115,8 @@ def create_event(
         Email of the participant.
     event_start: str, optional
         Start time of the event. Format: "YYYY-MM-DD HH:MM:SS"
-    event_end: str, optional
-        End time of the event. Format: "YYYY-MM-DD HH:MM:SS"
+    duration: str, optional
+        Duration of the event in minutes.
 
     Returns
     -------
@@ -120,7 +125,7 @@ def create_event(
 
     Examples
     --------
-    >>> calendar.create_event("Meeting with Sam", "sam@example.com", "2021-06-01 13:00:00", "2021-06-01 14:00:00")
+    >>> calendar.create_event("Meeting with Sam", "sam@example.com", "2021-06-01 13:00:00", "60")
     "00000000"
     """
     # Working with classes is difficult in LangChain, so we use a global variable instead.
@@ -132,8 +137,8 @@ def create_event(
         return "Participant email not provided."
     if not event_start:
         return "Event start not provided."
-    if not event_end:
-        return "Event end not provided."
+    if not duration:
+        return "Event duration not provided."
 
     event_id = str(int(CALENDAR_EVENTS["event_id"].max()) + 1).zfill(8)
     new_event = pd.DataFrame(
@@ -142,7 +147,7 @@ def create_event(
             "event_name": [event_name],
             "participant_email": [participant_email],
             "event_start": [event_start],
-            "event_end": [event_end],
+            "duration": [duration],
         }
     )
     CALENDAR_EVENTS = pd.concat([CALENDAR_EVENTS, new_event])

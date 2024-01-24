@@ -15,7 +15,7 @@ SINGLE_ACTION_TEMPLATES = [
     },
     {
         "question": "Create a {duration} event called {event_name} on {date} at {time} with {email}",
-        "answer": """calendar.create_event({{'event_name': '{event_name}', 'participant_email': '{email}', 'event_start': '{date} {time}', 'event_end': '{date} {end_time}'}})""",
+        "answer": """calendar.create_event({{'event_name': '{event_name}', 'participant_email': '{email}', 'event_start': '{date} {time}', 'duration': '{duration_minutes}'}})""",
     },
     {
         "question": "Delete the event {event_id}",
@@ -43,8 +43,11 @@ for template in SINGLE_ACTION_TEMPLATES:
     for _ in range(max_questions_per_template):
         date = random.choice(dates)
         time = random.choice(times)
-        duration = "{length} hour".format(length=generate_event_duration()).replace(
-            ".0", ""
+        duration_minutes = int(generate_event_duration() * 60)
+        duration = "{length} hour".format(
+            length=int(duration_minutes / 60)
+            if duration_minutes / 60 > 1
+            else duration_minutes / 60
         )
         event_name = random.choice(events)
         email = random.choice(emails)
@@ -68,6 +71,7 @@ for template in SINGLE_ACTION_TEMPLATES:
             email=email,
             end_time=end_time,
             event_id=event_id,
+            duration_minutes=duration_minutes,
         )
 
         if question not in generated_questions_and_answers:

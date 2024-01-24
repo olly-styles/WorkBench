@@ -1,501 +1,501 @@
-event_id,event_name,participant_email,event_start,event_end
-00000298,HR Policy Update Meeting,Anaya.Patel@company.com,2023-10-01 09:30:00,2023-10-01 10:00:00
-00000010,Data Security Compliance Training,Leila.Azizi@company.com,2023-10-01 10:30:00,2023-10-01 11:00:00
-00000297,Internal Audit Summary,Amir.Ali@company.com,2023-10-01 11:00:00,2023-10-01 12:00:00
-00000232,New Hire Orientation,Santiago.Martinez@company.com,2023-10-01 12:00:00,2023-10-01 12:30:00
-00000454,Executive Leadership Offsite,Olga.Petrova@company.com,2023-10-01 12:30:00,2023-10-01 13:00:00
-00000312,Team Building Retreat,Jinsoo.Kim@company.com,2023-10-01 13:00:00,2023-10-01 13:30:00
-00000432,Customer Service Excellence Training,Chenwei.Zhang@company.com,2023-10-01 14:30:00,2023-10-01 15:00:00
-00000053,Quarterly Sales Review,Amir.Ali@company.com,2023-10-01 15:00:00,2023-10-01 18:00:00
-00000301,Global Market Expansion Discussion,Carlos.Rodriguez@company.com,2023-10-02 09:00:00,2023-10-02 10:00:00
-00000012,Employee Benefits Review,Chenwei.Zhang@company.com,2023-10-02 10:00:00,2023-10-02 10:30:00
-00000077,Quarterly Sales Review,Chenwei.Zhang@company.com,2023-10-02 10:30:00,2023-10-02 12:00:00
-00000192,Sales Pipeline Review,Dmitri.Ivanov@company.com,2023-10-02 12:00:00,2023-10-02 12:30:00
-00000184,Customer Service Excellence Training,Sofia.Santos@company.com,2023-10-02 12:30:00,2023-10-02 13:30:00
-00000472,Corporate Social Responsibility Day,Raj.Patel@company.com,2023-10-02 13:30:00,2023-10-02 14:00:00
-00000485,Vendor Selection Panel,Amir.Ali@company.com,2023-10-02 14:00:00,2023-10-02 14:30:00
-00000480,Quality Assurance Training,Nia.Johnson@company.com,2023-10-02 14:30:00,2023-10-02 15:00:00
-00000022,Annual Budget Planning Session,Aisha.Chen@company.com,2023-10-02 15:00:00,2023-10-02 17:30:00
-00000028,Quality Assurance Training,Olga.Petrova@company.com,2023-10-03 09:00:00,2023-10-03 10:30:00
-00000345,Brand Refresh Reveal,Sofia.Santos@company.com,2023-10-03 10:30:00,2023-10-03 11:00:00
-00000205,Organizational Restructuring Briefing,Olga.Petrova@company.com,2023-10-03 11:30:00,2023-10-03 12:00:00
-00000137,Customer Service Excellence Training,Nadia.Moreau@company.com,2023-10-03 12:30:00,2023-10-03 14:30:00
-00000127,New Hire Orientation,Amir.Ali@company.com,2023-10-03 15:00:00,2023-10-03 17:00:00
-00000064,Marketing Strategy Brainstorm,Sofia.Santos@company.com,2023-10-04 09:00:00,2023-10-04 12:00:00
-00000129,Project Kickoff Meeting,Leila.Azizi@company.com,2023-10-04 12:00:00,2023-10-04 12:30:00
-00000339,Corporate Social Responsibility Day,Jinsoo.Kim@company.com,2023-10-04 13:00:00,2023-10-04 14:00:00
-00000247,IT Systems Upgrade Briefing,Yuki.Tanaka@company.com,2023-10-04 15:30:00,2023-10-04 18:30:00
-00000461,Brand Refresh Reveal,Lena.Schmidt@company.com,2023-10-05 09:00:00,2023-10-05 09:30:00
-00000147,Quality Assurance Training,Olga.Petrova@company.com,2023-10-05 09:30:00,2023-10-05 10:30:00
-00000176,Sales Incentive Plan Announcement,Carlos.Rodriguez@company.com,2023-10-05 11:00:00,2023-10-05 12:00:00
-00000206,Cross-Functional Collaboration Workshop,Dmitri.Ivanov@company.com,2023-10-05 12:30:00,2023-10-05 15:00:00
-00000195,Operational Excellence Conference,Luis.Ortiz@company.com,2023-10-05 15:30:00,2023-10-05 16:00:00
-00000175,Cybersecurity Update Brief,Sofia.Santos@company.com,2023-10-06 09:00:00,2023-10-06 12:00:00
-00000167,Year-End Performance Evaluations,Fatima.Khan@company.com,2023-10-06 12:00:00,2023-10-06 12:30:00
-00000358,Organizational Restructuring Briefing,Luis.Ortiz@company.com,2023-10-06 12:30:00,2023-10-06 15:00:00
-00000090,Employee Engagement Survey Results,Yuki.Tanaka@company.com,2023-10-06 15:30:00,2023-10-06 16:00:00
-00000366,Strategic Planning Retreat,Olga.Petrova@company.com,2023-10-07 09:00:00,2023-10-07 09:30:00
-00000076,Customer Service Excellence Training,Luis.Ortiz@company.com,2023-10-07 09:30:00,2023-10-07 12:30:00
-00000491,Health and Wellness Fair,Aisha.Chen@company.com,2023-10-07 12:30:00,2023-10-07 13:00:00
-00000187,Digital Transformation Summit,Raj.Patel@company.com,2023-10-07 13:00:00,2023-10-07 13:30:00
-00000209,Creative Ideation Session,Lena.Schmidt@company.com,2023-10-07 13:30:00,2023-10-07 15:00:00
-00000103,Customer Service Excellence Training,Yuki.Tanaka@company.com,2023-10-07 15:30:00,2023-10-07 18:30:00
-00000361,Project Kickoff Meeting,Raj.Patel@company.com,2023-10-08 09:00:00,2023-10-08 10:00:00
-00000159,Diversity and Inclusion Seminar,Chenwei.Zhang@company.com,2023-10-08 10:00:00,2023-10-08 10:30:00
-00000273,Customer Feedback Forum,Luis.Ortiz@company.com,2023-10-08 11:00:00,2023-10-08 13:00:00
-00000168,Cybersecurity Update Brief,Carlos.Rodriguez@company.com,2023-10-08 14:00:00,2023-10-08 14:30:00
-00000367,Leadership Training Workshop,Santiago.Martinez@company.com,2023-10-08 14:30:00,2023-10-08 16:30:00
-00000013,R&D Innovation Showcase,Nia.Johnson@company.com,2023-10-09 10:00:00,2023-10-09 12:00:00
-00000387,Client Appreciation Gala,Anaya.Patel@company.com,2023-10-09 12:00:00,2023-10-09 13:30:00
-00000438,R&D Innovation Showcase,Santiago.Martinez@company.com,2023-10-09 13:30:00,2023-10-09 14:30:00
-00000365,Risk Management Roundtable,Sofia.Santos@company.com,2023-10-09 14:30:00,2023-10-09 15:00:00
-00000017,R&D Innovation Showcase,Dmitri.Ivanov@company.com,2023-10-09 15:30:00,2023-10-09 16:30:00
-00000376,Marketing Strategy Brainstorm,Raj.Patel@company.com,2023-10-10 09:00:00,2023-10-10 10:00:00
-00000161,Leadership Training Workshop,Nadia.Moreau@company.com,2023-10-10 10:00:00,2023-10-10 10:30:00
-00000096,Digital Marketing Trends Seminar,Kofi.Mensah@company.com,2023-10-10 11:00:00,2023-10-10 13:00:00
-00000030,Strategic Planning Retreat,Kofi.Mensah@company.com,2023-10-10 14:30:00,2023-10-10 16:00:00
-00000488,Project Kickoff Meeting,Anaya.Patel@company.com,2023-10-11 09:30:00,2023-10-11 10:00:00
-00000099,Vendor Selection Panel,Akira.Sato@company.com,2023-10-11 10:30:00,2023-10-11 12:00:00
-00000499,Brand Refresh Reveal,Kofi.Mensah@company.com,2023-10-11 12:00:00,2023-10-11 12:30:00
-00000118,Innovation Hackathon,Nadia.Moreau@company.com,2023-10-11 12:30:00,2023-10-11 13:30:00
-00000328,Industry Regulation Update Seminar,Raj.Patel@company.com,2023-10-11 13:30:00,2023-10-11 14:30:00
-00000084,Sustainability Initiatives Update,Kofi.Mensah@company.com,2023-10-11 15:00:00,2023-10-11 17:30:00
-00000295,HR Policy Update Meeting,Sofia.Santos@company.com,2023-10-12 09:00:00,2023-10-12 09:30:00
-00000086,Technology Implementation Workshop,Olga.Petrova@company.com,2023-10-12 10:00:00,2023-10-12 11:30:00
-00000193,Quality Assurance Training,Akira.Sato@company.com,2023-10-12 12:00:00,2023-10-12 12:30:00
-00000460,Board of Directors Meeting,Leila.Azizi@company.com,2023-10-12 12:30:00,2023-10-12 13:00:00
-00000340,Sales Incentive Plan Announcement,Akira.Sato@company.com,2023-10-12 13:00:00,2023-10-12 13:30:00
-00000396,Vendor Selection Panel,Carlos.Rodriguez@company.com,2023-10-12 14:00:00,2023-10-12 14:30:00
-00000334,Supply Chain Optimization Workshop,Sofia.Santos@company.com,2023-10-12 14:30:00,2023-10-12 15:00:00
-00000075,Creative Ideation Session,Kofi.Mensah@company.com,2023-10-12 15:00:00,2023-10-12 15:30:00
-00000378,Employee Recognition Ceremony,Dmitri.Ivanov@company.com,2023-10-12 15:30:00,2023-10-12 16:00:00
-00000466,Year-End Performance Evaluations,Chenwei.Zhang@company.com,2023-10-13 09:00:00,2023-10-13 10:00:00
-00000183,New Hire Orientation,Aisha.Chen@company.com,2023-10-13 10:00:00,2023-10-13 11:30:00
-00000170,Innovation Hackathon,Jinsoo.Kim@company.com,2023-10-13 12:00:00,2023-10-13 12:30:00
-00000107,Technology Implementation Workshop,Aisha.Chen@company.com,2023-10-13 13:00:00,2023-10-13 15:00:00
-00000382,Corporate Merger Integration Update,Chenwei.Zhang@company.com,2023-10-13 15:30:00,2023-10-13 17:30:00
-00000200,Marketing Strategy Brainstorm,Luis.Ortiz@company.com,2023-10-14 09:30:00,2023-10-14 11:30:00
-00000402,Sales Incentive Plan Announcement,Amir.Ali@company.com,2023-10-14 11:30:00,2023-10-14 12:30:00
-00000004,Customer Service Excellence Training,Chenwei.Zhang@company.com,2023-10-14 13:30:00,2023-10-14 14:30:00
-00000219,Year-End Performance Evaluations,Kofi.Mensah@company.com,2023-10-14 15:00:00,2023-10-14 17:00:00
-00000217,Executive Leadership Offsite,Lena.Schmidt@company.com,2023-10-15 09:00:00,2023-10-15 10:00:00
-00000443,Sustainability Initiatives Update,Fatima.Khan@company.com,2023-10-15 10:00:00,2023-10-15 11:00:00
-00000325,Employee Recognition Ceremony,Nia.Johnson@company.com,2023-10-15 11:30:00,2023-10-15 14:00:00
-00000016,Creative Ideation Session,Aisha.Chen@company.com,2023-10-15 14:00:00,2023-10-15 16:00:00
-00000163,Organizational Restructuring Briefing,Olga.Petrova@company.com,2023-10-16 09:00:00,2023-10-16 12:00:00
-00000234,Internal Audit Summary,Olga.Petrova@company.com,2023-10-16 12:00:00,2023-10-16 13:00:00
-00000457,New Hire Orientation,Olga.Petrova@company.com,2023-10-16 13:00:00,2023-10-16 13:30:00
-00000025,Vendor Selection Panel,Luis.Ortiz@company.com,2023-10-16 14:00:00,2023-10-16 16:00:00
-00000122,Diversity and Inclusion Seminar,Aisha.Chen@company.com,2023-10-17 09:30:00,2023-10-17 11:30:00
-00000465,Data Security Compliance Training,Nadia.Moreau@company.com,2023-10-17 11:30:00,2023-10-17 12:00:00
-00000272,Data Security Compliance Training,Fatima.Khan@company.com,2023-10-17 12:00:00,2023-10-17 14:30:00
-00000079,Global Team Video Conference,Lena.Schmidt@company.com,2023-10-17 14:30:00,2023-10-17 17:30:00
-00000153,Marketing Strategy Brainstorm,Carlos.Rodriguez@company.com,2023-10-18 10:00:00,2023-10-18 10:30:00
-00000291,Technology Implementation Workshop,Raj.Patel@company.com,2023-10-18 11:00:00,2023-10-18 12:00:00
-00000417,Employee Recognition Ceremony,Luis.Ortiz@company.com,2023-10-18 13:00:00,2023-10-18 14:00:00
-00000031,Employee Recognition Ceremony,Nadia.Moreau@company.com,2023-10-18 14:00:00,2023-10-18 15:30:00
-00000395,Team Building Retreat,Luis.Ortiz@company.com,2023-10-18 15:30:00,2023-10-18 18:30:00
-00000138,Year-End Performance Evaluations,Kofi.Mensah@company.com,2023-10-19 09:00:00,2023-10-19 10:30:00
-00000018,Supply Chain Optimization Workshop,Yuki.Tanaka@company.com,2023-10-19 11:00:00,2023-10-19 12:00:00
-00000165,HR Policy Update Meeting,Lena.Schmidt@company.com,2023-10-19 12:00:00,2023-10-19 12:30:00
-00000347,Cross-Functional Collaboration Workshop,Fatima.Khan@company.com,2023-10-19 12:30:00,2023-10-19 13:00:00
-00000455,Diversity and Inclusion Seminar,Amir.Ali@company.com,2023-10-19 13:30:00,2023-10-19 14:00:00
-00000265,Corporate Governance Training,Nadia.Moreau@company.com,2023-10-19 14:00:00,2023-10-19 15:00:00
-00000288,Vendor Selection Panel,Aisha.Chen@company.com,2023-10-19 15:30:00,2023-10-19 18:30:00
-00000289,Innovation Hackathon,Yuki.Tanaka@company.com,2023-10-20 09:30:00,2023-10-20 10:30:00
-00000124,Digital Transformation Summit,Raj.Patel@company.com,2023-10-20 11:00:00,2023-10-20 11:30:00
-00000451,Supply Chain Optimization Workshop,Aisha.Chen@company.com,2023-10-20 11:30:00,2023-10-20 12:00:00
-00000373,HR Policy Update Meeting,Yuki.Tanaka@company.com,2023-10-20 12:00:00,2023-10-20 12:30:00
-00000348,Team Building Retreat,Luis.Ortiz@company.com,2023-10-20 12:30:00,2023-10-20 13:00:00
-00000240,New Hire Orientation,Nia.Johnson@company.com,2023-10-20 13:30:00,2023-10-20 16:00:00
-00000264,Digital Marketing Trends Seminar,Nia.Johnson@company.com,2023-10-21 09:00:00,2023-10-21 09:30:00
-00000174,Industry Regulation Update Seminar,Akira.Sato@company.com,2023-10-21 10:00:00,2023-10-21 11:00:00
-00000470,Career Development Forum,Amir.Ali@company.com,2023-10-21 11:30:00,2023-10-21 12:00:00
-00000008,Global Team Video Conference,Raj.Patel@company.com,2023-10-21 12:30:00,2023-10-21 14:30:00
-00000208,Global Market Expansion Discussion,Kofi.Mensah@company.com,2023-10-21 15:00:00,2023-10-21 17:30:00
-00000191,Sales Pipeline Review,Chenwei.Zhang@company.com,2023-10-22 09:30:00,2023-10-22 12:30:00
-00000435,Quality Assurance Training,Raj.Patel@company.com,2023-10-22 12:30:00,2023-10-22 13:00:00
-00000271,Sustainability Initiatives Update,Akira.Sato@company.com,2023-10-22 14:30:00,2023-10-22 15:00:00
-00000342,Employee Recognition Ceremony,Carlos.Rodriguez@company.com,2023-10-22 15:00:00,2023-10-22 15:30:00
-00000223,Employee Recognition Ceremony,Anaya.Patel@company.com,2023-10-22 15:30:00,2023-10-22 18:30:00
-00000125,Risk Management Roundtable,Raj.Patel@company.com,2023-10-23 09:00:00,2023-10-23 09:30:00
-00000250,Team Building Retreat,Raj.Patel@company.com,2023-10-23 09:30:00,2023-10-23 10:00:00
-00000344,Vendor Selection Panel,Akira.Sato@company.com,2023-10-23 10:00:00,2023-10-23 11:00:00
-00000042,New Hire Orientation,Raj.Patel@company.com,2023-10-23 11:30:00,2023-10-23 14:00:00
-00000313,Employee Engagement Survey Results,Fatima.Khan@company.com,2023-10-23 14:30:00,2023-10-23 15:00:00
-00000088,Data Security Compliance Training,Carlos.Rodriguez@company.com,2023-10-23 15:30:00,2023-10-23 16:30:00
-00000261,Strategic Planning Retreat,Amir.Ali@company.com,2023-10-24 09:00:00,2023-10-24 11:00:00
-00000383,HR Policy Update Meeting,Amir.Ali@company.com,2023-10-24 11:00:00,2023-10-24 11:30:00
-00000078,Quality Assurance Training,Carlos.Rodriguez@company.com,2023-10-24 12:00:00,2023-10-24 14:00:00
-00000244,Employee Recognition Ceremony,Amir.Ali@company.com,2023-10-24 15:30:00,2023-10-24 18:00:00
-00000106,Cybersecurity Update Brief,Leila.Azizi@company.com,2023-10-25 10:00:00,2023-10-25 13:00:00
-00000063,Brand Refresh Reveal,Yuki.Tanaka@company.com,2023-10-25 13:00:00,2023-10-25 13:30:00
-00000462,Creative Ideation Session,Yuki.Tanaka@company.com,2023-10-25 13:30:00,2023-10-25 14:00:00
-00000424,Brand Refresh Reveal,Yuki.Tanaka@company.com,2023-10-25 14:00:00,2023-10-25 14:30:00
-00000089,Client Appreciation Gala,Nia.Johnson@company.com,2023-10-25 15:00:00,2023-10-25 16:30:00
-00000412,Project Kickoff Meeting,Dmitri.Ivanov@company.com,2023-10-26 09:00:00,2023-10-26 09:30:00
-00000254,Marketing Strategy Brainstorm,Jinsoo.Kim@company.com,2023-10-26 09:30:00,2023-10-26 10:00:00
-00000296,IT Systems Upgrade Briefing,Kofi.Mensah@company.com,2023-10-26 11:00:00,2023-10-26 12:00:00
-00000310,Data Security Compliance Training,Kofi.Mensah@company.com,2023-10-26 12:00:00,2023-10-26 13:00:00
-00000190,Creative Ideation Session,Olga.Petrova@company.com,2023-10-26 13:30:00,2023-10-26 14:00:00
-00000023,Quarterly Sales Review,Anaya.Patel@company.com,2023-10-26 14:30:00,2023-10-26 15:30:00
-00000411,Diversity and Inclusion Seminar,Aisha.Chen@company.com,2023-10-26 15:30:00,2023-10-26 17:00:00
-00000037,Project Kickoff Meeting,Chenwei.Zhang@company.com,2023-10-27 09:00:00,2023-10-27 11:00:00
-00000074,Creative Ideation Session,Santiago.Martinez@company.com,2023-10-27 11:00:00,2023-10-27 12:00:00
-00000061,Customer Service Excellence Training,Anaya.Patel@company.com,2023-10-27 12:00:00,2023-10-27 15:00:00
-00000305,Quarterly Sales Review,Chenwei.Zhang@company.com,2023-10-27 15:00:00,2023-10-27 15:30:00
-00000238,Client Appreciation Gala,Dmitri.Ivanov@company.com,2023-10-27 15:30:00,2023-10-27 18:00:00
-00000425,Employee Engagement Survey Results,Fatima.Khan@company.com,2023-10-28 09:30:00,2023-10-28 10:00:00
-00000278,Organizational Restructuring Briefing,Chenwei.Zhang@company.com,2023-10-28 10:00:00,2023-10-28 13:00:00
-00000293,Vendor Selection Panel,Nia.Johnson@company.com,2023-10-28 14:30:00,2023-10-28 17:00:00
-00000428,Quality Assurance Training,Leila.Azizi@company.com,2023-10-29 09:30:00,2023-10-29 10:00:00
-00000239,Sustainability Initiatives Update,Chenwei.Zhang@company.com,2023-10-29 10:30:00,2023-10-29 11:00:00
-00000123,IT Systems Upgrade Briefing,Kofi.Mensah@company.com,2023-10-29 11:00:00,2023-10-29 11:30:00
-00000322,Corporate Governance Training,Fatima.Khan@company.com,2023-10-29 11:30:00,2023-10-29 12:30:00
-00000248,Vendor Selection Panel,Nadia.Moreau@company.com,2023-10-29 12:30:00,2023-10-29 13:30:00
-00000333,Diversity and Inclusion Seminar,Santiago.Martinez@company.com,2023-10-29 14:00:00,2023-10-29 14:30:00
-00000020,Corporate Social Responsibility Day,Santiago.Martinez@company.com,2023-10-29 14:30:00,2023-10-29 17:00:00
-00000285,Global Market Expansion Discussion,Jinsoo.Kim@company.com,2023-10-30 09:30:00,2023-10-30 11:00:00
-00000054,New Hire Orientation,Olga.Petrova@company.com,2023-10-30 11:30:00,2023-10-30 12:30:00
-00000494,Global Market Expansion Discussion,Santiago.Martinez@company.com,2023-10-30 12:30:00,2023-10-30 13:00:00
-00000419,Quarterly Sales Review,Dmitri.Ivanov@company.com,2023-10-30 13:00:00,2023-10-30 14:00:00
-00000405,Sales Incentive Plan Announcement,Luis.Ortiz@company.com,2023-10-30 14:30:00,2023-10-30 15:00:00
-00000041,Year-End Performance Evaluations,Yuki.Tanaka@company.com,2023-10-30 15:00:00,2023-10-30 17:00:00
-00000323,Innovation Hackathon,Luis.Ortiz@company.com,2023-11-01 09:30:00,2023-11-01 10:30:00
-00000116,Internal Audit Summary,Nia.Johnson@company.com,2023-11-01 10:30:00,2023-11-01 11:00:00
-00000024,Financial Forecasting Meeting,Dmitri.Ivanov@company.com,2023-11-01 11:00:00,2023-11-01 12:30:00
-00000437,Corporate Social Responsibility Day,Leila.Azizi@company.com,2023-11-01 13:00:00,2023-11-01 14:00:00
-00000399,Risk Management Roundtable,Raj.Patel@company.com,2023-11-01 14:30:00,2023-11-01 15:00:00
-00000214,IT Systems Upgrade Briefing,Chenwei.Zhang@company.com,2023-11-01 15:30:00,2023-11-01 17:30:00
-00000468,Sales Pipeline Review,Kofi.Mensah@company.com,2023-11-02 09:00:00,2023-11-02 09:30:00
-00000477,Organizational Restructuring Briefing,Sofia.Santos@company.com,2023-11-02 09:30:00,2023-11-02 10:30:00
-00000198,Corporate Governance Training,Carlos.Rodriguez@company.com,2023-11-02 10:30:00,2023-11-02 11:00:00
-00000196,Corporate Merger Integration Update,Yuki.Tanaka@company.com,2023-11-02 11:00:00,2023-11-02 12:00:00
-00000101,Risk Management Roundtable,Santiago.Martinez@company.com,2023-11-02 12:00:00,2023-11-02 15:00:00
-00000262,Digital Transformation Summit,Chenwei.Zhang@company.com,2023-11-02 15:00:00,2023-11-02 15:30:00
-00000430,Cybersecurity Update Brief,Chenwei.Zhang@company.com,2023-11-02 15:30:00,2023-11-02 16:30:00
-00000362,Leadership Training Workshop,Jinsoo.Kim@company.com,2023-11-03 09:00:00,2023-11-03 10:00:00
-00000497,Digital Marketing Trends Seminar,Carlos.Rodriguez@company.com,2023-11-03 10:00:00,2023-11-03 10:30:00
-00000162,Technology Implementation Workshop,Leila.Azizi@company.com,2023-11-03 10:30:00,2023-11-03 11:00:00
-00000015,Digital Marketing Trends Seminar,Nia.Johnson@company.com,2023-11-03 11:00:00,2023-11-03 11:30:00
-00000093,Client Appreciation Gala,Chenwei.Zhang@company.com,2023-11-03 11:30:00,2023-11-03 12:00:00
-00000203,Quality Assurance Training,Jinsoo.Kim@company.com,2023-11-03 13:00:00,2023-11-03 15:30:00
-00000108,Financial Forecasting Meeting,Yuki.Tanaka@company.com,2023-11-03 15:30:00,2023-11-03 16:30:00
-00000253,Global Team Video Conference,Raj.Patel@company.com,2023-11-04 09:00:00,2023-11-04 10:00:00
-00000040,Corporate Merger Integration Update,Santiago.Martinez@company.com,2023-11-04 10:00:00,2023-11-04 11:00:00
-00000113,Brand Refresh Reveal,Amir.Ali@company.com,2023-11-04 11:30:00,2023-11-04 14:00:00
-00000045,Technology Implementation Workshop,Raj.Patel@company.com,2023-11-04 14:30:00,2023-11-04 15:00:00
-00000155,Board of Directors Meeting,Nadia.Moreau@company.com,2023-11-04 15:30:00,2023-11-04 18:30:00
-00000059,Annual Budget Planning Session,Kofi.Mensah@company.com,2023-11-05 10:00:00,2023-11-05 11:00:00
-00000483,Year-End Performance Evaluations,Olga.Petrova@company.com,2023-11-05 11:00:00,2023-11-05 11:30:00
-00000110,Corporate Governance Training,Chenwei.Zhang@company.com,2023-11-05 11:30:00,2023-11-05 12:30:00
-00000331,Supply Chain Optimization Workshop,Olga.Petrova@company.com,2023-11-05 12:30:00,2023-11-05 13:30:00
-00000144,Team Building Retreat,Fatima.Khan@company.com,2023-11-05 14:00:00,2023-11-05 15:00:00
-00000479,Employee Engagement Survey Results,Jinsoo.Kim@company.com,2023-11-05 15:00:00,2023-11-05 15:30:00
-00000225,Financial Forecasting Meeting,Kofi.Mensah@company.com,2023-11-05 15:30:00,2023-11-05 18:30:00
-00000475,Creative Ideation Session,Nia.Johnson@company.com,2023-11-06 09:00:00,2023-11-06 09:30:00
-00000026,Quarterly Sales Review,Jinsoo.Kim@company.com,2023-11-06 09:30:00,2023-11-06 12:30:00
-00000351,Innovation Hackathon,Kofi.Mensah@company.com,2023-11-06 12:30:00,2023-11-06 13:00:00
-00000474,Health and Wellness Fair,Lena.Schmidt@company.com,2023-11-06 13:30:00,2023-11-06 14:00:00
-00000268,Sustainability Initiatives Update,Sofia.Santos@company.com,2023-11-06 14:30:00,2023-11-06 15:00:00
-00000199,Cybersecurity Update Brief,Raj.Patel@company.com,2023-11-06 15:00:00,2023-11-06 18:00:00
-00000235,Digital Marketing Trends Seminar,Kofi.Mensah@company.com,2023-11-07 09:00:00,2023-11-07 10:00:00
-00000038,Global Market Expansion Discussion,Anaya.Patel@company.com,2023-11-07 10:00:00,2023-11-07 13:00:00
-00000185,Employee Engagement Survey Results,Chenwei.Zhang@company.com,2023-11-07 13:00:00,2023-11-07 15:30:00
-00000415,Creative Ideation Session,Olga.Petrova@company.com,2023-11-07 15:30:00,2023-11-07 17:00:00
-00000003,Global Market Expansion Discussion,Dmitri.Ivanov@company.com,2023-11-08 09:30:00,2023-11-08 12:00:00
-00000329,Cybersecurity Update Brief,Lena.Schmidt@company.com,2023-11-08 12:00:00,2023-11-08 12:30:00
-00000469,HR Policy Update Meeting,Chenwei.Zhang@company.com,2023-11-08 12:30:00,2023-11-08 13:30:00
-00000197,Employee Engagement Survey Results,Kofi.Mensah@company.com,2023-11-08 13:30:00,2023-11-08 15:30:00
-00000391,Diversity and Inclusion Seminar,Raj.Patel@company.com,2023-11-08 15:30:00,2023-11-08 17:00:00
-00000315,Corporate Social Responsibility Day,Chenwei.Zhang@company.com,2023-11-09 09:30:00,2023-11-09 10:00:00
-00000422,Product Launch Debrief,Olga.Petrova@company.com,2023-11-09 10:00:00,2023-11-09 12:00:00
-00000242,Employee Benefits Review,Amir.Ali@company.com,2023-11-09 12:00:00,2023-11-09 13:00:00
-00000449,Quality Assurance Training,Nia.Johnson@company.com,2023-11-09 13:00:00,2023-11-09 13:30:00
-00000353,Employee Engagement Survey Results,Lena.Schmidt@company.com,2023-11-09 13:30:00,2023-11-09 14:30:00
-00000034,Creative Ideation Session,Olga.Petrova@company.com,2023-11-09 14:30:00,2023-11-09 16:00:00
-00000431,Product Launch Debrief,Anaya.Patel@company.com,2023-11-10 09:00:00,2023-11-10 09:30:00
-00000321,Sustainability Initiatives Update,Raj.Patel@company.com,2023-11-10 09:30:00,2023-11-10 10:30:00
-00000115,Career Development Forum,Nadia.Moreau@company.com,2023-11-10 10:30:00,2023-11-10 11:30:00
-00000224,Digital Marketing Trends Seminar,Yuki.Tanaka@company.com,2023-11-10 11:30:00,2023-11-10 12:00:00
-00000073,Employee Recognition Ceremony,Fatima.Khan@company.com,2023-11-10 12:30:00,2023-11-10 13:30:00
-00000416,Internal Audit Summary,Yuki.Tanaka@company.com,2023-11-10 14:30:00,2023-11-10 15:00:00
-00000308,Data Security Compliance Training,Carlos.Rodriguez@company.com,2023-11-10 15:00:00,2023-11-10 17:30:00
-00000094,Board of Directors Meeting,Raj.Patel@company.com,2023-11-11 09:30:00,2023-11-11 12:00:00
-00000320,HR Policy Update Meeting,Luis.Ortiz@company.com,2023-11-11 12:00:00,2023-11-11 12:30:00
-00000228,Strategic Planning Retreat,Raj.Patel@company.com,2023-11-11 12:30:00,2023-11-11 14:30:00
-00000188,Cybersecurity Update Brief,Carlos.Rodriguez@company.com,2023-11-11 15:00:00,2023-11-11 16:00:00
-00000427,Customer Feedback Forum,Sofia.Santos@company.com,2023-11-12 09:00:00,2023-11-12 09:30:00
-00000009,Global Team Video Conference,Fatima.Khan@company.com,2023-11-12 09:30:00,2023-11-12 12:00:00
-00000049,Sustainability Initiatives Update,Aisha.Chen@company.com,2023-11-12 13:00:00,2023-11-12 14:30:00
-00000292,Employee Benefits Review,Dmitri.Ivanov@company.com,2023-11-12 15:30:00,2023-11-12 17:30:00
-00000359,Operational Excellence Conference,Raj.Patel@company.com,2023-11-13 09:30:00,2023-11-13 10:00:00
-00000006,Digital Transformation Summit,Santiago.Martinez@company.com,2023-11-13 10:00:00,2023-11-13 11:00:00
-00000218,Customer Service Excellence Training,Yuki.Tanaka@company.com,2023-11-13 11:00:00,2023-11-13 11:30:00
-00000097,Career Development Forum,Fatima.Khan@company.com,2023-11-13 12:30:00,2023-11-13 15:00:00
-00000360,Internal Audit Summary,Chenwei.Zhang@company.com,2023-11-13 15:30:00,2023-11-13 17:30:00
-00000487,Vendor Selection Panel,Amir.Ali@company.com,2023-11-14 09:00:00,2023-11-14 09:30:00
-00000083,Sustainability Initiatives Update,Carlos.Rodriguez@company.com,2023-11-14 09:30:00,2023-11-14 11:00:00
-00000436,Career Development Forum,Anaya.Patel@company.com,2023-11-14 11:00:00,2023-11-14 12:00:00
-00000204,Operational Excellence Conference,Jinsoo.Kim@company.com,2023-11-14 12:00:00,2023-11-14 13:00:00
-00000178,Data Security Compliance Training,Akira.Sato@company.com,2023-11-14 13:30:00,2023-11-14 14:00:00
-00000256,Technology Implementation Workshop,Sofia.Santos@company.com,2023-11-14 14:00:00,2023-11-14 14:30:00
-00000401,Employee Engagement Survey Results,Carlos.Rodriguez@company.com,2023-11-14 14:30:00,2023-11-14 15:30:00
-00000117,Sustainability Initiatives Update,Sofia.Santos@company.com,2023-11-14 15:30:00,2023-11-14 18:00:00
-00000458,Industry Regulation Update Seminar,Fatima.Khan@company.com,2023-11-15 09:00:00,2023-11-15 09:30:00
-00000269,Operational Excellence Conference,Kofi.Mensah@company.com,2023-11-15 09:30:00,2023-11-15 10:00:00
-00000385,Sales Incentive Plan Announcement,Santiago.Martinez@company.com,2023-11-15 10:00:00,2023-11-15 12:00:00
-00000080,Health and Wellness Fair,Carlos.Rodriguez@company.com,2023-11-15 12:00:00,2023-11-15 12:30:00
-00000027,Sustainability Initiatives Update,Akira.Sato@company.com,2023-11-15 12:30:00,2023-11-15 13:30:00
-00000363,Data Security Compliance Training,Jinsoo.Kim@company.com,2023-11-15 13:30:00,2023-11-15 14:00:00
-00000418,Board of Directors Meeting,Raj.Patel@company.com,2023-11-15 14:30:00,2023-11-15 15:00:00
-00000346,Risk Management Roundtable,Nia.Johnson@company.com,2023-11-15 15:00:00,2023-11-15 15:30:00
-00000287,Leadership Training Workshop,Nadia.Moreau@company.com,2023-11-16 10:00:00,2023-11-16 12:30:00
-00000194,Industry Regulation Update Seminar,Amir.Ali@company.com,2023-11-16 12:30:00,2023-11-16 15:30:00
-00000033,Health and Wellness Fair,Luis.Ortiz@company.com,2023-11-16 15:30:00,2023-11-16 16:30:00
-00000414,IT Systems Upgrade Briefing,Nadia.Moreau@company.com,2023-11-17 09:00:00,2023-11-17 10:00:00
-00000284,Corporate Governance Training,Dmitri.Ivanov@company.com,2023-11-17 10:30:00,2023-11-17 12:00:00
-00000326,Quarterly Sales Review,Amir.Ali@company.com,2023-11-17 12:00:00,2023-11-17 13:00:00
-00000130,Vendor Selection Panel,Akira.Sato@company.com,2023-11-17 13:00:00,2023-11-17 14:30:00
-00000171,Employee Recognition Ceremony,Aisha.Chen@company.com,2023-11-17 14:30:00,2023-11-17 15:00:00
-00000276,Corporate Governance Training,Nia.Johnson@company.com,2023-11-17 15:00:00,2023-11-17 15:30:00
-00000151,Digital Marketing Trends Seminar,Santiago.Martinez@company.com,2023-11-17 15:30:00,2023-11-17 17:30:00
-00000357,Strategic Planning Retreat,Olga.Petrova@company.com,2023-11-18 10:00:00,2023-11-18 10:30:00
-00000039,Year-End Performance Evaluations,Akira.Sato@company.com,2023-11-18 11:30:00,2023-11-18 12:30:00
-00000229,Cybersecurity Update Brief,Dmitri.Ivanov@company.com,2023-11-18 12:30:00,2023-11-18 13:00:00
-00000143,Brand Refresh Reveal,Aisha.Chen@company.com,2023-11-18 13:30:00,2023-11-18 15:00:00
-00000085,Career Development Forum,Amir.Ali@company.com,2023-11-18 15:00:00,2023-11-18 16:00:00
-00000216,Employee Benefits Review,Akira.Sato@company.com,2023-11-19 09:30:00,2023-11-19 10:00:00
-00000201,Health and Wellness Fair,Dmitri.Ivanov@company.com,2023-11-19 10:00:00,2023-11-19 11:30:00
-00000046,Leadership Training Workshop,Olga.Petrova@company.com,2023-11-19 12:00:00,2023-11-19 13:00:00
-00000471,Digital Transformation Summit,Kofi.Mensah@company.com,2023-11-19 13:00:00,2023-11-19 13:30:00
-00000421,New Hire Orientation,Lena.Schmidt@company.com,2023-11-19 13:30:00,2023-11-19 14:00:00
-00000141,Employee Engagement Survey Results,Kofi.Mensah@company.com,2023-11-19 14:30:00,2023-11-19 17:30:00
-00000282,Marketing Strategy Brainstorm,Dmitri.Ivanov@company.com,2023-11-20 09:00:00,2023-11-20 10:00:00
-00000060,Data Security Compliance Training,Leila.Azizi@company.com,2023-11-20 10:30:00,2023-11-20 12:00:00
-00000104,Health and Wellness Fair,Santiago.Martinez@company.com,2023-11-20 13:30:00,2023-11-20 15:00:00
-00000182,Digital Transformation Summit,Lena.Schmidt@company.com,2023-11-20 15:00:00,2023-11-20 15:30:00
-00000388,Leadership Training Workshop,Chenwei.Zhang@company.com,2023-11-20 15:30:00,2023-11-20 16:00:00
-00000021,Organizational Restructuring Briefing,Kofi.Mensah@company.com,2023-11-21 09:00:00,2023-11-21 11:00:00
-00000440,Financial Forecasting Meeting,Kofi.Mensah@company.com,2023-11-21 11:00:00,2023-11-21 12:00:00
-00000255,Health and Wellness Fair,Dmitri.Ivanov@company.com,2023-11-21 12:00:00,2023-11-21 12:30:00
-00000035,IT Systems Upgrade Briefing,Chenwei.Zhang@company.com,2023-11-21 12:30:00,2023-11-21 13:00:00
-00000133,Employee Engagement Survey Results,Sofia.Santos@company.com,2023-11-21 13:00:00,2023-11-21 15:30:00
-00000381,Annual Budget Planning Session,Chenwei.Zhang@company.com,2023-11-21 15:30:00,2023-11-21 17:30:00
-00000464,Sustainability Initiatives Update,Olga.Petrova@company.com,2023-11-22 09:00:00,2023-11-22 09:30:00
-00000243,Global Team Video Conference,Nadia.Moreau@company.com,2023-11-22 09:30:00,2023-11-22 12:30:00
-00000368,Sales Pipeline Review,Lena.Schmidt@company.com,2023-11-22 13:00:00,2023-11-22 14:00:00
-00000231,Internal Audit Summary,Carlos.Rodriguez@company.com,2023-11-22 15:00:00,2023-11-22 16:30:00
-00000407,Digital Transformation Summit,Amir.Ali@company.com,2023-11-23 09:00:00,2023-11-23 09:30:00
-00000356,Executive Leadership Offsite,Anaya.Patel@company.com,2023-11-23 09:30:00,2023-11-23 10:30:00
-00000109,Organizational Restructuring Briefing,Olga.Petrova@company.com,2023-11-23 10:30:00,2023-11-23 11:00:00
-00000337,Quality Assurance Training,Olga.Petrova@company.com,2023-11-23 11:00:00,2023-11-23 11:30:00
-00000498,Data Security Compliance Training,Luis.Ortiz@company.com,2023-11-23 11:30:00,2023-11-23 12:00:00
-00000252,Operational Excellence Conference,Leila.Azizi@company.com,2023-11-23 12:00:00,2023-11-23 13:30:00
-00000202,Cybersecurity Update Brief,Jinsoo.Kim@company.com,2023-11-23 13:30:00,2023-11-23 16:00:00
-00000098,Global Team Video Conference,Santiago.Martinez@company.com,2023-11-24 09:00:00,2023-11-24 10:30:00
-00000275,Sales Incentive Plan Announcement,Anaya.Patel@company.com,2023-11-24 11:00:00,2023-11-24 11:30:00
-00000154,Technology Implementation Workshop,Dmitri.Ivanov@company.com,2023-11-24 11:30:00,2023-11-24 12:00:00
-00000389,Sustainability Initiatives Update,Carlos.Rodriguez@company.com,2023-11-24 12:00:00,2023-11-24 12:30:00
-00000496,Corporate Social Responsibility Day,Dmitri.Ivanov@company.com,2023-11-24 12:30:00,2023-11-24 13:00:00
-00000379,Executive Leadership Offsite,Chenwei.Zhang@company.com,2023-11-24 13:00:00,2023-11-24 13:30:00
-00000179,HR Policy Update Meeting,Akira.Sato@company.com,2023-11-24 14:00:00,2023-11-24 14:30:00
-00000441,Quarterly Sales Review,Lena.Schmidt@company.com,2023-11-24 14:30:00,2023-11-24 15:00:00
-00000120,Corporate Governance Training,Sofia.Santos@company.com,2023-11-24 15:00:00,2023-11-24 16:00:00
-00000314,Employee Recognition Ceremony,Anaya.Patel@company.com,2023-11-25 09:30:00,2023-11-25 11:00:00
-00000277,Operational Excellence Conference,Dmitri.Ivanov@company.com,2023-11-25 11:00:00,2023-11-25 12:00:00
-00000486,Operational Excellence Conference,Fatima.Khan@company.com,2023-11-25 12:00:00,2023-11-25 12:30:00
-00000420,Financial Forecasting Meeting,Aisha.Chen@company.com,2023-11-25 12:30:00,2023-11-25 13:00:00
-00000112,Operational Excellence Conference,Olga.Petrova@company.com,2023-11-25 13:00:00,2023-11-25 16:00:00
-00000249,Global Market Expansion Discussion,Jinsoo.Kim@company.com,2023-11-26 09:00:00,2023-11-26 11:30:00
-00000150,Risk Management Roundtable,Amir.Ali@company.com,2023-11-26 11:30:00,2023-11-26 13:30:00
-00000246,Quality Assurance Training,Aisha.Chen@company.com,2023-11-26 14:00:00,2023-11-26 15:30:00
-00000369,Career Development Forum,Carlos.Rodriguez@company.com,2023-11-26 15:30:00,2023-11-26 17:30:00
-00000445,Strategic Planning Retreat,Santiago.Martinez@company.com,2023-11-27 09:00:00,2023-11-27 09:30:00
-00000459,Innovation Hackathon,Jinsoo.Kim@company.com,2023-11-27 09:30:00,2023-11-27 10:00:00
-00000102,Risk Management Roundtable,Sofia.Santos@company.com,2023-11-27 10:00:00,2023-11-27 12:00:00
-00000281,Employee Benefits Review,Santiago.Martinez@company.com,2023-11-27 12:00:00,2023-11-27 12:30:00
-00000330,Industry Regulation Update Seminar,Aisha.Chen@company.com,2023-11-27 12:30:00,2023-11-27 13:00:00
-00000442,Sales Pipeline Review,Fatima.Khan@company.com,2023-11-27 13:00:00,2023-11-27 13:30:00
-00000302,Customer Service Excellence Training,Anaya.Patel@company.com,2023-11-27 13:30:00,2023-11-27 14:00:00
-00000220,Product Launch Debrief,Akira.Sato@company.com,2023-11-27 14:00:00,2023-11-27 15:00:00
-00000286,HR Policy Update Meeting,Amir.Ali@company.com,2023-11-27 15:00:00,2023-11-27 16:00:00
-00000380,Innovation Hackathon,Leila.Azizi@company.com,2023-11-28 09:00:00,2023-11-28 09:30:00
-00000092,Vendor Selection Panel,Nia.Johnson@company.com,2023-11-28 10:00:00,2023-11-28 10:30:00
-00000260,Supply Chain Optimization Workshop,Anaya.Patel@company.com,2023-11-28 10:30:00,2023-11-28 12:00:00
-00000081,Product Launch Debrief,Sofia.Santos@company.com,2023-11-28 12:00:00,2023-11-28 13:00:00
-00000290,Executive Leadership Offsite,Kofi.Mensah@company.com,2023-11-28 13:00:00,2023-11-28 14:30:00
-00000005,Diversity and Inclusion Seminar,Amir.Ali@company.com,2023-11-28 14:30:00,2023-11-28 16:00:00
-00000452,Cross-Functional Collaboration Workshop,Anaya.Patel@company.com,2023-11-29 09:30:00,2023-11-29 10:00:00
-00000100,Sales Pipeline Review,Dmitri.Ivanov@company.com,2023-11-29 10:30:00,2023-11-29 13:00:00
-00000036,Supply Chain Optimization Workshop,Nia.Johnson@company.com,2023-11-29 14:30:00,2023-11-29 16:00:00
-00000160,Executive Leadership Offsite,Santiago.Martinez@company.com,2023-12-01 09:00:00,2023-12-01 11:00:00
-00000413,Organizational Restructuring Briefing,Chenwei.Zhang@company.com,2023-12-01 11:00:00,2023-12-01 11:30:00
-00000386,Global Market Expansion Discussion,Luis.Ortiz@company.com,2023-12-01 12:00:00,2023-12-01 13:30:00
-00000142,Internal Audit Summary,Santiago.Martinez@company.com,2023-12-01 14:00:00,2023-12-01 16:00:00
-00000067,Leadership Training Workshop,Lena.Schmidt@company.com,2023-12-02 10:00:00,2023-12-02 11:00:00
-00000490,Technology Implementation Workshop,Kofi.Mensah@company.com,2023-12-02 11:00:00,2023-12-02 11:30:00
-00000398,Marketing Strategy Brainstorm,Aisha.Chen@company.com,2023-12-02 11:30:00,2023-12-02 12:00:00
-00000119,Executive Leadership Offsite,Jinsoo.Kim@company.com,2023-12-02 12:00:00,2023-12-02 13:30:00
-00000140,Project Kickoff Meeting,Yuki.Tanaka@company.com,2023-12-02 13:30:00,2023-12-02 15:00:00
-00000135,Creative Ideation Session,Leila.Azizi@company.com,2023-12-02 15:30:00,2023-12-02 17:30:00
-00000221,Global Team Video Conference,Anaya.Patel@company.com,2023-12-03 09:30:00,2023-12-03 10:00:00
-00000071,Quarterly Sales Review,Dmitri.Ivanov@company.com,2023-12-03 10:30:00,2023-12-03 12:00:00
-00000146,Sustainability Initiatives Update,Anaya.Patel@company.com,2023-12-03 12:00:00,2023-12-03 14:00:00
-00000032,Vendor Selection Panel,Amir.Ali@company.com,2023-12-03 14:00:00,2023-12-03 14:30:00
-00000087,Employee Engagement Survey Results,Santiago.Martinez@company.com,2023-12-03 14:30:00,2023-12-03 15:30:00
-00000476,Industry Regulation Update Seminar,Akira.Sato@company.com,2023-12-03 15:30:00,2023-12-03 16:30:00
-00000349,Career Development Forum,Carlos.Rodriguez@company.com,2023-12-04 10:00:00,2023-12-04 10:30:00
-00000257,Creative Ideation Session,Jinsoo.Kim@company.com,2023-12-04 11:00:00,2023-12-04 11:30:00
-00000066,Quality Assurance Training,Sofia.Santos@company.com,2023-12-04 12:00:00,2023-12-04 14:00:00
-00000434,Vendor Selection Panel,Carlos.Rodriguez@company.com,2023-12-04 14:00:00,2023-12-04 14:30:00
-00000492,Financial Forecasting Meeting,Olga.Petrova@company.com,2023-12-04 14:30:00,2023-12-04 15:00:00
-00000245,Executive Leadership Offsite,Olga.Petrova@company.com,2023-12-04 15:30:00,2023-12-04 18:30:00
-00000410,Strategic Planning Retreat,Santiago.Martinez@company.com,2023-12-05 09:30:00,2023-12-05 10:00:00
-00000355,Global Team Video Conference,Leila.Azizi@company.com,2023-12-05 10:30:00,2023-12-05 12:30:00
-00000001,Strategic Planning Retreat,Anaya.Patel@company.com,2023-12-05 13:00:00,2023-12-05 15:30:00
-00000136,Financial Forecasting Meeting,Leila.Azizi@company.com,2023-12-05 15:30:00,2023-12-05 16:00:00
-00000309,Vendor Selection Panel,Olga.Petrova@company.com,2023-12-06 09:00:00,2023-12-06 09:30:00
-00000446,Year-End Performance Evaluations,Luis.Ortiz@company.com,2023-12-06 09:30:00,2023-12-06 10:00:00
-00000473,Project Kickoff Meeting,Luis.Ortiz@company.com,2023-12-06 10:00:00,2023-12-06 11:00:00
-00000266,Health and Wellness Fair,Olga.Petrova@company.com,2023-12-06 11:30:00,2023-12-06 13:00:00
-00000489,Supply Chain Optimization Workshop,Luis.Ortiz@company.com,2023-12-06 13:00:00,2023-12-06 13:30:00
-00000274,Employee Engagement Survey Results,Olga.Petrova@company.com,2023-12-06 13:30:00,2023-12-06 14:30:00
-00000303,Quality Assurance Training,Dmitri.Ivanov@company.com,2023-12-06 14:30:00,2023-12-06 15:00:00
-00000267,Innovation Hackathon,Nia.Johnson@company.com,2023-12-06 15:30:00,2023-12-06 16:00:00
-00000453,Digital Transformation Summit,Nadia.Moreau@company.com,2023-12-07 09:00:00,2023-12-07 09:30:00
-00000186,Creative Ideation Session,Carlos.Rodriguez@company.com,2023-12-07 09:30:00,2023-12-07 11:00:00
-00000132,Industry Regulation Update Seminar,Aisha.Chen@company.com,2023-12-07 11:00:00,2023-12-07 11:30:00
-00000350,Quarterly Sales Review,Nadia.Moreau@company.com,2023-12-07 11:30:00,2023-12-07 13:00:00
-00000397,Corporate Merger Integration Update,Amir.Ali@company.com,2023-12-07 13:00:00,2023-12-07 13:30:00
-00000181,Customer Feedback Forum,Sofia.Santos@company.com,2023-12-07 13:30:00,2023-12-07 14:00:00
-00000384,Leadership Training Workshop,Luis.Ortiz@company.com,2023-12-07 14:00:00,2023-12-07 15:30:00
-00000394,Vendor Selection Panel,Nadia.Moreau@company.com,2023-12-07 15:30:00,2023-12-07 17:30:00
-00000029,Health and Wellness Fair,Anaya.Patel@company.com,2023-12-08 09:30:00,2023-12-08 12:00:00
-00000227,Year-End Performance Evaluations,Amir.Ali@company.com,2023-12-08 12:00:00,2023-12-08 15:00:00
-00000177,Leadership Training Workshop,Santiago.Martinez@company.com,2023-12-08 15:00:00,2023-12-08 17:30:00
-00000210,R&D Innovation Showcase,Santiago.Martinez@company.com,2023-12-09 09:00:00,2023-12-09 09:30:00
-00000447,HR Policy Update Meeting,Leila.Azizi@company.com,2023-12-09 09:30:00,2023-12-09 10:00:00
-00000126,Customer Service Excellence Training,Olga.Petrova@company.com,2023-12-09 10:30:00,2023-12-09 11:00:00
-00000450,Sales Pipeline Review,Aisha.Chen@company.com,2023-12-09 11:00:00,2023-12-09 11:30:00
-00000279,Digital Marketing Trends Seminar,Lena.Schmidt@company.com,2023-12-09 11:30:00,2023-12-09 12:00:00
-00000341,Strategic Planning Retreat,Anaya.Patel@company.com,2023-12-09 12:00:00,2023-12-09 13:00:00
-00000105,Marketing Strategy Brainstorm,Nadia.Moreau@company.com,2023-12-09 13:00:00,2023-12-09 13:30:00
-00000007,Health and Wellness Fair,Luis.Ortiz@company.com,2023-12-09 14:00:00,2023-12-09 16:30:00
-00000467,Corporate Governance Training,Anaya.Patel@company.com,2023-12-10 09:00:00,2023-12-10 09:30:00
-00000189,Customer Feedback Forum,Luis.Ortiz@company.com,2023-12-10 10:30:00,2023-12-10 12:00:00
-00000258,Digital Transformation Summit,Chenwei.Zhang@company.com,2023-12-10 12:00:00,2023-12-10 13:00:00
-00000131,Annual Budget Planning Session,Carlos.Rodriguez@company.com,2023-12-10 13:30:00,2023-12-10 14:30:00
-00000072,Risk Management Roundtable,Kofi.Mensah@company.com,2023-12-10 15:00:00,2023-12-10 15:30:00
-00000283,Sustainability Initiatives Update,Jinsoo.Kim@company.com,2023-12-10 15:30:00,2023-12-10 17:00:00
-00000230,Digital Transformation Summit,Amir.Ali@company.com,2023-12-11 10:30:00,2023-12-11 11:00:00
-00000057,Innovation Hackathon,Fatima.Khan@company.com,2023-12-11 11:30:00,2023-12-11 12:00:00
-00000318,Diversity and Inclusion Seminar,Nia.Johnson@company.com,2023-12-11 12:00:00,2023-12-11 13:00:00
-00000403,Customer Feedback Forum,Aisha.Chen@company.com,2023-12-11 13:00:00,2023-12-11 13:30:00
-00000456,Quality Assurance Training,Aisha.Chen@company.com,2023-12-11 13:30:00,2023-12-11 14:00:00
-00000070,Financial Forecasting Meeting,Leila.Azizi@company.com,2023-12-11 14:00:00,2023-12-11 15:30:00
-00000211,Executive Leadership Offsite,Aisha.Chen@company.com,2023-12-11 15:30:00,2023-12-11 16:30:00
-00000406,Operational Excellence Conference,Jinsoo.Kim@company.com,2023-12-12 09:00:00,2023-12-12 10:30:00
-00000233,Internal Audit Summary,Chenwei.Zhang@company.com,2023-12-12 10:30:00,2023-12-12 11:30:00
-00000327,Corporate Merger Integration Update,Leila.Azizi@company.com,2023-12-12 12:00:00,2023-12-12 12:30:00
-00000332,Project Kickoff Meeting,Kofi.Mensah@company.com,2023-12-12 13:00:00,2023-12-12 13:30:00
-00000002,IT Systems Upgrade Briefing,Olga.Petrova@company.com,2023-12-12 13:30:00,2023-12-12 14:30:00
-00000212,Vendor Selection Panel,Carlos.Rodriguez@company.com,2023-12-12 15:00:00,2023-12-12 17:00:00
-00000114,Annual Budget Planning Session,Nia.Johnson@company.com,2023-12-13 09:00:00,2023-12-13 12:00:00
-00000423,Cross-Functional Collaboration Workshop,Akira.Sato@company.com,2023-12-13 12:00:00,2023-12-13 13:00:00
-00000157,Sales Pipeline Review,Leila.Azizi@company.com,2023-12-13 13:00:00,2023-12-13 15:00:00
-00000374,Annual Budget Planning Session,Nadia.Moreau@company.com,2023-12-13 15:00:00,2023-12-13 17:30:00
-00000043,Strategic Planning Retreat,Aisha.Chen@company.com,2023-12-14 09:30:00,2023-12-14 12:30:00
-00000213,Sales Incentive Plan Announcement,Santiago.Martinez@company.com,2023-12-14 12:30:00,2023-12-14 13:00:00
-00000495,Product Launch Debrief,Aisha.Chen@company.com,2023-12-14 13:00:00,2023-12-14 13:30:00
-00000139,Customer Feedback Forum,Amir.Ali@company.com,2023-12-14 14:00:00,2023-12-14 16:30:00
-00000372,R&D Innovation Showcase,Leila.Azizi@company.com,2023-12-15 09:30:00,2023-12-15 10:00:00
-00000226,Sustainability Initiatives Update,Chenwei.Zhang@company.com,2023-12-15 10:00:00,2023-12-15 10:30:00
-00000463,Supply Chain Optimization Workshop,Fatima.Khan@company.com,2023-12-15 10:30:00,2023-12-15 11:00:00
-00000121,Employee Recognition Ceremony,Nadia.Moreau@company.com,2023-12-15 11:30:00,2023-12-15 13:30:00
-00000180,Corporate Social Responsibility Day,Olga.Petrova@company.com,2023-12-15 13:30:00,2023-12-15 14:30:00
-00000051,Quality Assurance Training,Raj.Patel@company.com,2023-12-15 15:30:00,2023-12-15 16:00:00
-00000299,Leadership Training Workshop,Kofi.Mensah@company.com,2023-12-16 09:00:00,2023-12-16 10:00:00
-00000354,Risk Management Roundtable,Fatima.Khan@company.com,2023-12-16 10:00:00,2023-12-16 10:30:00
-00000065,Sales Incentive Plan Announcement,Fatima.Khan@company.com,2023-12-16 11:00:00,2023-12-16 12:00:00
-00000408,Employee Engagement Survey Results,Carlos.Rodriguez@company.com,2023-12-16 12:00:00,2023-12-16 13:00:00
-00000011,Technology Implementation Workshop,Chenwei.Zhang@company.com,2023-12-16 13:00:00,2023-12-16 14:30:00
-00000409,Risk Management Roundtable,Nia.Johnson@company.com,2023-12-16 14:30:00,2023-12-16 15:00:00
-00000300,Employee Recognition Ceremony,Leila.Azizi@company.com,2023-12-16 15:00:00,2023-12-16 15:30:00
-00000091,Client Appreciation Gala,Olga.Petrova@company.com,2023-12-16 15:30:00,2023-12-16 17:00:00
-00000048,Employee Benefits Review,Santiago.Martinez@company.com,2023-12-17 09:30:00,2023-12-17 10:00:00
-00000014,Cross-Functional Collaboration Workshop,Nadia.Moreau@company.com,2023-12-17 10:30:00,2023-12-17 13:30:00
-00000062,Corporate Social Responsibility Day,Santiago.Martinez@company.com,2023-12-17 13:30:00,2023-12-17 16:30:00
-00000364,Supply Chain Optimization Workshop,Lena.Schmidt@company.com,2023-12-18 09:00:00,2023-12-18 09:30:00
-00000207,Corporate Social Responsibility Day,Chenwei.Zhang@company.com,2023-12-18 09:30:00,2023-12-18 12:00:00
-00000371,Creative Ideation Session,Chenwei.Zhang@company.com,2023-12-18 12:00:00,2023-12-18 13:00:00
-00000128,Corporate Merger Integration Update,Nia.Johnson@company.com,2023-12-18 13:00:00,2023-12-18 15:30:00
-00000400,Employee Benefits Review,Yuki.Tanaka@company.com,2023-12-18 15:30:00,2023-12-18 17:30:00
-00000433,Cross-Functional Collaboration Workshop,Jinsoo.Kim@company.com,2023-12-19 09:00:00,2023-12-19 09:30:00
-00000493,Corporate Governance Training,Carlos.Rodriguez@company.com,2023-12-19 09:30:00,2023-12-19 10:00:00
-00000052,Supply Chain Optimization Workshop,Anaya.Patel@company.com,2023-12-19 10:00:00,2023-12-19 12:00:00
-00000173,R&D Innovation Showcase,Santiago.Martinez@company.com,2023-12-19 13:00:00,2023-12-19 15:00:00
-00000241,Strategic Planning Retreat,Olga.Petrova@company.com,2023-12-19 15:30:00,2023-12-19 18:00:00
-00000259,Brand Refresh Reveal,Fatima.Khan@company.com,2023-12-20 09:30:00,2023-12-20 10:00:00
-00000335,Global Team Video Conference,Carlos.Rodriguez@company.com,2023-12-20 10:00:00,2023-12-20 11:00:00
-00000000,Strategic Planning Retreat,Sofia.Santos@company.com,2023-12-20 11:00:00,2023-12-20 14:00:00
-00000484,Diversity and Inclusion Seminar,Aisha.Chen@company.com,2023-12-20 14:00:00,2023-12-20 14:30:00
-00000404,Project Kickoff Meeting,Luis.Ortiz@company.com,2023-12-20 14:30:00,2023-12-20 15:00:00
-00000482,Sustainability Initiatives Update,Luis.Ortiz@company.com,2023-12-20 15:00:00,2023-12-20 15:30:00
-00000166,Employee Engagement Survey Results,Yuki.Tanaka@company.com,2023-12-20 15:30:00,2023-12-20 17:30:00
-00000393,Client Appreciation Gala,Leila.Azizi@company.com,2023-12-21 09:00:00,2023-12-21 10:30:00
-00000251,Project Kickoff Meeting,Santiago.Martinez@company.com,2023-12-21 11:00:00,2023-12-21 12:30:00
-00000280,Corporate Merger Integration Update,Anaya.Patel@company.com,2023-12-21 12:30:00,2023-12-21 14:00:00
-00000068,Data Security Compliance Training,Kofi.Mensah@company.com,2023-12-21 14:30:00,2023-12-21 15:30:00
-00000222,Sales Pipeline Review,Raj.Patel@company.com,2023-12-21 15:30:00,2023-12-21 18:30:00
-00000158,Industry Regulation Update Seminar,Carlos.Rodriguez@company.com,2023-12-22 09:00:00,2023-12-22 10:00:00
-00000304,Quarterly Sales Review,Dmitri.Ivanov@company.com,2023-12-22 10:00:00,2023-12-22 11:00:00
-00000377,Year-End Performance Evaluations,Anaya.Patel@company.com,2023-12-22 11:00:00,2023-12-22 12:00:00
-00000164,Sales Pipeline Review,Lena.Schmidt@company.com,2023-12-22 12:00:00,2023-12-22 13:00:00
-00000307,Marketing Strategy Brainstorm,Olga.Petrova@company.com,2023-12-22 13:00:00,2023-12-22 14:00:00
-00000148,New Hire Orientation,Fatima.Khan@company.com,2023-12-22 15:00:00,2023-12-22 15:30:00
-00000169,Annual Budget Planning Session,Kofi.Mensah@company.com,2023-12-22 15:30:00,2023-12-22 16:30:00
-00000352,Executive Leadership Offsite,Dmitri.Ivanov@company.com,2023-12-23 09:00:00,2023-12-23 11:30:00
-00000444,Creative Ideation Session,Sofia.Santos@company.com,2023-12-23 11:30:00,2023-12-23 12:00:00
-00000019,Corporate Social Responsibility Day,Chenwei.Zhang@company.com,2023-12-23 12:00:00,2023-12-23 14:30:00
-00000481,Sustainability Initiatives Update,Anaya.Patel@company.com,2023-12-23 15:00:00,2023-12-23 15:30:00
-00000311,Technology Implementation Workshop,Yuki.Tanaka@company.com,2023-12-23 15:30:00,2023-12-23 17:30:00
-00000316,Client Appreciation Gala,Santiago.Martinez@company.com,2023-12-24 09:30:00,2023-12-24 10:00:00
-00000429,Quality Assurance Training,Santiago.Martinez@company.com,2023-12-24 10:00:00,2023-12-24 10:30:00
-00000237,Digital Transformation Summit,Chenwei.Zhang@company.com,2023-12-24 11:00:00,2023-12-24 12:00:00
-00000448,Corporate Social Responsibility Day,Nia.Johnson@company.com,2023-12-24 12:00:00,2023-12-24 13:00:00
-00000058,Client Appreciation Gala,Kofi.Mensah@company.com,2023-12-24 13:00:00,2023-12-24 14:00:00
-00000270,R&D Innovation Showcase,Jinsoo.Kim@company.com,2023-12-24 14:00:00,2023-12-24 15:00:00
-00000050,Internal Audit Summary,Yuki.Tanaka@company.com,2023-12-24 15:00:00,2023-12-24 17:30:00
-00000172,IT Systems Upgrade Briefing,Luis.Ortiz@company.com,2023-12-25 09:00:00,2023-12-25 09:30:00
-00000215,Cross-Functional Collaboration Workshop,Kofi.Mensah@company.com,2023-12-25 10:30:00,2023-12-25 11:30:00
-00000055,Health and Wellness Fair,Yuki.Tanaka@company.com,2023-12-25 12:00:00,2023-12-25 13:30:00
-00000317,Year-End Performance Evaluations,Anaya.Patel@company.com,2023-12-25 13:30:00,2023-12-25 14:00:00
-00000306,Year-End Performance Evaluations,Raj.Patel@company.com,2023-12-25 14:00:00,2023-12-25 14:30:00
-00000390,Corporate Social Responsibility Day,Amir.Ali@company.com,2023-12-25 14:30:00,2023-12-25 15:00:00
-00000152,Supply Chain Optimization Workshop,Kofi.Mensah@company.com,2023-12-25 15:00:00,2023-12-25 16:30:00
-00000236,Corporate Social Responsibility Day,Anaya.Patel@company.com,2023-12-26 09:00:00,2023-12-26 10:30:00
-00000478,Corporate Merger Integration Update,Luis.Ortiz@company.com,2023-12-26 10:30:00,2023-12-26 11:00:00
-00000343,Corporate Social Responsibility Day,Lena.Schmidt@company.com,2023-12-26 11:00:00,2023-12-26 11:30:00
-00000294,Supply Chain Optimization Workshop,Yuki.Tanaka@company.com,2023-12-26 11:30:00,2023-12-26 12:30:00
-00000145,Employee Recognition Ceremony,Yuki.Tanaka@company.com,2023-12-26 12:30:00,2023-12-26 14:00:00
-00000439,Quarterly Sales Review,Amir.Ali@company.com,2023-12-26 14:00:00,2023-12-26 15:30:00
-00000338,Strategic Planning Retreat,Lena.Schmidt@company.com,2023-12-26 15:30:00,2023-12-26 18:30:00
-00000263,Executive Leadership Offsite,Jinsoo.Kim@company.com,2023-12-27 09:30:00,2023-12-27 12:30:00
-00000336,Marketing Strategy Brainstorm,Nadia.Moreau@company.com,2023-12-27 12:30:00,2023-12-27 13:00:00
-00000082,Marketing Strategy Brainstorm,Akira.Sato@company.com,2023-12-27 13:00:00,2023-12-27 15:00:00
-00000392,Product Launch Debrief,Dmitri.Ivanov@company.com,2023-12-27 15:00:00,2023-12-27 15:30:00
-00000324,Year-End Performance Evaluations,Akira.Sato@company.com,2023-12-27 15:30:00,2023-12-27 17:30:00
-00000134,Project Kickoff Meeting,Olga.Petrova@company.com,2023-12-28 10:00:00,2023-12-28 11:00:00
-00000095,Employee Recognition Ceremony,Dmitri.Ivanov@company.com,2023-12-28 12:00:00,2023-12-28 14:30:00
-00000044,Digital Transformation Summit,Kofi.Mensah@company.com,2023-12-28 14:30:00,2023-12-28 17:30:00
-00000056,Customer Feedback Forum,Kofi.Mensah@company.com,2023-12-29 09:00:00,2023-12-29 10:00:00
-00000149,Client Appreciation Gala,Dmitri.Ivanov@company.com,2023-12-29 10:30:00,2023-12-29 12:30:00
-00000370,Sales Incentive Plan Announcement,Nadia.Moreau@company.com,2023-12-29 12:30:00,2023-12-29 13:00:00
-00000047,Product Launch Debrief,Kofi.Mensah@company.com,2023-12-29 13:00:00,2023-12-29 15:30:00
-00000111,Cross-Functional Collaboration Workshop,Nia.Johnson@company.com,2023-12-29 15:30:00,2023-12-29 17:30:00
-00000069,Internal Audit Summary,Carlos.Rodriguez@company.com,2023-12-30 09:00:00,2023-12-30 12:00:00
-00000375,Cross-Functional Collaboration Workshop,Akira.Sato@company.com,2023-12-30 12:00:00,2023-12-30 12:30:00
-00000426,R&D Innovation Showcase,Santiago.Martinez@company.com,2023-12-30 12:30:00,2023-12-30 13:00:00
-00000156,Quarterly Sales Review,Luis.Ortiz@company.com,2023-12-30 13:30:00,2023-12-30 14:30:00
-00000319,Digital Transformation Summit,Chenwei.Zhang@company.com,2023-12-30 14:30:00,2023-12-30 16:30:00
+event_id,event_name,participant_email,event_start,duration
+00000240,Sustainability Initiatives Update,Raj.Patel@company.com,2023-10-01 09:00:00,60
+00000070,Brand Refresh Reveal,Chenwei.Zhang@company.com,2023-10-01 10:00:00,120
+00000051,Vendor Selection Panel,Jinsoo.Kim@company.com,2023-10-01 13:00:00,60
+00000271,Customer Service Excellence Training,Fatima.Khan@company.com,2023-10-01 14:00:00,60
+00000029,Sales Incentive Plan Announcement,Sofia.Santos@company.com,2023-10-01 15:30:00,30
+00000143,Team Building Retreat,Santiago.Martinez@company.com,2023-10-02 09:30:00,60
+00000288,Supply Chain Optimization Workshop,Aisha.Chen@company.com,2023-10-02 10:30:00,30
+00000016,Health and Wellness Fair,Yuki.Tanaka@company.com,2023-10-02 11:00:00,90
+00000222,Innovation Hackathon,Olga.Petrova@company.com,2023-10-02 13:30:00,60
+00000065,Leadership Training Workshop,Nadia.Moreau@company.com,2023-10-02 14:30:00,30
+00000309,Risk Management Roundtable,Anaya.Patel@company.com,2023-10-02 15:00:00,90
+00000097,Global Team Video Conference,Carlos.Rodriguez@company.com,2023-10-03 09:30:00,30
+00000473,Product Launch Debrief,Akira.Sato@company.com,2023-10-03 10:00:00,30
+00000087,Risk Management Roundtable,Chenwei.Zhang@company.com,2023-10-03 10:30:00,30
+00000385,Cross-Functional Collaboration Workshop,Jinsoo.Kim@company.com,2023-10-03 11:30:00,60
+00000155,Corporate Social Responsibility Day,Nia.Johnson@company.com,2023-10-03 13:00:00,90
+00000336,Employee Engagement Survey Results,Sofia.Santos@company.com,2023-10-03 15:00:00,120
+00000295,Board of Directors Meeting,Akira.Sato@company.com,2023-10-04 09:30:00,30
+00000328,Career Development Forum,Olga.Petrova@company.com,2023-10-04 10:30:00,60
+00000427,Vendor Selection Panel,Kofi.Mensah@company.com,2023-10-04 11:30:00,30
+00000450,Leadership Training Workshop,Olga.Petrova@company.com,2023-10-04 12:00:00,30
+00000142,Employee Benefits Review,Lena.Schmidt@company.com,2023-10-04 12:30:00,60
+00000417,Corporate Merger Integration Update,Kofi.Mensah@company.com,2023-10-04 13:30:00,30
+00000020,Brand Refresh Reveal,Anaya.Patel@company.com,2023-10-04 14:00:00,30
+00000470,Project Kickoff Meeting,Luis.Ortiz@company.com,2023-10-04 15:00:00,30
+00000241,Organizational Restructuring Briefing,Olga.Petrova@company.com,2023-10-04 15:30:00,120
+00000413,Health and Wellness Fair,Jinsoo.Kim@company.com,2023-10-05 09:00:00,90
+00000152,Global Team Video Conference,Anaya.Patel@company.com,2023-10-05 10:30:00,150
+00000230,Sales Pipeline Review,Santiago.Martinez@company.com,2023-10-05 13:00:00,90
+00000162,Internal Audit Summary,Anaya.Patel@company.com,2023-10-05 14:30:00,60
+00000369,Employee Engagement Survey Results,Olga.Petrova@company.com,2023-10-05 15:30:00,60
+00000244,IT Systems Upgrade Briefing,Olga.Petrova@company.com,2023-10-06 09:30:00,120
+00000034,Corporate Merger Integration Update,Santiago.Martinez@company.com,2023-10-06 11:30:00,60
+00000159,Corporate Governance Training,Dmitri.Ivanov@company.com,2023-10-06 12:30:00,150
+00000209,Risk Management Roundtable,Aisha.Chen@company.com,2023-10-06 15:00:00,120
+00000196,Global Market Expansion Discussion,Olga.Petrova@company.com,2023-10-07 09:00:00,150
+00000367,Internal Audit Summary,Nia.Johnson@company.com,2023-10-07 11:30:00,90
+00000110,Quarterly Sales Review,Kofi.Mensah@company.com,2023-10-07 13:00:00,90
+00000001,Corporate Governance Training,Amir.Ali@company.com,2023-10-07 15:30:00,90
+00000164,Creative Ideation Session,Aisha.Chen@company.com,2023-10-08 09:30:00,60
+00000356,Financial Forecasting Meeting,Nia.Johnson@company.com,2023-10-08 11:00:00,120
+00000379,Corporate Governance Training,Carlos.Rodriguez@company.com,2023-10-08 13:00:00,30
+00000008,Global Team Video Conference,Kofi.Mensah@company.com,2023-10-08 13:30:00,180
+00000486,Global Team Video Conference,Carlos.Rodriguez@company.com,2023-10-09 09:00:00,60
+00000078,Creative Ideation Session,Nia.Johnson@company.com,2023-10-09 10:30:00,30
+00000022,Brand Refresh Reveal,Anaya.Patel@company.com,2023-10-09 12:00:00,150
+00000478,Supply Chain Optimization Workshop,Jinsoo.Kim@company.com,2023-10-09 14:30:00,60
+00000109,Sales Incentive Plan Announcement,Akira.Sato@company.com,2023-10-09 15:30:00,150
+00000418,Year-End Performance Evaluations,Leila.Azizi@company.com,2023-10-10 09:00:00,30
+00000082,Innovation Hackathon,Anaya.Patel@company.com,2023-10-10 09:30:00,90
+00000461,Brand Refresh Reveal,Anaya.Patel@company.com,2023-10-10 11:30:00,60
+00000069,Risk Management Roundtable,Akira.Sato@company.com,2023-10-10 12:30:00,60
+00000291,Product Launch Debrief,Sofia.Santos@company.com,2023-10-10 13:30:00,150
+00000258,Corporate Governance Training,Kofi.Mensah@company.com,2023-10-11 09:00:00,30
+00000305,Digital Transformation Summit,Santiago.Martinez@company.com,2023-10-11 09:30:00,30
+00000198,Innovation Hackathon,Leila.Azizi@company.com,2023-10-11 10:00:00,30
+00000138,Corporate Governance Training,Raj.Patel@company.com,2023-10-11 11:00:00,30
+00000420,Organizational Restructuring Briefing,Olga.Petrova@company.com,2023-10-11 12:00:00,90
+00000135,Innovation Hackathon,Leila.Azizi@company.com,2023-10-11 13:30:00,150
+00000465,Global Market Expansion Discussion,Lena.Schmidt@company.com,2023-10-12 09:00:00,30
+00000366,Data Security Compliance Training,Chenwei.Zhang@company.com,2023-10-12 09:30:00,60
+00000297,Executive Leadership Offsite,Dmitri.Ivanov@company.com,2023-10-12 10:30:00,120
+00000183,Digital Marketing Trends Seminar,Yuki.Tanaka@company.com,2023-10-12 13:00:00,30
+00000232,Employee Engagement Survey Results,Jinsoo.Kim@company.com,2023-10-12 14:00:00,60
+00000416,Vendor Selection Panel,Carlos.Rodriguez@company.com,2023-10-12 15:00:00,60
+00000463,Strategic Planning Retreat,Aisha.Chen@company.com,2023-10-13 09:00:00,30
+00000424,Data Security Compliance Training,Leila.Azizi@company.com,2023-10-13 09:30:00,30
+00000098,Global Market Expansion Discussion,Luis.Ortiz@company.com,2023-10-13 10:00:00,30
+00000482,Board of Directors Meeting,Nadia.Moreau@company.com,2023-10-13 11:00:00,60
+00000066,Financial Forecasting Meeting,Amir.Ali@company.com,2023-10-13 12:00:00,90
+00000339,Digital Marketing Trends Seminar,Sofia.Santos@company.com,2023-10-13 14:00:00,60
+00000149,Creative Ideation Session,Jinsoo.Kim@company.com,2023-10-13 15:30:00,180
+00000419,Employee Recognition Ceremony,Aisha.Chen@company.com,2023-10-14 09:00:00,30
+00000459,Year-End Performance Evaluations,Chenwei.Zhang@company.com,2023-10-14 09:30:00,30
+00000279,Product Launch Debrief,Nadia.Moreau@company.com,2023-10-14 10:00:00,60
+00000233,Team Building Retreat,Raj.Patel@company.com,2023-10-14 11:00:00,60
+00000393,Health and Wellness Fair,Fatima.Khan@company.com,2023-10-14 12:00:00,60
+00000275,Financial Forecasting Meeting,Lena.Schmidt@company.com,2023-10-14 13:30:00,30
+00000285,Corporate Merger Integration Update,Aisha.Chen@company.com,2023-10-14 14:00:00,30
+00000108,Career Development Forum,Akira.Sato@company.com,2023-10-14 14:30:00,30
+00000246,Sustainability Initiatives Update,Carlos.Rodriguez@company.com,2023-10-14 15:00:00,30
+00000439,Leadership Training Workshop,Sofia.Santos@company.com,2023-10-14 15:30:00,180
+00000200,Executive Leadership Offsite,Nadia.Moreau@company.com,2023-10-15 09:00:00,60
+00000014,Quarterly Sales Review,Nia.Johnson@company.com,2023-10-15 10:00:00,90
+00000139,HR Policy Update Meeting,Amir.Ali@company.com,2023-10-15 12:30:00,180
+00000294,Digital Transformation Summit,Nia.Johnson@company.com,2023-10-15 15:30:00,120
+00000175,New Hire Orientation,Olga.Petrova@company.com,2023-10-16 10:00:00,60
+00000007,Customer Feedback Forum,Anaya.Patel@company.com,2023-10-16 11:00:00,30
+00000477,Employee Recognition Ceremony,Jinsoo.Kim@company.com,2023-10-16 11:30:00,60
+00000044,Client Appreciation Gala,Santiago.Martinez@company.com,2023-10-16 12:30:00,90
+00000355,Corporate Merger Integration Update,Dmitri.Ivanov@company.com,2023-10-16 14:30:00,30
+00000236,Cybersecurity Update Brief,Akira.Sato@company.com,2023-10-16 15:30:00,150
+00000075,Strategic Planning Retreat,Dmitri.Ivanov@company.com,2023-10-17 09:00:00,30
+00000360,Employee Engagement Survey Results,Kofi.Mensah@company.com,2023-10-17 09:30:00,30
+00000299,Financial Forecasting Meeting,Aisha.Chen@company.com,2023-10-17 10:00:00,90
+00000440,Customer Service Excellence Training,Sofia.Santos@company.com,2023-10-17 11:30:00,30
+00000117,Health and Wellness Fair,Akira.Sato@company.com,2023-10-17 12:00:00,60
+00000173,Employee Engagement Survey Results,Fatima.Khan@company.com,2023-10-17 14:00:00,30
+00000451,Technology Implementation Workshop,Amir.Ali@company.com,2023-10-17 15:00:00,30
+00000006,Team Building Retreat,Carlos.Rodriguez@company.com,2023-10-17 15:30:00,90
+00000169,Employee Benefits Review,Raj.Patel@company.com,2023-10-18 09:30:00,180
+00000358,Year-End Performance Evaluations,Nadia.Moreau@company.com,2023-10-18 12:30:00,90
+00000494,R&D Innovation Showcase,Olga.Petrova@company.com,2023-10-18 14:30:00,30
+00000475,Customer Feedback Forum,Jinsoo.Kim@company.com,2023-10-18 15:00:00,30
+00000127,Annual Budget Planning Session,Leila.Azizi@company.com,2023-10-18 15:30:00,150
+00000401,Quarterly Sales Review,Jinsoo.Kim@company.com,2023-10-19 09:00:00,30
+00000005,Employee Engagement Survey Results,Luis.Ortiz@company.com,2023-10-19 10:00:00,180
+00000352,Board of Directors Meeting,Santiago.Martinez@company.com,2023-10-19 13:00:00,30
+00000204,Organizational Restructuring Briefing,Amir.Ali@company.com,2023-10-19 14:00:00,30
+00000189,Supply Chain Optimization Workshop,Amir.Ali@company.com,2023-10-19 14:30:00,30
+00000292,Corporate Merger Integration Update,Chenwei.Zhang@company.com,2023-10-19 15:00:00,150
+00000350,Digital Marketing Trends Seminar,Luis.Ortiz@company.com,2023-10-20 09:00:00,120
+00000050,Product Launch Debrief,Nadia.Moreau@company.com,2023-10-20 12:00:00,30
+00000423,Year-End Performance Evaluations,Santiago.Martinez@company.com,2023-10-20 12:30:00,60
+00000017,Executive Leadership Offsite,Lena.Schmidt@company.com,2023-10-20 13:30:00,60
+00000377,Client Appreciation Gala,Amir.Ali@company.com,2023-10-20 15:30:00,60
+00000289,Employee Recognition Ceremony,Kofi.Mensah@company.com,2023-10-21 09:00:00,30
+00000116,Technology Implementation Workshop,Kofi.Mensah@company.com,2023-10-21 10:00:00,120
+00000404,Digital Marketing Trends Seminar,Chenwei.Zhang@company.com,2023-10-21 12:30:00,90
+00000319,Sustainability Initiatives Update,Chenwei.Zhang@company.com,2023-10-21 14:30:00,30
+00000250,Organizational Restructuring Briefing,Kofi.Mensah@company.com,2023-10-21 15:00:00,90
+00000376,Innovation Hackathon,Lena.Schmidt@company.com,2023-10-22 09:00:00,90
+00000224,Corporate Social Responsibility Day,Anaya.Patel@company.com,2023-10-22 10:30:00,120
+00000408,Team Building Retreat,Sofia.Santos@company.com,2023-10-22 12:30:00,30
+00000195,Digital Transformation Summit,Nadia.Moreau@company.com,2023-10-22 13:00:00,120
+00000327,Innovation Hackathon,Nadia.Moreau@company.com,2023-10-22 15:00:00,90
+00000129,Product Launch Debrief,Carlos.Rodriguez@company.com,2023-10-23 09:00:00,120
+00000226,Project Kickoff Meeting,Yuki.Tanaka@company.com,2023-10-23 11:00:00,30
+00000021,Corporate Social Responsibility Day,Nadia.Moreau@company.com,2023-10-23 11:30:00,150
+00000247,Industry Regulation Update Seminar,Dmitri.Ivanov@company.com,2023-10-23 14:30:00,90
+00000468,Vendor Selection Panel,Dmitri.Ivanov@company.com,2023-10-24 09:00:00,30
+00000018,Brand Refresh Reveal,Jinsoo.Kim@company.com,2023-10-24 09:30:00,90
+00000210,Leadership Training Workshop,Dmitri.Ivanov@company.com,2023-10-24 11:30:00,60
+00000265,Board of Directors Meeting,Dmitri.Ivanov@company.com,2023-10-24 12:30:00,90
+00000184,Internal Audit Summary,Luis.Ortiz@company.com,2023-10-24 14:30:00,30
+00000047,Customer Feedback Forum,Jinsoo.Kim@company.com,2023-10-24 15:00:00,30
+00000412,Creative Ideation Session,Lena.Schmidt@company.com,2023-10-24 15:30:00,150
+00000042,Employee Engagement Survey Results,Anaya.Patel@company.com,2023-10-25 09:30:00,180
+00000251,Leadership Training Workshop,Carlos.Rodriguez@company.com,2023-10-25 13:00:00,30
+00000096,Customer Service Excellence Training,Santiago.Martinez@company.com,2023-10-25 14:00:00,30
+00000273,Digital Marketing Trends Seminar,Sofia.Santos@company.com,2023-10-25 14:30:00,180
+00000089,Corporate Merger Integration Update,Olga.Petrova@company.com,2023-10-26 09:00:00,30
+00000403,IT Systems Upgrade Briefing,Leila.Azizi@company.com,2023-10-26 09:30:00,30
+00000217,Client Appreciation Gala,Leila.Azizi@company.com,2023-10-26 10:00:00,90
+00000341,Internal Audit Summary,Nadia.Moreau@company.com,2023-10-26 11:30:00,90
+00000114,Data Security Compliance Training,Anaya.Patel@company.com,2023-10-26 13:00:00,150
+00000239,Digital Transformation Summit,Leila.Azizi@company.com,2023-10-26 15:30:00,180
+00000231,Vendor Selection Panel,Olga.Petrova@company.com,2023-10-27 09:00:00,30
+00000438,Corporate Merger Integration Update,Amir.Ali@company.com,2023-10-27 09:30:00,60
+00000388,Risk Management Roundtable,Raj.Patel@company.com,2023-10-27 10:30:00,30
+00000333,Quality Assurance Training,Leila.Azizi@company.com,2023-10-27 11:00:00,30
+00000094,Employee Benefits Review,Sofia.Santos@company.com,2023-10-27 11:30:00,60
+00000325,Sustainability Initiatives Update,Amir.Ali@company.com,2023-10-27 12:30:00,90
+00000059,Customer Feedback Forum,Fatima.Khan@company.com,2023-10-27 14:30:00,120
+00000125,Diversity and Inclusion Seminar,Dmitri.Ivanov@company.com,2023-10-28 09:00:00,60
+00000015,Marketing Strategy Brainstorm,Aisha.Chen@company.com,2023-10-28 10:30:00,180
+00000054,Sales Incentive Plan Announcement,Leila.Azizi@company.com,2023-10-28 14:30:00,30
+00000277,Data Security Compliance Training,Kofi.Mensah@company.com,2023-10-28 15:00:00,60
+00000442,Risk Management Roundtable,Leila.Azizi@company.com,2023-10-29 09:00:00,30
+00000025,Risk Management Roundtable,Nia.Johnson@company.com,2023-10-29 09:30:00,180
+00000061,Employee Benefits Review,Sofia.Santos@company.com,2023-10-29 12:30:00,90
+00000207,Employee Benefits Review,Luis.Ortiz@company.com,2023-10-29 14:00:00,120
+00000131,Innovation Hackathon,Chenwei.Zhang@company.com,2023-10-30 09:00:00,180
+00000324,Supply Chain Optimization Workshop,Lena.Schmidt@company.com,2023-10-30 12:00:00,30
+00000252,Quarterly Sales Review,Kofi.Mensah@company.com,2023-10-30 12:30:00,60
+00000371,Vendor Selection Panel,Sofia.Santos@company.com,2023-10-30 14:00:00,30
+00000436,Global Team Video Conference,Raj.Patel@company.com,2023-10-30 14:30:00,30
+00000030,Employee Recognition Ceremony,Sofia.Santos@company.com,2023-10-30 15:30:00,60
+00000441,Marketing Strategy Brainstorm,Aisha.Chen@company.com,2023-11-01 09:00:00,60
+00000402,Financial Forecasting Meeting,Aisha.Chen@company.com,2023-11-01 10:00:00,30
+00000120,Product Launch Debrief,Chenwei.Zhang@company.com,2023-11-01 10:30:00,120
+00000092,Financial Forecasting Meeting,Luis.Ortiz@company.com,2023-11-01 12:30:00,60
+00000310,Strategic Planning Retreat,Nadia.Moreau@company.com,2023-11-01 13:30:00,60
+00000389,Employee Recognition Ceremony,Akira.Sato@company.com,2023-11-01 14:30:00,30
+00000301,Diversity and Inclusion Seminar,Chenwei.Zhang@company.com,2023-11-01 15:30:00,90
+00000208,Global Market Expansion Discussion,Aisha.Chen@company.com,2023-11-02 09:30:00,120
+00000235,Cybersecurity Update Brief,Sofia.Santos@company.com,2023-11-02 12:00:00,30
+00000308,Health and Wellness Fair,Yuki.Tanaka@company.com,2023-11-02 12:30:00,120
+00000448,Quarterly Sales Review,Carlos.Rodriguez@company.com,2023-11-02 14:30:00,60
+00000293,Career Development Forum,Sofia.Santos@company.com,2023-11-02 15:30:00,30
+00000437,Corporate Social Responsibility Day,Chenwei.Zhang@company.com,2023-11-03 09:30:00,30
+00000219,Employee Benefits Review,Akira.Sato@company.com,2023-11-03 10:00:00,120
+00000101,Project Kickoff Meeting,Santiago.Martinez@company.com,2023-11-03 12:00:00,150
+00000381,Executive Leadership Offsite,Chenwei.Zhang@company.com,2023-11-03 14:30:00,30
+00000490,Quarterly Sales Review,Nia.Johnson@company.com,2023-11-03 15:00:00,30
+00000172,Vendor Selection Panel,Kofi.Mensah@company.com,2023-11-03 15:30:00,150
+00000095,Strategic Planning Retreat,Raj.Patel@company.com,2023-11-04 09:00:00,120
+00000163,Customer Service Excellence Training,Anaya.Patel@company.com,2023-11-04 11:00:00,60
+00000037,R&D Innovation Showcase,Dmitri.Ivanov@company.com,2023-11-04 12:00:00,180
+00000315,Operational Excellence Conference,Chenwei.Zhang@company.com,2023-11-04 15:00:00,60
+00000311,IT Systems Upgrade Briefing,Dmitri.Ivanov@company.com,2023-11-05 09:00:00,90
+00000086,Corporate Merger Integration Update,Lena.Schmidt@company.com,2023-11-05 10:30:00,150
+00000453,Digital Marketing Trends Seminar,Akira.Sato@company.com,2023-11-05 13:00:00,30
+00000218,Creative Ideation Session,Kofi.Mensah@company.com,2023-11-05 13:30:00,30
+00000153,IT Systems Upgrade Briefing,Akira.Sato@company.com,2023-11-05 14:00:00,180
+00000267,Global Team Video Conference,Leila.Azizi@company.com,2023-11-06 09:00:00,60
+00000464,Health and Wellness Fair,Santiago.Martinez@company.com,2023-11-06 10:00:00,30
+00000471,Supply Chain Optimization Workshop,Carlos.Rodriguez@company.com,2023-11-06 10:30:00,60
+00000216,Executive Leadership Offsite,Akira.Sato@company.com,2023-11-06 11:30:00,30
+00000197,Operational Excellence Conference,Jinsoo.Kim@company.com,2023-11-06 12:30:00,30
+00000395,Customer Service Excellence Training,Yuki.Tanaka@company.com,2023-11-06 14:00:00,60
+00000373,Cybersecurity Update Brief,Chenwei.Zhang@company.com,2023-11-06 15:00:00,30
+00000009,Marketing Strategy Brainstorm,Jinsoo.Kim@company.com,2023-11-06 15:30:00,60
+00000276,Supply Chain Optimization Workshop,Anaya.Patel@company.com,2023-11-07 09:00:00,60
+00000115,Product Launch Debrief,Kofi.Mensah@company.com,2023-11-07 10:00:00,150
+00000177,Cybersecurity Update Brief,Leila.Azizi@company.com,2023-11-07 12:30:00,60
+00000072,Health and Wellness Fair,Lena.Schmidt@company.com,2023-11-07 13:30:00,90
+00000259,Project Kickoff Meeting,Yuki.Tanaka@company.com,2023-11-07 15:30:00,30
+00000215,Strategic Planning Retreat,Leila.Azizi@company.com,2023-11-08 09:00:00,30
+00000225,Customer Service Excellence Training,Anaya.Patel@company.com,2023-11-08 09:30:00,90
+00000058,Risk Management Roundtable,Kofi.Mensah@company.com,2023-11-08 11:00:00,90
+00000248,Annual Budget Planning Session,Olga.Petrova@company.com,2023-11-08 14:00:00,150
+00000414,Organizational Restructuring Briefing,Fatima.Khan@company.com,2023-11-09 09:30:00,60
+00000213,Technology Implementation Workshop,Nadia.Moreau@company.com,2023-11-09 10:30:00,90
+00000033,Quality Assurance Training,Nadia.Moreau@company.com,2023-11-09 12:00:00,30
+00000435,Vendor Selection Panel,Carlos.Rodriguez@company.com,2023-11-09 12:30:00,30
+00000498,Technology Implementation Workshop,Raj.Patel@company.com,2023-11-09 13:00:00,60
+00000357,Year-End Performance Evaluations,Chenwei.Zhang@company.com,2023-11-09 14:00:00,60
+00000312,Digital Marketing Trends Seminar,Fatima.Khan@company.com,2023-11-09 15:00:00,30
+00000201,Diversity and Inclusion Seminar,Olga.Petrova@company.com,2023-11-09 15:30:00,150
+00000421,Global Team Video Conference,Nadia.Moreau@company.com,2023-11-10 09:00:00,30
+00000104,Sales Pipeline Review,Santiago.Martinez@company.com,2023-11-10 09:30:00,30
+00000282,Sales Incentive Plan Announcement,Carlos.Rodriguez@company.com,2023-11-10 10:30:00,30
+00000449,Customer Feedback Forum,Dmitri.Ivanov@company.com,2023-11-10 11:00:00,30
+00000052,Employee Recognition Ceremony,Aisha.Chen@company.com,2023-11-10 11:30:00,180
+00000287,Year-End Performance Evaluations,Nadia.Moreau@company.com,2023-11-10 15:00:00,120
+00000119,Employee Benefits Review,Aisha.Chen@company.com,2023-11-11 09:30:00,90
+00000150,Global Market Expansion Discussion,Amir.Ali@company.com,2023-11-11 11:00:00,30
+00000134,Global Market Expansion Discussion,Carlos.Rodriguez@company.com,2023-11-11 11:30:00,60
+00000430,Strategic Planning Retreat,Jinsoo.Kim@company.com,2023-11-11 12:30:00,30
+00000154,Digital Marketing Trends Seminar,Luis.Ortiz@company.com,2023-11-11 13:00:00,60
+00000080,Leadership Training Workshop,Carlos.Rodriguez@company.com,2023-11-11 14:30:00,180
+00000429,Financial Forecasting Meeting,Aisha.Chen@company.com,2023-11-12 10:00:00,30
+00000166,Annual Budget Planning Session,Carlos.Rodriguez@company.com,2023-11-12 10:30:00,30
+00000387,Sales Pipeline Review,Amir.Ali@company.com,2023-11-12 11:00:00,60
+00000151,Client Appreciation Gala,Carlos.Rodriguez@company.com,2023-11-12 12:00:00,120
+00000038,Corporate Social Responsibility Day,Olga.Petrova@company.com,2023-11-12 14:00:00,90
+00000426,Industry Regulation Update Seminar,Santiago.Martinez@company.com,2023-11-12 15:30:00,30
+00000041,Financial Forecasting Meeting,Akira.Sato@company.com,2023-11-13 09:30:00,60
+00000211,Customer Feedback Forum,Yuki.Tanaka@company.com,2023-11-13 10:30:00,60
+00000010,Quality Assurance Training,Olga.Petrova@company.com,2023-11-13 12:00:00,120
+00000495,Board of Directors Meeting,Dmitri.Ivanov@company.com,2023-11-13 14:00:00,30
+00000158,Annual Budget Planning Session,Nia.Johnson@company.com,2023-11-13 15:30:00,180
+00000112,Health and Wellness Fair,Carlos.Rodriguez@company.com,2023-11-14 09:00:00,180
+00000077,Vendor Selection Panel,Raj.Patel@company.com,2023-11-14 12:30:00,90
+00000202,R&D Innovation Showcase,Kofi.Mensah@company.com,2023-11-14 14:00:00,30
+00000491,Health and Wellness Fair,Yuki.Tanaka@company.com,2023-11-14 14:30:00,30
+00000167,Quarterly Sales Review,Nadia.Moreau@company.com,2023-11-14 15:00:00,150
+00000168,Project Kickoff Meeting,Chenwei.Zhang@company.com,2023-11-15 09:30:00,150
+00000338,Global Market Expansion Discussion,Kofi.Mensah@company.com,2023-11-15 13:00:00,60
+00000290,Brand Refresh Reveal,Olga.Petrova@company.com,2023-11-15 14:00:00,30
+00000136,Team Building Retreat,Sofia.Santos@company.com,2023-11-15 15:00:00,180
+00000398,Annual Budget Planning Session,Lena.Schmidt@company.com,2023-11-16 09:00:00,30
+00000497,Technology Implementation Workshop,Fatima.Khan@company.com,2023-11-16 09:30:00,30
+00000281,Quarterly Sales Review,Leila.Azizi@company.com,2023-11-16 10:00:00,150
+00000181,Employee Recognition Ceremony,Raj.Patel@company.com,2023-11-16 12:30:00,150
+00000396,Year-End Performance Evaluations,Dmitri.Ivanov@company.com,2023-11-16 15:00:00,30
+00000048,New Hire Orientation,Santiago.Martinez@company.com,2023-11-16 15:30:00,180
+00000205,Employee Engagement Survey Results,Nadia.Moreau@company.com,2023-11-17 09:00:00,120
+00000392,Digital Transformation Summit,Nia.Johnson@company.com,2023-11-17 11:00:00,30
+00000447,Brand Refresh Reveal,Akira.Sato@company.com,2023-11-17 11:30:00,30
+00000053,Strategic Planning Retreat,Nia.Johnson@company.com,2023-11-17 12:30:00,60
+00000363,Health and Wellness Fair,Raj.Patel@company.com,2023-11-17 13:30:00,60
+00000386,Customer Service Excellence Training,Dmitri.Ivanov@company.com,2023-11-17 15:00:00,30
+00000137,R&D Innovation Showcase,Jinsoo.Kim@company.com,2023-11-17 15:30:00,60
+00000274,Product Launch Debrief,Santiago.Martinez@company.com,2023-11-18 09:00:00,150
+00000031,Organizational Restructuring Briefing,Santiago.Martinez@company.com,2023-11-18 11:30:00,30
+00000185,Data Security Compliance Training,Yuki.Tanaka@company.com,2023-11-18 12:30:00,150
+00000391,Employee Engagement Survey Results,Luis.Ortiz@company.com,2023-11-18 15:30:00,90
+00000303,IT Systems Upgrade Briefing,Olga.Petrova@company.com,2023-11-19 09:00:00,30
+00000105,Organizational Restructuring Briefing,Santiago.Martinez@company.com,2023-11-19 10:00:00,180
+00000176,Digital Transformation Summit,Anaya.Patel@company.com,2023-11-19 13:00:00,60
+00000160,Cross-Functional Collaboration Workshop,Jinsoo.Kim@company.com,2023-11-19 15:30:00,90
+00000178,Vendor Selection Panel,Anaya.Patel@company.com,2023-11-20 09:30:00,30
+00000445,Quarterly Sales Review,Akira.Sato@company.com,2023-11-20 10:00:00,30
+00000049,Cybersecurity Update Brief,Akira.Sato@company.com,2023-11-20 10:30:00,180
+00000012,Board of Directors Meeting,Dmitri.Ivanov@company.com,2023-11-20 14:00:00,60
+00000480,Innovation Hackathon,Aisha.Chen@company.com,2023-11-20 15:00:00,30
+00000375,R&D Innovation Showcase,Leila.Azizi@company.com,2023-11-20 15:30:00,150
+00000278,Technology Implementation Workshop,Sofia.Santos@company.com,2023-11-21 09:00:00,30
+00000347,Global Team Video Conference,Amir.Ali@company.com,2023-11-21 09:30:00,30
+00000118,Employee Benefits Review,Chenwei.Zhang@company.com,2023-11-21 10:00:00,150
+00000071,Global Market Expansion Discussion,Lena.Schmidt@company.com,2023-11-21 13:00:00,150
+00000444,Health and Wellness Fair,Nia.Johnson@company.com,2023-11-21 15:30:00,30
+00000045,Vendor Selection Panel,Nadia.Moreau@company.com,2023-11-22 09:00:00,30
+00000234,Strategic Planning Retreat,Santiago.Martinez@company.com,2023-11-22 09:30:00,90
+00000318,Project Kickoff Meeting,Raj.Patel@company.com,2023-11-22 11:30:00,90
+00000304,Leadership Training Workshop,Lena.Schmidt@company.com,2023-11-22 13:00:00,60
+00000257,Executive Leadership Offsite,Aisha.Chen@company.com,2023-11-22 14:00:00,60
+00000349,New Hire Orientation,Aisha.Chen@company.com,2023-11-22 15:30:00,60
+00000262,Internal Audit Summary,Amir.Ali@company.com,2023-11-23 09:00:00,30
+00000067,Internal Audit Summary,Santiago.Martinez@company.com,2023-11-23 10:00:00,180
+00000013,New Hire Orientation,Fatima.Khan@company.com,2023-11-23 13:00:00,120
+00000330,Industry Regulation Update Seminar,Raj.Patel@company.com,2023-11-23 15:00:00,150
+00000397,Industry Regulation Update Seminar,Chenwei.Zhang@company.com,2023-11-24 09:00:00,30
+00000487,Diversity and Inclusion Seminar,Jinsoo.Kim@company.com,2023-11-24 09:30:00,30
+00000298,Marketing Strategy Brainstorm,Santiago.Martinez@company.com,2023-11-24 10:00:00,30
+00000192,Sustainability Initiatives Update,Jinsoo.Kim@company.com,2023-11-24 10:30:00,180
+00000384,Corporate Social Responsibility Day,Leila.Azizi@company.com,2023-11-24 13:30:00,90
+00000039,Supply Chain Optimization Workshop,Fatima.Khan@company.com,2023-11-24 15:00:00,90
+00000190,Leadership Training Workshop,Sofia.Santos@company.com,2023-11-25 09:30:00,30
+00000187,Year-End Performance Evaluations,Jinsoo.Kim@company.com,2023-11-25 10:00:00,90
+00000364,Cybersecurity Update Brief,Leila.Azizi@company.com,2023-11-25 11:30:00,30
+00000238,Sustainability Initiatives Update,Jinsoo.Kim@company.com,2023-11-25 12:30:00,30
+00000462,Corporate Merger Integration Update,Yuki.Tanaka@company.com,2023-11-25 13:00:00,30
+00000390,Global Team Video Conference,Nadia.Moreau@company.com,2023-11-25 13:30:00,30
+00000409,Project Kickoff Meeting,Raj.Patel@company.com,2023-11-25 14:00:00,30
+00000489,Leadership Training Workshop,Lena.Schmidt@company.com,2023-11-25 14:30:00,30
+00000254,Quality Assurance Training,Aisha.Chen@company.com,2023-11-25 15:00:00,30
+00000345,Client Appreciation Gala,Raj.Patel@company.com,2023-11-25 15:30:00,30
+00000321,Brand Refresh Reveal,Lena.Schmidt@company.com,2023-11-26 09:30:00,30
+00000351,Corporate Merger Integration Update,Akira.Sato@company.com,2023-11-26 10:00:00,150
+00000313,Team Building Retreat,Dmitri.Ivanov@company.com,2023-11-26 12:30:00,60
+00000434,Creative Ideation Session,Olga.Petrova@company.com,2023-11-26 13:30:00,30
+00000272,Customer Service Excellence Training,Amir.Ali@company.com,2023-11-26 14:00:00,60
+00000091,Diversity and Inclusion Seminar,Fatima.Khan@company.com,2023-11-26 15:00:00,60
+00000128,Corporate Social Responsibility Day,Lena.Schmidt@company.com,2023-11-27 09:00:00,90
+00000370,Operational Excellence Conference,Amir.Ali@company.com,2023-11-27 10:30:00,30
+00000329,Year-End Performance Evaluations,Anaya.Patel@company.com,2023-11-27 12:00:00,180
+00000499,Corporate Merger Integration Update,Chenwei.Zhang@company.com,2023-11-27 15:00:00,30
+00000148,Sustainability Initiatives Update,Olga.Petrova@company.com,2023-11-27 15:30:00,30
+00000382,HR Policy Update Meeting,Lena.Schmidt@company.com,2023-11-28 09:00:00,150
+00000140,Customer Feedback Forum,Lena.Schmidt@company.com,2023-11-28 11:30:00,150
+00000481,Vendor Selection Panel,Leila.Azizi@company.com,2023-11-28 14:00:00,30
+00000316,Innovation Hackathon,Amir.Ali@company.com,2023-11-28 14:30:00,30
+00000062,Industry Regulation Update Seminar,Amir.Ali@company.com,2023-11-28 15:00:00,180
+00000002,Health and Wellness Fair,Lena.Schmidt@company.com,2023-11-29 09:30:00,150
+00000466,Leadership Training Workshop,Akira.Sato@company.com,2023-11-29 12:00:00,30
+00000214,Technology Implementation Workshop,Nia.Johnson@company.com,2023-11-29 12:30:00,60
+00000394,Employee Benefits Review,Lena.Schmidt@company.com,2023-11-29 13:30:00,30
+00000123,Supply Chain Optimization Workshop,Sofia.Santos@company.com,2023-11-29 14:00:00,90
+00000157,Data Security Compliance Training,Akira.Sato@company.com,2023-11-29 15:30:00,120
+00000452,Board of Directors Meeting,Jinsoo.Kim@company.com,2023-12-01 09:00:00,30
+00000428,Customer Feedback Forum,Anaya.Patel@company.com,2023-12-01 09:30:00,30
+00000188,Customer Service Excellence Training,Nia.Johnson@company.com,2023-12-01 10:30:00,30
+00000064,Corporate Social Responsibility Day,Carlos.Rodriguez@company.com,2023-12-01 11:30:00,150
+00000046,Cybersecurity Update Brief,Anaya.Patel@company.com,2023-12-01 14:30:00,60
+00000004,Global Market Expansion Discussion,Nadia.Moreau@company.com,2023-12-01 15:30:00,120
+00000261,Organizational Restructuring Briefing,Akira.Sato@company.com,2023-12-02 09:00:00,60
+00000266,Corporate Merger Integration Update,Lena.Schmidt@company.com,2023-12-02 11:00:00,90
+00000300,Global Team Video Conference,Nia.Johnson@company.com,2023-12-02 12:30:00,90
+00000186,Diversity and Inclusion Seminar,Amir.Ali@company.com,2023-12-02 14:00:00,30
+00000483,Leadership Training Workshop,Carlos.Rodriguez@company.com,2023-12-02 14:30:00,30
+00000348,Project Kickoff Meeting,Olga.Petrova@company.com,2023-12-02 15:00:00,120
+00000496,Executive Leadership Offsite,Leila.Azizi@company.com,2023-12-03 09:30:00,30
+00000323,Employee Benefits Review,Nia.Johnson@company.com,2023-12-03 10:00:00,30
+00000317,Career Development Forum,Kofi.Mensah@company.com,2023-12-03 10:30:00,30
+00000492,Global Team Video Conference,Dmitri.Ivanov@company.com,2023-12-03 11:00:00,60
+00000036,Customer Service Excellence Training,Nia.Johnson@company.com,2023-12-03 12:00:00,30
+00000206,Technology Implementation Workshop,Dmitri.Ivanov@company.com,2023-12-03 12:30:00,60
+00000253,Health and Wellness Fair,Carlos.Rodriguez@company.com,2023-12-03 14:30:00,30
+00000469,Employee Benefits Review,Nia.Johnson@company.com,2023-12-03 15:00:00,30
+00000182,Brand Refresh Reveal,Sofia.Santos@company.com,2023-12-03 15:30:00,90
+00000043,Quarterly Sales Review,Sofia.Santos@company.com,2023-12-04 10:00:00,90
+00000100,Digital Transformation Summit,Fatima.Khan@company.com,2023-12-04 11:30:00,150
+00000130,Sales Pipeline Review,Jinsoo.Kim@company.com,2023-12-04 15:00:00,120
+00000432,Executive Leadership Offsite,Sofia.Santos@company.com,2023-12-05 09:00:00,30
+00000249,Sales Pipeline Review,Akira.Sato@company.com,2023-12-05 09:30:00,30
+00000456,Project Kickoff Meeting,Anaya.Patel@company.com,2023-12-05 10:00:00,30
+00000365,New Hire Orientation,Aisha.Chen@company.com,2023-12-05 10:30:00,90
+00000000,Brand Refresh Reveal,Sofia.Santos@company.com,2023-12-05 12:00:00,180
+00000335,Corporate Merger Integration Update,Amir.Ali@company.com,2023-12-05 15:00:00,150
+00000102,Supply Chain Optimization Workshop,Aisha.Chen@company.com,2023-12-06 09:30:00,90
+00000488,Employee Recognition Ceremony,Nia.Johnson@company.com,2023-12-06 11:00:00,60
+00000405,R&D Innovation Showcase,Fatima.Khan@company.com,2023-12-06 12:00:00,30
+00000193,Innovation Hackathon,Amir.Ali@company.com,2023-12-06 12:30:00,60
+00000443,Employee Engagement Survey Results,Santiago.Martinez@company.com,2023-12-06 13:30:00,30
+00000314,Client Appreciation Gala,Raj.Patel@company.com,2023-12-06 14:00:00,60
+00000170,Organizational Restructuring Briefing,Nadia.Moreau@company.com,2023-12-06 15:00:00,30
+00000372,Technology Implementation Workshop,Amir.Ali@company.com,2023-12-06 15:30:00,150
+00000362,Cybersecurity Update Brief,Lena.Schmidt@company.com,2023-12-07 09:00:00,60
+00000079,Sales Pipeline Review,Sofia.Santos@company.com,2023-12-07 10:30:00,90
+00000322,Annual Budget Planning Session,Olga.Petrova@company.com,2023-12-07 12:00:00,30
+00000161,Global Team Video Conference,Kofi.Mensah@company.com,2023-12-07 12:30:00,150
+00000132,Financial Forecasting Meeting,Anaya.Patel@company.com,2023-12-07 15:00:00,90
+00000410,Cross-Functional Collaboration Workshop,Nia.Johnson@company.com,2023-12-08 09:30:00,30
+00000194,Data Security Compliance Training,Kofi.Mensah@company.com,2023-12-08 10:00:00,30
+00000093,New Hire Orientation,Nadia.Moreau@company.com,2023-12-08 11:00:00,120
+00000399,Strategic Planning Retreat,Raj.Patel@company.com,2023-12-08 13:30:00,60
+00000243,Employee Recognition Ceremony,Nia.Johnson@company.com,2023-12-08 15:00:00,90
+00000099,Career Development Forum,Kofi.Mensah@company.com,2023-12-09 09:00:00,90
+00000326,Corporate Social Responsibility Day,Jinsoo.Kim@company.com,2023-12-09 11:00:00,60
+00000106,Employee Engagement Survey Results,Dmitri.Ivanov@company.com,2023-12-09 12:00:00,90
+00000476,HR Policy Update Meeting,Nadia.Moreau@company.com,2023-12-09 13:30:00,30
+00000084,Diversity and Inclusion Seminar,Yuki.Tanaka@company.com,2023-12-09 14:00:00,150
+00000263,Quarterly Sales Review,Dmitri.Ivanov@company.com,2023-12-10 09:00:00,30
+00000003,Industry Regulation Update Seminar,Jinsoo.Kim@company.com,2023-12-10 09:30:00,120
+00000255,New Hire Orientation,Amir.Ali@company.com,2023-12-10 11:30:00,120
+00000124,Project Kickoff Meeting,Dmitri.Ivanov@company.com,2023-12-10 14:00:00,60
+00000344,Vendor Selection Panel,Jinsoo.Kim@company.com,2023-12-10 15:30:00,150
+00000237,Marketing Strategy Brainstorm,Fatima.Khan@company.com,2023-12-11 09:00:00,60
+00000479,Brand Refresh Reveal,Sofia.Santos@company.com,2023-12-11 10:00:00,30
+00000146,Sales Incentive Plan Announcement,Lena.Schmidt@company.com,2023-12-11 10:30:00,120
+00000228,Sales Incentive Plan Announcement,Chenwei.Zhang@company.com,2023-12-11 12:30:00,150
+00000019,Annual Budget Planning Session,Olga.Petrova@company.com,2023-12-11 15:00:00,30
+00000269,Career Development Forum,Leila.Azizi@company.com,2023-12-11 15:30:00,90
+00000212,Corporate Governance Training,Aisha.Chen@company.com,2023-12-12 10:00:00,60
+00000011,Product Launch Debrief,Jinsoo.Kim@company.com,2023-12-12 11:30:00,180
+00000458,Vendor Selection Panel,Jinsoo.Kim@company.com,2023-12-12 14:30:00,30
+00000425,Risk Management Roundtable,Sofia.Santos@company.com,2023-12-12 15:30:00,90
+00000334,Diversity and Inclusion Seminar,Amir.Ali@company.com,2023-12-13 09:00:00,30
+00000191,New Hire Orientation,Carlos.Rodriguez@company.com,2023-12-13 10:00:00,180
+00000121,Health and Wellness Fair,Carlos.Rodriguez@company.com,2023-12-13 13:00:00,90
+00000467,Employee Engagement Survey Results,Dmitri.Ivanov@company.com,2023-12-13 14:30:00,30
+00000422,Innovation Hackathon,Chenwei.Zhang@company.com,2023-12-13 15:00:00,30
+00000026,R&D Innovation Showcase,Carlos.Rodriguez@company.com,2023-12-13 15:30:00,180
+00000359,Sales Incentive Plan Announcement,Raj.Patel@company.com,2023-12-14 09:00:00,30
+00000296,Sustainability Initiatives Update,Leila.Azizi@company.com,2023-12-14 09:30:00,120
+00000147,Annual Budget Planning Session,Carlos.Rodriguez@company.com,2023-12-14 11:30:00,60
+00000113,Risk Management Roundtable,Olga.Petrova@company.com,2023-12-14 13:00:00,180
+00000383,New Hire Orientation,Carlos.Rodriguez@company.com,2023-12-15 09:30:00,90
+00000103,IT Systems Upgrade Briefing,Lena.Schmidt@company.com,2023-12-15 11:00:00,90
+00000063,Quarterly Sales Review,Lena.Schmidt@company.com,2023-12-15 12:30:00,150
+00000286,Board of Directors Meeting,Raj.Patel@company.com,2023-12-15 15:00:00,180
+00000227,New Hire Orientation,Chenwei.Zhang@company.com,2023-12-16 09:00:00,90
+00000280,Cybersecurity Update Brief,Aisha.Chen@company.com,2023-12-16 10:30:00,60
+00000343,Creative Ideation Session,Olga.Petrova@company.com,2023-12-16 12:00:00,60
+00000223,Quality Assurance Training,Santiago.Martinez@company.com,2023-12-16 13:00:00,60
+00000302,Quality Assurance Training,Sofia.Santos@company.com,2023-12-16 14:00:00,90
+00000406,Diversity and Inclusion Seminar,Sofia.Santos@company.com,2023-12-16 15:30:00,60
+00000081,Cross-Functional Collaboration Workshop,Raj.Patel@company.com,2023-12-17 09:30:00,30
+00000446,New Hire Orientation,Santiago.Martinez@company.com,2023-12-17 10:00:00,60
+00000245,Annual Budget Planning Session,Kofi.Mensah@company.com,2023-12-17 12:00:00,30
+00000340,Team Building Retreat,Nia.Johnson@company.com,2023-12-17 12:30:00,30
+00000090,Internal Audit Summary,Fatima.Khan@company.com,2023-12-17 13:00:00,30
+00000270,Global Team Video Conference,Nadia.Moreau@company.com,2023-12-17 14:00:00,30
+00000485,Strategic Planning Retreat,Fatima.Khan@company.com,2023-12-17 14:30:00,30
+00000457,Employee Recognition Ceremony,Chenwei.Zhang@company.com,2023-12-17 15:00:00,30
+00000353,Employee Engagement Survey Results,Amir.Ali@company.com,2023-12-17 15:30:00,90
+00000057,Corporate Social Responsibility Day,Lena.Schmidt@company.com,2023-12-18 09:30:00,90
+00000346,Sales Incentive Plan Announcement,Nia.Johnson@company.com,2023-12-18 11:00:00,30
+00000032,Sales Incentive Plan Announcement,Carlos.Rodriguez@company.com,2023-12-18 11:30:00,150
+00000156,Employee Engagement Survey Results,Chenwei.Zhang@company.com,2023-12-18 14:00:00,60
+00000455,Brand Refresh Reveal,Aisha.Chen@company.com,2023-12-18 15:00:00,30
+00000368,Marketing Strategy Brainstorm,Luis.Ortiz@company.com,2023-12-18 15:30:00,30
+00000331,Operational Excellence Conference,Dmitri.Ivanov@company.com,2023-12-19 10:30:00,90
+00000264,Operational Excellence Conference,Yuki.Tanaka@company.com,2023-12-19 12:00:00,30
+00000174,Client Appreciation Gala,Carlos.Rodriguez@company.com,2023-12-19 12:30:00,90
+00000268,IT Systems Upgrade Briefing,Santiago.Martinez@company.com,2023-12-19 14:30:00,90
+00000378,Sustainability Initiatives Update,Chenwei.Zhang@company.com,2023-12-20 09:00:00,30
+00000256,Global Market Expansion Discussion,Akira.Sato@company.com,2023-12-20 10:00:00,30
+00000400,Leadership Training Workshop,Kofi.Mensah@company.com,2023-12-20 10:30:00,30
+00000133,Employee Benefits Review,Lena.Schmidt@company.com,2023-12-20 11:30:00,180
+00000083,Employee Recognition Ceremony,Nadia.Moreau@company.com,2023-12-20 15:00:00,90
+00000460,Annual Budget Planning Session,Nadia.Moreau@company.com,2023-12-21 09:00:00,30
+00000229,Risk Management Roundtable,Luis.Ortiz@company.com,2023-12-21 10:00:00,120
+00000332,Internal Audit Summary,Carlos.Rodriguez@company.com,2023-12-21 12:30:00,30
+00000040,Operational Excellence Conference,Nia.Johnson@company.com,2023-12-21 13:30:00,60
+00000283,Sales Incentive Plan Announcement,Kofi.Mensah@company.com,2023-12-21 15:00:00,150
+00000180,Sales Pipeline Review,Carlos.Rodriguez@company.com,2023-12-22 09:00:00,60
+00000122,Health and Wellness Fair,Chenwei.Zhang@company.com,2023-12-22 10:00:00,60
+00000474,Global Team Video Conference,Akira.Sato@company.com,2023-12-22 11:00:00,30
+00000141,Risk Management Roundtable,Sofia.Santos@company.com,2023-12-22 11:30:00,150
+00000203,Sustainability Initiatives Update,Luis.Ortiz@company.com,2023-12-22 14:00:00,30
+00000056,Sustainability Initiatives Update,Anaya.Patel@company.com,2023-12-22 15:00:00,90
+00000320,Sales Incentive Plan Announcement,Nia.Johnson@company.com,2023-12-23 09:00:00,30
+00000144,Digital Transformation Summit,Jinsoo.Kim@company.com,2023-12-23 09:30:00,60
+00000415,Risk Management Roundtable,Akira.Sato@company.com,2023-12-23 10:30:00,120
+00000055,IT Systems Upgrade Briefing,Santiago.Martinez@company.com,2023-12-23 12:30:00,120
+00000374,Employee Recognition Ceremony,Yuki.Tanaka@company.com,2023-12-23 14:30:00,30
+00000028,Creative Ideation Session,Luis.Ortiz@company.com,2023-12-23 15:00:00,180
+00000023,Strategic Planning Retreat,Kofi.Mensah@company.com,2023-12-24 09:30:00,90
+00000035,Global Market Expansion Discussion,Kofi.Mensah@company.com,2023-12-24 11:30:00,60
+00000354,Industry Regulation Update Seminar,Akira.Sato@company.com,2023-12-24 12:30:00,60
+00000076,Sales Incentive Plan Announcement,Olga.Petrova@company.com,2023-12-24 14:00:00,120
+00000484,IT Systems Upgrade Briefing,Dmitri.Ivanov@company.com,2023-12-25 09:00:00,30
+00000171,Corporate Merger Integration Update,Olga.Petrova@company.com,2023-12-25 10:00:00,60
+00000306,Quality Assurance Training,Fatima.Khan@company.com,2023-12-25 11:00:00,120
+00000111,Leadership Training Workshop,Leila.Azizi@company.com,2023-12-25 13:00:00,60
+00000024,Risk Management Roundtable,Carlos.Rodriguez@company.com,2023-12-25 14:00:00,30
+00000073,Cybersecurity Update Brief,Yuki.Tanaka@company.com,2023-12-25 15:30:00,90
+00000337,R&D Innovation Showcase,Jinsoo.Kim@company.com,2023-12-26 09:00:00,150
+00000074,Annual Budget Planning Session,Raj.Patel@company.com,2023-12-26 12:00:00,60
+00000307,Career Development Forum,Raj.Patel@company.com,2023-12-26 13:00:00,150
+00000220,HR Policy Update Meeting,Raj.Patel@company.com,2023-12-26 15:30:00,60
+00000088,Team Building Retreat,Lena.Schmidt@company.com,2023-12-27 10:00:00,180
+00000126,Brand Refresh Reveal,Leila.Azizi@company.com,2023-12-27 13:00:00,30
+00000433,Global Team Video Conference,Yuki.Tanaka@company.com,2023-12-27 13:30:00,90
+00000221,Executive Leadership Offsite,Chenwei.Zhang@company.com,2023-12-27 15:00:00,90
+00000407,Corporate Social Responsibility Day,Leila.Azizi@company.com,2023-12-28 09:00:00,30
+00000068,Operational Excellence Conference,Kofi.Mensah@company.com,2023-12-28 09:30:00,90
+00000242,Creative Ideation Session,Carlos.Rodriguez@company.com,2023-12-28 11:00:00,60
+00000107,Executive Leadership Offsite,Carlos.Rodriguez@company.com,2023-12-28 13:30:00,180
+00000361,New Hire Orientation,Yuki.Tanaka@company.com,2023-12-29 09:00:00,30
+00000179,Health and Wellness Fair,Nia.Johnson@company.com,2023-12-29 09:30:00,30
+00000431,Employee Recognition Ceremony,Raj.Patel@company.com,2023-12-29 10:00:00,30
+00000085,New Hire Orientation,Sofia.Santos@company.com,2023-12-29 10:30:00,60
+00000493,Corporate Governance Training,Santiago.Martinez@company.com,2023-12-29 11:30:00,30
+00000027,Quarterly Sales Review,Akira.Sato@company.com,2023-12-29 12:00:00,120
+00000411,Product Launch Debrief,Kofi.Mensah@company.com,2023-12-29 14:00:00,30
+00000284,R&D Innovation Showcase,Amir.Ali@company.com,2023-12-29 15:00:00,30
+00000260,IT Systems Upgrade Briefing,Fatima.Khan@company.com,2023-12-29 15:30:00,90
+00000472,Quality Assurance Training,Leila.Azizi@company.com,2023-12-30 09:00:00,30
+00000342,Sales Incentive Plan Announcement,Jinsoo.Kim@company.com,2023-12-30 09:30:00,30
+00000060,Marketing Strategy Brainstorm,Leila.Azizi@company.com,2023-12-30 10:30:00,30
+00000165,IT Systems Upgrade Briefing,Carlos.Rodriguez@company.com,2023-12-30 11:30:00,30
+00000145,Vendor Selection Panel,Santiago.Martinez@company.com,2023-12-30 12:00:00,60
+00000380,Customer Service Excellence Training,Dmitri.Ivanov@company.com,2023-12-30 13:00:00,30
+00000199,Digital Transformation Summit,Raj.Patel@company.com,2023-12-30 14:00:00,90
+00000454,Leadership Training Workshop,Raj.Patel@company.com,2023-12-30 15:30:00,180

@@ -9,14 +9,14 @@ test_events = [
         "event_name": "Board of Directors Meeting",
         "participant_email": "Yuki.Tanaka@company.com",
         "event_start": "2023-10-01 10:00:00",
-        "event_end": "2023-10-01 11:00:00",
+        "duration": "60",
     },
     {
         "event_id": "70838585",
         "event_name": "Meeting with Sam",
         "participant_email": "sam@company.com",
         "event_start": "2023-10-02 11:00:00",
-        "event_end": "2023-10-02 12:00:00",
+        "duration": "60",
     },
 ]
 calendar.CALENDAR_EVENTS = pd.DataFrame(test_events)
@@ -60,7 +60,7 @@ def test_search_events():
         "event_name": "Board of Directors Meeting",
         "participant_email": "Yuki.Tanaka@company.com",
         "event_start": "2023-10-01 10:00:00",
-        "event_end": "2023-10-01 11:00:00",
+        "duration": "60",
     }
 
 
@@ -81,60 +81,9 @@ def test_search_for_event_time_max():
             "event_name": "Board of Directors Meeting",
             "participant_email": "Yuki.Tanaka@company.com",
             "event_start": "2023-10-01 10:00:00",
-            "event_end": "2023-10-01 11:00:00",
+            "duration": "60",
         }
     ]
-
-
-def create_event(
-    event_name=None, participant_email=None, event_start=None, event_end=None
-):
-    """
-    Creates a new event.
-
-    Parameters
-    ----------
-    event_name: str, optional
-        Name of the event.
-    participant_email: str, optional
-        Email of the participant.
-    event_start: str, optional
-        Start time of the event. Format: "YYYY-MM-DD HH:MM:SS"
-    event_end: str, optional
-        End time of the event. Format: "YYYY-MM-DD HH:MM:SS"
-
-    Returns
-    -------
-    event_id : str
-        ID of the newly created event.
-
-    Examples
-    --------
-    >>> create_event("Meeting with Sam", "sam@example.com", "2021-06-01 13:00:00", "2021-06-01 14:00:00")
-    "00000000"
-    """
-
-    if not event_name:
-        return "Event name not provided."
-    if not participant_email:
-        return "Participant email not provided."
-    if not event_start:
-        return "Event start not provided."
-    if not event_end:
-        return "Event end not provided."
-
-    event_id = str(CALENDAR_EVENTS["event_id"].max() + 1).zfill(8)
-    new_event = pd.DataFrame(
-        {
-            "event_id": [event_id],
-            "event_name": [event_name],
-            "participant_email": [participant_email],
-            "event_start": [event_start],
-            "event_end": [event_end],
-        }
-    )
-    CALENDAR_EVENTS = pd.concat([CALENDAR_EVENTS, new_event])
-    return event_id
 
 
 def test_create_event():
@@ -146,7 +95,7 @@ def test_create_event():
             "Meeting with Sam",
             "sam@company.com",
             "2023-10-01 10:00:00",
-            "2023-10-01 11:00:00",
+            "60",
         )
         == "70838586"
     )
@@ -170,7 +119,7 @@ def test_create_event_missing_args():
         calendar.create_event.func(
             "Meeting with Sam", "sam@company.com", "2023-10-01 10:00:00"
         )
-        == "Event end not provided."
+        == "Event duration not provided."
     )
 
 

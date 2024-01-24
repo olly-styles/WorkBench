@@ -2,15 +2,22 @@ import pandas as pd
 import numpy as np
 
 
-def is_overlapping(new_start, new_end, existing_events):
+def is_overlapping(new_start, duration, existing_events):
+    duration = pd.Timedelta(duration, unit="m")
     starts_during_existing = (new_start >= existing_events["event_start"]) & (
-        new_start < existing_events["event_end"]
+        new_start
+        < existing_events["event_start"]
+        + existing_events["duration"].apply(lambda x: pd.Timedelta(x, unit="m"))
     )
-    ends_during_existing = (new_end > existing_events["event_start"]) & (
-        new_end <= existing_events["event_end"]
+    ends_during_existing = (new_start + duration > existing_events["event_start"]) & (
+        new_start + duration
+        <= existing_events["event_start"]
+        + existing_events["duration"].apply(lambda x: pd.Timedelta(x, unit="m"))
     )
     encompasses_existing = (new_start <= existing_events["event_start"]) & (
-        new_end >= existing_events["event_end"]
+        new_start + duration
+        >= existing_events["event_start"]
+        + existing_events["duration"].apply(lambda x: pd.Timedelta(x, unit="m"))
     )
 
     overlap = starts_during_existing | ends_during_existing | encompasses_existing
@@ -25,14 +32,15 @@ def create_calendar_event(event_names, emails, existing_events):
             start=pd.to_datetime("2023-10-01T00:00:00"),
             end=pd.to_datetime("2023-12-31T23:59:59"),
         )
-        event_end = event_start + pd.Timedelta(hours=generate_event_duration())
+        duration_hours = generate_event_duration()
+        duration_minutes = int(duration_hours * 60)
         event_id = str(len(existing_events)).zfill(8)
 
         # Check if the event time overlaps with an existing event time.
         # Note that this method is not very efficient, but it is good enough for this purpose. If you want to
         # generate a large dataset, you should use a more efficient method.
-        if not is_overlapping(event_start, event_end, existing_events):
-            return event_id, event_name, email, event_start, event_end
+        if not is_overlapping(event_start, duration_minutes, existing_events):
+            return event_id, event_name, email, event_start, duration_minutes
 
 
 def generate_datetime_between(start, end):
