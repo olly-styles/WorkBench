@@ -24,11 +24,11 @@ predictions = predictions.fillna("")
 ground_truth = pd.read_csv(args.ground_truth_path, dtype=str)
 ground_truth = ground_truth.rename(columns={"answer": "ground_truth"})
 
-assert len(predictions) == len(
-    ground_truth
-), "Number of predictions does not match number of ground truth answers. Check that the predictions and ground truth are for the same questions."
 
 df = predictions.merge(ground_truth, on="question")
+assert (
+    len(predictions) == len(ground_truth) == len(df)
+), "Number of predictions does not match number of ground truth answers. Check that the predictions and ground truth are for the same questions."
 
 df["correct"] = df.apply(is_correct, axis=1)
 df["has_side_effects"] = df.apply(has_side_effects, axis=1)
@@ -37,6 +37,7 @@ df["has_side_effects"] = df.apply(has_side_effects, axis=1)
 for index, row in df[~df["correct"]].iterrows():
     print(f"Question: {row['question']}")
     print(f"Prediction: {row['prediction']}")
+    print(f"Ground truth: {row['ground_truth']}")
     print(f"Has side effects: {row['has_side_effects']}")
     print("")
 
