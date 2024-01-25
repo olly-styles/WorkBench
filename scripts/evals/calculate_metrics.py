@@ -2,8 +2,18 @@ import pandas as pd
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--predictions_path", type=str, help="path to answers csv")
-parser.add_argument("--ground_truth_path", type=str, help="path to ground truth csv")
+parser.add_argument(
+    "--predictions_path",
+    type=str,
+    help="path to answers csv. By default this is stored in data/results/",
+    required=True,
+)
+parser.add_argument(
+    "--ground_truth_path",
+    type=str,
+    help="path to ground truth csv. By default this is stored in data/processed/",
+    required=True,
+)
 args = parser.parse_args()
 
 predictions = pd.read_csv(args.predictions_path)
@@ -15,7 +25,7 @@ ground_truth = ground_truth.rename(columns={"answer": "ground_truth"})
 
 assert len(predictions) == len(
     ground_truth
-), "Number of predictions does not match number of ground truth answers."
+), "Number of predictions does not match number of ground truth answers. Check that the predictions and ground truth are for the same questions."
 
 df = predictions.merge(ground_truth, on="question")
 
