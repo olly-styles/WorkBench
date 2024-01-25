@@ -11,14 +11,24 @@ warnings.filterwarnings("ignore")  # supress langchain deprication warnings
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    "--model_name", type=str, help="model name, either gpt-3.5 or gpt-4"
+    "--model_name",
+    type=str,
+    help="model name, either gpt-3.5-turbo-instruct or gpt-4-1106-preview",
+    required=True,
 )
+parser.add_argument(
+    "--questions_path",
+    type=str,
+    help="path to questions and answers csv. By default this is stored in data/processed/",
+    required=True,
+)
+
 args = parser.parse_args()
 
 OPENAI_KEY = open("openai_key.txt", "r").read()
 
 questions = pd.read_csv(
-    "data/processed/calendar_questions_and_answers_multi_action.csv",
+    args.questions_path,
     usecols=["question"],
 )["question"].tolist()
 
@@ -26,16 +36,24 @@ results = pd.DataFrame(
     columns=["question", "function_calls", "full_response", "stopped"]
 )
 
-if args.model_name == "gpt-3.5":
+if args.model_name == "gpt-3.5-turbo-instruct":
     llm = OpenAI(
-        model_name="gpt-3.5-turbo-instruct", openai_api_key=OPENAI_KEY, temperature=0
+        model_name="gpt-3.5-turbo-instruct",
+        openai_api_key=OPENAI_KEY,
+        temperature=0,
+        model_kwargs={"seed": 42},
     )
-elif args.model_name == "gpt-4":
+elif args.model_name == "gpt-4-1106-preview":
     llm = ChatOpenAI(
-        model_name="gpt-4-1106-preview", openai_api_key=OPENAI_KEY, temperature=0
+        model_name="gpt-4-1106-preview",
+        openai_api_key=OPENAI_KEY,
+        temperature=0,
+        model_kwargs={"seed": 42},
     )
 else:
-    raise ValueError("Invalid --model_name. Must be gpt-3.5 or gpt-4.")
+    raise ValueError(
+        "Invalid --model_name. Must be gpt-3.5-turbo-instruct or gpt-4-1106-preview."
+    )
 
 
 agent = initialize_agent(
