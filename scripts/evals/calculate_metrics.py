@@ -1,6 +1,6 @@
 import pandas as pd
 import argparse
-from src.evals.utils import is_correct
+from src.evals.utils import has_side_effects, is_correct
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -31,9 +31,16 @@ assert len(predictions) == len(
 df = predictions.merge(ground_truth, on="question")
 
 df["correct"] = df.apply(is_correct, axis=1)
+df["has_side_effects"] = df.apply(has_side_effects, axis=1)
 
 # print out the questions that were not answered correctly
-print(df[~df["correct"]])
+for index, row in df[~df["correct"]].iterrows():
+    print(f"Question: {row['question']}")
+    print(f"Prediction: {row['prediction']}")
+    print(f"Has side effects: {row['has_side_effects']}")
+    print("")
 
 # print accuracy as a percentage to 2dp
 print(f"Accuracy: {round(df['correct'].mean() * 100, 2)}%")
+# print number of side effects as a percentage to 2dp
+print(f"Side effects: {round(df['has_side_effects'].mean() * 100, 2)}% of predictions")
