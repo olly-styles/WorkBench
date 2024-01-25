@@ -75,11 +75,12 @@ for template in MULTI_ACTION_TEMPLATES:
 
         if question not in generated_questions_and_answers:
             generated_questions_and_answers.append(
-                {"question": question, "answer": answer}
+                {"question": question, "answer": answer, "template": template}
             )
 for question_and_answer in generated_questions_and_answers:
     print(question_and_answer["question"])
     print(question_and_answer["answer"])
+    print(question_and_answer["template"])
 
 df = pd.DataFrame(generated_questions_and_answers)
 df.to_csv(

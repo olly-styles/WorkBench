@@ -3,7 +3,7 @@ import argparse
 import warnings
 from langchain_openai import ChatOpenAI, OpenAI
 from langchain.agents import initialize_agent, AgentType
-from src.eval.utils import convert_agent_action_to_function_call
+from src.evals.utils import convert_agent_action_to_function_call
 from src.tools.toolkits import calendar_toolkit, email_toolkit
 from src.tools import calendar, email
 

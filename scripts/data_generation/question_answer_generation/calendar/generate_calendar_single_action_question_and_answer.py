@@ -1,5 +1,6 @@
 import pandas as pd
 import random
+import csv
 
 from src.data_generation.calendar.data_generation_utils import (
     generate_end_time,
@@ -76,14 +77,17 @@ for template in SINGLE_ACTION_TEMPLATES:
 
         if question not in generated_questions_and_answers:
             generated_questions_and_answers.append(
-                {"question": question, "answer": answer}
+                {"question": question, "answer": answer, "template": template}
             )
 
 for question_and_answer in generated_questions_and_answers:
     print(question_and_answer["question"])
     print(question_and_answer["answer"])
+    print(question_and_answer["template"])
 
 df = pd.DataFrame(generated_questions_and_answers)
 df.to_csv(
-    "data/processed/calendar_questions_and_answers_single_action.csv", index=False
+    "data/processed/calendar_questions_and_answers_single_action.csv",
+    index=False,
+    quoting=csv.QUOTE_ALL,
 )

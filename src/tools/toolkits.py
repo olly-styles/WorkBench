@@ -1,16 +1,33 @@
 from src.tools import calendar, email
 
-calendar_toolkit = [
+all_tools = [
     calendar.get_event_information_by_id,
     calendar.search_events,
     calendar.create_event,
     calendar.delete_event,
     calendar.update_event,
-]
-
-email_toolkit = [
     email.get_email_information_by_id,
     email.search_emails,
     email.send_email,
     email.delete_email,
 ]
+
+tool_information = [
+    {
+        "toolkit": tool.__module__,
+        "tool": tool,
+        "name": tool.name,
+        "side_effects": tool
+        in [
+            calendar.create_event,
+            calendar.delete_event,
+            calendar.update_event,
+            email.send_email,
+            email.delete_email,
+        ],
+    }
+    for tool in all_tools
+]
+
+calendar_toolkit = [t["tool"] for t in tool_information if t["toolkit"] == "calendar"]
+email_toolkit = [t["tool"] for t in tool_information if t["toolkit"] == "email"]

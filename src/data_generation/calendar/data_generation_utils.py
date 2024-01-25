@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 
+np.random.seed(42)
+
 
 def is_overlapping(new_start, duration, existing_events):
     duration = pd.Timedelta(duration, unit="m")
