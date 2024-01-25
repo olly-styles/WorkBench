@@ -1,2 +1,4 @@
 .venv
-**/.DS_Store
+.DS_Store
+__pycache__/
+openai_key.txt
