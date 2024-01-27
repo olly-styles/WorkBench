@@ -4,7 +4,8 @@ import csv
 
 from src.data_generation.calendar.data_generation_utils import (
     generate_end_time,
-    generate_event_duration,
+    generate_event_duration_minutes,
+    format_event_duration,
     get_natural_language_time
 )
 
@@ -47,12 +48,8 @@ for template in SINGLE_ACTION_TEMPLATES:
         date = random.choice(dates)
         time = random.choice(times)
         natural_language_time = random.choice(natural_language_times)
-        duration_minutes = int(generate_event_duration() * 60)
-        duration = "{length} hour".format(
-            length=int(duration_minutes / 60)
-            if duration_minutes / 60 > 1
-            else duration_minutes / 60
-        )
+        duration_minutes = generate_event_duration_minutes()
+        duration = format_event_duration(duration_minutes)
         event_name = random.choice(events)
         email = random.choice(emails)
         end_time = generate_end_time(f"{date} {time}", duration)
@@ -70,7 +67,7 @@ for template in SINGLE_ACTION_TEMPLATES:
         answer = template["answer"].format(
             date=date,
             time=time,
-            duration=duration,
+            duration=duration_minutes,
             event_name=event_name,
             email=email,
             end_time=end_time,

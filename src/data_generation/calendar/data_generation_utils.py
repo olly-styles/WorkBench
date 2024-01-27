@@ -34,8 +34,7 @@ def create_calendar_event(event_names, emails, existing_events):
             start=pd.to_datetime("2023-10-01T00:00:00"),
             end=pd.to_datetime("2023-12-31T23:59:59"),
         )
-        duration_hours = generate_event_duration()
-        duration_minutes = int(duration_hours * 60)
+        duration_minutes = generate_event_duration_minutes()
         event_id = str(len(existing_events)).zfill(8)
 
         # Check if the event time overlaps with an existing event time.
@@ -61,7 +60,22 @@ def generate_datetime_between(start, end):
 def generate_event_duration():
     return np.random.choice([1, 2, 3, 4, 5, 6]) * 0.5
 
+def generate_event_duration_minutes():
+    duration_hours = generate_event_duration()
+    return int(duration_hours * 60)
 
+def format_event_duration(duration_minutes):
+    """Format the duration of an event in natural language.
+    
+    Examples: 180 -> 3 hour, 30 -> 30 minute
+    """
+    if duration_minutes < 60:
+        return f"{duration_minutes} minute"
+    else:
+        duration_hours = duration_minutes / 60
+        duration_hours = int(duration_hours) if int(duration_hours) == duration_hours else duration_hours
+        return f"{duration_hours} hour"
+    
 def generate_end_time(start_time, duration):
     """
     Generate the end time of an event given the start time and duration.
