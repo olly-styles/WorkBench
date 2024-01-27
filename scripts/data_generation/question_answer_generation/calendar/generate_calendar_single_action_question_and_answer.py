@@ -6,7 +6,8 @@ from src.data_generation.calendar.data_generation_utils import (
     generate_end_time,
     generate_event_duration_minutes,
     format_event_duration,
-    get_natural_language_time
+    get_natural_language_time,
+    get_natural_language_date
 )
 
 random.seed(42)
@@ -33,7 +34,6 @@ SINGLE_ACTION_TEMPLATES = [
 calendar_events = pd.read_csv("data/processed/calendar_events.csv", dtype=str)
 dates = list(calendar_events["event_start"].str.split(" ").str[0].unique())
 times = list(calendar_events["event_start"].str.split(" ").str[1].unique())
-natural_language_times = [get_natural_language_time(time) for time in times]
 events = list(calendar_events["event_name"].unique())
 emails = list(calendar_events["participant_email"].unique())
 event_ids = list(calendar_events["event_id"].unique())
@@ -41,13 +41,14 @@ event_ids = list(calendar_events["event_id"].unique())
 
 # Generate a limited number of unique single-action questions and answers
 generated_questions_and_answers = []
-max_questions_per_template = 3  # Limit the number of questions per template
+max_questions_per_template = 10  # Limit the number of questions per template
 
 for template in SINGLE_ACTION_TEMPLATES:
     for _ in range(max_questions_per_template):
         date = random.choice(dates)
+        natural_language_date = get_natural_language_date(date)
         time = random.choice(times)
-        natural_language_time = random.choice(natural_language_times)
+        natural_language_time = get_natural_language_time(time)
         duration_minutes = generate_event_duration_minutes()
         duration = format_event_duration(duration_minutes)
         event_name = random.choice(events)
@@ -56,7 +57,7 @@ for template in SINGLE_ACTION_TEMPLATES:
         event_id = random.choice(event_ids)
 
         question = template["question"].format(
-            date=date,
+            date=natural_language_date,
             time=natural_language_time,
             duration=duration,
             event_name=event_name,

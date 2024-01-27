@@ -56,6 +56,14 @@ def generate_datetime_between(start, end):
     minute = np.random.choice([0, 30])
     return pd.to_datetime(f"2023-{month}-{day}T{hour}:{minute}:00")
 
+def get_natural_language_date(str_date):
+    """Transforms a datetime string into just natural language date.
+    
+    Example: 2023-01-01 -> January 1
+    """
+    date = pd.to_datetime(str_date)
+    return date.strftime("%B %d").lstrip("0").replace(" 0", " ")
+
 
 def generate_event_duration():
     return np.random.choice([1, 2, 3, 4, 5, 6]) * 0.5
