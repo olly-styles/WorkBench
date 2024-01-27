@@ -22,12 +22,12 @@ SINGLE_ACTION_TEMPLATES = [
         "answer": """calendar.create_event({{'event_name': '{event_name}', 'participant_email': '{email}', 'event_start': '{date} {time}', 'duration': '{duration_minutes}'}})""",
     },
     {
-        "question": "Delete the event {event_id}",
+        "question": "Delete the {event_name} event",
         "answer": """calendar.delete_event({{'event_id': '{event_id}'}})""",
     },
     {
-        "question": "Change the name of the event {event_id} to {event_name}",
-        "answer": """calendar.update_event({{'event_id': '{event_id}', 'field': 'event_name', 'new_value': '{event_name}'}})""",
+        "question": "Change the name of the {event_name} event to {new_event_name}",
+        "answer": """calendar.update_event({{'event_id': '{event_id}', 'field': 'event_name', 'new_value': '{new_event_name}'}})""",
     },
 ]
 
@@ -41,7 +41,7 @@ event_ids = list(calendar_events["event_id"].unique())
 
 # Generate a limited number of unique single-action questions and answers
 generated_questions_and_answers = []
-max_questions_per_template = 10  # Limit the number of questions per template
+max_questions_per_template = 3  # Limit the number of questions per template
 
 for template in SINGLE_ACTION_TEMPLATES:
     for _ in range(max_questions_per_template):
@@ -51,10 +51,11 @@ for template in SINGLE_ACTION_TEMPLATES:
         natural_language_time = get_natural_language_time(time)
         duration_minutes = generate_event_duration_minutes()
         duration = format_event_duration(duration_minutes)
-        event_name = random.choice(events)
         email = random.choice(emails)
         end_time = generate_end_time(f"{date} {time}", duration)
         event_id = random.choice(event_ids)
+        event_name = calendar_events.set_index("event_id").loc[event_id, "event_name"]
+        new_event_name = random.choice(events)
 
         question = template["question"].format(
             date=natural_language_date,
@@ -64,6 +65,7 @@ for template in SINGLE_ACTION_TEMPLATES:
             email=email,
             end_time=end_time,
             event_id=event_id,
+            new_event_name=new_event_name
         )
         answer = template["answer"].format(
             date=date,
@@ -74,6 +76,7 @@ for template in SINGLE_ACTION_TEMPLATES:
             end_time=end_time,
             event_id=event_id,
             duration_minutes=duration_minutes,
+            new_event_name=new_event_name
         )
 
         if question not in generated_questions_and_answers:
