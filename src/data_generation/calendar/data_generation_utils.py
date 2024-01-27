@@ -82,3 +82,15 @@ def create_email(email_ids, sample_emails, email_content_pairs):
         end=pd.to_datetime("2023-12-31T23:59:59"),
     )
     return email_id, recipient, subject, sent_date, body
+
+def get_natural_language_time(str_time):
+    """Transforms a datetime string into just natural language time.
+    
+    For example: 2023-01-01 09:30:00 -> 9.30, 2023-01-01 09:00:00 -> 9
+    """
+    str_time = str_time.split(":")
+    if int(str_time[1]) > 0:
+        new_start = str(int(str_time[0])) + "." + str_time[1]
+    else:
+        new_start = str(int(str_time[0]))
+    return new_start

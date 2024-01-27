@@ -5,6 +5,7 @@ import csv
 from src.data_generation.calendar.data_generation_utils import (
     generate_end_time,
     generate_event_duration,
+    get_natural_language_time
 )
 
 random.seed(42)
@@ -31,6 +32,7 @@ SINGLE_ACTION_TEMPLATES = [
 calendar_events = pd.read_csv("data/processed/calendar_events.csv", dtype=str)
 dates = list(calendar_events["event_start"].str.split(" ").str[0].unique())
 times = list(calendar_events["event_start"].str.split(" ").str[1].unique())
+natural_language_times = [get_natural_language_time(time) for time in times]
 events = list(calendar_events["event_name"].unique())
 emails = list(calendar_events["participant_email"].unique())
 event_ids = list(calendar_events["event_id"].unique())
@@ -44,6 +46,7 @@ for template in SINGLE_ACTION_TEMPLATES:
     for _ in range(max_questions_per_template):
         date = random.choice(dates)
         time = random.choice(times)
+        natural_language_time = random.choice(natural_language_times)
         duration_minutes = int(generate_event_duration() * 60)
         duration = "{length} hour".format(
             length=int(duration_minutes / 60)
@@ -57,7 +60,7 @@ for template in SINGLE_ACTION_TEMPLATES:
 
         question = template["question"].format(
             date=date,
-            time=time,
+            time=natural_language_time,
             duration=duration,
             event_name=event_name,
             email=email,
