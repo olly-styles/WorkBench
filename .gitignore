@@ -1,4 +1,6 @@
+venv/
 .venv
 .DS_Store
 __pycache__/
 openai_key.txt
+downloads
