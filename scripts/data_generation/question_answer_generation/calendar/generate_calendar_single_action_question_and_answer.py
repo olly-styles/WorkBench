@@ -9,7 +9,10 @@ sys.path.append(project_root)
 
 from src.data_generation.calendar.data_generation_utils import (
     generate_end_time,
-    generate_event_duration,
+    generate_event_duration_minutes,
+    format_event_duration,
+    get_natural_language_time,
+    get_natural_language_date,
 )
 
 random.seed(42)
@@ -48,22 +51,19 @@ max_questions_per_template = 3  # Limit the number of questions per template
 for template in SINGLE_ACTION_TEMPLATES:
     for _ in range(max_questions_per_template):
         date = random.choice(dates)
+        natural_language_date = get_natural_language_date(date)
         time = random.choice(times)
-        duration_minutes = int(generate_event_duration() * 60)
-        duration = "{length} hour".format(
-            length=int(duration_minutes / 60)
-            if duration_minutes / 60 > 1
-            else duration_minutes / 60
-        )
-        event_name = random.choice(events)
+        natural_language_time = get_natural_language_time(time)
+        duration_minutes = generate_event_duration_minutes()
+        duration = format_event_duration(duration_minutes)
         email = random.choice(emails)
         end_time = generate_end_time(f"{date} {time}", duration)
         event_name = random.choice(events)
         name = random.choice(names)
 
         question = template["question"].format(
-            date=date,
-            time=time,
+            date=natural_language_date,
+            time=natural_language_time,
             duration=duration,
             event_name=event_name,
             email=email,
@@ -73,11 +73,10 @@ for template in SINGLE_ACTION_TEMPLATES:
         answer = template["answer"].format(
             date=date,
             time=time,
-            duration=duration,
+            duration=duration_minutes,
             event_name=event_name,
             email=email,
             end_time=end_time,
-            event_id=event_id,
             duration_minutes=duration_minutes,
         )
 

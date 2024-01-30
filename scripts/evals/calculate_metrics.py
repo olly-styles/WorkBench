@@ -1,5 +1,10 @@
 import pandas as pd
 import argparse
+import sys
+import os
+project_root = os.path.abspath(os.path.curdir)
+sys.path.append(project_root)
+
 from src.evals.utils import has_side_effects, is_correct
 
 parser = argparse.ArgumentParser()
