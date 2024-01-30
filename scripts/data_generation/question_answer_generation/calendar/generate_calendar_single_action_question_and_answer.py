@@ -1,6 +1,10 @@
 import pandas as pd
 import random
 import csv
+import sys
+import os
+project_root = os.path.abspath(os.path.curdir)
+sys.path.append(project_root)
 
 from src.data_generation.calendar.data_generation_utils import (
     generate_end_time,
