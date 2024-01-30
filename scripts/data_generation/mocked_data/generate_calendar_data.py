@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from tqdm import tqdm
-from src.data_generation.calendar.data_generation_utils import create_calendar_event
+from src.data_generation.data_generation_utils import create_calendar_event
 
 
 event_names = pd.read_csv("data/raw/events.csv", header=None)

@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from tqdm import tqdm
 
-from src.data_generation.calendar.data_generation_utils import create_email
+from src.data_generation.data_generation_utils import create_email
 
 sample_emails = pd.read_csv("data/raw/email_addresses.csv", header=None)
 email_content_pairs = pd.read_csv("data/raw/email_content_pairs.csv")

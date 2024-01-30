@@ -7,7 +7,7 @@ import os
 project_root = os.path.abspath(os.path.curdir)
 sys.path.append(project_root)
 
-from src.data_generation.calendar.data_generation_utils import (
+from src.data_generation.data_generation_utils import (
     generate_end_time,
     generate_event_duration_minutes,
     format_event_duration,

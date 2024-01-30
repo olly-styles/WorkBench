@@ -3,10 +3,11 @@ import random
 import csv
 import sys
 import os
+
 project_root = os.path.abspath(os.path.curdir)
 sys.path.append(project_root)
 
-from src.data_generation.calendar.data_generation_utils import (
+from src.data_generation.data_generation_utils import (
     generate_end_time,
     get_natural_language_date,
     generate_event_duration_minutes,
