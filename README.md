@@ -9,7 +9,6 @@ Python Version: 3.10.11
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-export PYTHONPATH=$PYTHONPATH:$(pwd)
 ```
 
 ### Step 2: Add openai api key
