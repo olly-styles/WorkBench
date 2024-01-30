@@ -56,9 +56,10 @@ def generate_datetime_between(start, end):
     minute = np.random.choice([0, 30])
     return pd.to_datetime(f"2023-{month}-{day}T{hour}:{minute}:00")
 
+
 def get_natural_language_date(str_date):
     """Transforms a datetime string into just natural language date.
-    
+
     Example: 2023-01-01 -> January 1
     """
     date = pd.to_datetime(str_date)
@@ -68,22 +69,29 @@ def get_natural_language_date(str_date):
 def generate_event_duration():
     return np.random.choice([1, 2, 3, 4, 5, 6]) * 0.5
 
+
 def generate_event_duration_minutes():
     duration_hours = generate_event_duration()
     return int(duration_hours * 60)
 
+
 def format_event_duration(duration_minutes):
     """Format the duration of an event in natural language.
-    
+
     Examples: 180 -> 3 hour, 30 -> 30 minute
     """
     if duration_minutes < 60:
         return f"{duration_minutes} minute"
     else:
         duration_hours = duration_minutes / 60
-        duration_hours = int(duration_hours) if int(duration_hours) == duration_hours else duration_hours
+        duration_hours = (
+            int(duration_hours)
+            if int(duration_hours) == duration_hours
+            else duration_hours
+        )
         return f"{duration_hours} hour"
-    
+
+
 def generate_end_time(start_time, duration):
     """
     Generate the end time of an event given the start time and duration.
@@ -105,9 +113,10 @@ def create_email(email_ids, sample_emails, email_content_pairs):
     )
     return email_id, recipient, subject, sent_date, body
 
+
 def get_natural_language_time(str_time):
     """Transforms a datetime string into just natural language time.
-    
+
     For example: 2023-01-01 09:30:00 -> 9.30, 2023-01-01 09:00:00 -> 9
     """
     str_time = str_time.split(":")

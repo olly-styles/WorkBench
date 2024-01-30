@@ -7,7 +7,7 @@ from src.data_generation.calendar.data_generation_utils import (
     generate_event_duration_minutes,
     format_event_duration,
     get_natural_language_time,
-    get_natural_language_date
+    get_natural_language_date,
 )
 
 random.seed(42)
@@ -20,14 +20,6 @@ SINGLE_ACTION_TEMPLATES = [
     {
         "question": "Create a {duration} event called {event_name} on {date} at {time} with {email}",
         "answer": """calendar.create_event({{'event_name': '{event_name}', 'participant_email': '{email}', 'event_start': '{date} {time}', 'duration': '{duration_minutes}'}})""",
-    },
-    {
-        "question": "Delete the {event_name} event",
-        "answer": """calendar.delete_event({{'event_id': '{event_id}'}})""",
-    },
-    {
-        "question": "Change the name of the {event_name} event to {new_event_name}",
-        "answer": """calendar.update_event({{'event_id': '{event_id}', 'field': 'event_name', 'new_value': '{new_event_name}'}})""",
     },
 ]
 
@@ -53,9 +45,7 @@ for template in SINGLE_ACTION_TEMPLATES:
         duration = format_event_duration(duration_minutes)
         email = random.choice(emails)
         end_time = generate_end_time(f"{date} {time}", duration)
-        event_id = random.choice(event_ids)
-        event_name = calendar_events.set_index("event_id").loc[event_id, "event_name"]
-        new_event_name = random.choice(events)
+        event_name = random.choice(events)
 
         question = template["question"].format(
             date=natural_language_date,
@@ -64,8 +54,6 @@ for template in SINGLE_ACTION_TEMPLATES:
             event_name=event_name,
             email=email,
             end_time=end_time,
-            event_id=event_id,
-            new_event_name=new_event_name
         )
         answer = template["answer"].format(
             date=date,
@@ -74,9 +62,7 @@ for template in SINGLE_ACTION_TEMPLATES:
             event_name=event_name,
             email=email,
             end_time=end_time,
-            event_id=event_id,
             duration_minutes=duration_minutes,
-            new_event_name=new_event_name
         )
 
         if question not in generated_questions_and_answers:
