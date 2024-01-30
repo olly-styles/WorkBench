@@ -1,6 +1,11 @@
 import pandas as pd
 import random
 import csv
+import sys
+import os
+
+project_root = os.path.abspath(os.path.curdir)
+sys.path.append(project_root)
 
 from src.data_generation.calendar.data_generation_utils import (
     generate_end_time,
@@ -11,7 +16,7 @@ random.seed(42)
 
 SINGLE_ACTION_TEMPLATES = [
     {
-        "question": "How many events are there on {date} with Carlos?",
+        "question": "How many events are there on {date} with {name}?",
         "answer": """calendar.search_events({{'query': 'Carlos', 'time_min': '{date} 00:00:00', 'time_max': '{date} 23:59:59'}})""",
     },
     {
@@ -19,12 +24,12 @@ SINGLE_ACTION_TEMPLATES = [
         "answer": """calendar.create_event({{'event_name': '{event_name}', 'participant_email': '{email}', 'event_start': '{date} {time}', 'duration': '{duration_minutes}'}})""",
     },
     {
-        "question": "Delete the event {event_id}",
-        "answer": """calendar.delete_event({{'event_id': '{event_id}'}})""",
+        "question": "How long is the {event_name} on {date}?",
+        "answer": """calendar.search_events({{'query': '{event_name}', 'time_min': '{date} 00:00:00', 'time_max': '{date} 23:59:59'}})""",
     },
     {
-        "question": "Change the name of the event {event_id} to {event_name}",
-        "answer": """calendar.update_event({{'event_id': '{event_id}', 'field': 'event_name', 'new_value': '{event_name}'}})""",
+        "question": "What time is the first event on {date}?",
+        "answer": """calendar.search_events({{'query': '', 'time_min': '{date} 00:00:00', 'time_max': '{date} 23:59:59'}})""",
     },
 ]
 
@@ -34,7 +39,7 @@ times = list(calendar_events["event_start"].str.split(" ").str[1].unique())
 events = list(calendar_events["event_name"].unique())
 emails = list(calendar_events["participant_email"].unique())
 event_ids = list(calendar_events["event_id"].unique())
-
+names = [email.split(".")[0] for email in emails]
 
 # Generate a limited number of unique single-action questions and answers
 generated_questions_and_answers = []
@@ -53,7 +58,8 @@ for template in SINGLE_ACTION_TEMPLATES:
         event_name = random.choice(events)
         email = random.choice(emails)
         end_time = generate_end_time(f"{date} {time}", duration)
-        event_id = random.choice(event_ids)
+        event_name = random.choice(events)
+        name = random.choice(names)
 
         question = template["question"].format(
             date=date,
@@ -62,7 +68,7 @@ for template in SINGLE_ACTION_TEMPLATES:
             event_name=event_name,
             email=email,
             end_time=end_time,
-            event_id=event_id,
+            name=name,
         )
         answer = template["answer"].format(
             date=date,
