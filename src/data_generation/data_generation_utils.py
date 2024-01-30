@@ -102,8 +102,8 @@ def generate_end_time(start_time, duration):
     return end_time
 
 
-def create_email(email_ids, sample_emails, email_content_pairs):
-    email_id = str(len(email_ids)).zfill(8)
+def create_email(existing_emails, sample_emails, email_content_pairs):
+    email_id = str(len(existing_emails)).zfill(8)
     recipient = sample_emails.sample().iloc[0, 0]
     subject = np.random.choice(list(email_content_pairs.keys()))
     body = email_content_pairs[subject]
@@ -111,6 +111,12 @@ def create_email(email_ids, sample_emails, email_content_pairs):
         start=pd.to_datetime("2023-10-01T00:00:00"),
         end=pd.to_datetime("2023-12-31T23:59:59"),
     )
+    # generate another date if it's already in the emails
+    while sent_date in existing_emails["sent_date"]:
+        sent_date = generate_datetime_between(
+            start=pd.to_datetime("2023-10-01T00:00:00"),
+            end=pd.to_datetime("2023-12-31T23:59:59"),
+        )
     return email_id, recipient, subject, sent_date, body
 
 

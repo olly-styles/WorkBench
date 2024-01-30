@@ -78,13 +78,14 @@ def search_emails(query="", date_min=None, date_max=None):
         emails = [
             email
             for email in emails
-            if pd.Timestamp(email["sent_date"]) >= pd.Timestamp(date_min)
+            if pd.Timestamp(email["sent_date"]).date() >= pd.Timestamp(date_min).date()
         ]
     if date_max:
+        # inclusive, remove time from timestamp
         emails = [
             email
             for email in emails
-            if pd.Timestamp(email["sent_date"]) <= pd.Timestamp(date_max)
+            if pd.Timestamp(email["sent_date"]).date() <= pd.Timestamp(date_max).date()
         ]
     if emails:
         return emails[:5]
@@ -152,3 +153,33 @@ def delete_email(email_id=None):
         return "Email deleted successfully."
     else:
         return "Email not found."
+
+
+@tool("email.forward_email", return_direct=False)
+def forward_email(email_id=None, recipient=None):
+    """
+    Forwards an email to the specified recipient.
+
+    Parameters
+    ----------
+    email_id : str, optional
+        Unique ID of the email to be forwarded.
+    recipient : str, optional
+        Email address of the recipient.
+
+    Returns
+    -------
+    message : str
+        Message indicating whether the email was forwarded successfully.
+
+    Examples
+    --------
+    >>> email.forward_email("12345678", "jane@example.com")
+    "Email forwarded successfully."
+    """
+    if not email_id or not recipient:
+        return "Email ID or recipient not provided."
+    if email_id not in EMAILS["email_id"].values:
+        print(EMAILS)
+        return "Email not found."
+    return "Email forwarded successfully."

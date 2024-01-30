@@ -19,19 +19,19 @@ random.seed(42)
 
 SINGLE_ACTION_TEMPLATES = [
     {
-        "question": "How many events are there on {date} with {name}?",
+        "question": "How many events are there on {natural_language_date} with {name}?",
         "answer": """calendar.search_events({{'query': 'Carlos', 'time_min': '{date} 00:00:00', 'time_max': '{date} 23:59:59'}})""",
     },
     {
-        "question": "Create a {duration} event called {event_name} on {date} at {time} with {email}",
+        "question": "Create a {duration} event called {event_name} on {natural_language_date} at {time} with {email}",
         "answer": """calendar.create_event({{'event_name': '{event_name}', 'participant_email': '{email}', 'event_start': '{date} {time}', 'duration': '{duration_minutes}'}})""",
     },
     {
-        "question": "How long is the {event_name} on {date}?",
+        "question": "How long is the {event_name} on {natural_language_date}?",
         "answer": """calendar.search_events({{'query': '{event_name}', 'time_min': '{date} 00:00:00', 'time_max': '{date} 23:59:59'}})""",
     },
     {
-        "question": "What time is the first event on {date}?",
+        "question": "What time is the first event on {natural_language_date}?",
         "answer": """calendar.search_events({{'query': '', 'time_min': '{date} 00:00:00', 'time_max': '{date} 23:59:59'}})""",
     },
 ]
@@ -62,7 +62,7 @@ for template in SINGLE_ACTION_TEMPLATES:
         name = random.choice(names)
 
         question = template["question"].format(
-            date=natural_language_date,
+            natural_language_date=natural_language_date,
             time=natural_language_time,
             duration=duration,
             event_name=event_name,
@@ -79,8 +79,8 @@ for template in SINGLE_ACTION_TEMPLATES:
             end_time=end_time,
             duration_minutes=duration_minutes,
         )
-
-        if question not in generated_questions_and_answers:
+        questions = [q["question"] for q in generated_questions_and_answers]
+        if question not in questions:
             generated_questions_and_answers.append(
                 {"question": question, "answer": answer, "template": template}
             )

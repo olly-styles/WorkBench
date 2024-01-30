@@ -1,6 +1,10 @@
 import pandas as pd
-import numpy as np
 from tqdm import tqdm
+import os
+import sys
+
+project_root = os.path.abspath(os.path.curdir)
+sys.path.append(project_root)
 
 from src.data_generation.data_generation_utils import create_email
 
@@ -16,7 +20,7 @@ emails_df = pd.DataFrame(columns=["email_id", "sender", "subject", "sent_date", 
 
 for _ in tqdm(range(num_emails)):
     email_id, sender, subject, sent_date, body = create_email(
-        emails_df["email_id"], sample_emails, email_content_pairs
+        emails_df, sample_emails, email_content_pairs
     )
     emails_df.loc[len(emails_df)] = [email_id, sender, subject, sent_date, body]
 

@@ -5,6 +5,8 @@ from langchain_openai import ChatOpenAI, OpenAI
 from langchain.agents import initialize_agent, AgentType
 import sys
 import os
+import csv
+
 project_root = os.path.abspath(os.path.curdir)
 sys.path.append(project_root)
 
@@ -69,6 +71,9 @@ agent = initialize_agent(
     return_intermediate_steps=True,
     max_iterations=5,
 )
+agent.agent.llm_chain.prompt.messages[0].prompt.template = (
+    "The year is 2023. " + agent.agent.llm_chain.prompt.messages[0].prompt.template
+)
 
 for question in questions:
     response = agent({"input": question})
@@ -104,5 +109,7 @@ for question in questions:
 
 current_datetime = str(pd.Timestamp.now())
 results.to_csv(
-    "data/results/answers_" + args.model_name + current_datetime + ".csv", index=False
+    "data/results/answers_" + args.model_name + current_datetime + ".csv",
+    index=False,
+    quoting=csv.QUOTE_ALL,
 )

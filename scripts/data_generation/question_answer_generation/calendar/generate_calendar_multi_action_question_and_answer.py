@@ -19,15 +19,15 @@ random.seed(42)
 
 MULTI_ACTION_TEMPLATES = [
     {
-        "question": "Delete the first event on {date}",
+        "question": "Delete the first event on {natural_language_date}",
         "answer": """calendar.delete_event({{'event_id': '{first_event_id}'}})""",
     },
     {
-        "question": "Change the name of the last event on {date} to {event_name}",
+        "question": "Change the name of the last event on {natural_language_date} to {event_name}",
         "answer": """calendar.update_event({{'event_id': '{last_event_id}', 'field': 'event_name', 'new_value': '{event_name}'}})""",
     },
     {
-        "question": "Push back my first meeting with {name} on {date} by {duration}s",
+        "question": "Push back my first meeting with {name} on {natural_language_date} by {duration}s",
         "answer": """calendar.update_event({{'event_id': '{first_event_with_name_id}', 'field': 'event_start', 'new_value': '{new_start}'}})""",
     },
     {
@@ -81,7 +81,7 @@ for template in MULTI_ACTION_TEMPLATES:
         new_start = generate_end_time(first_event_with_name["event_start"], duration)
 
         question = template["question"].format(
-            date=natural_language_date,
+            natural_language_date=natural_language_date,
             duration=duration,
             name=name,
             event_name=event_name,
@@ -96,8 +96,8 @@ for template in MULTI_ACTION_TEMPLATES:
             event_id=event_id,
             new_event_name=new_event_name,
         )
-
-        if question not in generated_questions_and_answers:
+        questions = [q["question"] for q in generated_questions_and_answers]
+        if question not in questions:
             generated_questions_and_answers.append(
                 {"question": question, "answer": answer, "template": template}
             )
