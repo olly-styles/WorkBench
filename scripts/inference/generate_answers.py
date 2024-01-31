@@ -20,7 +20,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "--model_name",
     type=str,
-    help="model name, either gpt-3.5-turbo-instruct or gpt-4-1106-preview",
+    help="model name, either gpt-3.5-turbo-instruct or gpt-4-0125-preview",
     required=True,
 )
 parser.add_argument(
@@ -50,16 +50,16 @@ if args.model_name == "gpt-3.5-turbo-instruct":
         temperature=0,
         model_kwargs={"seed": 42},
     )
-elif args.model_name == "gpt-4-1106-preview":
+elif args.model_name == "gpt-4-0125-preview":
     llm = ChatOpenAI(
-        model_name="gpt-4-1106-preview",
+        model_name="gpt-4-0125-preview",
         openai_api_key=OPENAI_KEY,
         temperature=0,
         model_kwargs={"seed": 42},
     )
 else:
     raise ValueError(
-        "Invalid --model_name. Must be gpt-3.5-turbo-instruct or gpt-4-1106-preview."
+        "Invalid --model_name. Must be gpt-3.5-turbo-instruct or gpt-4-0125-preview."
     )
 
 

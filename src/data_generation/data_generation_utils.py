@@ -108,16 +108,19 @@ def create_email(existing_emails, sample_emails, email_content_pairs):
     recipient = sample_emails.sample().iloc[0, 0]
     subject = np.random.choice(list(email_content_pairs.keys()))
     body = email_content_pairs[subject]
-    sent_date = generate_datetime_between(
+    sent_datetime = generate_datetime_between(
         start=pd.to_datetime("2023-10-01T00:00:00"),
         end=pd.to_datetime("2023-12-31T23:59:59"),
     )
-    # generate another date if it's already in the emails
-    while sent_date in existing_emails["sent_date"]:
-        sent_date = generate_datetime_between(
-            start=pd.to_datetime("2023-10-01T00:00:00"),
-            end=pd.to_datetime("2023-12-31T23:59:59"),
-        )
+    sent_date = sent_datetime.strftime("%Y-%m-%d")
+    # generate another date if it's already in the emails or if there is already an email with the same subject on the same day
+    if (
+        sent_date in existing_emails["sent_date"]
+        or subject
+        in existing_emails[existing_emails["sent_date"] == sent_date]["subject"].values
+    ):
+        return create_email(existing_emails, sample_emails, email_content_pairs)
+
     return email_id, recipient, subject, sent_date, body
 
 

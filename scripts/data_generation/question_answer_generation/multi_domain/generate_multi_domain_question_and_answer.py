@@ -22,12 +22,12 @@ calendar_events = pd.read_csv("data/processed/calendar_events.csv", dtype=str)
 
 MULTI_DOMAIN_ACTION_TEMPLATES = [
     {
-        "question": """Find the email from {natural_language_email_date} about '{subject}' and schedule a {natural_language_duration} meeting about the '{subject}' at {natural_language_time} with the sender for {natural_language_meeting_date}.""",
-        "answer": """calender.create_event({{'event_name': '{subject}', 'participant_email': '{sender}', 'event_start': '{meeting_datetime}', 'duration': '{duration}'}})""",
+        "question": """Find the email from {natural_language_email_date} about '{subject}' and schedule a {natural_language_duration} meeting called '{subject}' at {natural_language_time} with the sender for {natural_language_meeting_date}.""",
+        "answer": """calendar.create_event({{'event_name': '{subject}', 'participant_email': '{sender}', 'event_start': '{meeting_datetime}', 'duration': '{duration}'}})""",
     },
     {
-        "question": "Find the first event on {natural_language_event_date} and send an email to the participant with the event name as the subject and the body 'Don't forget this event.'",
-        "answer": "email.send_email({{'recipient': '{participant}', 'subject': '{event_name}', 'body': 'Don't forget this event.'}})",
+        "question": "Find the first event on {natural_language_event_date} and send an email to the participant with the event name as the subject and the body 'Remember to attend this event.'",
+        "answer": "email.send_email({{'recipient': '{participant}', 'subject': '{event_name}', 'body': 'Remember to attend this event.'}})",
     },
 ]
 
