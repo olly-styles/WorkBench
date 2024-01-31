@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from datetime import datetime
 
 np.random.seed(42)
 
@@ -123,11 +124,10 @@ def create_email(existing_emails, sample_emails, email_content_pairs):
 def get_natural_language_time(str_time):
     """Transforms a datetime string into just natural language time.
 
-    For example: 2023-01-01 09:30:00 -> 9.30, 2023-01-01 09:00:00 -> 9
+    For example: 09:30:00 -> 9:30am, 13:00:00 -> 1pm
     """
-    str_time = str_time.split(":")
-    if int(str_time[1]) > 0:
-        new_start = str(int(str_time[0])) + "." + str_time[1]
+    dt = datetime.strptime(str_time, "%H:%M:%S")
+    if dt.minute == 0:
+        return dt.strftime("%-I%p").lower()
     else:
-        new_start = str(int(str_time[0]))
-    return new_start
+        return dt.strftime("%-I:%M%p").lower()
