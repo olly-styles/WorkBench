@@ -13,6 +13,7 @@ from src.data_generation.data_generation_utils import (
     get_natural_language_date,
     get_natural_language_time,
 )
+from src.tools import calendar
 
 random.seed(42)
 
@@ -23,6 +24,10 @@ MULTI_DOMAIN_ACTION_TEMPLATES = [
     {
         "question": """Find the email from {natural_language_email_date} about '{subject}' and schedule a {natural_language_duration} meeting about the '{subject}' at {natural_language_time} with the sender for {natural_language_meeting_date}.""",
         "answer": """calender.create_event({{'event_name': '{subject}', 'participant_email': '{sender}', 'event_start': '{meeting_datetime}', 'duration': '{duration}'}})""",
+    },
+    {
+        "question": "Find the first event on {natural_language_event_date} and send an email to the participant with the event name as the subject and the body 'Don't forget this event.'",
+        "answer": "email.send_email({{'recipient': '{participant}', 'subject': '{event_name}', 'body': 'Don't forget this event.'}})",
     },
 ]
 
@@ -50,18 +55,33 @@ for template in MULTI_DOMAIN_ACTION_TEMPLATES:
             meeting_datetime.split(" ")[1]
         )
 
+        date = random.choice(calendar_events["event_start"].str.split(" ").str[0])
+        first_event_id = calendar.search_events.func(
+            time_min=f"{date} 00:00:00", time_max=f"{date} 23:59:59"
+        )[0]["event_id"]
+        natural_language_event_date = get_natural_language_date(date)
+        participant = calendar_events.set_index("event_id").loc[
+            first_event_id, "participant_email"
+        ]
+        event_name = calendar_events.set_index("event_id").loc[
+            first_event_id, "event_name"
+        ]
+
         question = template["question"].format(
             subject=subject,
             natural_language_email_date=natural_language_email_date,
             natural_language_duration=natural_language_duration,
             natural_language_time=natural_language_time,
             natural_language_meeting_date=natural_language_meeting_date,
+            natural_language_event_date=natural_language_event_date,
         )
         answer = template["answer"].format(
             subject=subject,
             sender=sender,
             meeting_datetime=meeting_datetime,
             duration=duration_minutes,
+            participant=participant,
+            event_name=event_name,
         )
 
         generated_questions_and_answers.append(
