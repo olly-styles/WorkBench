@@ -20,7 +20,7 @@ random.seed(42)
 SINGLE_ACTION_TEMPLATES = [
     {
         "question": "How many events are there on {natural_language_date} with {name}?",
-        "answer": """calendar.search_events({{'query': 'Carlos', 'time_min': '{date} 00:00:00', 'time_max': '{date} 23:59:59'}})""",
+        "answer": """calendar.search_events({{'query': '{name}', 'time_min': '{date} 00:00:00', 'time_max': '{date} 23:59:59'}})""",
     },
     {
         "question": "Create a {duration} event called {event_name} on {natural_language_date} at {time} with {email}",
@@ -32,7 +32,7 @@ SINGLE_ACTION_TEMPLATES = [
     },
     {
         "question": "What time is the first event on {natural_language_date}?",
-        "answer": """calendar.search_events({{'query': '', 'time_min': '{date} 00:00:00', 'time_max': '{date} 23:59:59'}})""",
+        "answer": """calendar.search_events({{'time_min': '{date} 00:00:00', 'time_max': '{date} 23:59:59'}})""",
     },
 ]
 
@@ -46,7 +46,7 @@ names = [email.split(".")[0] for email in emails]
 
 # Generate a limited number of unique single-action questions and answers
 generated_questions_and_answers = []
-max_questions_per_template = 3  # Limit the number of questions per template
+max_questions_per_template = 10  # Limit the number of questions per template
 
 for template in SINGLE_ACTION_TEMPLATES:
     for _ in range(max_questions_per_template):
@@ -73,6 +73,7 @@ for template in SINGLE_ACTION_TEMPLATES:
         answer = template["answer"].format(
             date=date,
             time=time,
+            name=name,
             duration=duration_minutes,
             event_name=event_name,
             email=email,

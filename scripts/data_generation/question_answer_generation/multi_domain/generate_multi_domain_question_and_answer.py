@@ -32,7 +32,7 @@ MULTI_DOMAIN_ACTION_TEMPLATES = [
 ]
 
 generated_questions_and_answers = []
-max_questions_per_template = 5
+max_questions_per_template = 10
 
 
 for template in MULTI_DOMAIN_ACTION_TEMPLATES:
