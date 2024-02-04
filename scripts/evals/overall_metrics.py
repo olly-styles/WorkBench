@@ -7,7 +7,7 @@ sys.path.append(project_root)
 from src.evals.utils import calculate_metrics
 
 
-tools = ["sample"]
+tools = ["calendar", "email"]
 models = ["gpt-3.5-turbo-instruct", "gpt-4-0125-preview"]
 
 results_root_dir = os.path.join("data", "results")
@@ -21,6 +21,7 @@ for tool in tools:
             if latest_file:
                 predictions = pd.read_csv(latest_file)
                 ground_truth = pd.read_csv(os.path.join("data", "processed", f"{tool}_questions_and_answers_{action}_action.csv"), dtype=str)
+                print(f"\nCalculating metrics for {tool}, {action} action with {model}")
                 calculate_metrics(ground_truth, predictions, print_errors=False)
             else:
-                print(f"No results found for {model} in {tool} {action} action.")
+                print(f"\nNo results found for {tool}, {action} action with {model}")
