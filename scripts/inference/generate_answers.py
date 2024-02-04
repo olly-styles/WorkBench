@@ -13,6 +13,7 @@ sys.path.append(project_root)
 from src.evals.utils import convert_agent_action_to_function_call
 from src.tools.toolkits import calendar_toolkit, email_toolkit
 from src.tools import calendar, email
+from src.evals.utils import calculate_metrics
 
 warnings.filterwarnings("ignore")  # supress langchain deprication warnings
 
@@ -113,3 +114,6 @@ results.to_csv(
     index=False,
     quoting=csv.QUOTE_ALL,
 )
+
+ground_truth = pd.read_csv(args.questions_path)
+calculate_metrics(ground_truth, results)
