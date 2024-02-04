@@ -108,12 +108,15 @@ for question in questions:
     email.EMAILS = pd.read_csv("data/processed/emails.csv", dtype=str)
 
 
-current_datetime = str(pd.Timestamp.now())
-results.to_csv(
-    "data/results/answers_" + args.model_name + current_datetime + ".csv",
-    index=False,
-    quoting=csv.QUOTE_ALL,
-)
+question_type = args.questions_path.split("/")[-1].split(".")[0].replace("questions_and_answers_", "")
+domain, action_length = question_type.split("_")[:2]
+save_dir = os.path.join("data", "results", domain, action_length)
+os.makedirs(save_dir, exist_ok=True)
+
+# Removes microseconds and makes it more readable
+current_datetime = str(pd.Timestamp.now()).split(".")[0].replace(" ", "_").replace(":", "-")
+save_path = os.path.join(save_dir, args.model_name + "_" + current_datetime + ".csv")
+results.to_csv(save_path, index=False, quoting=csv.QUOTE_ALL)
 
 ground_truth = pd.read_csv(args.questions_path)
 calculate_metrics(ground_truth, results)
