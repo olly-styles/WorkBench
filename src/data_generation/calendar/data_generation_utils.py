@@ -34,8 +34,7 @@ def create_calendar_event(event_names, emails, existing_events):
             start=pd.to_datetime("2023-10-01T00:00:00"),
             end=pd.to_datetime("2023-12-31T23:59:59"),
         )
-        duration_hours = generate_event_duration()
-        duration_minutes = int(duration_hours * 60)
+        duration_minutes = generate_event_duration_minutes()
         event_id = str(len(existing_events)).zfill(8)
 
         # Check if the event time overlaps with an existing event time.
@@ -58,8 +57,39 @@ def generate_datetime_between(start, end):
     return pd.to_datetime(f"2023-{month}-{day}T{hour}:{minute}:00")
 
 
+def get_natural_language_date(str_date):
+    """Transforms a datetime string into just natural language date.
+
+    Example: 2023-01-01 -> January 1
+    """
+    date = pd.to_datetime(str_date)
+    return date.strftime("%B %d").lstrip("0").replace(" 0", " ")
+
+
 def generate_event_duration():
     return np.random.choice([1, 2, 3, 4, 5, 6]) * 0.5
+
+
+def generate_event_duration_minutes():
+    duration_hours = generate_event_duration()
+    return int(duration_hours * 60)
+
+
+def format_event_duration(duration_minutes):
+    """Format the duration of an event in natural language.
+
+    Examples: 180 -> 3 hour, 30 -> 30 minute
+    """
+    if duration_minutes < 60:
+        return f"{duration_minutes} minute"
+    else:
+        duration_hours = duration_minutes / 60
+        duration_hours = (
+            int(duration_hours)
+            if int(duration_hours) == duration_hours
+            else duration_hours
+        )
+        return f"{duration_hours} hour"
 
 
 def generate_end_time(start_time, duration):
@@ -82,3 +112,16 @@ def create_email(email_ids, sample_emails, email_content_pairs):
         end=pd.to_datetime("2023-12-31T23:59:59"),
     )
     return email_id, recipient, subject, sent_date, body
+
+
+def get_natural_language_time(str_time):
+    """Transforms a datetime string into just natural language time.
+
+    For example: 2023-01-01 09:30:00 -> 9.30, 2023-01-01 09:00:00 -> 9
+    """
+    str_time = str_time.split(":")
+    if int(str_time[1]) > 0:
+        new_start = str(int(str_time[0])) + "." + str_time[1]
+    else:
+        new_start = str(int(str_time[0]))
+    return new_start

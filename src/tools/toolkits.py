@@ -29,5 +29,9 @@ tool_information = [
     for tool in all_tools
 ]
 
-calendar_toolkit = [t["tool"] for t in tool_information if t["toolkit"] == "calendar"]
-email_toolkit = [t["tool"] for t in tool_information if t["toolkit"] == "email"]
+calendar_toolkit = [
+    t["tool"] for t in tool_information if t["name"].split(".")[0] == "calendar"
+]
+email_toolkit = [
+    t["tool"] for t in tool_information if t["name"].split(".")[1] == "email"
+]
