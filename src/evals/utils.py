@@ -50,7 +50,7 @@ def extract_function_names(s):
     """Extracts function names from a string"""
     return re.findall(r"(\b\w+\.\w+)\(", s)
 
-def calculate_metrics(ground_truth_df, predictions_df):
+def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     """"""
     predictions = predictions_df.rename(columns={"function_calls": "prediction"})
     predictions = predictions.fillna("")
@@ -65,12 +65,13 @@ def calculate_metrics(ground_truth_df, predictions_df):
     df["has_side_effects"] = df.apply(has_side_effects, axis=1)
 
     # print out the questions that were not answered correctly
-    for index, row in df[~df["correct"]].iterrows():
-        print(f"Question: {row['question']}")
-        print(f"Prediction: {row['prediction']}")
-        print(f"Ground truth: {row['ground_truth']}")
-        print(f"Has side effects: {row['has_side_effects']}")
-        print("")
+    if print_errors:
+        for index, row in df[~df["correct"]].iterrows():
+            print(f"Question: {row['question']}")
+            print(f"Prediction: {row['prediction']}")
+            print(f"Ground truth: {row['ground_truth']}")
+            print(f"Has side effects: {row['has_side_effects']}")
+            print("")
 
     # print accuracy as a percentage to 2dp
     print(f"Accuracy: {round(df['correct'].mean() * 100, 2)}%")
