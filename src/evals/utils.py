@@ -88,11 +88,10 @@ def get_latest_results_from_dir(results_root_dir, tool, action, model_list):
         model_results_files = [os.path.join(results_dir, file) for file in results_files if model in file]
         if not len(model_results_files):
             print(f"\nNo results found for {tool}, {action} action with {model}")
-            return
-        
-        latest_results_file = max(model_results_files, key=os.path.getctime)
-        ground_truth_path = os.path.join("data", "processed", f"{tool}_questions_and_answers_{action}_action.csv")
-        predictions = pd.read_csv(latest_results_file)
-        ground_truth = pd.read_csv(ground_truth_path, dtype=str)
-        print(f"\nCalculating metrics for {tool}, {action} action with {model}")
-        calculate_metrics(ground_truth, predictions, print_errors=False)
+        else:        
+            latest_results_file = max(model_results_files, key=os.path.getctime)
+            ground_truth_path = os.path.join("data", "processed", f"{tool}_questions_and_answers_{action}_action.csv")
+            predictions = pd.read_csv(latest_results_file)
+            ground_truth = pd.read_csv(ground_truth_path, dtype=str)
+            print(f"\nCalculating metrics for {tool}, {action} action with {model}")
+            calculate_metrics(ground_truth, predictions, print_errors=False)
