@@ -45,7 +45,7 @@ event_ids = list(calendar_events["event_id"].unique())
 
 # Generate a limited number of unique multi-action questions and answers
 generated_questions_and_answers = []
-max_questions_per_template = 1  # Limit the number of questions per template
+max_questions_per_template = 10  # Limit the number of questions per template
 
 for template in MULTI_ACTION_TEMPLATES:
     for _ in range(max_questions_per_template):
