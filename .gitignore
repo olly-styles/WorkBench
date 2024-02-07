@@ -4,3 +4,4 @@ venv/
 __pycache__/
 openai_key.txt
 downloads
+data/results
