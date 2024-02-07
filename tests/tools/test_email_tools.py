@@ -109,3 +109,24 @@ def test_delete_email_not_found():
     Tests delete_email with an email_id that does not exist.
     """
     assert email.delete_email.func("00000000") == "Email not found."
+
+
+def test_forward_email():
+    """
+    Tests forward_email.
+    """
+    assert (
+        email.forward_email.func("12345679", "example@email.com")
+        == "Email forwarded successfully."
+    )
+
+
+def test_forward_email_missing_args():
+    """
+    Tests forward_email with missing arguments.
+    """
+    assert email.forward_email.func() == "Email ID or recipient not provided."
+    assert email.forward_email.func("12345679") == "Email ID or recipient not provided."
+    assert email.forward_email.func(recipient="example@email.com") == (
+        "Email ID or recipient not provided."
+    )

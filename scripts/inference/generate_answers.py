@@ -5,6 +5,8 @@ from langchain_openai import ChatOpenAI, OpenAI
 from langchain.agents import initialize_agent, AgentType
 import sys
 import os
+import csv
+
 project_root = os.path.abspath(os.path.curdir)
 sys.path.append(project_root)
 
@@ -19,7 +21,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "--model_name",
     type=str,
-    help="model name, either gpt-3.5-turbo-instruct or gpt-4-1106-preview",
+    help="model name, either gpt-3.5-turbo-instruct or gpt-4-0125-preview",
     required=True,
 )
 parser.add_argument(
@@ -49,16 +51,16 @@ if args.model_name == "gpt-3.5-turbo-instruct":
         temperature=0,
         model_kwargs={"seed": 42},
     )
-elif args.model_name == "gpt-4-1106-preview":
+elif args.model_name == "gpt-4-0125-preview":
     llm = ChatOpenAI(
-        model_name="gpt-4-1106-preview",
+        model_name="gpt-4-0125-preview",
         openai_api_key=OPENAI_KEY,
         temperature=0,
         model_kwargs={"seed": 42},
     )
 else:
     raise ValueError(
-        "Invalid --model_name. Must be gpt-3.5-turbo-instruct or gpt-4-1106-preview."
+        "Invalid --model_name. Must be gpt-3.5-turbo-instruct or gpt-4-0125-preview."
     )
 
 
@@ -69,6 +71,9 @@ agent = initialize_agent(
     verbose=True,
     return_intermediate_steps=True,
     max_iterations=5,
+)
+agent.agent.llm_chain.prompt.messages[0].prompt.template = (
+    "The year is 2023. " + agent.agent.llm_chain.prompt.messages[0].prompt.template
 )
 
 for question in questions:
@@ -105,7 +110,9 @@ for question in questions:
 
 current_datetime = str(pd.Timestamp.now())
 results.to_csv(
-    "data/results/answers_" + args.model_name + current_datetime + ".csv", index=False
+    "data/results/answers_" + args.model_name + current_datetime + ".csv",
+    index=False,
+    quoting=csv.QUOTE_ALL,
 )
 
 ground_truth = pd.read_csv(args.questions_path)

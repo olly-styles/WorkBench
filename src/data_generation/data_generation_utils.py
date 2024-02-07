@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from datetime import datetime
 
 np.random.seed(42)
 
@@ -102,26 +103,34 @@ def generate_end_time(start_time, duration):
     return end_time
 
 
-def create_email(email_ids, sample_emails, email_content_pairs):
-    email_id = str(len(email_ids)).zfill(8)
+def create_email(existing_emails, sample_emails, email_content_pairs):
+    email_id = str(len(existing_emails)).zfill(8)
     recipient = sample_emails.sample().iloc[0, 0]
     subject = np.random.choice(list(email_content_pairs.keys()))
     body = email_content_pairs[subject]
-    sent_date = generate_datetime_between(
+    sent_datetime = generate_datetime_between(
         start=pd.to_datetime("2023-10-01T00:00:00"),
         end=pd.to_datetime("2023-12-31T23:59:59"),
     )
+    sent_date = sent_datetime.strftime("%Y-%m-%d")
+    # generate another date if it's already in the emails or if there is already an email with the same subject on the same day
+    if (
+        sent_date in existing_emails["sent_date"]
+        or subject
+        in existing_emails[existing_emails["sent_date"] == sent_date]["subject"].values
+    ):
+        return create_email(existing_emails, sample_emails, email_content_pairs)
+
     return email_id, recipient, subject, sent_date, body
 
 
 def get_natural_language_time(str_time):
     """Transforms a datetime string into just natural language time.
 
-    For example: 2023-01-01 09:30:00 -> 9.30, 2023-01-01 09:00:00 -> 9
+    For example: 09:30:00 -> 9:30am, 13:00:00 -> 1pm
     """
-    str_time = str_time.split(":")
-    if int(str_time[1]) > 0:
-        new_start = str(int(str_time[0])) + "." + str_time[1]
+    dt = datetime.strptime(str_time, "%H:%M:%S")
+    if dt.minute == 0:
+        return dt.strftime("%-I%p").lower()
     else:
-        new_start = str(int(str_time[0]))
-    return new_start
+        return dt.strftime("%-I:%M%p").lower()

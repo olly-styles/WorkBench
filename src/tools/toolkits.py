@@ -10,6 +10,7 @@ all_tools = [
     email.search_emails,
     email.send_email,
     email.delete_email,
+    email.forward_email,
 ]
 
 tool_information = [
@@ -24,6 +25,7 @@ tool_information = [
             calendar.update_event,
             email.send_email,
             email.delete_email,
+            email.forward_email,
         ],
     }
     for tool in all_tools
@@ -33,5 +35,5 @@ calendar_toolkit = [
     t["tool"] for t in tool_information if t["name"].split(".")[0] == "calendar"
 ]
 email_toolkit = [
-    t["tool"] for t in tool_information if t["name"].split(".")[1] == "email"
+    t["tool"] for t in tool_information if t["name"].split(".")[0] == "email"
 ]
