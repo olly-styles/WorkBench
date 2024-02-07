@@ -19,12 +19,12 @@ SINGLE_ACTION_TEMPLATES = [
         "answer": """email.search_emails({{'query': '{query}'}})""",
     },
     {
-        "question": "Send an email to {recipient} with subject '{subject}' and body '{body}'",
+        "question": "Send an email to {recipient} saying '{body}' and title it '{subject}'",
         "answer": """email.send_email({{'recipient': '{recipient}', 'subject': '{subject}', 'body': '{body}'}})""",
     },
     {
-        "question": "Search for emails sent on {natural_language_date}",
-        "answer": """email.search_emails({{'date_min': '{date}', 'date_max': '{date}'}})""",
+        "question": "Show me the emails {name} sent me on {natural_language_date}",
+        "answer": """email.search_emails({{'query': '{name}', 'date_min': '{date}', 'date_max': '{date}'}})""",
     },
 ]
 
@@ -45,6 +45,7 @@ for template in SINGLE_ACTION_TEMPLATES:
         index = random.randint(0, len(subjects) - 1)
         body = bodies[index]
         subject = subjects[index]
+        name = senders[index].split("@")[0].split(".")[0]
         recipient = random.choice(senders)
         query = random.choice(subjects)
         date = random.choice(dates)
@@ -54,6 +55,7 @@ for template in SINGLE_ACTION_TEMPLATES:
             subject=subject,
             recipient=recipient,
             body=body,
+            name=name,
             query=query,
             natural_language_date=natural_language_date,
         )
@@ -61,6 +63,7 @@ for template in SINGLE_ACTION_TEMPLATES:
             subject=subject,
             recipient=recipient,
             body=body,
+            name=name,
             query=query,
             date=date,
         )
