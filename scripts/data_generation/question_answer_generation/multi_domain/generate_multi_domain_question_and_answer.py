@@ -96,7 +96,7 @@ for qa in generated_questions_and_answers:
 
 df = pd.DataFrame(generated_questions_and_answers)
 df.to_csv(
-    "data/processed/multi_domain_questions_and_answers.csv",
+    "data/processed/multi_domain_questions_and_answers_multi_action.csv",
     index=False,
     quoting=csv.QUOTE_ALL,
 )
