@@ -11,6 +11,7 @@ from src.tools.toolkits import calendar_toolkit, email_toolkit
 
 OPENAI_KEY = open("openai_key.txt", "r").read()
 
+
 def convert_agent_action_to_function_call(action):
     """Converts langchain_core.agents.AgentAction to an API call"""
     return action.tool + "(" + str(action.tool_input) + ")"
@@ -59,6 +60,7 @@ def extract_function_names(s):
     """Extracts function names from a string"""
     return re.findall(r"(\b\w+\.\w+)\(", s)
 
+
 def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     """"""
     predictions = predictions_df.rename(columns={"function_calls": "prediction"})
@@ -85,23 +87,32 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     # print accuracy as a percentage to 2dp
     print(f"Accuracy: {round(df['correct'].mean() * 100, 2)}%")
     # print number of side effects as a percentage to 2dp
-    print(f"Side effects: {round(df['has_side_effects'].mean() * 100, 2)}% of predictions")
-    
-def get_latest_results_from_dir(results_root_dir, tool, action, model_list):
+    print(
+        f"Side effects: {round(df['has_side_effects'].mean() * 100, 2)}% of predictions"
+    )
+
+
+def get_latest_results_from_dir(
+    results_root_dir, tool, action, model_list, print_errors=False
+):
     """Get the latest results for each model in the results directory"""
     results_dir = os.path.join(results_root_dir, tool, action)
     results_files = os.listdir(results_dir)
     for model in model_list:
-        model_results_files = [os.path.join(results_dir, file) for file in results_files if model in file]
+        model_results_files = [
+            os.path.join(results_dir, file) for file in results_files if model in file
+        ]
         if not len(model_results_files):
             print(f"\nNo results found for {tool}, {action} action with {model}")
-        else:        
+        else:
             latest_results_file = max(model_results_files, key=os.path.getctime)
-            ground_truth_path = os.path.join("data", "processed", f"{tool}_questions_and_answers_{action}_action.csv")
+            ground_truth_path = os.path.join(
+                "data", "processed", f"{tool}_questions_and_answers_{action}_action.csv"
+            )
             predictions = pd.read_csv(latest_results_file)
             ground_truth = pd.read_csv(ground_truth_path, dtype=str)
             print(f"\nCalculating metrics for {tool}, {action} action with {model}")
-            calculate_metrics(ground_truth, predictions, print_errors=False)
+            calculate_metrics(ground_truth, predictions, print_errors=print_errors)
 
 
 def generate_results(questions_path, model_name):
@@ -134,7 +145,6 @@ def generate_results(questions_path, model_name):
             "Invalid --model_name. Must be gpt-3.5-turbo-instruct or gpt-4-0125-preview."
         )
 
-
     agent = initialize_agent(
         llm=llm,
         agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
@@ -155,7 +165,8 @@ def generate_results(questions_path, model_name):
 
         agent_stopped = (
             True
-            if response["output"] == "Agent stopped due to iteration limit or time limit."
+            if response["output"]
+            == "Agent stopped due to iteration limit or time limit."
             else False
         )
 
@@ -166,7 +177,14 @@ def generate_results(questions_path, model_name):
             [
                 results,
                 pd.DataFrame(
-                    [[question, ",".join(function_calls), str(response), agent_stopped]],
+                    [
+                        [
+                            question,
+                            ",".join(function_calls),
+                            str(response),
+                            agent_stopped,
+                        ]
+                    ],
                     columns=["question", "function_calls", "full_response", "stopped"],
                 ),
             ],
@@ -178,14 +196,19 @@ def generate_results(questions_path, model_name):
         )
         email.EMAILS = pd.read_csv("data/processed/emails.csv", dtype=str)
 
-
-    question_type = questions_path.split("/")[-1].split(".")[0].replace("questions_and_answers_", "")
+    question_type = (
+        questions_path.split("/")[-1]
+        .split(".")[0]
+        .replace("questions_and_answers_", "")
+    )
     domain, action_length = question_type.split("_")[:2]
     save_dir = os.path.join("data", "results", domain, action_length)
     os.makedirs(save_dir, exist_ok=True)
 
     # Removes microseconds and makes it more readable
-    current_datetime = str(pd.Timestamp.now()).split(".")[0].replace(" ", "_").replace(":", "-")
+    current_datetime = (
+        str(pd.Timestamp.now()).split(".")[0].replace(" ", "_").replace(":", "-")
+    )
     save_path = os.path.join(save_dir, model_name + "_" + current_datetime + ".csv")
     results.to_csv(save_path, index=False, quoting=csv.QUOTE_ALL)
     return results
