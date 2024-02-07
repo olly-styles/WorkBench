@@ -7,6 +7,7 @@ from langchain.agents import initialize_agent, AgentType
 import csv
 from src.tools import calendar, email
 from src.tools.toolkits import calendar_toolkit, email_toolkit
+from src.data_generation.data_generation_utils import TIME_NOW
 
 
 OPENAI_KEY = open("openai_key.txt", "r").read()
@@ -154,7 +155,7 @@ def generate_results(questions_path, model_name):
         max_iterations=5,
     )
     agent.agent.llm_chain.prompt.messages[0].prompt.template = (
-        "The year is 2023. " + agent.agent.llm_chain.prompt.messages[0].prompt.template
+        f"Today's date is {TIME_NOW.date()}. Remember the current date when answering queries." + agent.agent.llm_chain.prompt.messages[0].prompt.template
     )
 
     for question in questions:
