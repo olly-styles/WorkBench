@@ -23,19 +23,15 @@ MULTI_ACTION_TEMPLATES = [
         "answer": """calendar.delete_event({{'event_id': '{first_event_id}'}})""",
     },
     {
-        "question": "Change the name of the last event on {natural_language_date} to {event_name}",
-        "answer": """calendar.update_event({{'event_id': '{last_event_id}', 'field': 'event_name', 'new_value': '{event_name}'}})""",
-    },
-    {
         "question": "Push back my first meeting with {name} on {natural_language_date} by {duration}s",
         "answer": """calendar.update_event({{'event_id': '{first_event_with_name_id}', 'field': 'event_start', 'new_value': '{new_start}'}})""",
     },
     {
-        "question": "Delete the {event_name} event",
+        "question": "Delete the {event_name} event on {natural_language_date}",
         "answer": """calendar.delete_event({{'event_id': '{event_id}'}})""",
     },
     {
-        "question": "Change the name of the {event_name} event to {new_event_name}",
+        "question": "Change the name of the {event_name} event on {natural_language_date} to {new_event_name}",
         "answer": """calendar.update_event({{'event_id': '{event_id}', 'field': 'event_name', 'new_value': '{new_event_name}'}})""",
     },
 ]
@@ -49,15 +45,19 @@ event_ids = list(calendar_events["event_id"].unique())
 
 # Generate a limited number of unique multi-action questions and answers
 generated_questions_and_answers = []
-max_questions_per_template = 10  # Limit the number of questions per template
+max_questions_per_template = 1  # Limit the number of questions per template
 
 for template in MULTI_ACTION_TEMPLATES:
     for _ in range(max_questions_per_template):
-        date = random.choice(dates)
+        event_id = random.choice(event_ids)
+        date = (
+            calendar_events.set_index("event_id")
+            .loc[event_id, "event_start"]
+            .split(" ")[0]
+        )
         natural_language_date = get_natural_language_date(date)
         duration_minutes = generate_event_duration_minutes()
         duration = format_event_duration(duration_minutes)
-        event_id = random.choice(event_ids)
         event_name = calendar_events.set_index("event_id").loc[event_id, "event_name"]
         new_event_name = random.choice(events)
         while new_event_name == event_name:

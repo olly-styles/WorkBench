@@ -30,10 +30,6 @@ SINGLE_ACTION_TEMPLATES = [
         "question": "How long is the {event_name} on {natural_language_date}?",
         "answer": """calendar.search_events({{'query': '{event_name}', 'time_min': '{date} 00:00:00', 'time_max': '{date} 23:59:59'}})""",
     },
-    {
-        "question": "What time is the first event on {natural_language_date}?",
-        "answer": """calendar.search_events({{'time_min': '{date} 00:00:00', 'time_max': '{date} 23:59:59'}})""",
-    },
 ]
 
 calendar_events = pd.read_csv("data/processed/calendar_events.csv", dtype=str)
