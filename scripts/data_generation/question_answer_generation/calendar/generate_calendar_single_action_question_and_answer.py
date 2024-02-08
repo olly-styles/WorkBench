@@ -16,27 +16,13 @@ from src.data_generation.data_generation_utils import (
     TIME_NOW
 )
 
-from src.tools import calendar
-
 random.seed(42)
 
 SINGLE_ACTION_TEMPLATES = [
     {
-        "question": "Create a {duration} meeting called {event_name} on {natural_language_date} at {time} with {email}",
-        "answer": """calendar.create_event({{'event_name': '{event_name}','event_start': '{date} {time}','duration': {duration},'participant_email': '{email}'}})""",
-    }
-    {
-        "question": "Cancel my meetings tomorrow with {name} at {time}",
-        "answer": """calendar.delete_event({{'event_start': '{next_day}'}})""",
-    }
-    {
-        "question": "Cancel all my meetings tomorrow",
-        "answer": """calendar.delete_event({{'event_start': '{next_day}'}})""",
-    }
-    {
-        "question": "Cancel all future meetings with {name}",
-        "answer": """calendar.delete_event({{'event_start': '{next_day}'}})""",
-    }
+        "question": "Create a {duration} event called {event_name} on {natural_language_date} at {time} with {email}",
+        "answer": """calendar.create_event.func(event_name='{event_name}', participant_email='{email}', event_start='{date} {time}', duration='{duration}')""",
+    },
 ]
 
 calendar_events = pd.read_csv("data/processed/calendar_events.csv", dtype=str)

@@ -6,6 +6,14 @@ from langchain.tools import tool
 EMAILS = pd.read_csv("data/processed/emails.csv", dtype=str)
 
 
+def reset_state():
+    """
+    Resets the emails to the original state.
+    """
+    global EMAILS
+    EMAILS = pd.read_csv("data/processed/emails.csv", dtype=str)
+
+
 @tool("email.get_email_information_by_id", return_direct=False)
 def get_email_information_by_id(email_id=None, field=None):
     """
