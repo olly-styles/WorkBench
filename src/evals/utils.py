@@ -1,4 +1,3 @@
-from src.tools.toolkits import tool_information
 import re
 import os
 import pandas as pd
@@ -6,7 +5,8 @@ from langchain_openai import ChatOpenAI, OpenAI
 from langchain.agents import initialize_agent, AgentType
 import csv
 from src.tools import calendar, email
-from src.tools.toolkits import calendar_toolkit, email_toolkit
+from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
+from src.tools.toolkits import calendar_toolkit, email_toolkit, tool_information
 
 
 OPENAI_KEY = open("openai_key.txt", "r").read()
@@ -14,7 +14,10 @@ OPENAI_KEY = open("openai_key.txt", "r").read()
 
 def convert_agent_action_to_function_call(action):
     """Converts langchain_core.agents.AgentAction to an API call"""
-    return action.tool + "(" + str(action.tool_input) + ")"
+    args = []
+    for k, v in action.tool_input.items():
+        args.append(f"{k}='{v}'")
+    return action.tool + ".func(" + ", ".join(args) + ")"
 
 
 def has_side_effects(row):
@@ -38,21 +41,66 @@ def has_side_effects(row):
     return False
 
 
-def is_correct(row):
+def execute_actions_and_reset_state(actions):
     """
-    Checks if the prediction is correct.
-    A prediction is correct if:
-        1. The prediction contains the ground truth.
-        2. Any side effect function in the prediction also appears in the ground truth with the same arguments.
-        3. The agent did not stop.
-    """
-    # Extract side effect functions from tool information
+    Executes a list of actions on the calendar and returns the resulting calendar events.
 
-    # If no conflicting side effect function, check if ground truth is in prediction
+    Parameters
+    ----------
+    actions : list
+        List of actions to be executed. Each action should be a function call.
+
+    Returns
+    -------
+    success bool
+        True if the actions were executed successfully.
+    new_calendar_state pd.DataFrame
+        The resulting calendar events after executing the actions.
+    new_email_state pd.DataFrame
+        The resulting emails after executing the actions.
+    """
+    # Execute the actions
+    for action in actions:
+        try:
+            eval(action)
+        except:
+            return False, None, None
+    new_calendar_state = calendar.CALENDAR_EVENTS.copy()
+    new_email_state = email.EMAILS.copy()
+
+    # Reset the state of the tools
+    for domain in [calendar, email]:
+        domain.reset_state()
+    return True, new_calendar_state, new_email_state
+
+
+def is_correct(predicted_actions, ground_truth_actions):
+    """
+    Checks if the prediction is correct by comparing the state change after executing the actions.
+
+    Parameters
+    ----------
+    predicted_actions : list
+        List of predicted actions as strings.
+    ground_truth_actions : list
+        List of ground truth actions as strings.
+
+    Returns
+    -------
+    bool
+        True if the predicted actions result in the same state change as the ground truth actions.
+
+    """
+    successful_execution, predicted_calendar_state, predicted_email_state = (
+        execute_actions_and_reset_state([predicted_actions])
+    )
+    _, ground_truth_calendar_state, ground_truth_email_state = (
+        execute_actions_and_reset_state([ground_truth_actions])
+    )
     return (
-        row["ground_truth"] in row["prediction"]
-        and not row["stopped"]
-        and not has_side_effects(row)
+        successful_execution
+        and predicted_calendar_state.equals(ground_truth_calendar_state)
+        and predicted_email_state.equals(ground_truth_email_state)
     )
 
 
@@ -70,9 +118,9 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     df = predictions.merge(ground_truth, on="question")
     assert (
         len(predictions) == len(ground_truth) == len(df)
-    ), "Number of predictions does not match number of ground truth answers. Check that the predictions and ground truth are for the same questions."
+    ), f"{len(predictions)} predictions does not match {len(ground_truth_df)} ground truth answers. Check that the predictions and ground truth are for the same questions."
 
-    df["correct"] = df.apply(is_correct, axis=1)
+    df["correct"] = [is_correct(pred, gt) for pred, gt in zip(df["prediction"], df["ground_truth"])]
     df["has_side_effects"] = df.apply(has_side_effects, axis=1)
 
     # print out the questions that were not answered correctly
@@ -154,7 +202,7 @@ def generate_results(questions_path, model_name):
         max_iterations=5,
     )
     agent.agent.llm_chain.prompt.messages[0].prompt.template = (
-        "The year is 2023. " + agent.agent.llm_chain.prompt.messages[0].prompt.template
+        f"Today's date is {HARDCODED_CURRENT_TIME.date()}. Remember the current date when answering queries." + agent.agent.llm_chain.prompt.messages[0].prompt.template
     )
 
     for question in questions:
@@ -202,7 +250,10 @@ def generate_results(questions_path, model_name):
         .replace("questions_and_answers_", "")
     )
     domain, action_length = question_type.split("_")[:2]
-    save_dir = os.path.join("data", "results", domain, action_length)
+    if "multi" in domain:  # exception handler for multi-domain questions
+        save_dir = os.path.join("data", "results", "multi_domain", "multi")
+    else:
+        save_dir = os.path.join("data", "results", domain, action_length)
     os.makedirs(save_dir, exist_ok=True)
 
     # Removes microseconds and makes it more readable
