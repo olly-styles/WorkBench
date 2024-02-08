@@ -118,7 +118,7 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     df = predictions.merge(ground_truth, on="question")
     assert (
         len(predictions) == len(ground_truth) == len(df)
-    ), "Number of predictions does not match number of ground truth answers. Check that the predictions and ground truth are for the same questions."
+    ), f"{len(predictions)} predictions does not match {len(ground_truth_df)} ground truth answers. Check that the predictions and ground truth are for the same questions."
 
     df["correct"] = [is_correct(pred, gt) for pred, gt in zip(df["prediction"], df["ground_truth"])]
     df["has_side_effects"] = df.apply(has_side_effects, axis=1)
@@ -250,7 +250,10 @@ def generate_results(questions_path, model_name):
         .replace("questions_and_answers_", "")
     )
     domain, action_length = question_type.split("_")[:2]
-    save_dir = os.path.join("data", "results", domain, action_length)
+    if "multi" in domain:  # exception handler for multi-domain questions
+        save_dir = os.path.join("data", "results", "multi_domain", "multi")
+    else:
+        save_dir = os.path.join("data", "results", domain, action_length)
     os.makedirs(save_dir, exist_ok=True)
 
     # Removes microseconds and makes it more readable
