@@ -21,23 +21,23 @@ random.seed(42)
 MULTI_ACTION_TEMPLATES = [
     {
         "question": "Cancel my first meeting on {natural_language_date}",
-        "answer": """calendar.delete_event({{'event_id': '{first_event_id}'}})""",
+        "answer": """calendar.delete_event.func(event_id='{first_event_id}')""",
     },
     {
         "question": "Change the name of the last event on {natural_language_date} to {event_name}",
-        "answer": """calendar.update_event({{'event_id': '{last_event_id}', 'field': 'event_name', 'new_value': '{event_name}'}})""",
+        "answer": """calendar.update_event.func(event_id='{last_event_id}', field='event_name', new_value='{event_name}')""",
     },
     {
         "question": "Push back my first meeting with {name} on {natural_language_date} by {duration}s",
-        "answer": """calendar.update_event({{'event_id': '{first_event_with_name_id}', 'field': 'event_start', 'new_value': '{new_start}'}})""",
+        "answer": """calendar.update_event.func(event_id='{first_event_with_name_id}', field='event_start', new_value='{new_start}')""",
     },
     {
         "question": "Delete the {event_name} event",
-        "answer": """calendar.delete_event({{'event_id': '{event_id}'}})""",
+        "answer": """calendar.delete_event.func(event_id='{event_id}')""",
     },
     {
         "question": "Change the name of the {event_name} event to {new_event_name}",
-        "answer": """calendar.update_event({{'event_id': '{event_id}', 'field': 'event_name', 'new_value': '{new_event_name}'}})""",
+        "answer": """calendar.update_event.func(event_id='{event_id}', field='event_name', new_value='{new_event_name}')""",
     },
 ]
 
@@ -71,7 +71,7 @@ event_ids = list(calendar_events["event_id"].unique())
 
 # Generate a limited number of unique multi-action questions and answers
 generated_questions_and_answers = []
-max_questions_per_template = 10  # Limit the number of questions per template
+max_questions_per_template = 1  # Limit the number of questions per template
 
 if __name__ == "__main__":
     for template in MULTI_ACTION_TEMPLATES:
