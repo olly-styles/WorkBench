@@ -19,20 +19,8 @@ random.seed(42)
 
 SINGLE_ACTION_TEMPLATES = [
     {
-        "question": "How many events are there on {natural_language_date} with {name}?",
-        "answer": """calendar.search_events({{'query': '{name}', 'time_min': '{date} 00:00:00', 'time_max': '{date} 23:59:59'}})""",
-    },
-    {
         "question": "Create a {duration} event called {event_name} on {natural_language_date} at {time} with {email}",
-        "answer": """calendar.create_event({{'event_name': '{event_name}', 'participant_email': '{email}', 'event_start': '{date} {time}', 'duration': '{duration_minutes}'}})""",
-    },
-    {
-        "question": "How long is the {event_name} on {natural_language_date}?",
-        "answer": """calendar.search_events({{'query': '{event_name}', 'time_min': '{date} 00:00:00', 'time_max': '{date} 23:59:59'}})""",
-    },
-    {
-        "question": "What time is the first event on {natural_language_date}?",
-        "answer": """calendar.search_events({{'time_min': '{date} 00:00:00', 'time_max': '{date} 23:59:59'}})""",
+        "answer": """calendar.create_event.func(event_name='{event_name}', participant_email='{email}', event_start='{date} {time}', duration='{duration}')""",
     },
 ]
 

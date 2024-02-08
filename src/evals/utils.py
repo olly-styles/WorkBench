@@ -38,22 +38,58 @@ def has_side_effects(row):
     return False
 
 
-def is_correct(row):
+def execute_actions_and_reset_state(actions):
     """
-    Checks if the prediction is correct.
-    A prediction is correct if:
-        1. The prediction contains the ground truth.
-        2. Any side effect function in the prediction also appears in the ground truth with the same arguments.
-        3. The agent did not stop.
-    """
-    # Extract side effect functions from tool information
+    Executes a list of actions on the calendar and returns the resulting calendar events.
 
-    # If no conflicting side effect function, check if ground truth is in prediction
-    return (
-        row["ground_truth"] in row["prediction"]
-        and not row["stopped"]
-        and not has_side_effects(row)
+    Parameters
+    ----------
+    actions : list
+        List of actions to be executed. Each action should be a function call.
+
+    Returns
+    -------
+    DataFrame
+        The state of calendar events after executing the actions.
+    """
+    # Execute the actions
+    for action in actions:
+        eval(action)
+    new_calendar_state = calendar.CALENDAR_EVENTS.copy()
+    new_email_state = email.EMAILS.copy()
+
+    for domain in [calendar, email]:
+        domain.reset_state()
+    return new_calendar_state, new_email_state
+
+
+def is_correct(predicted_actions, ground_truth_actions):
+    """
+    Checks if the prediction is correct by comparing the state change after executing the actions.
+
+    Parameters
+    ----------
+    predicted_actions : list
+        List of predicted actions as strings.
+    ground_truth_actions : list
+        List of ground truth actions as strings.
+
+    Returns
+    -------
+    bool
+        True if the predicted actions result in the same state change as the ground truth actions.
+
+    """
+    predicted_calendar_state, predicted_email_state = execute_actions_and_reset_state(
+        predicted_actions
     )
+    ground_truth_calendar_state, ground_truth_email_state = (
+        execute_actions_and_reset_state(ground_truth_actions)
+    )
+    print(predicted_calendar_state, ground_truth_calendar_state)
+    return predicted_calendar_state.equals(
+        ground_truth_calendar_state
+    ) and predicted_email_state.equals(ground_truth_email_state)
 
 
 def extract_function_names(s):
