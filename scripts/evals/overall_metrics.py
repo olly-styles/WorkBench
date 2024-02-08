@@ -14,13 +14,13 @@ arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument(
     "--tools",
     action="append",
-    default=full_tools_list,
+    default=[],
     help=f"Call with --tools <tool 1> --tools <tool 2> etc. Defaults to {full_tools_list}.",
 )
 arg_parser.add_argument(
     "--models",
     action="append",
-    default=full_models_list,
+    default=[],
     help=f"Call with --models <model 1> --models <model 2> etc. Defaults to {full_models_list}.",
 )
 arg_parser.add_argument(
@@ -32,10 +32,12 @@ arg_parser.add_argument(
 args = arg_parser.parse_args()
 
 if __name__ == "__main__":
-    for tool in args.tools:
+    tools = args.tools if len(args.tools) else full_tools_list
+    models = args.models if len(args.models) else full_models_list
+    for tool in tools:
         for action in ["single", "multi"]:
             if action == "single" and tool == "multi_domain":
                 continue
             get_latest_results_from_dir(
-                results_root_dir, tool, action, args.models, args.print_errors
+                results_root_dir, tool, action, models, args.print_errors
             )

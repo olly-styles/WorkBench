@@ -11,7 +11,7 @@ from src.data_generation.data_generation_utils import (
     generate_end_time,
     get_natural_language_date,
     generate_event_duration_minutes,
-    format_event_duration
+    format_event_duration,
 )
 from src.tools import calendar
 
@@ -45,7 +45,6 @@ NEW_QUESTION_TEMPLATES = [
         "question": "Cancel my next meeting with {name}",
         "answer": """""",
     },
-
     {
         "question": "If I haven't met with {name} in the last {duration} days, schedule a meeting for tomorrow at {time}",
         "answer": """""",
@@ -80,7 +79,9 @@ if __name__ == "__main__":
             duration_minutes = generate_event_duration_minutes()
             duration = format_event_duration(duration_minutes)
             event_id = random.choice(event_ids)
-            event_name = calendar_events.set_index("event_id").loc[event_id, "event_name"]
+            event_name = calendar_events.set_index("event_id").loc[
+                event_id, "event_name"
+            ]
             new_event_name = random.choice(events)
             while new_event_name == event_name:
                 new_event_name = random.choice(events)
@@ -100,7 +101,9 @@ if __name__ == "__main__":
             )[0]
             first_event_with_name_id = first_event_with_name["event_id"]
 
-            new_start = generate_end_time(first_event_with_name["event_start"], duration)
+            new_start = generate_end_time(
+                first_event_with_name["event_start"], duration
+            )
 
             question = template["question"].format(
                 natural_language_date=natural_language_date,
