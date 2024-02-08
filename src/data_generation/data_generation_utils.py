@@ -3,6 +3,9 @@ import numpy as np
 from datetime import datetime
 
 np.random.seed(42)
+HARDCODED_CURRENT_TIME = pd.to_datetime("2023-11-30T00:00:00")
+calendar_days_in_future = 31 # end date is 31 december
+calendar_days_in_past = 90 # start date is 1 september
 
 
 def is_overlapping(new_start, duration, existing_events):
@@ -41,8 +44,8 @@ def create_calendar_event(event_names, emails, existing_events):
         event_name = event_names.sample().iloc[0, 0]
         email = emails.sample().iloc[0, 0]
         event_start = generate_datetime_between(
-            start=pd.to_datetime("2023-10-01T00:00:00"),
-            end=pd.to_datetime("2023-12-31T23:59:59"),
+            start=HARDCODED_CURRENT_TIME - pd.Timedelta(calendar_days_in_past, unit="d"),
+            end=HARDCODED_CURRENT_TIME + pd.Timedelta(calendar_days_in_future, unit="d"),
         )
         duration_minutes = generate_event_duration_minutes()
         event_id = str(len(existing_events)).zfill(8)

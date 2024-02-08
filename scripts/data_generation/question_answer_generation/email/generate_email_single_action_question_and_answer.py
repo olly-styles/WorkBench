@@ -15,17 +15,9 @@ random.seed(42)
 
 SINGLE_ACTION_TEMPLATES = [
     {
-        "question": "Search for emails containing '{query}'",
-        "answer": """email.search_emails({{'query': '{query}'}})""",
-    },
-    {
         "question": "Send an email to {recipient} saying '{body}' and title it '{subject}'",
-        "answer": """email.send_email({{'recipient': '{recipient}', 'subject': '{subject}', 'body': '{body}'}})""",
-    },
-    {
-        "question": "Show me the emails {name} sent me on {natural_language_date}",
-        "answer": """email.search_emails({{'query': '{name}', 'date_min': '{date}', 'date_max': '{date}'}})""",
-    },
+        "answer": """email.send_email.func(recipient='{recipient}', subject='{subject}', body='{body}')""",
+    }
 ]
 
 emails_data = pd.read_csv("data/processed/emails.csv", dtype=str)
