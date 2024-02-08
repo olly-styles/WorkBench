@@ -1,4 +1,3 @@
-from src.tools.toolkits import tool_information
 import re
 import os
 import pandas as pd
@@ -6,7 +5,7 @@ from langchain_openai import ChatOpenAI, OpenAI
 from langchain.agents import initialize_agent, AgentType
 import csv
 from src.tools import calendar, email
-from src.tools.toolkits import calendar_toolkit, email_toolkit
+from src.tools.toolkits import calendar_toolkit, email_toolkit, tool_information
 
 
 OPENAI_KEY = open("openai_key.txt", "r").read()
@@ -14,7 +13,10 @@ OPENAI_KEY = open("openai_key.txt", "r").read()
 
 def convert_agent_action_to_function_call(action):
     """Converts langchain_core.agents.AgentAction to an API call"""
-    return action.tool + "(" + str(action.tool_input) + ")"
+    args = []
+    for k, v in action.tool_input.items():
+        args.append(f"{k}='{v}'")
+    return action.tool + ".func(" + ", ".join(args) + ")"
 
 
 def has_side_effects(row):
@@ -89,10 +91,10 @@ def is_correct(predicted_actions, ground_truth_actions):
 
     """
     successful_execution, predicted_calendar_state, predicted_email_state = (
-        execute_actions_and_reset_state(predicted_actions)
+        execute_actions_and_reset_state([predicted_actions])
     )
     _, ground_truth_calendar_state, ground_truth_email_state = (
-        execute_actions_and_reset_state(ground_truth_actions)
+        execute_actions_and_reset_state([ground_truth_actions])
     )
     return (
         successful_execution
@@ -117,7 +119,7 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
         len(predictions) == len(ground_truth) == len(df)
     ), "Number of predictions does not match number of ground truth answers. Check that the predictions and ground truth are for the same questions."
 
-    df["correct"] = df.apply(is_correct, axis=1)
+    df["correct"] = [is_correct(pred, gt) for pred, gt in zip(df["prediction"], df["ground_truth"])]
     df["has_side_effects"] = df.apply(has_side_effects, axis=1)
 
     # print out the questions that were not answered correctly
