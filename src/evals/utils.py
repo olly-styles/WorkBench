@@ -58,6 +58,7 @@ def execute_actions_and_reset_state(actions):
     new_calendar_state = calendar.CALENDAR_EVENTS.copy()
     new_email_state = email.EMAILS.copy()
 
+    # Reset the state of the tools
     for domain in [calendar, email]:
         domain.reset_state()
     return new_calendar_state, new_email_state
@@ -86,7 +87,6 @@ def is_correct(predicted_actions, ground_truth_actions):
     ground_truth_calendar_state, ground_truth_email_state = (
         execute_actions_and_reset_state(ground_truth_actions)
     )
-    print(predicted_calendar_state, ground_truth_calendar_state)
     return predicted_calendar_state.equals(
         ground_truth_calendar_state
     ) and predicted_email_state.equals(ground_truth_email_state)
