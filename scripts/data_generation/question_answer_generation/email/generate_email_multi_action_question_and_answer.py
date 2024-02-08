@@ -15,15 +15,15 @@ random.seed(42)
 MULTI_ACTION_EMAIL_TEMPLATES = [
     {
         "question": "Find the first email on {natural_language_date} and delete it",
-        "answer": """email.delete_email({{'email_id': '{first_email_id}'}})""",
+        "answer": """email.delete_email.func(email_id='{first_email_id}')""",
     },
     {
         "question": "Find the last email on {natural_language_date} and send an email to the sender with the subject '{subject}' and body '{body}'",
-        "answer": """email.send_email({{'recipient': '{last_email_sender}', 'subject': '{subject}', 'body': '{body}'}})""",
+        "answer": """email.send_email.func(recipient='{last_email_sender}', subject='{subject}', body='{body}')""",
     },
     {
         "question": "Find the last email on {natural_language_date} and forward it to {recipient}",
-        "answer": """email.forward_email({{'email_id': '{last_email_id}', 'recipient': '{recipient}'}})""",
+        "answer": """email.forward_email.func(email_id='{last_email_id}', recipient='{recipient}')""",
     },
 ]
 
@@ -36,7 +36,7 @@ bodies = list(emails_data["body"].unique())
 
 # Generate a limited number of unique multi-action questions and answers
 generated_email_questions_and_answers = []
-max_questions_per_template = 10  # Limit the number of questions per template
+max_questions_per_template = 3  # Limit the number of questions per template
 
 for template in MULTI_ACTION_EMAIL_TEMPLATES:
     for _ in range(max_questions_per_template):
