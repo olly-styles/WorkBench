@@ -1,6 +1,11 @@
 import pandas as pd
 import numpy as np
 from tqdm import tqdm
+import sys
+import os
+
+project_root = os.path.abspath(os.path.curdir)
+sys.path.append(project_root)
 from src.data_generation.data_generation_utils import create_calendar_event
 
 

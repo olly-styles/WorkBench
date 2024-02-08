@@ -27,6 +27,15 @@ def is_overlapping(new_start, duration, existing_events):
     return overlap.any()
 
 
+def event_on_the_same_day(new_start, event_name, existing_events):
+    new_start_date = pd.to_datetime(new_start).date()
+    same_day = existing_events[
+        existing_events["event_start"].apply(lambda x: pd.to_datetime(x).date())
+        == new_start_date
+    ]
+    return (same_day["event_name"] == event_name).any()
+
+
 def create_calendar_event(event_names, emails, existing_events):
     while True:
         event_name = event_names.sample().iloc[0, 0]
@@ -38,10 +47,12 @@ def create_calendar_event(event_names, emails, existing_events):
         duration_minutes = generate_event_duration_minutes()
         event_id = str(len(existing_events)).zfill(8)
 
-        # Check if the event time overlaps with an existing event time.
+        # Check if the event time overlaps with an existing event time and that there is no event with the same name on the same day.
         # Note that this method is not very efficient, but it is good enough for this purpose. If you want to
         # generate a large dataset, you should use a more efficient method.
-        if not is_overlapping(event_start, duration_minutes, existing_events):
+        if (not is_overlapping(event_start, duration_minutes, existing_events)) and (
+            not event_on_the_same_day(event_start, event_name, existing_events)
+        ):
             return event_id, event_name, email, event_start, duration_minutes
 
 
