@@ -17,11 +17,33 @@ from src.data_generation.data_generation_utils import (
 
 random.seed(42)
 
+def template_1_logic():
+    duration_minutes = generate_event_duration_minutes()
+    duration = format_event_duration(duration_minutes)
+    email = random.choice(emails)
+    event_name = random.choice(events)
+    date = random.choice(dates)
+    natural_language_date = get_natural_language_date(date)
+    time = random.choice(times)
+    natural_language_time = get_natural_language_time(time)
+    return {
+        "duration_minutes": duration_minutes,
+        "duration": duration,
+        "email": email,
+        "event_name": event_name,
+        "date": date,
+        "natural_language_date": natural_language_date,
+        "time": time,
+        "natural_language_time": natural_language_time,
+    }
+
+
 SINGLE_ACTION_TEMPLATES = [
     {
         "question": "Create a {duration} event called {event_name} on {natural_language_date} at {time} with {email}",
         "answer": """calendar.create_event.func(event_name='{event_name}', participant_email='{email}', event_start='{date} {time}', duration='{duration}')""",
-    },
+        "logic": template_1_logic
+    }
 ]
 
 calendar_events = pd.read_csv("data/processed/calendar_events.csv", dtype=str)
@@ -39,36 +61,9 @@ max_questions_per_template = 10  # Limit the number of questions per template
 if __name__ == "__main__":
     for template in SINGLE_ACTION_TEMPLATES:
         for _ in range(max_questions_per_template):
-            date = random.choice(dates)
-            natural_language_date = get_natural_language_date(date)
-            time = random.choice(times)
-            natural_language_time = get_natural_language_time(time)
-            duration_minutes = generate_event_duration_minutes()
-            duration = format_event_duration(duration_minutes)
-            email = random.choice(emails)
-            end_time = generate_end_time(f"{date} {time}", duration)
-            event_name = random.choice(events)
-            name = random.choice(names)
-
-            question = template["question"].format(
-                natural_language_date=natural_language_date,
-                time=natural_language_time,
-                duration=duration,
-                event_name=event_name,
-                email=email,
-                end_time=end_time,
-                name=name,
-            )
-            answer = template["answer"].format(
-                date=date,
-                time=time,
-                name=name,
-                duration=duration_minutes,
-                event_name=event_name,
-                email=email,
-                end_time=end_time,
-                duration_minutes=duration_minutes,
-            )
+            logic = template["logic"]()
+            question = template["question"].format(**logic)
+            answer = template["answer"].format(**logic)
             questions = [q["question"] for q in generated_questions_and_answers]
             if question not in questions:
                 generated_questions_and_answers.append(
