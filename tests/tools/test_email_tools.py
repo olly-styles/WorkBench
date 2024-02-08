@@ -20,38 +20,44 @@ test_emails = [
         "body": "Can we schedule a meeting for next week?",
     },
 ]
-email.EMAILS = pd.DataFrame(test_emails)
 
 
 def test_get_email_information_by_id():
     """
     Tests get_email_information_by_id.
     """
+    email.EMAILS = pd.DataFrame(test_emails)
     assert email.get_email_information_by_id.func("12345678", "subject") == {
         "subject": "Project Update"
     }
+    email.reset_state()
 
 
 def test_get_email_information_missing_arguments():
     """
     Tests get_email_information_by_id with no ID and no field.
     """
+    email.EMAILS = pd.DataFrame(test_emails)
     assert email.get_email_information_by_id.func() == "Email ID not provided."
     assert email.get_email_information_by_id.func("12345678") == "Field not provided."
+    email.reset_state()
 
 
 def test_get_email_information_by_id_field_not_found():
     """
     Tests get_email_information_by_id with field not found.
     """
+    email.EMAILS = pd.DataFrame(test_emails)
     result = email.get_email_information_by_id.func("12345678", "field_does_not_exist")
     assert result == "Field not found."
+    email.reset_state()
 
 
 def test_search_emails():
     """
     Tests search_emails.
     """
+    email.EMAILS = pd.DataFrame(test_emails)
     assert email.search_emails.func("Meeting Request")[0] == {
         "email_id": "12345679",
         "subject": "Meeting Request",
@@ -59,6 +65,7 @@ def test_search_emails():
         "sent_date": "2024-01-11 10:15:00",
         "body": "Can we schedule a meeting for next week?",
     }
+    email.reset_state()
 
 
 def test_search_emails_no_results():
@@ -93,8 +100,10 @@ def test_delete_email():
     """
     Tests delete_email.
     """
+    email.EMAILS = pd.DataFrame(test_emails)
     assert email.delete_email.func("12345678") == "Email deleted successfully."
     assert "12345678" not in email.EMAILS["email_id"].values
+    email.reset_state()
 
 
 def test_delete_email_no_id_provided():
@@ -108,17 +117,21 @@ def test_delete_email_not_found():
     """
     Tests delete_email with an email_id that does not exist.
     """
+    email.EMAILS = pd.DataFrame(test_emails)
     assert email.delete_email.func("00000000") == "Email not found."
+    email.reset_state()
 
 
 def test_forward_email():
     """
     Tests forward_email.
     """
+    email.EMAILS = pd.DataFrame(test_emails)
     assert (
         email.forward_email.func("12345679", "example@email.com")
         == "Email forwarded successfully."
     )
+    email.reset_state()
 
 
 def test_forward_email_missing_args():

@@ -6,6 +6,14 @@ from langchain.tools import tool
 CALENDAR_EVENTS = pd.read_csv("data/processed/calendar_events.csv", dtype=str)
 
 
+def reset_state():
+    """
+    Resets the calendar events to the original state.
+    """
+    global CALENDAR_EVENTS
+    CALENDAR_EVENTS = pd.read_csv("data/processed/calendar_events.csv", dtype=str)
+
+
 @tool("calendar.get_event_information_by_id", return_direct=False)
 def get_event_information_by_id(event_id=None, field=None):
     """
