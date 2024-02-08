@@ -5,7 +5,7 @@ from langchain_openai import ChatOpenAI, OpenAI
 from langchain.agents import initialize_agent, AgentType
 import csv
 from src.tools import calendar, email
-from src.data_generation.data_generation_utils import TIME_NOW
+from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
 from src.tools.toolkits import calendar_toolkit, email_toolkit, tool_information
 
 
@@ -202,7 +202,7 @@ def generate_results(questions_path, model_name):
         max_iterations=5,
     )
     agent.agent.llm_chain.prompt.messages[0].prompt.template = (
-        f"Today's date is {TIME_NOW.date()}. Remember the current date when answering queries." + agent.agent.llm_chain.prompt.messages[0].prompt.template
+        f"Today's date is {HARDCODED_CURRENT_TIME.date()}. Remember the current date when answering queries." + agent.agent.llm_chain.prompt.messages[0].prompt.template
     )
 
     for question in questions:

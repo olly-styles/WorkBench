@@ -12,8 +12,7 @@ from src.data_generation.data_generation_utils import (
     generate_event_duration_minutes,
     format_event_duration,
     get_natural_language_time,
-    get_natural_language_date,
-    TIME_NOW
+    get_natural_language_date
 )
 
 random.seed(42)
@@ -69,7 +68,6 @@ if __name__ == "__main__":
                 email=email,
                 end_time=end_time,
                 duration_minutes=duration_minutes,
-                NOW=TIME_NOW,
             )
             questions = [q["question"] for q in generated_questions_and_answers]
             if question not in questions:

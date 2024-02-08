@@ -11,8 +11,7 @@ from src.data_generation.data_generation_utils import (
     generate_end_time,
     get_natural_language_date,
     generate_event_duration_minutes,
-    format_event_duration,
-    TIME_NOW
+    format_event_duration
 )
 from src.tools import calendar
 
