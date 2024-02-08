@@ -55,3 +55,16 @@ def test_is_correct_different_action_path():
         "calendar.create_event.func(event_name='My event', participant_email='sam@company.com', event_start='2023-10-02 12:00:00', duration=60)",
     ]
     assert is_correct(predicted_actions, ground_truth_actions)
+
+
+def test_is_correct_bad_syntax():
+    """
+    Tests if the function can handle bad syntax in the actions.
+    """
+    predicted_actions = [
+        "not a python function",
+    ]
+    ground_truth_actions = [
+        "calendar.create_event.func(event_name='My event', participant_email='sam@company.com', event_start='2023-10-02 12:00:00', duration=60)",
+    ]
+    assert not is_correct(predicted_actions, ground_truth_actions)

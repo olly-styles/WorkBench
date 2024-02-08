@@ -49,19 +49,26 @@ def execute_actions_and_reset_state(actions):
 
     Returns
     -------
-    DataFrame
-        The state of calendar events after executing the actions.
+    success bool
+        True if the actions were executed successfully.
+    new_calendar_state pd.DataFrame
+        The resulting calendar events after executing the actions.
+    new_email_state pd.DataFrame
+        The resulting emails after executing the actions.
     """
     # Execute the actions
     for action in actions:
-        eval(action)
+        try:
+            eval(action)
+        except:
+            return False, None, None
     new_calendar_state = calendar.CALENDAR_EVENTS.copy()
     new_email_state = email.EMAILS.copy()
 
     # Reset the state of the tools
     for domain in [calendar, email]:
         domain.reset_state()
-    return new_calendar_state, new_email_state
+    return True, new_calendar_state, new_email_state
 
 
 def is_correct(predicted_actions, ground_truth_actions):
@@ -81,15 +88,17 @@ def is_correct(predicted_actions, ground_truth_actions):
         True if the predicted actions result in the same state change as the ground truth actions.
 
     """
-    predicted_calendar_state, predicted_email_state = execute_actions_and_reset_state(
-        predicted_actions
+    successful_execution, predicted_calendar_state, predicted_email_state = (
+        execute_actions_and_reset_state(predicted_actions)
     )
-    ground_truth_calendar_state, ground_truth_email_state = (
+    _, ground_truth_calendar_state, ground_truth_email_state = (
         execute_actions_and_reset_state(ground_truth_actions)
     )
-    return predicted_calendar_state.equals(
-        ground_truth_calendar_state
-    ) and predicted_email_state.equals(ground_truth_email_state)
+    return (
+        successful_execution
+        and predicted_calendar_state.equals(ground_truth_calendar_state)
+        and predicted_email_state.equals(ground_truth_email_state)
+    )
 
 
 def extract_function_names(s):
