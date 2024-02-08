@@ -56,7 +56,8 @@ def create_calendar_event(event_names, emails, existing_events):
             return event_id, event_name, email, event_start, duration_minutes
 
 
-def generate_datetime_between(start, end):
+# generate_datetime_between option do nearest 30 minutes or not
+def generate_datetime_between(start, end, nearest_30_minutes=True):
     month = np.random.randint(start.month, end.month + 1)
     if month in [1, 3, 5, 7, 8, 10, 12]:
         day = np.random.randint(1, 31)
@@ -65,8 +66,13 @@ def generate_datetime_between(start, end):
     else:
         day = np.random.randint(1, 28)
     hour = np.random.randint(9, 16)
-    minute = np.random.choice([0, 30])
-    return pd.to_datetime(f"2023-{month}-{day}T{hour}:{minute}:00")
+    if nearest_30_minutes:
+        minute = np.random.choice([0, 30])
+        seconds = "00"
+    else:
+        minute = np.random.randint(0, 60)
+        seconds = str(np.random.randint(0, 60)).zfill(2)
+    return pd.to_datetime(f"2023-{month}-{day}T{hour}:{minute}:{seconds}")
 
 
 def get_natural_language_date(str_date):
@@ -122,17 +128,22 @@ def create_email(existing_emails, sample_emails, email_content_pairs):
     sent_datetime = generate_datetime_between(
         start=pd.to_datetime("2023-10-01T00:00:00"),
         end=pd.to_datetime("2023-12-31T23:59:59"),
+        nearest_30_minutes=False,
     )
     sent_date = sent_datetime.strftime("%Y-%m-%d")
     # generate another date if it's already in the emails or if there is already an email with the same subject on the same day
     if (
-        sent_date in existing_emails["sent_date"]
+        sent_date
+        in existing_emails["sent_datetime"].apply(lambda x: x.strftime("%Y-%m-%d"))
         or subject
-        in existing_emails[existing_emails["sent_date"] == sent_date]["subject"].values
+        in existing_emails[
+            existing_emails["sent_datetime"].apply(lambda x: x.strftime("%Y-%m-%d"))
+            == sent_date
+        ]["subject"].values
     ):
         return create_email(existing_emails, sample_emails, email_content_pairs)
 
-    return email_id, recipient, subject, sent_date, body
+    return email_id, recipient, subject, sent_datetime, body
 
 
 def get_natural_language_time(str_time):
