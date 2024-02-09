@@ -6,7 +6,7 @@ from langchain.agents import initialize_agent, AgentType
 import csv
 from src.tools import calendar, email
 from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
-from src.tools.toolkits import calendar_toolkit, email_toolkit, tool_information
+from src.tools.toolkits import calendar_toolkit, email_toolkit, analytics_toolkit, tool_information
 
 
 OPENAI_KEY = open("openai_key.txt", "r").read()
@@ -196,7 +196,7 @@ def generate_results(questions_path, model_name):
     agent = initialize_agent(
         llm=llm,
         agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
-        tools=email_toolkit + calendar_toolkit,
+        tools=email_toolkit + calendar_toolkit + analytics_toolkit,
         verbose=True,
         return_intermediate_steps=True,
         max_iterations=5,
