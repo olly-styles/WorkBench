@@ -7,12 +7,6 @@ import os
 project_root = os.path.abspath(os.path.curdir)
 sys.path.append(project_root)
 
-from src.data_generation.data_generation_utils import (
-    generate_end_time,
-    get_natural_language_date,
-    generate_event_duration_minutes,
-    format_event_duration,
-)
 
 random.seed(42)
 
@@ -44,8 +38,6 @@ if __name__ == "__main__":
                 print(question_and_answer["answer"])
                 print(question_and_answer["template"])
     df = pd.DataFrame(generated_questions_and_answers)
-    print(df)
-
     df.to_csv(
         "data/processed/analytics_questions_and_answers_multi_action.csv",
         index=False,
