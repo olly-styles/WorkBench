@@ -14,6 +14,7 @@ from src.tools.toolkits import (
 
 
 OPENAI_KEY = open("openai_key.txt", "r").read()
+DOMAINS = [calendar, email, analytics]
 
 
 def convert_agent_action_to_function_call(action):
@@ -44,9 +45,7 @@ def execute_actions_and_reset_state(actions):
     new_analytics_state pd.DataFrame
         The resulting analytics data after executing the actions.
     """
-    domains = [calendar, email, analytics]
-    # Reset the state of the tools
-    for domain in domains:
+    for domain in DOMAINS:
         domain.reset_state()
 
     # Execute the actions
@@ -60,7 +59,7 @@ def execute_actions_and_reset_state(actions):
     new_analytics_state = analytics.PLOTS_DATA.copy()
 
     # Reset the state of the tools
-    for domain in domains:
+    for domain in DOMAINS:
         domain.reset_state()
     return True, new_calendar_state, new_email_state, new_analytics_state
 
@@ -124,6 +123,8 @@ def has_side_effects(predicted_actions, ground_truth_actions):
         True if the predicted actions result in different state change than the ground truth actions.
 
     """
+    for domain in DOMAINS:
+        domain.reset_state()
     original_state = {
         "calendar": calendar.CALENDAR_EVENTS.copy(),
         "email": email.EMAILS.copy(),

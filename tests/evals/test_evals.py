@@ -101,6 +101,14 @@ def test_has_side_effects_missing_action():
     assert has_side_effects(predicted_actions, ground_truth_actions)
 
 
+def test_has_side_effects_no_action():
+    predicted_actions = []
+    ground_truth_actions = [
+        "calendar.create_event.func(event_name='Team Meeting', participant_email='alex@company.com', event_start='2023-10-05 09:00:00', duration=60)",
+    ]
+    assert not has_side_effects(predicted_actions, ground_truth_actions)
+
+
 def test_has_side_effects_complex_scenario():
     predicted_actions = [
         "calendar.create_event.func(event_name='Team Meeting', participant_email='alex@company.com', event_start='2023-10-05 09:00:00', duration=60)",
