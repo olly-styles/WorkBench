@@ -94,9 +94,8 @@ def test_has_side_effects_missing_action():
         "calendar.create_event.func(event_name='Team Meeting', participant_email='alex@company.com', event_start='2023-10-05 09:00:00', duration=60)"
     ]
     ground_truth_actions = [
-        # Ground truth does more than the prediction, thus expecting side effects due to missing actions
         "calendar.create_event.func(event_name='Team Meeting', participant_email='alex@company.com', event_start='2023-10-05 09:00:00', duration=60)",
-        "email.send_email.func(to='team@company.com', subject='Meeting Confirmation', body='Meeting is confirmed for 9 AM tomorrow.')",
+        "calendar.create_event.func(event_name='Team Meeting 2', participant_email='alex@company.com', event_start='2023-10-06 09:00:00', duration=60)",
     ]
     assert has_side_effects(predicted_actions, ground_truth_actions)
 
