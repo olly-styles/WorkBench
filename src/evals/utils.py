@@ -107,6 +107,45 @@ def extract_function_names(s):
     return re.findall(r"(\b\w+\.\w+)\(", s)
 
 
+def has_side_effects(predicted_actions, ground_truth_actions):
+    """
+    Checks if the predicted actions have side effects by comparing the state change after executing the actions.
+
+    Parameters
+    ----------
+    predicted_actions : list
+        List of predicted actions as strings.
+    ground_truth_actions : list
+        List of ground truth actions as strings.
+
+    Returns
+    -------
+    bool
+        True if the predicted actions result in different state change than the ground truth actions.
+
+    """
+    original_state = {
+        "calendar": calendar.CALENDAR_EVENTS.copy(),
+        "email": email.EMAILS.copy(),
+        "analytics": analytics.PLOTS_DATA.copy(),
+    }
+    (
+        successful_execution,
+        predicted_calendar_state,
+        predicted_email_state,
+        predicted_analytics_state,
+    ) = execute_actions_and_reset_state(predicted_actions)
+
+    if not successful_execution:
+        return False
+    state_changed = not predicted_calendar_state.equals(original_state["calendar"])
+    state_changed |= not predicted_email_state.equals(original_state["email"])
+    state_changed |= not predicted_analytics_state.equals(original_state["analytics"])
+
+    correct = is_correct(predicted_actions, ground_truth_actions)
+    return state_changed and not correct
+
+
 def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     """"""
     predictions = predictions_df.rename(columns={"function_calls": "prediction"})
@@ -120,6 +159,10 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     df["correct"] = [
         is_correct(pred, gt) for pred, gt in zip(df["prediction"], df["ground_truth"])
     ]
+    df["unwanted_side_effects"] = [
+        has_side_effects(pred, gt)
+        for pred, gt in zip(df["prediction"], df["ground_truth"])
+    ]
 
     # print out the questions that were not answered correctly
     if print_errors:
@@ -127,6 +170,7 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
             print(f"Question: {row['question']}")
             print(f"Prediction: {row['prediction']}")
             print(f"Ground truth: {row['ground_truth']}")
+            print(f"Unwanted side effects: {row['unwanted_side_effects']}")
             print("")
 
     print(f"Accuracy: {round(df['correct'].mean() * 100, 2)}%")

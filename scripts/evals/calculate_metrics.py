@@ -2,6 +2,7 @@ import pandas as pd
 import argparse
 import sys
 import os
+import ast
 
 project_root = os.path.abspath(os.path.curdir)
 sys.path.append(project_root)
@@ -25,4 +26,6 @@ args = parser.parse_args()
 
 predictions = pd.read_csv(args.predictions_path)
 ground_truth = pd.read_csv(args.ground_truth_path, dtype=str)
+ground_truth["answer"] = ground_truth["answer"].apply(ast.literal_eval)
+predictions["function_calls"] = predictions["function_calls"].apply(ast.literal_eval)
 calculate_metrics(ground_truth, predictions)
