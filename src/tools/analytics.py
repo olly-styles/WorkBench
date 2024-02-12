@@ -5,6 +5,16 @@ ANALYTICS_DATA = pd.read_csv("data/processed/analytics_data.csv", dtype=str)
 PLOTS_DATA = pd.DataFrame(columns=["file_path"])
 
 
+def reset_state():
+    """
+    Resets the analytics data to the original state.
+    """
+    global ANALYTICS_DATA
+    ANALYTICS_DATA = pd.read_csv("data/processed/analytics_data.csv", dtype=str)
+    global PLOTS_DATA
+    PLOTS_DATA = pd.DataFrame(columns=["file_path"])
+
+
 @tool("analytics.get_visitor_information_by_id", return_direct=False)
 def get_visitor_information_by_id(visitor_id=None):
     """
@@ -38,7 +48,7 @@ def get_visitor_information_by_id(visitor_id=None):
 
 
 @tool("analytics.create_plot", return_direct=False)
-def create_plot(time_min=None, time_max=None, value_to_plot=None):
+def create_plot(time_min=None, time_max=None, value_to_plot=None, plot_type=None):
     """
     Plots the analytics data for a given time range and value.
 
@@ -50,11 +60,13 @@ def create_plot(time_min=None, time_max=None, value_to_plot=None):
         End date of the time range. Date format is "YYYY-MM-DD".
     value_to_plot : str, optional
         Value to plot. Available values are: "page_views", "session_duration_seconds", "traffic_source", "user_engaged"
+    plot_type : str, optional
+        Type of plot. Can be "bar", "line", "scatter" or "histogram"
 
     Returns
     -------
     file_path : str
-        Path to the plot file. Filename is {time_min}_{time_max}_{value_to_plot}.png.
+        Path to the plot file. Filename is {{time_min}}_{{time_max}}_{{value_to_plot}}_{{plot_type}}.png.
 
     Examples
     --------
@@ -67,10 +79,18 @@ def create_plot(time_min=None, time_max=None, value_to_plot=None):
         return "Start date not provided."
     if not time_max:
         return "End date not provided."
-    if not value_to_plot:
-        return "Value to plot not provided."
+    if value_to_plot not in [
+        "page_views",
+        "session_duration_seconds",
+        "traffic_source",
+        "user_engaged",
+    ]:
+        return "Value to plot must be one of 'page_views', 'session_duration_seconds', 'traffic_source', 'user_engaged'"
+    if plot_type not in ["bar", "line", "scatter", "histogram"]:
+        return "Plot type must be one of 'bar', 'line', 'scatter', or 'histogram'"
+
     # Plot the data here and save it to a file
-    file_path = f"plots/{time_min}_{time_max}_{value_to_plot}.png"
+    file_path = f"plots/{time_min}_{time_max}_{value_to_plot}_{plot_type}.png"
     PLOTS_DATA.loc[len(PLOTS_DATA)] = [file_path]
     return file_path
 

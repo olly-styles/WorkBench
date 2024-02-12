@@ -15,15 +15,19 @@ random.seed(42)
 MULTI_ACTION_EMAIL_TEMPLATES = [
     {
         "question": "Find the first email on {natural_language_date} and delete it",
-        "answer": """email.delete_email.func(email_id='{first_email_id}')""",
+        "answer": ["""email.delete_email.func(email_id='{first_email_id}')"""],
     },
     {
         "question": "Find the last email on {natural_language_date} and send an email to the sender with the subject '{subject}' and body '{body}'",
-        "answer": """email.send_email.func(recipient='{last_email_sender}', subject='{subject}', body='{body}')""",
+        "answer": [
+            """email.send_email.func(recipient='{last_email_sender}', subject='{subject}', body='{body}')"""
+        ],
     },
     {
         "question": "Find the last email on {natural_language_date} and forward it to {recipient}",
-        "answer": """email.forward_email.func(email_id='{last_email_id}', recipient='{recipient}')""",
+        "answer": [
+            """email.forward_email.func(email_id='{last_email_id}', recipient='{recipient}')"""
+        ],
     },
 ]
 
@@ -31,7 +35,7 @@ emails_data = pd.read_csv("data/processed/emails.csv", dtype=str)
 email_ids = list(emails_data["email_id"].unique())
 subjects = list(emails_data["subject"].unique())
 senders = list(emails_data["sender"].unique())
-dates = list(emails_data["sent_date"].str.split(" ").str[0].unique())
+dates = list(emails_data["sent_datetime"].str.split(" ").str[0].unique())
 bodies = list(emails_data["body"].unique())
 
 # Generate a limited number of unique multi-action questions and answers
@@ -43,7 +47,9 @@ for template in MULTI_ACTION_EMAIL_TEMPLATES:
         index = random.randint(0, len(subjects) - 1)
         body = bodies[index]
         subject = subjects[index]
-        date = random.choice(dates)
+        datetime = random.choice(dates)
+        date = datetime.split(" ")[0]
+
         natural_language_date = get_natural_language_date(date)
         recipient = random.choice(senders)
         first_email_id = email.search_emails.func(date_min=date, date_max=date)[0][
@@ -63,15 +69,18 @@ for template in MULTI_ACTION_EMAIL_TEMPLATES:
             body=body,
             recipient=recipient,
         )
-        answer = template["answer"].format(
-            last_email_sender=last_email_sender,
-            date=date,
-            subject=subject,
-            body=body,
-            recipient=recipient,
-            first_email_id=first_email_id,
-            last_email_id=last_email_id,
-        )
+        answer = []
+        for step in template["answer"]:
+            answer.append(
+                step.format(
+                    first_email_id=first_email_id,
+                    last_email_id=last_email_id,
+                    last_email_sender=last_email_sender,
+                    subject=subject,
+                    body=body,
+                    recipient=recipient,
+                )
+            )
         questions = [q["question"] for q in generated_email_questions_and_answers]
         if question not in questions:
             generated_email_questions_and_answers.append(

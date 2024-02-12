@@ -20,7 +20,9 @@ random.seed(42)
 SINGLE_ACTION_TEMPLATES = [
     {
         "question": "Create a {duration} event called {event_name} on {natural_language_date} at {time} with {email}",
-        "answer": """calendar.create_event.func(event_name='{event_name}', participant_email='{email}', event_start='{date} {time}', duration='{duration}')""",
+        "answer": [
+            """calendar.create_event.func(event_name='{event_name}', participant_email='{email}', event_start='{date} {time}', duration='{duration_minutes}')"""
+        ],
     },
 ]
 
@@ -59,16 +61,17 @@ if __name__ == "__main__":
                 end_time=end_time,
                 name=name,
             )
-            answer = template["answer"].format(
-                date=date,
-                time=time,
-                name=name,
-                duration=duration_minutes,
-                event_name=event_name,
-                email=email,
-                end_time=end_time,
-                duration_minutes=duration_minutes,
-            )
+            answer = []
+            for step in template["answer"]:
+                answer.append(
+                    step.format(
+                        date=date,
+                        time=time,
+                        duration_minutes=duration_minutes,
+                        event_name=event_name,
+                        email=email,
+                    )
+                )
             questions = [q["question"] for q in generated_questions_and_answers]
             if question not in questions:
                 generated_questions_and_answers.append(

@@ -15,7 +15,7 @@ all_tools = [
     analytics.get_visitor_information_by_id,
     analytics.traffic_source_count,
     analytics.total_visits_count,
-    analytics.create_plot
+    analytics.create_plot,
 ]
 
 tool_information = [
