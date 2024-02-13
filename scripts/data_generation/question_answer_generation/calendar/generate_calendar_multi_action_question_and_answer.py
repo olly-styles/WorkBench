@@ -206,6 +206,7 @@ if __name__ == "__main__":
             questions = [q["question"] for q in generated_questions_and_answers]
             if q_and_a["question"] not in questions:
                 generated_questions_and_answers.append(q_and_a)
+    
     for question_and_answer in generated_questions_and_answers:
         print(question_and_answer["question"])
         print(question_and_answer["answer"])
