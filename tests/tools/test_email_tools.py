@@ -86,6 +86,12 @@ def test_send_email():
         email.send_email.func("jane@example.com", "Reminder", "Meeting at 10am")
         == "Email sent successfully."
     )
+    # check that the email was added to the outbox
+    assert email.EMAILS["inbox/outbox"].values[-1] == "outbox"
+    assert email.EMAILS["sender/recipient"].values[-1] == "jane@example.com"
+    assert email.EMAILS["subject"].values[-1] == "Reminder"
+    assert email.EMAILS["body"].values[-1] == "Meeting at 10am"
+    email.reset_state()
 
 
 def test_send_email_missing_args():
