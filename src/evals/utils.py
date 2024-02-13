@@ -2,6 +2,9 @@ import re
 import os
 import pandas as pd
 from langchain_openai import ChatOpenAI, OpenAI
+from langchain_community.chat_models.anthropic import ChatAnthropic
+from langchain_community.chat_models.anyscale import ChatAnyscale
+
 from langchain.agents import initialize_agent, AgentType
 import csv
 from src.tools import calendar, email, analytics
@@ -14,7 +17,16 @@ from src.tools.toolkits import (
 
 
 OPENAI_KEY = open("openai_key.txt", "r").read()
+ANTHROPIC_KEY = open("anthropic_key.txt", "r").read()
+ANYSCALE_KEY = open("anyscale_key.txt", "r").read()
 DOMAINS = [calendar, email, analytics]
+AVAILABLE_LLMS = [
+    "gpt-3.5",
+    "gpt-4",
+    "claude-2",
+    "llama2-70b",
+    "mistral-7B",
+]
 
 
 def convert_agent_action_to_function_call(action):
@@ -210,24 +222,42 @@ def generate_results(questions_path, model_name):
     results = pd.DataFrame(
         columns=["question", "function_calls", "full_response", "stopped"]
     )
-
-    if model_name == "gpt-3.5-turbo-instruct":
+    if model_name == "gpt-3.5":
         llm = OpenAI(
             model_name="gpt-3.5-turbo-instruct",
             openai_api_key=OPENAI_KEY,
             temperature=0,
             model_kwargs={"seed": 42},
         )
-    elif model_name == "gpt-4-0125-preview":
+    elif model_name == "gpt-4":
         llm = ChatOpenAI(
             model_name="gpt-4-0125-preview",
             openai_api_key=OPENAI_KEY,
             temperature=0,
             model_kwargs={"seed": 42},
         )
+    elif model_name == "claude-2":
+        llm = ChatAnthropic(
+            model_name="claude-2",
+            anthropic_api_key=ANTHROPIC_KEY,
+            temperature=0,
+        )
+    elif model_name == "llama2-70b":
+        llm = ChatAnyscale(
+            model="meta-llama/Llama-2-70b-chat-hf",
+            anyscale_api_key=ANYSCALE_KEY,
+            temperature=0,
+        )
+    elif model_name == "mistral-7B":
+        llm = ChatAnyscale(
+            model="mistralai/Mistral-7B-Instruct-v0.1",
+            anyscale_api_key=ANYSCALE_KEY,
+            temperature=0,
+        )
+
     else:
         raise ValueError(
-            "Invalid --model_name. Must be gpt-3.5-turbo-instruct or gpt-4-0125-preview."
+            "Invalid --model_name. Must be one of " + ", ".join(AVAILABLE_LLMS)
         )
     agent = initialize_agent(
         llm=llm,
