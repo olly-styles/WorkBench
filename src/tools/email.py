@@ -204,16 +204,10 @@ def forward_email(email_id=None, recipient=None):
         return "Email ID or recipient not provided."
     if email_id not in EMAILS["email_id"].values:
         return "Email not found."
-
     email = EMAILS[EMAILS["email_id"] == email_id].to_dict(orient="records")[0]
-    email_id = str(int(EMAILS["email_id"].max()) + 1)
-    sent_datetime = HARDCODED_CURRENT_TIME
-    EMAILS.loc[len(EMAILS)] = [
-        email_id,
-        "outbox",
-        recipient,
-        f"FW: {email['subject']}",
-        sent_datetime,
-        email["body"],
-    ]
-    return "Email forwarded successfully."
+    result = send_email.func(recipient, f"FW: {email['subject']}", email["body"])
+    return (
+        "Email forwarded successfully."
+        if result == "Email sent successfully."
+        else result
+    )
