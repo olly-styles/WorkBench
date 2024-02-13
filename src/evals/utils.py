@@ -161,7 +161,7 @@ def generate_question_and_answer(template):
     return {"question": question, "answer": answer, "template": {k: template[k] for k in template if k != "logic"}}
 
 
-def generate_all_questions_and_answers(templates, max_questions_per_template):
+def generate_all_questions_and_answers(templates, max_questions_per_template, print=True):
     """Generates a limited number of unique questions and answers for each template."""
     generated_questions_and_answers = []
     for template in templates:
@@ -171,11 +171,12 @@ def generate_all_questions_and_answers(templates, max_questions_per_template):
             if q_and_a["question"] not in questions:
                 generated_questions_and_answers.append(q_and_a)
 
-    for question_and_answer in generated_questions_and_answers:
-        print(question_and_answer["question"])
-        print(question_and_answer["answer"])
-        print(question_and_answer["template"])
-    
+    if print:
+        for question_and_answer in generated_questions_and_answers:
+            print(question_and_answer["question"])
+            print(question_and_answer["answer"])
+            print(question_and_answer["template"])
+        
     return generated_questions_and_answers
 
 def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
