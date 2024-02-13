@@ -7,6 +7,7 @@ import os
 project_root = os.path.abspath(os.path.curdir)
 sys.path.append(project_root)
 
+from src.evals.utils import generate_question_and_answer
 from src.data_generation.data_generation_utils import (
     generate_end_time,
     generate_event_duration_minutes,
@@ -63,17 +64,10 @@ max_questions_per_template = 10  # Limit the number of questions per template
 if __name__ == "__main__":
     for template in SINGLE_ACTION_TEMPLATES:
         for _ in range(max_questions_per_template):
-            logic = template["logic"]()
-            question = template["question"].format(**logic)
-            answer = []
-            for step in template["answer"]:
-                answer.append(step.format(**logic))
-            
+            q_and_a = generate_question_and_answer(template)
             questions = [q["question"] for q in generated_questions_and_answers]
-            if question not in questions:
-                generated_questions_and_answers.append(
-                    {"question": question, "answer": answer, "template": {k: template[k] for k in template if k != "logic"}}
-                )
+            if q_and_a["question"] not in questions:
+                generated_questions_and_answers.append(q_and_a)
 
     for question_and_answer in generated_questions_and_answers:
         print(question_and_answer["question"])

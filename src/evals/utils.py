@@ -147,6 +147,20 @@ def has_side_effects(predicted_actions, ground_truth_actions):
     return state_changed and not correct
 
 
+def generate_question_and_answer(template):
+    """Generates question and answer from template."""
+    logic = template["logic"]()
+    question = template["question"].format(**logic)
+    stop = logic.get("no_action", False)
+    if stop:
+        answer = []
+    if template["answer"] == "in_logic":
+        answer = logic["answer"]
+    else:
+        answer = [step.format(**logic) for step in template["answer"]]
+    return {"question": question, "answer": answer, "template": {k: template[k] for k in template if k != "logic"}}
+
+
 def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     """"""
     predictions = predictions_df.rename(columns={"function_calls": "prediction"})
