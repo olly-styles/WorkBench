@@ -273,7 +273,21 @@ def generate_results(questions_path, model_name):
     )
 
     for question in questions:
-        response = agent({"input": question})
+        try:
+            response = agent({"input": question})
+        except Exception as e:
+            # APIs for the LLMs we support have different error messages for when the context window is exceeded
+            context_window_error_messages = [
+                "maximum input length",
+                "maximum context length",
+                "prompt is too long",
+                "Request too large",
+            ]
+            if any([msg in str(e) for msg in context_window_error_messages]):
+                print(f"Error with question: {question}")
+                print("----Input too long-----")
+                # store the error message
+
         function_calls = []
         for step in response["intermediate_steps"]:
             function_calls.append(convert_agent_action_to_function_call(step[-2]))
@@ -306,10 +320,8 @@ def generate_results(questions_path, model_name):
             ignore_index=True,
         )
         # Reset all data after each question
-        calendar.CALENDAR_EVENTS = pd.read_csv(
-            "data/processed/calendar_events.csv", dtype=str
-        )
-        email.EMAILS = pd.read_csv("data/processed/emails.csv", dtype=str)
+        for domain in DOMAINS:
+            domain.reset_state()
 
     question_type = (
         questions_path.split("/")[-1]
