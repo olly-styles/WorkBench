@@ -12,7 +12,8 @@ from src.data_generation.data_generation_utils import (
     get_natural_language_date,
     generate_event_duration_minutes,
     format_event_duration,
-    get_natural_language_time
+    get_natural_language_time,
+    get_random_future_date,
 )
 from src.evals.utils import HARDCODED_CURRENT_TIME, generate_all_questions_and_answers
 from src.tools import calendar
@@ -27,8 +28,9 @@ emails = list(calendar_events["participant_email"].unique())
 event_ids = list(calendar_events["event_id"].unique())
 
 
+
 def first_event_logic():
-    date = random.choice(dates)
+    date = get_random_future_date(dates)
     natural_language_date = get_natural_language_date(date)
     first_event_id = calendar.search_events.func(
                 time_min=f"{date} 00:00:00", time_max=f"{date} 23:59:59"
@@ -36,14 +38,14 @@ def first_event_logic():
     return {"natural_language_date": natural_language_date, "first_event_id": first_event_id}
 
 def last_event_name_change_logic():
-    date = random.choice(dates)
+    date = get_random_future_date(dates)
     natural_language_date = get_natural_language_date(date)
     last_event_id = calendar.search_events.func(time_min=f"{date} 00:00:00", time_max=f"{date} 23:59:59")[-1]["event_id"]
     new_event_name = random.choice(events)
     return {"natural_language_date": natural_language_date, "last_event_id": last_event_id, "event_name": new_event_name}
 
 def delay_first_meeting_logic():
-    date = random.choice(dates)
+    date = get_random_future_date(dates)
     natural_language_date = get_natural_language_date(date)
     duration_minutes = generate_event_duration_minutes()
     duration = format_event_duration(duration_minutes)
@@ -100,7 +102,7 @@ def get_first_free_slot(meetings_df):
         return free_time.iloc[0]["event_end"]
 
 
-def check_last_meeting_with_name():
+def check_last_meeting_with_name_schedule_30_tomorrow():
     participant = random.choice(emails)
     number_of_days = random.randint(1, 31)
     events_with_name = calendar_events[calendar_events["participant_email"] == participant]
@@ -111,14 +113,11 @@ def check_last_meeting_with_name():
     tomorrow_date = str(HARDCODED_CURRENT_TIME + pd.Timedelta(days=1)).split(" ")[0]
     events_tomorrow = calendar_events[calendar_events["event_start"].str.split(" ").str[0] >= tomorrow_date]
     first_free_time = get_first_free_slot(events_tomorrow)
+    answer = f"""calendar.create_event.func(event_name='catch-up', participant_email='{participant}', event_start='{tomorrow_date} {first_free_time}', duration='30')"""
     
     return {"name": participant.split(".")[0], 
             "duration": number_of_days, 
-            "time": first_free_time, 
-            "date": tomorrow_date, 
-            "email": participant, 
-            "duration_minutes": 30,
-            "event_name": "catch-up"}
+            "answer": answer}
 
 def cancel_events_on_day_logic():
     next_7_days = [str(HARDCODED_CURRENT_TIME + pd.Timedelta(days=i)).split(" ")[0] for i in range(1, 8)]
@@ -206,10 +205,8 @@ MULTI_ACTION_TEMPLATES = [
     },
     {
         "question": "If I haven't met with {name} in the last {duration} days, schedule a 30-minute meeting called 'catch-up' for my first free slot from tomorrow",
-        "answer": [
-            """calendar.create_event.func(event_name='{event_name}', participant_email='{email}', event_start='{date} {time}', duration='{duration_minutes}')"""
-        ],
-        "logic": check_last_meeting_with_name
+        "answer": "in_logic",
+        "logic": check_last_meeting_with_name_schedule_30_tomorrow
     },
     {
         "question": "Cancel my meetings on {next_day} {before_or_after} {natural_language_time}",

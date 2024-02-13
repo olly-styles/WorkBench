@@ -1,12 +1,28 @@
 import pandas as pd
 import numpy as np
 from datetime import datetime
-
+import random
 np.random.seed(42)
 HARDCODED_CURRENT_TIME = pd.to_datetime("2023-11-30T00:00:00")
 calendar_days_in_future = 31 # end date is 31 december
 calendar_days_in_past = 90 # start date is 1 september
 
+
+
+def get_random_future_date(dates):
+    date = random.choice(dates)
+    while date < str(HARDCODED_CURRENT_TIME).split(" ")[0]:
+        date = random.choice(dates)
+    return date
+
+def get_random_future_datetime(dates):
+    date = get_random_future_date(dates)
+    time = generate_datetime_between(
+        start=pd.to_datetime(f"{date}T00:00:00"),
+        end=pd.to_datetime(f"{date}T23:59:59"),
+        nearest_30_minutes=True,
+    )
+    return time
 
 def is_overlapping(new_start, duration, existing_events):
     duration = pd.Timedelta(duration, unit="m")

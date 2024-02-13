@@ -12,6 +12,8 @@ from src.data_generation.data_generation_utils import (
     generate_event_duration_minutes,
     get_natural_language_date,
     get_natural_language_time,
+    get_random_future_date,
+    get_random_future_datetime
 )
 from src.tools import calendar
 from src.evals.utils import generate_all_questions_and_answers
@@ -20,6 +22,7 @@ random.seed(42)
 
 emails_data = pd.read_csv("data/processed/emails.csv", dtype=str)
 calendar_events = pd.read_csv("data/processed/calendar_events.csv", dtype=str)
+dates = list(calendar_events["event_start"].str.split(" ").str[0].unique())
 
 def find_email_schedule_meeting_sender_logic():
     email_index = random.randint(0, len(emails_data) - 1)
@@ -30,7 +33,7 @@ def find_email_schedule_meeting_sender_logic():
     sender = emails_data["sender/recipient"][email_index]
     duration_minutes = generate_event_duration_minutes()
     natural_language_duration = format_event_duration(duration_minutes)
-    meeting_datetime = random.choice(calendar_events["event_start"])
+    meeting_datetime = str(get_random_future_datetime(dates))
     meeting_date = meeting_datetime.split(" ")[0]
     natural_language_meeting_date = get_natural_language_date(meeting_date)
     natural_language_meeting_time = get_natural_language_time(
@@ -51,7 +54,7 @@ def find_email_schedule_meeting_sender_logic():
 
 
 def find_event_send_email_logic():
-    date = random.choice(calendar_events["event_start"].str.split(" ").str[0])
+    date = get_random_future_date(dates)
     first_event_id = calendar.search_events.func(
         time_min=f"{date} 00:00:00", time_max=f"{date} 23:59:59"
     )[0]["event_id"]

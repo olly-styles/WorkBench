@@ -13,16 +13,26 @@ from src.data_generation.data_generation_utils import (
     format_event_duration,
     get_natural_language_time,
     get_natural_language_date,
+    get_random_future_date, get_random_future_datetime
 )
 
 random.seed(42)
 
-def template_1_logic():
+calendar_events = pd.read_csv("data/processed/calendar_events.csv", dtype=str)
+dates = list(calendar_events["event_start"].str.split(" ").str[0].unique())
+times = list(calendar_events["event_start"].str.split(" ").str[1].unique())
+events = list(calendar_events["event_name"].unique())
+emails = list(calendar_events["participant_email"].unique())
+event_ids = list(calendar_events["event_id"].unique())
+names = [email.split(".")[0] for email in emails]
+
+
+def create_event_logic():
     duration_minutes = generate_event_duration_minutes()
     duration = format_event_duration(duration_minutes)
     email = random.choice(emails)
     event_name = random.choice(events)
-    date = random.choice(dates)
+    date = get_random_future_date(dates)
     natural_language_date = get_natural_language_date(date)
     time = random.choice(times)
     natural_language_time = get_natural_language_time(time)
@@ -44,17 +54,9 @@ SINGLE_ACTION_TEMPLATES = [
         "answer": [
             """calendar.create_event.func(event_name='{event_name}', participant_email='{email}', event_start='{date} {time}', duration='{duration_minutes}')"""
         ],
-        "logic": template_1_logic
+        "logic": create_event_logic
     },
 ]
-
-calendar_events = pd.read_csv("data/processed/calendar_events.csv", dtype=str)
-dates = list(calendar_events["event_start"].str.split(" ").str[0].unique())
-times = list(calendar_events["event_start"].str.split(" ").str[1].unique())
-events = list(calendar_events["event_name"].unique())
-emails = list(calendar_events["participant_email"].unique())
-event_ids = list(calendar_events["event_id"].unique())
-names = [email.split(".")[0] for email in emails]
 
 # Generate a limited number of unique single-action questions and answers
 generated_questions_and_answers = []
