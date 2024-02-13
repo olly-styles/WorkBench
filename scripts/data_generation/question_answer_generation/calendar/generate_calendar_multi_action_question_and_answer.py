@@ -14,6 +14,7 @@ from src.data_generation.data_generation_utils import (
     format_event_duration,
     get_natural_language_time,
     get_random_future_date,
+    get_first_free_slot
 )
 from src.evals.utils import HARDCODED_CURRENT_TIME, generate_all_questions_and_answers
 from src.tools import calendar
@@ -26,7 +27,6 @@ times = list(calendar_events["event_start"].str.split(" ").str[1].unique())
 events = list(calendar_events["event_name"].unique())
 emails = list(calendar_events["participant_email"].unique())
 event_ids = list(calendar_events["event_id"].unique())
-
 
 
 def first_event_logic():
@@ -85,22 +85,6 @@ def cancel_next_event_with_name_logic():
     next_event_id = future_events_with_name.sort_values("event_start").iloc[0]["event_id"]
     name = participant.split(".")[0]
     return {"event_id": next_event_id, "name": name}
-
-
-def get_first_free_slot(meetings_df):
-    meetings_df["event_start"] = pd.to_datetime(meetings_df["event_start"])
-    meetings_df["event_end"] = meetings_df["event_start"] + pd.to_timedelta(meetings_df["duration"].astype(int), unit="m")
-    meetings_df = meetings_df.sort_values("event_start")
-    meetings_df["next_event_start"] = meetings_df["event_start"].shift(-1)
-    meetings_df["next_event_start"] = meetings_df["next_event_start"].fillna(HARDCODED_CURRENT_TIME)
-    meetings_df["next_event_start"] = pd.to_datetime(meetings_df["next_event_start"])
-    meetings_df["free_time"] = meetings_df["next_event_start"] - meetings_df["event_end"]
-    free_time = meetings_df[meetings_df["free_time"] >= pd.Timedelta(30)]
-    if len(free_time) == 0:
-        return None
-    else:
-        return free_time.iloc[0]["event_end"]
-
 
 def check_last_meeting_with_name_schedule_30_tomorrow():
     participant = random.choice(emails)

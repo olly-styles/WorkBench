@@ -8,6 +8,21 @@ calendar_days_in_future = 31 # end date is 31 december
 calendar_days_in_past = 90 # start date is 1 september
 
 
+def get_first_free_slot(original_meetings_df):
+    meetings_df = original_meetings_df.copy()
+    meetings_df["event_start"] = pd.to_datetime(meetings_df["event_start"])
+    meetings_df["event_end"] = meetings_df["event_start"] + pd.to_timedelta(meetings_df["duration"].astype(int), unit="m")
+    meetings_df = meetings_df.sort_values("event_start")
+    meetings_df["next_event_start"] = meetings_df["event_start"].shift(-1)
+    meetings_df["next_event_start"] = meetings_df["next_event_start"].fillna(HARDCODED_CURRENT_TIME)
+    meetings_df["next_event_start"] = pd.to_datetime(meetings_df["next_event_start"])
+    meetings_df["free_time"] = meetings_df["next_event_start"] - meetings_df["event_end"]
+    free_time = meetings_df[meetings_df["free_time"] >= pd.Timedelta(30)]
+    if len(free_time) == 0:
+        return None
+    else:
+        return free_time.iloc[0]["event_end"]
+
 
 def get_random_future_date(dates):
     date = random.choice(dates)
