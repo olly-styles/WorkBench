@@ -142,6 +142,29 @@ def cancel_events_on_day_logic():
     answer = [f"""calendar.delete_event.func(event_id='{event_id}')""" for event_id in event_ids_to_delete]
     return {"answer": answer, "next_day": next_day, "before_or_after": before_or_after, "natural_language_time": natural_language_time}
     
+def cancel_all_future_meetings_with_person_logic():
+    participant = random.choice(emails)
+    name = participant.split(".")[0]
+    events_with_name = calendar_events[calendar_events["participant_email"] == participant]
+    future_events_with_name = events_with_name[events_with_name["event_start"] > str(HARDCODED_CURRENT_TIME)]
+    if len(future_events_with_name) == 0:
+        return {"no_action": True, "name": name}
+    
+    event_ids_to_delete = future_events_with_name["event_id"].tolist()
+    answer = [f"""calendar.delete_event.func(event_id='{event_id}')""" for event_id in event_ids_to_delete]
+    return {"answer": answer, "name": name}
+
+def cancel_future_meetings_with_name_logic():
+    event_name = random.choice(events)
+    events_with_name = calendar_events[calendar_events["event_name"] == event_name]
+    future_events_with_name = events_with_name[events_with_name["event_start"] > str(HARDCODED_CURRENT_TIME)]
+    if len(future_events_with_name) == 0:
+        return {"no_action": True, "event_name": event_name}
+    
+    event_ids_to_delete = future_events_with_name["event_id"].tolist()
+    answer = [f"""calendar.delete_event.func(event_id='{event_id}')""" for event_id in event_ids_to_delete]
+    return {"answer": answer, "event_name": event_name.lower()}
+
 
 MULTI_ACTION_TEMPLATES = [
     {
@@ -193,11 +216,21 @@ MULTI_ACTION_TEMPLATES = [
         "logic": cancel_events_on_day_logic,
         "answer": "in_logic",
     },
+    {
+        "question": "Cancel all future meetings with {name}",
+        "answer": "in_logic",
+        "logic": cancel_all_future_meetings_with_person_logic
+    },
+    {
+        "question": "Cancel future {event_name} meetings",
+        "answer": "in_logic",
+        "logic": cancel_future_meetings_with_name_logic
+    }
 ]
 
 # Generate a limited number of unique multi-action questions and answers
 generated_questions_and_answers = []
-max_questions_per_template = 1  # Limit the number of questions per template
+max_questions_per_template = 3  # Limit the number of questions per template
 
 if __name__ == "__main__":
     generated_questions_and_answers = generate_all_questions_and_answers(MULTI_ACTION_TEMPLATES, max_questions_per_template)
