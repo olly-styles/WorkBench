@@ -9,7 +9,7 @@ sys.path.append(project_root)
 
 from src.data_generation.data_generation_utils import get_natural_language_date
 from src.tools import email
-from src.evals.utils import generate_question_and_answer
+from src.evals.utils import generate_all_questions_and_answers
 
 random.seed(42)
 
@@ -17,7 +17,7 @@ random.seed(42)
 emails_data = pd.read_csv("data/processed/emails.csv", dtype=str)
 email_ids = list(emails_data["email_id"].unique())
 subjects = list(emails_data["subject"].unique())
-senders = list(emails_data["sender"].unique())
+senders = list(emails_data["sender/recipient"].unique())
 dates = list(emails_data["sent_datetime"].str.split(" ").str[0].unique())
 bodies = list(emails_data["body"].unique())
 
@@ -34,7 +34,7 @@ def send_email_to_last_sender_logic():
     index = random.randint(0, len(subjects) - 1)
     body = bodies[index]
     subject = subjects[index]
-    last_email_sender = email.search_emails.func(date_min=f"{date}", date_max=f"{date}")[-1]["sender"]
+    last_email_sender = email.search_emails.func(date_min=f"{date}", date_max=f"{date}")[-1]["sender/recipient"]
     return {
         "natural_language_date": natural_language_date,
         "subject": subject,
@@ -77,19 +77,7 @@ max_questions_per_template = 3  # Limit the number of questions per template
 
 
 if __name__ == "__main__":
-    for template in MULTI_ACTION_EMAIL_TEMPLATES:
-        for _ in range(max_questions_per_template):
-            q_and_a = generate_question_and_answer(template)
-            questions = [q["question"] for q in generated_questions_and_answers]
-            if q_and_a["question"] not in questions:
-                generated_questions_and_answers.append(q_and_a)
-
-
-    for question_and_answer in generated_questions_and_answers:
-        print(question_and_answer["question"])
-        print(question_and_answer["answer"])
-        print(question_and_answer["template"])
-
+    generated_questions_and_answers = generate_all_questions_and_answers(MULTI_ACTION_EMAIL_TEMPLATES, max_questions_per_template)
     df = pd.DataFrame(generated_questions_and_answers)
     df.to_csv(
         "data/processed/email_questions_and_answers_multi_action.csv",

@@ -7,9 +7,8 @@ import os
 project_root = os.path.abspath(os.path.curdir)
 sys.path.append(project_root)
 
-from src.evals.utils import generate_question_and_answer
+from src.evals.utils import generate_all_questions_and_answers
 from src.data_generation.data_generation_utils import (
-    generate_end_time,
     generate_event_duration_minutes,
     format_event_duration,
     get_natural_language_time,
@@ -62,18 +61,7 @@ generated_questions_and_answers = []
 max_questions_per_template = 10  # Limit the number of questions per template
 
 if __name__ == "__main__":
-    for template in SINGLE_ACTION_TEMPLATES:
-        for _ in range(max_questions_per_template):
-            q_and_a = generate_question_and_answer(template)
-            questions = [q["question"] for q in generated_questions_and_answers]
-            if q_and_a["question"] not in questions:
-                generated_questions_and_answers.append(q_and_a)
-
-    for question_and_answer in generated_questions_and_answers:
-        print(question_and_answer["question"])
-        print(question_and_answer["answer"])
-        print(question_and_answer["template"])
-
+    generated_questions_and_answers = generate_all_questions_and_answers(SINGLE_ACTION_TEMPLATES, max_questions_per_template)
     df = pd.DataFrame(generated_questions_and_answers)
     df.to_csv(
         "data/processed/calendar_questions_and_answers_single_action.csv",
