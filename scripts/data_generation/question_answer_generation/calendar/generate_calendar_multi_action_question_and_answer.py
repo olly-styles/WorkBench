@@ -20,23 +20,29 @@ random.seed(42)
 MULTI_ACTION_TEMPLATES = [
     {
         "question": "Cancel my first meeting on {natural_language_date}",
-        "answer": """calendar.delete_event.func(event_id='{first_event_id}')""",
+        "answer": ["""calendar.delete_event.func(event_id='{first_event_id}')"""],
     },
     {
         "question": "Change the name of the last event on {natural_language_date} to {event_name}",
-        "answer": """calendar.update_event.func(event_id='{last_event_id}', field='event_name', new_value='{event_name}')""",
+        "answer": [
+            """calendar.update_event.func(event_id='{last_event_id}', field='event_name', new_value='{event_name}')"""
+        ],
     },
     {
         "question": "Push back my first meeting with {name} on {natural_language_date} by {duration}s",
-        "answer": """calendar.update_event.func(event_id='{first_event_with_name_id}', field='event_start', new_value='{new_start}')""",
+        "answer": [
+            """calendar.update_event.func(event_id='{first_event_with_name_id}', field='event_start', new_value='{new_start}')"""
+        ],
     },
     {
         "question": "Delete the {event_name} event",
-        "answer": """calendar.delete_event.func(event_id='{event_id}')""",
+        "answer": ["""calendar.delete_event.func(event_id='{event_id}')"""],
     },
     {
         "question": "Change the name of the {event_name} event to {new_event_name}",
-        "answer": """calendar.update_event.func(event_id='{event_id}', field='event_name', new_value='{new_event_name}')""",
+        "answer": [
+            """calendar.update_event.func(event_id='{event_id}', field='event_name', new_value='{new_event_name}')"""
+        ],
     },
 ]
 
@@ -112,15 +118,19 @@ if __name__ == "__main__":
                 event_name=event_name,
                 new_event_name=new_event_name,
             )
-            answer = template["answer"].format(
-                first_event_id=first_event_id,
-                last_event_id=last_event_id,
-                first_event_with_name_id=first_event_with_name_id,
-                new_start=new_start,
-                event_name=event_name,
-                event_id=event_id,
-                new_event_name=new_event_name,
-            )
+            answer = []
+            for step in template["answer"]:
+                answer.append(
+                    step.format(
+                        first_event_id=first_event_id,
+                        last_event_id=last_event_id,
+                        first_event_with_name_id=first_event_with_name_id,
+                        new_start=new_start,
+                        event_name=event_name,
+                        event_id=event_id,
+                        new_event_name=new_event_name,
+                    )
+                )
             questions = [q["question"] for q in generated_questions_and_answers]
             if question not in questions:
                 generated_questions_and_answers.append(

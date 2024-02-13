@@ -1,0 +1,2 @@
+"question","answer","template"
+"Make a plot of page views from 2023-10-01 to 2023-10-31","[""analytics.create_plot.func(time_min='2023-10-01', time_max='2023-10-31', value_to_plot='page_views', plot_type='line')""]","{'question': 'Make a plot of page views from {time_min} to {time_max}', 'answer': [""analytics.create_plot.func(time_min='{time_min}', time_max='{time_max}', value_to_plot='page_views', plot_type='line')""]}"

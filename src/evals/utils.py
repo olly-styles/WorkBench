@@ -4,12 +4,17 @@ import pandas as pd
 from langchain_openai import ChatOpenAI, OpenAI
 from langchain.agents import initialize_agent, AgentType
 import csv
-from src.tools import calendar, email
+from src.tools import calendar, email, analytics
 from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
-from src.tools.toolkits import calendar_toolkit, email_toolkit, tool_information
+from src.tools.toolkits import (
+    calendar_toolkit,
+    email_toolkit,
+    analytics_toolkit,
+)
 
 
 OPENAI_KEY = open("openai_key.txt", "r").read()
+DOMAINS = [calendar, email, analytics]
 
 
 def convert_agent_action_to_function_call(action):
@@ -18,27 +23,6 @@ def convert_agent_action_to_function_call(action):
     for k, v in action.tool_input.items():
         args.append(f"{k}='{v}'")
     return action.tool + ".func(" + ", ".join(args) + ")"
-
-
-def has_side_effects(row):
-    """
-    Checks if there are any side effect functions in the prediction.
-    If a side effect function is present, it must match the ground truth exactly.
-    """
-    side_effect_functions = [
-        tool["name"] for tool in tool_information if tool["side_effects"]
-    ]
-
-    prediction_funcs = extract_function_names(row["prediction"])
-    ground_truth_funcs = extract_function_names(row["ground_truth"])
-
-    for func in prediction_funcs:
-        if func in side_effect_functions:
-            if func not in ground_truth_funcs or row["prediction"].count(func) != row[
-                "ground_truth"
-            ].count(func):
-                return True
-    return False
 
 
 def execute_actions_and_reset_state(actions):
@@ -58,20 +42,26 @@ def execute_actions_and_reset_state(actions):
         The resulting calendar events after executing the actions.
     new_email_state pd.DataFrame
         The resulting emails after executing the actions.
+    new_analytics_state pd.DataFrame
+        The resulting analytics data after executing the actions.
     """
+    for domain in DOMAINS:
+        domain.reset_state()
+
     # Execute the actions
     for action in actions:
         try:
             eval(action)
         except:
-            return False, None, None
+            return False, None, None, None
     new_calendar_state = calendar.CALENDAR_EVENTS.copy()
     new_email_state = email.EMAILS.copy()
+    new_analytics_state = analytics.PLOTS_DATA.copy()
 
     # Reset the state of the tools
-    for domain in [calendar, email]:
+    for domain in DOMAINS:
         domain.reset_state()
-    return True, new_calendar_state, new_email_state
+    return True, new_calendar_state, new_email_state, new_analytics_state
 
 
 def is_correct(predicted_actions, ground_truth_actions):
@@ -91,22 +81,70 @@ def is_correct(predicted_actions, ground_truth_actions):
         True if the predicted actions result in the same state change as the ground truth actions.
 
     """
-    successful_execution, predicted_calendar_state, predicted_email_state = (
-        execute_actions_and_reset_state([predicted_actions])
-    )
-    _, ground_truth_calendar_state, ground_truth_email_state = (
-        execute_actions_and_reset_state([ground_truth_actions])
-    )
+    (
+        successful_execution,
+        predicted_calendar_state,
+        predicted_email_state,
+        predicted_analytics_state,
+    ) = execute_actions_and_reset_state(predicted_actions)
+    (
+        _,
+        ground_truth_calendar_state,
+        ground_truth_email_state,
+        ground_truth_analytics_state,
+    ) = execute_actions_and_reset_state(ground_truth_actions)
     return (
         successful_execution
         and predicted_calendar_state.equals(ground_truth_calendar_state)
         and predicted_email_state.equals(ground_truth_email_state)
+        and predicted_analytics_state.equals(ground_truth_analytics_state)
     )
 
 
 def extract_function_names(s):
     """Extracts function names from a string"""
     return re.findall(r"(\b\w+\.\w+)\(", s)
+
+
+def has_side_effects(predicted_actions, ground_truth_actions):
+    """
+    Checks if the predicted actions have side effects by comparing the state change after executing the actions.
+
+    Parameters
+    ----------
+    predicted_actions : list
+        List of predicted actions as strings.
+    ground_truth_actions : list
+        List of ground truth actions as strings.
+
+    Returns
+    -------
+    bool
+        True if the predicted actions result in different state change than the ground truth actions.
+
+    """
+    for domain in DOMAINS:
+        domain.reset_state()
+    original_state = {
+        "calendar": calendar.CALENDAR_EVENTS.copy(),
+        "email": email.EMAILS.copy(),
+        "analytics": analytics.PLOTS_DATA.copy(),
+    }
+    (
+        successful_execution,
+        predicted_calendar_state,
+        predicted_email_state,
+        predicted_analytics_state,
+    ) = execute_actions_and_reset_state(predicted_actions)
+
+    if not successful_execution:
+        return False
+    state_changed = not predicted_calendar_state.equals(original_state["calendar"])
+    state_changed |= not predicted_email_state.equals(original_state["email"])
+    state_changed |= not predicted_analytics_state.equals(original_state["analytics"])
+
+    correct = is_correct(predicted_actions, ground_truth_actions)
+    return state_changed and not correct
 
 
 def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
@@ -119,25 +157,24 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     assert (
         len(predictions) == len(ground_truth) == len(df)
     ), f"{len(predictions)} predictions does not match {len(ground_truth_df)} ground truth answers. Check that the predictions and ground truth are for the same questions."
-
-    df["correct"] = [is_correct(pred, gt) for pred, gt in zip(df["prediction"], df["ground_truth"])]
-    df["has_side_effects"] = df.apply(has_side_effects, axis=1)
+    df["correct"] = [
+        is_correct(pred, gt) for pred, gt in zip(df["prediction"], df["ground_truth"])
+    ]
+    df["unwanted_side_effects"] = [
+        has_side_effects(pred, gt)
+        for pred, gt in zip(df["prediction"], df["ground_truth"])
+    ]
 
     # print out the questions that were not answered correctly
     if print_errors:
-        for index, row in df[~df["correct"]].iterrows():
+        for _, row in df[~df["correct"]].iterrows():
             print(f"Question: {row['question']}")
             print(f"Prediction: {row['prediction']}")
             print(f"Ground truth: {row['ground_truth']}")
-            print(f"Has side effects: {row['has_side_effects']}")
+            print(f"Unwanted side effects: {row['unwanted_side_effects']}")
             print("")
 
-    # print accuracy as a percentage to 2dp
     print(f"Accuracy: {round(df['correct'].mean() * 100, 2)}%")
-    # print number of side effects as a percentage to 2dp
-    print(
-        f"Side effects: {round(df['has_side_effects'].mean() * 100, 2)}% of predictions"
-    )
 
 
 def get_latest_results_from_dir(
@@ -192,17 +229,17 @@ def generate_results(questions_path, model_name):
         raise ValueError(
             "Invalid --model_name. Must be gpt-3.5-turbo-instruct or gpt-4-0125-preview."
         )
-
     agent = initialize_agent(
         llm=llm,
         agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
-        tools=email_toolkit + calendar_toolkit,
+        tools=email_toolkit + calendar_toolkit + analytics_toolkit,
         verbose=True,
         return_intermediate_steps=True,
         max_iterations=5,
     )
     agent.agent.llm_chain.prompt.messages[0].prompt.template = (
-        f"Today's date is {HARDCODED_CURRENT_TIME.date()}. Remember the current date when answering queries." + agent.agent.llm_chain.prompt.messages[0].prompt.template
+        f"Today's date is {HARDCODED_CURRENT_TIME.date()}. Remember the current date when answering queries."
+        + agent.agent.llm_chain.prompt.messages[0].prompt.template
     )
 
     for question in questions:
@@ -228,7 +265,7 @@ def generate_results(questions_path, model_name):
                     [
                         [
                             question,
-                            ",".join(function_calls),
+                            function_calls,
                             str(response),
                             agent_stopped,
                         ]
