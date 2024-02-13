@@ -1,6 +1,8 @@
 import pandas as pd
 from langchain.tools import tool
 
+from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
+
 # Data is hard-coded so that the agent can call them without passing the dataframe as an argument.
 # We cannot use a class because LangChain does not support tools inside classes.
 EMAILS = pd.read_csv("data/processed/emails.csv", dtype=str)
@@ -24,7 +26,7 @@ def get_email_information_by_id(email_id=None, field=None):
     email_id : str, optional
         Unique ID of the email.
     field : str, optional
-        Specific field to return. Available fields: "email_id", "sender", "subject", "sent_date", "body"
+        Specific field to return. Available fields: "email_id", "sender", "subject", "sent_date", "body", "inbox/outbox".
 
     Returns
     -------
@@ -75,12 +77,12 @@ def search_emails(query="", date_min=None, date_max=None):
     Examples
     --------
     >>> email.search_emails("Project Update")
-    [{{"email_id": "12345678", "subject": "Project Update", "sender": "jane@example.com", "sent_datetime": "2024-01-10 09:30:00", "body": "Please find the project update attached."}}]
+    [{{"email_id": "12345678", "inbox/outbox": "inbox", "subject": "Project Update", "sender/recipient": "jane@example.com", "sent_datetime": "2024-01-10 09:30:00", "body": "Please find the project update attached."}}]
     """
     emails = EMAILS[
         (EMAILS["subject"].str.contains(query))
         | (EMAILS["body"].str.contains(query))
-        | (EMAILS["sender"].str.contains(query))
+        | (EMAILS["sender/recipient"].str.contains(query))
     ].to_dict(orient="records")
     if date_min:
         emails = [
@@ -129,6 +131,17 @@ def send_email(recipient=None, subject=None, body=None):
     """
     if not recipient or not subject or not body:
         return "Recipient, subject, or body not provided."
+
+    email_id = str(int(EMAILS["email_id"].max()) + 1)
+    sent_datetime = HARDCODED_CURRENT_TIME
+    EMAILS.loc[len(EMAILS)] = [
+        email_id,
+        "outbox",
+        recipient,
+        subject,
+        sent_datetime,
+        body,
+    ]
 
     return "Email sent successfully."
 
@@ -190,6 +203,17 @@ def forward_email(email_id=None, recipient=None):
     if not email_id or not recipient:
         return "Email ID or recipient not provided."
     if email_id not in EMAILS["email_id"].values:
-        print(EMAILS)
         return "Email not found."
+
+    email = EMAILS[EMAILS["email_id"] == email_id].to_dict(orient="records")[0]
+    email_id = str(int(EMAILS["email_id"].max()) + 1)
+    sent_datetime = HARDCODED_CURRENT_TIME
+    EMAILS.loc[len(EMAILS)] = [
+        email_id,
+        "outbox",
+        recipient,
+        f"FW: {email['subject']}",
+        sent_datetime,
+        email["body"],
+    ]
     return "Email forwarded successfully."

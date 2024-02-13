@@ -7,14 +7,16 @@ from src.tools import email
 test_emails = [
     {
         "email_id": "12345678",
-        "sender": "jane@example.com",
+        "inbox/outbox": "inbox",
+        "sender/recipient": "jane@example.com",
         "subject": "Project Update",
         "sent_date": "2024-01-10 09:30:00",
         "body": "Please find the project update attached.",
     },
     {
         "email_id": "12345679",
-        "sender": "mark@example.com",
+        "inbox/outbox": "inbox",
+        "sender/recipient": "mark@example.com",
         "subject": "Meeting Request",
         "sent_date": "2024-01-11 10:15:00",
         "body": "Can we schedule a meeting for next week?",
@@ -60,8 +62,9 @@ def test_search_emails():
     email.EMAILS = pd.DataFrame(test_emails)
     assert email.search_emails.func("Meeting Request")[0] == {
         "email_id": "12345679",
+        "inbox/outbox": "inbox",
+        "sender/recipient": "mark@example.com",
         "subject": "Meeting Request",
-        "sender": "mark@example.com",
         "sent_date": "2024-01-11 10:15:00",
         "body": "Can we schedule a meeting for next week?",
     }
@@ -131,6 +134,11 @@ def test_forward_email():
         email.forward_email.func("12345679", "example@email.com")
         == "Email forwarded successfully."
     )
+    # Check that the email was added to the outbox
+    assert email.EMAILS["inbox/outbox"].values[-1] == "outbox"
+    assert email.EMAILS["sender/recipient"].values[-1] == "example@email.com"
+    assert email.EMAILS["subject"].values[-1] == "FW: Meeting Request"
+    assert email.EMAILS["body"].values[-1] == "Can we schedule a meeting for next week?"
     email.reset_state()
 
 
