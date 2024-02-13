@@ -11,9 +11,11 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Step 2: Add openai api key
+### Step 2: Add api keys
 ```bash
-touch openai_key.txt && echo YOUR_API_KEY > openai_key.txt
+touch openai_key.txt && echo YOUR_OPENAI_API_KEY > openai_key.txt
+touch anthropic_key.txt && echo YOUR_ANTHROPIC_API_KEY > anthropic_key.txt
+touch anyscale_key.txt && echo YOUR_ANYSCALE_API_KEY > anyscale_key.txt
 ```
 
 ## Usage

@@ -8,7 +8,7 @@ import ast
 project_root = os.path.abspath(os.path.curdir)
 sys.path.append(project_root)
 
-from src.evals.utils import generate_results, calculate_metrics
+from src.evals.utils import AVAILABLE_LLMS, generate_results, calculate_metrics
 
 warnings.filterwarnings("ignore")  # suppress langchain deprecation warnings
 
@@ -16,7 +16,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "--model_name",
     type=str,
-    help="model name, either gpt-3.5-turbo-instruct or gpt-4-0125-preview",
+    help="model name. Must be one of " + ", ".join(AVAILABLE_LLMS),
     required=True,
 )
 parser.add_argument(
