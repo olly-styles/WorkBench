@@ -1,501 +1,501 @@
 email_id,inbox/outbox,sender/recipient,subject,sent_datetime,body
 00000003,inbox,Sofia.Santos@company.com,Budget Approval Request,2023-10-01 09:06:08,Please review and approve the attached budget proposal.
-00000080,inbox,Akira.Sato@company.com,Travel Itinerary Details,2023-10-01 11:30:15,Attached are the details of your travel itinerary.
-00000000,inbox,Aisha.Chen@company.com,Project Update,2023-10-01 12:57:21,Here is the update on the current project.
-00000098,inbox,Aisha.Chen@company.com,New Policy Update,2023-10-01 13:20:25,We have updated our policy. Please read the attached document for details.
-00000469,inbox,Olga.Petrova@company.com,Monthly Sales Figures,2023-10-01 13:34:50,Please find the monthly sales figures in the attached document.
-00000348,inbox,Luis.Ortiz@company.com,Urgent: Server Downtime,2023-10-01 15:00:50,Please be aware of the unplanned server downtime occurring tonight.
-00000199,inbox,Kofi.Mensah@company.com,Reminder: Event Tomorrow,2023-10-01 15:12:16,This is a reminder that the event is scheduled for tomorrow.
-00000241,inbox,Leila.Azizi@company.com,Travel Itinerary Details,2023-10-02 11:25:07,Attached are the details of your travel itinerary.
-00000083,inbox,Leila.Azizi@company.com,Holiday Schedule Confirmation,2023-10-02 13:14:43,Confirming the holiday schedule as discussed.
-00000033,inbox,Lena.Schmidt@company.com,Meeting Rescheduled,2023-10-02 13:42:42,Please note the change in the meeting date and time.
-00000376,inbox,Lena.Schmidt@company.com,Health and Safety Update,2023-10-02 14:45:00,Find the latest health and safety guidelines attached.
-00000167,inbox,Sofia.Santos@company.com,Meeting Request,2023-10-03 10:14:35,Please find attached the details for our next meeting.
-00000320,inbox,Dmitri.Ivanov@company.com,Urgent: Server Downtime,2023-10-03 11:56:29,Please be aware of the unplanned server downtime occurring tonight.
-00000407,inbox,Raj.Patel@company.com,Employee Satisfaction Survey Results,2023-10-03 12:05:05,The results of the recent employee satisfaction survey are attached.
-00000009,inbox,Olga.Petrova@company.com,Client Meeting Follow-up,2023-10-03 12:59:58,Here is a summary of the points discussed in our recent client meeting.
+00000030,inbox,Dmitri.Ivanov@company.com,Press Release Draft,2023-10-01 10:40:34,Please review the attached draft of our upcoming press release.
+00000253,inbox,Anaya.Patel@company.com,Meeting Request,2023-10-01 11:20:52,Please find attached the details for our next meeting.
+00000477,inbox,Chenwei.Zhang@company.com,Health and Safety Update,2023-10-01 12:19:51,Find the latest health and safety guidelines attached.
+00000143,inbox,Luis.Ortiz@company.com,Urgent: Server Downtime,2023-10-01 12:34:01,Please be aware of the unplanned server downtime occurring tonight.
+00000099,inbox,Aisha.Chen@company.com,New Policy Update,2023-10-01 13:20:25,We have updated our policy. Please read the attached document for details.
+00000446,inbox,Olga.Petrova@company.com,Monthly Sales Figures,2023-10-01 13:34:50,Please find the monthly sales figures in the attached document.
+00000197,inbox,Kofi.Mensah@company.com,Reminder: Event Tomorrow,2023-10-01 15:12:16,This is a reminder that the event is scheduled for tomorrow.
+00000056,inbox,Sofia.Santos@company.com,Training Session Confirmation,2023-10-02 09:25:01,Your registration for the upcoming training session is confirmed.
+00000261,inbox,Dmitri.Ivanov@company.com,Monthly Sales Figures,2023-10-02 10:20:21,Please find the monthly sales figures in the attached document.
+00000235,inbox,Leila.Azizi@company.com,Travel Itinerary Details,2023-10-02 11:25:07,Attached are the details of your travel itinerary.
+00000316,inbox,Jinsoo.Kim@company.com,Urgent: Server Downtime,2023-10-02 13:12:54,Please be aware of the unplanned server downtime occurring tonight.
+00000034,inbox,Lena.Schmidt@company.com,Meeting Rescheduled,2023-10-02 13:42:42,Please note the change in the meeting date and time.
+00000067,inbox,Lena.Schmidt@company.com,Holiday Schedule Confirmation,2023-10-02 13:45:26,Confirming the holiday schedule as discussed.
+00000266,inbox,Leila.Azizi@company.com,Invoice Attached,2023-10-02 14:33:12,Attached is the invoice for the recent transaction.
+00000495,inbox,Yuki.Tanaka@company.com,Weekly Report,2023-10-02 15:58:09,Attached is the weekly report for your review.
+00000481,inbox,Raj.Patel@company.com,IT System Upgrade Schedule,2023-10-03 09:32:13,Please review the schedule for the upcoming IT system upgrade.
+00000183,inbox,Jinsoo.Kim@company.com,Monthly Sales Figures,2023-10-03 11:02:53,Please find the monthly sales figures in the attached document.
+00000406,inbox,Sofia.Santos@company.com,Weekly Report,2023-10-03 12:22:59,Attached is the weekly report for your review.
+00000413,inbox,Olga.Petrova@company.com,Travel Itinerary Details,2023-10-03 12:26:19,Attached are the details of your travel itinerary.
+00000009,inbox,Anaya.Patel@company.com,Client Meeting Follow-up,2023-10-03 12:59:58,Here is a summary of the points discussed in our recent client meeting.
+00000490,inbox,Akira.Sato@company.com,Health and Safety Update,2023-10-03 14:11:26,Find the latest health and safety guidelines attached.
+00000288,inbox,Olga.Petrova@company.com,Urgent: Server Downtime,2023-10-03 14:54:10,Please be aware of the unplanned server downtime occurring tonight.
+00000478,inbox,Anaya.Patel@company.com,Project Update,2023-10-03 15:35:16,Here is the update on the current project.
+00000376,inbox,Leila.Azizi@company.com,Customer Feedback Summary,2023-10-03 15:35:34,Attached is the summary of customer feedback from last month.
+00000152,inbox,Chenwei.Zhang@company.com,Invoice Attached,2023-10-03 15:37:16,Attached is the invoice for the recent transaction.
 00000119,inbox,Raj.Patel@company.com,Invoice Attached,2023-10-04 09:19:33,Attached is the invoice for the recent transaction.
-00000240,inbox,Nia.Johnson@company.com,Travel Itinerary Details,2023-10-04 09:22:42,Attached are the details of your travel itinerary.
-00000316,inbox,Olga.Petrova@company.com,Monthly Sales Figures,2023-10-04 10:10:38,Please find the monthly sales figures in the attached document.
-00000288,inbox,Anaya.Patel@company.com,Holiday Schedule Confirmation,2023-10-04 11:33:01,Confirming the holiday schedule as discussed.
-00000108,inbox,Akira.Sato@company.com,Budget Approval Request,2023-10-04 12:09:23,Please review and approve the attached budget proposal.
-00000478,inbox,Amir.Ali@company.com,Reminder: Event Tomorrow,2023-10-04 12:25:03,This is a reminder that the event is scheduled for tomorrow.
-00000073,inbox,Dmitri.Ivanov@company.com,Employee Satisfaction Survey Results,2023-10-04 12:43:19,The results of the recent employee satisfaction survey are attached.
-00000178,inbox,Luis.Ortiz@company.com,Weekly Report,2023-10-04 12:59:26,Attached is the weekly report for your review.
-00000313,inbox,Aisha.Chen@company.com,Meeting Rescheduled,2023-10-04 15:13:32,Please note the change in the meeting date and time.
-00000204,inbox,Chenwei.Zhang@company.com,Press Release Draft,2023-10-04 15:59:45,Please review the attached draft of our upcoming press release.
-00000030,inbox,Santiago.Martinez@company.com,Weekly Report,2023-10-05 10:09:18,Attached is the weekly report for your review.
-00000398,inbox,Anaya.Patel@company.com,Holiday Schedule Confirmation,2023-10-05 11:24:12,Confirming the holiday schedule as discussed.
-00000101,inbox,Carlos.Rodriguez@company.com,Invoice Attached,2023-10-05 12:20:39,Attached is the invoice for the recent transaction.
-00000280,inbox,Aisha.Chen@company.com,Health and Safety Update,2023-10-05 14:11:01,Find the latest health and safety guidelines attached.
-00000291,inbox,Lena.Schmidt@company.com,Meeting Rescheduled,2023-10-05 14:11:03,Please note the change in the meeting date and time.
-00000495,inbox,Nadia.Moreau@company.com,New Policy Update,2023-10-05 14:36:07,We have updated our policy. Please read the attached document for details.
-00000168,inbox,Aisha.Chen@company.com,IT System Upgrade Schedule,2023-10-05 15:13:55,Please review the schedule for the upcoming IT system upgrade.
-00000492,inbox,Nia.Johnson@company.com,Meeting Request,2023-10-05 15:34:35,Please find attached the details for our next meeting.
-00000453,inbox,Akira.Sato@company.com,Training Session Confirmation,2023-10-06 09:52:50,Your registration for the upcoming training session is confirmed.
-00000246,inbox,Fatima.Khan@company.com,Health and Safety Update,2023-10-06 11:56:37,Find the latest health and safety guidelines attached.
-00000293,inbox,Anaya.Patel@company.com,Client Meeting Follow-up,2023-10-06 15:03:14,Here is a summary of the points discussed in our recent client meeting.
-00000047,inbox,Lena.Schmidt@company.com,Customer Feedback Summary,2023-10-07 09:31:12,Attached is the summary of customer feedback from last month.
-00000285,inbox,Lena.Schmidt@company.com,Monthly Sales Figures,2023-10-07 10:16:47,Please find the monthly sales figures in the attached document.
-00000463,inbox,Nia.Johnson@company.com,New Policy Update,2023-10-07 10:51:25,We have updated our policy. Please read the attached document for details.
-00000480,inbox,Jinsoo.Kim@company.com,Weekly Report,2023-10-07 14:01:42,Attached is the weekly report for your review.
-00000311,inbox,Chenwei.Zhang@company.com,Client Meeting Follow-up,2023-10-07 14:54:11,Here is a summary of the points discussed in our recent client meeting.
-00000232,inbox,Lena.Schmidt@company.com,Staff Roster for Next Week,2023-10-07 14:57:10,Attached is the staff roster for next week.
-00000067,inbox,Yuki.Tanaka@company.com,Training Session Confirmation,2023-10-07 15:54:28,Your registration for the upcoming training session is confirmed.
-00000102,inbox,Aisha.Chen@company.com,Client Meeting Follow-up,2023-10-08 09:08:01,Here is a summary of the points discussed in our recent client meeting.
-00000035,inbox,Olga.Petrova@company.com,Reminder: Event Tomorrow,2023-10-08 09:34:51,This is a reminder that the event is scheduled for tomorrow.
-00000142,inbox,Luis.Ortiz@company.com,Press Release Draft,2023-10-08 11:37:02,Please review the attached draft of our upcoming press release.
+00000234,inbox,Nia.Johnson@company.com,Travel Itinerary Details,2023-10-04 09:22:42,Attached are the details of your travel itinerary.
+00000211,inbox,Olga.Petrova@company.com,Reminder: Event Tomorrow,2023-10-04 09:40:18,This is a reminder that the event is scheduled for tomorrow.
+00000055,inbox,Santiago.Martinez@company.com,Customer Feedback Summary,2023-10-04 09:58:38,Attached is the summary of customer feedback from last month.
+00000476,inbox,Nadia.Moreau@company.com,Client Meeting Follow-up,2023-10-04 10:07:51,Here is a summary of the points discussed in our recent client meeting.
+00000084,inbox,Kofi.Mensah@company.com,Urgent: Server Downtime,2023-10-04 10:37:45,Please be aware of the unplanned server downtime occurring tonight.
+00000138,inbox,Sofia.Santos@company.com,Project Update,2023-10-04 11:16:34,Here is the update on the current project.
+00000268,inbox,Anaya.Patel@company.com,Holiday Schedule Confirmation,2023-10-04 11:33:01,Confirming the holiday schedule as discussed.
+00000046,inbox,Fatima.Khan@company.com,IT System Upgrade Schedule,2023-10-04 12:25:42,Please review the schedule for the upcoming IT system upgrade.
+00000076,inbox,Dmitri.Ivanov@company.com,Employee Satisfaction Survey Results,2023-10-04 12:43:19,The results of the recent employee satisfaction survey are attached.
+00000134,inbox,Yuki.Tanaka@company.com,Weekly Report,2023-10-04 13:55:00,Attached is the weekly report for your review.
+00000293,inbox,Aisha.Chen@company.com,Meeting Rescheduled,2023-10-04 15:13:32,Please note the change in the meeting date and time.
+00000201,inbox,Chenwei.Zhang@company.com,Press Release Draft,2023-10-04 15:59:45,Please review the attached draft of our upcoming press release.
+00000158,inbox,Jinsoo.Kim@company.com,Holiday Schedule Confirmation,2023-10-05 09:17:18,Confirming the holiday schedule as discussed.
+00000493,inbox,Luis.Ortiz@company.com,Urgent: Server Downtime,2023-10-05 11:27:51,Please be aware of the unplanned server downtime occurring tonight.
+00000224,inbox,Leila.Azizi@company.com,Client Meeting Follow-up,2023-10-05 12:20:39,Here is a summary of the points discussed in our recent client meeting.
+00000273,inbox,Lena.Schmidt@company.com,Meeting Rescheduled,2023-10-05 14:11:03,Please note the change in the meeting date and time.
+00000169,inbox,Nadia.Moreau@company.com,IT System Upgrade Schedule,2023-10-05 15:13:55,Please review the schedule for the upcoming IT system upgrade.
+00000431,inbox,Akira.Sato@company.com,Training Session Confirmation,2023-10-06 09:52:50,Your registration for the upcoming training session is confirmed.
+00000442,inbox,Akira.Sato@company.com,Monthly Sales Figures,2023-10-06 10:23:16,Please find the monthly sales figures in the attached document.
+00000144,inbox,Akira.Sato@company.com,IT System Upgrade Schedule,2023-10-06 10:39:16,Please review the schedule for the upcoming IT system upgrade.
+00000240,inbox,Fatima.Khan@company.com,Health and Safety Update,2023-10-06 11:56:37,Find the latest health and safety guidelines attached.
+00000250,inbox,Chenwei.Zhang@company.com,Reminder: Event Tomorrow,2023-10-07 10:41:06,This is a reminder that the event is scheduled for tomorrow.
+00000044,inbox,Nadia.Moreau@company.com,Customer Feedback Summary,2023-10-07 11:05:05,Attached is the summary of customer feedback from last month.
+00000010,inbox,Luis.Ortiz@company.com,Monthly Sales Figures,2023-10-07 12:15:25,Please find the monthly sales figures in the attached document.
+00000454,inbox,Jinsoo.Kim@company.com,Weekly Report,2023-10-07 14:01:42,Attached is the weekly report for your review.
+00000233,inbox,Nia.Johnson@company.com,New Policy Update,2023-10-07 14:33:40,We have updated our policy. Please read the attached document for details.
+00000381,inbox,Santiago.Martinez@company.com,IT System Upgrade Schedule,2023-10-07 14:34:44,Please review the schedule for the upcoming IT system upgrade.
+00000036,inbox,Olga.Petrova@company.com,Reminder: Event Tomorrow,2023-10-08 09:34:51,This is a reminder that the event is scheduled for tomorrow.
+00000054,inbox,Luis.Ortiz@company.com,Meeting Rescheduled,2023-10-08 10:11:44,Please note the change in the meeting date and time.
+00000040,inbox,Raj.Patel@company.com,Budget Approval Request,2023-10-08 10:50:44,Please review and approve the attached budget proposal.
+00000373,inbox,Santiago.Martinez@company.com,Weekly Report,2023-10-08 11:17:49,Attached is the weekly report for your review.
+00000141,inbox,Luis.Ortiz@company.com,Press Release Draft,2023-10-08 11:37:02,Please review the attached draft of our upcoming press release.
+00000017,inbox,Fatima.Khan@company.com,Invoice Attached,2023-10-08 12:15:12,Attached is the invoice for the recent transaction.
+00000190,inbox,Dmitri.Ivanov@company.com,Meeting Request,2023-10-08 12:21:21,Please find attached the details for our next meeting.
+00000311,inbox,Fatima.Khan@company.com,New Policy Update,2023-10-08 12:38:38,We have updated our policy. Please read the attached document for details.
+00000337,inbox,Aisha.Chen@company.com,Client Meeting Follow-up,2023-10-08 14:41:36,Here is a summary of the points discussed in our recent client meeting.
 00000174,inbox,Raj.Patel@company.com,Employee Satisfaction Survey Results,2023-10-08 15:48:52,The results of the recent employee satisfaction survey are attached.
-00000256,inbox,Luis.Ortiz@company.com,Reminder: Event Tomorrow,2023-10-09 11:16:34,This is a reminder that the event is scheduled for tomorrow.
+00000204,inbox,Lena.Schmidt@company.com,Training Session Confirmation,2023-10-08 15:53:27,Your registration for the upcoming training session is confirmed.
+00000091,inbox,Olga.Petrova@company.com,Reminder: Event Tomorrow,2023-10-09 09:58:05,This is a reminder that the event is scheduled for tomorrow.
+00000339,inbox,Santiago.Martinez@company.com,Press Release Draft,2023-10-09 10:07:20,Please review the attached draft of our upcoming press release.
+00000015,inbox,Chenwei.Zhang@company.com,Customer Feedback Summary,2023-10-09 11:53:47,Attached is the summary of customer feedback from last month.
 00000126,inbox,Amir.Ali@company.com,Urgent: Server Downtime,2023-10-09 12:34:16,Please be aware of the unplanned server downtime occurring tonight.
-00000026,inbox,Amir.Ali@company.com,Employee Satisfaction Survey Results,2023-10-09 15:00:02,The results of the recent employee satisfaction survey are attached.
-00000460,inbox,Chenwei.Zhang@company.com,Press Release Draft,2023-10-09 15:47:37,Please review the attached draft of our upcoming press release.
-00000406,inbox,Dmitri.Ivanov@company.com,Training Session Confirmation,2023-10-10 10:05:07,Your registration for the upcoming training session is confirmed.
-00000173,inbox,Santiago.Martinez@company.com,Meeting Rescheduled,2023-10-10 10:26:53,Please note the change in the meeting date and time.
-00000267,inbox,Yuki.Tanaka@company.com,Press Release Draft,2023-10-10 11:46:41,Please review the attached draft of our upcoming press release.
-00000276,inbox,Leila.Azizi@company.com,Employee Satisfaction Survey Results,2023-10-10 12:13:47,The results of the recent employee satisfaction survey are attached.
-00000116,inbox,Leila.Azizi@company.com,Invoice Attached,2023-10-10 12:34:05,Attached is the invoice for the recent transaction.
-00000443,inbox,Olga.Petrova@company.com,Urgent: Server Downtime,2023-10-10 12:40:46,Please be aware of the unplanned server downtime occurring tonight.
-00000475,inbox,Amir.Ali@company.com,Travel Itinerary Details,2023-10-10 12:47:38,Attached are the details of your travel itinerary.
-00000358,inbox,Luis.Ortiz@company.com,Monthly Sales Figures,2023-10-10 13:08:59,Please find the monthly sales figures in the attached document.
-00000014,inbox,Akira.Sato@company.com,Health and Safety Update,2023-10-10 15:53:57,Find the latest health and safety guidelines attached.
-00000111,inbox,Anaya.Patel@company.com,Invoice Attached,2023-10-11 09:29:53,Attached is the invoice for the recent transaction.
-00000321,inbox,Amir.Ali@company.com,Monthly Sales Figures,2023-10-11 10:48:31,Please find the monthly sales figures in the attached document.
-00000491,inbox,Jinsoo.Kim@company.com,Press Release Draft,2023-10-12 09:57:19,Please review the attached draft of our upcoming press release.
-00000222,inbox,Santiago.Martinez@company.com,Reminder: Event Tomorrow,2023-10-12 10:12:41,This is a reminder that the event is scheduled for tomorrow.
-00000206,inbox,Raj.Patel@company.com,Urgent: Server Downtime,2023-10-12 10:46:33,Please be aware of the unplanned server downtime occurring tonight.
-00000279,inbox,Nia.Johnson@company.com,Client Meeting Follow-up,2023-10-12 10:52:56,Here is a summary of the points discussed in our recent client meeting.
-00000282,inbox,Carlos.Rodriguez@company.com,Monthly Sales Figures,2023-10-12 12:25:36,Please find the monthly sales figures in the attached document.
-00000483,inbox,Lena.Schmidt@company.com,Employee Satisfaction Survey Results,2023-10-12 13:29:26,The results of the recent employee satisfaction survey are attached.
-00000430,inbox,Amir.Ali@company.com,Weekly Report,2023-10-12 14:37:50,Attached is the weekly report for your review.
-00000255,inbox,Lena.Schmidt@company.com,New Policy Update,2023-10-13 09:28:07,We have updated our policy. Please read the attached document for details.
-00000247,inbox,Akira.Sato@company.com,Meeting Request,2023-10-13 09:59:42,Please find attached the details for our next meeting.
-00000136,inbox,Chenwei.Zhang@company.com,Reminder: Event Tomorrow,2023-10-13 10:04:29,This is a reminder that the event is scheduled for tomorrow.
-00000395,inbox,Dmitri.Ivanov@company.com,Health and Safety Update,2023-10-13 10:06:47,Find the latest health and safety guidelines attached.
-00000161,inbox,Leila.Azizi@company.com,Invoice Attached,2023-10-13 10:35:08,Attached is the invoice for the recent transaction.
-00000194,inbox,Raj.Patel@company.com,Press Release Draft,2023-10-13 12:36:25,Please review the attached draft of our upcoming press release.
-00000229,inbox,Santiago.Martinez@company.com,Staff Roster for Next Week,2023-10-13 12:56:21,Attached is the staff roster for next week.
-00000484,inbox,Sofia.Santos@company.com,Customer Feedback Summary,2023-10-13 13:27:54,Attached is the summary of customer feedback from last month.
-00000374,inbox,Lena.Schmidt@company.com,IT System Upgrade Schedule,2023-10-13 15:44:14,Please review the schedule for the upcoming IT system upgrade.
-00000339,inbox,Yuki.Tanaka@company.com,Project Update,2023-10-13 15:54:35,Here is the update on the current project.
-00000391,inbox,Carlos.Rodriguez@company.com,Reminder: Event Tomorrow,2023-10-14 10:26:32,This is a reminder that the event is scheduled for tomorrow.
-00000070,inbox,Carlos.Rodriguez@company.com,Holiday Schedule Confirmation,2023-10-14 15:15:53,Confirming the holiday schedule as discussed.
-00000027,inbox,Kofi.Mensah@company.com,Urgent: Server Downtime,2023-10-14 15:30:00,Please be aware of the unplanned server downtime occurring tonight.
-00000209,inbox,Jinsoo.Kim@company.com,Monthly Sales Figures,2023-10-15 09:21:37,Please find the monthly sales figures in the attached document.
-00000095,inbox,Anaya.Patel@company.com,Reminder: Event Tomorrow,2023-10-15 12:44:59,This is a reminder that the event is scheduled for tomorrow.
-00000210,inbox,Leila.Azizi@company.com,Customer Feedback Summary,2023-10-15 14:26:12,Attached is the summary of customer feedback from last month.
-00000295,inbox,Chenwei.Zhang@company.com,Holiday Schedule Confirmation,2023-10-16 09:06:12,Confirming the holiday schedule as discussed.
-00000196,inbox,Jinsoo.Kim@company.com,Health and Safety Update,2023-10-16 09:11:43,Find the latest health and safety guidelines attached.
-00000420,inbox,Akira.Sato@company.com,New Policy Update,2023-10-16 09:19:57,We have updated our policy. Please read the attached document for details.
-00000300,inbox,Santiago.Martinez@company.com,Training Session Confirmation,2023-10-16 11:04:54,Your registration for the upcoming training session is confirmed.
-00000164,inbox,Sofia.Santos@company.com,Customer Feedback Summary,2023-10-16 11:47:38,Attached is the summary of customer feedback from last month.
-00000107,inbox,Kofi.Mensah@company.com,Project Update,2023-10-16 13:08:51,Here is the update on the current project.
-00000437,inbox,Kofi.Mensah@company.com,Invoice Attached,2023-10-16 13:22:44,Attached is the invoice for the recent transaction.
-00000459,inbox,Olga.Petrova@company.com,Employee Satisfaction Survey Results,2023-10-16 14:28:22,The results of the recent employee satisfaction survey are attached.
-00000249,inbox,Fatima.Khan@company.com,Reminder: Event Tomorrow,2023-10-16 15:34:56,This is a reminder that the event is scheduled for tomorrow.
-00000462,inbox,Nadia.Moreau@company.com,Budget Approval Request,2023-10-17 09:14:33,Please review and approve the attached budget proposal.
-00000146,inbox,Dmitri.Ivanov@company.com,New Policy Update,2023-10-17 09:29:52,We have updated our policy. Please read the attached document for details.
-00000359,inbox,Raj.Patel@company.com,Urgent: Server Downtime,2023-10-17 09:50:59,Please be aware of the unplanned server downtime occurring tonight.
-00000077,inbox,Carlos.Rodriguez@company.com,Holiday Schedule Confirmation,2023-10-17 09:55:43,Confirming the holiday schedule as discussed.
-00000078,inbox,Lena.Schmidt@company.com,Weekly Report,2023-10-17 11:13:11,Attached is the weekly report for your review.
-00000299,inbox,Santiago.Martinez@company.com,Customer Feedback Summary,2023-10-17 12:32:21,Attached is the summary of customer feedback from last month.
-00000289,inbox,Kofi.Mensah@company.com,Press Release Draft,2023-10-17 13:57:56,Please review the attached draft of our upcoming press release.
-00000152,inbox,Lena.Schmidt@company.com,Training Session Confirmation,2023-10-17 14:53:09,Your registration for the upcoming training session is confirmed.
-00000494,inbox,Carlos.Rodriguez@company.com,IT System Upgrade Schedule,2023-10-18 12:06:08,Please review the schedule for the upcoming IT system upgrade.
-00000421,inbox,Yuki.Tanaka@company.com,Press Release Draft,2023-10-18 12:08:15,Please review the attached draft of our upcoming press release.
-00000477,inbox,Anaya.Patel@company.com,Project Update,2023-10-18 12:38:42,Here is the update on the current project.
-00000277,inbox,Fatima.Khan@company.com,Meeting Rescheduled,2023-10-19 10:37:23,Please note the change in the meeting date and time.
-00000471,inbox,Leila.Azizi@company.com,Client Meeting Follow-up,2023-10-19 11:47:04,Here is a summary of the points discussed in our recent client meeting.
-00000365,inbox,Aisha.Chen@company.com,New Policy Update,2023-10-19 13:50:48,We have updated our policy. Please read the attached document for details.
-00000005,inbox,Kofi.Mensah@company.com,Monthly Sales Figures,2023-10-19 15:31:38,Please find the monthly sales figures in the attached document.
-00000375,inbox,Leila.Azizi@company.com,Holiday Schedule Confirmation,2023-10-20 09:11:20,Confirming the holiday schedule as discussed.
-00000298,inbox,Raj.Patel@company.com,Meeting Rescheduled,2023-10-20 09:33:49,Please note the change in the meeting date and time.
-00000380,inbox,Dmitri.Ivanov@company.com,Meeting Request,2023-10-20 10:31:56,Please find attached the details for our next meeting.
-00000441,inbox,Raj.Patel@company.com,Weekly Report,2023-10-20 12:25:17,Attached is the weekly report for your review.
-00000309,inbox,Kofi.Mensah@company.com,Staff Roster for Next Week,2023-10-20 13:52:35,Attached is the staff roster for next week.
-00000392,inbox,Santiago.Martinez@company.com,Invoice Attached,2023-10-20 13:53:18,Attached is the invoice for the recent transaction.
-00000434,inbox,Jinsoo.Kim@company.com,New Policy Update,2023-10-20 14:06:36,We have updated our policy. Please read the attached document for details.
-00000439,inbox,Chenwei.Zhang@company.com,Reminder: Event Tomorrow,2023-10-21 09:38:14,This is a reminder that the event is scheduled for tomorrow.
-00000129,inbox,Yuki.Tanaka@company.com,New Policy Update,2023-10-21 09:41:42,We have updated our policy. Please read the attached document for details.
-00000327,inbox,Amir.Ali@company.com,Invoice Attached,2023-10-21 10:42:35,Attached is the invoice for the recent transaction.
-00000269,inbox,Fatima.Khan@company.com,Press Release Draft,2023-10-21 10:47:29,Please review the attached draft of our upcoming press release.
-00000115,inbox,Raj.Patel@company.com,IT System Upgrade Schedule,2023-10-21 12:56:40,Please review the schedule for the upcoming IT system upgrade.
-00000323,inbox,Raj.Patel@company.com,Weekly Report,2023-10-21 13:19:37,Attached is the weekly report for your review.
-00000326,inbox,Luis.Ortiz@company.com,Meeting Request,2023-10-22 09:18:26,Please find attached the details for our next meeting.
-00000278,inbox,Dmitri.Ivanov@company.com,Health and Safety Update,2023-10-22 10:45:23,Find the latest health and safety guidelines attached.
-00000105,inbox,Luis.Ortiz@company.com,Staff Roster for Next Week,2023-10-22 12:28:12,Attached is the staff roster for next week.
-00000087,inbox,Jinsoo.Kim@company.com,Monthly Sales Figures,2023-10-23 10:04:46,Please find the monthly sales figures in the attached document.
-00000216,inbox,Jinsoo.Kim@company.com,Urgent: Server Downtime,2023-10-23 10:18:46,Please be aware of the unplanned server downtime occurring tonight.
-00000271,inbox,Kofi.Mensah@company.com,Staff Roster for Next Week,2023-10-23 10:34:07,Attached is the staff roster for next week.
-00000092,inbox,Fatima.Khan@company.com,Travel Itinerary Details,2023-10-23 10:44:01,Attached are the details of your travel itinerary.
-00000445,inbox,Chenwei.Zhang@company.com,IT System Upgrade Schedule,2023-10-23 12:12:12,Please review the schedule for the upcoming IT system upgrade.
-00000284,inbox,Akira.Sato@company.com,Health and Safety Update,2023-10-23 12:33:35,Find the latest health and safety guidelines attached.
-00000151,inbox,Sofia.Santos@company.com,Meeting Request,2023-10-23 13:44:33,Please find attached the details for our next meeting.
-00000258,inbox,Jinsoo.Kim@company.com,New Policy Update,2023-10-23 15:24:37,We have updated our policy. Please read the attached document for details.
-00000195,inbox,Lena.Schmidt@company.com,Press Release Draft,2023-10-23 15:30:41,Please review the attached draft of our upcoming press release.
-00000386,inbox,Amir.Ali@company.com,Project Update,2023-10-24 09:21:11,Here is the update on the current project.
-00000224,inbox,Leila.Azizi@company.com,Meeting Request,2023-10-24 09:53:41,Please find attached the details for our next meeting.
-00000354,inbox,Luis.Ortiz@company.com,Health and Safety Update,2023-10-24 10:39:19,Find the latest health and safety guidelines attached.
-00000399,inbox,Anaya.Patel@company.com,Training Session Confirmation,2023-10-24 10:45:02,Your registration for the upcoming training session is confirmed.
-00000234,inbox,Lena.Schmidt@company.com,Customer Feedback Summary,2023-10-24 11:35:49,Attached is the summary of customer feedback from last month.
-00000045,inbox,Nadia.Moreau@company.com,Holiday Schedule Confirmation,2023-10-24 13:07:41,Confirming the holiday schedule as discussed.
-00000017,inbox,Akira.Sato@company.com,IT System Upgrade Schedule,2023-10-24 15:18:27,Please review the schedule for the upcoming IT system upgrade.
-00000244,inbox,Aisha.Chen@company.com,Customer Feedback Summary,2023-10-25 09:00:05,Attached is the summary of customer feedback from last month.
-00000154,inbox,Leila.Azizi@company.com,New Policy Update,2023-10-25 09:54:57,We have updated our policy. Please read the attached document for details.
-00000169,inbox,Santiago.Martinez@company.com,Monthly Sales Figures,2023-10-25 10:28:09,Please find the monthly sales figures in the attached document.
-00000211,inbox,Jinsoo.Kim@company.com,Reminder: Event Tomorrow,2023-10-25 14:13:12,This is a reminder that the event is scheduled for tomorrow.
-00000315,inbox,Amir.Ali@company.com,Travel Itinerary Details,2023-10-26 10:43:09,Attached are the details of your travel itinerary.
-00000184,inbox,Yuki.Tanaka@company.com,Client Meeting Follow-up,2023-10-26 10:49:11,Here is a summary of the points discussed in our recent client meeting.
-00000183,inbox,Amir.Ali@company.com,Invoice Attached,2023-10-26 12:41:36,Attached is the invoice for the recent transaction.
-00000349,inbox,Akira.Sato@company.com,Reminder: Event Tomorrow,2023-10-26 13:16:21,This is a reminder that the event is scheduled for tomorrow.
-00000318,inbox,Lena.Schmidt@company.com,Weekly Report,2023-10-26 13:21:14,Attached is the weekly report for your review.
-00000137,inbox,Raj.Patel@company.com,Monthly Sales Figures,2023-10-26 13:36:41,Please find the monthly sales figures in the attached document.
-00000383,inbox,Leila.Azizi@company.com,Staff Roster for Next Week,2023-10-26 14:27:23,Attached is the staff roster for next week.
-00000248,inbox,Yuki.Tanaka@company.com,Meeting Rescheduled,2023-10-26 14:31:40,Please note the change in the meeting date and time.
-00000388,inbox,Leila.Azizi@company.com,Press Release Draft,2023-10-26 14:54:57,Please review the attached draft of our upcoming press release.
-00000414,inbox,Carlos.Rodriguez@company.com,Urgent: Server Downtime,2023-10-26 15:44:42,Please be aware of the unplanned server downtime occurring tonight.
-00000162,inbox,Santiago.Martinez@company.com,Employee Satisfaction Survey Results,2023-10-27 10:03:00,The results of the recent employee satisfaction survey are attached.
-00000322,inbox,Leila.Azizi@company.com,Meeting Request,2023-10-27 10:58:05,Please find attached the details for our next meeting.
-00000172,inbox,Yuki.Tanaka@company.com,IT System Upgrade Schedule,2023-10-27 14:35:33,Please review the schedule for the upcoming IT system upgrade.
-00000147,inbox,Aisha.Chen@company.com,Reminder: Event Tomorrow,2023-10-27 15:07:17,This is a reminder that the event is scheduled for tomorrow.
-00000197,inbox,Raj.Patel@company.com,Training Session Confirmation,2023-10-28 10:13:30,Your registration for the upcoming training session is confirmed.
+00000377,inbox,Jinsoo.Kim@company.com,IT System Upgrade Schedule,2023-10-09 13:12:13,Please review the schedule for the upcoming IT system upgrade.
+00000150,inbox,Aisha.Chen@company.com,Client Meeting Follow-up,2023-10-09 14:10:53,Here is a summary of the points discussed in our recent client meeting.
+00000257,inbox,Nia.Johnson@company.com,Meeting Request,2023-10-10 09:36:47,Please find attached the details for our next meeting.
+00000256,inbox,Yuki.Tanaka@company.com,Press Release Draft,2023-10-10 11:46:41,Please review the attached draft of our upcoming press release.
+00000438,inbox,Raj.Patel@company.com,Employee Satisfaction Survey Results,2023-10-10 11:56:33,The results of the recent employee satisfaction survey are attached.
+00000451,inbox,Amir.Ali@company.com,Travel Itinerary Details,2023-10-10 12:47:38,Attached are the details of your travel itinerary.
+00000335,inbox,Luis.Ortiz@company.com,Monthly Sales Figures,2023-10-10 13:08:59,Please find the monthly sales figures in the attached document.
+00000407,inbox,Amir.Ali@company.com,IT System Upgrade Schedule,2023-10-10 15:11:19,Please review the schedule for the upcoming IT system upgrade.
+00000239,inbox,Lena.Schmidt@company.com,Customer Feedback Summary,2023-10-10 15:49:47,Attached is the summary of customer feedback from last month.
+00000299,inbox,Amir.Ali@company.com,Monthly Sales Figures,2023-10-11 10:48:31,Please find the monthly sales figures in the attached document.
+00000386,inbox,Yuki.Tanaka@company.com,Customer Feedback Summary,2023-10-11 13:01:41,Attached is the summary of customer feedback from last month.
+00000213,inbox,Nia.Johnson@company.com,Invoice Attached,2023-10-11 13:20:21,Attached is the invoice for the recent transaction.
+00000341,inbox,Kofi.Mensah@company.com,Meeting Rescheduled,2023-10-11 13:42:19,Please note the change in the meeting date and time.
+00000177,inbox,Lena.Schmidt@company.com,New Policy Update,2023-10-11 14:23:03,We have updated our policy. Please read the attached document for details.
+00000462,inbox,Carlos.Rodriguez@company.com,Project Update,2023-10-11 15:31:05,Here is the update on the current project.
+00000418,inbox,Carlos.Rodriguez@company.com,Employee Satisfaction Survey Results,2023-10-11 15:52:41,The results of the recent employee satisfaction survey are attached.
+00000463,inbox,Jinsoo.Kim@company.com,Press Release Draft,2023-10-12 09:57:19,Please review the attached draft of our upcoming press release.
+00000324,inbox,Amir.Ali@company.com,Client Meeting Follow-up,2023-10-12 10:06:10,Here is a summary of the points discussed in our recent client meeting.
+00000218,inbox,Akira.Sato@company.com,Reminder: Event Tomorrow,2023-10-12 10:12:41,This is a reminder that the event is scheduled for tomorrow.
+00000087,inbox,Olga.Petrova@company.com,Staff Roster for Next Week,2023-10-12 10:38:12,Attached is the staff roster for next week.
+00000350,inbox,Carlos.Rodriguez@company.com,Weekly Report,2023-10-12 14:19:36,Attached is the weekly report for your review.
+00000139,inbox,Jinsoo.Kim@company.com,Training Session Confirmation,2023-10-12 14:20:53,Your registration for the upcoming training session is confirmed.
+00000236,inbox,Kofi.Mensah@company.com,Budget Approval Request,2023-10-12 15:12:49,Please review and approve the attached budget proposal.
+00000069,inbox,Olga.Petrova@company.com,Employee Satisfaction Survey Results,2023-10-12 15:28:10,The results of the recent employee satisfaction survey are attached.
+00000226,inbox,Chenwei.Zhang@company.com,New Policy Update,2023-10-12 15:30:54,We have updated our policy. Please read the attached document for details.
+00000072,inbox,Anaya.Patel@company.com,Customer Feedback Summary,2023-10-13 09:07:20,Attached is the summary of customer feedback from last month.
+00000247,inbox,Lena.Schmidt@company.com,New Policy Update,2023-10-13 09:28:07,We have updated our policy. Please read the attached document for details.
+00000135,inbox,Chenwei.Zhang@company.com,Reminder: Event Tomorrow,2023-10-13 10:04:29,This is a reminder that the event is scheduled for tomorrow.
+00000077,inbox,Amir.Ali@company.com,Holiday Schedule Confirmation,2023-10-13 10:39:20,Confirming the holiday schedule as discussed.
+00000225,inbox,Santiago.Martinez@company.com,Staff Roster for Next Week,2023-10-13 12:56:21,Attached is the staff roster for next week.
+00000436,inbox,Luis.Ortiz@company.com,Weekly Report,2023-10-13 12:57:19,Attached is the weekly report for your review.
+00000486,inbox,Dmitri.Ivanov@company.com,Urgent: Server Downtime,2023-10-13 13:13:36,Please be aware of the unplanned server downtime occurring tonight.
+00000411,inbox,Carlos.Rodriguez@company.com,Monthly Sales Figures,2023-10-13 13:25:13,Please find the monthly sales figures in the attached document.
+00000271,inbox,Dmitri.Ivanov@company.com,Invoice Attached,2023-10-13 14:44:54,Attached is the invoice for the recent transaction.
+00000167,inbox,Santiago.Martinez@company.com,Client Meeting Follow-up,2023-10-13 15:00:16,Here is a summary of the points discussed in our recent client meeting.
+00000284,inbox,Carlos.Rodriguez@company.com,Employee Satisfaction Survey Results,2023-10-13 15:42:20,The results of the recent employee satisfaction survey are attached.
+00000351,inbox,Lena.Schmidt@company.com,IT System Upgrade Schedule,2023-10-13 15:44:14,Please review the schedule for the upcoming IT system upgrade.
+00000291,inbox,Raj.Patel@company.com,Urgent: Server Downtime,2023-10-14 09:36:01,Please be aware of the unplanned server downtime occurring tonight.
+00000031,inbox,Anaya.Patel@company.com,Travel Itinerary Details,2023-10-14 09:50:44,Attached are the details of your travel itinerary.
+00000043,inbox,Sofia.Santos@company.com,IT System Upgrade Schedule,2023-10-14 10:03:24,Please review the schedule for the upcoming IT system upgrade.
+00000129,inbox,Dmitri.Ivanov@company.com,Training Session Confirmation,2023-10-14 13:00:39,Your registration for the upcoming training session is confirmed.
+00000073,inbox,Carlos.Rodriguez@company.com,Holiday Schedule Confirmation,2023-10-14 15:15:53,Confirming the holiday schedule as discussed.
+00000205,inbox,Jinsoo.Kim@company.com,Monthly Sales Figures,2023-10-15 09:21:37,Please find the monthly sales figures in the attached document.
+00000313,inbox,Leila.Azizi@company.com,Project Update,2023-10-15 10:28:32,Here is the update on the current project.
+00000202,inbox,Leila.Azizi@company.com,Client Meeting Follow-up,2023-10-15 11:11:40,Here is a summary of the points discussed in our recent client meeting.
+00000296,inbox,Chenwei.Zhang@company.com,Weekly Report,2023-10-15 11:22:26,Attached is the weekly report for your review.
+00000086,inbox,Akira.Sato@company.com,Staff Roster for Next Week,2023-10-15 12:20:12,Attached is the staff roster for next week.
+00000096,inbox,Anaya.Patel@company.com,Reminder: Event Tomorrow,2023-10-15 12:44:59,This is a reminder that the event is scheduled for tomorrow.
+00000371,inbox,Nia.Johnson@company.com,IT System Upgrade Schedule,2023-10-15 14:10:32,Please review the schedule for the upcoming IT system upgrade.
+00000206,inbox,Leila.Azizi@company.com,Customer Feedback Summary,2023-10-15 14:26:12,Attached is the summary of customer feedback from last month.
+00000118,inbox,Jinsoo.Kim@company.com,Urgent: Server Downtime,2023-10-15 14:39:17,Please be aware of the unplanned server downtime occurring tonight.
+00000214,inbox,Lena.Schmidt@company.com,Holiday Schedule Confirmation,2023-10-15 15:47:41,Confirming the holiday schedule as discussed.
+00000277,inbox,Chenwei.Zhang@company.com,Holiday Schedule Confirmation,2023-10-16 09:06:12,Confirming the holiday schedule as discussed.
+00000195,inbox,Jinsoo.Kim@company.com,Health and Safety Update,2023-10-16 09:11:43,Find the latest health and safety guidelines attached.
+00000397,inbox,Akira.Sato@company.com,New Policy Update,2023-10-16 09:19:57,We have updated our policy. Please read the attached document for details.
+00000479,inbox,Lena.Schmidt@company.com,Press Release Draft,2023-10-16 09:52:55,Please review the attached draft of our upcoming press release.
+00000281,inbox,Santiago.Martinez@company.com,Training Session Confirmation,2023-10-16 11:04:54,Your registration for the upcoming training session is confirmed.
+00000450,inbox,Anaya.Patel@company.com,Client Meeting Follow-up,2023-10-16 11:25:39,Here is a summary of the points discussed in our recent client meeting.
+00000163,inbox,Sofia.Santos@company.com,Customer Feedback Summary,2023-10-16 11:47:38,Attached is the summary of customer feedback from last month.
+00000039,inbox,Fatima.Khan@company.com,Meeting Rescheduled,2023-10-16 12:29:10,Please note the change in the meeting date and time.
+00000494,inbox,Akira.Sato@company.com,Budget Approval Request,2023-10-16 13:01:51,Please review and approve the attached budget proposal.
+00000469,inbox,Dmitri.Ivanov@company.com,Meeting Request,2023-10-16 15:35:43,Please find attached the details for our next meeting.
+00000145,inbox,Dmitri.Ivanov@company.com,New Policy Update,2023-10-17 09:29:52,We have updated our policy. Please read the attached document for details.
+00000080,inbox,Carlos.Rodriguez@company.com,Holiday Schedule Confirmation,2023-10-17 09:55:43,Confirming the holiday schedule as discussed.
+00000444,inbox,Leila.Azizi@company.com,Project Update,2023-10-17 10:43:33,Here is the update on the current project.
+00000081,inbox,Lena.Schmidt@company.com,Weekly Report,2023-10-17 11:13:11,Attached is the weekly report for your review.
+00000280,inbox,Santiago.Martinez@company.com,Customer Feedback Summary,2023-10-17 12:32:21,Attached is the summary of customer feedback from last month.
+00000269,inbox,Kofi.Mensah@company.com,Press Release Draft,2023-10-17 13:57:56,Please review the attached draft of our upcoming press release.
+00000111,inbox,Anaya.Patel@company.com,Training Session Confirmation,2023-10-17 14:03:19,Your registration for the upcoming training session is confirmed.
+00000116,inbox,Sofia.Santos@company.com,IT System Upgrade Schedule,2023-10-17 15:20:19,Please review the schedule for the upcoming IT system upgrade.
+00000113,inbox,Chenwei.Zhang@company.com,New Policy Update,2023-10-18 11:00:23,We have updated our policy. Please read the attached document for details.
+00000049,inbox,Olga.Petrova@company.com,Project Update,2023-10-18 11:33:26,Here is the update on the current project.
+00000318,inbox,Dmitri.Ivanov@company.com,Weekly Report,2023-10-18 14:07:16,Attached is the weekly report for your review.
+00000455,inbox,Anaya.Patel@company.com,Client Meeting Follow-up,2023-10-18 15:16:16,Here is a summary of the points discussed in our recent client meeting.
+00000396,inbox,Kofi.Mensah@company.com,Travel Itinerary Details,2023-10-18 15:37:09,Attached are the details of your travel itinerary.
+00000401,inbox,Kofi.Mensah@company.com,Monthly Sales Figures,2023-10-19 10:05:48,Please find the monthly sales figures in the attached document.
+00000415,inbox,Jinsoo.Kim@company.com,Press Release Draft,2023-10-19 10:10:55,Please review the attached draft of our upcoming press release.
+00000448,inbox,Leila.Azizi@company.com,Client Meeting Follow-up,2023-10-19 11:47:04,Here is a summary of the points discussed in our recent client meeting.
+00000342,inbox,Aisha.Chen@company.com,New Policy Update,2023-10-19 13:50:48,We have updated our policy. Please read the attached document for details.
+00000370,inbox,Santiago.Martinez@company.com,Holiday Schedule Confirmation,2023-10-19 14:38:32,Confirming the holiday schedule as discussed.
+00000037,inbox,Dmitri.Ivanov@company.com,Meeting Rescheduled,2023-10-19 15:24:54,Please note the change in the meeting date and time.
+00000033,inbox,Aisha.Chen@company.com,Budget Approval Request,2023-10-19 15:33:51,Please review and approve the attached budget proposal.
+00000328,inbox,Dmitri.Ivanov@company.com,Invoice Attached,2023-10-19 15:48:29,Attached is the invoice for the recent transaction.
+00000279,inbox,Raj.Patel@company.com,Meeting Rescheduled,2023-10-20 09:33:49,Please note the change in the meeting date and time.
+00000434,inbox,Fatima.Khan@company.com,Holiday Schedule Confirmation,2023-10-20 09:40:07,Confirming the holiday schedule as discussed.
+00000356,inbox,Dmitri.Ivanov@company.com,Meeting Request,2023-10-20 10:31:56,Please find attached the details for our next meeting.
+00000332,inbox,Chenwei.Zhang@company.com,New Policy Update,2023-10-20 11:08:21,We have updated our policy. Please read the attached document for details.
+00000321,inbox,Raj.Patel@company.com,Customer Feedback Summary,2023-10-20 11:13:38,Attached is the summary of customer feedback from last month.
+00000178,inbox,Kofi.Mensah@company.com,Training Session Confirmation,2023-10-20 11:34:03,Your registration for the upcoming training session is confirmed.
+00000419,inbox,Raj.Patel@company.com,Weekly Report,2023-10-20 12:25:17,Attached is the weekly report for your review.
+00000290,inbox,Kofi.Mensah@company.com,Staff Roster for Next Week,2023-10-20 13:52:35,Attached is the staff roster for next week.
+00000124,inbox,Carlos.Rodriguez@company.com,IT System Upgrade Schedule,2023-10-20 14:55:37,Please review the schedule for the upcoming IT system upgrade.
+00000440,inbox,Aisha.Chen@company.com,Budget Approval Request,2023-10-21 10:31:37,Please review and approve the attached budget proposal.
+00000306,inbox,Amir.Ali@company.com,Invoice Attached,2023-10-21 10:42:35,Attached is the invoice for the recent transaction.
+00000051,inbox,Anaya.Patel@company.com,Meeting Request,2023-10-21 11:47:18,Please find attached the details for our next meeting.
+00000085,inbox,Nadia.Moreau@company.com,New Policy Update,2023-10-21 11:59:28,We have updated our policy. Please read the attached document for details.
+00000164,inbox,Leila.Azizi@company.com,Press Release Draft,2023-10-21 12:22:44,Please review the attached draft of our upcoming press release.
+00000035,inbox,Yuki.Tanaka@company.com,IT System Upgrade Schedule,2023-10-21 13:17:27,Please review the schedule for the upcoming IT system upgrade.
+00000471,inbox,Yuki.Tanaka@company.com,Meeting Rescheduled,2023-10-21 14:29:09,Please note the change in the meeting date and time.
+00000185,inbox,Dmitri.Ivanov@company.com,Monthly Sales Figures,2023-10-21 14:41:11,Please find the monthly sales figures in the attached document.
+00000489,inbox,Sofia.Santos@company.com,Travel Itinerary Details,2023-10-21 15:55:54,Attached are the details of your travel itinerary.
+00000310,inbox,Chenwei.Zhang@company.com,Project Update,2023-10-22 10:34:51,Here is the update on the current project.
+00000038,inbox,Amir.Ali@company.com,Reminder: Event Tomorrow,2023-10-22 10:46:07,This is a reminder that the event is scheduled for tomorrow.
+00000068,inbox,Akira.Sato@company.com,Weekly Report,2023-10-22 12:19:31,Attached is the weekly report for your review.
+00000106,inbox,Luis.Ortiz@company.com,Staff Roster for Next Week,2023-10-22 12:28:12,Attached is the staff roster for next week.
+00000375,inbox,Dmitri.Ivanov@company.com,Press Release Draft,2023-10-22 12:48:08,Please review the attached draft of our upcoming press release.
+00000110,inbox,Chenwei.Zhang@company.com,Travel Itinerary Details,2023-10-22 13:11:29,Attached are the details of your travel itinerary.
+00000130,inbox,Lena.Schmidt@company.com,Training Session Confirmation,2023-10-23 09:46:19,Your registration for the upcoming training session is confirmed.
+00000089,inbox,Jinsoo.Kim@company.com,Monthly Sales Figures,2023-10-23 10:04:46,Please find the monthly sales figures in the attached document.
+00000255,inbox,Santiago.Martinez@company.com,Meeting Request,2023-10-23 10:12:06,Please find attached the details for our next meeting.
+00000212,inbox,Jinsoo.Kim@company.com,Urgent: Server Downtime,2023-10-23 10:18:46,Please be aware of the unplanned server downtime occurring tonight.
+00000378,inbox,Santiago.Martinez@company.com,Staff Roster for Next Week,2023-10-23 11:42:59,Attached is the staff roster for next week.
+00000423,inbox,Chenwei.Zhang@company.com,IT System Upgrade Schedule,2023-10-23 12:12:12,Please review the schedule for the upcoming IT system upgrade.
+00000114,inbox,Aisha.Chen@company.com,New Policy Update,2023-10-23 12:13:55,We have updated our policy. Please read the attached document for details.
+00000470,inbox,Santiago.Martinez@company.com,Customer Feedback Summary,2023-10-23 12:49:36,Attached is the summary of customer feedback from last month.
+00000305,inbox,Kofi.Mensah@company.com,Health and Safety Update,2023-10-23 13:13:14,Find the latest health and safety guidelines attached.
+00000180,inbox,Nadia.Moreau@company.com,Budget Approval Request,2023-10-23 13:31:45,Please review and approve the attached budget proposal.
+00000004,inbox,Akira.Sato@company.com,Client Meeting Follow-up,2023-10-23 14:23:36,Here is a summary of the points discussed in our recent client meeting.
+00000457,inbox,Raj.Patel@company.com,Weekly Report,2023-10-23 14:25:41,Attached is the weekly report for your review.
+00000109,inbox,Kofi.Mensah@company.com,Employee Satisfaction Survey Results,2023-10-23 15:03:28,The results of the recent employee satisfaction survey are attached.
+00000194,inbox,Chenwei.Zhang@company.com,Press Release Draft,2023-10-23 15:30:41,Please review the attached draft of our upcoming press release.
+00000363,inbox,Amir.Ali@company.com,Project Update,2023-10-24 09:21:11,Here is the update on the current project.
+00000459,inbox,Aisha.Chen@company.com,Health and Safety Update,2023-10-24 09:39:09,Find the latest health and safety guidelines attached.
+00000221,inbox,Santiago.Martinez@company.com,Meeting Request,2023-10-24 09:53:41,Please find attached the details for our next meeting.
+00000467,inbox,Sofia.Santos@company.com,Staff Roster for Next Week,2023-10-24 10:29:16,Attached is the staff roster for next week.
+00000374,inbox,Anaya.Patel@company.com,Training Session Confirmation,2023-10-24 10:45:02,Your registration for the upcoming training session is confirmed.
+00000230,inbox,Lena.Schmidt@company.com,Customer Feedback Summary,2023-10-24 11:35:49,Attached is the summary of customer feedback from last month.
+00000445,inbox,Anaya.Patel@company.com,Meeting Rescheduled,2023-10-24 12:51:47,Please note the change in the meeting date and time.
+00000071,inbox,Anaya.Patel@company.com,Holiday Schedule Confirmation,2023-10-24 12:57:02,Confirming the holiday schedule as discussed.
+00000404,inbox,Sofia.Santos@company.com,Employee Satisfaction Survey Results,2023-10-24 13:28:59,The results of the recent employee satisfaction survey are attached.
+00000238,inbox,Aisha.Chen@company.com,Customer Feedback Summary,2023-10-25 09:00:05,Attached is the summary of customer feedback from last month.
+00000326,inbox,Luis.Ortiz@company.com,New Policy Update,2023-10-25 09:00:50,We have updated our policy. Please read the attached document for details.
+00000483,inbox,Santiago.Martinez@company.com,IT System Upgrade Schedule,2023-10-25 09:37:43,Please review the schedule for the upcoming IT system upgrade.
+00000170,inbox,Santiago.Martinez@company.com,Monthly Sales Figures,2023-10-25 10:28:09,Please find the monthly sales figures in the attached document.
+00000402,inbox,Raj.Patel@company.com,Budget Approval Request,2023-10-25 11:18:28,Please review and approve the attached budget proposal.
+00000066,inbox,Sofia.Santos@company.com,Staff Roster for Next Week,2023-10-25 13:41:35,Attached is the staff roster for next week.
+00000207,inbox,Jinsoo.Kim@company.com,Reminder: Event Tomorrow,2023-10-25 14:13:12,This is a reminder that the event is scheduled for tomorrow.
+00000498,inbox,Amir.Ali@company.com,Urgent: Server Downtime,2023-10-25 14:41:09,Please be aware of the unplanned server downtime occurring tonight.
+00000244,inbox,Fatima.Khan@company.com,Weekly Report,2023-10-25 15:49:19,Attached is the weekly report for your review.
+00000400,inbox,Olga.Petrova@company.com,Training Session Confirmation,2023-10-26 09:35:50,Your registration for the upcoming training session is confirmed.
+00000058,inbox,Lena.Schmidt@company.com,Budget Approval Request,2023-10-26 09:44:25,Please review and approve the attached budget proposal.
+00000433,inbox,Amir.Ali@company.com,New Policy Update,2023-10-26 10:39:45,We have updated our policy. Please read the attached document for details.
+00000019,inbox,Santiago.Martinez@company.com,Weekly Report,2023-10-26 10:53:04,Attached is the weekly report for your review.
+00000270,inbox,Sofia.Santos@company.com,Meeting Request,2023-10-26 11:20:27,Please find attached the details for our next meeting.
+00000327,inbox,Akira.Sato@company.com,Reminder: Event Tomorrow,2023-10-26 13:16:21,This is a reminder that the event is scheduled for tomorrow.
+00000024,inbox,Sofia.Santos@company.com,Travel Itinerary Details,2023-10-26 13:34:22,Attached are the details of your travel itinerary.
+00000136,inbox,Raj.Patel@company.com,Monthly Sales Figures,2023-10-26 13:36:41,Please find the monthly sales figures in the attached document.
+00000456,inbox,Fatima.Khan@company.com,Project Update,2023-10-26 14:51:44,Here is the update on the current project.
+00000365,inbox,Leila.Azizi@company.com,Press Release Draft,2023-10-26 14:54:57,Please review the attached draft of our upcoming press release.
+00000389,inbox,Carlos.Rodriguez@company.com,Urgent: Server Downtime,2023-10-26 15:44:42,Please be aware of the unplanned server downtime occurring tonight.
+00000301,inbox,Chenwei.Zhang@company.com,Weekly Report,2023-10-27 09:01:23,Attached is the weekly report for your review.
+00000161,inbox,Santiago.Martinez@company.com,Employee Satisfaction Survey Results,2023-10-27 10:03:00,The results of the recent employee satisfaction survey are attached.
+00000155,inbox,Aisha.Chen@company.com,Urgent: Server Downtime,2023-10-27 10:43:06,Please be aware of the unplanned server downtime occurring tonight.
+00000300,inbox,Leila.Azizi@company.com,Meeting Request,2023-10-27 10:58:05,Please find attached the details for our next meeting.
+00000108,inbox,Jinsoo.Kim@company.com,Travel Itinerary Details,2023-10-27 11:01:40,Attached are the details of your travel itinerary.
+00000430,inbox,Amir.Ali@company.com,Client Meeting Follow-up,2023-10-27 14:13:43,Here is a summary of the points discussed in our recent client meeting.
+00000146,inbox,Aisha.Chen@company.com,Reminder: Event Tomorrow,2023-10-27 15:07:17,This is a reminder that the event is scheduled for tomorrow.
+00000405,inbox,Dmitri.Ivanov@company.com,Monthly Sales Figures,2023-10-27 15:21:58,Please find the monthly sales figures in the attached document.
+00000382,inbox,Sofia.Santos@company.com,IT System Upgrade Schedule,2023-10-28 09:03:41,Please review the schedule for the upcoming IT system upgrade.
+00000410,inbox,Sofia.Santos@company.com,Meeting Rescheduled,2023-10-28 09:13:06,Please note the change in the meeting date and time.
 00000120,inbox,Aisha.Chen@company.com,Client Meeting Follow-up,2023-10-28 10:32:20,Here is a summary of the points discussed in our recent client meeting.
-00000498,inbox,Yuki.Tanaka@company.com,Holiday Schedule Confirmation,2023-10-28 11:14:49,Confirming the holiday schedule as discussed.
-00000325,inbox,Nadia.Moreau@company.com,Health and Safety Update,2023-10-28 11:31:49,Find the latest health and safety guidelines attached.
-00000100,inbox,Akira.Sato@company.com,Customer Feedback Summary,2023-10-28 11:54:33,Attached is the summary of customer feedback from last month.
-00000385,inbox,Jinsoo.Kim@company.com,Urgent: Server Downtime,2023-10-28 14:35:16,Please be aware of the unplanned server downtime occurring tonight.
+00000304,inbox,Nadia.Moreau@company.com,Health and Safety Update,2023-10-28 11:31:49,Find the latest health and safety guidelines attached.
+00000093,inbox,Lena.Schmidt@company.com,Training Session Confirmation,2023-10-28 11:39:53,Your registration for the upcoming training session is confirmed.
+00000237,inbox,Nadia.Moreau@company.com,Meeting Request,2023-10-28 11:51:48,Please find attached the details for our next meeting.
+00000101,inbox,Akira.Sato@company.com,Customer Feedback Summary,2023-10-28 11:54:33,Attached is the summary of customer feedback from last month.
+00000023,inbox,Anaya.Patel@company.com,Urgent: Server Downtime,2023-10-28 14:30:51,Please be aware of the unplanned server downtime occurring tonight.
 00000001,inbox,Sofia.Santos@company.com,Reminder: Event Tomorrow,2023-10-28 14:49:57,This is a reminder that the event is scheduled for tomorrow.
-00000304,inbox,Luis.Ortiz@company.com,Health and Safety Update,2023-10-29 09:14:29,Find the latest health and safety guidelines attached.
-00000219,inbox,Fatima.Khan@company.com,Staff Roster for Next Week,2023-10-29 09:55:35,Attached is the staff roster for next week.
-00000250,inbox,Luis.Ortiz@company.com,Invoice Attached,2023-10-29 10:12:35,Attached is the invoice for the recent transaction.
-00000497,inbox,Fatima.Khan@company.com,Urgent: Server Downtime,2023-10-29 12:08:46,Please be aware of the unplanned server downtime occurring tonight.
-00000458,inbox,Fatima.Khan@company.com,Press Release Draft,2023-10-29 12:48:12,Please review the attached draft of our upcoming press release.
-00000473,inbox,Dmitri.Ivanov@company.com,Weekly Report,2023-10-29 12:52:05,Attached is the weekly report for your review.
-00000007,inbox,Raj.Patel@company.com,Urgent: Server Downtime,2023-10-30 09:57:51,Please be aware of the unplanned server downtime occurring tonight.
-00000410,inbox,Lena.Schmidt@company.com,Training Session Confirmation,2023-10-30 10:40:06,Your registration for the upcoming training session is confirmed.
-00000379,inbox,Nadia.Moreau@company.com,Press Release Draft,2023-10-30 10:42:17,Please review the attached draft of our upcoming press release.
-00000201,inbox,Amir.Ali@company.com,Employee Satisfaction Survey Results,2023-11-01 09:51:08,The results of the recent employee satisfaction survey are attached.
-00000335,inbox,Yuki.Tanaka@company.com,Budget Approval Request,2023-11-01 10:18:29,Please review and approve the attached budget proposal.
-00000029,inbox,Anaya.Patel@company.com,Meeting Request,2023-11-01 10:31:46,Please find attached the details for our next meeting.
-00000212,inbox,Nadia.Moreau@company.com,Staff Roster for Next Week,2023-11-01 11:31:35,Attached is the staff roster for next week.
-00000057,inbox,Lena.Schmidt@company.com,Training Session Confirmation,2023-11-01 13:41:43,Your registration for the upcoming training session is confirmed.
-00000239,inbox,Carlos.Rodriguez@company.com,New Policy Update,2023-11-02 09:21:23,We have updated our policy. Please read the attached document for details.
-00000043,inbox,Carlos.Rodriguez@company.com,Reminder: Event Tomorrow,2023-11-02 10:04:58,This is a reminder that the event is scheduled for tomorrow.
-00000226,inbox,Fatima.Khan@company.com,Health and Safety Update,2023-11-02 10:11:21,Find the latest health and safety guidelines attached.
-00000363,inbox,Nadia.Moreau@company.com,Holiday Schedule Confirmation,2023-11-02 11:09:29,Confirming the holiday schedule as discussed.
+00000282,inbox,Luis.Ortiz@company.com,Invoice Attached,2023-10-28 15:00:24,Attached is the invoice for the recent transaction.
+00000285,inbox,Luis.Ortiz@company.com,Health and Safety Update,2023-10-29 09:14:29,Find the latest health and safety guidelines attached.
+00000394,inbox,Yuki.Tanaka@company.com,Monthly Sales Figures,2023-10-29 09:25:55,Please find the monthly sales figures in the attached document.
+00000215,inbox,Fatima.Khan@company.com,Staff Roster for Next Week,2023-10-29 09:55:35,Attached is the staff roster for next week.
+00000243,inbox,Luis.Ortiz@company.com,Invoice Attached,2023-10-29 10:12:35,Attached is the invoice for the recent transaction.
+00000020,inbox,Chenwei.Zhang@company.com,Meeting Request,2023-10-29 11:42:36,Please find attached the details for our next meeting.
+00000473,inbox,Anaya.Patel@company.com,Holiday Schedule Confirmation,2023-10-29 12:13:31,Confirming the holiday schedule as discussed.
+00000070,inbox,Chenwei.Zhang@company.com,Budget Approval Request,2023-10-29 13:10:51,Please review and approve the attached budget proposal.
+00000025,inbox,Raj.Patel@company.com,Project Update,2023-10-29 13:37:18,Here is the update on the current project.
+00000392,inbox,Olga.Petrova@company.com,Weekly Report,2023-10-29 14:29:28,Attached is the weekly report for your review.
+00000188,inbox,Nadia.Moreau@company.com,Reminder: Event Tomorrow,2023-10-29 15:18:42,This is a reminder that the event is scheduled for tomorrow.
+00000187,inbox,Kofi.Mensah@company.com,Customer Feedback Summary,2023-10-29 15:39:12,Attached is the summary of customer feedback from last month.
+00000159,inbox,Jinsoo.Kim@company.com,Reminder: Event Tomorrow,2023-10-30 09:42:38,This is a reminder that the event is scheduled for tomorrow.
+00000157,inbox,Raj.Patel@company.com,Training Session Confirmation,2023-10-30 11:29:05,Your registration for the upcoming training session is confirmed.
+00000348,inbox,Anaya.Patel@company.com,Press Release Draft,2023-10-30 11:48:50,Please review the attached draft of our upcoming press release.
+00000059,inbox,Chenwei.Zhang@company.com,Health and Safety Update,2023-10-30 12:38:34,Find the latest health and safety guidelines attached.
+00000065,inbox,Fatima.Khan@company.com,Customer Feedback Summary,2023-10-30 13:50:57,Attached is the summary of customer feedback from last month.
+00000112,inbox,Nadia.Moreau@company.com,Staff Roster for Next Week,2023-10-30 14:53:44,Attached is the staff roster for next week.
+00000032,inbox,Yuki.Tanaka@company.com,Holiday Schedule Confirmation,2023-10-30 14:58:56,Confirming the holiday schedule as discussed.
+00000008,inbox,Amir.Ali@company.com,Weekly Report,2023-11-01 09:18:01,Attached is the weekly report for your review.
+00000083,inbox,Akira.Sato@company.com,Travel Itinerary Details,2023-11-01 09:18:30,Attached are the details of your travel itinerary.
+00000199,inbox,Amir.Ali@company.com,Employee Satisfaction Survey Results,2023-11-01 09:51:08,The results of the recent employee satisfaction survey are attached.
+00000353,inbox,Lena.Schmidt@company.com,Health and Safety Update,2023-11-01 10:13:45,Find the latest health and safety guidelines attached.
+00000429,inbox,Lena.Schmidt@company.com,Budget Approval Request,2023-11-01 10:28:28,Please review and approve the attached budget proposal.
+00000208,inbox,Nadia.Moreau@company.com,Staff Roster for Next Week,2023-11-01 11:31:35,Attached is the staff roster for next week.
+00000014,inbox,Chenwei.Zhang@company.com,Invoice Attached,2023-11-01 12:20:31,Attached is the invoice for the recent transaction.
+00000465,inbox,Jinsoo.Kim@company.com,Holiday Schedule Confirmation,2023-11-01 13:16:40,Confirming the holiday schedule as discussed.
+00000060,inbox,Lena.Schmidt@company.com,Training Session Confirmation,2023-11-01 13:41:43,Your registration for the upcoming training session is confirmed.
+00000322,inbox,Amir.Ali@company.com,Meeting Rescheduled,2023-11-02 09:43:43,Please note the change in the meeting date and time.
+00000045,inbox,Carlos.Rodriguez@company.com,Reminder: Event Tomorrow,2023-11-02 10:04:58,This is a reminder that the event is scheduled for tomorrow.
+00000340,inbox,Nadia.Moreau@company.com,Holiday Schedule Confirmation,2023-11-02 11:09:29,Confirming the holiday schedule as discussed.
+00000424,inbox,Santiago.Martinez@company.com,Meeting Request,2023-11-02 11:27:09,Please find attached the details for our next meeting.
 00000121,inbox,Santiago.Martinez@company.com,Client Meeting Follow-up,2023-11-02 11:39:55,Here is a summary of the points discussed in our recent client meeting.
-00000191,inbox,Olga.Petrova@company.com,Press Release Draft,2023-11-02 12:53:25,Please review the attached draft of our upcoming press release.
-00000008,inbox,Olga.Petrova@company.com,IT System Upgrade Schedule,2023-11-02 13:43:25,Please review the schedule for the upcoming IT system upgrade.
-00000314,inbox,Amir.Ali@company.com,Urgent: Server Downtime,2023-11-02 14:02:45,Please be aware of the unplanned server downtime occurring tonight.
-00000198,inbox,Aisha.Chen@company.com,Meeting Rescheduled,2023-11-03 10:02:58,Please note the change in the meeting date and time.
-00000432,inbox,Amir.Ali@company.com,Budget Approval Request,2023-11-03 10:29:33,Please review and approve the attached budget proposal.
-00000076,inbox,Olga.Petrova@company.com,Staff Roster for Next Week,2023-11-03 14:13:15,Attached is the staff roster for next week.
-00000171,inbox,Aisha.Chen@company.com,Project Update,2023-11-03 14:14:26,Here is the update on the current project.
-00000489,inbox,Akira.Sato@company.com,Weekly Report,2023-11-04 10:34:57,Attached is the weekly report for your review.
-00000122,inbox,Olga.Petrova@company.com,Travel Itinerary Details,2023-11-04 12:16:38,Attached are the details of your travel itinerary.
-00000415,inbox,Chenwei.Zhang@company.com,Meeting Request,2023-11-04 13:22:44,Please find attached the details for our next meeting.
-00000409,inbox,Santiago.Martinez@company.com,Employee Satisfaction Survey Results,2023-11-04 14:37:52,The results of the recent employee satisfaction survey are attached.
-00000257,inbox,Kofi.Mensah@company.com,Budget Approval Request,2023-11-04 15:07:14,Please review and approve the attached budget proposal.
-00000275,inbox,Kofi.Mensah@company.com,Reminder: Event Tomorrow,2023-11-05 11:01:11,This is a reminder that the event is scheduled for tomorrow.
-00000423,inbox,Santiago.Martinez@company.com,Weekly Report,2023-11-05 11:03:08,Attached is the weekly report for your review.
-00000454,inbox,Amir.Ali@company.com,Project Update,2023-11-05 11:41:17,Here is the update on the current project.
-00000185,inbox,Kofi.Mensah@company.com,Meeting Rescheduled,2023-11-05 12:11:32,Please note the change in the meeting date and time.
-00000236,inbox,Anaya.Patel@company.com,Meeting Request,2023-11-05 12:53:29,Please find attached the details for our next meeting.
-00000148,inbox,Yuki.Tanaka@company.com,Urgent: Server Downtime,2023-11-05 12:56:28,Please be aware of the unplanned server downtime occurring tonight.
-00000488,inbox,Luis.Ortiz@company.com,Holiday Schedule Confirmation,2023-11-05 14:18:17,Confirming the holiday schedule as discussed.
-00000378,inbox,Kofi.Mensah@company.com,New Policy Update,2023-11-05 15:02:49,We have updated our policy. Please read the attached document for details.
-00000214,inbox,Olga.Petrova@company.com,Weekly Report,2023-11-06 10:45:43,Attached is the weekly report for your review.
-00000366,inbox,Kofi.Mensah@company.com,Staff Roster for Next Week,2023-11-06 12:44:16,Attached is the staff roster for next week.
-00000342,inbox,Olga.Petrova@company.com,IT System Upgrade Schedule,2023-11-06 13:28:40,Please review the schedule for the upcoming IT system upgrade.
-00000118,inbox,Nadia.Moreau@company.com,Reminder: Event Tomorrow,2023-11-06 14:53:18,This is a reminder that the event is scheduled for tomorrow.
-00000071,inbox,Leila.Azizi@company.com,New Policy Update,2023-11-06 15:25:45,We have updated our policy. Please read the attached document for details.
-00000016,inbox,Yuki.Tanaka@company.com,Press Release Draft,2023-11-06 15:53:42,Please review the attached draft of our upcoming press release.
-00000097,inbox,Olga.Petrova@company.com,Reminder: Event Tomorrow,2023-11-07 10:36:51,This is a reminder that the event is scheduled for tomorrow.
-00000200,inbox,Fatima.Khan@company.com,Press Release Draft,2023-11-07 13:31:49,Please review the attached draft of our upcoming press release.
-00000324,inbox,Santiago.Martinez@company.com,Project Update,2023-11-07 13:56:46,Here is the update on the current project.
-00000337,inbox,Jinsoo.Kim@company.com,Invoice Attached,2023-11-07 15:52:53,Attached is the invoice for the recent transaction.
-00000133,inbox,Raj.Patel@company.com,Invoice Attached,2023-11-08 10:16:40,Attached is the invoice for the recent transaction.
-00000253,inbox,Yuki.Tanaka@company.com,Budget Approval Request,2023-11-08 11:07:17,Please review and approve the attached budget proposal.
-00000063,inbox,Dmitri.Ivanov@company.com,Customer Feedback Summary,2023-11-08 11:12:44,Attached is the summary of customer feedback from last month.
-00000186,inbox,Dmitri.Ivanov@company.com,Health and Safety Update,2023-11-08 11:32:53,Find the latest health and safety guidelines attached.
-00000203,inbox,Amir.Ali@company.com,IT System Upgrade Schedule,2023-11-08 11:38:27,Please review the schedule for the upcoming IT system upgrade.
-00000099,inbox,Luis.Ortiz@company.com,Client Meeting Follow-up,2023-11-08 11:40:28,Here is a summary of the points discussed in our recent client meeting.
-00000451,inbox,Fatima.Khan@company.com,Urgent: Server Downtime,2023-11-08 14:43:41,Please be aware of the unplanned server downtime occurring tonight.
-00000213,inbox,Chenwei.Zhang@company.com,Training Session Confirmation,2023-11-08 15:55:43,Your registration for the upcoming training session is confirmed.
-00000404,inbox,Lena.Schmidt@company.com,IT System Upgrade Schedule,2023-11-09 10:24:51,Please review the schedule for the upcoming IT system upgrade.
-00000328,inbox,Akira.Sato@company.com,Weekly Report,2023-11-09 12:34:07,Attached is the weekly report for your review.
+00000021,inbox,Lena.Schmidt@company.com,Monthly Sales Figures,2023-11-02 11:40:06,Please find the monthly sales figures in the attached document.
+00000278,inbox,Sofia.Santos@company.com,Training Session Confirmation,2023-11-02 12:27:42,Your registration for the upcoming training session is confirmed.
+00000294,inbox,Amir.Ali@company.com,Urgent: Server Downtime,2023-11-02 14:02:45,Please be aware of the unplanned server downtime occurring tonight.
+00000196,inbox,Aisha.Chen@company.com,Meeting Rescheduled,2023-11-03 10:02:58,Please note the change in the meeting date and time.
+00000308,inbox,Anaya.Patel@company.com,Holiday Schedule Confirmation,2023-11-03 13:38:13,Confirming the holiday schedule as discussed.
+00000154,inbox,Akira.Sato@company.com,Reminder: Event Tomorrow,2023-11-03 13:40:28,This is a reminder that the event is scheduled for tomorrow.
+00000133,inbox,Akira.Sato@company.com,Health and Safety Update,2023-11-03 13:54:08,Find the latest health and safety guidelines attached.
+00000079,inbox,Olga.Petrova@company.com,Staff Roster for Next Week,2023-11-03 14:13:15,Attached is the staff roster for next week.
+00000369,inbox,Lena.Schmidt@company.com,Urgent: Server Downtime,2023-11-03 14:23:10,Please be aware of the unplanned server downtime occurring tonight.
+00000366,inbox,Raj.Patel@company.com,New Policy Update,2023-11-03 14:51:12,We have updated our policy. Please read the attached document for details.
+00000090,inbox,Dmitri.Ivanov@company.com,Project Update,2023-11-03 15:20:17,Here is the update on the current project.
+00000242,inbox,Olga.Petrova@company.com,Urgent: Server Downtime,2023-11-04 09:15:14,Please be aware of the unplanned server downtime occurring tonight.
+00000432,inbox,Amir.Ali@company.com,Project Update,2023-11-04 10:04:18,Here is the update on the current project.
+00000358,inbox,Dmitri.Ivanov@company.com,Health and Safety Update,2023-11-04 10:28:16,Find the latest health and safety guidelines attached.
+00000461,inbox,Akira.Sato@company.com,Weekly Report,2023-11-04 10:34:57,Attached is the weekly report for your review.
+00000484,inbox,Fatima.Khan@company.com,Reminder: Event Tomorrow,2023-11-04 12:44:01,This is a reminder that the event is scheduled for tomorrow.
+00000248,inbox,Kofi.Mensah@company.com,Budget Approval Request,2023-11-04 15:07:14,Please review and approve the attached budget proposal.
+00000176,inbox,Carlos.Rodriguez@company.com,Meeting Request,2023-11-05 09:17:55,Please find attached the details for our next meeting.
+00000147,inbox,Yuki.Tanaka@company.com,Urgent: Server Downtime,2023-11-05 12:56:28,Please be aware of the unplanned server downtime occurring tonight.
+00000422,inbox,Carlos.Rodriguez@company.com,Project Update,2023-11-05 15:00:59,Here is the update on the current project.
+00000355,inbox,Kofi.Mensah@company.com,New Policy Update,2023-11-05 15:02:49,We have updated our policy. Please read the attached document for details.
+00000352,inbox,Leila.Azizi@company.com,Holiday Schedule Confirmation,2023-11-05 15:19:24,Confirming the holiday schedule as discussed.
+00000173,inbox,Nia.Johnson@company.com,Meeting Rescheduled,2023-11-06 09:09:49,Please note the change in the meeting date and time.
+00000189,inbox,Jinsoo.Kim@company.com,Monthly Sales Figures,2023-11-06 09:13:10,Please find the monthly sales figures in the attached document.
+00000210,inbox,Olga.Petrova@company.com,Weekly Report,2023-11-06 10:45:43,Attached is the weekly report for your review.
+00000344,inbox,Kofi.Mensah@company.com,Staff Roster for Next Week,2023-11-06 12:44:16,Attached is the staff roster for next week.
+00000203,inbox,Olga.Petrova@company.com,Meeting Request,2023-11-06 13:14:57,Please find attached the details for our next meeting.
+00000115,inbox,Raj.Patel@company.com,Press Release Draft,2023-11-06 14:05:33,Please review the attached draft of our upcoming press release.
+00000074,inbox,Leila.Azizi@company.com,New Policy Update,2023-11-06 15:25:45,We have updated our policy. Please read the attached document for details.
+00000098,inbox,Olga.Petrova@company.com,Reminder: Event Tomorrow,2023-11-06 15:49:36,This is a reminder that the event is scheduled for tomorrow.
+00000497,inbox,Chenwei.Zhang@company.com,Meeting Request,2023-11-07 09:15:04,Please find attached the details for our next meeting.
+00000260,inbox,Aisha.Chen@company.com,IT System Upgrade Schedule,2023-11-07 11:05:19,Please review the schedule for the upcoming IT system upgrade.
+00000227,inbox,Sofia.Santos@company.com,Budget Approval Request,2023-11-07 11:38:03,Please review and approve the attached budget proposal.
+00000417,inbox,Raj.Patel@company.com,Staff Roster for Next Week,2023-11-07 12:37:15,Attached is the staff roster for next week.
+00000198,inbox,Fatima.Khan@company.com,Press Release Draft,2023-11-07 13:31:49,Please review the attached draft of our upcoming press release.
+00000303,inbox,Santiago.Martinez@company.com,Project Update,2023-11-07 13:56:46,Here is the update on the current project.
+00000416,inbox,Sofia.Santos@company.com,Monthly Sales Figures,2023-11-08 09:26:03,Please find the monthly sales figures in the attached document.
+00000132,inbox,Raj.Patel@company.com,Invoice Attached,2023-11-08 10:16:40,Attached is the invoice for the recent transaction.
+00000387,inbox,Jinsoo.Kim@company.com,New Policy Update,2023-11-08 11:06:40,We have updated our policy. Please read the attached document for details.
+00000245,inbox,Yuki.Tanaka@company.com,Budget Approval Request,2023-11-08 11:07:17,Please review and approve the attached budget proposal.
+00000492,inbox,Santiago.Martinez@company.com,Health and Safety Update,2023-11-08 11:30:57,Find the latest health and safety guidelines attached.
+00000200,inbox,Amir.Ali@company.com,IT System Upgrade Schedule,2023-11-08 11:38:27,Please review the schedule for the upcoming IT system upgrade.
+00000428,inbox,Fatima.Khan@company.com,Urgent: Server Downtime,2023-11-08 14:43:41,Please be aware of the unplanned server downtime occurring tonight.
+00000209,inbox,Chenwei.Zhang@company.com,Training Session Confirmation,2023-11-08 15:55:43,Your registration for the upcoming training session is confirmed.
+00000398,inbox,Yuki.Tanaka@company.com,Press Release Draft,2023-11-09 10:35:08,Please review the attached draft of our upcoming press release.
+00000331,inbox,Luis.Ortiz@company.com,Health and Safety Update,2023-11-09 10:39:19,Find the latest health and safety guidelines attached.
+00000184,inbox,Nia.Johnson@company.com,Reminder: Event Tomorrow,2023-11-09 10:57:36,This is a reminder that the event is scheduled for tomorrow.
+00000307,inbox,Akira.Sato@company.com,Weekly Report,2023-11-09 12:34:07,Attached is the weekly report for your review.
+00000357,inbox,Jinsoo.Kim@company.com,Meeting Rescheduled,2023-11-09 13:19:33,Please note the change in the meeting date and time.
 00000125,inbox,Anaya.Patel@company.com,Customer Feedback Summary,2023-11-09 13:45:21,Attached is the summary of customer feedback from last month.
-00000308,inbox,Lena.Schmidt@company.com,Budget Approval Request,2023-11-09 15:06:31,Please review and approve the attached budget proposal.
-00000086,inbox,Lena.Schmidt@company.com,Urgent: Server Downtime,2023-11-09 15:09:23,Please be aware of the unplanned server downtime occurring tonight.
-00000294,inbox,Fatima.Khan@company.com,New Policy Update,2023-11-09 15:50:59,We have updated our policy. Please read the attached document for details.
-00000290,inbox,Dmitri.Ivanov@company.com,New Policy Update,2023-11-10 10:58:19,We have updated our policy. Please read the attached document for details.
-00000117,inbox,Nia.Johnson@company.com,Travel Itinerary Details,2023-11-10 12:19:05,Attached are the details of your travel itinerary.
-00000416,inbox,Fatima.Khan@company.com,Holiday Schedule Confirmation,2023-11-10 15:18:28,Confirming the holiday schedule as discussed.
-00000357,inbox,Olga.Petrova@company.com,Employee Satisfaction Survey Results,2023-11-11 09:09:23,The results of the recent employee satisfaction survey are attached.
-00000141,inbox,Lena.Schmidt@company.com,Reminder: Event Tomorrow,2023-11-11 09:23:22,This is a reminder that the event is scheduled for tomorrow.
-00000193,inbox,Nia.Johnson@company.com,IT System Upgrade Schedule,2023-11-11 10:49:06,Please review the schedule for the upcoming IT system upgrade.
-00000006,inbox,Santiago.Martinez@company.com,Meeting Rescheduled,2023-11-11 10:54:27,Please note the change in the meeting date and time.
-00000384,inbox,Anaya.Patel@company.com,Travel Itinerary Details,2023-11-11 10:58:16,Attached are the details of your travel itinerary.
-00000223,inbox,Lena.Schmidt@company.com,Staff Roster for Next Week,2023-11-11 11:44:02,Attached is the staff roster for next week.
-00000352,inbox,Chenwei.Zhang@company.com,Monthly Sales Figures,2023-11-11 12:05:35,Please find the monthly sales figures in the attached document.
-00000447,inbox,Amir.Ali@company.com,Budget Approval Request,2023-11-11 13:33:43,Please review and approve the attached budget proposal.
-00000461,inbox,Carlos.Rodriguez@company.com,Client Meeting Follow-up,2023-11-11 15:11:59,Here is a summary of the points discussed in our recent client meeting.
+00000289,inbox,Amir.Ali@company.com,Budget Approval Request,2023-11-09 15:06:31,Please review and approve the attached budget proposal.
+00000088,inbox,Lena.Schmidt@company.com,Urgent: Server Downtime,2023-11-09 15:09:23,Please be aware of the unplanned server downtime occurring tonight.
+00000314,inbox,Leila.Azizi@company.com,Monthly Sales Figures,2023-11-09 15:34:49,Please find the monthly sales figures in the attached document.
+00000064,inbox,Leila.Azizi@company.com,Holiday Schedule Confirmation,2023-11-09 15:39:24,Confirming the holiday schedule as discussed.
+00000276,inbox,Fatima.Khan@company.com,New Policy Update,2023-11-09 15:50:59,We have updated our policy. Please read the attached document for details.
+00000272,inbox,Dmitri.Ivanov@company.com,New Policy Update,2023-11-10 10:58:19,We have updated our policy. Please read the attached document for details.
+00000094,inbox,Lena.Schmidt@company.com,Weekly Report,2023-11-10 12:46:48,Attached is the weekly report for your review.
+00000393,inbox,Jinsoo.Kim@company.com,Employee Satisfaction Survey Results,2023-11-10 13:28:34,The results of the recent employee satisfaction survey are attached.
+00000028,inbox,Luis.Ortiz@company.com,Staff Roster for Next Week,2023-11-10 14:11:23,Attached is the staff roster for next week.
+00000267,inbox,Nia.Johnson@company.com,Invoice Attached,2023-11-10 14:38:25,Attached is the invoice for the recent transaction.
+00000391,inbox,Akira.Sato@company.com,Holiday Schedule Confirmation,2023-11-10 15:18:28,Confirming the holiday schedule as discussed.
+00000412,inbox,Anaya.Patel@company.com,Customer Feedback Summary,2023-11-11 09:02:31,Attached is the summary of customer feedback from last month.
+00000140,inbox,Lena.Schmidt@company.com,Reminder: Event Tomorrow,2023-11-11 09:23:22,This is a reminder that the event is scheduled for tomorrow.
+00000192,inbox,Nia.Johnson@company.com,IT System Upgrade Schedule,2023-11-11 10:49:06,Please review the schedule for the upcoming IT system upgrade.
+00000361,inbox,Anaya.Patel@company.com,Travel Itinerary Details,2023-11-11 10:58:16,Attached are the details of your travel itinerary.
+00000329,inbox,Chenwei.Zhang@company.com,Monthly Sales Figures,2023-11-11 12:05:35,Please find the monthly sales figures in the attached document.
+00000265,inbox,Akira.Sato@company.com,Holiday Schedule Confirmation,2023-11-11 12:27:17,Confirming the holiday schedule as discussed.
+00000425,inbox,Amir.Ali@company.com,Budget Approval Request,2023-11-11 13:33:43,Please review and approve the attached budget proposal.
+00000475,inbox,Dmitri.Ivanov@company.com,New Policy Update,2023-11-11 14:39:01,We have updated our policy. Please read the attached document for details.
+00000117,inbox,Leila.Azizi@company.com,Invoice Attached,2023-11-12 09:41:51,Attached is the invoice for the recent transaction.
 00000002,inbox,Sofia.Santos@company.com,Health and Safety Update,2023-11-12 10:09:35,Find the latest health and safety guidelines attached.
-00000054,inbox,Lena.Schmidt@company.com,Meeting Rescheduled,2023-11-12 11:36:43,Please note the change in the meeting date and time.
-00000235,inbox,Olga.Petrova@company.com,Staff Roster for Next Week,2023-11-12 12:29:35,Attached is the staff roster for next week.
-00000346,inbox,Yuki.Tanaka@company.com,Customer Feedback Summary,2023-11-12 13:39:18,Attached is the summary of customer feedback from last month.
-00000093,inbox,Raj.Patel@company.com,Weekly Report,2023-11-12 15:48:41,Attached is the weekly report for your review.
-00000103,inbox,Nadia.Moreau@company.com,Project Update,2023-11-13 13:31:30,Here is the update on the current project.
-00000464,inbox,Dmitri.Ivanov@company.com,Budget Approval Request,2023-11-13 13:56:12,Please review and approve the attached budget proposal.
-00000428,inbox,Luis.Ortiz@company.com,Health and Safety Update,2023-11-13 14:53:14,Find the latest health and safety guidelines attached.
-00000417,inbox,Jinsoo.Kim@company.com,Employee Satisfaction Survey Results,2023-11-13 15:28:34,The results of the recent employee satisfaction survey are attached.
-00000123,inbox,Raj.Patel@company.com,IT System Upgrade Schedule,2023-11-14 11:19:48,Please review the schedule for the upcoming IT system upgrade.
-00000283,inbox,Jinsoo.Kim@company.com,Client Meeting Follow-up,2023-11-14 11:41:37,Here is a summary of the points discussed in our recent client meeting.
-00000466,inbox,Luis.Ortiz@company.com,Employee Satisfaction Survey Results,2023-11-14 12:32:42,The results of the recent employee satisfaction survey are attached.
-00000066,inbox,Fatima.Khan@company.com,Health and Safety Update,2023-11-14 15:28:11,Find the latest health and safety guidelines attached.
-00000114,inbox,Jinsoo.Kim@company.com,New Policy Update,2023-11-15 10:31:55,We have updated our policy. Please read the attached document for details.
-00000487,inbox,Yuki.Tanaka@company.com,Health and Safety Update,2023-11-15 11:00:25,Find the latest health and safety guidelines attached.
-00000072,inbox,Olga.Petrova@company.com,Employee Satisfaction Survey Results,2023-11-15 11:06:10,The results of the recent employee satisfaction survey are attached.
-00000368,inbox,Aisha.Chen@company.com,Customer Feedback Summary,2023-11-15 14:43:47,Attached is the summary of customer feedback from last month.
-00000435,inbox,Santiago.Martinez@company.com,Travel Itinerary Details,2023-11-15 14:58:57,Attached are the details of your travel itinerary.
-00000261,inbox,Nadia.Moreau@company.com,Reminder: Event Tomorrow,2023-11-16 10:22:49,This is a reminder that the event is scheduled for tomorrow.
-00000350,inbox,Luis.Ortiz@company.com,Travel Itinerary Details,2023-11-16 12:28:27,Attached are the details of your travel itinerary.
-00000150,inbox,Nia.Johnson@company.com,Weekly Report,2023-11-16 15:27:40,Attached is the weekly report for your review.
-00000496,inbox,Lena.Schmidt@company.com,Meeting Request,2023-11-17 10:37:21,Please find attached the details for our next meeting.
-00000345,inbox,Amir.Ali@company.com,Meeting Rescheduled,2023-11-17 12:43:29,Please note the change in the meeting date and time.
-00000331,inbox,Luis.Ortiz@company.com,Travel Itinerary Details,2023-11-17 14:05:50,Attached are the details of your travel itinerary.
-00000039,inbox,Carlos.Rodriguez@company.com,Meeting Request,2023-11-18 10:04:22,Please find attached the details for our next meeting.
-00000157,inbox,Carlos.Rodriguez@company.com,Urgent: Server Downtime,2023-11-18 10:48:49,Please be aware of the unplanned server downtime occurring tonight.
-00000493,inbox,Nia.Johnson@company.com,Reminder: Event Tomorrow,2023-11-18 11:41:36,This is a reminder that the event is scheduled for tomorrow.
-00000202,inbox,Yuki.Tanaka@company.com,Monthly Sales Figures,2023-11-19 11:38:42,Please find the monthly sales figures in the attached document.
-00000431,inbox,Akira.Sato@company.com,Press Release Draft,2023-11-19 11:40:52,Please review the attached draft of our upcoming press release.
-00000065,inbox,Nia.Johnson@company.com,Client Meeting Follow-up,2023-11-19 14:06:09,Here is a summary of the points discussed in our recent client meeting.
-00000180,inbox,Nia.Johnson@company.com,Budget Approval Request,2023-11-19 14:14:27,Please review and approve the attached budget proposal.
-00000356,inbox,Akira.Sato@company.com,Urgent: Server Downtime,2023-11-19 14:46:06,Please be aware of the unplanned server downtime occurring tonight.
-00000429,inbox,Raj.Patel@company.com,Reminder: Event Tomorrow,2023-11-19 15:16:08,This is a reminder that the event is scheduled for tomorrow.
-00000361,inbox,Nia.Johnson@company.com,Monthly Sales Figures,2023-11-20 09:12:00,Please find the monthly sales figures in the attached document.
-00000094,inbox,Lena.Schmidt@company.com,Health and Safety Update,2023-11-20 10:09:24,Find the latest health and safety guidelines attached.
-00000297,inbox,Sofia.Santos@company.com,Training Session Confirmation,2023-11-20 12:42:58,Your registration for the upcoming training session is confirmed.
-00000153,inbox,Akira.Sato@company.com,Press Release Draft,2023-11-20 13:42:24,Please review the attached draft of our upcoming press release.
-00000104,inbox,Luis.Ortiz@company.com,Employee Satisfaction Survey Results,2023-11-20 13:43:31,The results of the recent employee satisfaction survey are attached.
-00000233,inbox,Yuki.Tanaka@company.com,Travel Itinerary Details,2023-11-20 13:44:14,Attached are the details of your travel itinerary.
-00000019,inbox,Nia.Johnson@company.com,Weekly Report,2023-11-20 15:09:57,Attached is the weekly report for your review.
-00000302,inbox,Aisha.Chen@company.com,Holiday Schedule Confirmation,2023-11-21 09:46:05,Confirming the holiday schedule as discussed.
-00000079,inbox,Aisha.Chen@company.com,Customer Feedback Summary,2023-11-21 09:54:07,Attached is the summary of customer feedback from last month.
-00000377,inbox,Dmitri.Ivanov@company.com,Reminder: Event Tomorrow,2023-11-21 10:28:00,This is a reminder that the event is scheduled for tomorrow.
-00000138,inbox,Akira.Sato@company.com,Training Session Confirmation,2023-11-21 11:22:50,Your registration for the upcoming training session is confirmed.
-00000050,inbox,Nia.Johnson@company.com,Urgent: Server Downtime,2023-11-21 12:34:51,Please be aware of the unplanned server downtime occurring tonight.
-00000486,inbox,Sofia.Santos@company.com,Budget Approval Request,2023-11-21 12:38:57,Please review and approve the attached budget proposal.
-00000273,inbox,Nia.Johnson@company.com,Project Update,2023-11-21 12:47:35,Here is the update on the current project.
-00000455,inbox,Nia.Johnson@company.com,Customer Feedback Summary,2023-11-22 12:45:10,Attached is the summary of customer feedback from last month.
-00000369,inbox,Nadia.Moreau@company.com,Project Update,2023-11-22 13:57:08,Here is the update on the current project.
-00000260,inbox,Kofi.Mensah@company.com,Staff Roster for Next Week,2023-11-22 14:33:54,Attached is the staff roster for next week.
-00000372,inbox,Amir.Ali@company.com,Invoice Attached,2023-11-22 14:35:17,Attached is the invoice for the recent transaction.
-00000387,inbox,Sofia.Santos@company.com,Employee Satisfaction Survey Results,2023-11-22 15:16:44,The results of the recent employee satisfaction survey are attached.
-00000259,inbox,Leila.Azizi@company.com,Press Release Draft,2023-11-23 10:03:20,Please review the attached draft of our upcoming press release.
-00000090,inbox,Nadia.Moreau@company.com,Meeting Rescheduled,2023-11-23 12:01:37,Please note the change in the meeting date and time.
-00000109,inbox,Kofi.Mensah@company.com,Weekly Report,2023-11-23 12:03:55,Attached is the weekly report for your review.
-00000051,inbox,Nia.Johnson@company.com,Training Session Confirmation,2023-11-23 13:10:05,Your registration for the upcoming training session is confirmed.
-00000371,inbox,Lena.Schmidt@company.com,Employee Satisfaction Survey Results,2023-11-24 09:18:01,The results of the recent employee satisfaction survey are attached.
-00000319,inbox,Nadia.Moreau@company.com,Meeting Rescheduled,2023-11-24 10:26:40,Please note the change in the meeting date and time.
-00000254,inbox,Chenwei.Zhang@company.com,Press Release Draft,2023-11-24 11:25:50,Please review the attached draft of our upcoming press release.
-00000456,inbox,Raj.Patel@company.com,Client Meeting Follow-up,2023-11-24 14:05:43,Here is a summary of the points discussed in our recent client meeting.
-00000075,inbox,Olga.Petrova@company.com,Budget Approval Request,2023-11-24 15:24:19,Please review and approve the attached budget proposal.
-00000472,inbox,Fatima.Khan@company.com,Client Meeting Follow-up,2023-11-25 10:40:35,Here is a summary of the points discussed in our recent client meeting.
-00000225,inbox,Fatima.Khan@company.com,Urgent: Server Downtime,2023-11-25 10:47:19,Please be aware of the unplanned server downtime occurring tonight.
-00000182,inbox,Anaya.Patel@company.com,Travel Itinerary Details,2023-11-25 10:50:47,Attached are the details of your travel itinerary.
-00000170,inbox,Lena.Schmidt@company.com,Monthly Sales Figures,2023-11-25 11:15:01,Please find the monthly sales figures in the attached document.
-00000064,inbox,Raj.Patel@company.com,Training Session Confirmation,2023-11-25 11:30:22,Your registration for the upcoming training session is confirmed.
-00000343,inbox,Aisha.Chen@company.com,Meeting Rescheduled,2023-11-25 14:04:17,Please note the change in the meeting date and time.
-00000143,inbox,Anaya.Patel@company.com,Invoice Attached,2023-11-25 14:46:34,Attached is the invoice for the recent transaction.
-00000312,inbox,Nadia.Moreau@company.com,Health and Safety Update,2023-11-25 15:05:55,Find the latest health and safety guidelines attached.
-00000048,inbox,Santiago.Martinez@company.com,Customer Feedback Summary,2023-11-25 15:36:02,Attached is the summary of customer feedback from last month.
-00000128,inbox,Dmitri.Ivanov@company.com,Holiday Schedule Confirmation,2023-11-26 11:07:18,Confirming the holiday schedule as discussed.
-00000425,inbox,Sofia.Santos@company.com,Meeting Request,2023-11-26 11:54:54,Please find attached the details for our next meeting.
-00000112,inbox,Akira.Sato@company.com,Weekly Report,2023-11-26 12:38:38,Attached is the weekly report for your review.
-00000340,inbox,Nia.Johnson@company.com,Client Meeting Follow-up,2023-11-27 09:12:54,Here is a summary of the points discussed in our recent client meeting.
-00000166,inbox,Carlos.Rodriguez@company.com,Monthly Sales Figures,2023-11-27 10:08:16,Please find the monthly sales figures in the attached document.
-00000292,inbox,Kofi.Mensah@company.com,Invoice Attached,2023-11-27 11:44:11,Attached is the invoice for the recent transaction.
-00000446,inbox,Santiago.Martinez@company.com,Meeting Request,2023-11-27 12:09:21,Please find attached the details for our next meeting.
-00000457,inbox,Lena.Schmidt@company.com,Training Session Confirmation,2023-11-27 12:19:49,Your registration for the upcoming training session is confirmed.
-00000040,inbox,Jinsoo.Kim@company.com,Weekly Report,2023-11-28 12:49:13,Attached is the weekly report for your review.
-00000187,inbox,Leila.Azizi@company.com,Staff Roster for Next Week,2023-11-28 13:34:21,Attached is the staff roster for next week.
-00000389,inbox,Raj.Patel@company.com,Budget Approval Request,2023-11-28 13:42:15,Please review and approve the attached budget proposal.
-00000470,inbox,Aisha.Chen@company.com,Travel Itinerary Details,2023-11-28 13:45:36,Attached are the details of your travel itinerary.
-00000381,inbox,Dmitri.Ivanov@company.com,Health and Safety Update,2023-11-29 09:03:43,Find the latest health and safety guidelines attached.
-00000132,inbox,Luis.Ortiz@company.com,New Policy Update,2023-11-29 09:09:01,We have updated our policy. Please read the attached document for details.
-00000306,inbox,Raj.Patel@company.com,Invoice Attached,2023-11-29 10:05:52,Attached is the invoice for the recent transaction.
-00000449,inbox,Aisha.Chen@company.com,Budget Approval Request,2023-11-29 11:11:56,Please review and approve the attached budget proposal.
-00000305,inbox,Carlos.Rodriguez@company.com,Training Session Confirmation,2023-11-29 11:48:42,Your registration for the upcoming training session is confirmed.
-00000228,inbox,Yuki.Tanaka@company.com,Press Release Draft,2023-11-29 12:05:07,Please review the attached draft of our upcoming press release.
-00000096,inbox,Dmitri.Ivanov@company.com,Staff Roster for Next Week,2023-11-29 15:55:14,Attached is the staff roster for next week.
-00000207,inbox,Kofi.Mensah@company.com,Meeting Request,2023-11-29 15:57:57,Please find attached the details for our next meeting.
-00000479,inbox,Kofi.Mensah@company.com,New Policy Update,2023-12-01 09:17:44,We have updated our policy. Please read the attached document for details.
-00000110,inbox,Kofi.Mensah@company.com,Press Release Draft,2023-12-01 10:51:48,Please review the attached draft of our upcoming press release.
-00000144,inbox,Luis.Ortiz@company.com,Urgent: Server Downtime,2023-12-01 12:34:01,Please be aware of the unplanned server downtime occurring tonight.
-00000177,inbox,Aisha.Chen@company.com,Reminder: Event Tomorrow,2023-12-01 15:02:13,This is a reminder that the event is scheduled for tomorrow.
-00000053,inbox,Sofia.Santos@company.com,Training Session Confirmation,2023-12-02 09:25:01,Your registration for the upcoming training session is confirmed.
-00000060,inbox,Amir.Ali@company.com,Monthly Sales Figures,2023-12-02 09:25:40,Please find the monthly sales figures in the attached document.
-00000188,inbox,Nadia.Moreau@company.com,IT System Upgrade Schedule,2023-12-02 10:42:24,Please review the schedule for the upcoming IT system upgrade.
-00000422,inbox,Jinsoo.Kim@company.com,Reminder: Event Tomorrow,2023-12-02 15:08:59,This is a reminder that the event is scheduled for tomorrow.
-00000012,inbox,Anaya.Patel@company.com,Employee Satisfaction Survey Results,2023-12-03 09:32:47,The results of the recent employee satisfaction survey are attached.
-00000485,inbox,Sofia.Santos@company.com,Weekly Report,2023-12-03 11:13:47,Attached is the weekly report for your review.
-00000367,inbox,Amir.Ali@company.com,IT System Upgrade Schedule,2023-12-03 11:43:21,Please review the schedule for the upcoming IT system upgrade.
-00000061,inbox,Luis.Ortiz@company.com,Press Release Draft,2023-12-03 14:12:55,Please review the attached draft of our upcoming press release.
-00000307,inbox,Olga.Petrova@company.com,Urgent: Server Downtime,2023-12-03 14:54:10,Please be aware of the unplanned server downtime occurring tonight.
-00000382,inbox,Akira.Sato@company.com,Client Meeting Follow-up,2023-12-03 15:03:40,Here is a summary of the points discussed in our recent client meeting.
-00000401,inbox,Leila.Azizi@company.com,Customer Feedback Summary,2023-12-03 15:35:34,Attached is the summary of customer feedback from last month.
-00000296,inbox,Amir.Ali@company.com,Invoice Attached,2023-12-04 09:36:39,Attached is the invoice for the recent transaction.
-00000221,inbox,Aisha.Chen@company.com,Employee Satisfaction Survey Results,2023-12-04 09:38:50,The results of the recent employee satisfaction survey are attached.
-00000215,inbox,Olga.Petrova@company.com,Reminder: Event Tomorrow,2023-12-04 09:40:18,This is a reminder that the event is scheduled for tomorrow.
-00000052,inbox,Santiago.Martinez@company.com,Customer Feedback Summary,2023-12-04 09:58:38,Attached is the summary of customer feedback from last month.
-00000081,inbox,Amir.Ali@company.com,Urgent: Server Downtime,2023-12-04 10:37:45,Please be aware of the unplanned server downtime occurring tonight.
-00000139,inbox,Sofia.Santos@company.com,Project Update,2023-12-04 11:16:34,Here is the update on the current project.
-00000044,inbox,Fatima.Khan@company.com,IT System Upgrade Schedule,2023-12-04 12:25:42,Please review the schedule for the upcoming IT system upgrade.
-00000135,inbox,Yuki.Tanaka@company.com,Weekly Report,2023-12-04 13:55:00,Attached is the weekly report for your review.
-00000440,inbox,Leila.Azizi@company.com,Staff Roster for Next Week,2023-12-04 14:15:51,Attached is the staff roster for next week.
-00000159,inbox,Jinsoo.Kim@company.com,Holiday Schedule Confirmation,2023-12-05 09:17:18,Confirming the holiday schedule as discussed.
-00000020,inbox,Jinsoo.Kim@company.com,IT System Upgrade Schedule,2023-12-05 12:02:00,Please review the schedule for the upcoming IT system upgrade.
-00000018,inbox,Amir.Ali@company.com,Client Meeting Follow-up,2023-12-05 14:56:28,Here is a summary of the points discussed in our recent client meeting.
-00000263,inbox,Amir.Ali@company.com,Employee Satisfaction Survey Results,2023-12-06 09:53:48,The results of the recent employee satisfaction survey are attached.
-00000465,inbox,Raj.Patel@company.com,Monthly Sales Figures,2023-12-06 10:23:16,Please find the monthly sales figures in the attached document.
-00000145,inbox,Akira.Sato@company.com,IT System Upgrade Schedule,2023-12-06 10:39:16,Please review the schedule for the upcoming IT system upgrade.
-00000238,inbox,Aisha.Chen@company.com,Holiday Schedule Confirmation,2023-12-06 13:28:18,Confirming the holiday schedule as discussed.
-00000042,inbox,Nadia.Moreau@company.com,Customer Feedback Summary,2023-12-07 11:05:05,Attached is the summary of customer feedback from last month.
-00000010,inbox,Luis.Ortiz@company.com,Monthly Sales Figures,2023-12-07 12:15:25,Please find the monthly sales figures in the attached document.
-00000127,inbox,Kofi.Mensah@company.com,IT System Upgrade Schedule,2023-12-07 12:27:03,Please review the schedule for the upcoming IT system upgrade.
-00000088,inbox,Dmitri.Ivanov@company.com,Project Update,2023-12-07 13:17:02,Here is the update on the current project.
-00000038,inbox,Raj.Patel@company.com,Budget Approval Request,2023-12-08 10:50:44,Please review and approve the attached budget proposal.
-00000227,inbox,Yuki.Tanaka@company.com,Employee Satisfaction Survey Results,2023-12-08 11:13:14,The results of the recent employee satisfaction survey are attached.
-00000333,inbox,Fatima.Khan@company.com,New Policy Update,2023-12-08 12:38:38,We have updated our policy. Please read the attached document for details.
-00000025,inbox,Yuki.Tanaka@company.com,Meeting Rescheduled,2023-12-08 13:00:21,Please note the change in the meeting date and time.
-00000336,inbox,Dmitri.Ivanov@company.com,Holiday Schedule Confirmation,2023-12-08 13:53:59,Confirming the holiday schedule as discussed.
-00000360,inbox,Aisha.Chen@company.com,Client Meeting Follow-up,2023-12-08 14:41:36,Here is a summary of the points discussed in our recent client meeting.
-00000208,inbox,Lena.Schmidt@company.com,Training Session Confirmation,2023-12-08 15:53:27,Your registration for the upcoming training session is confirmed.
-00000089,inbox,Jinsoo.Kim@company.com,Reminder: Event Tomorrow,2023-12-09 09:58:05,This is a reminder that the event is scheduled for tomorrow.
-00000362,inbox,Santiago.Martinez@company.com,Press Release Draft,2023-12-09 10:07:20,Please review the attached draft of our upcoming press release.
-00000403,inbox,Jinsoo.Kim@company.com,IT System Upgrade Schedule,2023-12-09 13:12:13,Please review the schedule for the upcoming IT system upgrade.
-00000272,inbox,Anaya.Patel@company.com,Employee Satisfaction Survey Results,2023-12-09 14:42:25,The results of the recent employee satisfaction survey are attached.
-00000021,inbox,Akira.Sato@company.com,Project Update,2023-12-09 15:03:57,Here is the update on the current project.
-00000411,inbox,Nadia.Moreau@company.com,Health and Safety Update,2023-12-09 15:49:07,Find the latest health and safety guidelines attached.
-00000268,inbox,Nia.Johnson@company.com,Meeting Request,2023-12-10 09:36:47,Please find attached the details for our next meeting.
-00000245,inbox,Lena.Schmidt@company.com,Customer Feedback Summary,2023-12-10 15:49:47,Attached is the summary of customer feedback from last month.
-00000270,inbox,Luis.Ortiz@company.com,Employee Satisfaction Survey Results,2023-12-11 12:08:12,The results of the recent employee satisfaction survey are attached.
-00000189,inbox,Anaya.Patel@company.com,Travel Itinerary Details,2023-12-11 13:17:26,Attached are the details of your travel itinerary.
-00000217,inbox,Nia.Johnson@company.com,Invoice Attached,2023-12-11 13:20:21,Attached is the invoice for the recent transaction.
-00000364,inbox,Kofi.Mensah@company.com,Meeting Rescheduled,2023-12-11 13:42:19,Please note the change in the meeting date and time.
-00000231,inbox,Sofia.Santos@company.com,Budget Approval Request,2023-12-11 15:03:24,Please review and approve the attached budget proposal.
-00000490,inbox,Carlos.Rodriguez@company.com,Project Update,2023-12-11 15:31:05,Here is the update on the current project.
-00000085,inbox,Olga.Petrova@company.com,Staff Roster for Next Week,2023-12-12 10:38:12,Attached is the staff roster for next week.
-00000373,inbox,Carlos.Rodriguez@company.com,Weekly Report,2023-12-12 14:19:36,Attached is the weekly report for your review.
-00000140,inbox,Jinsoo.Kim@company.com,Training Session Confirmation,2023-12-12 14:20:53,Your registration for the upcoming training session is confirmed.
-00000242,inbox,Kofi.Mensah@company.com,Budget Approval Request,2023-12-12 15:12:49,Please review and approve the attached budget proposal.
-00000230,inbox,Chenwei.Zhang@company.com,New Policy Update,2023-12-12 15:30:54,We have updated our policy. Please read the attached document for details.
-00000287,inbox,Nadia.Moreau@company.com,Reminder: Event Tomorrow,2023-12-12 15:57:22,This is a reminder that the event is scheduled for tomorrow.
-00000069,inbox,Anaya.Patel@company.com,Customer Feedback Summary,2023-12-13 09:07:20,Attached is the summary of customer feedback from last month.
-00000074,inbox,Amir.Ali@company.com,Holiday Schedule Confirmation,2023-12-13 10:39:20,Confirming the holiday schedule as discussed.
-00000427,inbox,Chenwei.Zhang@company.com,Project Update,2023-12-13 11:14:00,Here is the update on the current project.
-00000442,inbox,Santiago.Martinez@company.com,Reminder: Event Tomorrow,2023-12-13 11:44:58,This is a reminder that the event is scheduled for tomorrow.
-00000175,inbox,Olga.Petrova@company.com,IT System Upgrade Schedule,2023-12-13 14:02:09,Please review the schedule for the upcoming IT system upgrade.
-00000412,inbox,Akira.Sato@company.com,Invoice Attached,2023-12-13 14:34:15,Attached is the invoice for the recent transaction.
-00000134,inbox,Akira.Sato@company.com,Health and Safety Update,2023-12-13 15:08:52,Find the latest health and safety guidelines attached.
-00000303,inbox,Carlos.Rodriguez@company.com,Employee Satisfaction Survey Results,2023-12-13 15:42:20,The results of the recent employee satisfaction survey are attached.
-00000310,inbox,Raj.Patel@company.com,Urgent: Server Downtime,2023-12-14 09:36:01,Please be aware of the unplanned server downtime occurring tonight.
-00000041,inbox,Sofia.Santos@company.com,IT System Upgrade Schedule,2023-12-14 10:03:24,Please review the schedule for the upcoming IT system upgrade.
-00000274,inbox,Raj.Patel@company.com,Travel Itinerary Details,2023-12-14 10:11:37,Attached are the details of your travel itinerary.
-00000220,inbox,Carlos.Rodriguez@company.com,Budget Approval Request,2023-12-14 12:18:12,Please review and approve the attached budget proposal.
-00000130,inbox,Dmitri.Ivanov@company.com,Training Session Confirmation,2023-12-14 13:00:39,Your registration for the upcoming training session is confirmed.
-00000433,inbox,Jinsoo.Kim@company.com,Holiday Schedule Confirmation,2023-12-14 15:44:05,Confirming the holiday schedule as discussed.
-00000402,inbox,Raj.Patel@company.com,Reminder: Event Tomorrow,2023-12-15 09:40:42,This is a reminder that the event is scheduled for tomorrow.
-00000317,inbox,Chenwei.Zhang@company.com,Weekly Report,2023-12-15 11:22:26,Attached is the weekly report for your review.
-00000286,inbox,Kofi.Mensah@company.com,Budget Approval Request,2023-12-15 11:42:33,Please review and approve the attached budget proposal.
-00000281,inbox,Raj.Patel@company.com,New Policy Update,2023-12-15 12:20:05,We have updated our policy. Please read the attached document for details.
-00000084,inbox,Akira.Sato@company.com,Staff Roster for Next Week,2023-12-15 12:20:12,Attached is the staff roster for next week.
-00000266,inbox,Leila.Azizi@company.com,Training Session Confirmation,2023-12-15 12:26:25,Your registration for the upcoming training session is confirmed.
-00000450,inbox,Amir.Ali@company.com,Client Meeting Follow-up,2023-12-15 14:20:29,Here is a summary of the points discussed in our recent client meeting.
-00000436,inbox,Carlos.Rodriguez@company.com,Employee Satisfaction Survey Results,2023-12-15 14:26:52,The results of the recent employee satisfaction survey are attached.
-00000218,inbox,Lena.Schmidt@company.com,Holiday Schedule Confirmation,2023-12-15 15:47:41,Confirming the holiday schedule as discussed.
-00000474,inbox,Anaya.Patel@company.com,Client Meeting Follow-up,2023-12-16 11:25:39,Here is a summary of the points discussed in our recent client meeting.
-00000476,inbox,Amir.Ali@company.com,Press Release Draft,2023-12-16 11:41:02,Please review the attached draft of our upcoming press release.
-00000424,inbox,Kofi.Mensah@company.com,Reminder: Event Tomorrow,2023-12-16 11:51:34,This is a reminder that the event is scheduled for tomorrow.
-00000037,inbox,Fatima.Khan@company.com,Meeting Rescheduled,2023-12-16 12:29:10,Please note the change in the meeting date and time.
-00000405,inbox,Jinsoo.Kim@company.com,Health and Safety Update,2023-12-16 13:54:42,Find the latest health and safety guidelines attached.
-00000013,inbox,Sofia.Santos@company.com,IT System Upgrade Schedule,2023-12-17 09:43:27,Please review the schedule for the upcoming IT system upgrade.
-00000338,inbox,Luis.Ortiz@company.com,Budget Approval Request,2023-12-17 09:46:45,Please review and approve the attached budget proposal.
-00000467,inbox,Leila.Azizi@company.com,Project Update,2023-12-17 10:43:33,Here is the update on the current project.
-00000390,inbox,Leila.Azizi@company.com,Reminder: Event Tomorrow,2023-12-17 12:02:09,This is a reminder that the event is scheduled for tomorrow.
-00000011,inbox,Santiago.Martinez@company.com,Meeting Request,2023-12-17 12:37:39,Please find attached the details for our next meeting.
-00000190,inbox,Raj.Patel@company.com,Health and Safety Update,2023-12-17 13:45:13,Find the latest health and safety guidelines attached.
-00000397,inbox,Santiago.Martinez@company.com,Customer Feedback Summary,2023-12-18 10:52:30,Attached is the summary of customer feedback from last month.
-00000031,inbox,Anaya.Patel@company.com,Invoice Attached,2023-12-18 12:00:53,Attached is the invoice for the recent transaction.
-00000341,inbox,Dmitri.Ivanov@company.com,Weekly Report,2023-12-18 14:07:16,Attached is the weekly report for your review.
-00000481,inbox,Anaya.Patel@company.com,Client Meeting Follow-up,2023-12-18 15:16:16,Here is a summary of the points discussed in our recent client meeting.
-00000419,inbox,Kofi.Mensah@company.com,Travel Itinerary Details,2023-12-18 15:37:09,Attached are the details of your travel itinerary.
-00000265,inbox,Jinsoo.Kim@company.com,Client Meeting Follow-up,2023-12-19 10:09:49,Here is a summary of the points discussed in our recent client meeting.
-00000046,inbox,Luis.Ortiz@company.com,Holiday Schedule Confirmation,2023-12-19 14:23:24,Confirming the holiday schedule as discussed.
-00000036,inbox,Dmitri.Ivanov@company.com,Meeting Rescheduled,2023-12-19 15:24:54,Please note the change in the meeting date and time.
-00000032,inbox,Aisha.Chen@company.com,Budget Approval Request,2023-12-19 15:33:51,Please review and approve the attached budget proposal.
-00000351,inbox,Dmitri.Ivanov@company.com,Invoice Attached,2023-12-19 15:48:29,Attached is the invoice for the recent transaction.
-00000355,inbox,Chenwei.Zhang@company.com,New Policy Update,2023-12-20 11:08:21,We have updated our policy. Please read the attached document for details.
-00000344,inbox,Raj.Patel@company.com,Customer Feedback Summary,2023-12-20 11:13:38,Attached is the summary of customer feedback from last month.
-00000023,inbox,Carlos.Rodriguez@company.com,Travel Itinerary Details,2023-12-20 11:57:46,Attached are the details of your travel itinerary.
-00000329,inbox,Jinsoo.Kim@company.com,Project Update,2023-12-20 12:21:49,Here is the update on the current project.
-00000124,inbox,Carlos.Rodriguez@company.com,IT System Upgrade Schedule,2023-12-20 14:55:37,Please review the schedule for the upcoming IT system upgrade.
-00000176,inbox,Kofi.Mensah@company.com,Health and Safety Update,2023-12-21 10:57:42,Find the latest health and safety guidelines attached.
-00000163,inbox,Fatima.Khan@company.com,Staff Roster for Next Week,2023-12-21 11:11:25,Attached is the staff roster for next week.
-00000049,inbox,Anaya.Patel@company.com,Meeting Request,2023-12-21 11:47:18,Please find attached the details for our next meeting.
-00000082,inbox,Nadia.Moreau@company.com,New Policy Update,2023-12-21 11:59:28,We have updated our policy. Please read the attached document for details.
-00000165,inbox,Leila.Azizi@company.com,Press Release Draft,2023-12-21 12:22:44,Please review the attached draft of our upcoming press release.
-00000413,inbox,Santiago.Martinez@company.com,Urgent: Server Downtime,2023-12-21 12:34:41,Please be aware of the unplanned server downtime occurring tonight.
-00000034,inbox,Yuki.Tanaka@company.com,IT System Upgrade Schedule,2023-12-21 13:17:27,Please review the schedule for the upcoming IT system upgrade.
-00000330,inbox,Anaya.Patel@company.com,Holiday Schedule Confirmation,2023-12-21 15:13:55,Confirming the holiday schedule as discussed.
-00000192,inbox,Carlos.Rodriguez@company.com,Budget Approval Request,2023-12-21 15:23:08,Please review and approve the attached budget proposal.
-00000179,inbox,Lena.Schmidt@company.com,Invoice Attached,2023-12-22 09:53:04,Attached is the invoice for the recent transaction.
-00000394,inbox,Nia.Johnson@company.com,Meeting Request,2023-12-22 10:32:32,Please find attached the details for our next meeting.
-00000332,inbox,Chenwei.Zhang@company.com,Project Update,2023-12-22 10:34:51,Here is the update on the current project.
-00000252,inbox,Aisha.Chen@company.com,Weekly Report,2023-12-22 11:59:18,Attached is the weekly report for your review.
-00000400,inbox,Dmitri.Ivanov@company.com,Press Release Draft,2023-12-22 12:48:08,Please review the attached draft of our upcoming press release.
-00000028,inbox,Sofia.Santos@company.com,Reminder: Event Tomorrow,2023-12-22 15:16:08,This is a reminder that the event is scheduled for tomorrow.
-00000444,inbox,Amir.Ali@company.com,New Policy Update,2023-12-22 15:41:21,We have updated our policy. Please read the attached document for details.
-00000131,inbox,Lena.Schmidt@company.com,Training Session Confirmation,2023-12-23 09:46:19,Your registration for the upcoming training session is confirmed.
-00000113,inbox,Kofi.Mensah@company.com,New Policy Update,2023-12-23 12:13:55,We have updated our policy. Please read the attached document for details.
-00000353,inbox,Chenwei.Zhang@company.com,Urgent: Server Downtime,2023-12-23 13:40:09,Please be aware of the unplanned server downtime occurring tonight.
-00000024,inbox,Aisha.Chen@company.com,Weekly Report,2023-12-23 13:42:10,Attached is the weekly report for your review.
-00000004,inbox,Akira.Sato@company.com,Client Meeting Follow-up,2023-12-23 14:23:36,Here is a summary of the points discussed in our recent client meeting.
-00000334,inbox,Aisha.Chen@company.com,Staff Roster for Next Week,2023-12-23 15:22:06,Attached is the staff roster for next week.
-00000396,inbox,Leila.Azizi@company.com,Holiday Schedule Confirmation,2023-12-24 09:37:59,Confirming the holiday schedule as discussed.
-00000262,inbox,Jinsoo.Kim@company.com,Invoice Attached,2023-12-24 10:41:06,Attached is the invoice for the recent transaction.
-00000468,inbox,Anaya.Patel@company.com,Meeting Rescheduled,2023-12-24 12:51:47,Please note the change in the meeting date and time.
-00000205,inbox,Yuki.Tanaka@company.com,Budget Approval Request,2023-12-24 15:13:44,Please review and approve the attached budget proposal.
-00000438,inbox,Carlos.Rodriguez@company.com,Health and Safety Update,2023-12-24 15:41:38,Find the latest health and safety guidelines attached.
-00000448,inbox,Jinsoo.Kim@company.com,Holiday Schedule Confirmation,2023-12-25 09:51:23,Confirming the holiday schedule as discussed.
-00000058,inbox,Amir.Ali@company.com,Client Meeting Follow-up,2023-12-25 10:29:24,Here is a summary of the points discussed in our recent client meeting.
-00000106,inbox,Dmitri.Ivanov@company.com,New Policy Update,2023-12-25 13:46:07,We have updated our policy. Please read the attached document for details.
-00000149,inbox,Yuki.Tanaka@company.com,Meeting Request,2023-12-25 15:09:46,Please find attached the details for our next meeting.
-00000347,inbox,Raj.Patel@company.com,Employee Satisfaction Survey Results,2023-12-25 15:41:16,The results of the recent employee satisfaction survey are attached.
-00000251,inbox,Fatima.Khan@company.com,Weekly Report,2023-12-25 15:49:19,Attached is the weekly report for your review.
-00000055,inbox,Lena.Schmidt@company.com,Budget Approval Request,2023-12-26 09:44:25,Please review and approve the attached budget proposal.
-00000237,inbox,Akira.Sato@company.com,Meeting Request,2023-12-26 11:03:58,Please find attached the details for our next meeting.
-00000015,inbox,Dmitri.Ivanov@company.com,Monthly Sales Figures,2023-12-26 11:49:24,Please find the monthly sales figures in the attached document.
-00000156,inbox,Kofi.Mensah@company.com,Press Release Draft,2023-12-26 12:06:41,Please review the attached draft of our upcoming press release.
-00000059,inbox,Anaya.Patel@company.com,Reminder: Event Tomorrow,2023-12-26 13:36:42,This is a reminder that the event is scheduled for tomorrow.
-00000482,inbox,Fatima.Khan@company.com,Project Update,2023-12-26 14:51:44,Here is the update on the current project.
-00000062,inbox,Nia.Johnson@company.com,Weekly Report,2023-12-27 10:23:59,Attached is the weekly report for your review.
-00000452,inbox,Amir.Ali@company.com,Client Meeting Follow-up,2023-12-27 14:13:43,Here is a summary of the points discussed in our recent client meeting.
-00000408,inbox,Kofi.Mensah@company.com,Weekly Report,2023-12-28 10:32:38,Attached is the weekly report for your review.
-00000091,inbox,Lena.Schmidt@company.com,Training Session Confirmation,2023-12-28 11:39:53,Your registration for the upcoming training session is confirmed.
-00000243,inbox,Nadia.Moreau@company.com,Meeting Request,2023-12-28 11:51:48,Please find attached the details for our next meeting.
-00000426,inbox,Nadia.Moreau@company.com,Monthly Sales Figures,2023-12-28 14:16:49,Please find the monthly sales figures in the attached document.
-00000301,inbox,Luis.Ortiz@company.com,Invoice Attached,2023-12-28 15:00:24,Attached is the invoice for the recent transaction.
-00000499,inbox,Amir.Ali@company.com,Health and Safety Update,2023-12-28 15:22:14,Find the latest health and safety guidelines attached.
-00000418,inbox,Yuki.Tanaka@company.com,Monthly Sales Figures,2023-12-29 09:25:55,Please find the monthly sales figures in the attached document.
-00000155,inbox,Akira.Sato@company.com,Reminder: Event Tomorrow,2023-12-29 09:28:33,This is a reminder that the event is scheduled for tomorrow.
-00000393,inbox,Leila.Azizi@company.com,Weekly Report,2023-12-29 12:06:23,Attached is the weekly report for your review.
-00000068,inbox,Anaya.Patel@company.com,New Policy Update,2023-12-29 12:52:23,We have updated our policy. Please read the attached document for details.
-00000181,inbox,Dmitri.Ivanov@company.com,Invoice Attached,2023-12-29 13:42:31,Attached is the invoice for the recent transaction.
-00000264,inbox,Chenwei.Zhang@company.com,Holiday Schedule Confirmation,2023-12-29 14:39:25,Confirming the holiday schedule as discussed.
-00000160,inbox,Jinsoo.Kim@company.com,Reminder: Event Tomorrow,2023-12-30 09:42:38,This is a reminder that the event is scheduled for tomorrow.
-00000158,inbox,Raj.Patel@company.com,Training Session Confirmation,2023-12-30 11:29:05,Your registration for the upcoming training session is confirmed.
-00000370,inbox,Anaya.Patel@company.com,Press Release Draft,2023-12-30 11:48:50,Please review the attached draft of our upcoming press release.
-00000056,inbox,Chenwei.Zhang@company.com,Health and Safety Update,2023-12-30 12:38:34,Find the latest health and safety guidelines attached.
-00000022,inbox,Nadia.Moreau@company.com,New Policy Update,2023-12-30 13:11:48,We have updated our policy. Please read the attached document for details.
+00000264,inbox,Jinsoo.Kim@company.com,Employee Satisfaction Survey Results,2023-11-12 10:26:09,The results of the recent employee satisfaction survey are attached.
+00000263,inbox,Kofi.Mensah@company.com,Holiday Schedule Confirmation,2023-11-12 10:54:57,Confirming the holiday schedule as discussed.
+00000057,inbox,Lena.Schmidt@company.com,Meeting Rescheduled,2023-11-12 11:36:43,Please note the change in the meeting date and time.
+00000474,inbox,Olga.Petrova@company.com,New Policy Update,2023-11-12 11:47:21,We have updated our policy. Please read the attached document for details.
+00000231,inbox,Olga.Petrova@company.com,Staff Roster for Next Week,2023-11-12 12:29:35,Attached is the staff roster for next week.
+00000298,inbox,Dmitri.Ivanov@company.com,Urgent: Server Downtime,2023-11-12 13:02:10,Please be aware of the unplanned server downtime occurring tonight.
+00000061,inbox,Amir.Ali@company.com,Client Meeting Follow-up,2023-11-12 15:56:09,Here is a summary of the points discussed in our recent client meeting.
+00000408,inbox,Dmitri.Ivanov@company.com,Health and Safety Update,2023-11-13 10:17:02,Find the latest health and safety guidelines attached.
+00000359,inbox,Leila.Azizi@company.com,Staff Roster for Next Week,2023-11-13 10:21:27,Attached is the staff roster for next week.
+00000468,inbox,Aisha.Chen@company.com,Employee Satisfaction Survey Results,2023-11-13 10:28:08,The results of the recent employee satisfaction survey are attached.
+00000005,inbox,Kofi.Mensah@company.com,Monthly Sales Figures,2023-11-13 11:31:38,Please find the monthly sales figures in the attached document.
+00000343,inbox,Luis.Ortiz@company.com,Urgent: Server Downtime,2023-11-13 11:40:12,Please be aware of the unplanned server downtime occurring tonight.
+00000420,inbox,Santiago.Martinez@company.com,Reminder: Event Tomorrow,2023-11-13 11:44:58,This is a reminder that the event is scheduled for tomorrow.
+00000439,inbox,Kofi.Mensah@company.com,Press Release Draft,2023-11-13 12:09:00,Please review the attached draft of our upcoming press release.
+00000325,inbox,Anaya.Patel@company.com,Meeting Rescheduled,2023-11-13 13:01:40,Please note the change in the meeting date and time.
+00000160,inbox,Leila.Azizi@company.com,Invoice Attached,2023-11-13 13:09:35,Attached is the invoice for the recent transaction.
+00000302,inbox,Raj.Patel@company.com,Weekly Report,2023-11-13 13:28:19,Attached is the weekly report for your review.
+00000403,inbox,Dmitri.Ivanov@company.com,Customer Feedback Summary,2023-11-13 13:31:23,Attached is the summary of customer feedback from last month.
+00000104,inbox,Olga.Petrova@company.com,Project Update,2023-11-13 13:31:30,Here is the update on the current project.
+00000027,inbox,Lena.Schmidt@company.com,Training Session Confirmation,2023-11-13 13:46:20,Your registration for the upcoming training session is confirmed.
+00000499,inbox,Chenwei.Zhang@company.com,Monthly Sales Figures,2023-11-14 09:19:58,Please find the monthly sales figures in the attached document.
+00000385,inbox,Sofia.Santos@company.com,Press Release Draft,2023-11-14 09:34:57,Please review the attached draft of our upcoming press release.
+00000480,inbox,Fatima.Khan@company.com,Client Meeting Follow-up,2023-11-14 10:07:13,Here is a summary of the points discussed in our recent client meeting.
+00000464,inbox,Nia.Johnson@company.com,Reminder: Event Tomorrow,2023-11-14 10:07:31,This is a reminder that the event is scheduled for tomorrow.
+00000223,inbox,Fatima.Khan@company.com,Health and Safety Update,2023-11-14 10:57:11,Find the latest health and safety guidelines attached.
+00000123,inbox,Jinsoo.Kim@company.com,IT System Upgrade Schedule,2023-11-14 11:19:48,Please review the schedule for the upcoming IT system upgrade.
+00000390,inbox,Chenwei.Zhang@company.com,Meeting Request,2023-11-14 12:04:22,Please find attached the details for our next meeting.
+00000122,inbox,Olga.Petrova@company.com,Travel Itinerary Details,2023-11-14 12:11:16,Attached are the details of your travel itinerary.
+00000095,inbox,Raj.Patel@company.com,Invoice Attached,2023-11-14 12:17:09,Attached is the invoice for the recent transaction.
+00000443,inbox,Luis.Ortiz@company.com,Employee Satisfaction Survey Results,2023-11-14 12:32:42,The results of the recent employee satisfaction survey are attached.
+00000254,inbox,Raj.Patel@company.com,Training Session Confirmation,2023-11-14 14:15:06,Your registration for the upcoming training session is confirmed.
+00000435,inbox,Anaya.Patel@company.com,Customer Feedback Summary,2023-11-14 14:41:39,Attached is the summary of customer feedback from last month.
+00000013,inbox,Dmitri.Ivanov@company.com,Meeting Request,2023-11-15 09:04:59,Please find attached the details for our next meeting.
+00000107,inbox,Dmitri.Ivanov@company.com,New Policy Update,2023-11-15 09:36:46,We have updated our policy. Please read the attached document for details.
+00000075,inbox,Olga.Petrova@company.com,Employee Satisfaction Survey Results,2023-11-15 11:06:10,The results of the recent employee satisfaction survey are attached.
+00000007,inbox,Luis.Ortiz@company.com,Holiday Schedule Confirmation,2023-11-15 11:53:31,Confirming the holiday schedule as discussed.
+00000388,inbox,Santiago.Martinez@company.com,Urgent: Server Downtime,2023-11-15 13:51:34,Please be aware of the unplanned server downtime occurring tonight.
+00000346,inbox,Aisha.Chen@company.com,Customer Feedback Summary,2023-11-15 14:43:47,Attached is the summary of customer feedback from last month.
+00000216,inbox,Carlos.Rodriguez@company.com,Budget Approval Request,2023-11-15 14:51:18,Please review and approve the attached budget proposal.
+00000166,inbox,Carlos.Rodriguez@company.com,Project Update,2023-11-15 15:58:05,Here is the update on the current project.
+00000191,inbox,Nadia.Moreau@company.com,Budget Approval Request,2023-11-16 11:52:22,Please review and approve the attached budget proposal.
+00000047,inbox,Nadia.Moreau@company.com,Holiday Schedule Confirmation,2023-11-16 12:04:55,Confirming the holiday schedule as discussed.
+00000259,inbox,Sofia.Santos@company.com,Travel Itinerary Details,2023-11-16 13:53:00,Attached are the details of your travel itinerary.
+00000219,inbox,Aisha.Chen@company.com,Press Release Draft,2023-11-16 14:38:52,Please review the attached draft of our upcoming press release.
+00000380,inbox,Kofi.Mensah@company.com,Health and Safety Update,2023-11-16 15:47:07,Find the latest health and safety guidelines attached.
+00000315,inbox,Kofi.Mensah@company.com,Budget Approval Request,2023-11-17 09:46:45,Please review and approve the attached budget proposal.
+00000482,inbox,Kofi.Mensah@company.com,Holiday Schedule Confirmation,2023-11-17 11:09:47,Confirming the holiday schedule as discussed.
+00000063,inbox,Olga.Petrova@company.com,Health and Safety Update,2023-11-17 11:31:34,Find the latest health and safety guidelines attached.
+00000295,inbox,Olga.Petrova@company.com,Monthly Sales Figures,2023-11-17 12:01:10,Please find the monthly sales figures in the attached document.
+00000488,inbox,Luis.Ortiz@company.com,IT System Upgrade Schedule,2023-11-17 12:15:36,Please review the schedule for the upcoming IT system upgrade.
+00000362,inbox,Jinsoo.Kim@company.com,Urgent: Server Downtime,2023-11-17 12:45:35,Please be aware of the unplanned server downtime occurring tonight.
+00000102,inbox,Carlos.Rodriguez@company.com,Invoice Attached,2023-11-17 13:19:20,Attached is the invoice for the recent transaction.
+00000149,inbox,Leila.Azizi@company.com,Weekly Report,2023-11-17 13:53:47,Attached is the weekly report for your review.
+00000309,inbox,Luis.Ortiz@company.com,Travel Itinerary Details,2023-11-17 14:05:50,Attached are the details of your travel itinerary.
+00000103,inbox,Aisha.Chen@company.com,Client Meeting Follow-up,2023-11-17 15:07:39,Here is a summary of the points discussed in our recent client meeting.
+00000458,inbox,Lena.Schmidt@company.com,Employee Satisfaction Survey Results,2023-11-17 15:11:20,The results of the recent employee satisfaction survey are attached.
+00000228,inbox,Lena.Schmidt@company.com,Staff Roster for Next Week,2023-11-17 15:45:57,Attached is the staff roster for next week.
+00000379,inbox,Lena.Schmidt@company.com,IT System Upgrade Schedule,2023-11-18 09:01:24,Please review the schedule for the upcoming IT system upgrade.
+00000041,inbox,Carlos.Rodriguez@company.com,Meeting Request,2023-11-18 10:04:22,Please find attached the details for our next meeting.
+00000156,inbox,Carlos.Rodriguez@company.com,Urgent: Server Downtime,2023-11-18 10:48:49,Please be aware of the unplanned server downtime occurring tonight.
+00000220,inbox,Amir.Ali@company.com,Staff Roster for Next Week,2023-11-18 11:10:44,Attached is the staff roster for next week.
+00000100,inbox,Luis.Ortiz@company.com,Client Meeting Follow-up,2023-11-18 11:40:28,Here is a summary of the points discussed in our recent client meeting.
+00000334,inbox,Olga.Petrova@company.com,Employee Satisfaction Survey Results,2023-11-18 11:56:09,The results of the recent employee satisfaction survey are attached.
+00000426,inbox,Jinsoo.Kim@company.com,Holiday Schedule Confirmation,2023-11-19 09:48:51,Confirming the holiday schedule as discussed.
+00000182,inbox,Dmitri.Ivanov@company.com,Customer Feedback Summary,2023-11-19 10:31:07,Attached is the summary of customer feedback from last month.
+00000441,inbox,Kofi.Mensah@company.com,Weekly Report,2023-11-19 13:23:59,Attached is the weekly report for your review.
+00000162,inbox,Fatima.Khan@company.com,Staff Roster for Next Week,2023-11-19 13:34:11,Attached is the staff roster for next week.
+00000029,inbox,Fatima.Khan@company.com,Meeting Rescheduled,2023-11-19 13:46:24,Please note the change in the meeting date and time.
+00000333,inbox,Akira.Sato@company.com,Urgent: Server Downtime,2023-11-19 14:46:06,Please be aware of the unplanned server downtime occurring tonight.
+00000421,inbox,Olga.Petrova@company.com,New Policy Update,2023-11-19 14:46:41,We have updated our policy. Please read the attached document for details.
+00000026,inbox,Luis.Ortiz@company.com,Monthly Sales Figures,2023-11-19 15:02:44,Please find the monthly sales figures in the attached document.
+00000338,inbox,Nia.Johnson@company.com,Monthly Sales Figures,2023-11-20 09:12:00,Please find the monthly sales figures in the attached document.
+00000491,inbox,Jinsoo.Kim@company.com,Staff Roster for Next Week,2023-11-20 09:19:08,Attached is the staff roster for next week.
+00000452,inbox,Dmitri.Ivanov@company.com,Client Meeting Follow-up,2023-11-20 10:04:17,Here is a summary of the points discussed in our recent client meeting.
+00000186,inbox,Lena.Schmidt@company.com,Meeting Rescheduled,2023-11-20 10:36:19,Please note the change in the meeting date and time.
+00000466,inbox,Raj.Patel@company.com,Urgent: Server Downtime,2023-11-20 10:38:40,Please be aware of the unplanned server downtime occurring tonight.
+00000011,inbox,Santiago.Martinez@company.com,Meeting Request,2023-11-20 11:48:07,Please find attached the details for our next meeting.
+00000217,inbox,Chenwei.Zhang@company.com,Reminder: Event Tomorrow,2023-11-20 12:46:35,This is a reminder that the event is scheduled for tomorrow.
+00000105,inbox,Luis.Ortiz@company.com,Employee Satisfaction Survey Results,2023-11-20 13:43:31,The results of the recent employee satisfaction survey are attached.
+00000229,inbox,Yuki.Tanaka@company.com,Travel Itinerary Details,2023-11-20 13:44:14,Attached are the details of your travel itinerary.
+00000153,inbox,Chenwei.Zhang@company.com,New Policy Update,2023-11-21 09:32:54,We have updated our policy. Please read the attached document for details.
+00000082,inbox,Aisha.Chen@company.com,Customer Feedback Summary,2023-11-21 09:54:07,Attached is the summary of customer feedback from last month.
+00000395,inbox,Anaya.Patel@company.com,Monthly Sales Figures,2023-11-21 10:09:22,Please find the monthly sales figures in the attached document.
+00000137,inbox,Akira.Sato@company.com,Training Session Confirmation,2023-11-21 11:22:50,Your registration for the upcoming training session is confirmed.
+00000172,inbox,Yuki.Tanaka@company.com,IT System Upgrade Schedule,2023-11-21 11:55:21,Please review the schedule for the upcoming IT system upgrade.
+00000052,inbox,Nia.Johnson@company.com,Urgent: Server Downtime,2023-11-21 12:34:51,Please be aware of the unplanned server downtime occurring tonight.
+00000460,inbox,Sofia.Santos@company.com,Budget Approval Request,2023-11-21 12:38:57,Please review and approve the attached budget proposal.
+00000262,inbox,Jinsoo.Kim@company.com,Reminder: Event Tomorrow,2023-11-21 12:47:07,This is a reminder that the event is scheduled for tomorrow.
+00000012,inbox,Leila.Azizi@company.com,Meeting Request,2023-11-21 12:55:07,Please find attached the details for our next meeting.
+00000414,inbox,Fatima.Khan@company.com,Press Release Draft,2023-11-21 13:26:00,Please review the attached draft of our upcoming press release.
+00000320,inbox,Amir.Ali@company.com,Meeting Rescheduled,2023-11-22 09:04:17,Please note the change in the meeting date and time.
+00000151,inbox,Luis.Ortiz@company.com,Customer Feedback Summary,2023-11-22 09:35:20,Attached is the summary of customer feedback from last month.
+00000384,inbox,Nia.Johnson@company.com,New Policy Update,2023-11-22 13:34:29,We have updated our policy. Please read the attached document for details.
+00000283,inbox,Aisha.Chen@company.com,Holiday Schedule Confirmation,2023-11-22 13:48:46,Confirming the holiday schedule as discussed.
+00000347,inbox,Nadia.Moreau@company.com,Project Update,2023-11-22 13:57:08,Here is the update on the current project.
+00000249,inbox,Kofi.Mensah@company.com,Staff Roster for Next Week,2023-11-22 14:21:33,Attached is the staff roster for next week.
+00000349,inbox,Amir.Ali@company.com,Invoice Attached,2023-11-22 14:35:17,Attached is the invoice for the recent transaction.
+00000364,inbox,Sofia.Santos@company.com,Employee Satisfaction Survey Results,2023-11-22 14:54:16,The results of the recent employee satisfaction survey are attached.
+00000048,inbox,Dmitri.Ivanov@company.com,Reminder: Event Tomorrow,2023-11-23 09:00:53,This is a reminder that the event is scheduled for tomorrow.
+00000323,inbox,Lena.Schmidt@company.com,Employee Satisfaction Survey Results,2023-11-23 09:06:41,The results of the recent employee satisfaction survey are attached.
+00000252,inbox,Santiago.Martinez@company.com,Client Meeting Follow-up,2023-11-23 10:16:37,Here is a summary of the points discussed in our recent client meeting.
+00000092,inbox,Nadia.Moreau@company.com,Meeting Rescheduled,2023-11-23 12:01:37,Please note the change in the meeting date and time.
+00000053,inbox,Nia.Johnson@company.com,Training Session Confirmation,2023-11-23 13:10:05,Your registration for the upcoming training session is confirmed.
+00000330,inbox,Chenwei.Zhang@company.com,Urgent: Server Downtime,2023-11-23 13:40:09,Please be aware of the unplanned server downtime occurring tonight.
+00000016,inbox,Carlos.Rodriguez@company.com,Project Update,2023-11-23 15:21:50,Here is the update on the current project.
+00000127,inbox,Kofi.Mensah@company.com,IT System Upgrade Schedule,2023-11-23 15:27:27,Please review the schedule for the upcoming IT system upgrade.
+00000297,inbox,Nadia.Moreau@company.com,Meeting Rescheduled,2023-11-24 10:26:40,Please note the change in the meeting date and time.
+00000246,inbox,Chenwei.Zhang@company.com,Press Release Draft,2023-11-24 11:25:50,Please review the attached draft of our upcoming press release.
+00000496,inbox,Akira.Sato@company.com,Client Meeting Follow-up,2023-11-24 14:08:21,Here is a summary of the points discussed in our recent client meeting.
+00000437,inbox,Anaya.Patel@company.com,Meeting Request,2023-11-24 14:16:56,Please find attached the details for our next meeting.
+00000319,inbox,Olga.Petrova@company.com,IT System Upgrade Schedule,2023-11-24 14:37:52,Please review the schedule for the upcoming IT system upgrade.
+00000472,inbox,Anaya.Patel@company.com,Project Update,2023-11-24 14:40:27,Here is the update on the current project.
+00000078,inbox,Olga.Petrova@company.com,Budget Approval Request,2023-11-24 15:24:19,Please review and approve the attached budget proposal.
+00000022,inbox,Raj.Patel@company.com,New Policy Update,2023-11-24 15:31:36,We have updated our policy. Please read the attached document for details.
+00000258,inbox,Luis.Ortiz@company.com,Employee Satisfaction Survey Results,2023-11-24 15:42:43,The results of the recent employee satisfaction survey are attached.
+00000367,inbox,Olga.Petrova@company.com,Invoice Attached,2023-11-24 15:56:16,Attached is the invoice for the recent transaction.
+00000168,inbox,Leila.Azizi@company.com,IT System Upgrade Schedule,2023-11-25 09:48:39,Please review the schedule for the upcoming IT system upgrade.
+00000449,inbox,Fatima.Khan@company.com,Client Meeting Follow-up,2023-11-25 10:40:35,Here is a summary of the points discussed in our recent client meeting.
+00000222,inbox,Fatima.Khan@company.com,Urgent: Server Downtime,2023-11-25 10:47:19,Please be aware of the unplanned server downtime occurring tonight.
+00000171,inbox,Lena.Schmidt@company.com,Monthly Sales Figures,2023-11-25 11:15:01,Please find the monthly sales figures in the attached document.
+00000372,inbox,Nadia.Moreau@company.com,Press Release Draft,2023-11-25 13:07:15,Please review the attached draft of our upcoming press release.
+00000241,inbox,Akira.Sato@company.com,Meeting Request,2023-11-25 13:48:59,Please find attached the details for our next meeting.
+00000142,inbox,Anaya.Patel@company.com,Invoice Attached,2023-11-25 14:46:34,Attached is the invoice for the recent transaction.
+00000360,inbox,Yuki.Tanaka@company.com,Travel Itinerary Details,2023-11-25 15:01:23,Attached are the details of your travel itinerary.
+00000292,inbox,Akira.Sato@company.com,Health and Safety Update,2023-11-25 15:05:55,Find the latest health and safety guidelines attached.
+00000050,inbox,Santiago.Martinez@company.com,Customer Feedback Summary,2023-11-25 15:36:02,Attached is the summary of customer feedback from last month.
+00000453,inbox,Amir.Ali@company.com,Urgent: Server Downtime,2023-11-26 10:52:13,Please be aware of the unplanned server downtime occurring tonight.
+00000128,inbox,Nadia.Moreau@company.com,Holiday Schedule Confirmation,2023-11-26 11:07:18,Confirming the holiday schedule as discussed.
+00000181,inbox,Carlos.Rodriguez@company.com,Staff Roster for Next Week,2023-11-26 12:15:24,Attached is the staff roster for next week.
+00000179,inbox,Lena.Schmidt@company.com,Press Release Draft,2023-11-26 15:15:32,Please review the attached draft of our upcoming press release.
+00000317,inbox,Nia.Johnson@company.com,Client Meeting Follow-up,2023-11-27 09:12:54,Here is a summary of the points discussed in our recent client meeting.
+00000148,inbox,Yuki.Tanaka@company.com,Meeting Request,2023-11-27 09:55:54,Please find attached the details for our next meeting.
+00000312,inbox,Luis.Ortiz@company.com,Budget Approval Request,2023-11-27 10:03:50,Please review and approve the attached budget proposal.
+00000165,inbox,Carlos.Rodriguez@company.com,Monthly Sales Figures,2023-11-27 10:08:16,Please find the monthly sales figures in the attached document.
+00000062,inbox,Anaya.Patel@company.com,Reminder: Event Tomorrow,2023-11-27 10:36:36,This is a reminder that the event is scheduled for tomorrow.
+00000383,inbox,Olga.Petrova@company.com,Health and Safety Update,2023-11-27 11:25:56,Find the latest health and safety guidelines attached.
+00000274,inbox,Kofi.Mensah@company.com,Invoice Attached,2023-11-27 11:44:11,Attached is the invoice for the recent transaction.
+00000251,inbox,Amir.Ali@company.com,Employee Satisfaction Survey Results,2023-11-27 14:07:00,The results of the recent employee satisfaction survey are attached.
+00000175,inbox,Olga.Petrova@company.com,IT System Upgrade Schedule,2023-11-27 15:12:55,Please review the schedule for the upcoming IT system upgrade.
+00000485,inbox,Aisha.Chen@company.com,Customer Feedback Summary,2023-11-27 15:26:24,Attached is the summary of customer feedback from last month.
+00000354,inbox,Jinsoo.Kim@company.com,Urgent: Server Downtime,2023-11-28 09:16:30,Please be aware of the unplanned server downtime occurring tonight.
+00000487,inbox,Dmitri.Ivanov@company.com,Press Release Draft,2023-11-28 11:26:47,Please review the attached draft of our upcoming press release.
+00000232,inbox,Jinsoo.Kim@company.com,New Policy Update,2023-11-28 11:54:48,We have updated our policy. Please read the attached document for details.
+00000006,inbox,Santiago.Martinez@company.com,Meeting Rescheduled,2023-11-28 12:43:19,Please note the change in the meeting date and time.
+00000042,inbox,Jinsoo.Kim@company.com,Weekly Report,2023-11-28 12:49:13,Attached is the weekly report for your review.
+00000000,inbox,Aisha.Chen@company.com,Project Update,2023-11-28 13:32:11,Here is the update on the current project.
+00000447,inbox,Aisha.Chen@company.com,Travel Itinerary Details,2023-11-28 13:45:36,Attached are the details of your travel itinerary.
+00000368,inbox,Santiago.Martinez@company.com,Reminder: Event Tomorrow,2023-11-28 13:51:50,This is a reminder that the event is scheduled for tomorrow.
+00000345,inbox,Amir.Ali@company.com,IT System Upgrade Schedule,2023-11-28 15:02:02,Please review the schedule for the upcoming IT system upgrade.
+00000131,inbox,Luis.Ortiz@company.com,New Policy Update,2023-11-29 09:09:01,We have updated our policy. Please read the attached document for details.
+00000336,inbox,Raj.Patel@company.com,Urgent: Server Downtime,2023-11-29 09:32:50,Please be aware of the unplanned server downtime occurring tonight.
+00000287,inbox,Raj.Patel@company.com,Invoice Attached,2023-11-29 10:05:52,Attached is the invoice for the recent transaction.
+00000427,inbox,Aisha.Chen@company.com,Budget Approval Request,2023-11-29 11:11:56,Please review and approve the attached budget proposal.
+00000286,inbox,Carlos.Rodriguez@company.com,Training Session Confirmation,2023-11-29 11:48:42,Your registration for the upcoming training session is confirmed.
+00000399,inbox,Sofia.Santos@company.com,Employee Satisfaction Survey Results,2023-11-29 12:00:51,The results of the recent employee satisfaction survey are attached.
+00000193,inbox,Raj.Patel@company.com,Press Release Draft,2023-11-29 13:31:35,Please review the attached draft of our upcoming press release.
+00000275,inbox,Anaya.Patel@company.com,Client Meeting Follow-up,2023-11-29 14:54:03,Here is a summary of the points discussed in our recent client meeting.
+00000409,inbox,Anaya.Patel@company.com,Monthly Sales Figures,2023-11-29 15:03:07,Please find the monthly sales figures in the attached document.
+00000018,inbox,Santiago.Martinez@company.com,Meeting Request,2023-11-29 15:04:21,Please find attached the details for our next meeting.
+00000097,inbox,Dmitri.Ivanov@company.com,Staff Roster for Next Week,2023-11-29 15:55:14,Attached is the staff roster for next week.

@@ -1,4 +1,5 @@
 import pandas as pd
+from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
 
 email_data = pd.read_csv("data/processed/emails.csv").sort_values("sent_datetime")
 email_data["send_date"] = pd.to_datetime(email_data["sent_datetime"]).dt.date
@@ -26,3 +27,10 @@ def test_no_two_emails_same_subject_same_time():
     """
     grouped = email_data.groupby(["sent_datetime", "subject"]).size()
     assert len(grouped[grouped > 1]) == 0
+
+
+def test_no_emails_in_the_future():
+    """
+    Tests that no emails are sent in the future.
+    """
+    assert (email_data["send_date"] <= HARDCODED_CURRENT_TIME.date()).all()
