@@ -16,7 +16,7 @@ def test_no_two_emails_same_sender_same_time():
     """
     Tests that no two emails are sent by the same person at the same time.
     """
-    grouped = email_data.groupby(["sent_datetime", "sender"]).size()
+    grouped = email_data.groupby(["sent_datetime", "sender/recipient"]).size()
     assert len(grouped[grouped > 1]) == 0
 
 
