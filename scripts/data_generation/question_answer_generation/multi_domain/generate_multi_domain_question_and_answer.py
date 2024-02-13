@@ -23,11 +23,15 @@ calendar_events = pd.read_csv("data/processed/calendar_events.csv", dtype=str)
 MULTI_DOMAIN_ACTION_TEMPLATES = [
     {
         "question": """Find the email from {natural_language_email_date} about '{subject}' and schedule a {natural_language_duration} meeting called '{subject}' at {natural_language_time} with the sender for {natural_language_meeting_date}.""",
-        "answer": """calendar.create_event.func(event_name='{subject}', participant_email='{sender}', event_start='{meeting_datetime}', duration='{duration}')""",
+        "answer": [
+            """calendar.create_event.func(event_name='{subject}', participant_email='{sender}', event_start='{meeting_datetime}', duration='{duration}')"""
+        ],
     },
     {
         "question": "Find the first event on {natural_language_event_date} and send an email to the participant with the event name as the subject and the body 'Remember to attend this event.'",
-        "answer": "email.send_email.func(recipient='{participant}', subject='{event_name}', body='Remember to attend this event.')",
+        "answer": [
+            """email.send_email.func(recipient='{participant}', subject='{event_name}', body='Remember to attend this event.')"""
+        ],
     },
 ]
 
@@ -42,7 +46,7 @@ for template in MULTI_DOMAIN_ACTION_TEMPLATES:
         calendar_index = random.randint(0, len(calendar_events) - 1)
 
         natural_language_email_date = get_natural_language_date(
-            emails_data["sent_date"][email_index].split(" ")[0]
+            emails_data["sent_datetime"][email_index].split(" ")[0]
         )
         subject = emails_data["subject"][email_index]
         sender = emails_data["sender"][email_index]
@@ -75,15 +79,18 @@ for template in MULTI_DOMAIN_ACTION_TEMPLATES:
             natural_language_meeting_date=natural_language_meeting_date,
             natural_language_event_date=natural_language_event_date,
         )
-        answer = template["answer"].format(
-            subject=subject,
-            sender=sender,
-            meeting_datetime=meeting_datetime,
-            duration=duration_minutes,
-            participant=participant,
-            event_name=event_name,
-        )
-
+        answer = []
+        for step in template["answer"]:
+            answer.append(
+                step.format(
+                    subject=subject,
+                    sender=sender,
+                    meeting_datetime=meeting_datetime,
+                    duration=duration_minutes,
+                    participant=participant,
+                    event_name=event_name,
+                )
+            )
         generated_questions_and_answers.append(
             {"question": question, "answer": answer, "template": template}
         )

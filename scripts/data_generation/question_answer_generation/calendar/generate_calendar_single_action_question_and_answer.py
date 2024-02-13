@@ -41,9 +41,11 @@ def template_1_logic():
 SINGLE_ACTION_TEMPLATES = [
     {
         "question": "Create a {duration} event called {event_name} on {natural_language_date} at {time} with {email}",
-        "answer": """calendar.create_event.func(event_name='{event_name}', participant_email='{email}', event_start='{date} {time}', duration='{duration}')""",
+        "answer": [
+            """calendar.create_event.func(event_name='{event_name}', participant_email='{email}', event_start='{date} {time}', duration='{duration_minutes}')"""
+        ],
         "logic": template_1_logic
-    }
+    },
 ]
 
 calendar_events = pd.read_csv("data/processed/calendar_events.csv", dtype=str)
@@ -63,11 +65,14 @@ if __name__ == "__main__":
         for _ in range(max_questions_per_template):
             logic = template["logic"]()
             question = template["question"].format(**logic)
-            answer = template["answer"].format(**logic)
+            answer = []
+            for step in template["answer"]:
+                answer.append(step.format(**logic))
+            
             questions = [q["question"] for q in generated_questions_and_answers]
             if question not in questions:
                 generated_questions_and_answers.append(
-                    {"question": question, "answer": answer, "template": template}
+                    {"question": question, "answer": answer, "template": {k: template[k] for k in template if k != "logic"}}
                 )
 
     for question_and_answer in generated_questions_and_answers:

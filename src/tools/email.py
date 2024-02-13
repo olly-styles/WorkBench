@@ -75,7 +75,7 @@ def search_emails(query="", date_min=None, date_max=None):
     Examples
     --------
     >>> email.search_emails("Project Update")
-    [{{"email_id": "12345678", "subject": "Project Update", "sender": "jane@example.com", "sent_date": "2024-01-10 09:30:00", "body": "Please find the project update attached."}}]
+    [{{"email_id": "12345678", "subject": "Project Update", "sender": "jane@example.com", "sent_datetime": "2024-01-10 09:30:00", "body": "Please find the project update attached."}}]
     """
     emails = EMAILS[
         (EMAILS["subject"].str.contains(query))
@@ -86,14 +86,16 @@ def search_emails(query="", date_min=None, date_max=None):
         emails = [
             email
             for email in emails
-            if pd.Timestamp(email["sent_date"]).date() >= pd.Timestamp(date_min).date()
+            if pd.Timestamp(email["sent_datetime"]).date()
+            >= pd.Timestamp(date_min).date()
         ]
     if date_max:
         # inclusive, remove time from timestamp
         emails = [
             email
             for email in emails
-            if pd.Timestamp(email["sent_date"]).date() <= pd.Timestamp(date_max).date()
+            if pd.Timestamp(email["sent_datetime"]).date()
+            <= pd.Timestamp(date_max).date()
         ]
     if emails:
         return emails[:5]

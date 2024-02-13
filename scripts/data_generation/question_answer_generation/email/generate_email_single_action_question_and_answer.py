@@ -16,7 +16,9 @@ random.seed(42)
 SINGLE_ACTION_TEMPLATES = [
     {
         "question": "Send an email to {recipient} saying '{body}' and title it '{subject}'",
-        "answer": """email.send_email.func(recipient='{recipient}', subject='{subject}', body='{body}')""",
+        "answer": [
+            """email.send_email.func(recipient='{recipient}', subject='{subject}', body='{body}')"""
+        ],
     }
 ]
 
@@ -25,7 +27,7 @@ email_ids = list(emails_data["email_id"].unique())
 subjects = list(emails_data["subject"].unique())
 senders = list(emails_data["sender"].unique())
 bodies = list(emails_data["body"].unique())
-dates = list(emails_data["sent_date"].str.split(" ").str[0].unique())
+datetimes = list(emails_data["sent_datetime"].str.split(" ").str[0].unique())
 
 # Generate a limited number of unique email action questions and answers
 generated_email_questions_and_answers = []
@@ -40,7 +42,8 @@ for template in SINGLE_ACTION_TEMPLATES:
         name = senders[index].split("@")[0].split(".")[0]
         recipient = random.choice(senders)
         query = random.choice(subjects)
-        date = random.choice(dates)
+        datetime = random.choice(datetimes)
+        date = datetime.split(" ")[0]
         natural_language_date = get_natural_language_date(date)
 
         question = template["question"].format(
@@ -51,15 +54,18 @@ for template in SINGLE_ACTION_TEMPLATES:
             query=query,
             natural_language_date=natural_language_date,
         )
-        answer = template["answer"].format(
-            subject=subject,
-            recipient=recipient,
-            body=body,
-            name=name,
-            query=query,
-            date=date,
-        )
-
+        answer = []
+        for step in template["answer"]:
+            answer.append(
+                step.format(
+                    recipient=recipient,
+                    subject=subject,
+                    body=body,
+                    name=name,
+                    query=query,
+                    date=date,
+                )
+            )
         questions = [q["question"] for q in generated_email_questions_and_answers]
         if question not in questions:
             generated_email_questions_and_answers.append(
