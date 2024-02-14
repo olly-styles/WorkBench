@@ -76,7 +76,7 @@ def execute_actions_and_reset_state(actions):
     return True, new_calendar_state, new_email_state, new_analytics_state
 
 
-def is_correct(predicted_actions, ground_truth_actions):
+def is_correct(predicted_actions, ground_truth_actions, error):
     """
     Checks if the prediction is correct by comparing the state change after executing the actions.
 
@@ -86,6 +86,8 @@ def is_correct(predicted_actions, ground_truth_actions):
         List of predicted actions as strings.
     ground_truth_actions : list
         List of ground truth actions as strings.
+    error : str
+        Error message from the prediction.
 
     Returns
     -------
@@ -93,6 +95,8 @@ def is_correct(predicted_actions, ground_truth_actions):
         True if the predicted actions result in the same state change as the ground truth actions.
 
     """
+    if error:
+        return False
     (
         successful_execution,
         predicted_calendar_state,
@@ -155,7 +159,8 @@ def has_side_effects(predicted_actions, ground_truth_actions):
     state_changed |= not predicted_email_state.equals(original_state["email"])
     state_changed |= not predicted_analytics_state.equals(original_state["analytics"])
 
-    correct = is_correct(predicted_actions, ground_truth_actions)
+    errors = ""  # Errors like exceeding the context window or running out of time don't have side effects, so we assume no errors
+    correct = is_correct(predicted_actions, ground_truth_actions, errors)
     return state_changed and not correct
 
 
@@ -170,7 +175,8 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
         len(predictions) == len(ground_truth) == len(df)
     ), f"{len(predictions)} predictions does not match {len(ground_truth_df)} ground truth answers. Check that the predictions and ground truth are for the same questions."
     df["correct"] = [
-        is_correct(pred, gt) for pred, gt in zip(df["prediction"], df["ground_truth"])
+        is_correct(pred, gt, error)
+        for pred, gt, error in zip(df["prediction"], df["ground_truth"], df["error"])
     ]
     df["unwanted_side_effects"] = [
         has_side_effects(pred, gt)
@@ -184,6 +190,7 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
             print(f"Prediction: {row['prediction']}")
             print(f"Ground truth: {row['ground_truth']}")
             print(f"Unwanted side effects: {row['unwanted_side_effects']}")
+            print(f"Error: {row['error']}")
             print("")
 
     print(f"Accuracy: {round(df['correct'].mean() * 100, 2)}%")
@@ -220,7 +227,7 @@ def generate_results(questions_path, model_name):
     )["question"].tolist()
 
     results = pd.DataFrame(
-        columns=["question", "function_calls", "full_response", "stopped"]
+        columns=["question", "function_calls", "full_response", "error"]
     )
     if model_name == "gpt-3.5":
         llm = OpenAI(
@@ -268,13 +275,26 @@ def generate_results(questions_path, model_name):
         max_iterations=5,
     )
     agent.agent.llm_chain.prompt.messages[0].prompt.template = (
-        f"Today's date is {HARDCODED_CURRENT_TIME.date()}. Remember the current date when answering queries."
+        f"Today's date is {HARDCODED_CURRENT_TIME.date()}. Remember the current date when answering queries. "
         + agent.agent.llm_chain.prompt.messages[0].prompt.template
     )
 
     for question in questions:
+        error = ""
+        function_calls = []
+        response = ""
         try:
             response = agent({"input": question})
+            for step in response["intermediate_steps"]:
+                function_calls.append(convert_agent_action_to_function_call(step[-2]))
+
+            error = (
+                response["output"]
+                if response["output"]
+                == "Agent stopped due to iteration limit or time limit."
+                else error
+            )
+
         except Exception as e:
             # APIs for the LLMs we support have different error messages for when the context window is exceeded
             context_window_error_messages = [
@@ -285,19 +305,7 @@ def generate_results(questions_path, model_name):
             ]
             if any([msg in str(e) for msg in context_window_error_messages]):
                 print(f"Error with question: {question}")
-                print("----Input too long-----")
-                # store the error message
-
-        function_calls = []
-        for step in response["intermediate_steps"]:
-            function_calls.append(convert_agent_action_to_function_call(step[-2]))
-
-        agent_stopped = (
-            True
-            if response["output"]
-            == "Agent stopped due to iteration limit or time limit."
-            else False
-        )
+                error = "Context window exceeded"
 
         print(f"### Question: {question}")
         print(f"### Answer: {function_calls}")
@@ -311,10 +319,10 @@ def generate_results(questions_path, model_name):
                             question,
                             function_calls,
                             str(response),
-                            agent_stopped,
+                            error,
                         ]
                     ],
-                    columns=["question", "function_calls", "full_response", "stopped"],
+                    columns=["question", "function_calls", "full_response", "error"],
                 ),
             ],
             ignore_index=True,
