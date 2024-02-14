@@ -108,7 +108,6 @@ def test_has_side_effects_unrelated_change():
 
 
 def test_has_side_effects_missing_action():
-    error = ""
     predicted_actions = [
         "calendar.create_event.func(event_name='Team Meeting', participant_email='alex@company.com', event_start='2023-10-05 09:00:00', duration=60)"
     ]
