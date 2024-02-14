@@ -87,7 +87,6 @@ def test_is_correct_with_error():
 
 
 def test_has_side_effects_no_side_effect():
-    error = ""
     predicted_actions = [
         "calendar.create_event.func(event_name='Team Meeting', participant_email='alex@company.com', event_start='2023-10-05 09:00:00', duration=60)"
     ]
@@ -98,7 +97,6 @@ def test_has_side_effects_no_side_effect():
 
 
 def test_has_side_effects_unrelated_change():
-    error = ""
     predicted_actions = [
         "calendar.create_event.func(event_name='Team Meeting', participant_email='alex@company.com', event_start='2023-10-05 09:00:00', duration=60)",
         "calendar.create_event.func(event_name='Team Meeting 2', participant_email='alex@company.com', event_start='2023-10-06 09:00:00', duration=60)",
@@ -122,7 +120,6 @@ def test_has_side_effects_missing_action():
 
 
 def test_has_side_effects_no_action():
-    error = ""
     predicted_actions = []
     ground_truth_actions = [
         "calendar.create_event.func(event_name='Team Meeting', participant_email='alex@company.com', event_start='2023-10-05 09:00:00', duration=60)",
@@ -131,7 +128,6 @@ def test_has_side_effects_no_action():
 
 
 def test_has_side_effects_complex_scenario():
-    error = ""
     predicted_actions = [
         "calendar.create_event.func(event_name='Team Meeting', participant_email='alex@company.com', event_start='2023-10-05 09:00:00', duration=60)",
         "calendar.delete_event.func(event_id='00000347')",
