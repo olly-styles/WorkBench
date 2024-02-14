@@ -306,6 +306,9 @@ def generate_results(questions_path, model_name):
             if any([msg in str(e) for msg in context_window_error_messages]):
                 print(f"Error with question: {question}")
                 error = "Context window exceeded"
+            else:
+                print(f"Unknown error with question: {question}")
+                error = str(e)
 
         print(f"### Question: {question}")
         print(f"### Answer: {function_calls}")
