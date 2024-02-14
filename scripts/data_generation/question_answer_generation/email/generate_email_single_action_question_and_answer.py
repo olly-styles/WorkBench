@@ -10,8 +10,37 @@ sys.path.append(project_root)
 from src.data_generation.data_generation_utils import (
     get_natural_language_date,
 )
-
+from src.evals.utils import generate_all_questions_and_answers
 random.seed(42)
+
+emails_data = pd.read_csv("data/processed/emails.csv", dtype=str)
+email_ids = list(emails_data["email_id"].unique())
+subjects = list(emails_data["subject"].unique())
+senders = list(emails_data["sender/recipient"].unique())
+bodies = list(emails_data["body"].unique())
+datetimes = list(emails_data["sent_datetime"].str.split(" ").str[0].unique())
+
+
+def send_email_logic():
+        # get a random index from the list of subjects
+    index = random.randint(0, len(subjects) - 1)
+    body = bodies[index]
+    subject = subjects[index]
+    name = senders[index].split("@")[0].split(".")[0]
+    recipient = random.choice(senders)
+    query = random.choice(subjects)
+    datetime = random.choice(datetimes)
+    date = datetime.split(" ")[0]
+    natural_language_date = get_natural_language_date(date)
+    return {
+        "body": body,
+        "subject": subject,
+        "name": name,
+        "recipient": recipient,
+        "query": query,
+        "date": date,
+        "natural_language_date": natural_language_date,
+    }
 
 SINGLE_ACTION_TEMPLATES = [
     {
@@ -19,67 +48,19 @@ SINGLE_ACTION_TEMPLATES = [
         "answer": [
             """email.send_email.func(recipient='{recipient}', subject='{subject}', body='{body}')"""
         ],
-    }
+        "logic": send_email_logic
+    },
 ]
 
-emails_data = pd.read_csv("data/processed/emails.csv", dtype=str)
-email_ids = list(emails_data["email_id"].unique())
-subjects = list(emails_data["subject"].unique())
-senders = list(emails_data["sender"].unique())
-bodies = list(emails_data["body"].unique())
-datetimes = list(emails_data["sent_datetime"].str.split(" ").str[0].unique())
-
 # Generate a limited number of unique email action questions and answers
-generated_email_questions_and_answers = []
+generated_questions_and_answers = []
 max_questions_per_template = 10  # Limit the number of questions per template
 
-for template in SINGLE_ACTION_TEMPLATES:
-    for _ in range(max_questions_per_template):
-        # get a random index from the list of subjects
-        index = random.randint(0, len(subjects) - 1)
-        body = bodies[index]
-        subject = subjects[index]
-        name = senders[index].split("@")[0].split(".")[0]
-        recipient = random.choice(senders)
-        query = random.choice(subjects)
-        datetime = random.choice(datetimes)
-        date = datetime.split(" ")[0]
-        natural_language_date = get_natural_language_date(date)
-
-        question = template["question"].format(
-            subject=subject,
-            recipient=recipient,
-            body=body,
-            name=name,
-            query=query,
-            natural_language_date=natural_language_date,
-        )
-        answer = []
-        for step in template["answer"]:
-            answer.append(
-                step.format(
-                    recipient=recipient,
-                    subject=subject,
-                    body=body,
-                    name=name,
-                    query=query,
-                    date=date,
-                )
-            )
-        questions = [q["question"] for q in generated_email_questions_and_answers]
-        if question not in questions:
-            generated_email_questions_and_answers.append(
-                {"question": question, "answer": answer, "template": template}
-            )
-
-for question_and_answer in generated_email_questions_and_answers:
-    print(question_and_answer["question"])
-    print(question_and_answer["answer"])
-    print(question_and_answer["template"])
-
-df = pd.DataFrame(generated_email_questions_and_answers)
-df.to_csv(
-    "data/processed/email_questions_and_answers_single_action.csv",
-    index=False,
-    quoting=csv.QUOTE_ALL,
-)
+if __name__ == "__main__":
+    generated_questions_and_answers = generate_all_questions_and_answers(SINGLE_ACTION_TEMPLATES, max_questions_per_template)
+    df = pd.DataFrame(generated_questions_and_answers)
+    df.to_csv(
+        "data/processed/email_questions_and_answers_single_action.csv",
+        index=False,
+        quoting=csv.QUOTE_ALL,
+    )
