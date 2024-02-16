@@ -16,7 +16,7 @@ from src.data_generation.data_generation_utils import (
     get_random_future_date,
     get_first_free_slot,
 )
-from src.evals.utils import HARDCODED_CURRENT_TIME, generate_all_questions_and_answers
+from src.evals.utils import HARDCODED_CURRENT_TIME, generate_all_queries_and_answers
 from src.tools import calendar
 
 random.seed(42)
@@ -242,77 +242,105 @@ def cancel_future_meetings_with_name_logic():
     return {"answer": answer, "event_name": event_name.lower()}
 
 
+def create_event_logic():
+    duration_minutes = generate_event_duration_minutes()
+    duration = format_event_duration(duration_minutes)
+    email = random.choice(emails)
+    event_name = random.choice(events)
+    date = get_random_future_date(dates)
+    natural_language_date = get_natural_language_date(date)
+    time = random.choice(times)
+    natural_language_time = get_natural_language_time(time)
+    return {
+        "duration_minutes": duration_minutes,
+        "duration": duration,
+        "email": email,
+        "event_name": event_name,
+        "date": date,
+        "natural_language_date": natural_language_date,
+        "time": time,
+        "natural_language_time": natural_language_time,
+    }
+
+
 MULTI_ACTION_TEMPLATES = [
     {
-        "question": "Cancel my first meeting on {natural_language_date}",
+        "query": "Cancel my first meeting on {natural_language_date}",
         "answer": ["""calendar.delete_event.func(event_id='{first_event_id}')"""],
         "logic": first_event_logic,
     },
     {
-        "question": "Change the name of the last event on {natural_language_date} to {event_name}",
+        "query": "Change the name of the last event on {natural_language_date} to {event_name}",
         "answer": [
             """calendar.update_event.func(event_id='{last_event_id}', field='event_name', new_value='{event_name}')"""
         ],
         "logic": last_event_name_change_logic,
     },
     {
-        "question": "Push back my first meeting with {name} on {natural_language_date} by {duration}s",
+        "query": "Push back my first meeting with {name} on {natural_language_date} by {duration}s",
         "answer": [
             """calendar.update_event.func(event_id='{first_event_with_name_id}', field='event_start', new_value='{new_start}')"""
         ],
         "logic": delay_first_meeting_logic,
     },
     {
-        "question": "Cancel the next {event_name} meeting",
+        "query": "Cancel the next {event_name} meeting",
         "answer": ["""calendar.delete_event.func(event_id='{event_id}')"""],
         "logic": cancel_event_logic,
     },
     {
-        "question": "Rename the next {event_name} meeting to {new_event_name}",
+        "query": "Rename the next {event_name} meeting to {new_event_name}",
         "answer": [
             """calendar.update_event.func(event_id='{event_id}', field='event_name', new_value='{new_event_name}')"""
         ],
         "logic": rename_event_logic,
     },
     {
-        "question": "Cancel my next meeting with {name}",
+        "query": "Cancel my next meeting with {name}",
         "answer": ["""calendar.delete_event.func(event_id='{event_id}')"""],
         "logic": cancel_next_event_with_name_logic,
     },
     {
-        "question": "If I haven't met with {name} in the last {duration} days, schedule a 30-minute meeting called 'catch-up' for my first free slot from tomorrow",
+        "query": "If I haven't met with {name} in the last {duration} days, schedule a 30-minute meeting called 'catch-up' for my first free slot from tomorrow",
         "answer": "in_logic",
         "logic": check_last_meeting_with_name_schedule_30_tomorrow,
     },
     {
-        "question": "Cancel my meetings on {next_day} {before_or_after} {natural_language_time}",
+        "query": "Cancel my meetings on {next_day} {before_or_after} {natural_language_time}",
         "logic": cancel_events_on_day_logic,
         "answer": "in_logic",
     },
     {
-        "question": "Cancel all future meetings with {name}",
+        "query": "Cancel all future meetings with {name}",
         "answer": "in_logic",
         "logic": cancel_all_future_meetings_with_person_logic,
     },
     {
-        "question": "Cancel future {event_name} meetings",
+        "query": "Cancel future {event_name} meetings",
         "answer": "in_logic",
         "logic": cancel_future_meetings_with_name_logic,
     },
+    {
+        "query": "Create a {duration} event called {event_name} on {natural_language_date} at {time} with {email}",
+        "answer": [
+            """calendar.create_event.func(event_name='{event_name}', participant_email='{email}', event_start='{date} {time}', duration='{duration_minutes}')"""
+        ],
+        "logic": create_event_logic,
+    },
 ]
 
-# Generate a limited number of unique multi-action questions and answers
-generated_questions_and_answers = []
-max_questions_per_template = 3  # Limit the number of questions per template
+# Generate a limited number of unique multi-action queries and answers
+generated_queries_and_answers = []
+max_queries_per_template = 3  # Limit the number of queries per template
 
 if __name__ == "__main__":
-    generated_questions_and_answers = generate_all_questions_and_answers(
-        MULTI_ACTION_TEMPLATES, max_questions_per_template
+    generated_queries_and_answers = generate_all_queries_and_answers(
+        MULTI_ACTION_TEMPLATES, max_queries_per_template
     )
 
-    df = pd.DataFrame(generated_questions_and_answers)
+    df = pd.DataFrame(generated_queries_and_answers)
     df.to_csv(
-        "data/processed/calendar_questions_and_answers_multi_action.csv",
+        "data/processed/queries_and_answers/calendar_queries_and_answers.csv",
         index=False,
         quoting=csv.QUOTE_ALL,
     )
