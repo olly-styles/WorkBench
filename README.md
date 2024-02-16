@@ -24,7 +24,7 @@ All data, including pre-computed inference results, can be found in the `data` d
 ### Inference:
 
 ```bash
-python scripts/inference/generate_answers.py --model_name MODEL_NAME --queries_path QUERYS_PATH
+python scripts/inference/generate_answers.py --model_name MODEL_NAME --queries_path QUERIES_PATH
 ```
 
 ### Evaluation:
