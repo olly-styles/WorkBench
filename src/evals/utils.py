@@ -356,11 +356,8 @@ def generate_results(queries_path, model_name):
             domain.reset_state()
 
     query_type = queries_path.split("/")[-1].split(".")[0].replace("queries_and_answers_", "")
-    domain, action_length = query_type.split("_")[:2]
-    if "multi" in domain:  # exception handler for multi-domain queries
-        save_dir = os.path.join("data", "results", "multi_domain", "multi")
-    else:
-        save_dir = os.path.join("data", "results", domain, action_length)
+    domain = query_type.split("_")[0]
+    save_dir = os.path.join("data", "results", domain)
     os.makedirs(save_dir, exist_ok=True)
 
     # Removes microseconds and makes it more readable
