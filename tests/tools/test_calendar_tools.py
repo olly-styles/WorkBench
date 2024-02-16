@@ -38,9 +38,7 @@ def test_get_event_information_missing_arguments():
     """
     calendar.CALENDAR_EVENTS = pd.DataFrame(test_events)
     assert calendar.get_event_information_by_id.func() == "Event ID not provided."
-    assert (
-        calendar.get_event_information_by_id.func("70838584") == "Field not provided."
-    )
+    assert calendar.get_event_information_by_id.func("70838584") == "Field not provided."
     calendar.reset_state()
 
 
@@ -49,9 +47,7 @@ def test_get_event_information_by_id_field_not_found():
     Tests get_event_information_by_id with field not found.
     """
     calendar.CALENDAR_EVENTS = pd.DataFrame(test_events)
-    event = calendar.get_event_information_by_id.func(
-        "70838584", "field_does_not_exist"
-    )
+    event = calendar.get_event_information_by_id.func("70838584", "field_does_not_exist")
     assert event == "Field not found."
     calendar.reset_state()
 
@@ -121,18 +117,10 @@ def test_create_event_missing_args():
     """
     calendar.CALENDAR_EVENTS = pd.DataFrame(test_events)
     assert calendar.create_event.func() == "Event name not provided."
+    assert calendar.create_event.func("Meeting with Sam") == "Participant email not provided."
+    assert calendar.create_event.func("Meeting with Sam", "sam@company.com") == "Event start not provided."
     assert (
-        calendar.create_event.func("Meeting with Sam")
-        == "Participant email not provided."
-    )
-    assert (
-        calendar.create_event.func("Meeting with Sam", "sam@company.com")
-        == "Event start not provided."
-    )
-    assert (
-        calendar.create_event.func(
-            "Meeting with Sam", "sam@company.com", "2023-10-01 10:00:00"
-        )
+        calendar.create_event.func("Meeting with Sam", "sam@company.com", "2023-10-01 10:00:00")
         == "Event duration not provided."
     )
     calendar.reset_state()
@@ -169,14 +157,9 @@ def test_update_event():
     Tests update_event.
     """
     calendar.CALENDAR_EVENTS = pd.DataFrame(test_events)
+    assert calendar.update_event.func("70838584", "event_name", "New Event Name") == "Event updated successfully."
     assert (
-        calendar.update_event.func("70838584", "event_name", "New Event Name")
-        == "Event updated successfully."
-    )
-    assert (
-        calendar.CALENDAR_EVENTS.loc[
-            calendar.CALENDAR_EVENTS["event_id"] == "70838584", "event_name"
-        ].values[0]
+        calendar.CALENDAR_EVENTS.loc[calendar.CALENDAR_EVENTS["event_id"] == "70838584", "event_name"].values[0]
         == "New Event Name"
     )
     calendar.reset_state()
@@ -199,8 +182,5 @@ def test_update_event_not_found():
     Tests update_event with an event_id that does not exist.
     """
     calendar.CALENDAR_EVENTS = pd.DataFrame(test_events)
-    assert (
-        calendar.update_event.func("99999999", "event_name", "New Event Name")
-        == "Event not found."
-    )
+    assert calendar.update_event.func("99999999", "event_name", "New Event Name") == "Event not found."
     calendar.reset_state()

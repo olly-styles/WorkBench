@@ -21,9 +21,7 @@ def generate_session_duration_seconds():
 
 
 def generate_traffic_source():
-    return np.random.choice(
-        ["direct", "referral", "search engine", "social media"], p=[0.5, 0.1, 0.1, 0.3]
-    )
+    return np.random.choice(["direct", "referral", "search engine", "social media"], p=[0.5, 0.1, 0.1, 0.3])
 
 
 def generate_visit_date(start_date, end_date):

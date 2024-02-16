@@ -209,13 +209,9 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
         len(predictions) == len(ground_truth) == len(df)
     ), f"{len(predictions)} predictions does not match {len(ground_truth_df)} ground truth answers. Check that the predictions and ground truth are for the same queries."
     df["correct"] = [
-        is_correct(pred, gt, error)
-        for pred, gt, error in zip(df["prediction"], df["ground_truth"], df["error"])
+        is_correct(pred, gt, error) for pred, gt, error in zip(df["prediction"], df["ground_truth"], df["error"])
     ]
-    df["unwanted_side_effects"] = [
-        has_side_effects(pred, gt)
-        for pred, gt in zip(df["prediction"], df["ground_truth"])
-    ]
+    df["unwanted_side_effects"] = [has_side_effects(pred, gt) for pred, gt in zip(df["prediction"], df["ground_truth"])]
 
     # print out the queries that were not answered correctly
     if print_errors:
@@ -230,23 +226,17 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     print(f"Accuracy: {round(df['correct'].mean() * 100, 2)}%")
 
 
-def get_latest_results_from_dir(
-    results_root_dir, tool, action, model_list, print_errors=False
-):
+def get_latest_results_from_dir(results_root_dir, tool, action, model_list, print_errors=False):
     """Get the latest results for each model in the results directory"""
     results_dir = os.path.join(results_root_dir, tool, action)
     results_files = os.listdir(results_dir)
     for model in model_list:
-        model_results_files = [
-            os.path.join(results_dir, file) for file in results_files if model in file
-        ]
+        model_results_files = [os.path.join(results_dir, file) for file in results_files if model in file]
         if not len(model_results_files):
             print(f"\nNo results found for {tool}, {action} action with {model}")
         else:
             latest_results_file = max(model_results_files, key=os.path.getctime)
-            ground_truth_path = os.path.join(
-                "data", "processed", f"{tool}_queries_and_answers_{action}_action.csv"
-            )
+            ground_truth_path = os.path.join("data", "processed", f"{tool}_queries_and_answers_{action}_action.csv")
             predictions = pd.read_csv(latest_results_file)
             ground_truth = pd.read_csv(ground_truth_path, dtype=str)
             print(f"\nCalculating metrics for {tool}, {action} action with {model}")
@@ -260,9 +250,7 @@ def generate_results(queries_path, model_name):
         usecols=["query"],
     )["query"].tolist()
 
-    results = pd.DataFrame(
-        columns=["query", "function_calls", "full_response", "error"]
-    )
+    results = pd.DataFrame(columns=["query", "function_calls", "full_response", "error"])
     if model_name == "gpt-3.5":
         llm = OpenAI(
             model_name="gpt-3.5-turbo-instruct",
@@ -297,9 +285,7 @@ def generate_results(queries_path, model_name):
         )
 
     else:
-        raise ValueError(
-            "Invalid --model_name. Must be one of " + ", ".join(AVAILABLE_LLMS)
-        )
+        raise ValueError("Invalid --model_name. Must be one of " + ", ".join(AVAILABLE_LLMS))
     agent = initialize_agent(
         llm=llm,
         agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
@@ -326,8 +312,7 @@ def generate_results(queries_path, model_name):
 
             error = (
                 response["output"]
-                if response["output"]
-                == "Agent stopped due to iteration limit or time limit."
+                if response["output"] == "Agent stopped due to iteration limit or time limit."
                 else error
             )
 
@@ -370,9 +355,7 @@ def generate_results(queries_path, model_name):
         for domain in DOMAINS:
             domain.reset_state()
 
-    query_type = (
-        queries_path.split("/")[-1].split(".")[0].replace("queries_and_answers_", "")
-    )
+    query_type = queries_path.split("/")[-1].split(".")[0].replace("queries_and_answers_", "")
     domain, action_length = query_type.split("_")[:2]
     if "multi" in domain:  # exception handler for multi-domain queries
         save_dir = os.path.join("data", "results", "multi_domain", "multi")
@@ -381,9 +364,7 @@ def generate_results(queries_path, model_name):
     os.makedirs(save_dir, exist_ok=True)
 
     # Removes microseconds and makes it more readable
-    current_datetime = (
-        str(pd.Timestamp.now()).split(".")[0].replace(" ", "_").replace(":", "-")
-    )
+    current_datetime = str(pd.Timestamp.now()).split(".")[0].replace(" ", "_").replace(":", "-")
     save_path = os.path.join(save_dir, model_name + "_" + current_datetime + ".csv")
     results.to_csv(save_path, index=False, quoting=csv.QUOTE_ALL)
     return results

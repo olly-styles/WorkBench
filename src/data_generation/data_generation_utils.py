@@ -17,13 +17,9 @@ def get_first_free_slot(original_meetings_df):
     )
     meetings_df = meetings_df.sort_values("event_start")
     meetings_df["next_event_start"] = meetings_df["event_start"].shift(-1)
-    meetings_df["next_event_start"] = meetings_df["next_event_start"].fillna(
-        HARDCODED_CURRENT_TIME
-    )
+    meetings_df["next_event_start"] = meetings_df["next_event_start"].fillna(HARDCODED_CURRENT_TIME)
     meetings_df["next_event_start"] = pd.to_datetime(meetings_df["next_event_start"])
-    meetings_df["free_time"] = (
-        meetings_df["next_event_start"] - meetings_df["event_end"]
-    )
+    meetings_df["free_time"] = meetings_df["next_event_start"] - meetings_df["event_end"]
     free_time = meetings_df[meetings_df["free_time"] >= pd.Timedelta(30)]
     if len(free_time) == 0:
         return None
@@ -52,18 +48,15 @@ def is_overlapping(new_start, duration, existing_events):
     duration = pd.Timedelta(duration, unit="m")
     starts_during_existing = (new_start >= existing_events["event_start"]) & (
         new_start
-        < existing_events["event_start"]
-        + existing_events["duration"].apply(lambda x: pd.Timedelta(x, unit="m"))
+        < existing_events["event_start"] + existing_events["duration"].apply(lambda x: pd.Timedelta(x, unit="m"))
     )
     ends_during_existing = (new_start + duration > existing_events["event_start"]) & (
         new_start + duration
-        <= existing_events["event_start"]
-        + existing_events["duration"].apply(lambda x: pd.Timedelta(x, unit="m"))
+        <= existing_events["event_start"] + existing_events["duration"].apply(lambda x: pd.Timedelta(x, unit="m"))
     )
     encompasses_existing = (new_start <= existing_events["event_start"]) & (
         new_start + duration
-        >= existing_events["event_start"]
-        + existing_events["duration"].apply(lambda x: pd.Timedelta(x, unit="m"))
+        >= existing_events["event_start"] + existing_events["duration"].apply(lambda x: pd.Timedelta(x, unit="m"))
     )
 
     overlap = starts_during_existing | ends_during_existing | encompasses_existing
@@ -73,8 +66,7 @@ def is_overlapping(new_start, duration, existing_events):
 def event_on_the_same_day(new_start, event_name, existing_events):
     new_start_date = pd.to_datetime(new_start).date()
     same_day = existing_events[
-        existing_events["event_start"].apply(lambda x: pd.to_datetime(x).date())
-        == new_start_date
+        existing_events["event_start"].apply(lambda x: pd.to_datetime(x).date()) == new_start_date
     ]
     return (same_day["event_name"] == event_name).any()
 
@@ -84,10 +76,8 @@ def create_calendar_event(event_names, emails, existing_events):
         event_name = event_names.sample().iloc[0, 0]
         email = emails.sample().iloc[0, 0]
         event_start = generate_datetime_between(
-            start=HARDCODED_CURRENT_TIME
-            - pd.Timedelta(calendar_days_in_past, unit="d"),
-            end=HARDCODED_CURRENT_TIME
-            + pd.Timedelta(calendar_days_in_future, unit="d"),
+            start=HARDCODED_CURRENT_TIME - pd.Timedelta(calendar_days_in_past, unit="d"),
+            end=HARDCODED_CURRENT_TIME + pd.Timedelta(calendar_days_in_future, unit="d"),
         )
         duration_minutes = generate_event_duration_minutes()
         event_id = str(len(existing_events)).zfill(8)
@@ -147,11 +137,7 @@ def format_event_duration(duration_minutes):
         return f"{duration_minutes} minute"
     else:
         duration_hours = duration_minutes / 60
-        duration_hours = (
-            int(duration_hours)
-            if int(duration_hours) == duration_hours
-            else duration_hours
-        )
+        duration_hours = int(duration_hours) if int(duration_hours) == duration_hours else duration_hours
         return f"{duration_hours} hour"
 
 
@@ -178,13 +164,11 @@ def create_email(existing_emails, sample_emails, email_content_pairs):
     sent_date = sent_datetime.strftime("%Y-%m-%d")
     # generate another date if it's already in the emails or if there is already an email with the same subject on the same day
     if (
-        sent_date
-        in existing_emails["sent_datetime"].apply(lambda x: x.strftime("%Y-%m-%d"))
+        sent_date in existing_emails["sent_datetime"].apply(lambda x: x.strftime("%Y-%m-%d"))
         or subject
-        in existing_emails[
-            existing_emails["sent_datetime"].apply(lambda x: x.strftime("%Y-%m-%d"))
-            == sent_date
-        ]["subject"].values
+        in existing_emails[existing_emails["sent_datetime"].apply(lambda x: x.strftime("%Y-%m-%d")) == sent_date][
+            "subject"
+        ].values
     ):
         return create_email(existing_emails, sample_emails, email_content_pairs)
 

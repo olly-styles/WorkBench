@@ -27,9 +27,7 @@ dates = list(calendar_events["event_start"].str.split(" ").str[0].unique())
 
 def find_email_schedule_meeting_sender_logic():
     email_index = random.randint(0, len(emails_data) - 1)
-    natural_language_email_date = get_natural_language_date(
-        emails_data["sent_datetime"][email_index].split(" ")[0]
-    )
+    natural_language_email_date = get_natural_language_date(emails_data["sent_datetime"][email_index].split(" ")[0])
     subject = emails_data["subject"][email_index]
     sender = emails_data["sender/recipient"][email_index]
     duration_minutes = generate_event_duration_minutes()
@@ -37,9 +35,7 @@ def find_email_schedule_meeting_sender_logic():
     meeting_datetime = str(get_random_future_datetime(dates))
     meeting_date = meeting_datetime.split(" ")[0]
     natural_language_meeting_date = get_natural_language_date(meeting_date)
-    natural_language_meeting_time = get_natural_language_time(
-        meeting_datetime.split(" ")[1]
-    )
+    natural_language_meeting_time = get_natural_language_time(meeting_datetime.split(" ")[1])
 
     return {
         "natural_language_email_date": natural_language_email_date,
@@ -56,13 +52,11 @@ def find_email_schedule_meeting_sender_logic():
 
 def find_event_send_email_logic():
     date = get_random_future_date(dates)
-    first_event_id = calendar.search_events.func(
-        time_min=f"{date} 00:00:00", time_max=f"{date} 23:59:59"
-    )[0]["event_id"]
-    natural_language_event_date = get_natural_language_date(date)
-    participant = calendar_events.set_index("event_id").loc[
-        first_event_id, "participant_email"
+    first_event_id = calendar.search_events.func(time_min=f"{date} 00:00:00", time_max=f"{date} 23:59:59")[0][
+        "event_id"
     ]
+    natural_language_event_date = get_natural_language_date(date)
+    participant = calendar_events.set_index("event_id").loc[first_event_id, "participant_email"]
     event_name = calendar_events.set_index("event_id").loc[first_event_id, "event_name"]
     return {
         "natural_language_event_date": natural_language_event_date,

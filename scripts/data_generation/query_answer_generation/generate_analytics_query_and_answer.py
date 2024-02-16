@@ -38,9 +38,7 @@ MULTI_ACTION_TEMPLATES = [
 max_queries_per_template = 1  # Limit the number of queries per template
 
 if __name__ == "__main__":
-    generated_queries_and_answers = generate_all_queries_and_answers(
-        MULTI_ACTION_TEMPLATES, max_queries_per_template
-    )
+    generated_queries_and_answers = generate_all_queries_and_answers(MULTI_ACTION_TEMPLATES, max_queries_per_template)
     df = pd.DataFrame(generated_queries_and_answers)
     df.to_csv(
         "data/processed/queries_and_answers/analytics_queries_and_answers.csv",

@@ -86,18 +86,12 @@ def search_emails(query="", date_min=None, date_max=None):
     ].to_dict(orient="records")
     if date_min:
         emails = [
-            email
-            for email in emails
-            if pd.Timestamp(email["sent_datetime"]).date()
-            >= pd.Timestamp(date_min).date()
+            email for email in emails if pd.Timestamp(email["sent_datetime"]).date() >= pd.Timestamp(date_min).date()
         ]
     if date_max:
         # inclusive, remove time from timestamp
         emails = [
-            email
-            for email in emails
-            if pd.Timestamp(email["sent_datetime"]).date()
-            <= pd.Timestamp(date_max).date()
+            email for email in emails if pd.Timestamp(email["sent_datetime"]).date() <= pd.Timestamp(date_max).date()
         ]
     if emails:
         return emails[:5]
@@ -206,8 +200,4 @@ def forward_email(email_id=None, recipient=None):
         return "Email not found."
     email = EMAILS[EMAILS["email_id"] == email_id].to_dict(orient="records")[0]
     result = send_email.func(recipient, f"FW: {email['subject']}", email["body"])
-    return (
-        "Email forwarded successfully."
-        if result == "Email sent successfully."
-        else result
-    )
+    return "Email forwarded successfully." if result == "Email sent successfully." else result
