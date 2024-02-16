@@ -25,7 +25,7 @@ def page_views_plot_logic():
     }
 
 
-MULTI_ACTION_TEMPLATES = [
+ANALYTICS_TEMPLATES = [
     {
         "query": "Make a plot of page views from {date_min} to {date_max}",
         "answer": [
@@ -38,7 +38,7 @@ MULTI_ACTION_TEMPLATES = [
 max_queries_per_template = 1  # Limit the number of queries per template
 
 if __name__ == "__main__":
-    generated_queries_and_answers = generate_all_queries_and_answers(MULTI_ACTION_TEMPLATES, max_queries_per_template)
+    generated_queries_and_answers = generate_all_queries_and_answers(ANALYTICS_TEMPLATES, max_queries_per_template)
     df = pd.DataFrame(generated_queries_and_answers)
     df.to_csv(
         "data/processed/queries_and_answers/analytics_queries_and_answers.csv",

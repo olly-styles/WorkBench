@@ -65,7 +65,7 @@ def find_event_send_email_logic():
     }
 
 
-MULTI_DOMAIN_ACTION_TEMPLATES = [
+MULTI_DOMAIN_TEMPLATES = [
     {
         "query": """Find the email from {natural_language_email_date} about '{subject}' and schedule a {natural_language_duration} meeting called '{subject}' at {natural_language_time} with the sender for {natural_language_meeting_date}.""",
         "answer": [
@@ -85,7 +85,7 @@ MULTI_DOMAIN_ACTION_TEMPLATES = [
 max_queries_per_template = 5
 if __name__ == "__main__":
     generated_queries_and_answers = generate_all_queries_and_answers(
-        MULTI_DOMAIN_ACTION_TEMPLATES, max_queries_per_template
+        MULTI_DOMAIN_TEMPLATES, max_queries_per_template
     )
     df = pd.DataFrame(generated_queries_and_answers)
     df.to_csv(

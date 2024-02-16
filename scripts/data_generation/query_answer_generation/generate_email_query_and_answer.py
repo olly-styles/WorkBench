@@ -63,7 +63,7 @@ def send_email_logic():
     }
 
 
-MULTI_ACTION_EMAIL_TEMPLATES = [
+EMAIL_TEMPLATES = [
     {
         "query": "Delete my last email from {name}",
         "answer": ["""email.delete_email.func(email_id='{last_email_id}')"""],
@@ -88,7 +88,7 @@ max_queries_per_template = 3  # Limit the number of queries per template
 
 if __name__ == "__main__":
     generated_queries_and_answers = generate_all_queries_and_answers(
-        MULTI_ACTION_EMAIL_TEMPLATES, max_queries_per_template
+        EMAIL_TEMPLATES, max_queries_per_template
     )
     df = pd.DataFrame(generated_queries_and_answers)
     df.to_csv(
