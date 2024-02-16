@@ -87,8 +87,8 @@ def search_events(query="", time_min=None, time_max=None):
     ]
     """
     events = CALENDAR_EVENTS[
-        (CALENDAR_EVENTS["event_name"].str.contains(query))
-        | (CALENDAR_EVENTS["participant_email"].str.contains(query))
+        (CALENDAR_EVENTS["event_name"].str.contains(query, case=False))
+        | (CALENDAR_EVENTS["participant_email"].str.contains(query, case=False))
     ].to_dict(orient="records")
     if time_min:
         events = [

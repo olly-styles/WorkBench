@@ -80,9 +80,9 @@ def search_emails(query="", date_min=None, date_max=None):
     [{{"email_id": "12345678", "inbox/outbox": "inbox", "subject": "Project Update", "sender/recipient": "jane@example.com", "sent_datetime": "2024-01-10 09:30:00", "body": "Please find the project update attached."}}]
     """
     emails = EMAILS[
-        (EMAILS["subject"].str.contains(query))
-        | (EMAILS["body"].str.contains(query))
-        | (EMAILS["sender/recipient"].str.contains(query))
+        (EMAILS["subject"].str.contains(query, case=False))
+        | (EMAILS["body"].str.contains(query, case=False))
+        | (EMAILS["sender/recipient"].str.contains(query, case=False))
     ].to_dict(orient="records")
     if date_min:
         emails = [

@@ -168,17 +168,20 @@ def generate_question_and_answer(template):
     """Generates question and answer from template."""
     logic = template["logic"]()
     question = template["question"].format(**logic)
-    stop = logic.get("no_action", False)
-    if stop:
-        answer = []
     if template["answer"] == "in_logic":
         answer = logic["answer"]
     else:
         answer = [step.format(**logic) for step in template["answer"]]
-    return {"question": question, "answer": answer, "template": {k: template[k] for k in template if k != "logic"}}
+    return {
+        "question": question,
+        "answer": answer,
+        "template": {k: template[k] for k in template if k != "logic"},
+    }
 
 
-def generate_all_questions_and_answers(templates, max_questions_per_template, verbose=True):
+def generate_all_questions_and_answers(
+    templates, max_questions_per_template, verbose=True
+):
     """Generates a limited number of unique questions and answers for each template."""
     generated_questions_and_answers = []
     for template in templates:
@@ -193,8 +196,9 @@ def generate_all_questions_and_answers(templates, max_questions_per_template, ve
             print(question_and_answer["question"])
             print(question_and_answer["answer"])
             print(question_and_answer["template"])
-        
+
     return generated_questions_and_answers
+
 
 def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     """"""
@@ -304,10 +308,12 @@ def generate_results(questions_path, model_name):
         tools=email_toolkit + calendar_toolkit + analytics_toolkit,
         verbose=True,
         return_intermediate_steps=True,
-        max_iterations=5,
+        max_iterations=15,
+        max_execution_time=60,
     )
     agent.agent.llm_chain.prompt.messages[0].prompt.template = (
-        f"Today's date is {HARDCODED_CURRENT_TIME.date()}. Remember the current date when answering queries. "
+        # Todays date is day of the week,
+        f"Today's date is {HARDCODED_CURRENT_TIME.strftime('%A')}, {HARDCODED_CURRENT_TIME.date()} and the current time is {HARDCODED_CURRENT_TIME.time()}. Remember the current date and time when answering queries. "
         + agent.agent.llm_chain.prompt.messages[0].prompt.template
     )
 
