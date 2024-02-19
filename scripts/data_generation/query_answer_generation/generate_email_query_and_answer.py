@@ -33,7 +33,7 @@ def delete_last_email_logic():
     }
 
 
-def forward_email_logic():
+def forward_recent_email_logic():
     sender_email = random.choice(senders)
     sender_name = sender_email.split("@")[0].split(".")[0]
     last_email_id = emails_data[emails_data["sender/recipient"] == sender_email].iloc[-1]["email_id"]
@@ -48,6 +48,25 @@ def forward_email_logic():
         "recipient_email": recipient_email,
     }
 
+def reply_to_email_logic():
+    emails_data["name"] = emails_data["sender/recipient"].str.split("@").str[0].str.split(".").str[0]
+    email_subject = random.choice(subjects)
+    name = random.choice(senders).split("@")[0].split(".")[0]
+    selected_email_data = emails_data[(emails_data["subject"] == email_subject) & (emails_data["name"] == name)]
+
+    # Keep looping until we find a subject and name that exists in the emails data and isn't a meeting reschedule
+    while (len(selected_email_data) == 0) or (email_subject == "Meeting Rescheduled"):
+        email_subject = random.choice(subjects)
+        name = random.choice(senders).split("@")[0].split(".")[0]
+        selected_email_data = emails_data[(emails_data["subject"] == email_subject) & (emails_data["name"] == name)]
+    email_id = selected_email_data.sort_values("sent_datetime", ascending=False).iloc[0]["email_id"]
+    
+    del emails_data["name"]
+    return {
+        "name": name,
+        "email_id": email_id,
+        "subject": email_subject,
+    }
 
 def send_email_logic():
     index = random.randint(0, len(subjects) - 1)
@@ -72,13 +91,30 @@ EMAIL_TEMPLATES = [
     {
         "query": "Forward my most recent email from {sender_name} to {recipient_name}",
         "answer": ["""email.forward_email.func(email_id='{last_email_id}', recipient='{recipient_email}')"""],
-        "logic": forward_email_logic,
+        "logic": forward_recent_email_logic,
     },
     {
         "query": "Send an email to {name} saying '{body}' and title it '{subject}'",
         "answer": ["""email.send_email.func(recipient='{recipient_email}', subject='{subject}', body='{body}')"""],
         "logic": send_email_logic,
     },
+    {
+        "query": "Reply to {name}'s last email about '{subject}' with 'Thanks for the update - I will get back to you tomorrow.'",
+        "answer": [
+            """email.reply_email.func(email_id='{email_id}', body='Thanks for the update - I will get back to you tomorrow.')"""
+        ],
+        "logic": reply_to_email_logic,
+    },
+    # {
+    #     "query": "Reply to all my emails from the last {num_days} days with 'Sorry for the delay - I have been away and forgot to turn on my out of office! I'll get back to you soon.'",
+    # }
+    # {
+    #     "query": "Forward the email from last week from {name} about '{subject}' to {recipient_name}",
+    #     "answer": [
+    #         """email.forward_email.func(email_id='{email_id}, recipient='{recipient_email}')"""
+    #     ],
+    #     "logic": forward_last_weeks_email_logic,
+    # }
 ]
 
 # Generate a limited number of unique multi-action queries and answers

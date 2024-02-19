@@ -58,7 +58,8 @@ def get_email_information_by_id(email_id=None, field=None):
 @tool("email.search_emails", return_direct=False)
 def search_emails(query="", date_min=None, date_max=None):
     """
-    Searches for emails matching the given query.
+    Searches for emails matching the given query across subject, body, or sender fields.
+    The function matches an email if all words in the query appear in any of these fields.
 
     Parameters
     ----------
@@ -79,11 +80,18 @@ def search_emails(query="", date_min=None, date_max=None):
     >>> email.search_emails("Project Update")
     [{{"email_id": "12345678", "inbox/outbox": "inbox", "subject": "Project Update", "sender/recipient": "jane@example.com", "sent_datetime": "2024-01-10 09:30:00", "body": "Please find the project update attached."}}]
     """
-    emails = EMAILS[
-        (EMAILS["subject"].str.contains(query, case=False))
-        | (EMAILS["body"].str.contains(query, case=False))
-        | (EMAILS["sender/recipient"].str.contains(query, case=False))
-    ].to_dict(orient="records")
+    
+    query_words = query.lower().split()
+    
+    # Filter function to check if all query words are in any of the specified fields
+    def filter_emails(row):
+        combined_fields = f"{row['subject']} {row['body']} {row['sender/recipient']}".lower()
+        return all(word in combined_fields for word in query_words)
+    
+    # Apply filter function across all rows
+    filtered_emails = EMAILS.apply(filter_emails, axis=1)
+    emails = EMAILS[filtered_emails].to_dict(orient="records")
+    
     if date_min:
         emails = [
             email for email in emails if pd.Timestamp(email["sent_datetime"]).date() >= pd.Timestamp(date_min).date()
@@ -93,7 +101,7 @@ def search_emails(query="", date_min=None, date_max=None):
         emails = [
             email for email in emails if pd.Timestamp(email["sent_datetime"]).date() <= pd.Timestamp(date_max).date()
         ]
-    if emails:
+    if len(emails):
         return emails[:5]
     else:
         return "No emails found."
@@ -201,3 +209,33 @@ def forward_email(email_id=None, recipient=None):
     email = EMAILS[EMAILS["email_id"] == email_id].to_dict(orient="records")[0]
     result = send_email.func(recipient, f"FW: {email['subject']}", email["body"])
     return "Email forwarded successfully." if result == "Email sent successfully." else result
+
+@tool("email.reply_email", return_direct=False)
+def reply_email(email_id=None, body=None):
+    """
+    Replies to an email by its ID.
+
+    Parameters
+    ----------
+    email_id : str, optional
+        Unique ID of the email to be replied.
+    body : str, optional
+        Body content of the email.
+
+    Returns
+    -------
+    message : str
+        Confirmation message of the email being replied.
+
+    Examples
+    --------
+    >>> email.reply_email("12345678", "Thank you for the update.")
+    "Email replied successfully."
+    """
+    if not email_id or not body:
+        return "Email ID or body not provided."
+    if email_id not in EMAILS["email_id"].values:
+        return "Email not found."
+    email = EMAILS[EMAILS["email_id"] == email_id].to_dict(orient="records")[0]
+    result = send_email.func(email["sender/recipient"], f"{email['subject']}", body)
+    return "Email replied successfully." if result == "Email sent successfully." else result
