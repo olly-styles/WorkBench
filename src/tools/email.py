@@ -80,18 +80,17 @@ def search_emails(query="", date_min=None, date_max=None):
     >>> email.search_emails("Project Update")
     [{{"email_id": "12345678", "inbox/outbox": "inbox", "subject": "Project Update", "sender/recipient": "jane@example.com", "sent_datetime": "2024-01-10 09:30:00", "body": "Please find the project update attached."}}]
     """
-    
+
     query_words = query.lower().split()
-    
+
     # Filter function to check if all query words are in any of the specified fields
     def filter_emails(row):
         combined_fields = f"{row['subject']} {row['body']} {row['sender/recipient']}".lower()
         return all(word in combined_fields for word in query_words)
-    
+
     # Apply filter function across all rows
     filtered_emails = EMAILS.apply(filter_emails, axis=1)
-    emails = EMAILS[filtered_emails].to_dict(orient="records")
-    
+    emails = EMAILS[filtered_emails].sort_values("sent_datetime", ascending=False).to_dict(orient="records")
     if date_min:
         emails = [
             email for email in emails if pd.Timestamp(email["sent_datetime"]).date() >= pd.Timestamp(date_min).date()
@@ -133,6 +132,8 @@ def send_email(recipient=None, subject=None, body=None):
     """
     if not recipient or not subject or not body:
         return "Recipient, subject, or body not provided."
+    if "@" not in recipient or "." not in recipient:
+        return "Invalid recipient email address."
 
     email_id = str(int(EMAILS["email_id"].max()) + 1)
     sent_datetime = HARDCODED_CURRENT_TIME
@@ -206,9 +207,12 @@ def forward_email(email_id=None, recipient=None):
         return "Email ID or recipient not provided."
     if email_id not in EMAILS["email_id"].values:
         return "Email not found."
+    if "@" not in recipient or "." not in recipient:
+        return "Invalid recipient email address."
     email = EMAILS[EMAILS["email_id"] == email_id].to_dict(orient="records")[0]
     result = send_email.func(recipient, f"FW: {email['subject']}", email["body"])
     return "Email forwarded successfully." if result == "Email sent successfully." else result
+
 
 @tool("email.reply_email", return_direct=False)
 def reply_email(email_id=None, body=None):

@@ -68,13 +68,15 @@ def test_search_emails():
     }
     email.reset_state()
 
-def test_search_emails_none_found(): 
+
+def test_search_emails_none_found():
     """
     Tests search_emails with no emails found.
     """
     email.EMAILS = pd.DataFrame(test_emails)
     assert email.search_emails.func("email_does_not_exist") == "No emails found."
     email.reset_state()
+
 
 def test_search_emails_multiple_fields_at_once():
     """
@@ -89,6 +91,7 @@ def test_search_emails_multiple_fields_at_once():
         "sent_datetime": "2024-01-11 10:15:00",
         "body": "Can we schedule a meeting for next week?",
     }
+
 
 def test_search_emails_no_results():
     """
@@ -166,6 +169,7 @@ def test_forward_email_missing_args():
     assert email.forward_email.func("12345679") == "Email ID or recipient not provided."
     assert email.forward_email.func(recipient="example@email.com") == ("Email ID or recipient not provided.")
 
+
 def test_reply_email():
     """
     Tests reply_email.
@@ -178,7 +182,8 @@ def test_reply_email():
     assert email.EMAILS["subject"].values[-1] == "Project Update"
     assert email.EMAILS["body"].values[-1] == "Thank you for the update."
     email.reset_state()
-    
+
+
 def test_reply_email_missing_args():
     """
     Tests reply_email with missing arguments.
@@ -186,4 +191,3 @@ def test_reply_email_missing_args():
     assert email.reply_email.func() == "Email ID or body not provided."
     assert email.reply_email.func("12345678") == "Email ID or body not provided."
     assert email.reply_email.func(body="Thank you for the update.") == "Email ID or body not provided."
-    
