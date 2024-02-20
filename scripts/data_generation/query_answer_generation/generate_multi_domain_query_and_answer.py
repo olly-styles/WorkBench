@@ -36,7 +36,9 @@ def find_email_schedule_meeting_sender_logic():
     meeting_date = meeting_datetime.split(" ")[0]
     natural_language_meeting_date = get_natural_language_date(meeting_date)
     natural_language_meeting_time = get_natural_language_time(meeting_datetime.split(" ")[1])
-
+    answer = [
+        f"""calendar.create_event.func(event_name='{subject}', participant_email='{sender}', event_start='{meeting_datetime}', duration='{duration_minutes}')"""
+    ]
     return {
         "natural_language_email_date": natural_language_email_date,
         "subject": subject,
@@ -47,6 +49,7 @@ def find_email_schedule_meeting_sender_logic():
         "natural_language_meeting_date": natural_language_meeting_date,
         "natural_language_time": natural_language_meeting_time,
         "duration": duration_minutes,
+        "answer": answer,
     }
 
 
@@ -58,26 +61,24 @@ def find_event_send_email_logic():
     natural_language_event_date = get_natural_language_date(date)
     participant = calendar_events.set_index("event_id").loc[first_event_id, "participant_email"]
     event_name = calendar_events.set_index("event_id").loc[first_event_id, "event_name"]
+    answer = [
+        f"""email.send_email.func(recipient='{participant}', subject='{event_name}', body='Remember to attend this event.')"""
+    ]
     return {
         "natural_language_event_date": natural_language_event_date,
         "participant": participant,
         "event_name": event_name,
+        "answer": answer,
     }
 
 
 MULTI_DOMAIN_TEMPLATES = [
     {
         "query": """Find the email from {natural_language_email_date} about '{subject}' and schedule a {natural_language_duration} meeting called '{subject}' at {natural_language_time} with the sender for {natural_language_meeting_date}.""",
-        "answer": [
-            """calendar.create_event.func(event_name='{subject}', participant_email='{sender}', event_start='{meeting_datetime}', duration='{duration}')"""
-        ],
         "logic": find_email_schedule_meeting_sender_logic,
     },
     {
         "query": "Find the first event on {natural_language_event_date} and send an email to the participant with the event name as the subject and the body 'Remember to attend this event.'",
-        "answer": [
-            """email.send_email.func(recipient='{participant}', subject='{event_name}', body='Remember to attend this event.')"""
-        ],
         "logic": find_event_send_email_logic,
     },
 ]

@@ -27,9 +27,11 @@ def delete_first_email_logic():
     date = random.choice(dates)
     natural_language_date = get_natural_language_date(date)
     first_email_id = email.search_emails.func(date_min=date, date_max=date)[0]["email_id"]
+    answer = [f"""email.delete_email.func(email_id='{first_email_id}')"""]
     return {
         "natural_language_date": natural_language_date,
         "first_email_id": first_email_id,
+        "answer": answer,
     }
 
 
@@ -40,11 +42,13 @@ def send_email_to_last_sender_logic():
     body = bodies[index]
     subject = subjects[index]
     last_email_sender = email.search_emails.func(date_min=f"{date}", date_max=f"{date}")[-1]["sender/recipient"]
+    answer = [f"""email.send_email.func(recipient='{last_email_sender}', subject='{subject}', body='{body}')"""]
     return {
         "natural_language_date": natural_language_date,
         "subject": subject,
         "body": body,
         "last_email_sender": last_email_sender,
+        "answer": answer,
     }
 
 
@@ -53,10 +57,13 @@ def forward_email_logic():
     natural_language_date = get_natural_language_date(date)
     last_email_id = email.search_emails.func(date_min=f"{date}", date_max=f"{date}")[-1]["email_id"]
     recipient = random.choice(senders)
+    answer =  [f"""email.forward_email.func(email_id='{last_email_id}', recipient='{recipient}')"""]
+
     return {
         "natural_language_date": natural_language_date,
         "last_email_id": last_email_id,
         "recipient": recipient,
+        "answer": answer,
     }
 
 
@@ -71,6 +78,7 @@ def send_email_logic():
     datetime = random.choice(datetimes)
     date = datetime.split(" ")[0]
     natural_language_date = get_natural_language_date(date)
+    answer = [f"""email.send_email.func(recipient='{recipient}', subject='{subject}', body='{body}')"""]
     return {
         "body": body,
         "subject": subject,
@@ -79,28 +87,25 @@ def send_email_logic():
         "query": query,
         "date": date,
         "natural_language_date": natural_language_date,
+        "answer": answer,
     }
 
 
 EMAIL_TEMPLATES = [
     {
         "query": "Delete the first email on {natural_language_date}",
-        "answer": ["""email.delete_email.func(email_id='{first_email_id}')"""],
         "logic": delete_first_email_logic,
     },
     {
         "query": "Find the last email on {natural_language_date} and send an email to the sender with the subject '{subject}' and body '{body}'",
-        "answer": ["""email.send_email.func(recipient='{last_email_sender}', subject='{subject}', body='{body}')"""],
         "logic": send_email_to_last_sender_logic,
     },
     {
         "query": "Find the last email on {natural_language_date} and forward it to {recipient}",
-        "answer": ["""email.forward_email.func(email_id='{last_email_id}', recipient='{recipient}')"""],
         "logic": forward_email_logic,
     },
     {
         "query": "Send an email to {recipient} saying '{body}' and title it '{subject}'",
-        "answer": ["""email.send_email.func(recipient='{recipient}', subject='{subject}', body='{body}')"""],
         "logic": send_email_logic,
     },
 ]
