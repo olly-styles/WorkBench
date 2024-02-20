@@ -17,20 +17,21 @@ def page_views_plot_logic():
     time_max = "2023-10-31"
     date_min = get_natural_language_date(time_min)
     date_max = get_natural_language_date(time_max)
+    answer = [
+        f"""analytics.create_plot.func(time_min='{time_min}', time_max='{time_max}', value_to_plot='page_views', plot_type='line')"""
+    ]
     return {
         "time_min": time_min,
         "time_max": time_max,
         "date_min": date_min,
         "date_max": date_max,
+        "answer": answer,
     }
 
 
 ANALYTICS_TEMPLATES = [
     {
         "query": "Make a plot of page views from {date_min} to {date_max}",
-        "answer": [
-            """analytics.create_plot.func(time_min='{time_min}', time_max='{time_max}', value_to_plot='page_views', plot_type='line')"""
-        ],
         "logic": page_views_plot_logic,
     },
 ]

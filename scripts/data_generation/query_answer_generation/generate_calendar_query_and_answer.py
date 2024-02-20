@@ -35,9 +35,11 @@ def first_event_logic():
     first_event_id = calendar.search_events.func(time_min=f"{date} 00:00:00", time_max=f"{date} 23:59:59")[0][
         "event_id"
     ]
+    answer = [f"""calendar.delete_event.func(event_id='{first_event_id}')"""]
     return {
         "natural_language_date": natural_language_date,
         "first_event_id": first_event_id,
+        "answer": answer,
     }
 
 
@@ -48,10 +50,12 @@ def last_event_name_change_logic():
         "event_id"
     ]
     new_event_name = random.choice(events)
+    answer = [f"""calendar.update_event.func(event_id='{last_event_id}', field='event_name', new_value='{new_event_name}')"""]
     return {
         "natural_language_date": natural_language_date,
         "last_event_id": last_event_id,
         "event_name": new_event_name,
+        "answer": answer,
     }
 
 
@@ -67,6 +71,9 @@ def delay_first_meeting_logic():
     )[0]
     first_event_with_name_id = first_event_with_name["event_id"]
     new_start = generate_end_time(first_event_with_name["event_start"], duration)
+    answer = [
+        f"""calendar.update_event.func(event_id='{first_event_with_name_id}', field='event_start', new_value='{new_start}')"""
+    ]
     return {
         "natural_language_date": natural_language_date,
         "duration_minutes": duration_minutes,
@@ -74,6 +81,7 @@ def delay_first_meeting_logic():
         "first_event_with_name_id": first_event_with_name_id,
         "new_start": new_start,
         "name": name,
+        "answer": answer,
     }
 
 
@@ -88,8 +96,9 @@ def cancel_event_logic():
         next_event_with_name = events_with_name[events_with_name["event_start"] > str(HARDCODED_CURRENT_TIME)]
 
     next_event_with_name = next_event_with_name.iloc[0]
+    answer = [f"""calendar.delete_event.func(event_id='{next_event_with_name["event_id"]}')"""]
 
-    return {"event_id": next_event_with_name["event_id"], "event_name": event_name}
+    return {"event_id": next_event_with_name["event_id"], "event_name": event_name, "answer": answer}
 
 
 def rename_event_logic():
@@ -97,7 +106,10 @@ def rename_event_logic():
     new_event_name = random.choice(events)
     while new_event_name == original_event["event_name"]:
         new_event_name = random.choice(events)
-    return {**original_event, "new_event_name": new_event_name}
+
+    answer = [f"""calendar.update_event.func(event_id='{original_event["event_id"]}', field='event_name', new_value='{new_event_name}')"""]
+
+    return {**original_event, "new_event_name": new_event_name, "answer": answer}
 
 
 def cancel_next_event_with_name_logic():
@@ -106,7 +118,8 @@ def cancel_next_event_with_name_logic():
     future_events_with_name = events_with_name[events_with_name["event_start"] > str(HARDCODED_CURRENT_TIME)]
     next_event_id = future_events_with_name.sort_values("event_start").iloc[0]["event_id"]
     name = participant.split(".")[0]
-    return {"event_id": next_event_id, "name": name}
+    answer = [f"""calendar.delete_event.func(event_id='{next_event_id}')"""]
+    return {"event_id": next_event_id, "name": name, "answer": answer}
 
 
 def check_last_meeting_with_name_schedule_30_tomorrow():
@@ -207,7 +220,11 @@ def create_event_logic():
     date = get_random_future_date(dates)
     natural_language_date = get_natural_language_date(date)
     time = random.choice(times)
-    natural_language_time = get_natural_language_time(time)
+    natural_language_time = get_natural_language_time(time)            
+    answer = [
+        f"""calendar.create_event.func(event_name='{event_name}', participant_email='{email}', event_start='{date} {time}', duration='{duration_minutes}')"""
+    ]
+
     return {
         "duration_minutes": duration_minutes,
         "duration": duration,
@@ -217,71 +234,53 @@ def create_event_logic():
         "natural_language_date": natural_language_date,
         "time": time,
         "natural_language_time": natural_language_time,
+        "answer": answer,
     }
 
 
 CALENDAR_TEMPLATES = [
     {
         "query": "Cancel my first meeting on {natural_language_date}",
-        "answer": ["""calendar.delete_event.func(event_id='{first_event_id}')"""],
         "logic": first_event_logic,
     },
     {
         "query": "Change the name of the last event on {natural_language_date} to {event_name}",
-        "answer": [
-            """calendar.update_event.func(event_id='{last_event_id}', field='event_name', new_value='{event_name}')"""
-        ],
         "logic": last_event_name_change_logic,
     },
     {
         "query": "Push back my first meeting with {name} on {natural_language_date} by {duration}s",
-        "answer": [
-            """calendar.update_event.func(event_id='{first_event_with_name_id}', field='event_start', new_value='{new_start}')"""
-        ],
         "logic": delay_first_meeting_logic,
     },
     {
         "query": "Cancel the next {event_name} meeting",
-        "answer": ["""calendar.delete_event.func(event_id='{event_id}')"""],
         "logic": cancel_event_logic,
     },
     {
         "query": "Rename the next {event_name} meeting to {new_event_name}",
-        "answer": [
-            """calendar.update_event.func(event_id='{event_id}', field='event_name', new_value='{new_event_name}')"""
-        ],
         "logic": rename_event_logic,
     },
     {
         "query": "Cancel my next meeting with {name}",
-        "answer": ["""calendar.delete_event.func(event_id='{event_id}')"""],
         "logic": cancel_next_event_with_name_logic,
     },
     {
         "query": "If I haven't met with {name} in the last {duration} days, schedule a 30-minute meeting called 'catch-up' for my first free slot from tomorrow",
-        "answer": "in_logic",
         "logic": check_last_meeting_with_name_schedule_30_tomorrow,
     },
     {
         "query": "Cancel my meetings on {next_day} {before_or_after} {natural_language_time}",
         "logic": cancel_events_on_day_logic,
-        "answer": "in_logic",
     },
     {
         "query": "Cancel all future meetings with {name}",
-        "answer": "in_logic",
         "logic": cancel_all_future_meetings_with_person_logic,
     },
     {
         "query": "Cancel future {event_name} meetings",
-        "answer": "in_logic",
         "logic": cancel_future_meetings_with_name_logic,
     },
     {
         "query": "Create a {duration} event called {event_name} on {natural_language_date} at {time} with {email}",
-        "answer": [
-            """calendar.create_event.func(event_name='{event_name}', participant_email='{email}', event_start='{date} {time}', duration='{duration_minutes}')"""
-        ],
         "logic": create_event_logic,
     },
 ]
