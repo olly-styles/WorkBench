@@ -109,7 +109,7 @@ backend_team_emails = team_member_emails[: len(team_member_emails) // 4]
 frontend_team_emails = team_member_emails[len(team_member_emails) // 4 : 2 * len(team_member_emails) // 4]
 design_team_emails = team_member_emails[2 * len(team_member_emails) // 4 : 3 * len(team_member_emails) // 4]
 project_management_team_emails = backend_team_emails + frontend_team_emails + design_team_emails
-# The remaining team members are in the sales team. They're not part of the project management data, and are used in the CRM data instead.
+sales_team_emails = team_member_emails[3 * len(team_member_emails) // 4 :]
 
 lists = ["Backlog", "In Progress", "In Review", "Completed"]
 boards = ["Back end", "Front end", "Design"]
