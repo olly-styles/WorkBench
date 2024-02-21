@@ -168,7 +168,7 @@ MULTI_DOMAIN_TEMPLATES = [
         take the person with the fewest backlog tasks on {board} and book a meeting with them
         called 'Discuss {natural_language_metric}' at the earliest time I'm free tomorrow.
         Then also make a task for them called 'Improve {natural_language_metric}' on {board}, which is due in a week.
-        Otherwise, email {name} saying 'I just checked {natural_language_metric} since {date_min} and you're doing doing great - nice work!' 
+        Otherwise, email {name} saying 'I just checked {natural_language_metric} and you're doing doing great - nice work!' 
         Title it 'Nice work on {natural_language_metric}'
         """,
     },
