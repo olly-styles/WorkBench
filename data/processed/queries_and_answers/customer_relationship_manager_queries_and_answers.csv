@@ -1,0 +1,4 @@
+"query","answer","template"
+"Update status of Avery Moore to Lost in the CRM","[""crm.update_customer(customer_id='00000090', field='status', new_value='Lost')""]","{'query': 'Update status of {customer_name} to {new_status} in the CRM'}"
+"Update status of Jamie Williams to Won in the CRM","[""crm.update_customer(customer_id='00000109', field='status', new_value='Won')""]","{'query': 'Update status of {customer_name} to {new_status} in the CRM'}"
+"Update status of Kerry Wilson to Qualified in the CRM","[""crm.update_customer(customer_id='00000077', field='status', new_value='Qualified')""]","{'query': 'Update status of {customer_name} to {new_status} in the CRM'}"

@@ -14,6 +14,7 @@ from src.tools.toolkits import (
     email_toolkit,
     analytics_toolkit,
     project_management_toolkit,
+    customer_relationship_manager_toolkit,
 )
 
 
@@ -294,8 +295,8 @@ def generate_results(queries_path, model_name):
     agent = initialize_agent(
         llm=llm,
         agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
-        # tools=email_toolkit + calendar_toolkit + analytics_toolkit + project_management_toolkit,
-        tools=project_management_toolkit,
+        # tools=email_toolkit + calendar_toolkit + analytics_toolkit + project_management_toolkit + customer_relationship_manager_toolkit,
+        tools=customer_relationship_manager_toolkit,
         verbose=True,
         return_intermediate_steps=True,
         max_iterations=15,

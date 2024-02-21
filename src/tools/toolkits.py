@@ -1,4 +1,4 @@
-from src.tools import calendar, email, analytics, project_management
+from src.tools import calendar, email, analytics, project_management, customer_relationship_manager
 
 all_tools = [
     calendar.get_event_information_by_id,
@@ -22,6 +22,10 @@ all_tools = [
     project_management.create_task,
     project_management.delete_task,
     project_management.update_task,
+    customer_relationship_manager.search_customers,
+    customer_relationship_manager.update_customer,
+    customer_relationship_manager.add_customer,
+    customer_relationship_manager.delete_customer,
 ]
 
 tool_information = [
@@ -37,3 +41,4 @@ calendar_toolkit = [t["tool"] for t in tool_information if t["name"].split(".")[
 email_toolkit = [t["tool"] for t in tool_information if t["name"].split(".")[0] == "email"]
 analytics_toolkit = [t["tool"] for t in tool_information if t["name"].split(".")[0] == "analytics"]
 project_management_toolkit = [t["tool"] for t in tool_information if t["name"].split(".")[0] == "project_management"]
+customer_relationship_manager_toolkit = [t["tool"] for t in tool_information if t["name"].split(".")[0] == "customer_relationship_manager"]

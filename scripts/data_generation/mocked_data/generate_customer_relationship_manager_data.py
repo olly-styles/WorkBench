@@ -11,6 +11,8 @@ sys.path.append(project_root)
 from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
 from scripts.data_generation.mocked_data.generate_project_management_data import sales_team_emails
 
+random.seed(42)
+
 # Define a function to generate random customer names
 def generate_random_name():
     first_names = ["Alex", "Jordan", "Taylor", "Casey", "Jamie", "Morgan", "Cameron", "Reese", "Quinn", "Peyton", "Shannon", "Rahul", "Riley", "Jessie", "Dakota", "Angel", "Parker", "Avery", "Jaden", "Kerry"]

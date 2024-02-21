@@ -10,7 +10,7 @@ def reset_state():
     global CRM_DATA
     CRM_DATA = pd.read_csv("data/processed/customer_relationship_manager_data.csv", dtype=str)
 
-@tool("crm.search_customers", return_direct=False)
+@tool("customer_relationship_manager.search_customers", return_direct=False)
 def search_customers(customer_name=None, customer_email=None, product_interest=None, status=None, assigned_to=None, last_contact_date_min=None, last_contact_date_max=None, follow_up_by_min=None, follow_up_by_max=None):
     """
     Searches for customers based on the given parameters.
@@ -70,10 +70,9 @@ def search_customers(customer_name=None, customer_email=None, product_interest=N
         customers = customers[customers["follow_up_by"] >= follow_up_by_min]
     if follow_up_by_max:
         customers = customers[customers["follow_up_by"] <= follow_up_by_max]
-    
     return customers.to_dict(orient="records")[:5]
 
-@tool("crm.update_customer", return_direct=False)
+@tool("customer_relationship_manager.update_customer", return_direct=False)
 def update_customer(customer_id=None, field=None, new_value=None):
     """
     Updates a customer record by ID.
@@ -111,7 +110,7 @@ def update_customer(customer_id=None, field=None, new_value=None):
     else:
         return "Customer not found."
 
-@tool("crm.add_customer", return_direct=False)
+@tool("customer_relationship_manager.add_customer", return_direct=False)
 def add_customer(customer_name=None, assigned_to=None, customer_email=None, customer_phone=None, last_contact_date=None, product_interest=None, status=None, notes="", follow_up_by=None):
     """
     Adds a new customer record.
@@ -167,7 +166,7 @@ def add_customer(customer_name=None, assigned_to=None, customer_email=None, cust
     CRM_DATA = pd.concat([CRM_DATA, new_customer], ignore_index=True)
     return new_id
 
-@tool("crm.delete_customer", return_direct=False)
+@tool("customer_relationship_manager.delete_customer", return_direct=False)
 def delete_customer(customer_id=None):
     """
     Deletes a customer record by ID.
