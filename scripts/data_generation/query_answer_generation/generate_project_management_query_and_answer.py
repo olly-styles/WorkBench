@@ -110,7 +110,7 @@ def move_overdue_in_review_tasks_logic():
 
 PROJECT_MANAGEMENT_TEMPLATES = [
     {
-        "query": "Move all of {name}'s tasks that are In Progress to In Review",
+        "query": "Move all of {name}'s tasks that are in progress to in review",
         "logic": move_tasks_to_in_review_logic,
     },
     {
@@ -118,15 +118,15 @@ PROJECT_MANAGEMENT_TEMPLATES = [
         "logic": add_new_task_logic,
     },
     {
-        "query": "Move all of {name}'s overdue tasks in the backlog to In Progress",
+        "query": "Move all of {name}'s overdue tasks in the backlog to in progress",
         "logic": move_overdue_tasks_logic,
     },
     {
-        "query": "We've finished our {board} sprint. Can you move all In Progress tasks on the {board} board back to the Backlog?",
+        "query": "We've finished our {board} sprint. Can you move all in progress tasks on the {board} board back to the backlog?",
         "logic": move_tasks_to_backlog_and_delete_completed_logic,
     },
     {
-        "query": "Move any of {name}'s tasks that In Review to Completed",
+        "query": "Move any of {name}'s tasks that are in review to completed",
         "logic": move_overdue_in_review_tasks_logic,
     },
 ]

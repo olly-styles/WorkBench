@@ -42,8 +42,8 @@ def generate_random_due_date(start, end):
     return start + timedelta(days=random.randint(0, (end - start).days))
 
 
-def choose_list(lists):
-    list_name = np.random.choice(lists, p=[0.7, 0.04, 0.16, 0.1])
+def choose_list(lists, probability_list_1=0.7, probability_list_2=0.04, probability_list_3=0.16, probability_list_4=0.1):
+    list_name = np.random.choice(lists, p=[probability_list_1, probability_list_2, probability_list_3, probability_list_4])
     return list_name
 
 
@@ -105,11 +105,12 @@ def create_task(task_templates, team_emails_by_board, lists, start_date, end_dat
 # Sample data for tasks, team members, and lists
 team_member_emails = pd.read_csv("data/raw/email_addresses.csv", header=None).values.flatten()
 
-backend_team_emails = team_member_emails[: len(team_member_emails) // 4]
-frontend_team_emails = team_member_emails[len(team_member_emails) // 4 : 2 * len(team_member_emails) // 4]
-design_team_emails = team_member_emails[2 * len(team_member_emails) // 4 : 3 * len(team_member_emails) // 4]
+num_teams = 4
+backend_team_emails = team_member_emails[: len(team_member_emails) // num_teams]
+frontend_team_emails = team_member_emails[len(team_member_emails) // num_teams : 2 * len(team_member_emails) // num_teams]
+design_team_emails = team_member_emails[2 * len(team_member_emails) // num_teams : 3 * len(team_member_emails) // num_teams]
 project_management_team_emails = backend_team_emails + frontend_team_emails + design_team_emails
-sales_team_emails = team_member_emails[3 * len(team_member_emails) // 4 :]
+sales_team_emails = team_member_emails[3 * len(team_member_emails) // num_teams :]
 
 lists = ["Backlog", "In Progress", "In Review", "Completed"]
 boards = ["Back end", "Front end", "Design"]
