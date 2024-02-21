@@ -8,6 +8,7 @@ project_root = os.path.abspath(os.path.curdir)
 sys.path.append(project_root)
 
 from src.evals.utils import generate_all_queries_and_answers
+from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
 
 random.seed(42)
 
@@ -32,6 +33,21 @@ def delete_last_email_logic():
         "answer": answer,
     }
 
+def delete_last_days_emails_logic():
+    sender = random.choice(senders)
+    name = sender.split("@")[0].split(".")[0]
+    days = random.randint(2, 7)
+    last_days_emails = emails_data[emails_data["sent_datetime"] >= str(HARDCODED_CURRENT_TIME - pd.Timedelta(days=days))]
+    last_days_emails = last_days_emails[last_days_emails["sender/recipient"] == sender]
+    last_days_emails = last_days_emails["email_id"].tolist()
+    answer = []
+    for email_id in last_days_emails:
+        answer.append(f"""email.delete_email.func(email_id='{email_id}')""")
+    return {
+        "name": name,
+        "days": days,
+        "answer": answer,
+    }
 
 def forward_recent_email_from_sender_logic():
     sender_email = random.choice(senders)
@@ -164,6 +180,10 @@ EMAIL_TEMPLATES = [
     {
         "query": "Delete my last email from {name}",
         "logic": delete_last_email_logic,
+    },
+    {
+        "query": "Delete all my emails from {name} from the last {days} days",
+        "logic": delete_last_days_emails_logic,
     },
     {
         "query": "Send an email to {name} saying '{body}' and title it '{subject}'",
