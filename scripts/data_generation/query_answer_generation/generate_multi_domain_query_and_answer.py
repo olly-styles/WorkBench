@@ -101,7 +101,7 @@ MULTI_DOMAIN_TEMPLATES = [
         then send an email to {name} titled '{natural_language_metric_1} and {natural_language_metric_2}'.
         If there's a positive correlation, tell them 'Their correlation is {correlation}. We should discuss.'
         Otherwise, tell them 'They're unrelated, no need to discuss.'""",
-    }
+    },
     {
         "query": """If {natural_language_metric} was {more_or_less} than {threshold} at any time between {date_min} and {date_max}, 
         book a meeting with {name} for {day_of_week} at {natural_language_time} titled 'Discuss {natural_language_metric}'""",
