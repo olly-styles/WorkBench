@@ -360,8 +360,7 @@ def generate_results(queries_path, model_name):
         for domain in DOMAINS:
             domain.reset_state()
 
-    query_type = queries_path.split("/")[-1].split(".")[0].replace("queries_and_answers_", "")
-    domain = query_type.split("_")[0]
+    domain = queries_path.split("/")[-1].split(".")[0].replace("_queries_and_answers", "")
     save_dir = os.path.join("data", "results", domain)
     os.makedirs(save_dir, exist_ok=True)
 

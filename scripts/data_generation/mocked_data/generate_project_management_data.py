@@ -43,7 +43,7 @@ def generate_random_due_date(start, end):
 
 
 def choose_list(lists):
-    list_name = np.random.choice(lists, p=[0.7, 0.1, 0.1, 0.1])
+    list_name = np.random.choice(lists, p=[0.7, 0.04, 0.16, 0.1])
     return list_name
 
 
@@ -109,7 +109,7 @@ backend_team_emails = team_member_emails[: len(team_member_emails) // 3]
 frontend_team_emails = team_member_emails[len(team_member_emails) // 3 : 2 * len(team_member_emails) // 3]
 design_team_emails = team_member_emails[2 * len(team_member_emails) // 3 : len(team_member_emails)]
 
-lists = ["Backlog", "In Progress", "In review", "Completed"]
+lists = ["Backlog", "In Progress", "In Review", "Completed"]
 boards = ["Back end", "Front end", "Design"]
 
 # Setting up the project board

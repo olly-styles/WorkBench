@@ -82,15 +82,15 @@ def search_tasks(task_name=None, assigned_to=None, list_name=None, due_date=None
         return "No search parameters provided."
     tasks = PROJECT_TASKS.copy()
     if task_name:
-        tasks = tasks[tasks["task_name"].str.contains(task_name)]
+        tasks = tasks[tasks["task_name"].str.contains(task_name, case=False)]
     if assigned_to:
-        tasks = tasks[tasks["assigned_to"].str.contains(assigned_to)]
+        tasks = tasks[tasks["assigned_to"].str.contains(assigned_to, case=False)]
     if list_name:
-        tasks = tasks[tasks["list_name"].str.contains(list_name)]
+        tasks = tasks[tasks["list_name"].str.contains(list_name, case=False)]
     if due_date:
-        tasks = tasks[tasks["due_date"].str.contains(due_date)]
+        tasks = tasks[tasks["due_date"].str.contains(due_date, case=False)]
     if board:
-        tasks = tasks[tasks["board"].str.contains(board)]
+        tasks = tasks[tasks["board"].str.contains(board, case=False)]
     return tasks.to_dict(orient="records")
 
 
@@ -126,6 +126,13 @@ def create_task(task_name=None, assigned_to=None, list_name=None, due_date=None,
 
     if not all([task_name, assigned_to, list_name, due_date, board]):
         return "Missing task details."
+    
+    if assigned_to not in PROJECT_TASKS["assigned_to"].values:
+        return "Assignee email not valid. Please choose from the list of team members."
+    if list_name not in ["Backlog", "In Progress", "In Review", "Completed"]:
+        return "List not valid. Please choose from: 'Backlog', 'In Progress', 'In Review', 'Completed'."
+    if board not in ["Back end", "Front end", "Design"]:
+        return "Board not valid. Please choose from: 'Back end', 'Front end', 'Design'."
 
     task_id = str(int(PROJECT_TASKS["task_id"].max()) + 1).zfill(8)
     new_task = pd.DataFrame(
@@ -202,6 +209,14 @@ def update_task(task_id=None, field=None, new_value=None):
 
     if not task_id or not field or not new_value:
         return "Task ID, field, or new value not provided."
+    
+    if field == "board" and new_value not in ["Back end", "Front end", "Design"]:
+        return "Board not valid. Please choose from: 'Back end', 'Front end', 'Design'."
+    if field == "list_name" and new_value not in ["Backlog", "In Progress", "In Review", "Completed"]:
+        return "List not valid. Please choose from: 'Backlog', 'In Progress', 'In Review', 'Completed'."
+    if field == "assigned_to" and new_value not in PROJECT_TASKS["assigned_to"].values:
+        return "Assignee email not valid. Please choose from the list of team members."        
+    
     if task_id in PROJECT_TASKS["task_id"].values:
         if field in PROJECT_TASKS.columns:
             PROJECT_TASKS.loc[PROJECT_TASKS["task_id"] == task_id, field] = new_value
