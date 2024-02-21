@@ -11,6 +11,7 @@ all_tools = [
     email.send_email,
     email.delete_email,
     email.forward_email,
+    email.reply_email,
     analytics.engaged_users_count,
     analytics.get_visitor_information_by_id,
     analytics.traffic_source_count,
@@ -23,15 +24,6 @@ tool_information = [
         "toolkit": tool.__module__,
         "tool": tool,
         "name": tool.name,
-        "side_effects": tool
-        in [
-            calendar.create_event,
-            calendar.delete_event,
-            calendar.update_event,
-            email.send_email,
-            email.delete_email,
-            email.forward_email,
-        ],
     }
     for tool in all_tools
 ]
