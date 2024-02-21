@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import random
-from datetime import datetime, timedelta
+from datetime import timedelta
 import os
 import sys
 
@@ -31,14 +31,21 @@ def generate_random_phone():
 def generate_random_date(start, end):
     return start + timedelta(days=random.randint(0, (end - start).days))
 
+def generate_customer_notes():
+    notes = ""
+    for _ in range(random.randint(0, 3)):
+        notes += f"{generate_random_date(HARDCODED_CURRENT_TIME - timedelta(days=180), HARDCODED_CURRENT_TIME).date()}: {random.choice(['Had a call', 'On holiday', 'Seen the demo', 'Met in person'])}. "
+    return notes
+    
+    
 # Define product interests
 product_interests = ["Software", "Hardware", "Services", "Consulting", "Training"]
 
-# Define interaction outcomes
-statuses = ["Interested", "Not Interested", "Purchased", "Follow-up Required", "Not Contacted"]
+# Define crm stages
+statuses = ["Qualified", "Won", "Lost", "Lead", "Proposal"]
 
 # Initialize an empty DataFrame
-crm_data = pd.DataFrame(columns=["customer_id", "assigned_to", "customer_name", "customer_email", "customer_phone", "last_contact_date", "product_interest", "status"])
+crm_data = pd.DataFrame(columns=["customer_id", "assigned_to", "customer_name", "customer_email", "customer_phone", "last_contact_date", "product_interest", "status", "follow_up_by", "notes"])
 
 # Generate random data
 num_customers = 200
@@ -51,11 +58,13 @@ for i in range(num_customers):
     customer_email = generate_random_email(customer_name)
     customer_phone = generate_random_phone() if np.random.choice([True, False]) else None
     last_contact_date = generate_random_date(HARDCODED_CURRENT_TIME - timedelta(days=180), HARDCODED_CURRENT_TIME)
+    follow_up_by = last_contact_date + timedelta(days=random.randint(7, 30))
+    notes = generate_customer_notes()
     product_interest = random.choice(product_interests)
     status = random.choice(statuses)
     assigned_to = random.choice(sales_team_emails)
     
-    crm_data.loc[len(crm_data)] = [customer_id, assigned_to, customer_name, customer_email, customer_phone, last_contact_date, product_interest, status]
+    crm_data.loc[len(crm_data)] = [customer_id, assigned_to, customer_name, customer_email, customer_phone, last_contact_date, product_interest, status, follow_up_by, notes]
 
 crm_data = crm_data.sort_values(by="last_contact_date", ascending=False)
 crm_data.to_csv("data/processed/customer_relationship_manager_data.csv", index=False)
