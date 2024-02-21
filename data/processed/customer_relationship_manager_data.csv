@@ -1,0 +1,201 @@
+customer_id,assigned_to,customer_name,customer_email,customer_phone,last_contact_date,product_interest,status
+00000100,Raj.Patel@company.com,Angel Taylor,angel.taylor@banana.com,337-395-5632,2023-11-29,Consulting,Interested
+00000191,Akira.Sato@company.com,Jamie Brown,jamie.brown@banana.com,393-949-8740,2023-11-28,Hardware,Follow-up Required
+00000149,Akira.Sato@company.com,Angel Jackson,angel.jackson@peach.com,,2023-11-25,Software,Follow-up Required
+00000141,Sofia.Santos@company.com,Dakota Harris,dakota.harris@mango.com,975-471-2627,2023-11-25,Services,Not Contacted
+00000041,Akira.Sato@company.com,Peyton Robinson,peyton.robinson@mango.com,834-451-4335,2023-11-25,Services,Not Contacted
+00000179,Sofia.Santos@company.com,Rahul Thomas,rahul.thomas@pear.com,496-518-6543,2023-11-23,Training,Interested
+00000136,Akira.Sato@company.com,Alex Moore,alex.moore@cherry.com,226-565-7038,2023-11-22,Services,Not Contacted
+00000058,Akira.Sato@company.com,Jaden Robinson,jaden.robinson@grape.com,576-552-8244,2023-11-22,Hardware,Not Contacted
+00000162,Akira.Sato@company.com,Morgan Robinson,morgan.robinson@banana.com,,2023-11-22,Software,Purchased
+00000076,Raj.Patel@company.com,Reese Brown,reese.brown@plum.com,,2023-11-21,Software,Not Contacted
+00000139,Nadia.Moreau@company.com,Reese Garcia,reese.garcia@kiwi.com,497-564-7078,2023-11-21,Training,Follow-up Required
+00000195,Sofia.Santos@company.com,Jaden White,jaden.white@kiwi.com,,2023-11-20,Software,Not Contacted
+00000006,Lena.Schmidt@company.com,Rahul Martinez,rahul.martinez@mango.com,821-171-1750,2023-11-19,Hardware,Purchased
+00000019,Raj.Patel@company.com,Angel Williams,angel.williams@cherry.com,884-228-3103,2023-11-18,Consulting,Not Contacted
+00000110,Akira.Sato@company.com,Riley Thompson,riley.thompson@banana.com,,2023-11-18,Training,Follow-up Required
+00000171,Lena.Schmidt@company.com,Parker Thompson,parker.thompson@mango.com,894-457-6752,2023-11-15,Hardware,Not Interested
+00000014,Sofia.Santos@company.com,Casey Garcia,casey.garcia@pear.com,,2023-11-14,Services,Interested
+00000043,Akira.Sato@company.com,Alex Anderson,alex.anderson@kiwi.com,,2023-11-13,Services,Not Interested
+00000092,Lena.Schmidt@company.com,Avery Taylor,avery.taylor@kiwi.com,,2023-11-13,Consulting,Interested
+00000197,Sofia.Santos@company.com,Riley Martin,riley.martin@banana.com,,2023-11-12,Consulting,Purchased
+00000042,Lena.Schmidt@company.com,Quinn Johnson,quinn.johnson@orange.com,,2023-11-12,Consulting,Purchased
+00000107,Akira.Sato@company.com,Quinn Davis,quinn.davis@peach.com,,2023-11-12,Consulting,Interested
+00000174,Nadia.Moreau@company.com,Taylor Martin,taylor.martin@plum.com,,2023-11-11,Services,Purchased
+00000098,Lena.Schmidt@company.com,Kerry Jones,kerry.jones@mango.com,,2023-11-10,Hardware,Purchased
+00000173,Akira.Sato@company.com,Jaden Harris,jaden.harris@grape.com,,2023-11-10,Services,Not Interested
+00000111,Raj.Patel@company.com,Jordan Miller,jordan.miller@cherry.com,470-737-9167,2023-11-10,Consulting,Interested
+00000132,Sofia.Santos@company.com,Reese Miller,reese.miller@pear.com,794-873-3240,2023-11-10,Software,Interested
+00000126,Nadia.Moreau@company.com,Taylor Robinson,taylor.robinson@peach.com,,2023-11-08,Hardware,Follow-up Required
+00000035,Nadia.Moreau@company.com,Riley Jones,riley.jones@mango.com,692-708-1651,2023-11-08,Software,Follow-up Required
+00000137,Akira.Sato@company.com,Rahul Jones,rahul.jones@mango.com,582-125-6374,2023-11-06,Hardware,Interested
+00000060,Akira.Sato@company.com,Cameron Brown,cameron.brown@banana.com,147-350-8784,2023-11-06,Software,Follow-up Required
+00000158,Raj.Patel@company.com,Reese White,reese.white@cherry.com,885-938-1430,2023-11-05,Services,Interested
+00000004,Akira.Sato@company.com,Casey Williams,casey.williams@peach.com,199-467-6635,2023-11-04,Services,Interested
+00000184,Raj.Patel@company.com,Avery Thompson,avery.thompson@banana.com,777-444-3147,2023-11-02,Consulting,Not Interested
+00000117,Raj.Patel@company.com,Alex Taylor,alex.taylor@pear.com,,2023-10-31,Training,Follow-up Required
+00000144,Sofia.Santos@company.com,Taylor Garcia,taylor.garcia@mango.com,,2023-10-31,Hardware,Not Interested
+00000146,Raj.Patel@company.com,Jamie Smith,jamie.smith@grape.com,908-907-4898,2023-10-31,Services,Interested
+00000155,Sofia.Santos@company.com,Jamie Garcia,jamie.garcia@banana.com,,2023-10-31,Training,Not Contacted
+00000045,Akira.Sato@company.com,Avery Johnson,avery.johnson@grape.com,,2023-10-30,Training,Not Interested
+00000198,Lena.Schmidt@company.com,Alex Thomas,alex.thomas@orange.com,453-346-2698,2023-10-29,Services,Not Interested
+00000106,Akira.Sato@company.com,Jaden Smith,jaden.smith@pear.com,,2023-10-28,Software,Not Interested
+00000078,Raj.Patel@company.com,Morgan Taylor,morgan.taylor@orange.com,692-126-6111,2023-10-28,Consulting,Follow-up Required
+00000130,Lena.Schmidt@company.com,Riley Martinez,riley.martinez@grape.com,,2023-10-28,Services,Purchased
+00000068,Lena.Schmidt@company.com,Jessie Jackson,jessie.jackson@banana.com,,2023-10-28,Consulting,Follow-up Required
+00000024,Raj.Patel@company.com,Cameron Garcia,cameron.garcia@kiwi.com,,2023-10-27,Training,Follow-up Required
+00000095,Raj.Patel@company.com,Jordan Brown,jordan.brown@kiwi.com,,2023-10-25,Services,Interested
+00000125,Raj.Patel@company.com,Reese Thompson,reese.thompson@peach.com,,2023-10-25,Hardware,Not Interested
+00000135,Akira.Sato@company.com,Taylor Brown,taylor.brown@mango.com,980-792-7511,2023-10-23,Services,Interested
+00000085,Raj.Patel@company.com,Quinn Anderson,quinn.anderson@pear.com,710-818-5526,2023-10-23,Software,Not Contacted
+00000118,Akira.Sato@company.com,Angel Thomas,angel.thomas@grape.com,,2023-10-22,Training,Follow-up Required
+00000056,Akira.Sato@company.com,Shannon Jackson,shannon.jackson@pear.com,,2023-10-22,Hardware,Not Interested
+00000115,Raj.Patel@company.com,Angel Wilson,angel.wilson@plum.com,,2023-10-22,Hardware,Follow-up Required
+00000192,Akira.Sato@company.com,Taylor Smith,taylor.smith@pear.com,320-955-3449,2023-10-21,Training,Not Contacted
+00000069,Akira.Sato@company.com,Riley White,riley.white@cherry.com,,2023-10-20,Training,Not Interested
+00000039,Nadia.Moreau@company.com,Taylor Wilson,taylor.wilson@grape.com,391-261-8179,2023-10-20,Services,Not Contacted
+00000013,Lena.Schmidt@company.com,Morgan White,morgan.white@orange.com,494-490-8668,2023-10-16,Services,Not Contacted
+00000178,Raj.Patel@company.com,Morgan Johnson,morgan.johnson@mango.com,824-548-8199,2023-10-15,Training,Not Contacted
+00000164,Raj.Patel@company.com,Casey Taylor,casey.taylor@plum.com,,2023-10-15,Services,Interested
+00000064,Sofia.Santos@company.com,Angel Harris,angel.harris@pear.com,869-353-5543,2023-10-14,Consulting,Not Interested
+00000096,Akira.Sato@company.com,Jessie Robinson,jessie.robinson@mango.com,,2023-10-14,Consulting,Follow-up Required
+00000023,Akira.Sato@company.com,Jordan Anderson,jordan.anderson@orange.com,,2023-10-12,Hardware,Purchased
+00000147,Akira.Sato@company.com,Parker Jones,parker.jones@orange.com,587-559-6931,2023-10-12,Training,Interested
+00000038,Sofia.Santos@company.com,Dakota Robinson,dakota.robinson@orange.com,175-650-4492,2023-10-10,Services,Not Interested
+00000196,Lena.Schmidt@company.com,Taylor Thompson,taylor.thompson@cherry.com,,2023-10-10,Training,Not Contacted
+00000015,Lena.Schmidt@company.com,Jessie Davis,jessie.davis@plum.com,103-839-5315,2023-10-09,Hardware,Not Contacted
+00000033,Lena.Schmidt@company.com,Jordan Johnson,jordan.johnson@plum.com,,2023-10-09,Training,Not Interested
+00000114,Sofia.Santos@company.com,Casey Harris,casey.harris@orange.com,763-952-3522,2023-10-08,Services,Not Contacted
+00000017,Sofia.Santos@company.com,Parker Smith,parker.smith@grape.com,,2023-10-06,Software,Interested
+00000070,Sofia.Santos@company.com,Reese Moore,reese.moore@peach.com,,2023-10-05,Software,Follow-up Required
+00000090,Nadia.Moreau@company.com,Morgan Miller,morgan.miller@mango.com,,2023-10-04,Services,Not Contacted
+00000093,Raj.Patel@company.com,Jaden Taylor,jaden.taylor@plum.com,,2023-10-03,Consulting,Purchased
+00000087,Sofia.Santos@company.com,Riley Wilson,riley.wilson@pear.com,779-695-7046,2023-10-02,Training,Not Contacted
+00000049,Akira.Sato@company.com,Casey Jackson,casey.jackson@banana.com,,2023-10-01,Hardware,Not Interested
+00000067,Raj.Patel@company.com,Cameron Williams,cameron.williams@peach.com,517-438-9890,2023-09-30,Consulting,Interested
+00000103,Sofia.Santos@company.com,Peyton Harris,peyton.harris@orange.com,,2023-09-30,Services,Follow-up Required
+00000037,Lena.Schmidt@company.com,Quinn Jackson,quinn.jackson@kiwi.com,787-760-5915,2023-09-28,Services,Interested
+00000062,Nadia.Moreau@company.com,Parker Harris,parker.harris@banana.com,670-355-2988,2023-09-27,Hardware,Follow-up Required
+00000151,Akira.Sato@company.com,Avery Anderson,avery.anderson@peach.com,711-643-5831,2023-09-27,Training,Not Contacted
+00000176,Sofia.Santos@company.com,Kerry Robinson,kerry.robinson@cherry.com,493-573-1672,2023-09-26,Training,Not Interested
+00000083,Nadia.Moreau@company.com,Reese Williams,reese.williams@pear.com,,2023-09-26,Hardware,Follow-up Required
+00000185,Akira.Sato@company.com,Morgan Harris,morgan.harris@banana.com,520-473-4891,2023-09-24,Training,Purchased
+00000128,Sofia.Santos@company.com,Avery Davis,avery.davis@orange.com,,2023-09-24,Services,Not Contacted
+00000104,Lena.Schmidt@company.com,Parker Garcia,parker.garcia@plum.com,,2023-09-23,Software,Not Contacted
+00000082,Sofia.Santos@company.com,Parker Moore,parker.moore@cherry.com,893-595-8616,2023-09-22,Training,Purchased
+00000152,Akira.Sato@company.com,Casey Jones,casey.jones@cherry.com,838-986-4522,2023-09-21,Consulting,Not Interested
+00000081,Raj.Patel@company.com,Jessie Martin,jessie.martin@orange.com,,2023-09-21,Services,Follow-up Required
+00000063,Raj.Patel@company.com,Avery Robinson,avery.robinson@grape.com,873-553-9270,2023-09-20,Training,Follow-up Required
+00000101,Raj.Patel@company.com,Quinn Martinez,quinn.martinez@mango.com,,2023-09-19,Software,Not Contacted
+00000002,Nadia.Moreau@company.com,Kerry Smith,kerry.smith@cherry.com,303-833-9928,2023-09-18,Hardware,Follow-up Required
+00000116,Sofia.Santos@company.com,Kerry Thompson,kerry.thompson@kiwi.com,984-171-5526,2023-09-17,Services,Not Contacted
+00000189,Nadia.Moreau@company.com,Dakota Thomas,dakota.thomas@banana.com,,2023-09-17,Software,Follow-up Required
+00000048,Raj.Patel@company.com,Alex Davis,alex.davis@grape.com,,2023-09-16,Hardware,Purchased
+00000121,Akira.Sato@company.com,Dakota Jones,dakota.jones@cherry.com,567-115-3361,2023-09-15,Hardware,Interested
+00000030,Akira.Sato@company.com,Reese Davis,reese.davis@peach.com,597-592-4502,2023-09-13,Software,Not Interested
+00000051,Lena.Schmidt@company.com,Quinn Thomas,quinn.thomas@cherry.com,,2023-09-13,Training,Purchased
+00000050,Lena.Schmidt@company.com,Rahul Taylor,rahul.taylor@mango.com,328-124-4164,2023-09-13,Services,Purchased
+00000129,Raj.Patel@company.com,Dakota Taylor,dakota.taylor@mango.com,,2023-09-09,Consulting,Interested
+00000122,Nadia.Moreau@company.com,Taylor Anderson,taylor.anderson@cherry.com,,2023-09-08,Services,Follow-up Required
+00000157,Nadia.Moreau@company.com,Casey Thomas,casey.thomas@cherry.com,,2023-09-05,Software,Purchased
+00000046,Raj.Patel@company.com,Jamie Johnson,jamie.johnson@pear.com,,2023-09-04,Software,Purchased
+00000054,Sofia.Santos@company.com,Jessie Smith,jessie.smith@cherry.com,925-651-4228,2023-09-04,Consulting,Interested
+00000182,Raj.Patel@company.com,Parker Thomas,parker.thomas@banana.com,,2023-09-03,Services,Not Interested
+00000124,Raj.Patel@company.com,Alex Johnson,alex.johnson@grape.com,915-157-5806,2023-09-02,Services,Follow-up Required
+00000088,Sofia.Santos@company.com,Jessie Garcia,jessie.garcia@grape.com,,2023-09-01,Consulting,Purchased
+00000180,Raj.Patel@company.com,Quinn Robinson,quinn.robinson@kiwi.com,441-183-3317,2023-08-31,Services,Follow-up Required
+00000159,Raj.Patel@company.com,Quinn Taylor,quinn.taylor@grape.com,,2023-08-31,Software,Not Interested
+00000073,Sofia.Santos@company.com,Shannon Miller,shannon.miller@plum.com,,2023-08-25,Services,Follow-up Required
+00000161,Lena.Schmidt@company.com,Jessie Harris,jessie.harris@grape.com,261-478-6105,2023-08-25,Training,Not Contacted
+00000108,Sofia.Santos@company.com,Rahul White,rahul.white@grape.com,,2023-08-24,Software,Not Interested
+00000153,Sofia.Santos@company.com,Shannon Harris,shannon.harris@peach.com,525-847-2557,2023-08-22,Consulting,Purchased
+00000109,Lena.Schmidt@company.com,Peyton Jackson,peyton.jackson@cherry.com,137-565-2442,2023-08-22,Services,Purchased
+00000097,Lena.Schmidt@company.com,Peyton Martinez,peyton.martinez@peach.com,,2023-08-20,Training,Not Contacted
+00000057,Akira.Sato@company.com,Riley Davis,riley.davis@pear.com,515-661-1006,2023-08-19,Services,Not Interested
+00000138,Lena.Schmidt@company.com,Peyton White,peyton.white@orange.com,243-146-1609,2023-08-19,Consulting,Interested
+00000148,Lena.Schmidt@company.com,Parker Wilson,parker.wilson@banana.com,844-902-9543,2023-08-19,Consulting,Interested
+00000055,Akira.Sato@company.com,Kerry Anderson,kerry.anderson@orange.com,,2023-08-18,Training,Purchased
+00000133,Raj.Patel@company.com,Dakota Johnson,dakota.johnson@grape.com,849-234-2476,2023-08-17,Services,Follow-up Required
+00000194,Nadia.Moreau@company.com,Avery Smith,avery.smith@cherry.com,688-347-3352,2023-08-16,Consulting,Interested
+00000131,Sofia.Santos@company.com,Alex Martinez,alex.martinez@banana.com,720-863-9138,2023-08-15,Hardware,Not Contacted
+00000031,Akira.Sato@company.com,Alex Jackson,alex.jackson@pear.com,902-903-8454,2023-08-15,Consulting,Not Contacted
+00000112,Lena.Schmidt@company.com,Quinn Garcia,quinn.garcia@kiwi.com,,2023-08-15,Consulting,Follow-up Required
+00000003,Sofia.Santos@company.com,Quinn Smith,quinn.smith@kiwi.com,814-532-6574,2023-08-13,Hardware,Not Interested
+00000028,Lena.Schmidt@company.com,Jamie White,jamie.white@kiwi.com,,2023-08-13,Consulting,Not Interested
+00000140,Raj.Patel@company.com,Casey Martin,casey.martin@peach.com,,2023-08-13,Software,Purchased
+00000163,Lena.Schmidt@company.com,Kerry Harris,kerry.harris@peach.com,,2023-08-11,Hardware,Not Contacted
+00000040,Nadia.Moreau@company.com,Alex Garcia,alex.garcia@pear.com,779-206-3200,2023-08-09,Software,Interested
+00000011,Nadia.Moreau@company.com,Jamie Moore,jamie.moore@kiwi.com,352-862-9830,2023-08-09,Training,Follow-up Required
+00000036,Raj.Patel@company.com,Jaden Thompson,jaden.thompson@grape.com,,2023-08-08,Hardware,Purchased
+00000134,Sofia.Santos@company.com,Avery Thomas,avery.thomas@cherry.com,613-379-3695,2023-08-07,Consulting,Purchased
+00000127,Sofia.Santos@company.com,Jamie Wilson,jamie.wilson@plum.com,753-360-8529,2023-08-07,Software,Follow-up Required
+00000187,Sofia.Santos@company.com,Parker White,parker.white@kiwi.com,936-304-3267,2023-08-06,Software,Follow-up Required
+00000169,Akira.Sato@company.com,Taylor White,taylor.white@orange.com,,2023-08-04,Consulting,Not Contacted
+00000018,Lena.Schmidt@company.com,Peyton Wilson,peyton.wilson@banana.com,,2023-08-03,Training,Interested
+00000065,Sofia.Santos@company.com,Dakota Williams,dakota.williams@pear.com,,2023-08-02,Services,Purchased
+00000047,Akira.Sato@company.com,Rahul Garcia,rahul.garcia@peach.com,735-867-3532,2023-08-02,Hardware,Not Interested
+00000123,Lena.Schmidt@company.com,Jordan Robinson,jordan.robinson@orange.com,340-746-5708,2023-07-31,Software,Follow-up Required
+00000170,Lena.Schmidt@company.com,Riley Taylor,riley.taylor@grape.com,,2023-07-29,Services,Not Interested
+00000032,Nadia.Moreau@company.com,Jamie Miller,jamie.miller@pear.com,,2023-07-28,Software,Not Contacted
+00000020,Sofia.Santos@company.com,Quinn Thompson,quinn.thompson@peach.com,,2023-07-27,Training,Not Interested
+00000165,Sofia.Santos@company.com,Riley Robinson,riley.robinson@banana.com,107-309-5938,2023-07-27,Hardware,Purchased
+00000010,Akira.Sato@company.com,Riley Moore,riley.moore@orange.com,316-680-6155,2023-07-27,Consulting,Follow-up Required
+00000075,Raj.Patel@company.com,Jordan Smith,jordan.smith@mango.com,,2023-07-24,Software,Not Contacted
+00000186,Akira.Sato@company.com,Reese Taylor,reese.taylor@plum.com,,2023-07-22,Services,Not Contacted
+00000089,Nadia.Moreau@company.com,Quinn Wilson,quinn.wilson@orange.com,,2023-07-22,Services,Interested
+00000091,Sofia.Santos@company.com,Kerry Taylor,kerry.taylor@orange.com,,2023-07-22,Services,Not Interested
+00000027,Akira.Sato@company.com,Shannon Jones,shannon.jones@mango.com,,2023-07-22,Hardware,Not Contacted
+00000142,Lena.Schmidt@company.com,Jordan Jackson,jordan.jackson@pear.com,,2023-07-21,Software,Follow-up Required
+00000084,Sofia.Santos@company.com,Kerry Jackson,kerry.jackson@grape.com,129-606-6325,2023-07-19,Consulting,Not Interested
+00000072,Akira.Sato@company.com,Alex Williams,alex.williams@peach.com,238-987-8564,2023-07-19,Software,Purchased
+00000172,Nadia.Moreau@company.com,Cameron Davis,cameron.davis@kiwi.com,878-877-2234,2023-07-18,Consulting,Follow-up Required
+00000166,Nadia.Moreau@company.com,Alex Martin,alex.martin@peach.com,,2023-07-17,Hardware,Follow-up Required
+00000168,Sofia.Santos@company.com,Jessie Taylor,jessie.taylor@orange.com,514-121-6321,2023-07-16,Training,Follow-up Required
+00000102,Nadia.Moreau@company.com,Jamie Williams,jamie.williams@banana.com,,2023-07-15,Services,Not Contacted
+00000077,Lena.Schmidt@company.com,Dakota Moore,dakota.moore@grape.com,,2023-07-15,Training,Not Contacted
+00000007,Raj.Patel@company.com,Reese Jones,reese.jones@peach.com,384-564-6977,2023-07-14,Services,Purchased
+00000008,Sofia.Santos@company.com,Quinn Williams,quinn.williams@kiwi.com,646-846-5010,2023-07-14,Consulting,Follow-up Required
+00000113,Lena.Schmidt@company.com,Alex Robinson,alex.robinson@mango.com,,2023-07-13,Services,Not Contacted
+00000016,Nadia.Moreau@company.com,Peyton Thompson,peyton.thompson@mango.com,,2023-07-12,Services,Not Interested
+00000066,Raj.Patel@company.com,Avery Williams,avery.williams@kiwi.com,,2023-07-11,Hardware,Follow-up Required
+00000188,Raj.Patel@company.com,Peyton Williams,peyton.williams@kiwi.com,379-560-9410,2023-07-10,Consulting,Interested
+00000061,Akira.Sato@company.com,Jaden Miller,jaden.miller@peach.com,606-509-4997,2023-07-10,Software,Interested
+00000199,Lena.Schmidt@company.com,Shannon Davis,shannon.davis@plum.com,812-590-3986,2023-07-07,Software,Follow-up Required
+00000145,Raj.Patel@company.com,Jamie Robinson,jamie.robinson@banana.com,383-979-3370,2023-07-06,Training,Purchased
+00000181,Akira.Sato@company.com,Kerry Williams,kerry.williams@pear.com,672-485-6381,2023-07-05,Training,Interested
+00000150,Nadia.Moreau@company.com,Taylor Williams,taylor.williams@grape.com,722-251-2076,2023-07-05,Services,Not Contacted
+00000094,Akira.Sato@company.com,Jordan Moore,jordan.moore@plum.com,,2023-07-02,Software,Follow-up Required
+00000053,Raj.Patel@company.com,Shannon White,shannon.white@cherry.com,,2023-07-02,Consulting,Not Contacted
+00000052,Sofia.Santos@company.com,Casey Moore,casey.moore@kiwi.com,694-371-1626,2023-06-30,Training,Follow-up Required
+00000079,Lena.Schmidt@company.com,Taylor Martinez,taylor.martinez@mango.com,,2023-06-29,Services,Not Contacted
+00000177,Nadia.Moreau@company.com,Kerry Martin,kerry.martin@cherry.com,254-163-8381,2023-06-29,Services,Interested
+00000000,Nadia.Moreau@company.com,Casey Smith,casey.smith@pear.com,350-328-3286,2023-06-29,Training,Interested
+00000025,Sofia.Santos@company.com,Angel White,angel.white@mango.com,,2023-06-27,Software,Follow-up Required
+00000160,Akira.Sato@company.com,Jaden Jackson,jaden.jackson@orange.com,245-858-1502,2023-06-26,Training,Not Interested
+00000012,Raj.Patel@company.com,Riley Thomas,riley.thomas@mango.com,241-621-9085,2023-06-26,Software,Interested
+00000154,Sofia.Santos@company.com,Rahul Brown,rahul.brown@plum.com,168-193-2398,2023-06-26,Consulting,Interested
+00000001,Nadia.Moreau@company.com,Jessie Johnson,jessie.johnson@banana.com,,2023-06-26,Hardware,Not Interested
+00000059,Raj.Patel@company.com,Morgan Williams,morgan.williams@pear.com,627-779-6491,2023-06-26,Hardware,Purchased
+00000005,Nadia.Moreau@company.com,Avery Jones,avery.jones@peach.com,,2023-06-23,Training,Purchased
+00000183,Nadia.Moreau@company.com,Shannon Martin,shannon.martin@mango.com,331-240-3538,2023-06-22,Services,Interested
+00000167,Akira.Sato@company.com,Taylor Jackson,taylor.jackson@banana.com,546-119-8532,2023-06-22,Services,Not Contacted
+00000022,Lena.Schmidt@company.com,Jaden Wilson,jaden.wilson@banana.com,,2023-06-21,Software,Not Interested
+00000175,Akira.Sato@company.com,Jordan Thomas,jordan.thomas@cherry.com,,2023-06-21,Services,Follow-up Required
+00000080,Lena.Schmidt@company.com,Jaden Johnson,jaden.johnson@grape.com,645-538-7071,2023-06-20,Training,Purchased
+00000034,Raj.Patel@company.com,Parker Williams,parker.williams@kiwi.com,,2023-06-20,Training,Interested
+00000021,Nadia.Moreau@company.com,Dakota Thompson,dakota.thompson@plum.com,223-353-4681,2023-06-19,Services,Interested
+00000193,Nadia.Moreau@company.com,Casey Johnson,casey.johnson@mango.com,529-754-8489,2023-06-19,Software,Follow-up Required
+00000009,Sofia.Santos@company.com,Avery Wilson,avery.wilson@grape.com,,2023-06-17,Hardware,Interested
+00000074,Lena.Schmidt@company.com,Jessie Moore,jessie.moore@orange.com,581-119-9837,2023-06-16,Services,Not Interested
+00000156,Sofia.Santos@company.com,Casey White,casey.white@grape.com,994-781-7929,2023-06-16,Services,Not Contacted
+00000026,Akira.Sato@company.com,Jessie White,jessie.white@plum.com,,2023-06-16,Software,Interested
+00000143,Raj.Patel@company.com,Cameron Robinson,cameron.robinson@banana.com,,2023-06-15,Services,Not Interested
+00000029,Lena.Schmidt@company.com,Dakota Garcia,dakota.garcia@orange.com,,2023-06-15,Training,Interested
+00000119,Akira.Sato@company.com,Reese Martinez,reese.martinez@peach.com,339-976-7730,2023-06-14,Services,Follow-up Required
+00000120,Nadia.Moreau@company.com,Riley Brown,riley.brown@plum.com,,2023-06-12,Hardware,Not Contacted
+00000190,Sofia.Santos@company.com,Rahul Wilson,rahul.wilson@peach.com,183-483-4678,2023-06-10,Services,Interested
+00000071,Nadia.Moreau@company.com,Dakota Brown,dakota.brown@cherry.com,,2023-06-09,Consulting,Not Contacted
+00000105,Nadia.Moreau@company.com,Jessie Anderson,jessie.anderson@pear.com,,2023-06-09,Software,Not Interested
+00000086,Raj.Patel@company.com,Angel Martin,angel.martin@plum.com,,2023-06-07,Software,Purchased
+00000044,Raj.Patel@company.com,Avery White,avery.white@cherry.com,,2023-06-05,Software,Interested
+00000099,Nadia.Moreau@company.com,Morgan Wilson,morgan.wilson@kiwi.com,665-176-3564,2023-06-03,Consulting,Follow-up Required

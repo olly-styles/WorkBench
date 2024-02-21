@@ -1,0 +1,63 @@
+import pandas as pd
+import numpy as np
+import random
+from datetime import datetime, timedelta
+import os
+import sys
+
+project_root = os.path.abspath(os.path.curdir)
+sys.path.append(project_root)
+
+from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
+from scripts.data_generation.mocked_data.generate_project_management_data import sales_team_emails
+
+# Define a function to generate random customer names
+def generate_random_name():
+    first_names = ["Alex", "Jordan", "Taylor", "Casey", "Jamie", "Morgan", "Cameron", "Reese", "Quinn", "Peyton", "Shannon", "Rahul", "Riley", "Jessie", "Dakota", "Angel", "Parker", "Avery", "Jaden", "Kerry"]
+    last_names = ["Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor", "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin", "Thompson", "Garcia", "Martinez", "Robinson"]
+    return random.choice(first_names) + " " + random.choice(last_names)
+
+# Define a function to generate random email addresses
+def generate_random_email(name):
+    domains = ["banana.com", "orange.com", "kiwi.com", "mango.com", "pear.com", "grape.com", "peach.com", "plum.com", "cherry.com"]
+    name_parts = name.lower().split()
+    email = f"{name_parts[0]}.{name_parts[1]}@{random.choice(domains)}"
+    return email
+
+def generate_random_phone():
+    return f"{random.randint(100, 999)}-{random.randint(100, 999)}-{random.randint(1000, 9999)}"
+
+# Define a function to generate random dates for last contact
+def generate_random_date(start, end):
+    return start + timedelta(days=random.randint(0, (end - start).days))
+
+# Define product interests
+product_interests = ["Software", "Hardware", "Services", "Consulting", "Training"]
+
+# Define interaction outcomes
+statuses = ["Interested", "Not Interested", "Purchased", "Follow-up Required", "Not Contacted"]
+
+# Initialize an empty DataFrame
+crm_data = pd.DataFrame(columns=["customer_id", "assigned_to", "customer_name", "customer_email", "customer_phone", "last_contact_date", "product_interest", "status"])
+
+# Generate random data
+num_customers = 200
+
+for i in range(num_customers):
+    customer_name = generate_random_name()
+    while customer_name in crm_data["customer_name"].values:
+        customer_name = generate_random_name()
+    customer_id = str(i).zfill(8)
+    customer_email = generate_random_email(customer_name)
+    customer_phone = generate_random_phone() if np.random.choice([True, False]) else None
+    last_contact_date = generate_random_date(HARDCODED_CURRENT_TIME - timedelta(days=180), HARDCODED_CURRENT_TIME)
+    product_interest = random.choice(product_interests)
+    status = random.choice(statuses)
+    assigned_to = random.choice(sales_team_emails)
+    
+    crm_data.loc[len(crm_data)] = [customer_id, assigned_to, customer_name, customer_email, customer_phone, last_contact_date, product_interest, status]
+
+crm_data = crm_data.sort_values(by="last_contact_date", ascending=False)
+crm_data.to_csv("data/processed/customer_relationship_manager_data.csv", index=False)
+
+print("Mocked CRM data generated successfully.")
