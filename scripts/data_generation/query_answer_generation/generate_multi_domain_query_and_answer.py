@@ -155,6 +155,23 @@ MULTI_DOMAIN_TEMPLATES = [
         Otherwise, email {name} saying 'I just checked {natural_language_metric} since {date_min} and they're doing great - nice work!' 
         Title it 'Nice work on {natural_language_metric}'""",
     },
+    # examples of 4-domain query
+    {
+        "query": """If {natural_language_metric} {fell_or_grew} since {date_min}, 
+        make a task for {name} called 'Improve {natural_language_metric}', which is due in a week.
+        Also send them an email saying 'I need you to look at {natural_language_metric} - more details on the task I just made.'
+        and title it 'Discuss {natural_language_metric}'. 
+        then also book a meeting with them called 'Catch up on {natural_language_metric}' at the earliest time I'm free on {day_of_week}""",
+    },
+    {
+        "query": """If {natural_language_metric} was {more_or_less} than {threshold} at any time since {date_min},
+        take the person with the fewest backlog tasks on {board} and book a meeting with them
+        called 'Discuss {natural_language_metric}' at the earliest time I'm free tomorrow.
+        Then also make a task for them called 'Improve {natural_language_metric}' on {board}, which is due in a week.
+        Otherwise, email {name} saying 'I just checked {natural_language_metric} since {date_min} and you're doing doing great - nice work!' 
+        Title it 'Nice work on {natural_language_metric}'
+        """,
+    },
 ]
 
 max_queries_per_template = 1
