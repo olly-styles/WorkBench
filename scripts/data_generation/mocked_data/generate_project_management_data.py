@@ -3,7 +3,8 @@ import numpy as np
 import random
 from datetime import timedelta
 import sys
-import os 
+import os
+
 project_root = os.path.abspath(os.path.curdir)
 sys.path.append(project_root)
 random.seed(42)
@@ -38,55 +39,83 @@ task_templates = {
 
 # Define a function to generate random dates for task due dates
 def generate_random_due_date(start, end):
-    return start + timedelta(
-        days=random.randint(0, (end - start).days)
-    )
-    
+    return start + timedelta(days=random.randint(0, (end - start).days))
+
+
 def choose_list(lists):
     list_name = np.random.choice(lists, p=[0.7, 0.1, 0.1, 0.1])
     return list_name
+
 
 # Function to generate a random task
 def create_task(task_templates, team_emails_by_board, lists, start_date, end_date, board):
     template = random.choice(task_templates[board])
     # Selecting the appropriate team member emails based on the board
     team_member_emails = team_emails_by_board[board]
-    
+
     # Choose a unique task-person combination
     while True:
         assigned_to = random.choice(team_member_emails)
         task_name = template.format(
-            feature=random.choice(["login system", "payment gateway", "user profile management", "search functionality", "data export", "report generation"]),
-            module=random.choice(["user authentication", "payment processing", "content delivery", "data storage", "user management"]),
-            functionality=random.choice(["search functionality", "data export", "report generation", "user management", "content delivery"]),
-            service=random.choice(["email notification", "third-party login", "cloud storage", "payment gateway", "file upload"]),
+            feature=random.choice(
+                [
+                    "login system",
+                    "payment gateway",
+                    "user profile management",
+                    "search functionality",
+                    "data export",
+                    "report generation",
+                ]
+            ),
+            module=random.choice(
+                ["user authentication", "payment processing", "content delivery", "data storage", "user management"]
+            ),
+            functionality=random.choice(
+                ["search functionality", "data export", "report generation", "user management", "content delivery"]
+            ),
+            service=random.choice(
+                ["email notification", "third-party login", "cloud storage", "payment gateway", "file upload"]
+            ),
             library_framework=random.choice(["react", "Django", "Node.js", "Flask", "Vue.js"]),
             page_feature=random.choice(["homepage", "dashboard", "settings page", "profile page", "landing page"]),
-            API_service=random.choice(["REST API", "Google Maps API", "Stripe payment API", "Twilio SMS API", "AWS S3 API"]),
-            element=random.choice(["navigation bar", "modal window", "form submission button", "dropdown menu", "carousel"]),
+            API_service=random.choice(
+                ["REST API", "Google Maps API", "Stripe payment API", "Twilio SMS API", "AWS S3 API"]
+            ),
+            element=random.choice(
+                ["navigation bar", "modal window", "form submission button", "dropdown menu", "carousel"]
+            ),
             product_section=random.choice(["mobile app", "website", "admin panel", "e-commerce platform", "blog"]),
-            workflow_process=random.choice(["checkout process", "sign-up flow", "feedback submission", "onboarding process", "content creation"]),
+            workflow_process=random.choice(
+                ["checkout process", "sign-up flow", "feedback submission", "onboarding process", "content creation"]
+            ),
         )
         # If this person has not been assigned this task, break the loop
-        if not ((project_management_data['task_name'] == task_name) & (project_management_data['assigned_to'] == assigned_to)).any():
+        if not (
+            (project_management_data["task_name"] == task_name)
+            & (project_management_data["assigned_to"] == assigned_to)
+        ).any():
             break
 
     list_name = choose_list(lists)
     due_date = generate_random_due_date(start_date, end_date)
     task_id = str(len(project_management_data)).zfill(8)
     return task_id, task_name, assigned_to, list_name, due_date, board
+
+
 # Sample data for tasks, team members, and lists
 team_member_emails = pd.read_csv("data/raw/email_addresses.csv", header=None).values.flatten()
 
-backend_team_emails = team_member_emails[:len(team_member_emails) // 3]
-frontend_team_emails = team_member_emails[len(team_member_emails) // 3:2 * len(team_member_emails) // 3]
-design_team_emails = team_member_emails[2 * len(team_member_emails) // 3:len(team_member_emails)]
+backend_team_emails = team_member_emails[: len(team_member_emails) // 3]
+frontend_team_emails = team_member_emails[len(team_member_emails) // 3 : 2 * len(team_member_emails) // 3]
+design_team_emails = team_member_emails[2 * len(team_member_emails) // 3 : len(team_member_emails)]
 
 lists = ["Backlog", "In Progress", "In review", "Completed"]
 boards = ["Back end", "Front end", "Design"]
 
 # Setting up the project board
-project_management_data = pd.DataFrame(columns=["task_id", "task_name", "assigned_to", "list_name", "due_date", "board"])
+project_management_data = pd.DataFrame(
+    columns=["task_id", "task_name", "assigned_to", "list_name", "due_date", "board"]
+)
 
 # Simulate task generation
 start_date = HARDCODED_CURRENT_TIME.date() - timedelta(days=2)  # Some tasks are overdue

@@ -5,6 +5,7 @@ from langchain.tools import tool
 # We cannot use a class because LangChain does not support tools inside classes.
 PROJECT_TASKS = pd.read_csv("data/processed/project_tasks.csv", dtype=str)
 
+
 def reset_state():
     """
     Resets the project tasks to the original state.
@@ -12,23 +13,24 @@ def reset_state():
     global PROJECT_TASKS
     PROJECT_TASKS = pd.read_csv("data/processed/project_tasks.csv", dtype=str)
 
+
 @tool("project_management.get_task_information_by_id", return_direct=False)
 def get_task_information_by_id(task_id=None, field=None):
     """
     Returns the task infomration for a given ID.
-    
+
     Parameters
     ----------
     task_id : str, optional
         8-digit ID of the task.
     field : str, optional
         Field to return. Available fields are: "task_id", "task_name", "assigned_to", "list_name", "due_date", "board"
-    
+
     Returns
     -------
     task : dict
         Task information for the given ID and field.
-        
+
     Examples
     --------
     >>> project_management.get_task_information_by_id("00000000", "task_name")
@@ -46,12 +48,13 @@ def get_task_information_by_id(task_id=None, field=None):
             return "Field not found."
     else:
         return "Task not found."
-    
+
+
 @tool("project_management.search_tasks", return_direct=False)
 def search_tasks(task_name=None, assigned_to=None, list_name=None, due_date=None, board=None):
     """
     Searches for tasks based on the given parameters.
-    
+
     Parameters
     ----------
     task_name : str, optional
@@ -64,12 +67,12 @@ def search_tasks(task_name=None, assigned_to=None, list_name=None, due_date=None
         Due date of the task in "YYYY-MM-DD" format.
     board : str, optional
         Name of the board the task belongs to.
-    
+
     Returns
     -------
     tasks : dict
         Task information for the given parameters.
-    
+
     Examples
     --------
     >>> project_management.search_tasks("Refactor code", "tishtrya@example.com" "In progress", "2023-06-01", "Front end")
@@ -90,11 +93,12 @@ def search_tasks(task_name=None, assigned_to=None, list_name=None, due_date=None
         tasks = tasks[tasks["board"].str.contains(board)]
     return tasks.to_dict(orient="records")
 
+
 @tool("project_management.create_task", return_direct=False)
 def create_task(task_name=None, assigned_to=None, list_name=None, due_date=None, board=None):
     """
     Creates a new task.
-    
+
     Parameters
     ----------
     task_name : str
@@ -107,12 +111,12 @@ def create_task(task_name=None, assigned_to=None, list_name=None, due_date=None,
         Due date of the task in "YYYY-MM-DD" format.
     board : str
         Name of the board the task belongs to.
-    
+
     Returns
     -------
     task_id : str
         8-digit ID of the new task.
-    
+
     Examples
     --------
     >>> project_management.create_task("Integrate API service with frontend", "sam@example.com", "In progress", "2023-06-01", "Front end")
@@ -124,32 +128,35 @@ def create_task(task_name=None, assigned_to=None, list_name=None, due_date=None,
         return "Missing task details."
 
     task_id = str(int(PROJECT_TASKS["task_id"].max()) + 1).zfill(8)
-    new_task = pd.DataFrame({
-        "task_id": [task_id],
-        "task_name": [task_name],
-        "assigned_to": [assigned_to],
-        "list_name": [list_name],
-        "due_date": [due_date],
-        "board": [board]
-    })
+    new_task = pd.DataFrame(
+        {
+            "task_id": [task_id],
+            "task_name": [task_name],
+            "assigned_to": [assigned_to],
+            "list_name": [list_name],
+            "due_date": [due_date],
+            "board": [board],
+        }
+    )
     PROJECT_TASKS = pd.concat([PROJECT_TASKS, new_task], ignore_index=True)
     return task_id
+
 
 @tool("project_management.delete_task", return_direct=False)
 def delete_task(task_id=None):
     """
     Deletes a task by ID.
-    
+
     Parameters
     ----------
     task_id : str
         8-digit ID of the task.
-    
+
     Returns
     -------
     message : str
         Message indicating the status of the deletion.
-    
+
     Examples
     --------
     >>> project_management.delete_task("00000000")
@@ -166,11 +173,12 @@ def delete_task(task_id=None):
     else:
         return "Task not found."
 
+
 @tool("project_management.update_task", return_direct=False)
 def update_task(task_id=None, field=None, new_value=None):
     """
     Updates a task by ID.
-    
+
     Parameters
     ----------
     task_id : str
@@ -179,12 +187,12 @@ def update_task(task_id=None, field=None, new_value=None):
         Field to update. Available fields are: "task_name", "assigned_to", "list_name", "due_date", "board"
     new_value : str
         New value for the field.
-    
+
     Returns
     -------
     message : str
         Message indicating the status of the update.
-    
+
     Examples
     --------
     >>> project_management.update_task("00000000", "task_name", "New Task Name")
@@ -202,4 +210,3 @@ def update_task(task_id=None, field=None, new_value=None):
             return "Field not valid."
     else:
         return "Task not found."
-

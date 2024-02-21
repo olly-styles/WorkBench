@@ -17,23 +17,26 @@ emails = project_tasks["assigned_to"].unique()
 task_names = project_tasks["task_name"].unique()
 boards = project_tasks["board"].unique()
 
+
 def move_tasks_to_in_review_logic():
     """
     Move all tasks assigned to someone that are in progress to in review.
     """
     email = random.choice(emails)
     name = email.split("@")[0].split(".")[0]
-    
+
     tasks_in_progress = project_tasks[
-        (project_tasks["assigned_to"] == email) & 
-        (project_tasks["list_name"] == "In Progress")
+        (project_tasks["assigned_to"] == email) & (project_tasks["list_name"] == "In Progress")
     ]
     answer = []
     for _, task in tasks_in_progress.iterrows():
         task_id = task["task_id"]
         project_management.update_task.func(task["task_id"], "list_name", "In Review")
-        answer.append(f"""project_management.update_task.func(task_id='{task_id}', field='list_name', new_value='In Review')""")
+        answer.append(
+            f"""project_management.update_task.func(task_id='{task_id}', field='list_name', new_value='In Review')"""
+        )
     return {"name": name, "answer": answer}
+
 
 def add_new_task_logic():
     """
@@ -44,7 +47,9 @@ def add_new_task_logic():
     task_name = random.choice(task_names)
     board = random.choice(boards)
     due_date = HARDCODED_CURRENT_TIME.date() + pd.Timedelta(days=random.randint(1, 7))
-    answer = [f"""project_management.add_task.func(task_name='{task_name}', board='{board}', assigned_to='{email}', due_date='{due_date}')"""]
+    answer = [
+        f"""project_management.add_task.func(task_name='{task_name}', board='{board}', assigned_to='{email}', due_date='{due_date}')"""
+    ]
     return {"task_name": task_name, "board": board, "assigned_to": name, "due_date": due_date, "answer": answer}
 
 
@@ -70,7 +75,9 @@ PROJECT_MANAGEMENT_TEMPLATES = [
 max_queries_per_template = 3  # Limit the number of queries per template
 
 if __name__ == "__main__":
-    generated_queries_and_answers = generate_all_queries_and_answers(PROJECT_MANAGEMENT_TEMPLATES, max_queries_per_template)
+    generated_queries_and_answers = generate_all_queries_and_answers(
+        PROJECT_MANAGEMENT_TEMPLATES, max_queries_per_template
+    )
     df = pd.DataFrame(generated_queries_and_answers)
     df.to_csv(
         "data/processed/queries_and_answers/project_management_queries_and_answers.csv",
