@@ -97,6 +97,14 @@ MULTI_DOMAIN_TEMPLATES = [
         "query": """Send an email to {name} titled '{natural_language_metric}' and tell them 'There were {number} {natural_language_metric} on {natural_language_date}'""",
     },
     {
+        "query": """If {natural_language_metric} {fell_or_grew} since {date_min}, 
+        make a task for {name} called 'Improve {natural_language_metric}'. It's due in a week.""",
+    },
+    {
+        "query": """If {name} has any overdue tasks, send them an email titled 'Overdue tasks' saying 'You have {number} overdue tasks - can you update me on them?'.
+        Otherwise email them with 'Nice work keeping on top of your tasks this sprint - {number_of_tasks} is a lot!' titled 'Good work this sprint'""",
+    },
+    {
         "query": """Find the correlation between {natural_language_metric_1} and {natural_language_metric_2},
         then send an email to {name} titled '{natural_language_metric_1} and {natural_language_metric_2}'.
         If there's a positive correlation, tell them 'Their correlation is {correlation}. We should discuss.'
@@ -129,6 +137,15 @@ MULTI_DOMAIN_TEMPLATES = [
         email {name} saying 'We'r e not doing well on {natural_language_metric} recently - can we discuss?'
         and title it 'Discuss {natural_language_metric}'. 
         then also book a meeting with them called 'Catch up on {natural_language_metric}' at the earliest time I'm free on {day_of_week}""",
+    },
+    {
+        "query": """If {natural_language_metric} {fell_or_grew} since {date_min}, 
+        make a task for {name} called 'Improve {natural_language_metric}', which is due in a week.
+        Also send them an email saying 'I need you to look at {natural_language_metric} - more details on the task I just made.'""",
+    },
+    {
+        "query": """If {name} has any overdue tasks, book a meeting with them called 'Catch up on overdue tasks' at the earliest time I'm free tomorrow.
+        Otherwise email them with 'Nice work keeping on top of your tasks this sprint - {number_of_tasks} is a lot!' titled 'Good work this sprint'""",
     },
     {
         "query": """If {natural_language_metric} was {more_or_less} than {threshold} at any time since {date_min},
