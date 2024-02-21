@@ -168,10 +168,7 @@ def generate_query_and_answer(template):
     """Generates query and answer from template."""
     logic = template["logic"]()
     query = template["query"].format(**logic)
-    if template["answer"] == "in_logic":
-        answer = logic["answer"]
-    else:
-        answer = [step.format(**logic) for step in template["answer"]]
+    answer = logic["answer"]
     return {
         "query": query,
         "answer": answer,
