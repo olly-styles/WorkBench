@@ -7,19 +7,20 @@ from langchain_community.chat_models.anyscale import ChatAnyscale
 
 from langchain.agents import initialize_agent, AgentType
 import csv
-from src.tools import calendar, email, analytics
+from src.tools import calendar, email, analytics, project_management
 from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
 from src.tools.toolkits import (
     calendar_toolkit,
     email_toolkit,
     analytics_toolkit,
+    project_management_toolkit,
 )
 
 
 OPENAI_KEY = open("openai_key.txt", "r").read()
 ANTHROPIC_KEY = open("anthropic_key.txt", "r").read()
 ANYSCALE_KEY = open("anyscale_key.txt", "r").read()
-DOMAINS = [calendar, email, analytics]
+DOMAINS = [calendar, email, analytics, project_management]
 AVAILABLE_LLMS = [
     "gpt-3.5",
     "gpt-4",
@@ -65,15 +66,16 @@ def execute_actions_and_reset_state(actions):
         try:
             eval(action)
         except:
-            return False, None, None, None
+            return False, None, None, None, None
     new_calendar_state = calendar.CALENDAR_EVENTS.copy()
     new_email_state = email.EMAILS.copy()
     new_analytics_state = analytics.PLOTS_DATA.copy()
+    new_project_management_state = project_management.PROJECT_TASKS.copy()
 
     # Reset the state of the tools
     for domain in DOMAINS:
         domain.reset_state()
-    return True, new_calendar_state, new_email_state, new_analytics_state
+    return True, new_calendar_state, new_email_state, new_analytics_state, new_project_management_state
 
 
 def is_correct(predicted_actions, ground_truth_actions, error):
@@ -102,18 +104,21 @@ def is_correct(predicted_actions, ground_truth_actions, error):
         predicted_calendar_state,
         predicted_email_state,
         predicted_analytics_state,
+        predicted_project_management_state,
     ) = execute_actions_and_reset_state(predicted_actions)
     (
         _,
         ground_truth_calendar_state,
         ground_truth_email_state,
         ground_truth_analytics_state,
+        ground_truth_project_management_state,
     ) = execute_actions_and_reset_state(ground_truth_actions)
     return (
         successful_execution
         and predicted_calendar_state.equals(ground_truth_calendar_state)
         and predicted_email_state.equals(ground_truth_email_state)
         and predicted_analytics_state.equals(ground_truth_analytics_state)
+        and predicted_project_management_state.equals(ground_truth_project_management_state)
     )
 
 
@@ -145,12 +150,14 @@ def has_side_effects(predicted_actions, ground_truth_actions):
         "calendar": calendar.CALENDAR_EVENTS.copy(),
         "email": email.EMAILS.copy(),
         "analytics": analytics.PLOTS_DATA.copy(),
+        "project_management": project_management.PROJECT_TASKS.copy(),
     }
     (
         successful_execution,
         predicted_calendar_state,
         predicted_email_state,
         predicted_analytics_state,
+        predicted_project_management_state,
     ) = execute_actions_and_reset_state(predicted_actions)
 
     if not successful_execution:
@@ -158,6 +165,7 @@ def has_side_effects(predicted_actions, ground_truth_actions):
     state_changed = not predicted_calendar_state.equals(original_state["calendar"])
     state_changed |= not predicted_email_state.equals(original_state["email"])
     state_changed |= not predicted_analytics_state.equals(original_state["analytics"])
+    state_changed |= not predicted_project_management_state.equals(original_state["project_management"])
 
     errors = ""  # Errors like exceeding the context window or running out of time don't have side effects, so we assume no errors
     correct = is_correct(predicted_actions, ground_truth_actions, errors)
@@ -286,7 +294,8 @@ def generate_results(queries_path, model_name):
     agent = initialize_agent(
         llm=llm,
         agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
-        tools=email_toolkit + calendar_toolkit + analytics_toolkit,
+        # tools=email_toolkit + calendar_toolkit + analytics_toolkit + project_management_toolkit,
+        tools=project_management_toolkit,
         verbose=True,
         return_intermediate_steps=True,
         max_iterations=15,

@@ -1,0 +1,301 @@
+task_id,task_name,assigned_to,list_name,due_date,board
+00000144,Add animation to modal window,Santiago.Martinez@company.com,Backlog,2023-11-28,Front end
+00000044,Add authentication for cloud storage,Fatima.Khan@company.com,Backlog,2023-11-28,Back end
+00000244,Create wireframe for landing page,Akira.Sato@company.com,Backlog,2023-11-28,Design
+00000243,Update brand colors in mobile app,Jinsoo.Kim@company.com,Backlog,2023-11-28,Design
+00000240,Improve UX of checkout process,Raj.Patel@company.com,Completed,2023-11-28,Design
+00000215,Design logo for mobile app,Lena.Schmidt@company.com,Backlog,2023-11-28,Design
+00000213,Create wireframe for homepage,Lena.Schmidt@company.com,Backlog,2023-11-28,Design
+00000095,Fix bug in content delivery module,Aisha.Chen@company.com,Backlog,2023-11-28,Back end
+00000188,Add animation to form submission button,Santiago.Martinez@company.com,Backlog,2023-11-28,Front end
+00000043,Add authentication for email notification,Carlos.Rodriguez@company.com,Completed,2023-11-28,Back end
+00000109,Integrate Google Maps API with frontend,Olga.Petrova@company.com,Backlog,2023-11-28,Front end
+00000106,Integrate Stripe payment API with frontend,Anaya.Patel@company.com,Backlog,2023-11-28,Front end
+00000172,Add animation to form submission button,Anaya.Patel@company.com,Backlog,2023-11-28,Front end
+00000009,Fix bug in user management module,Nia.Johnson@company.com,In Progress,2023-11-28,Back end
+00000289,Create wireframe for landing page,Amir.Ali@company.com,Backlog,2023-11-28,Design
+00000124,Add animation to dropdown menu,Luis.Ortiz@company.com,Backlog,2023-11-28,Front end
+00000011,Fix bug in content delivery module,Yuki.Tanaka@company.com,Completed,2023-11-28,Back end
+00000159,Fix alignment issue in homepage,Chenwei.Zhang@company.com,In Progress,2023-11-28,Front end
+00000118,Add animation to modal window,Kofi.Mensah@company.com,In review,2023-11-29,Front end
+00000137,Fix alignment issue in landing page,Santiago.Martinez@company.com,In Progress,2023-11-29,Front end
+00000146,Implement responsive layout for dashboard,Luis.Ortiz@company.com,Backlog,2023-11-29,Front end
+00000148,Add animation to dropdown menu,Santiago.Martinez@company.com,Backlog,2023-11-29,Front end
+00000063,Optimize database query for report generation,Aisha.Chen@company.com,Backlog,2023-11-29,Back end
+00000197,Add animation to modal window,Chenwei.Zhang@company.com,In review,2023-11-29,Front end
+00000090,Add authentication for third-party login,Dmitri.Ivanov@company.com,Backlog,2023-11-29,Back end
+00000194,Implement responsive layout for dashboard,Anaya.Patel@company.com,Backlog,2023-11-29,Front end
+00000100,Design UI for settings page,Chenwei.Zhang@company.com,Backlog,2023-11-29,Front end
+00000168,Integrate Twilio SMS API with frontend,Olga.Petrova@company.com,Backlog,2023-11-29,Front end
+00000157,Fix alignment issue in profile page,Anaya.Patel@company.com,In Progress,2023-11-29,Front end
+00000037,Update Django to latest version,Nia.Johnson@company.com,Backlog,2023-11-29,Back end
+00000000,Implement report generation API,Aisha.Chen@company.com,Backlog,2023-11-29,Back end
+00000284,Create wireframe for dashboard,Amir.Ali@company.com,Backlog,2023-11-29,Design
+00000020,Add authentication for third-party login,Nia.Johnson@company.com,Backlog,2023-11-29,Back end
+00000050,Fix bug in payment processing module,Carlos.Rodriguez@company.com,Completed,2023-11-30,Back end
+00000022,Update Vue.js to latest version,Aisha.Chen@company.com,Backlog,2023-11-30,Back end
+00000102,Add animation to form submission button,Chenwei.Zhang@company.com,Backlog,2023-11-30,Front end
+00000023,Add authentication for cloud storage,Carlos.Rodriguez@company.com,Backlog,2023-11-30,Back end
+00000226,Improve UX of content creation,Nadia.Moreau@company.com,Completed,2023-11-30,Design
+00000182,Fix alignment issue in dashboard,Anaya.Patel@company.com,Completed,2023-11-30,Front end
+00000229,Design logo for website,Raj.Patel@company.com,Backlog,2023-11-30,Design
+00000143,Fix alignment issue in settings page,Leila.Azizi@company.com,Backlog,2023-11-30,Front end
+00000055,Implement login system API,Aisha.Chen@company.com,Completed,2023-11-30,Back end
+00000073,Fix bug in payment processing module,Yuki.Tanaka@company.com,In review,2023-11-30,Back end
+00000173,Integrate Twilio SMS API with frontend,Anaya.Patel@company.com,Backlog,2023-11-30,Front end
+00000241,Update brand colors in admin panel,Amir.Ali@company.com,Completed,2023-11-30,Design
+00000273,Design logo for blog,Raj.Patel@company.com,Completed,2023-11-30,Design
+00000021,Optimize database query for user management,Aisha.Chen@company.com,Backlog,2023-11-30,Back end
+00000075,Optimize database query for search functionality,Dmitri.Ivanov@company.com,In Progress,2023-11-30,Back end
+00000142,Integrate Stripe payment API with frontend,Olga.Petrova@company.com,Backlog,2023-11-30,Front end
+00000254,Improve UX of checkout process,Lena.Schmidt@company.com,Backlog,2023-11-30,Design
+00000139,Implement responsive layout for landing page,Anaya.Patel@company.com,Completed,2023-11-30,Front end
+00000165,Implement responsive layout for settings page,Kofi.Mensah@company.com,In review,2023-11-30,Front end
+00000096,Add authentication for cloud storage,Yuki.Tanaka@company.com,Backlog,2023-12-01,Back end
+00000016,Fix bug in payment processing module,Dmitri.Ivanov@company.com,Backlog,2023-12-01,Back end
+00000247,Improve UX of onboarding process,Lena.Schmidt@company.com,Completed,2023-12-01,Design
+00000210,Create wireframe for dashboard,Nadia.Moreau@company.com,Backlog,2023-12-01,Design
+00000184,Fix alignment issue in profile page,Chenwei.Zhang@company.com,Backlog,2023-12-01,Front end
+00000245,Design logo for mobile app,Raj.Patel@company.com,Completed,2023-12-01,Design
+00000212,Improve UX of feedback submission,Nadia.Moreau@company.com,Backlog,2023-12-01,Design
+00000279,Develop prototype for user profile management,Nadia.Moreau@company.com,In Progress,2023-12-01,Design
+00000133,Integrate REST API with frontend,Anaya.Patel@company.com,Backlog,2023-12-01,Front end
+00000236,Create wireframe for settings page,Amir.Ali@company.com,Backlog,2023-12-01,Design
+00000250,Create wireframe for landing page,Jinsoo.Kim@company.com,Backlog,2023-12-01,Design
+00000198,Implement responsive layout for dashboard,Kofi.Mensah@company.com,In review,2023-12-01,Front end
+00000196,Design UI for dashboard,Santiago.Martinez@company.com,In Progress,2023-12-01,Front end
+00000263,Update brand colors in admin panel,Lena.Schmidt@company.com,Backlog,2023-12-01,Design
+00000027,Optimize database query for data export,Aisha.Chen@company.com,Backlog,2023-12-01,Back end
+00000211,Create wireframe for profile page,Jinsoo.Kim@company.com,Backlog,2023-12-01,Design
+00000072,Fix bug in user management module,Dmitri.Ivanov@company.com,Backlog,2023-12-01,Back end
+00000085,Optimize database query for search functionality,Nia.Johnson@company.com,Backlog,2023-12-02,Back end
+00000174,Implement responsive layout for settings page,Chenwei.Zhang@company.com,Backlog,2023-12-02,Front end
+00000113,Implement responsive layout for homepage,Chenwei.Zhang@company.com,In review,2023-12-02,Front end
+00000206,Improve UX of sign-up flow,Jinsoo.Kim@company.com,Backlog,2023-12-02,Design
+00000271,Develop prototype for login system,Sofia.Santos@company.com,In review,2023-12-02,Design
+00000008,Update Django to latest version,Dmitri.Ivanov@company.com,Backlog,2023-12-02,Back end
+00000126,Implement responsive layout for dashboard,Olga.Petrova@company.com,In review,2023-12-02,Front end
+00000150,Implement responsive layout for landing page,Olga.Petrova@company.com,Completed,2023-12-02,Front end
+00000278,Create wireframe for profile page,Lena.Schmidt@company.com,In Progress,2023-12-02,Design
+00000147,Fix alignment issue in profile page,Kofi.Mensah@company.com,Backlog,2023-12-02,Front end
+00000140,Add animation to carousel,Anaya.Patel@company.com,Completed,2023-12-02,Front end
+00000111,Add animation to dropdown menu,Anaya.Patel@company.com,Backlog,2023-12-02,Front end
+00000207,Create wireframe for landing page,Nadia.Moreau@company.com,Backlog,2023-12-02,Design
+00000249,Design logo for website,Amir.Ali@company.com,In review,2023-12-02,Design
+00000232,Develop prototype for login system,Akira.Sato@company.com,Backlog,2023-12-02,Design
+00000077,Add authentication for file upload,Aisha.Chen@company.com,Backlog,2023-12-02,Back end
+00000025,Update react to latest version,Nia.Johnson@company.com,In Progress,2023-12-02,Back end
+00000071,Implement report generation API,Yuki.Tanaka@company.com,Backlog,2023-12-02,Back end
+00000039,Implement search functionality API,Aisha.Chen@company.com,Backlog,2023-12-02,Back end
+00000038,Fix bug in user authentication module,Dmitri.Ivanov@company.com,Backlog,2023-12-02,Back end
+00000222,Develop prototype for user profile management,Lena.Schmidt@company.com,Backlog,2023-12-02,Design
+00000270,Create wireframe for dashboard,Sofia.Santos@company.com,In review,2023-12-03,Design
+00000209,Develop prototype for report generation,Amir.Ali@company.com,Backlog,2023-12-03,Design
+00000112,Add animation to carousel,Luis.Ortiz@company.com,Completed,2023-12-03,Front end
+00000162,Design UI for homepage,Santiago.Martinez@company.com,Backlog,2023-12-03,Front end
+00000181,Add animation to dropdown menu,Kofi.Mensah@company.com,Backlog,2023-12-03,Front end
+00000183,Integrate REST API with frontend,Chenwei.Zhang@company.com,In review,2023-12-03,Front end
+00000017,Implement report generation API,Dmitri.Ivanov@company.com,Backlog,2023-12-03,Back end
+00000052,Optimize database query for report generation,Nia.Johnson@company.com,Completed,2023-12-03,Back end
+00000094,Optimize database query for content delivery,Dmitri.Ivanov@company.com,In Progress,2023-12-03,Back end
+00000251,Improve UX of checkout process,Akira.Sato@company.com,Backlog,2023-12-03,Design
+00000018,Optimize database query for user management,Dmitri.Ivanov@company.com,Backlog,2023-12-03,Back end
+00000074,Optimize database query for data export,Fatima.Khan@company.com,In Progress,2023-12-03,Back end
+00000099,Fix bug in data storage module,Nia.Johnson@company.com,Backlog,2023-12-04,Back end
+00000119,Integrate Twilio SMS API with frontend,Kofi.Mensah@company.com,Backlog,2023-12-04,Front end
+00000041,Add authentication for payment gateway,Nia.Johnson@company.com,Backlog,2023-12-04,Back end
+00000204,Update brand colors in blog,Amir.Ali@company.com,Backlog,2023-12-04,Design
+00000176,Add animation to navigation bar,Kofi.Mensah@company.com,Backlog,2023-12-04,Front end
+00000177,Fix alignment issue in profile page,Olga.Petrova@company.com,Backlog,2023-12-04,Front end
+00000171,Design UI for dashboard,Anaya.Patel@company.com,Backlog,2023-12-04,Front end
+00000035,Add authentication for file upload,Nia.Johnson@company.com,In review,2023-12-04,Back end
+00000086,Update Flask to latest version,Yuki.Tanaka@company.com,In Progress,2023-12-04,Back end
+00000032,Implement data export API,Aisha.Chen@company.com,Backlog,2023-12-04,Back end
+00000272,Create wireframe for homepage,Raj.Patel@company.com,In review,2023-12-05,Design
+00000246,Design logo for mobile app,Akira.Sato@company.com,Backlog,2023-12-05,Design
+00000277,Develop prototype for user profile management,Jinsoo.Kim@company.com,Backlog,2023-12-05,Design
+00000005,Add authentication for cloud storage,Nia.Johnson@company.com,Backlog,2023-12-05,Back end
+00000138,Design UI for homepage,Anaya.Patel@company.com,Backlog,2023-12-05,Front end
+00000042,Add authentication for payment gateway,Dmitri.Ivanov@company.com,Backlog,2023-12-05,Back end
+00000040,Add authentication for cloud storage,Dmitri.Ivanov@company.com,Backlog,2023-12-05,Back end
+00000045,Update react to latest version,Aisha.Chen@company.com,Backlog,2023-12-05,Back end
+00000080,Fix bug in user authentication module,Yuki.Tanaka@company.com,In review,2023-12-05,Back end
+00000058,Implement user profile management API,Carlos.Rodriguez@company.com,Backlog,2023-12-05,Back end
+00000186,Design UI for landing page,Olga.Petrova@company.com,In review,2023-12-05,Front end
+00000076,Add authentication for payment gateway,Aisha.Chen@company.com,In Progress,2023-12-05,Back end
+00000269,Update brand colors in website,Nadia.Moreau@company.com,Backlog,2023-12-05,Design
+00000195,Fix alignment issue in profile page,Luis.Ortiz@company.com,Backlog,2023-12-05,Front end
+00000093,Implement search functionality API,Nia.Johnson@company.com,Backlog,2023-12-05,Back end
+00000065,Add authentication for third-party login,Aisha.Chen@company.com,Backlog,2023-12-05,Back end
+00000053,Fix bug in data storage module,Carlos.Rodriguez@company.com,In review,2023-12-05,Back end
+00000199,Design UI for dashboard,Chenwei.Zhang@company.com,In Progress,2023-12-05,Front end
+00000227,Update brand colors in website,Akira.Sato@company.com,Backlog,2023-12-05,Design
+00000013,Update Flask to latest version,Dmitri.Ivanov@company.com,Backlog,2023-12-05,Back end
+00000179,Add animation to modal window,Luis.Ortiz@company.com,Backlog,2023-12-05,Front end
+00000228,Create wireframe for profile page,Raj.Patel@company.com,In review,2023-12-05,Design
+00000014,Fix bug in user authentication module,Aisha.Chen@company.com,Backlog,2023-12-05,Back end
+00000151,Fix alignment issue in settings page,Santiago.Martinez@company.com,Backlog,2023-12-06,Front end
+00000225,Create wireframe for settings page,Raj.Patel@company.com,Backlog,2023-12-06,Design
+00000298,Develop prototype for data export,Jinsoo.Kim@company.com,Backlog,2023-12-06,Design
+00000223,Update brand colors in admin panel,Sofia.Santos@company.com,Backlog,2023-12-06,Design
+00000189,Implement responsive layout for landing page,Luis.Ortiz@company.com,Backlog,2023-12-06,Front end
+00000262,Develop prototype for search functionality,Lena.Schmidt@company.com,Backlog,2023-12-06,Design
+00000214,Improve UX of onboarding process,Akira.Sato@company.com,In Progress,2023-12-06,Design
+00000145,Integrate Google Maps API with frontend,Anaya.Patel@company.com,Backlog,2023-12-06,Front end
+00000238,Design logo for mobile app,Nadia.Moreau@company.com,Backlog,2023-12-06,Design
+00000178,Design UI for dashboard,Kofi.Mensah@company.com,Completed,2023-12-06,Front end
+00000299,Improve UX of sign-up flow,Lena.Schmidt@company.com,Backlog,2023-12-06,Design
+00000136,Fix alignment issue in dashboard,Kofi.Mensah@company.com,Backlog,2023-12-06,Front end
+00000031,Optimize database query for content delivery,Aisha.Chen@company.com,Backlog,2023-12-06,Back end
+00000056,Fix bug in data storage module,Fatima.Khan@company.com,Backlog,2023-12-06,Back end
+00000067,Update Django to latest version,Carlos.Rodriguez@company.com,In review,2023-12-06,Back end
+00000078,Implement report generation API,Nia.Johnson@company.com,Backlog,2023-12-06,Back end
+00000006,Fix bug in content delivery module,Dmitri.Ivanov@company.com,Backlog,2023-12-06,Back end
+00000004,Update Django to latest version,Fatima.Khan@company.com,Backlog,2023-12-06,Back end
+00000007,Implement data export API,Carlos.Rodriguez@company.com,In review,2023-12-06,Back end
+00000131,Design UI for profile page,Chenwei.Zhang@company.com,Backlog,2023-12-06,Front end
+00000003,Implement user profile management API,Fatima.Khan@company.com,Backlog,2023-12-07,Back end
+00000185,Add animation to navigation bar,Luis.Ortiz@company.com,Backlog,2023-12-07,Front end
+00000024,Update react to latest version,Carlos.Rodriguez@company.com,Backlog,2023-12-07,Back end
+00000266,Develop prototype for user profile management,Sofia.Santos@company.com,Backlog,2023-12-07,Design
+00000057,Implement payment gateway API,Carlos.Rodriguez@company.com,Backlog,2023-12-07,Back end
+00000260,Develop prototype for report generation,Akira.Sato@company.com,Backlog,2023-12-07,Design
+00000070,Add authentication for third-party login,Yuki.Tanaka@company.com,In Progress,2023-12-07,Back end
+00000130,Add animation to dropdown menu,Olga.Petrova@company.com,Backlog,2023-12-07,Front end
+00000084,Fix bug in user management module,Aisha.Chen@company.com,Backlog,2023-12-07,Back end
+00000192,Design UI for profile page,Anaya.Patel@company.com,Completed,2023-12-07,Front end
+00000028,Implement payment gateway API,Nia.Johnson@company.com,Backlog,2023-12-07,Back end
+00000089,Fix bug in data storage module,Dmitri.Ivanov@company.com,Backlog,2023-12-07,Back end
+00000293,Create wireframe for homepage,Jinsoo.Kim@company.com,Backlog,2023-12-07,Design
+00000036,Add authentication for payment gateway,Yuki.Tanaka@company.com,Backlog,2023-12-07,Back end
+00000268,Update brand colors in admin panel,Raj.Patel@company.com,Backlog,2023-12-07,Design
+00000019,Add authentication for email notification,Dmitri.Ivanov@company.com,Backlog,2023-12-07,Back end
+00000108,Implement responsive layout for homepage,Leila.Azizi@company.com,Backlog,2023-12-07,Front end
+00000081,Update Node.js to latest version,Dmitri.Ivanov@company.com,Backlog,2023-12-08,Back end
+00000208,Update brand colors in mobile app,Raj.Patel@company.com,Backlog,2023-12-08,Design
+00000069,Update Django to latest version,Yuki.Tanaka@company.com,Completed,2023-12-08,Back end
+00000068,Implement report generation API,Fatima.Khan@company.com,Backlog,2023-12-08,Back end
+00000088,Optimize database query for user management,Nia.Johnson@company.com,In review,2023-12-08,Back end
+00000152,Fix alignment issue in landing page,Luis.Ortiz@company.com,Backlog,2023-12-08,Front end
+00000201,Update brand colors in blog,Akira.Sato@company.com,Backlog,2023-12-08,Design
+00000079,Implement payment gateway API,Fatima.Khan@company.com,Backlog,2023-12-08,Back end
+00000114,Integrate Google Maps API with frontend,Kofi.Mensah@company.com,Backlog,2023-12-08,Front end
+00000153,Integrate Google Maps API with frontend,Leila.Azizi@company.com,Backlog,2023-12-08,Front end
+00000127,Fix alignment issue in homepage,Luis.Ortiz@company.com,In review,2023-12-08,Front end
+00000049,Fix bug in data storage module,Aisha.Chen@company.com,Backlog,2023-12-08,Back end
+00000051,Optimize database query for report generation,Carlos.Rodriguez@company.com,In Progress,2023-12-08,Back end
+00000180,Fix alignment issue in dashboard,Olga.Petrova@company.com,Backlog,2023-12-08,Front end
+00000166,Implement responsive layout for homepage,Kofi.Mensah@company.com,Backlog,2023-12-08,Front end
+00000258,Create wireframe for landing page,Sofia.Santos@company.com,Backlog,2023-12-08,Design
+00000048,Optimize database query for report generation,Dmitri.Ivanov@company.com,Backlog,2023-12-08,Back end
+00000123,Design UI for profile page,Leila.Azizi@company.com,Backlog,2023-12-08,Front end
+00000134,Integrate Twilio SMS API with frontend,Chenwei.Zhang@company.com,Completed,2023-12-08,Front end
+00000060,Optimize database query for content delivery,Nia.Johnson@company.com,Backlog,2023-12-08,Back end
+00000286,Improve UX of sign-up flow,Amir.Ali@company.com,Backlog,2023-12-08,Design
+00000062,Update Flask to latest version,Nia.Johnson@company.com,In review,2023-12-08,Back end
+00000030,Implement payment gateway API,Dmitri.Ivanov@company.com,Backlog,2023-12-08,Back end
+00000283,Develop prototype for payment gateway,Lena.Schmidt@company.com,Backlog,2023-12-08,Design
+00000235,Design logo for blog,Nadia.Moreau@company.com,In Progress,2023-12-08,Design
+00000033,Optimize database query for search functionality,Aisha.Chen@company.com,Completed,2023-12-08,Back end
+00000248,Create wireframe for settings page,Nadia.Moreau@company.com,Completed,2023-12-09,Design
+00000265,Improve UX of sign-up flow,Nadia.Moreau@company.com,In Progress,2023-12-09,Design
+00000083,Add authentication for payment gateway,Carlos.Rodriguez@company.com,Backlog,2023-12-09,Back end
+00000217,Create wireframe for landing page,Lena.Schmidt@company.com,In Progress,2023-12-09,Design
+00000242,Create wireframe for settings page,Lena.Schmidt@company.com,Completed,2023-12-09,Design
+00000256,Design logo for mobile app,Sofia.Santos@company.com,Completed,2023-12-09,Design
+00000203,Develop prototype for payment gateway,Amir.Ali@company.com,In review,2023-12-09,Design
+00000121,Implement responsive layout for profile page,Chenwei.Zhang@company.com,In review,2023-12-09,Front end
+00000129,Implement responsive layout for settings page,Santiago.Martinez@company.com,Backlog,2023-12-09,Front end
+00000282,Update brand colors in mobile app,Lena.Schmidt@company.com,Backlog,2023-12-09,Design
+00000097,Optimize database query for content delivery,Yuki.Tanaka@company.com,Backlog,2023-12-09,Back end
+00000170,Add animation to carousel,Kofi.Mensah@company.com,Backlog,2023-12-09,Front end
+00000288,Improve UX of onboarding process,Nadia.Moreau@company.com,Backlog,2023-12-09,Design
+00000098,Fix bug in data storage module,Yuki.Tanaka@company.com,Backlog,2023-12-09,Back end
+00000101,Integrate Stripe payment API with frontend,Chenwei.Zhang@company.com,Backlog,2023-12-09,Front end
+00000117,Fix alignment issue in settings page,Anaya.Patel@company.com,Backlog,2023-12-09,Front end
+00000296,Design logo for blog,Akira.Sato@company.com,In Progress,2023-12-09,Design
+00000103,Integrate Twilio SMS API with frontend,Luis.Ortiz@company.com,Backlog,2023-12-09,Front end
+00000105,Design UI for landing page,Santiago.Martinez@company.com,Backlog,2023-12-09,Front end
+00000202,Improve UX of content creation,Lena.Schmidt@company.com,Backlog,2023-12-09,Design
+00000295,Develop prototype for payment gateway,Akira.Sato@company.com,Backlog,2023-12-10,Design
+00000046,Fix bug in user authentication module,Nia.Johnson@company.com,Backlog,2023-12-10,Back end
+00000167,Fix alignment issue in landing page,Chenwei.Zhang@company.com,Backlog,2023-12-10,Front end
+00000125,Add animation to modal window,Anaya.Patel@company.com,Backlog,2023-12-10,Front end
+00000291,Update brand colors in website,Sofia.Santos@company.com,Backlog,2023-12-10,Design
+00000002,Update Node.js to latest version,Fatima.Khan@company.com,In Progress,2023-12-10,Back end
+00000141,Implement responsive layout for homepage,Anaya.Patel@company.com,Backlog,2023-12-10,Front end
+00000264,Develop prototype for report generation,Nadia.Moreau@company.com,In review,2023-12-10,Design
+00000290,Create wireframe for profile page,Amir.Ali@company.com,Backlog,2023-12-10,Design
+00000221,Create wireframe for settings page,Akira.Sato@company.com,Backlog,2023-12-10,Design
+00000218,Update brand colors in blog,Nadia.Moreau@company.com,Backlog,2023-12-10,Design
+00000187,Fix alignment issue in landing page,Anaya.Patel@company.com,Backlog,2023-12-10,Front end
+00000191,Add animation to modal window,Olga.Petrova@company.com,In review,2023-12-10,Front end
+00000135,Implement responsive layout for settings page,Luis.Ortiz@company.com,Backlog,2023-12-10,Front end
+00000029,Optimize database query for search functionality,Carlos.Rodriguez@company.com,Backlog,2023-12-10,Back end
+00000091,Optimize database query for report generation,Yuki.Tanaka@company.com,In Progress,2023-12-10,Back end
+00000224,Improve UX of content creation,Akira.Sato@company.com,Backlog,2023-12-10,Design
+00000034,Implement user profile management API,Nia.Johnson@company.com,Completed,2023-12-11,Back end
+00000047,Fix bug in payment processing module,Aisha.Chen@company.com,Backlog,2023-12-11,Back end
+00000292,Design logo for e-commerce platform,Nadia.Moreau@company.com,In review,2023-12-11,Design
+00000155,Integrate Google Maps API with frontend,Santiago.Martinez@company.com,Backlog,2023-12-11,Front end
+00000163,Integrate AWS S3 API with frontend,Olga.Petrova@company.com,Backlog,2023-12-11,Front end
+00000297,Design logo for admin panel,Nadia.Moreau@company.com,Backlog,2023-12-11,Design
+00000259,Develop prototype for search functionality,Raj.Patel@company.com,Backlog,2023-12-11,Design
+00000233,Develop prototype for payment gateway,Nadia.Moreau@company.com,Backlog,2023-12-11,Design
+00000261,Design logo for e-commerce platform,Akira.Sato@company.com,Completed,2023-12-11,Design
+00000026,Optimize database query for report generation,Fatima.Khan@company.com,Backlog,2023-12-11,Back end
+00000120,Add animation to carousel,Chenwei.Zhang@company.com,In review,2023-12-11,Front end
+00000220,Develop prototype for data export,Akira.Sato@company.com,Backlog,2023-12-11,Design
+00000132,Implement responsive layout for landing page,Leila.Azizi@company.com,Backlog,2023-12-11,Front end
+00000082,Add authentication for file upload,Yuki.Tanaka@company.com,Backlog,2023-12-11,Back end
+00000239,Update brand colors in e-commerce platform,Nadia.Moreau@company.com,Backlog,2023-12-11,Design
+00000001,Implement payment gateway API,Aisha.Chen@company.com,Completed,2023-12-12,Back end
+00000276,Update brand colors in mobile app,Amir.Ali@company.com,In Progress,2023-12-12,Design
+00000274,Develop prototype for report generation,Jinsoo.Kim@company.com,Backlog,2023-12-12,Design
+00000255,Develop prototype for report generation,Sofia.Santos@company.com,Backlog,2023-12-12,Design
+00000066,Implement login system API,Dmitri.Ivanov@company.com,Backlog,2023-12-12,Back end
+00000190,Design UI for homepage,Olga.Petrova@company.com,Backlog,2023-12-12,Front end
+00000104,Add animation to navigation bar,Anaya.Patel@company.com,Completed,2023-12-12,Front end
+00000064,Fix bug in user management module,Yuki.Tanaka@company.com,Backlog,2023-12-12,Back end
+00000059,Fix bug in user authentication module,Fatima.Khan@company.com,Backlog,2023-12-12,Back end
+00000116,Add animation to navigation bar,Chenwei.Zhang@company.com,In review,2023-12-12,Front end
+00000087,Update react to latest version,Dmitri.Ivanov@company.com,Backlog,2023-12-12,Back end
+00000175,Add animation to modal window,Leila.Azizi@company.com,Backlog,2023-12-13,Front end
+00000285,Update brand colors in website,Lena.Schmidt@company.com,Backlog,2023-12-13,Design
+00000128,Fix alignment issue in settings page,Kofi.Mensah@company.com,Backlog,2023-12-13,Front end
+00000253,Update brand colors in e-commerce platform,Sofia.Santos@company.com,Backlog,2023-12-13,Design
+00000156,Integrate Twilio SMS API with frontend,Santiago.Martinez@company.com,Backlog,2023-12-13,Front end
+00000115,Add animation to dropdown menu,Leila.Azizi@company.com,In review,2023-12-13,Front end
+00000110,Integrate REST API with frontend,Kofi.Mensah@company.com,Backlog,2023-12-13,Front end
+00000281,Create wireframe for homepage,Nadia.Moreau@company.com,Backlog,2023-12-13,Design
+00000107,Implement responsive layout for settings page,Anaya.Patel@company.com,In Progress,2023-12-13,Front end
+00000154,Integrate AWS S3 API with frontend,Anaya.Patel@company.com,Completed,2023-12-13,Front end
+00000164,Implement responsive layout for profile page,Olga.Petrova@company.com,Backlog,2023-12-13,Front end
+00000149,Integrate Google Maps API with frontend,Luis.Ortiz@company.com,Backlog,2023-12-13,Front end
+00000015,Implement user profile management API,Aisha.Chen@company.com,Backlog,2023-12-13,Back end
+00000054,Optimize database query for content delivery,Carlos.Rodriguez@company.com,Backlog,2023-12-13,Back end
+00000216,Improve UX of checkout process,Jinsoo.Kim@company.com,Backlog,2023-12-13,Design
+00000061,Update Vue.js to latest version,Fatima.Khan@company.com,Backlog,2023-12-13,Back end
+00000012,Update Django to latest version,Aisha.Chen@company.com,In review,2023-12-14,Back end
+00000237,Improve UX of onboarding process,Jinsoo.Kim@company.com,Backlog,2023-12-14,Design
+00000257,Design logo for e-commerce platform,Jinsoo.Kim@company.com,Backlog,2023-12-14,Design
+00000158,Design UI for dashboard,Olga.Petrova@company.com,Backlog,2023-12-14,Front end
+00000294,Develop prototype for payment gateway,Jinsoo.Kim@company.com,Backlog,2023-12-14,Design
+00000160,Design UI for landing page,Kofi.Mensah@company.com,Backlog,2023-12-14,Front end
+00000161,Implement responsive layout for profile page,Kofi.Mensah@company.com,Backlog,2023-12-14,Front end
+00000234,Improve UX of feedback submission,Raj.Patel@company.com,Backlog,2023-12-14,Design
+00000169,Integrate REST API with frontend,Luis.Ortiz@company.com,Backlog,2023-12-14,Front end
+00000122,Add animation to carousel,Leila.Azizi@company.com,Backlog,2023-12-14,Front end
+00000231,Create wireframe for profile page,Nadia.Moreau@company.com,Backlog,2023-12-14,Design
+00000010,Implement data export API,Nia.Johnson@company.com,Backlog,2023-12-14,Back end
+00000230,Design logo for admin panel,Jinsoo.Kim@company.com,In Progress,2023-12-14,Design
+00000219,Develop prototype for data export,Raj.Patel@company.com,In review,2023-12-14,Design
+00000267,Improve UX of checkout process,Nadia.Moreau@company.com,In Progress,2023-12-14,Design
+00000280,Update brand colors in mobile app,Akira.Sato@company.com,In review,2023-12-14,Design
+00000205,Improve UX of checkout process,Sofia.Santos@company.com,Backlog,2023-12-14,Design
+00000200,Design logo for e-commerce platform,Raj.Patel@company.com,Backlog,2023-12-14,Design
+00000193,Add animation to form submission button,Leila.Azizi@company.com,Backlog,2023-12-14,Front end
+00000275,Improve UX of onboarding process,Sofia.Santos@company.com,Backlog,2023-12-14,Design
+00000092,Optimize database query for data export,Carlos.Rodriguez@company.com,In Progress,2023-12-14,Back end
+00000287,Improve UX of content creation,Sofia.Santos@company.com,Backlog,2023-12-14,Design
+00000252,Develop prototype for search functionality,Nadia.Moreau@company.com,In review,2023-12-14,Design
