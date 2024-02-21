@@ -50,7 +50,9 @@ def last_event_name_change_logic():
         "event_id"
     ]
     new_event_name = random.choice(events)
-    answer = [f"""calendar.update_event.func(event_id='{last_event_id}', field='event_name', new_value='{new_event_name}')"""]
+    answer = [
+        f"""calendar.update_event.func(event_id='{last_event_id}', field='event_name', new_value='{new_event_name}')"""
+    ]
     return {
         "natural_language_date": natural_language_date,
         "last_event_id": last_event_id,
@@ -107,7 +109,9 @@ def rename_event_logic():
     while new_event_name == original_event["event_name"]:
         new_event_name = random.choice(events)
 
-    answer = [f"""calendar.update_event.func(event_id='{original_event["event_id"]}', field='event_name', new_value='{new_event_name}')"""]
+    answer = [
+        f"""calendar.update_event.func(event_id='{original_event["event_id"]}', field='event_name', new_value='{new_event_name}')"""
+    ]
 
     return {**original_event, "new_event_name": new_event_name, "answer": answer}
 
@@ -220,7 +224,7 @@ def create_event_logic():
     date = get_random_future_date(dates)
     natural_language_date = get_natural_language_date(date)
     time = random.choice(times)
-    natural_language_time = get_natural_language_time(time)            
+    natural_language_time = get_natural_language_time(time)
     answer = [
         f"""calendar.create_event.func(event_name='{event_name}', participant_email='{email}', event_start='{date} {time}', duration='{duration_minutes}')"""
     ]

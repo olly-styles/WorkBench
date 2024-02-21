@@ -7,9 +7,8 @@ import os
 project_root = os.path.abspath(os.path.curdir)
 sys.path.append(project_root)
 
-from src.data_generation.data_generation_utils import get_natural_language_date
-from src.tools import email
 from src.evals.utils import generate_all_queries_and_answers
+from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
 
 random.seed(42)
 
@@ -23,90 +22,196 @@ bodies = list(emails_data["body"].unique())
 datetimes = list(emails_data["sent_datetime"].str.split(" ").str[0].unique())
 
 
-def delete_first_email_logic():
-    date = random.choice(dates)
-    natural_language_date = get_natural_language_date(date)
-    first_email_id = email.search_emails.func(date_min=date, date_max=date)[0]["email_id"]
-    answer = [f"""email.delete_email.func(email_id='{first_email_id}')"""]
+def delete_last_email_logic():
+    sender = random.choice(senders)
+    name = sender.split("@")[0].split(".")[0]
+    last_email_id = emails_data[emails_data["sender/recipient"] == sender].iloc[-1]["email_id"]
+    answer = [f"""email.delete_email.func(email_id='{last_email_id}')"""]
     return {
-        "natural_language_date": natural_language_date,
-        "first_email_id": first_email_id,
-        "answer": answer,
-    }
-
-
-def send_email_to_last_sender_logic():
-    date = random.choice(dates)
-    natural_language_date = get_natural_language_date(date)
-    index = random.randint(0, len(subjects) - 1)
-    body = bodies[index]
-    subject = subjects[index]
-    last_email_sender = email.search_emails.func(date_min=f"{date}", date_max=f"{date}")[-1]["sender/recipient"]
-    answer = [f"""email.send_email.func(recipient='{last_email_sender}', subject='{subject}', body='{body}')"""]
-    return {
-        "natural_language_date": natural_language_date,
-        "subject": subject,
-        "body": body,
-        "last_email_sender": last_email_sender,
-        "answer": answer,
-    }
-
-
-def forward_email_logic():
-    date = random.choice(dates)
-    natural_language_date = get_natural_language_date(date)
-    last_email_id = email.search_emails.func(date_min=f"{date}", date_max=f"{date}")[-1]["email_id"]
-    recipient = random.choice(senders)
-    answer =  [f"""email.forward_email.func(email_id='{last_email_id}', recipient='{recipient}')"""]
-
-    return {
-        "natural_language_date": natural_language_date,
+        "name": name,
         "last_email_id": last_email_id,
-        "recipient": recipient,
+        "answer": answer,
+    }
+
+def delete_last_days_emails_logic():
+    sender = random.choice(senders)
+    name = sender.split("@")[0].split(".")[0]
+    days = random.randint(2, 7)
+    last_days_emails = emails_data[emails_data["sent_datetime"] >= str(HARDCODED_CURRENT_TIME - pd.Timedelta(days=days))]
+    last_days_emails = last_days_emails[last_days_emails["sender/recipient"] == sender]
+    last_days_emails = last_days_emails["email_id"].tolist()
+    answer = []
+    for email_id in last_days_emails:
+        answer.append(f"""email.delete_email.func(email_id='{email_id}')""")
+    return {
+        "name": name,
+        "days": days,
+        "answer": answer,
+    }
+
+def forward_recent_email_from_sender_logic():
+    sender_email = random.choice(senders)
+    sender_name = sender_email.split("@")[0].split(".")[0]
+    last_email_id = emails_data[emails_data["sender/recipient"] == sender_email].iloc[-1]["email_id"]
+    recipient_email = random.choice(senders)
+    while recipient_email == sender_email:
+        recipient_email = random.choice(senders)
+    recipient_name = recipient_email.split("@")[0].split(".")[0]
+    answer = [f"""email.forward_email.func(email_id='{last_email_id}', recipient='{recipient_email}')"""]
+    return {
+        "sender_name": sender_name,
+        "recipient_name": recipient_name,
+        "last_email_id": last_email_id,
+        "recipient_email": recipient_email,
+        "answer": answer,
+    }
+
+
+def forward_recent_email_about_topic_logic():
+    email_subject = random.choice(subjects)
+    email = emails_data[emails_data["subject"] == email_subject].iloc[-1]
+    recipient_email = random.choice(senders)
+    while recipient_email == email["sender/recipient"]:
+        recipient_email = random.choice(senders)
+    recipient_name = recipient_email.split("@")[0].split(".")[0]
+    answer = [f"""email.forward_email.func(email_id='{email["email_id"]}', recipient='{recipient_email}')"""]
+    return {
+        "recipient_name": recipient_name,
+        "recipient_email": recipient_email,
+        "subject": email_subject,
+        "answer": answer,
+    }
+
+
+def forward_recent_email_about_topic_to_multiple_logic():
+    email_subject = random.choice(subjects)
+    email = emails_data[emails_data["subject"] == email_subject].iloc[-1]
+    recipient_emails = random.sample([e for e in senders if e != email["sender/recipient"]], k=2)
+    recipient_names = [email.split("@")[0].split(".")[0] for email in recipient_emails]
+    recipient_name1, recipient_name2 = recipient_names
+    answer = []
+    for recipient_email in recipient_emails:
+        answer.append(f"""email.forward_email.func(email_id='{email["email_id"]}', recipient='{recipient_email}')""")
+    return {
+        "recipient_name1": recipient_name1,
+        "recipient_name2": recipient_name2,
+        "subject": email_subject,
+        "answer": answer,
+    }
+
+
+def reply_to_email_logic():
+    emails_data["name"] = emails_data["sender/recipient"].str.split("@").str[0].str.split(".").str[0]
+    email_subject = random.choice(subjects)
+    name = random.choice(senders).split("@")[0].split(".")[0]
+    selected_email_data = emails_data[(emails_data["subject"] == email_subject) & (emails_data["name"] == name)]
+
+    # Keep looping until we find a subject and name that exists in the emails data and isn't a meeting reschedule
+    while (len(selected_email_data) == 0) or (email_subject == "Meeting Rescheduled"):
+        email_subject = random.choice(subjects)
+        name = random.choice(senders).split("@")[0].split(".")[0]
+        selected_email_data = emails_data[(emails_data["subject"] == email_subject) & (emails_data["name"] == name)]
+    email_id = selected_email_data.sort_values("sent_datetime", ascending=False).iloc[0]["email_id"]
+
+    del emails_data["name"]
+    answer = [
+        f"""email.reply_email.func(email_id='{email_id}', body='Thanks for the update - I will get back to you tomorrow.')"""
+    ]
+    return {
+        "name": name,
+        "email_id": email_id,
+        "subject": email_subject,
+        "answer": answer,
+    }
+
+
+def reply_to_latest_email_logic():
+    sender_email = random.choice(senders)
+    sender_name = sender_email.split("@")[0].split(".")[0]
+    last_email_id = emails_data[emails_data["sender/recipient"] == sender_email].iloc[-1]["email_id"]
+    answer = [f"""email.reply_email.func(email_id='{last_email_id}', body='Got it, thank you!')"""]
+    return {
+        "sender_name": sender_name,
         "answer": answer,
     }
 
 
 def send_email_logic():
-    # get a random index from the list of subjects
     index = random.randint(0, len(subjects) - 1)
     body = bodies[index]
     subject = subjects[index]
-    name = senders[index].split("@")[0].split(".")[0]
-    recipient = random.choice(senders)
-    query = random.choice(subjects)
-    datetime = random.choice(datetimes)
-    date = datetime.split(" ")[0]
-    natural_language_date = get_natural_language_date(date)
-    answer = [f"""email.send_email.func(recipient='{recipient}', subject='{subject}', body='{body}')"""]
+    recipient_email = random.choice(senders)
+    name = recipient_email.split("@")[0].split(".")[0]
+    answer = [f"""email.send_email.func(recipient='{recipient_email}', subject='{subject}', body='{body}')"""]
     return {
         "body": body,
         "subject": subject,
         "name": name,
-        "recipient": recipient,
-        "query": query,
-        "date": date,
-        "natural_language_date": natural_language_date,
+        "recipient_email": recipient_email,
+        "answer": answer,
+    }
+
+
+def forward_last_weeks_email_logic():
+    last_week_email = emails_data[
+        (emails_data["sent_datetime"] >= "2023-11-20") & (emails_data["sent_datetime"] <= "2023-11-26")
+    ]
+    email = random.choice(last_week_email["sender/recipient"].unique())
+    last_week_email = last_week_email[last_week_email["sender/recipient"] == email]
+    subject = random.choice(last_week_email["subject"].unique())
+    last_week_email = last_week_email[last_week_email["subject"] == subject]
+    recipient_email = random.choice(senders)
+    while recipient_email == email:
+        recipient_email = random.choice(senders)
+    recipient_name = recipient_email.split("@")[0].split(".")[0]
+    answer = []
+    for email_id in last_week_email["email_id"]:
+        answer.append(f"""email.forward_email.func(email_id='{email_id}', recipient='{recipient_email}')""")
+    return {
+        "name": email.split("@")[0].split(".")[0],
+        "recipient_name": recipient_name,
+        "recipient_email": recipient_email,
+        "subject": subject,
         "answer": answer,
     }
 
 
 EMAIL_TEMPLATES = [
     {
-        "query": "Delete the first email on {natural_language_date}",
-        "logic": delete_first_email_logic,
+        "query": "Delete my last email from {name}",
+        "logic": delete_last_email_logic,
     },
     {
-        "query": "Find the last email on {natural_language_date} and send an email to the sender with the subject '{subject}' and body '{body}'",
-        "logic": send_email_to_last_sender_logic,
+        "query": "Delete all my emails from {name} from the last {days} days",
+        "logic": delete_last_days_emails_logic,
     },
     {
-        "query": "Find the last email on {natural_language_date} and forward it to {recipient}",
-        "logic": forward_email_logic,
-    },
-    {
-        "query": "Send an email to {recipient} saying '{body}' and title it '{subject}'",
+        "query": "Send an email to {name} saying '{body}' and title it '{subject}'",
         "logic": send_email_logic,
+    },
+    {
+        "query": "Reply to {name}'s last email about '{subject}' with 'Thanks for the update - I will get back to you tomorrow.'",
+        "logic": reply_to_email_logic,
+    },
+    {
+        "query": "Forward all the emails from {name} last week about '{subject}' to {recipient_name}",
+        "logic": forward_last_weeks_email_logic,
+    },
+    {
+        "query": "Forward the latest email about '{subject}' to {recipient_name}",
+        "logic": forward_recent_email_about_topic_logic,
+    },
+    {
+        "query": "Forward my most recent email from {sender_name} to {recipient_name}",
+        "logic": forward_recent_email_from_sender_logic,
+    },
+    {
+        "query": "Forward the last email about '{subject}' to {recipient_name1} and {recipient_name2}",
+        "logic": forward_recent_email_about_topic_to_multiple_logic,
+    },
+    {
+        "query": "Reply to the latest email from {sender_name} with 'Got it, thank you!'",
+        "logic": reply_to_latest_email_logic,
     },
 ]
 
