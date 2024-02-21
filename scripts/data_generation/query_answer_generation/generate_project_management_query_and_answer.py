@@ -129,6 +129,36 @@ PROJECT_MANAGEMENT_TEMPLATES = [
         "query": "Move any of {name}'s tasks that are in review to completed",
         "logic": move_overdue_in_review_tasks_logic,
     },
+    {
+        "query": """{name_1} is sick so reassign their unfinished tasks to {name_2}."""
+    },
+    {
+        "query": """{name_1} is on vacation now so move all their unfinished tasks to the backlog."""
+    },
+    {
+        "query": """{name_1} is sick, so move any tasks they haven't started to the backlog and anything in progress to the person with the fewest unfinished tasks."""
+    },
+    {
+        "query" """Give all of {name_1}'s overdue tasks to {name_2}."""
+    },
+    {
+        "query": """On {board}, make a backlog task on called {task_name} and assign it to the person with the fewest {in_progress_or_backlog} tasks. It's due on {day_of_week}.""",
+    },
+    {
+        "query": """Take {name_1}'s most urgent task and reassign it to {name_2}."""
+    },
+    {
+        "query": """Reassign {name_1}'s most urgent task to {name_2} - give them a deadline of {days} days after their final {in_progress_or_backlog} task."""
+    },
+    {
+        "query": """If {name} has more than {threshold} backlog tasks, assign the most urgent one to the person with the fewest {in_progress_or_backlog} tasks.""",
+    },
+    {
+        "query": """If {name} has finished their tasks, give them one called {task_name}. It's due on {day_of_week}.""",
+    },
+    {
+        "query": """If {name} hasn't got any overdue tasks, make one for them called {task_name}. It's due tomorrow.""",
+    }
 ]
 
 max_queries_per_template = 1  # Limit the number of queries per template
