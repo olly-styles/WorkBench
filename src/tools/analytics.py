@@ -3,7 +3,9 @@ from langchain.tools import tool
 
 ANALYTICS_DATA = pd.read_csv("data/processed/analytics_data.csv", dtype=str)
 PLOTS_DATA = pd.DataFrame(columns=["file_path"])
-
+METRICS = ["page_views", "session_duration_seconds", "traffic_source", "user_engaged"]
+METRIC_NAMES = ["page views", "session duration", "traffic source", "user engagement"]
+metric_naming_dict = {metric: name for metric, name in zip(METRICS, METRIC_NAMES)}
 
 def reset_state():
     """
@@ -77,12 +79,7 @@ def create_plot(time_min=None, time_max=None, value_to_plot=None, plot_type=None
         return "Start date not provided."
     if not time_max:
         return "End date not provided."
-    if value_to_plot not in [
-        "page_views",
-        "session_duration_seconds",
-        "traffic_source",
-        "user_engaged",
-    ]:
+    if value_to_plot not in METRICS:
         return "Value to plot must be one of 'page_views', 'session_duration_seconds', 'traffic_source', 'user_engaged'"
     if plot_type not in ["bar", "line", "scatter", "histogram"]:
         return "Plot type must be one of 'bar', 'line', 'scatter', or 'histogram'"
