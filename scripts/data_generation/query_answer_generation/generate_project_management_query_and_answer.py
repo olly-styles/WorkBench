@@ -11,6 +11,7 @@ random.seed(42)
 from src.evals.utils import generate_all_queries_and_answers
 from src.tools import project_management
 from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
+from scripts.data_generation.mocked_data.generate_project_management_data import project_management_team_emails
 
 project_tasks = pd.read_csv("data/processed/project_tasks.csv", dtype=str)
 emails = project_tasks["assigned_to"].unique()
@@ -22,7 +23,7 @@ def move_tasks_to_in_review_logic():
     """
     Move all tasks assigned to someone that are in progress to in review.
     """
-    email = random.choice(emails)
+    email = random.choice(project_management_team_emails)
     name = email.split("@")[0].split(".")[0]
 
     tasks_in_progress = project_tasks[
@@ -41,7 +42,7 @@ def add_new_task_logic():
     """
     Add a new task to the backlog and assign it to someone.
     """
-    email = random.choice(emails)
+    email = random.choice(project_management_team_emails)
     name = email.split("@")[0].split(".")[0]
     task_name = random.choice(task_names)
     board = random.choice(boards)
@@ -56,7 +57,7 @@ def move_overdue_tasks_logic():
     """
     Move all overdue tasks that we haven't started on the {board} board to the in-progress
     """
-    email = random.choice(emails)
+    email = random.choice(project_management_team_emails)
     name = email.split("@")[0].split(".")[0]
 
     tasks = project_tasks[
@@ -93,7 +94,7 @@ def move_overdue_in_review_tasks_logic():
     """
     Move any of {name}'s tasks that are In Review to Completed
     """
-    email = random.choice(emails)
+    email = random.choice(project_management_team_emails)
     name = email.split("@")[0].split(".")[0]
     tasks_in_review = project_tasks[
         (project_tasks["assigned_to"] == email) & (project_tasks["list_name"] == "In Review")

@@ -105,9 +105,11 @@ def create_task(task_templates, team_emails_by_board, lists, start_date, end_dat
 # Sample data for tasks, team members, and lists
 team_member_emails = pd.read_csv("data/raw/email_addresses.csv", header=None).values.flatten()
 
-backend_team_emails = team_member_emails[: len(team_member_emails) // 3]
-frontend_team_emails = team_member_emails[len(team_member_emails) // 3 : 2 * len(team_member_emails) // 3]
-design_team_emails = team_member_emails[2 * len(team_member_emails) // 3 : len(team_member_emails)]
+backend_team_emails = team_member_emails[: len(team_member_emails) // 4]
+frontend_team_emails = team_member_emails[len(team_member_emails) // 4 : 2 * len(team_member_emails) // 4]
+design_team_emails = team_member_emails[2 * len(team_member_emails) // 4 : 3 * len(team_member_emails) // 4]
+project_management_team_emails = backend_team_emails + frontend_team_emails + design_team_emails
+# The remaining team members are in the sales team. They're not part of the project management data, and are used in the CRM data instead.
 
 lists = ["Backlog", "In Progress", "In Review", "Completed"]
 boards = ["Back end", "Front end", "Design"]
@@ -128,16 +130,17 @@ team_emails_by_board = {
     "Design": design_team_emails,
 }
 
-# Adjusted task generation loop
-for board in boards:
-    for i in range(100):
-        task = create_task(task_templates, team_emails_by_board, lists, start_date, end_date, board)
-        project_management_data.loc[len(project_management_data)] = task
+if __name__ == "__main__":
+    # Adjusted task generation loop
+    for board in boards:
+        for i in range(100):
+            task = create_task(task_templates, team_emails_by_board, lists, start_date, end_date, board)
+            project_management_data.loc[len(project_management_data)] = task
 
-# Optional: Sort by due date or any other column as needed
-project_management_data = project_management_data.sort_values(by="due_date").reset_index(drop=True)
+    # Optional: Sort by due date or any other column as needed
+    project_management_data = project_management_data.sort_values(by="due_date").reset_index(drop=True)
 
-# Save to CSV
-project_management_data.to_csv("data/processed/project_tasks.csv", index=False)
+    # Save to CSV
+    project_management_data.to_csv("data/processed/project_tasks.csv", index=False)
 
-print("Mocked project management data generated successfully.")
+    print("Mocked project management data generated successfully.")
