@@ -38,9 +38,7 @@ def get_visitor_information_by_id(visitor_id=None):
     """
     if not visitor_id:
         return "Visitor ID not provided."
-    visitor_data = ANALYTICS_DATA[ANALYTICS_DATA["visitor_id"] == visitor_id].to_dict(
-        orient="records"
-    )
+    visitor_data = ANALYTICS_DATA[ANALYTICS_DATA["visitor_id"] == visitor_id].to_dict(orient="records")
     if visitor_data:
         return visitor_data
     else:

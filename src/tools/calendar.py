@@ -48,9 +48,7 @@ def get_event_information_by_id(event_id=None, field=None):
         return "Event ID not provided."
     if not field:
         return "Field not provided."
-    event = CALENDAR_EVENTS[CALENDAR_EVENTS["event_id"] == event_id].to_dict(
-        orient="records"
-    )
+    event = CALENDAR_EVENTS[CALENDAR_EVENTS["event_id"] == event_id].to_dict(orient="records")
     if event:
         if field in event[0]:
             return {field: event[0][field]}
@@ -87,21 +85,16 @@ def search_events(query="", time_min=None, time_max=None):
     ]
     """
     events = CALENDAR_EVENTS[
-        (CALENDAR_EVENTS["event_name"].str.contains(query))
-        | (CALENDAR_EVENTS["participant_email"].str.contains(query))
+        (CALENDAR_EVENTS["event_name"].str.contains(query, case=False))
+        | (CALENDAR_EVENTS["participant_email"].str.contains(query, case=False))
     ].to_dict(orient="records")
     if time_min:
-        events = [
-            event
-            for event in events
-            if pd.Timestamp(event["event_start"]) >= pd.Timestamp(time_min)
-        ]
+        events = [event for event in events if pd.Timestamp(event["event_start"]) >= pd.Timestamp(time_min)]
     if time_max:
         events = [
             event
             for event in events
-            if pd.Timestamp(event["event_start"])
-            + pd.Timedelta(minutes=int(event["duration"]))
+            if pd.Timestamp(event["event_start"]) + pd.Timedelta(minutes=int(event["duration"]))
             <= pd.Timestamp(time_max)
         ]
     if events:
@@ -111,9 +104,7 @@ def search_events(query="", time_min=None, time_max=None):
 
 
 @tool("calendar.create_event", return_direct=False)
-def create_event(
-    event_name=None, participant_email=None, event_start=None, duration=None
-):
+def create_event(event_name=None, participant_email=None, event_start=None, duration=None):
     """
     Creates a new event.
 

@@ -29,9 +29,7 @@ def test_get_email_information_by_id():
     Tests get_email_information_by_id.
     """
     email.EMAILS = pd.DataFrame(test_emails)
-    assert email.get_email_information_by_id.func("12345678", "subject") == {
-        "subject": "Project Update"
-    }
+    assert email.get_email_information_by_id.func("12345678", "subject") == {"subject": "Project Update"}
     email.reset_state()
 
 
@@ -82,10 +80,7 @@ def test_send_email():
     """
     Tests send_email.
     """
-    assert (
-        email.send_email.func("jane@example.com", "Reminder", "Meeting at 10am")
-        == "Email sent successfully."
-    )
+    assert email.send_email.func("jane@example.com", "Reminder", "Meeting at 10am") == "Email sent successfully."
     # check that the email was added to the outbox
     assert email.EMAILS["inbox/outbox"].values[-1] == "outbox"
     assert email.EMAILS["sender/recipient"].values[-1] == "jane@example.com"
@@ -99,10 +94,7 @@ def test_send_email_missing_args():
     Tests send_email with missing arguments.
     """
     assert email.send_email.func() == "Recipient, subject, or body not provided."
-    assert (
-        email.send_email.func("jane@example.com")
-        == "Recipient, subject, or body not provided."
-    )
+    assert email.send_email.func("jane@example.com") == "Recipient, subject, or body not provided."
 
 
 def test_delete_email():
@@ -136,10 +128,7 @@ def test_forward_email():
     Tests forward_email.
     """
     email.EMAILS = pd.DataFrame(test_emails)
-    assert (
-        email.forward_email.func("12345679", "example@email.com")
-        == "Email forwarded successfully."
-    )
+    assert email.forward_email.func("12345679", "example@email.com") == "Email forwarded successfully."
     # Check that the email was added to the outbox
     assert email.EMAILS["inbox/outbox"].values[-1] == "outbox"
     assert email.EMAILS["sender/recipient"].values[-1] == "example@email.com"
@@ -154,6 +143,4 @@ def test_forward_email_missing_args():
     """
     assert email.forward_email.func() == "Email ID or recipient not provided."
     assert email.forward_email.func("12345679") == "Email ID or recipient not provided."
-    assert email.forward_email.func(recipient="example@email.com") == (
-        "Email ID or recipient not provided."
-    )
+    assert email.forward_email.func(recipient="example@email.com") == ("Email ID or recipient not provided.")

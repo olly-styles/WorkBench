@@ -38,6 +38,4 @@ if __name__ == "__main__":
         for action in ["single", "multi"]:
             if action == "single" and tool == "multi_domain":
                 continue
-            get_latest_results_from_dir(
-                results_root_dir, tool, action, models, args.print_errors
-            )
+            get_latest_results_from_dir(results_root_dir, tool, action, models, args.print_errors)

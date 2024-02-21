@@ -67,10 +67,7 @@ def test_create_plot():
     time_max = "2023-10-02"
     plot_type = "bar"
     expected_file_path = f"plots/{time_min}_{time_max}_{value_to_plot}_{plot_type}.png"
-    assert (
-        analytics.create_plot.func(time_min, time_max, value_to_plot, plot_type)
-        == expected_file_path
-    )
+    assert analytics.create_plot.func(time_min, time_max, value_to_plot, plot_type) == expected_file_path
 
 
 def test_create_plot_missing_arguments():
@@ -126,19 +123,10 @@ def test_traffic_source_count():
     """
     analytics.ANALYTICS_DATA = pd.DataFrame(test_analytics_data)
     # Test with a specific date range
-    assert (
-        analytics.traffic_source_count.func("2023-10-01", "2023-10-02", "search engine")
-        == 1
-    )
+    assert analytics.traffic_source_count.func("2023-10-01", "2023-10-02", "search engine") == 1
     # Test with a broader date range
-    assert (
-        analytics.traffic_source_count.func("2023-09-30", "2023-10-03", "search engine")
-        == 1
-    )
+    assert analytics.traffic_source_count.func("2023-09-30", "2023-10-03", "search engine") == 1
     # Test with no date range (should count all visits)
     assert analytics.traffic_source_count.func() == 2
     # Test with a date range that includes no visits
-    assert (
-        analytics.traffic_source_count.func("2023-10-03", "2023-10-04", "search engine")
-        == 0
-    )
+    assert analytics.traffic_source_count.func("2023-10-03", "2023-10-04", "search engine") == 0

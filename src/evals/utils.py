@@ -164,37 +164,39 @@ def has_side_effects(predicted_actions, ground_truth_actions):
     return state_changed and not correct
 
 
-def generate_question_and_answer(template):
-    """Generates question and answer from template."""
+def generate_query_and_answer(template):
+    """Generates query and answer from template."""
     logic = template["logic"]()
-    question = template["question"].format(**logic)
-    stop = logic.get("no_action", False)
-    if stop:
-        answer = []
+    query = template["query"].format(**logic)
     if template["answer"] == "in_logic":
         answer = logic["answer"]
     else:
         answer = [step.format(**logic) for step in template["answer"]]
-    return {"question": question, "answer": answer, "template": {k: template[k] for k in template if k != "logic"}}
+    return {
+        "query": query,
+        "answer": answer,
+        "template": {k: template[k] for k in template if k != "logic"},
+    }
 
 
-def generate_all_questions_and_answers(templates, max_questions_per_template, verbose=True):
-    """Generates a limited number of unique questions and answers for each template."""
-    generated_questions_and_answers = []
+def generate_all_queries_and_answers(templates, max_queries_per_template, verbose=True):
+    """Generates a limited number of unique queries and answers for each template."""
+    generated_queries_and_answers = []
     for template in templates:
-        for _ in range(max_questions_per_template):
-            q_and_a = generate_question_and_answer(template)
-            questions = [q["question"] for q in generated_questions_and_answers]
-            if q_and_a["question"] not in questions:
-                generated_questions_and_answers.append(q_and_a)
+        for _ in range(max_queries_per_template):
+            q_and_a = generate_query_and_answer(template)
+            queries = [q["query"] for q in generated_queries_and_answers]
+            if q_and_a["query"] not in queries:
+                generated_queries_and_answers.append(q_and_a)
 
     if verbose:
-        for question_and_answer in generated_questions_and_answers:
-            print(question_and_answer["question"])
-            print(question_and_answer["answer"])
-            print(question_and_answer["template"])
-        
-    return generated_questions_and_answers
+        for query_and_answer in generated_queries_and_answers:
+            print(query_and_answer["query"])
+            print(query_and_answer["answer"])
+            print(query_and_answer["template"])
+
+    return generated_queries_and_answers
+
 
 def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     """"""
@@ -202,23 +204,19 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     predictions = predictions.fillna("")
 
     ground_truth = ground_truth_df.rename(columns={"answer": "ground_truth"})
-    df = predictions.merge(ground_truth, on="question")
+    df = predictions.merge(ground_truth, on="query")
     assert (
         len(predictions) == len(ground_truth) == len(df)
-    ), f"{len(predictions)} predictions does not match {len(ground_truth_df)} ground truth answers. Check that the predictions and ground truth are for the same questions."
+    ), f"{len(predictions)} predictions does not match {len(ground_truth_df)} ground truth answers. Check that the predictions and ground truth are for the same queries."
     df["correct"] = [
-        is_correct(pred, gt, error)
-        for pred, gt, error in zip(df["prediction"], df["ground_truth"], df["error"])
+        is_correct(pred, gt, error) for pred, gt, error in zip(df["prediction"], df["ground_truth"], df["error"])
     ]
-    df["unwanted_side_effects"] = [
-        has_side_effects(pred, gt)
-        for pred, gt in zip(df["prediction"], df["ground_truth"])
-    ]
+    df["unwanted_side_effects"] = [has_side_effects(pred, gt) for pred, gt in zip(df["prediction"], df["ground_truth"])]
 
-    # print out the questions that were not answered correctly
+    # print out the queries that were not answered correctly
     if print_errors:
         for _, row in df[~df["correct"]].iterrows():
-            print(f"Question: {row['question']}")
+            print(f"Question: {row['query']}")
             print(f"Prediction: {row['prediction']}")
             print(f"Ground truth: {row['ground_truth']}")
             print(f"Unwanted side effects: {row['unwanted_side_effects']}")
@@ -228,39 +226,31 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     print(f"Accuracy: {round(df['correct'].mean() * 100, 2)}%")
 
 
-def get_latest_results_from_dir(
-    results_root_dir, tool, action, model_list, print_errors=False
-):
+def get_latest_results_from_dir(results_root_dir, tool, action, model_list, print_errors=False):
     """Get the latest results for each model in the results directory"""
     results_dir = os.path.join(results_root_dir, tool, action)
     results_files = os.listdir(results_dir)
     for model in model_list:
-        model_results_files = [
-            os.path.join(results_dir, file) for file in results_files if model in file
-        ]
+        model_results_files = [os.path.join(results_dir, file) for file in results_files if model in file]
         if not len(model_results_files):
             print(f"\nNo results found for {tool}, {action} action with {model}")
         else:
             latest_results_file = max(model_results_files, key=os.path.getctime)
-            ground_truth_path = os.path.join(
-                "data", "processed", f"{tool}_questions_and_answers_{action}_action.csv"
-            )
+            ground_truth_path = os.path.join("data", "processed", f"{tool}_queries_and_answers_{action}_action.csv")
             predictions = pd.read_csv(latest_results_file)
             ground_truth = pd.read_csv(ground_truth_path, dtype=str)
             print(f"\nCalculating metrics for {tool}, {action} action with {model}")
             calculate_metrics(ground_truth, predictions, print_errors=print_errors)
 
 
-def generate_results(questions_path, model_name):
-    """Generates results for a given model and set of questions. Saves the results to a csv file."""
-    questions = pd.read_csv(
-        questions_path,
-        usecols=["question"],
-    )["question"].tolist()
+def generate_results(queries_path, model_name):
+    """Generates results for a given model and set of queries. Saves the results to a csv file."""
+    queries = pd.read_csv(
+        queries_path,
+        usecols=["query"],
+    )["query"].tolist()
 
-    results = pd.DataFrame(
-        columns=["question", "function_calls", "full_response", "error"]
-    )
+    results = pd.DataFrame(columns=["query", "function_calls", "full_response", "error"])
     if model_name == "gpt-3.5":
         llm = OpenAI(
             model_name="gpt-3.5-turbo-instruct",
@@ -295,35 +285,34 @@ def generate_results(questions_path, model_name):
         )
 
     else:
-        raise ValueError(
-            "Invalid --model_name. Must be one of " + ", ".join(AVAILABLE_LLMS)
-        )
+        raise ValueError("Invalid --model_name. Must be one of " + ", ".join(AVAILABLE_LLMS))
     agent = initialize_agent(
         llm=llm,
         agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
         tools=email_toolkit + calendar_toolkit + analytics_toolkit,
         verbose=True,
         return_intermediate_steps=True,
-        max_iterations=5,
+        max_iterations=15,
+        max_execution_time=60,
     )
     agent.agent.llm_chain.prompt.messages[0].prompt.template = (
-        f"Today's date is {HARDCODED_CURRENT_TIME.date()}. Remember the current date when answering queries. "
+        # Todays date is day of the week,
+        f"Today's date is {HARDCODED_CURRENT_TIME.strftime('%A')}, {HARDCODED_CURRENT_TIME.date()} and the current time is {HARDCODED_CURRENT_TIME.time()}. Remember the current date and time when answering queries. "
         + agent.agent.llm_chain.prompt.messages[0].prompt.template
     )
 
-    for question in questions:
+    for query in queries:
         error = ""
         function_calls = []
         response = ""
         try:
-            response = agent({"input": question})
+            response = agent({"input": query})
             for step in response["intermediate_steps"]:
                 function_calls.append(convert_agent_action_to_function_call(step[-2]))
 
             error = (
                 response["output"]
-                if response["output"]
-                == "Agent stopped due to iteration limit or time limit."
+                if response["output"] == "Agent stopped due to iteration limit or time limit."
                 else error
             )
 
@@ -336,13 +325,13 @@ def generate_results(questions_path, model_name):
                 "Request too large",
             ]
             if any([msg in str(e) for msg in context_window_error_messages]):
-                print(f"Error with question: {question}")
+                print(f"Error with query: {query}")
                 error = "Context window exceeded"
             else:
-                print(f"Unknown error with question: {question}")
+                print(f"Unknown error with query: {query}")
                 error = str(e)
 
-        print(f"### Question: {question}")
+        print(f"### Question: {query}")
         print(f"### Answer: {function_calls}")
 
         results = pd.concat(
@@ -351,37 +340,28 @@ def generate_results(questions_path, model_name):
                 pd.DataFrame(
                     [
                         [
-                            question,
+                            query,
                             function_calls,
                             str(response),
                             error,
                         ]
                     ],
-                    columns=["question", "function_calls", "full_response", "error"],
+                    columns=["query", "function_calls", "full_response", "error"],
                 ),
             ],
             ignore_index=True,
         )
-        # Reset all data after each question
+        # Reset all data after each query
         for domain in DOMAINS:
             domain.reset_state()
 
-    question_type = (
-        questions_path.split("/")[-1]
-        .split(".")[0]
-        .replace("questions_and_answers_", "")
-    )
-    domain, action_length = question_type.split("_")[:2]
-    if "multi" in domain:  # exception handler for multi-domain questions
-        save_dir = os.path.join("data", "results", "multi_domain", "multi")
-    else:
-        save_dir = os.path.join("data", "results", domain, action_length)
+    query_type = queries_path.split("/")[-1].split(".")[0].replace("queries_and_answers_", "")
+    domain = query_type.split("_")[0]
+    save_dir = os.path.join("data", "results", domain)
     os.makedirs(save_dir, exist_ok=True)
 
     # Removes microseconds and makes it more readable
-    current_datetime = (
-        str(pd.Timestamp.now()).split(".")[0].replace(" ", "_").replace(":", "-")
-    )
+    current_datetime = str(pd.Timestamp.now()).split(".")[0].replace(" ", "_").replace(":", "-")
     save_path = os.path.join(save_dir, model_name + "_" + current_datetime + ".csv")
     results.to_csv(save_path, index=False, quoting=csv.QUOTE_ALL)
     return results

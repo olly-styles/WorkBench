@@ -80,24 +80,18 @@ def search_emails(query="", date_min=None, date_max=None):
     [{{"email_id": "12345678", "inbox/outbox": "inbox", "subject": "Project Update", "sender/recipient": "jane@example.com", "sent_datetime": "2024-01-10 09:30:00", "body": "Please find the project update attached."}}]
     """
     emails = EMAILS[
-        (EMAILS["subject"].str.contains(query))
-        | (EMAILS["body"].str.contains(query))
-        | (EMAILS["sender/recipient"].str.contains(query))
+        (EMAILS["subject"].str.contains(query, case=False))
+        | (EMAILS["body"].str.contains(query, case=False))
+        | (EMAILS["sender/recipient"].str.contains(query, case=False))
     ].to_dict(orient="records")
     if date_min:
         emails = [
-            email
-            for email in emails
-            if pd.Timestamp(email["sent_datetime"]).date()
-            >= pd.Timestamp(date_min).date()
+            email for email in emails if pd.Timestamp(email["sent_datetime"]).date() >= pd.Timestamp(date_min).date()
         ]
     if date_max:
         # inclusive, remove time from timestamp
         emails = [
-            email
-            for email in emails
-            if pd.Timestamp(email["sent_datetime"]).date()
-            <= pd.Timestamp(date_max).date()
+            email for email in emails if pd.Timestamp(email["sent_datetime"]).date() <= pd.Timestamp(date_max).date()
         ]
     if emails:
         return emails[:5]
@@ -206,8 +200,4 @@ def forward_email(email_id=None, recipient=None):
         return "Email not found."
     email = EMAILS[EMAILS["email_id"] == email_id].to_dict(orient="records")[0]
     result = send_email.func(recipient, f"FW: {email['subject']}", email["body"])
-    return (
-        "Email forwarded successfully."
-        if result == "Email sent successfully."
-        else result
-    )
+    return "Email forwarded successfully." if result == "Email sent successfully." else result
