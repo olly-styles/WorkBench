@@ -33,11 +33,14 @@ def delete_last_email_logic():
         "answer": answer,
     }
 
+
 def delete_last_days_emails_logic():
     sender = random.choice(senders)
     name = sender.split("@")[0].split(".")[0]
     days = random.randint(2, 7)
-    last_days_emails = emails_data[emails_data["sent_datetime"] >= str(HARDCODED_CURRENT_TIME - pd.Timedelta(days=days))]
+    last_days_emails = emails_data[
+        emails_data["sent_datetime"] >= str(HARDCODED_CURRENT_TIME - pd.Timedelta(days=days))
+    ]
     last_days_emails = last_days_emails[last_days_emails["sender/recipient"] == sender]
     last_days_emails = last_days_emails["email_id"].tolist()
     answer = []
@@ -48,6 +51,7 @@ def delete_last_days_emails_logic():
         "days": days,
         "answer": answer,
     }
+
 
 def forward_recent_email_from_sender_logic():
     sender_email = random.choice(senders)
