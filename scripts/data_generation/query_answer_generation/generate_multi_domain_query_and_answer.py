@@ -78,12 +78,69 @@ MULTI_DOMAIN_TEMPLATES = [
         "logic": find_email_schedule_meeting_sender_logic,
     },
     {
-        "query": "Find the first event on {natural_language_event_date} and send an email to the participant with the event name as the subject and the body 'Remember to attend this event.'",
+        "query": """Send an email to attendees of the first event on {natural_language_event_date}. Title it with the event name and tell them 'Remember to attend this event.'""",
         "logic": find_event_send_email_logic,
+    },
+    {
+        "query": """If {name} hasn't sent me any emails in the past {days} days, schedule a {duration} meeting with them for {day_of_week} at {natural_language_time}.""",
+    },
+    {
+        "query": """If I haven't met with {name} in the past {days} days, send them an email titled 'Catch up soon?' saying 'We haven't caught up since {last_meeting_date} - can you send some availability over next week?'""",
+    },
+    {
+        "query": """If I don't have any meetings scheduled with {name} in the next {days} days, send them an email titled 'Catch up soon?' saying 'We haven't caught up since {last_meeting_date} - can you send some availability over next week?'""",
+    },
+    {
+        "query": """If my next meeting with {name} is more than {days} days away, send them an email titled 'Can we meet sooner?' saying 'We're not meeting until {next_meeting_date} - can we meet sooner?'""",
+    },
+    {   
+        "query": """Send an email to {name} titled '{natural_language_metric}' and tell them 'There were {number} {natural_language_metric} on {natural_language_date}'""",
+    },
+    {
+        "query": """Find the correlation between {natural_language_metric_1} and {natural_language_metric_2},
+        then send an email to {name} titled '{natural_language_metric_1} and {natural_language_metric_2}'.
+        If there's a positive correlation, tell them 'Their correlation is {correlation}. We should discuss.'
+        Otherwise, tell them 'They're unrelated, no need to discuss.'""",
+    }
+    {
+        "query": """If {natural_language_metric} was {more_or_less} than {threshold} at any time between {date_min} and {date_max}, 
+        book a meeting with {name} for {day_of_week} at {natural_language_time} titled 'Discuss {natural_language_metric}'""",
+    },
+    {
+        "query": """If {natural_language_metric} {fell_or_grew} by more than {threshold} from {date_min} to {date_max},
+        book a meeting with {name} for {day_of_week} at {natural_language_time} titled 'Discuss {natural_language_metric}'""",
+    },
+    {
+        "query": """If there's a {positive_or_negative} correlation between {natural_language_metric_1} and {natural_language_metric_2} since {date_min},
+        book a meeting with {name} for {day_of_week} at {natural_language_time} titled 'Discuss {natural_language_metric_1} and {natural_language_metric_2}'""",
+    },
+    {
+        "query": """If {natural_language_metric} {fell_or_grew} since {date_min},
+        email {name} saying 'I noticed {natural_language_metric} {fell_or_grew} recently - can we discuss?'
+        and title it  'Discuss {natural_language_metric}'""",
+    },
+    {
+        "query": """If {natural_language_metric} was {more_or_less} than {threshold} at any time since {date_min}, 
+        email {name} saying 'I noticed {natural_language_metric} was {more_or_less} than {threshold} recently - can we discuss?' 
+        and title it 'Discuss {natural_language_metric}'""",
+    },
+    {   # examples of 3-domain query
+        "query": """If {netural_language_metric} {fell_or_grew} since {date_min},
+        email {name} saying 'We'r e not doing well on {natural_language_metric} recently - can we discuss?'
+        and title it 'Discuss {natural_language_metric}'. 
+        then also book a meeting with them called 'Catch up on {natural_language_metric}' at the earliest time I'm free on {day_of_week}""",
+    },
+    {
+        "query": """If {natural_language_metric} was {more_or_less} than {threshold} at any time since {date_min},
+        email {name} saying 'We're not doing well on {natural_language_metric} recently - can we discuss?'
+        and title it 'Discuss {natural_language_metric}', 
+        and also book a meeting with them called 'Catch up on {natural_language_metric}' at the earliest time I'm free on {day_of_week}.
+        Otherwise, email {name} saying 'I just checked {natural_language_metric} since {date_min} and they're doing great - nice work!' 
+        Title it 'Nice work on {natural_language_metric}'""",
     },
 ]
 
-max_queries_per_template = 5
+max_queries_per_template = 1
 if __name__ == "__main__":
     generated_queries_and_answers = generate_all_queries_and_answers(MULTI_DOMAIN_TEMPLATES, max_queries_per_template)
     df = pd.DataFrame(generated_queries_and_answers)

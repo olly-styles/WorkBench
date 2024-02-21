@@ -31,17 +31,14 @@ def page_views_plot_logic():
 
 ANALYTICS_TEMPLATES = [
     {
-        "query": """Can you plot {natural_language_metric} since {natural_language_date}?""",
+        "query": """Can you make a chart of {natural_language_metric} since {natural_language_date}?""",
         "logic": page_views_plot_logic,
     },
     {
         "query": """Plot the distribution of {natural_language_metric} on {date}""",
     },
     {
-        "query": """Can you plot the distribution of both {natural_language_metric_1} and {natural_language_metric_2} between {date_min} and {date_max}?""",
-    },
-    {
-        "query": """How many {natural_language_metric} did we get from {date_min} to {date_max}?""",
+        "query": """Can you chart the distribution of both {natural_language_metric_1} and {natural_language_metric_2} between {date_min} and {date_max}?""",
     },
     {
         "query": """If {natural_language_metric} was {more_or_less} than {threshold} at any time between {date_min} and {date_max}, plot it for me""",
@@ -50,7 +47,7 @@ ANALYTICS_TEMPLATES = [
         "query": """If {natural_language_metric} {fell_or_grew} by more than {threshold} from {date_min} to {date_max}, plot it alongside {natural_language_metric_2}""",
     },
     {
-        "query": """Make a plot of the correlation between {natural_language_metric_1} and {natural_language_metric_2} with data from {date_min} to {date_max}""",
+        "query": """Make a chart of the correlation between {natural_language_metric_1} and {natural_language_metric_2} with data from {date_min} to {date_max}""",
     },
     {
         "query": """If there's a {positive_or_negative} correlation between {natural_language_metric_1} and {natural_language_metric_2} since {date_min}, make a plot of it""",
@@ -60,7 +57,10 @@ ANALYTICS_TEMPLATES = [
     },
     {
         "query": """Make a bar chart comparing {natural_language_metric_1} and {natural_language_metric_2} since {date_min}""",
-    }
+    },
+    {
+        "query": """Plot the {most_or_least} popular traffic source since {date_min}""", 
+    },
 ]
 
 max_queries_per_template = 1  # Limit the number of queries per template
