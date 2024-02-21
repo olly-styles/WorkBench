@@ -70,7 +70,7 @@ def test_create_task():
     Tests create_task.
     """
     new_task_id = project_management.create_task.func(
-        "Integrate API service with frontend", "sam@example.com", "In progress", "2023-06-01", "Front end"
+        "Integrate API service with frontend", "Santiago.Martinez@company.com", "In Progress", "2023-06-01", "Front end"
     )
     assert len(new_task_id) == 8  # Check if the task_id is 8 digits long
     assert (
