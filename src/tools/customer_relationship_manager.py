@@ -111,7 +111,7 @@ def update_customer(customer_id=None, field=None, new_value=None):
         return "Customer not found."
 
 @tool("customer_relationship_manager.add_customer", return_direct=False)
-def add_customer(customer_name=None, assigned_to=None, customer_email=None, customer_phone=None, last_contact_date=None, product_interest=None, status=None, notes="", follow_up_by=None):
+def add_customer(customer_name=None, assigned_to=None, status=None, customer_email=None, customer_phone=None, last_contact_date=None, product_interest=None, notes="", follow_up_by=None):
     """
     Adds a new customer record.
 
@@ -121,17 +121,17 @@ def add_customer(customer_name=None, assigned_to=None, customer_email=None, cust
         Name of the customer.
     assigned_to : str
         Email address of the person assigned to the customer.
-    customer_email : str
-        Email address of the customer.
-    customer_phone : str
-        Phone number of the customer.
-    last_contact_date : str
-        The last date the customer was contacted. Format: "YYYY-MM-DD"
-    product_interest : str
-        Product interest of the customer. One of: "Software", "Hardware", "Services", "Consulting", "Training"
     status : str
         Current status of the customer. One of: "Qualified", "Won", "Lost", "Lead", "Proposal"
-    notes : str, optional
+    customer_email : str, optional
+        Email address of the customer.
+    customer_phone : str, optional
+        Phone number of the customer.
+    last_contact_date : str, optional
+        The last date the customer was contacted. Format: "YYYY-MM-DD"
+    product_interest : str, optional
+        Product interest of the customer. One of: "Software", "Hardware", "Services", "Consulting", "Training"
+    notes : str, optional, optional
         Notes about the customer.
     follow_up_by : str, optional
         Date for the next follow up. Format: "YYYY-MM-DD"
@@ -143,12 +143,12 @@ def add_customer(customer_name=None, assigned_to=None, customer_email=None, cust
         
     Examples
     --------
-    >>> crm.add_customer("John Smith", "sam@example.com", "john.smith@example.com", "123-456-7890", "2023-01-01", "Software", "Lead")
+    >>> crm.add_customer("Sam Smith", "sam@example.com", "Lead", "sam.smith@example.com", "123-456-7890", "2023-01-01", "Software")
     "00000201"
     """
     global CRM_DATA
-    if not all([customer_name, assigned_to, customer_email, last_contact_date, product_interest, status]):
-        return "Please provide all required fields: customer_name, assigned_to, customer_email, last_contact_date, product_interest, status."
+    if not all([customer_name, assigned_to, status]):
+        return "Please provide all required fields: customer_name, assigned_to, status."
     
     new_id = str(int(CRM_DATA["customer_id"].max()) + 1).zfill(8)
     new_customer = pd.DataFrame({

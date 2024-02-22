@@ -13,10 +13,11 @@ from scripts.data_generation.mocked_data.generate_project_management_data import
 
 random.seed(42)
 
+first_names = ["Alex", "Jordan", "Taylor", "Casey", "Jamie", "Morgan", "Cameron", "Reese", "Quinn", "Peyton", "Shannon", "Rahul", "Riley", "Jessie", "Dakota", "Angel", "Parker", "Avery", "Jaden", "Kerry"]
+last_names = ["Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor", "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin", "Thompson", "Garcia", "Martinez", "Robinson"]
+
 # Define a function to generate random customer names
-def generate_random_name():
-    first_names = ["Alex", "Jordan", "Taylor", "Casey", "Jamie", "Morgan", "Cameron", "Reese", "Quinn", "Peyton", "Shannon", "Rahul", "Riley", "Jessie", "Dakota", "Angel", "Parker", "Avery", "Jaden", "Kerry"]
-    last_names = ["Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor", "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin", "Thompson", "Garcia", "Martinez", "Robinson"]
+def generate_random_name(first_names, last_names):
     return random.choice(first_names) + " " + random.choice(last_names)
 
 # Define a function to generate random email addresses
@@ -53,9 +54,9 @@ crm_data = pd.DataFrame(columns=["customer_id", "assigned_to", "customer_name", 
 num_customers = 200
 
 for i in range(num_customers):
-    customer_name = generate_random_name()
+    customer_name = generate_random_name(first_names, last_names)
     while customer_name in crm_data["customer_name"].values:
-        customer_name = generate_random_name()
+        customer_name = generate_random_name(first_names, last_names)
     customer_id = str(i).zfill(8)
     customer_email = generate_random_email(customer_name)
     customer_phone = generate_random_phone() if np.random.choice([True, False]) else None
