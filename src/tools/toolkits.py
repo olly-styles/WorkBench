@@ -41,4 +41,6 @@ calendar_toolkit = [t["tool"] for t in tool_information if t["name"].split(".")[
 email_toolkit = [t["tool"] for t in tool_information if t["name"].split(".")[0] == "email"]
 analytics_toolkit = [t["tool"] for t in tool_information if t["name"].split(".")[0] == "analytics"]
 project_management_toolkit = [t["tool"] for t in tool_information if t["name"].split(".")[0] == "project_management"]
-customer_relationship_manager_toolkit = [t["tool"] for t in tool_information if t["name"].split(".")[0] == "customer_relationship_manager"]
+customer_relationship_manager_toolkit = [
+    t["tool"] for t in tool_information if t["name"].split(".")[0] == "customer_relationship_manager"
+]

@@ -77,7 +77,14 @@ def execute_actions_and_reset_state(actions):
     # Reset the state of the tools
     for domain in DOMAINS:
         domain.reset_state()
-    return True, new_calendar_state, new_email_state, new_analytics_state, new_project_management_state, new_customer_relationship_manager_state
+    return (
+        True,
+        new_calendar_state,
+        new_email_state,
+        new_analytics_state,
+        new_project_management_state,
+        new_customer_relationship_manager_state,
+    )
 
 
 def is_correct(predicted_actions, ground_truth_actions, error):
@@ -173,7 +180,9 @@ def has_side_effects(predicted_actions, ground_truth_actions):
     state_changed |= not predicted_email_state.equals(original_state["email"])
     state_changed |= not predicted_analytics_state.equals(original_state["analytics"])
     state_changed |= not predicted_project_management_state.equals(original_state["project_management"])
-    state_changed |= not predicted_customer_relationship_manager_state.equals(original_state["customer_relationship_manager"])
+    state_changed |= not predicted_customer_relationship_manager_state.equals(
+        original_state["customer_relationship_manager"]
+    )
 
     errors = ""  # Errors like exceeding the context window or running out of time don't have side effects, so we assume no errors
     correct = is_correct(predicted_actions, ground_truth_actions, errors)

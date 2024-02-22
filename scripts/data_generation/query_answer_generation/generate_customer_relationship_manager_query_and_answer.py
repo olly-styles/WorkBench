@@ -3,6 +3,7 @@ import random
 import csv
 import sys
 import os
+
 project_root = os.path.abspath(os.path.curdir)
 sys.path.append(project_root)
 
@@ -19,6 +20,7 @@ statuses = ["Qualified", "Won", "Lost", "Lead", "Proposal"]
 assigned_tos = list(CRM_DATA["assigned_to"].unique())
 customer_ids = list(CRM_DATA["customer_id"].unique())
 
+
 def generate_new_customer_name():
     first_names = ["David", "James", "Robert", "William", "Mary", "Patricia", "Linda"]
     last_names = ["Jones", "Miller", "Davis", "Garcia", "Martinez", "Robinson", "Mehta"]
@@ -34,16 +36,20 @@ def update_customer_status_logic():
     return {
         "customer_name": customer_name,
         "new_status": new_status,
-        "answer": [f"""customer_relationship_manager.update_customer.func(customer_id='{customer_id}', field='status', new_value='{new_status}')"""]
+        "answer": [
+            f"""customer_relationship_manager.update_customer.func(customer_id='{customer_id}', field='status', new_value='{new_status}')"""
+        ],
     }
+
 
 def delete_customer_logic():
     customer_name = random.choice(customer_names)
     customer_id = CRM_DATA[CRM_DATA["customer_name"] == customer_name]["customer_id"].values[0]
     return {
         "customer_name": customer_name,
-        "answer": [f"""customer_relationship_manager.delete_customer.func(customer_id='{customer_id}')"""]
+        "answer": [f"""customer_relationship_manager.delete_customer.func(customer_id='{customer_id}')"""],
     }
+
 
 def add_lead_logic():
     customer_name = generate_new_customer_name()
@@ -52,8 +58,11 @@ def add_lead_logic():
     return {
         "customer_name": customer_name,
         "assigned_to_first_name": assigned_to_first_name,
-        "answer": [f"""customer_relationship_manager.add_customer.func(customer_name='{customer_name}', assigned_to='{assigned_to}', status='Lead')"""]
+        "answer": [
+            f"""customer_relationship_manager.add_customer.func(customer_name='{customer_name}', assigned_to='{assigned_to}', status='Lead')"""
+        ],
     }
+
 
 CRM_TEMPLATES = [
     {
@@ -67,7 +76,7 @@ CRM_TEMPLATES = [
     {
         "query": "Add {customer_name} as a new lead in the crm and assign to {assigned_to_first_name}",
         "logic": add_lead_logic,
-    }
+    },
 ]
 
 # Generate a limited number of unique CRM queries and answers

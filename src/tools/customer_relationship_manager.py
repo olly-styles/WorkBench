@@ -3,6 +3,7 @@ from langchain.tools import tool
 
 CRM_DATA = pd.read_csv("data/processed/customer_relationship_manager_data.csv", dtype=str)
 
+
 def reset_state():
     """
     Resets the CRM data to the original state.
@@ -10,8 +11,19 @@ def reset_state():
     global CRM_DATA
     CRM_DATA = pd.read_csv("data/processed/customer_relationship_manager_data.csv", dtype=str)
 
+
 @tool("customer_relationship_manager.search_customers", return_direct=False)
-def search_customers(customer_name=None, customer_email=None, product_interest=None, status=None, assigned_to=None, last_contact_date_min=None, last_contact_date_max=None, follow_up_by_min=None, follow_up_by_max=None):
+def search_customers(
+    customer_name=None,
+    customer_email=None,
+    product_interest=None,
+    status=None,
+    assigned_to=None,
+    last_contact_date_min=None,
+    last_contact_date_max=None,
+    follow_up_by_min=None,
+    follow_up_by_max=None,
+):
     """
     Searches for customers based on the given parameters.
 
@@ -24,7 +36,7 @@ def search_customers(customer_name=None, customer_email=None, product_interest=N
     product_interest : str, optional
         Product interest of the customer.
     status : str, optional
-        Current status of the customer. 
+        Current status of the customer.
     assigned_to : str, optional
         Email address of the person assigned to the customer.
     last_contact_date_min : str, optional
@@ -40,18 +52,30 @@ def search_customers(customer_name=None, customer_email=None, product_interest=N
     -------
     customers : dict
         Customer information for the given parameters. Returns at most 5 records.
-        
+
     Examples
     --------
     >>> crm.search_customers(customer_name="John")
-    {{"customer_id": "00000001", "assigned_to": "sam@example.com", "customer_name": "John Smith", 
+    {{"customer_id": "00000001", "assigned_to": "sam@example.com", "customer_name": "John Smith",
     "customer_email": "john.smith@example.com", "customer_phone": "123-456-7890", "last_contact_date": "2023-01-01",
     "product_interest": "Software", "status": "Qualified", "follow_up_by": "2023-01-15", "notes": "Had a call on 2023-01-01. "}}
     """
     customers = CRM_DATA.copy()
-    if not any([customer_name, customer_email, product_interest, status, assigned_to, last_contact_date_min, last_contact_date_max, follow_up_by_min, follow_up_by_max]):
+    if not any(
+        [
+            customer_name,
+            customer_email,
+            product_interest,
+            status,
+            assigned_to,
+            last_contact_date_min,
+            last_contact_date_max,
+            follow_up_by_min,
+            follow_up_by_max,
+        ]
+    ):
         return "No search parameters provided. Please provide at least one parameter."
-    
+
     if customer_name:
         customers = customers[customers["customer_name"].str.contains(customer_name, case=False)]
     if customer_email:
@@ -72,6 +96,7 @@ def search_customers(customer_name=None, customer_email=None, product_interest=N
         customers = customers[customers["follow_up_by"] <= follow_up_by_max]
     return customers.to_dict(orient="records")[:5]
 
+
 @tool("customer_relationship_manager.update_customer", return_direct=False)
 def update_customer(customer_id=None, field=None, new_value=None):
     """
@@ -90,14 +115,14 @@ def update_customer(customer_id=None, field=None, new_value=None):
     -------
     message : str
         Message indicating the status of the update.
-    
+
     Examples
     --------
     >>> crm.update_customer("00000001", "status", "Won")
     "Customer updated successfully."
     """
     global CRM_DATA
-    
+
     if not customer_id or not field or not new_value:
         return "Customer ID, field, or new value not provided."
 
@@ -110,8 +135,19 @@ def update_customer(customer_id=None, field=None, new_value=None):
     else:
         return "Customer not found."
 
+
 @tool("customer_relationship_manager.add_customer", return_direct=False)
-def add_customer(customer_name=None, assigned_to=None, status=None, customer_email=None, customer_phone=None, last_contact_date=None, product_interest=None, notes="", follow_up_by=None):
+def add_customer(
+    customer_name=None,
+    assigned_to=None,
+    status=None,
+    customer_email=None,
+    customer_phone=None,
+    last_contact_date=None,
+    product_interest=None,
+    notes="",
+    follow_up_by=None,
+):
     """
     Adds a new customer record.
 
@@ -140,7 +176,7 @@ def add_customer(customer_name=None, assigned_to=None, status=None, customer_ema
     -------
     customer_id : str
         ID of the new customer.
-        
+
     Examples
     --------
     >>> crm.add_customer("Sam Smith", "sam@example.com", "Lead", "sam.smith@example.com", "123-456-7890", "2023-01-01", "Software")
@@ -149,22 +185,25 @@ def add_customer(customer_name=None, assigned_to=None, status=None, customer_ema
     global CRM_DATA
     if not all([customer_name, assigned_to, status]):
         return "Please provide all required fields: customer_name, assigned_to, status."
-    
+
     new_id = str(int(CRM_DATA["customer_id"].max()) + 1).zfill(8)
-    new_customer = pd.DataFrame({
-        "customer_id": [new_id],
-        "customer_name": [customer_name],
-        "customer_email": [customer_email],
-        "customer_phone": [customer_phone],
-        "last_contact_date": [last_contact_date],
-        "product_interest": [product_interest],
-        "status": [status],
-        "assigned_to": [assigned_to],
-        "notes": [notes],
-        "follow_up_by": [follow_up_by]
-    })
+    new_customer = pd.DataFrame(
+        {
+            "customer_id": [new_id],
+            "customer_name": [customer_name],
+            "customer_email": [customer_email],
+            "customer_phone": [customer_phone],
+            "last_contact_date": [last_contact_date],
+            "product_interest": [product_interest],
+            "status": [status],
+            "assigned_to": [assigned_to],
+            "notes": [notes],
+            "follow_up_by": [follow_up_by],
+        }
+    )
     CRM_DATA = pd.concat([CRM_DATA, new_customer], ignore_index=True)
     return new_id
+
 
 @tool("customer_relationship_manager.delete_customer", return_direct=False)
 def delete_customer(customer_id=None):
@@ -180,7 +219,7 @@ def delete_customer(customer_id=None):
     -------
     message : str
         Message indicating the status of the deletion.
-    
+
     Examples
     --------
     >>> crm.delete_customer("00000001")
