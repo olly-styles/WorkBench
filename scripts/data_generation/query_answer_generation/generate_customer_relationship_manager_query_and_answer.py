@@ -30,7 +30,7 @@ def generate_new_customer_name():
 def update_customer_status_logic():
     customer_name = random.choice(customer_names)
     customer_id = CRM_DATA[CRM_DATA["customer_name"] == customer_name]["customer_id"].values[0]
-    new_status = random.choice(statuses)
+    new_status = random.choice(statuses).lower()
     while new_status == CRM_DATA[CRM_DATA["customer_id"] == customer_id]["status"].values[0]:
         new_status = random.choice(statuses)
     return {
@@ -66,7 +66,7 @@ def add_lead_logic():
 
 CRM_TEMPLATES = [
     {
-        "query": "Update status of {customer_name} to {new_status} in the crm",
+        "query": "Update the status of {customer_name} to {new_status} in the crm",
         "logic": update_customer_status_logic,
     },
     {
@@ -74,7 +74,7 @@ CRM_TEMPLATES = [
         "logic": delete_customer_logic,
     },
     {
-        "query": "Add {customer_name} as a new lead in the crm and assign to {assigned_to_first_name}",
+        "query": "Add {customer_name} as a new lead in the crm and assign them to {assigned_to_first_name}",
         "logic": add_lead_logic,
     },
 ]
