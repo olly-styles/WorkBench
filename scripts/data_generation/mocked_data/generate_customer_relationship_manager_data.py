@@ -94,7 +94,7 @@ def generate_random_date(start, end):
 def generate_customer_notes():
     notes = ""
     for _ in range(random.randint(0, 3)):
-        notes += f"{generate_random_date(HARDCODED_CURRENT_TIME - timedelta(days=180), HARDCODED_CURRENT_TIME).date()}: {random.choice(['Had a call', 'On holiday', 'Seen the demo', 'Met in person'])}. "
+        notes += f"{generate_random_date(HARDCODED_CURRENT_TIME - timedelta(days=180), HARDCODED_CURRENT_TIME).date()}: {random.choice(['Had a call', 'On holiday', 'Saw the demo', 'Met in person'])}. "
     return notes
 
 

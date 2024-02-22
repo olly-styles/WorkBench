@@ -118,11 +118,11 @@ def test_add_customer_missing_args():
     """
     assert (
         crm.add_customer.func()
-        == "Please provide all required fields: customer_name, assigned_to, customer_email, last_contact_date, product_interest, status."
+        == "Please provide all required fields: customer_name, assigned_to, status."
     )
     assert (
         crm.add_customer.func("John Smith")
-        == "Please provide all required fields: customer_name, assigned_to, customer_email, last_contact_date, product_interest, status."
+        == "Please provide all required fields: customer_name, assigned_to, status."
     )
 
 
