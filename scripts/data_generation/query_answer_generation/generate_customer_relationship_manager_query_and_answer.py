@@ -77,6 +77,30 @@ CRM_TEMPLATES = [
         "query": "Add {customer_name} as a new lead in the crm and assign them to {assigned_to_first_name}",
         "logic": add_lead_logic,
     },
+    {
+        "query": "Reassign {customer_name} to {employee_name} in the crm",
+    },
+    {
+        "query": "Reassign all of {employee_name}'s leads to {new_employee_name} in the crm",
+    },
+    {
+        "query": "Give {new_employee_name} all of {employee_name}'s leads that we haven't yet made contact with",
+    },
+    {
+        "query": "Give {new_employee_name} all of {employee_name}'s leads that are at least qualified and interested in {product_interest} in the crm",
+    },
+    {
+        "query": "Delete all of {employee_name}'s leads in the crm",
+    },
+    {
+        "query": "Delete all the leads that are interested in {product_interest} in the crm",
+    },
+    {
+        "query": "Delete all the leads that have been dead for {days} days in the crm",
+    },
+    {
+        "query": "Move all customers that haven't responded to a proposal for {weeks} weeks to lost in the crm",
+    },
 ]
 
 # Generate a limited number of unique CRM queries and answers
@@ -84,6 +108,7 @@ generated_crm_queries_and_answers = []
 max_queries_per_template = 3  # Limit the number of queries per template
 
 if __name__ == "__main__":
+    CRM_TEMPLATES = [t for t in CRM_TEMPLATES if "logic" in t]  # fix until we do logic for all templates
     generated_crm_queries_and_answers = generate_all_queries_and_answers(CRM_TEMPLATES, max_queries_per_template)
 
     df = pd.DataFrame(generated_crm_queries_and_answers)
