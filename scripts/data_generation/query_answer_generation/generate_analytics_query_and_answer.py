@@ -67,7 +67,7 @@ def fell_or_grew(metric, start_date, end_date):
     end_value = metric_to_func_dict[metric](end_date)
     return "grew" if end_value > start_value else "fell"
 
-def get_fell_vs_grew():
+def get_metric_fell_vs_grew():
     base_dict = get_random_dict()
     base_dict["date_max"] = str((pd.to_datetime(base_dict["date_min"]) + pd.Timedelta(days=random.randint(7, 30))).date())
     if base_dict["date_max"] > str(HARDCODED_CURRENT_TIME.date()):
@@ -97,7 +97,7 @@ def metric_more_or_less_plot_logic():
     return {"answer": answer, **query_info}
 
 def metric_fell_or_grew_plot_logic():
-    query_info = get_fell_vs_grew()
+    query_info = get_metric_fell_vs_grew()
     if query_info["fell_or_grew"] == query_info["fell_vs_grew"]:
         answer = [get_plot_string(query_info["metric"], query_info["date_min"], query_info["date_max"], "line")]
     else:
@@ -121,7 +121,7 @@ ANALYTICS_TEMPLATES = [
         "logic": metric_more_or_less_plot_logic,
     },
     {
-        "query": """If {natural_language_metric} {fell_or_grew} from {natural_language_date} to {natural_language_date_max}, make a line plot of it""",
+        "query": """If {natural_language_metric} {fell_or_grew} from {natural_language_date} to {natural_language_date_max}, plot a line of that""",
         "logic": metric_fell_or_grew_plot_logic,
     },
     {

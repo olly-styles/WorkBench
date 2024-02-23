@@ -17,7 +17,7 @@ from src.data_generation.data_generation_utils import (
 )
 from src.tools import calendar
 from src.evals.utils import generate_all_queries_and_answers
-from scripts.data_generation.query_answer_generation.generate_analytics_query_and_answer import get_fell_vs_grew
+from scripts.data_generation.query_answer_generation.generate_analytics_query_and_answer import get_metric_fell_vs_grew
 from scripts.data_generation.query_answer_generation.generate_project_management_query_and_answer import get_random_task_dict, get_new_task_string
 from scripts.data_generation.query_answer_generation.generate_calendar_query_and_answer import create_event_on_first_free_slot_tomorrow
 
@@ -74,30 +74,29 @@ def find_event_send_email_logic():
         "answer": answer,
     }
 
-def get_fell_create_task_logic():
-    fell_vs_grew = get_fell_vs_grew()
+def get_metric_fell_create_task_logic():
+    fell_vs_grew = get_metric_fell_vs_grew()
     new_task_dict = get_random_task_dict()
-    new_task_dict["task_name"] = f"Improve {new_task_dict['natural_language_metric']}"
+    new_task_dict["task_name"] = f"Improve {fell_vs_grew['natural_language_metric']}"
     if fell_vs_grew["fell_vs_grew"] == "fell":
         answer = [get_new_task_string(new_task_dict["task_name"], new_task_dict["name"], new_task_dict["board"], new_task_dict["due_date"])]
     else:
         answer = []
     return {**fell_vs_grew, **new_task_dict, "answer": answer}
 
-def get_fell_create_task_book_meeting_logic():
-    create_task_dict = get_fell_create_task_logic()
+def get_metric_fell_create_task_book_meeting_logic():
+    create_task_dict = get_metric_fell_create_task_logic()
     event_name = f"Catch up on {create_task_dict['natural_language_metric']}"
     create_event_action = create_event_on_first_free_slot_tomorrow(event_name, create_task_dict["email"], 30)
     
     if create_task_dict["answer"] == []:
         answer = []
     else:
-        create_task_dict["answer"] = get_new
         answer = create_task_dict["answer"] + [create_event_action]
     return {**create_task_dict, "answer": answer}
 
-def get_fell_create_task_book_meeting_send_email_logic():
-    create_task_book_meeting_dict = get_fell_create_task_book_meeting_logic()
+def get_metric_fell_create_task_book_meeting_send_email_logic():
+    create_task_book_meeting_dict = get_metric_fell_create_task_book_meeting_logic()
     if create_task_book_meeting_dict["answer"] == []:
         answer = []
     else:
@@ -164,7 +163,7 @@ MULTI_DOMAIN_TEMPLATES = [
     },
     {
         "query": """If {natural_language_metric} fell since {date_min}, make a task for {name} called 'Improve {natural_language_metric}', which is due in a week.""",
-        "logic": get_fell_create_task_logic,
+        "logic": get_metric_fell_create_task_logic,
     },
     {
         "query": """If {natural_language_metric} was {more_or_less} than {threshold} at any time since {date_min}, 
@@ -179,7 +178,7 @@ MULTI_DOMAIN_TEMPLATES = [
     },
     {
         "query": """If {natural_language_metric} fell since {natural_language_date}, make a {board} backlog task for {name} called 'Improve {natural_language_metric}', which is due in a week, and then book a meeting with them called 'Catch up on {natural_language_metric}' for the earliest time I'm free tomorrow.""",
-        "logic": get_fell_create_task_book_meeting_logic,
+        "logic": get_metric_fell_create_task_book_meeting_logic,
     },
     {
         "query": """If {name} has any overdue tasks, book a meeting with them called 'Catch up on overdue tasks' at the earliest time I'm free tomorrow.
@@ -200,7 +199,7 @@ make a task for {name} called 'Improve {natural_language_metric}', which is due 
 Also send them an email saying 'I need you to look at {natural_language_metric} - more details on the task I just made.' \
 and title it 'Discuss {natural_language_metric}'. \
 then also book a 30-minute meeting with them called 'Catch up on {natural_language_metric}' at the earliest time I'm free tomorrow""",
-        "logic": get_fell_create_task_book_meeting_send_email_logic,
+        "logic": get_metric_fell_create_task_book_meeting_send_email_logic,
     },
     {
         "query": """If {natural_language_metric} was {more_or_less} than {threshold} on {natural_language_date},
