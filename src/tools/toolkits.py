@@ -17,6 +17,7 @@ all_tools = [
     analytics.traffic_source_count,
     analytics.total_visits_count,
     analytics.create_plot,
+    analytics.get_average_session_duration,
     project_management.get_task_information_by_id,
     project_management.search_tasks,
     project_management.create_task,

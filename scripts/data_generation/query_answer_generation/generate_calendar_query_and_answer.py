@@ -126,6 +126,13 @@ def cancel_next_event_with_name_logic():
     return {"event_id": next_event_id, "name": name, "answer": answer}
 
 
+def create_event_on_first_free_slot_tomorrow(event_name, participant, duration_minutes):
+    tomorrow_date = str(HARDCODED_CURRENT_TIME + pd.Timedelta(days=1)).split(" ")[0]
+    events_on_date = calendar_events[calendar_events["event_start"].str.split(" ").str[0] >= tomorrow_date]
+    first_free_time = get_first_free_slot(events_on_date)
+    return f"""calendar.create_event.func(event_name='{event_name}', participant_email='{participant}', event_start='{tomorrow_date} {first_free_time}', duration='{duration_minutes}')"""
+
+
 def check_last_meeting_with_name_schedule_30_tomorrow():
     participant = random.choice(emails)
     number_of_days = random.randint(1, 10)
@@ -142,13 +149,7 @@ def check_last_meeting_with_name_schedule_30_tomorrow():
             "answer": [],
         }
 
-    tomorrow_date = str(HARDCODED_CURRENT_TIME + pd.Timedelta(days=1)).split(" ")[0]
-    events_tomorrow = calendar_events[calendar_events["event_start"].str.split(" ").str[0] >= tomorrow_date]
-    first_free_time = get_first_free_slot(events_tomorrow)
-    answer = [
-        f"""calendar.create_event.func(event_name='catch-up', participant_email='{participant}', event_start='{tomorrow_date} {first_free_time}', duration='30')"""
-    ]
-
+    answer = [create_event_on_first_free_slot_tomorrow("catch-up", participant, 30)]
     return {
         "name": participant.split(".")[0],
         "duration": number_of_days,

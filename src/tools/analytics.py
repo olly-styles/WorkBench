@@ -3,9 +3,8 @@ from langchain.tools import tool
 
 ANALYTICS_DATA = pd.read_csv("data/processed/analytics_data.csv", dtype=str)
 PLOTS_DATA = pd.DataFrame(columns=["file_path"])
-METRICS = ["page_views", "session_duration_seconds", "traffic_source", "user_engaged"]
-METRIC_NAMES = ["page views", "session duration", "traffic source", "user engagement"]
-metric_naming_dict = {metric: name for metric, name in zip(METRICS, METRIC_NAMES)}
+METRICS = ["page_views", "session_duration_seconds"]
+METRIC_NAMES = ["total visits", "average session duration"]
 
 def reset_state():
     """
@@ -152,7 +151,7 @@ def engaged_users_count(time_min=None, time_max=None):
     if time_max:
         data = data[data["date_of_visit"] <= time_max]
 
-    engaged_users = data[data["user_engaged"]].shape[0]
+    engaged_users = (data["user_engaged"]=="True").sum()
     return engaged_users
 
 
@@ -192,3 +191,35 @@ def traffic_source_count(time_min=None, time_max=None, traffic_source=None):
     else:
         traffic_source_visits = data.shape[0]
     return traffic_source_visits
+
+@tool("analytics.get_average_session_duration", return_direct=False)
+def get_average_session_duration(time_min=None, time_max=None):
+    """
+    Returns the average session duration within a specified time range.
+
+    Parameters
+    ----------
+    time_min : str, optional
+        Start date of the time range. Date format is "YYYY-MM-DD".
+    time_max : str, optional
+        End date of the time range. Date format is "YYYY-MM-DD".
+
+    Returns
+    -------
+    average_session_duration : float
+        Average session duration in seconds in the specified time range.
+
+    Examples
+    --------
+    >>> analytics.get_average_session_duration("2023-10-01", "2023-12-31")
+    30.0
+    """
+    if time_min:
+        data = ANALYTICS_DATA[ANALYTICS_DATA["date_of_visit"] >= time_min]
+    else:
+        data = ANALYTICS_DATA
+    if time_max:
+        data = data[data["date_of_visit"] <= time_max]
+
+    average_session_duration = data["session_duration_seconds"].astype(float).mean()
+    return average_session_duration

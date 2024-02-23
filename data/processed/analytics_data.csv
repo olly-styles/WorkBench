@@ -1,501 +1,501 @@
 date_of_visit,visitor_id,page_views,session_duration_seconds,traffic_source,user_engaged
-2023-11-21,860,8,4,referral,False
-2023-12-22,214,11,1,search engine,False
-2023-10-24,130,18,0,social media,False
-2023-11-07,385,2,4,direct,False
-2023-10-22,252,2,11,search engine,False
-2023-11-11,475,2,72,direct,False
-2023-12-01,562,21,9,direct,False
-2023-11-20,646,1,3,social media,False
-2023-11-29,013,2,33,direct,False
-2023-12-23,091,1,11,direct,False
-2023-11-16,034,2,48,search engine,False
-2023-10-02,389,5,4,direct,False
-2023-10-18,729,3,11,social media,False
-2023-11-17,270,2,1,direct,False
-2023-11-09,724,2,9,social media,False
-2023-10-26,216,4,6,direct,False
-2023-10-15,812,22,1,social media,False
-2023-10-08,471,2,0,social media,False
-2023-11-04,288,14,18,search engine,False
-2023-10-28,134,3,37,direct,False
-2023-10-23,573,7,7,search engine,False
-2023-12-30,546,1,12,social media,False
-2023-10-01,004,8,16,direct,False
-2023-10-09,206,1,11,direct,False
-2023-12-02,863,2,20,referral,False
-2023-10-23,230,8,10,direct,False
-2023-11-01,838,1,6,social media,False
-2023-11-14,573,11,20,social media,False
-2023-11-13,339,4,44,social media,True
-2023-12-28,230,2,47,search engine,False
-2023-12-16,744,1,7,referral,False
-2023-12-01,676,2,23,direct,False
-2023-11-28,373,5,4,direct,False
-2023-12-01,496,2,5,search engine,False
-2023-10-03,112,31,3,direct,False
-2023-10-02,641,1,10,direct,False
-2023-10-01,402,4,22,direct,False
-2023-12-09,415,1,17,direct,False
-2023-10-17,766,4,32,social media,True
-2023-12-25,906,9,33,direct,True
-2023-11-28,325,10,23,direct,False
-2023-11-05,402,9,24,direct,False
-2023-12-10,819,3,56,referral,False
-2023-10-01,778,1,8,social media,False
-2023-11-11,610,1,5,social media,False
-2023-11-29,880,1,5,social media,False
-2023-11-06,159,3,20,direct,False
-2023-11-17,207,11,45,social media,True
-2023-10-24,627,1,1,social media,False
-2023-12-23,253,1,0,search engine,False
-2023-10-18,895,4,7,direct,False
-2023-11-30,680,1,3,direct,False
-2023-11-17,915,7,9,social media,False
-2023-11-02,687,3,1,direct,False
-2023-10-30,037,4,77,social media,True
-2023-10-27,225,6,8,search engine,False
-2023-12-08,828,5,13,social media,False
-2023-10-17,171,16,56,social media,True
-2023-11-06,279,5,8,referral,False
-2023-11-29,992,2,1,direct,False
-2023-11-02,255,3,13,direct,False
-2023-11-23,569,1,53,direct,False
-2023-11-16,853,2,8,direct,False
-2023-12-29,784,1,37,social media,False
-2023-11-08,476,3,7,direct,False
-2023-10-24,524,1,1,search engine,False
-2023-10-20,320,3,1,direct,False
-2023-12-26,142,1,9,referral,False
-2023-12-25,050,4,12,direct,False
-2023-11-27,569,1,0,social media,False
-2023-11-23,443,9,7,direct,False
-2023-10-05,102,1,1,referral,False
-2023-11-16,866,7,20,social media,False
-2023-10-30,658,2,31,direct,False
-2023-11-24,345,17,0,social media,False
-2023-10-09,907,1,10,direct,False
-2023-11-03,095,7,15,search engine,False
-2023-10-01,271,6,14,direct,False
-2023-12-06,075,1,16,direct,False
-2023-10-29,973,1,1,direct,False
-2023-12-01,452,1,12,direct,False
-2023-11-08,611,3,3,direct,False
-2023-10-10,757,1,20,direct,False
-2023-10-19,441,4,13,search engine,False
-2023-10-16,791,15,57,social media,True
-2023-11-01,474,6,32,referral,True
-2023-11-02,928,9,33,search engine,True
-2023-12-04,416,2,21,direct,False
-2023-10-12,606,1,9,search engine,False
-2023-12-26,848,3,21,search engine,False
-2023-11-03,114,1,6,search engine,False
-2023-12-14,412,3,0,social media,False
-2023-11-05,393,5,11,referral,False
-2023-11-05,977,5,5,social media,False
-2023-11-06,779,7,11,social media,False
-2023-10-30,272,4,15,direct,False
-2023-10-13,698,1,2,social media,False
-2023-10-19,075,16,8,search engine,False
-2023-11-21,850,1,13,direct,False
-2023-10-12,024,2,16,social media,False
-2023-10-16,568,14,2,social media,False
-2023-10-14,222,7,1,referral,False
-2023-12-14,657,6,69,social media,True
-2023-10-17,252,3,36,direct,False
-2023-10-09,945,1,44,referral,False
-2023-11-07,338,10,17,social media,False
-2023-10-17,510,5,47,direct,True
-2023-10-31,786,5,30,direct,False
-2023-12-29,530,4,2,direct,False
-2023-11-27,659,1,2,search engine,False
-2023-10-01,386,17,17,direct,False
-2023-10-25,823,3,15,social media,False
-2023-11-14,671,2,16,direct,False
-2023-12-24,202,2,50,search engine,False
-2023-11-26,401,2,3,direct,False
-2023-10-01,372,3,23,social media,False
-2023-12-14,011,1,63,direct,False
-2023-10-24,667,1,8,search engine,False
-2023-10-08,697,2,5,direct,False
-2023-12-03,922,4,23,direct,False
-2023-12-23,460,1,23,social media,False
-2023-10-06,593,5,10,social media,False
-2023-10-10,823,5,41,direct,True
-2023-11-02,373,22,33,direct,True
-2023-12-24,281,18,9,social media,False
-2023-12-16,928,3,12,direct,False
-2023-11-24,517,4,23,social media,False
-2023-10-03,436,7,17,social media,False
-2023-12-22,144,2,5,direct,False
-2023-11-14,716,11,4,social media,False
-2023-11-03,347,1,6,direct,False
-2023-11-23,117,2,35,social media,False
-2023-10-05,989,3,41,direct,False
-2023-11-16,918,5,28,social media,False
-2023-11-20,102,1,2,direct,False
-2023-12-21,797,1,16,social media,False
-2023-11-07,480,3,30,search engine,False
-2023-11-20,080,1,59,social media,False
-2023-12-13,784,4,5,social media,False
-2023-11-22,449,6,7,direct,False
-2023-10-23,182,3,17,search engine,False
-2023-10-04,359,3,23,social media,False
-2023-10-27,092,5,72,direct,True
-2023-10-21,004,3,8,direct,False
-2023-12-09,512,3,15,social media,False
-2023-11-18,077,2,8,direct,False
-2023-11-16,120,4,23,direct,False
-2023-11-17,572,11,0,direct,False
-2023-11-21,718,13,15,direct,False
-2023-10-28,982,7,15,direct,False
-2023-11-28,311,6,2,social media,False
-2023-10-18,505,3,8,direct,False
-2023-10-28,713,10,16,direct,False
-2023-11-13,536,5,44,search engine,True
-2023-12-06,232,1,13,referral,False
-2023-11-03,622,3,27,direct,False
-2023-11-10,612,6,9,referral,False
-2023-11-25,314,5,86,direct,True
-2023-10-22,276,2,3,direct,False
-2023-12-14,445,1,6,social media,False
-2023-10-03,242,6,0,social media,False
-2023-10-06,321,13,17,direct,False
-2023-11-20,573,5,53,referral,True
-2023-11-20,172,2,29,direct,False
-2023-10-19,723,2,14,direct,False
-2023-12-29,653,5,6,direct,False
-2023-12-16,258,3,1,direct,False
-2023-10-23,649,2,92,social media,False
-2023-12-04,318,8,22,referral,False
-2023-10-24,549,3,10,social media,False
-2023-12-01,955,1,67,social media,False
-2023-10-09,929,1,3,social media,False
-2023-10-22,571,1,36,social media,False
-2023-10-14,827,1,3,social media,False
-2023-12-17,409,2,47,referral,False
-2023-10-18,295,7,12,social media,False
-2023-11-07,864,4,27,direct,False
-2023-12-05,973,2,1,referral,False
-2023-12-09,645,7,8,search engine,False
-2023-10-15,622,4,19,social media,False
-2023-11-05,156,2,3,direct,False
-2023-11-24,288,5,0,social media,False
-2023-12-13,864,4,2,direct,False
-2023-12-27,947,8,10,direct,False
-2023-11-16,323,7,25,search engine,False
-2023-11-05,291,5,25,social media,False
-2023-12-13,871,3,17,direct,False
-2023-11-15,362,5,3,referral,False
-2023-12-28,992,11,0,social media,False
-2023-12-07,132,7,51,direct,True
-2023-10-31,377,1,1,direct,False
-2023-11-10,725,1,48,direct,False
-2023-12-29,621,10,4,direct,False
-2023-11-23,566,5,5,direct,False
-2023-11-22,136,8,4,search engine,False
-2023-11-04,574,10,10,social media,False
-2023-10-07,209,13,13,referral,False
-2023-11-28,875,2,48,referral,False
-2023-11-21,709,2,0,social media,False
-2023-10-22,665,6,0,direct,False
-2023-12-23,360,3,3,direct,False
-2023-11-30,359,5,13,direct,False
-2023-12-26,434,12,4,direct,False
-2023-10-29,304,4,0,referral,False
-2023-10-18,768,4,29,referral,False
-2023-11-07,946,2,3,social media,False
-2023-10-03,799,12,6,referral,False
-2023-12-26,054,7,3,search engine,False
-2023-12-04,312,2,5,search engine,False
-2023-12-11,053,5,8,social media,False
-2023-10-08,417,23,32,search engine,True
-2023-11-15,490,15,65,direct,True
-2023-10-14,734,1,7,search engine,False
-2023-11-02,150,1,37,social media,False
-2023-10-29,699,13,24,search engine,False
-2023-10-11,745,3,34,direct,False
-2023-10-20,260,8,8,direct,False
-2023-11-22,939,19,4,social media,False
-2023-12-20,713,22,16,direct,False
-2023-12-20,881,2,0,referral,False
-2023-10-25,358,6,4,direct,False
-2023-10-26,441,6,46,search engine,True
-2023-12-09,145,9,15,direct,False
-2023-11-03,016,4,10,social media,False
-2023-12-25,980,2,6,social media,False
-2023-10-12,748,1,21,social media,False
-2023-10-26,980,4,9,direct,False
-2023-11-23,362,1,4,social media,False
-2023-10-29,148,3,36,social media,False
-2023-11-28,806,15,18,direct,False
-2023-10-24,757,4,2,direct,False
-2023-10-20,466,1,18,direct,False
-2023-12-12,153,3,12,direct,False
-2023-10-01,216,5,24,direct,False
-2023-11-04,130,1,1,social media,False
-2023-10-12,274,9,7,social media,False
-2023-10-17,329,4,23,direct,False
-2023-12-19,215,6,28,social media,False
-2023-12-19,709,12,78,search engine,True
-2023-11-28,921,6,1,direct,False
-2023-10-16,710,5,146,direct,True
-2023-10-07,781,7,2,direct,False
-2023-12-11,497,8,10,social media,False
-2023-11-08,994,9,7,direct,False
-2023-10-31,151,1,5,direct,False
-2023-11-06,170,7,8,direct,False
-2023-10-15,887,8,15,direct,False
-2023-12-21,160,5,43,direct,True
-2023-11-24,738,1,40,social media,False
-2023-10-13,273,9,55,social media,True
-2023-10-29,957,1,1,direct,False
-2023-10-16,439,3,6,direct,False
-2023-12-23,388,1,26,direct,False
-2023-10-30,323,5,25,direct,False
-2023-11-22,974,3,11,search engine,False
-2023-10-12,186,8,59,direct,True
-2023-12-09,806,15,42,direct,True
-2023-12-16,225,24,3,direct,False
-2023-10-20,860,5,20,referral,False
-2023-12-13,106,2,3,direct,False
-2023-10-03,887,1,8,social media,False
-2023-11-18,520,27,52,direct,True
-2023-11-04,689,29,13,social media,False
-2023-10-13,119,1,27,social media,False
-2023-10-11,616,2,9,direct,False
-2023-12-06,920,1,38,direct,False
-2023-10-25,260,2,26,direct,False
-2023-11-07,327,1,23,referral,False
-2023-11-06,315,12,2,social media,False
-2023-11-09,300,5,13,social media,False
-2023-11-25,039,5,22,direct,False
-2023-10-06,215,6,31,social media,True
-2023-11-28,815,10,24,search engine,False
-2023-11-11,355,7,19,direct,False
-2023-11-14,825,11,12,direct,False
-2023-11-01,362,12,5,direct,False
-2023-10-02,717,2,28,direct,False
-2023-10-13,045,5,7,direct,False
-2023-11-29,447,8,15,direct,False
-2023-10-30,454,17,15,direct,False
-2023-11-29,334,1,53,social media,False
-2023-12-07,730,8,3,social media,False
-2023-12-04,021,1,19,social media,False
-2023-12-03,686,7,69,direct,True
-2023-12-15,006,9,1,direct,False
-2023-11-01,946,1,5,direct,False
-2023-10-29,515,4,11,direct,False
-2023-10-29,156,10,7,social media,False
-2023-12-23,021,11,2,social media,False
-2023-11-25,603,13,26,social media,False
-2023-12-23,773,3,28,direct,False
-2023-11-27,891,7,25,direct,False
-2023-10-25,791,10,9,direct,False
-2023-12-11,059,11,4,social media,False
-2023-12-18,026,8,37,search engine,True
-2023-12-03,939,13,0,search engine,False
-2023-11-15,526,1,13,direct,False
-2023-12-23,739,2,16,direct,False
-2023-12-25,500,8,6,direct,False
-2023-12-16,720,1,0,direct,False
-2023-11-07,543,8,21,social media,False
-2023-11-10,391,7,25,direct,False
-2023-12-15,888,1,16,direct,False
-2023-10-20,672,1,16,direct,False
-2023-10-02,224,3,1,direct,False
-2023-10-26,917,19,7,direct,False
-2023-10-15,993,6,0,social media,False
-2023-11-30,962,5,45,search engine,True
-2023-11-01,552,11,24,social media,False
-2023-12-01,083,9,8,direct,False
-2023-12-23,207,9,15,direct,False
-2023-10-03,126,7,14,direct,False
-2023-10-12,086,4,21,search engine,False
-2023-10-19,566,7,12,social media,False
-2023-11-22,694,1,0,direct,False
-2023-12-22,661,4,8,direct,False
-2023-10-28,754,1,22,direct,False
-2023-10-07,331,17,3,direct,False
-2023-10-24,403,7,19,social media,False
-2023-11-29,151,4,15,referral,False
-2023-12-05,334,3,46,direct,False
-2023-11-27,245,3,8,direct,False
-2023-10-21,910,8,5,direct,False
-2023-12-26,297,18,5,direct,False
-2023-12-08,933,2,13,social media,False
-2023-10-14,503,6,17,direct,False
-2023-10-17,890,3,7,social media,False
-2023-10-05,448,1,29,social media,False
-2023-11-16,286,1,5,direct,False
-2023-12-13,604,9,8,direct,False
-2023-10-20,775,7,19,direct,False
-2023-12-23,283,7,0,search engine,False
-2023-11-06,304,9,37,referral,True
-2023-12-18,901,1,4,direct,False
-2023-10-02,968,14,15,direct,False
-2023-11-04,197,1,3,direct,False
-2023-11-20,205,3,23,direct,False
-2023-11-12,125,6,60,social media,True
-2023-11-25,494,3,14,referral,False
-2023-10-23,383,1,2,social media,False
-2023-10-08,340,6,1,direct,False
-2023-10-05,494,6,3,social media,False
-2023-12-29,426,4,22,search engine,False
-2023-10-08,302,1,16,social media,False
-2023-11-15,963,2,22,search engine,False
-2023-11-22,303,1,21,search engine,False
-2023-12-03,965,11,7,social media,False
-2023-10-13,584,2,1,direct,False
-2023-10-04,613,12,11,social media,False
-2023-10-23,850,3,40,direct,False
-2023-12-10,600,5,7,search engine,False
-2023-10-15,916,4,9,referral,False
-2023-11-04,939,5,0,direct,False
-2023-12-17,841,4,28,referral,False
-2023-12-11,815,13,37,social media,True
-2023-10-25,011,4,3,direct,False
-2023-10-15,042,9,28,social media,False
-2023-11-12,020,1,4,search engine,False
-2023-10-15,792,3,21,direct,False
-2023-10-13,469,1,4,search engine,False
-2023-11-21,493,9,7,referral,False
-2023-10-16,105,7,18,direct,False
-2023-10-04,089,1,2,search engine,False
-2023-12-13,038,7,14,direct,False
-2023-11-11,444,17,5,direct,False
-2023-10-07,821,1,15,search engine,False
-2023-10-13,886,4,20,referral,False
-2023-10-26,520,1,20,direct,False
-2023-11-11,583,5,29,direct,False
-2023-12-07,049,10,26,search engine,False
-2023-12-28,145,1,29,direct,False
-2023-12-08,686,11,5,direct,False
-2023-10-21,976,2,3,direct,False
-2023-12-10,159,2,20,search engine,False
-2023-11-26,253,2,3,referral,False
-2023-10-18,834,3,11,social media,False
-2023-12-14,998,9,8,search engine,False
-2023-11-11,287,1,6,direct,False
-2023-11-05,898,3,10,direct,False
-2023-12-07,780,1,14,social media,False
-2023-10-27,159,11,15,search engine,False
-2023-11-13,380,2,12,direct,False
-2023-11-13,769,27,9,direct,False
-2023-10-08,661,16,16,direct,False
-2023-10-31,302,4,4,direct,False
-2023-11-24,911,2,0,social media,False
-2023-10-03,655,1,9,social media,False
-2023-10-05,979,4,52,social media,True
-2023-10-21,083,1,19,social media,False
-2023-11-02,783,1,14,direct,False
-2023-11-05,480,3,5,direct,False
-2023-10-02,986,4,5,social media,False
-2023-12-01,406,11,57,direct,True
-2023-10-22,938,5,17,direct,False
-2023-10-12,238,4,10,search engine,False
-2023-10-30,215,7,15,direct,False
-2023-10-07,947,2,34,direct,False
-2023-12-30,129,16,5,referral,False
-2023-10-10,536,4,17,direct,False
-2023-10-14,832,8,18,direct,False
-2023-10-03,482,1,10,direct,False
-2023-10-08,916,1,0,social media,False
-2023-11-29,011,3,67,direct,False
-2023-12-17,531,1,11,search engine,False
-2023-11-12,253,3,18,direct,False
-2023-10-05,466,2,4,direct,False
-2023-11-19,252,2,19,direct,False
-2023-10-09,098,8,1,direct,False
-2023-10-07,079,5,23,search engine,False
-2023-11-09,784,2,5,direct,False
-2023-11-05,123,7,37,social media,True
-2023-12-02,573,3,21,referral,False
-2023-12-25,525,3,3,social media,False
-2023-11-24,385,3,2,social media,False
-2023-10-21,649,2,22,search engine,False
-2023-10-13,212,5,35,direct,True
-2023-11-14,163,2,9,search engine,False
-2023-10-21,307,1,6,direct,False
-2023-11-03,563,6,5,social media,False
-2023-11-21,924,8,12,social media,False
-2023-12-03,016,15,21,social media,False
-2023-11-17,028,14,6,direct,False
-2023-10-21,283,6,20,social media,False
-2023-12-11,944,1,19,referral,False
-2023-12-22,580,4,26,search engine,False
-2023-12-16,199,7,1,direct,False
-2023-10-24,482,16,0,social media,False
-2023-11-27,926,3,7,social media,False
-2023-10-07,498,1,4,direct,False
-2023-10-08,319,1,11,referral,False
-2023-12-20,222,2,30,social media,False
-2023-12-18,945,2,0,direct,False
-2023-11-10,216,1,15,social media,False
-2023-10-21,675,20,6,search engine,False
-2023-11-22,159,9,27,search engine,False
-2023-10-11,521,14,8,direct,False
-2023-10-25,487,3,11,search engine,False
-2023-10-22,413,6,52,direct,True
-2023-10-21,994,2,22,social media,False
-2023-10-12,232,6,15,direct,False
-2023-10-08,301,8,26,search engine,False
-2023-12-14,255,21,15,social media,False
-2023-10-29,780,1,3,social media,False
-2023-10-27,561,4,4,social media,False
-2023-12-16,277,5,15,referral,False
-2023-12-02,629,6,16,social media,False
-2023-10-25,127,1,11,referral,False
-2023-12-11,128,11,27,direct,False
-2023-12-03,873,2,21,social media,False
-2023-11-15,230,6,19,direct,False
-2023-10-09,499,10,14,social media,False
-2023-10-12,208,7,0,social media,False
-2023-10-20,586,10,28,direct,False
-2023-12-22,100,3,2,search engine,False
-2023-10-10,535,1,4,search engine,False
-2023-11-23,870,5,0,direct,False
-2023-11-26,940,5,1,direct,False
-2023-10-14,514,5,1,referral,False
-2023-10-04,887,6,18,social media,False
-2023-10-31,187,4,34,direct,True
-2023-10-22,663,8,8,social media,False
-2023-10-31,867,3,14,direct,False
-2023-11-24,112,1,11,direct,False
-2023-11-16,970,2,26,direct,False
-2023-12-09,259,1,13,search engine,False
-2023-11-16,077,7,27,social media,False
-2023-12-08,504,20,16,direct,False
-2023-12-09,848,8,53,direct,True
-2023-11-04,301,3,5,direct,False
-2023-12-23,048,14,11,social media,False
-2023-12-29,259,12,1,social media,False
-2023-10-24,312,1,0,direct,False
-2023-11-29,568,6,27,social media,False
-2023-10-30,407,2,1,direct,False
-2023-11-04,950,2,47,direct,False
-2023-11-23,990,8,11,direct,False
-2023-11-14,227,1,0,social media,False
-2023-11-26,532,3,15,direct,False
-2023-10-15,977,4,26,direct,False
-2023-11-17,198,9,9,social media,False
-2023-10-14,312,20,13,direct,False
-2023-12-26,729,3,4,direct,False
-2023-12-24,383,2,68,direct,False
-2023-12-07,894,10,5,referral,False
-2023-12-20,663,10,2,social media,False
-2023-11-10,422,4,24,direct,False
-2023-12-09,609,1,13,social media,False
-2023-11-26,065,10,2,direct,False
-2023-11-08,085,8,6,direct,False
-2023-11-28,649,8,76,direct,True
-2023-11-01,390,4,41,social media,True
-2023-12-25,654,11,4,social media,False
-2023-10-14,922,5,58,social media,True
-2023-12-02,065,4,1,social media,False
-2023-11-11,226,6,2,social media,False
-2023-11-19,426,17,29,direct,False
-2023-12-13,007,8,6,referral,False
-2023-12-24,071,3,31,social media,False
-2023-12-21,553,5,11,direct,False
-2023-12-19,386,12,9,direct,False
+2023-10-22,860,8,4,referral,False
+2023-11-22,214,11,1,search engine,False
+2023-09-24,130,18,0,social media,False
+2023-10-08,385,2,4,direct,False
+2023-09-22,252,2,11,search engine,False
+2023-10-12,475,2,72,direct,False
+2023-11-01,562,21,9,direct,False
+2023-10-21,646,1,3,social media,False
+2023-10-30,013,2,33,direct,False
+2023-11-23,091,1,11,direct,False
+2023-10-17,034,2,48,search engine,False
+2023-09-02,389,5,4,direct,False
+2023-09-18,729,3,11,social media,False
+2023-10-18,270,2,1,direct,False
+2023-10-10,724,2,9,social media,False
+2023-09-26,216,4,6,direct,False
+2023-09-15,812,22,1,social media,False
+2023-09-08,471,2,0,social media,False
+2023-10-05,288,14,18,search engine,False
+2023-09-28,134,3,37,direct,False
+2023-09-23,573,7,7,search engine,False
+2023-10-05,960,18,9,social media,False
+2023-09-05,217,2,5,direct,False
+2023-11-18,014,3,2,direct,False
+2023-10-22,095,1,23,search engine,False
+2023-09-15,170,15,4,referral,False
+2023-11-25,795,9,53,search engine,True
+2023-09-06,795,2,32,social media,False
+2023-11-14,639,12,32,direct,True
+2023-09-01,376,1,20,direct,False
+2023-09-03,358,4,3,direct,False
+2023-10-21,233,15,8,direct,False
+2023-11-27,232,1,10,direct,False
+2023-09-12,509,7,23,direct,False
+2023-10-26,080,19,6,direct,False
+2023-11-26,996,6,8,search engine,False
+2023-10-23,683,5,11,referral,False
+2023-10-25,202,2,9,social media,False
+2023-11-08,883,3,81,social media,False
+2023-09-16,608,4,3,search engine,False
+2023-09-03,659,2,7,social media,False
+2023-09-19,147,1,20,search engine,False
+2023-10-09,337,6,36,social media,True
+2023-10-20,150,6,15,direct,False
+2023-09-16,345,4,80,direct,True
+2023-09-01,303,5,67,social media,True
+2023-09-09,232,7,8,social media,False
+2023-09-24,053,6,30,direct,False
+2023-11-11,419,5,45,direct,True
+2023-11-28,098,2,72,direct,False
+2023-11-05,821,26,11,direct,False
+2023-11-07,800,1,13,direct,False
+2023-09-08,134,2,25,referral,False
+2023-10-29,882,2,20,referral,False
+2023-10-21,437,3,47,direct,False
+2023-09-28,878,2,13,social media,False
+2023-09-19,515,6,0,direct,False
+2023-09-30,476,11,6,social media,False
+2023-10-07,279,5,8,referral,False
+2023-10-30,992,2,1,direct,False
+2023-10-03,255,3,13,direct,False
+2023-10-24,569,1,53,direct,False
+2023-10-17,853,2,8,direct,False
+2023-11-29,784,1,37,social media,False
+2023-10-09,476,3,7,direct,False
+2023-09-24,524,1,1,search engine,False
+2023-09-20,320,3,1,direct,False
+2023-11-26,142,1,9,referral,False
+2023-11-25,050,4,12,direct,False
+2023-10-28,569,1,0,social media,False
+2023-10-24,443,9,7,direct,False
+2023-09-05,102,1,1,referral,False
+2023-10-17,866,7,20,social media,False
+2023-09-30,658,2,31,direct,False
+2023-10-25,345,17,0,social media,False
+2023-09-09,907,1,10,direct,False
+2023-10-04,095,7,15,search engine,False
+2023-09-01,271,6,14,direct,False
+2023-11-06,075,1,16,direct,False
+2023-09-29,973,1,1,direct,False
+2023-11-01,452,1,12,direct,False
+2023-10-09,611,3,3,direct,False
+2023-09-10,757,1,20,direct,False
+2023-09-19,441,4,13,search engine,False
+2023-09-16,791,15,57,social media,True
+2023-10-02,474,6,32,referral,True
+2023-10-03,928,9,33,search engine,True
+2023-11-04,416,2,21,direct,False
+2023-09-12,606,1,9,search engine,False
+2023-11-26,848,3,21,search engine,False
+2023-10-04,114,1,6,search engine,False
+2023-11-14,412,3,0,social media,False
+2023-10-06,393,5,11,referral,False
+2023-10-06,977,5,5,social media,False
+2023-10-07,779,7,11,social media,False
+2023-09-30,272,4,15,direct,False
+2023-09-13,698,1,2,social media,False
+2023-09-19,075,16,8,search engine,False
+2023-10-22,850,1,13,direct,False
+2023-09-12,024,2,16,social media,False
+2023-09-16,568,14,2,social media,False
+2023-09-14,222,7,1,referral,False
+2023-11-14,657,6,69,social media,True
+2023-09-17,252,3,36,direct,False
+2023-09-09,945,1,44,referral,False
+2023-10-08,338,10,17,social media,False
+2023-09-17,510,5,47,direct,True
+2023-10-01,786,5,30,direct,False
+2023-11-29,530,4,2,direct,False
+2023-10-28,659,1,2,search engine,False
+2023-09-01,386,17,17,direct,False
+2023-09-25,823,3,15,social media,False
+2023-10-15,671,2,16,direct,False
+2023-11-24,202,2,50,search engine,False
+2023-10-27,401,2,3,direct,False
+2023-09-01,372,3,23,social media,False
+2023-11-14,011,1,63,direct,False
+2023-09-24,667,1,8,search engine,False
+2023-09-08,697,2,5,direct,False
+2023-11-03,922,4,23,direct,False
+2023-11-23,460,1,23,social media,False
+2023-09-06,593,5,10,social media,False
+2023-09-10,823,5,41,direct,True
+2023-10-03,373,22,33,direct,True
+2023-11-24,281,18,9,social media,False
+2023-11-16,928,3,12,direct,False
+2023-10-25,517,4,23,social media,False
+2023-09-03,436,7,17,social media,False
+2023-11-22,144,2,5,direct,False
+2023-10-15,716,11,4,social media,False
+2023-10-04,347,1,6,direct,False
+2023-10-24,117,2,35,social media,False
+2023-09-05,989,3,41,direct,False
+2023-10-17,918,5,28,social media,False
+2023-10-21,102,1,2,direct,False
+2023-11-21,797,1,16,social media,False
+2023-10-08,480,3,30,search engine,False
+2023-10-21,080,1,59,social media,False
+2023-11-13,784,4,5,social media,False
+2023-10-23,449,6,7,direct,False
+2023-09-23,182,3,17,search engine,False
+2023-09-04,359,3,23,social media,False
+2023-09-27,092,5,72,direct,True
+2023-09-21,004,3,8,direct,False
+2023-11-09,512,3,15,social media,False
+2023-10-19,077,2,8,direct,False
+2023-10-17,120,4,23,direct,False
+2023-10-18,572,11,0,direct,False
+2023-10-22,718,13,15,direct,False
+2023-09-28,982,7,15,direct,False
+2023-10-29,311,6,2,social media,False
+2023-09-18,505,3,8,direct,False
+2023-09-28,713,10,16,direct,False
+2023-10-14,536,5,44,search engine,True
+2023-11-06,232,1,13,referral,False
+2023-10-04,622,3,27,direct,False
+2023-10-11,612,6,9,referral,False
+2023-10-26,314,5,86,direct,True
+2023-09-22,276,2,3,direct,False
+2023-11-14,445,1,6,social media,False
+2023-09-03,242,6,0,social media,False
+2023-09-06,321,13,17,direct,False
+2023-10-21,573,5,53,referral,True
+2023-10-21,172,2,29,direct,False
+2023-09-19,723,2,14,direct,False
+2023-11-29,653,5,6,direct,False
+2023-11-16,258,3,1,direct,False
+2023-09-23,649,2,92,social media,False
+2023-11-04,318,8,22,referral,False
+2023-09-24,549,3,10,social media,False
+2023-11-01,955,1,67,social media,False
+2023-09-09,929,1,3,social media,False
+2023-09-22,571,1,36,social media,False
+2023-09-14,827,1,3,social media,False
+2023-11-17,409,2,47,referral,False
+2023-09-18,295,7,12,social media,False
+2023-10-08,864,4,27,direct,False
+2023-11-05,973,2,1,referral,False
+2023-11-09,645,7,8,search engine,False
+2023-09-15,622,4,19,social media,False
+2023-10-06,156,2,3,direct,False
+2023-10-25,288,5,0,social media,False
+2023-11-13,864,4,2,direct,False
+2023-11-27,947,8,10,direct,False
+2023-10-17,323,7,25,search engine,False
+2023-10-06,291,5,25,social media,False
+2023-11-13,871,3,17,direct,False
+2023-10-16,362,5,3,referral,False
+2023-11-28,992,11,0,social media,False
+2023-11-07,132,7,51,direct,True
+2023-10-01,377,1,1,direct,False
+2023-10-11,725,1,48,direct,False
+2023-11-29,621,10,4,direct,False
+2023-10-24,566,5,5,direct,False
+2023-10-23,136,8,4,search engine,False
+2023-10-05,574,10,10,social media,False
+2023-09-07,209,13,13,referral,False
+2023-10-29,875,2,48,referral,False
+2023-10-22,709,2,0,social media,False
+2023-09-22,665,6,0,direct,False
+2023-11-23,360,3,3,direct,False
+2023-10-31,359,5,13,direct,False
+2023-11-26,434,12,4,direct,False
+2023-09-29,304,4,0,referral,False
+2023-09-18,768,4,29,referral,False
+2023-10-08,946,2,3,social media,False
+2023-09-03,799,12,6,referral,False
+2023-11-26,054,7,3,search engine,False
+2023-11-04,312,2,5,search engine,False
+2023-11-11,053,5,8,social media,False
+2023-09-08,417,23,32,search engine,True
+2023-10-16,490,15,65,direct,True
+2023-09-14,734,1,7,search engine,False
+2023-10-03,150,1,37,social media,False
+2023-09-29,699,13,24,search engine,False
+2023-09-11,745,3,34,direct,False
+2023-09-20,260,8,8,direct,False
+2023-10-23,939,19,4,social media,False
+2023-11-20,713,22,16,direct,False
+2023-11-20,881,2,0,referral,False
+2023-09-25,358,6,4,direct,False
+2023-09-26,441,6,46,search engine,True
+2023-11-09,145,9,15,direct,False
+2023-10-04,016,4,10,social media,False
+2023-11-25,980,2,6,social media,False
+2023-09-12,748,1,21,social media,False
+2023-09-26,980,4,9,direct,False
+2023-10-24,362,1,4,social media,False
+2023-09-29,148,3,36,social media,False
+2023-10-29,806,15,18,direct,False
+2023-09-24,757,4,2,direct,False
+2023-09-20,466,1,18,direct,False
+2023-11-12,153,3,12,direct,False
+2023-09-01,216,5,24,direct,False
+2023-10-05,130,1,1,social media,False
+2023-09-12,274,9,7,social media,False
+2023-09-17,329,4,23,direct,False
+2023-11-19,215,6,28,social media,False
+2023-11-19,709,12,78,search engine,True
+2023-10-29,921,6,1,direct,False
+2023-09-16,710,5,146,direct,True
+2023-09-07,781,7,2,direct,False
+2023-11-11,497,8,10,social media,False
+2023-10-09,994,9,7,direct,False
+2023-10-01,151,1,5,direct,False
+2023-10-07,170,7,8,direct,False
+2023-09-15,887,8,15,direct,False
+2023-11-21,160,5,43,direct,True
+2023-10-25,738,1,40,social media,False
+2023-09-13,273,9,55,social media,True
+2023-09-29,957,1,1,direct,False
+2023-09-16,439,3,6,direct,False
+2023-11-23,388,1,26,direct,False
+2023-09-30,323,5,25,direct,False
+2023-10-23,974,3,11,search engine,False
+2023-09-12,186,8,59,direct,True
+2023-11-09,806,15,42,direct,True
+2023-11-16,225,24,3,direct,False
+2023-09-20,860,5,20,referral,False
+2023-11-13,106,2,3,direct,False
+2023-09-03,887,1,8,social media,False
+2023-10-19,520,27,52,direct,True
+2023-10-05,689,29,13,social media,False
+2023-09-13,119,1,27,social media,False
+2023-09-11,616,2,9,direct,False
+2023-11-06,920,1,38,direct,False
+2023-09-25,260,2,26,direct,False
+2023-10-08,327,1,23,referral,False
+2023-10-07,315,12,2,social media,False
+2023-10-10,300,5,13,social media,False
+2023-10-26,039,5,22,direct,False
+2023-09-06,215,6,31,social media,True
+2023-10-29,815,10,24,search engine,False
+2023-10-12,355,7,19,direct,False
+2023-10-15,825,11,12,direct,False
+2023-10-02,362,12,5,direct,False
+2023-09-02,717,2,28,direct,False
+2023-09-13,045,5,7,direct,False
+2023-10-30,447,8,15,direct,False
+2023-09-30,454,17,15,direct,False
+2023-10-30,334,1,53,social media,False
+2023-11-07,730,8,3,social media,False
+2023-11-04,021,1,19,social media,False
+2023-11-03,686,7,69,direct,True
+2023-11-15,006,9,1,direct,False
+2023-10-02,946,1,5,direct,False
+2023-09-29,515,4,11,direct,False
+2023-09-29,156,10,7,social media,False
+2023-11-23,021,11,2,social media,False
+2023-10-26,603,13,26,social media,False
+2023-11-23,773,3,28,direct,False
+2023-10-28,891,7,25,direct,False
+2023-09-25,791,10,9,direct,False
+2023-11-11,059,11,4,social media,False
+2023-11-18,026,8,37,search engine,True
+2023-11-03,939,13,0,search engine,False
+2023-10-16,526,1,13,direct,False
+2023-11-23,739,2,16,direct,False
+2023-11-25,500,8,6,direct,False
+2023-11-16,720,1,0,direct,False
+2023-10-08,543,8,21,social media,False
+2023-10-11,391,7,25,direct,False
+2023-11-15,888,1,16,direct,False
+2023-09-20,672,1,16,direct,False
+2023-09-02,224,3,1,direct,False
+2023-09-26,917,19,7,direct,False
+2023-09-15,993,6,0,social media,False
+2023-10-31,962,5,45,search engine,True
+2023-10-02,552,11,24,social media,False
+2023-11-01,083,9,8,direct,False
+2023-11-23,207,9,15,direct,False
+2023-09-03,126,7,14,direct,False
+2023-09-12,086,4,21,search engine,False
+2023-09-19,566,7,12,social media,False
+2023-10-23,694,1,0,direct,False
+2023-11-22,661,4,8,direct,False
+2023-09-28,754,1,22,direct,False
+2023-09-07,331,17,3,direct,False
+2023-09-24,403,7,19,social media,False
+2023-10-30,151,4,15,referral,False
+2023-11-05,334,3,46,direct,False
+2023-10-28,245,3,8,direct,False
+2023-09-21,910,8,5,direct,False
+2023-11-26,297,18,5,direct,False
+2023-11-08,933,2,13,social media,False
+2023-09-14,503,6,17,direct,False
+2023-09-17,890,3,7,social media,False
+2023-09-05,448,1,29,social media,False
+2023-10-17,286,1,5,direct,False
+2023-11-13,604,9,8,direct,False
+2023-09-20,775,7,19,direct,False
+2023-11-23,283,7,0,search engine,False
+2023-10-07,304,9,37,referral,True
+2023-11-18,901,1,4,direct,False
+2023-09-02,968,14,15,direct,False
+2023-10-05,197,1,3,direct,False
+2023-10-21,205,3,23,direct,False
+2023-10-13,125,6,60,social media,True
+2023-10-26,494,3,14,referral,False
+2023-09-23,383,1,2,social media,False
+2023-09-08,340,6,1,direct,False
+2023-09-05,494,6,3,social media,False
+2023-11-29,426,4,22,search engine,False
+2023-09-08,302,1,16,social media,False
+2023-10-16,963,2,22,search engine,False
+2023-10-23,303,1,21,search engine,False
+2023-11-03,965,11,7,social media,False
+2023-09-13,584,2,1,direct,False
+2023-09-04,613,12,11,social media,False
+2023-09-23,850,3,40,direct,False
+2023-11-10,600,5,7,search engine,False
+2023-09-15,916,4,9,referral,False
+2023-10-05,939,5,0,direct,False
+2023-11-17,841,4,28,referral,False
+2023-11-11,815,13,37,social media,True
+2023-09-25,011,4,3,direct,False
+2023-09-15,042,9,28,social media,False
+2023-10-13,020,1,4,search engine,False
+2023-09-15,792,3,21,direct,False
+2023-09-13,469,1,4,search engine,False
+2023-10-22,493,9,7,referral,False
+2023-09-16,105,7,18,direct,False
+2023-09-04,089,1,2,search engine,False
+2023-11-13,038,7,14,direct,False
+2023-10-12,444,17,5,direct,False
+2023-09-07,821,1,15,search engine,False
+2023-09-13,886,4,20,referral,False
+2023-09-26,520,1,20,direct,False
+2023-10-12,583,5,29,direct,False
+2023-11-07,049,10,26,search engine,False
+2023-11-28,145,1,29,direct,False
+2023-11-08,686,11,5,direct,False
+2023-09-21,976,2,3,direct,False
+2023-11-10,159,2,20,search engine,False
+2023-10-27,253,2,3,referral,False
+2023-09-18,834,3,11,social media,False
+2023-11-14,998,9,8,search engine,False
+2023-10-12,287,1,6,direct,False
+2023-10-06,898,3,10,direct,False
+2023-11-07,780,1,14,social media,False
+2023-09-27,159,11,15,search engine,False
+2023-10-14,380,2,12,direct,False
+2023-10-14,769,27,9,direct,False
+2023-09-08,661,16,16,direct,False
+2023-10-01,302,4,4,direct,False
+2023-10-25,911,2,0,social media,False
+2023-09-03,655,1,9,social media,False
+2023-09-05,979,4,52,social media,True
+2023-09-21,083,1,19,social media,False
+2023-10-03,783,1,14,direct,False
+2023-10-06,480,3,5,direct,False
+2023-09-02,986,4,5,social media,False
+2023-11-01,406,11,57,direct,True
+2023-09-22,938,5,17,direct,False
+2023-09-12,238,4,10,search engine,False
+2023-09-30,215,7,15,direct,False
+2023-09-07,947,2,34,direct,False
+2023-09-02,930,19,8,search engine,False
+2023-09-25,961,10,2,social media,False
+2023-09-14,832,8,18,direct,False
+2023-09-03,482,1,10,direct,False
+2023-09-08,916,1,0,social media,False
+2023-10-30,011,3,67,direct,False
+2023-11-17,531,1,11,search engine,False
+2023-10-13,253,3,18,direct,False
+2023-09-05,466,2,4,direct,False
+2023-10-20,252,2,19,direct,False
+2023-09-09,098,8,1,direct,False
+2023-09-07,079,5,23,search engine,False
+2023-10-10,784,2,5,direct,False
+2023-10-06,123,7,37,social media,True
+2023-11-02,573,3,21,referral,False
+2023-11-25,525,3,3,social media,False
+2023-10-25,385,3,2,social media,False
+2023-09-21,649,2,22,search engine,False
+2023-09-13,212,5,35,direct,True
+2023-10-15,163,2,9,search engine,False
+2023-09-21,307,1,6,direct,False
+2023-10-04,563,6,5,social media,False
+2023-10-22,924,8,12,social media,False
+2023-11-03,016,15,21,social media,False
+2023-10-18,028,14,6,direct,False
+2023-09-21,283,6,20,social media,False
+2023-11-11,944,1,19,referral,False
+2023-11-22,580,4,26,search engine,False
+2023-11-16,199,7,1,direct,False
+2023-09-24,482,16,0,social media,False
+2023-10-28,926,3,7,social media,False
+2023-09-07,498,1,4,direct,False
+2023-09-08,319,1,11,referral,False
+2023-11-20,222,2,30,social media,False
+2023-11-18,945,2,0,direct,False
+2023-10-11,216,1,15,social media,False
+2023-09-21,675,20,6,search engine,False
+2023-10-23,159,9,27,search engine,False
+2023-09-11,521,14,8,direct,False
+2023-09-25,487,3,11,search engine,False
+2023-09-22,413,6,52,direct,True
+2023-09-21,994,2,22,social media,False
+2023-09-12,232,6,15,direct,False
+2023-09-08,301,8,26,search engine,False
+2023-11-14,255,21,15,social media,False
+2023-09-29,780,1,3,social media,False
+2023-09-27,561,4,4,social media,False
+2023-11-16,277,5,15,referral,False
+2023-11-02,629,6,16,social media,False
+2023-09-25,127,1,11,referral,False
+2023-11-11,128,11,27,direct,False
+2023-11-03,873,2,21,social media,False
+2023-10-16,230,6,19,direct,False
+2023-09-09,499,10,14,social media,False
+2023-09-12,208,7,0,social media,False
+2023-09-20,586,10,28,direct,False
+2023-11-22,100,3,2,search engine,False
+2023-09-10,535,1,4,search engine,False
+2023-10-24,870,5,0,direct,False
+2023-10-27,940,5,1,direct,False
+2023-09-14,514,5,1,referral,False
+2023-09-04,887,6,18,social media,False
+2023-10-01,187,4,34,direct,True
+2023-09-22,663,8,8,social media,False
+2023-10-01,867,3,14,direct,False
+2023-10-25,112,1,11,direct,False
+2023-10-17,970,2,26,direct,False
+2023-11-09,259,1,13,search engine,False
+2023-10-17,077,7,27,social media,False
+2023-11-08,504,20,16,direct,False
+2023-11-09,848,8,53,direct,True
+2023-10-05,301,3,5,direct,False
+2023-11-23,048,14,11,social media,False
+2023-11-29,259,12,1,social media,False
+2023-09-24,312,1,0,direct,False
+2023-10-30,568,6,27,social media,False
+2023-09-30,407,2,1,direct,False
+2023-10-05,950,2,47,direct,False
+2023-10-24,990,8,11,direct,False
+2023-10-15,227,1,0,social media,False
+2023-10-27,532,3,15,direct,False
+2023-09-15,977,4,26,direct,False
+2023-10-18,198,9,9,social media,False
+2023-09-14,312,20,13,direct,False
+2023-11-26,729,3,4,direct,False
+2023-11-24,383,2,68,direct,False
+2023-11-07,894,10,5,referral,False
+2023-11-20,663,10,2,social media,False
+2023-10-11,422,4,24,direct,False
+2023-11-09,609,1,13,social media,False
+2023-10-27,065,10,2,direct,False
+2023-10-09,085,8,6,direct,False
+2023-10-29,649,8,76,direct,True
+2023-10-02,390,4,41,social media,True
+2023-11-25,654,11,4,social media,False
+2023-09-14,922,5,58,social media,True
+2023-11-02,065,4,1,social media,False
+2023-10-12,226,6,2,social media,False
+2023-10-20,426,17,29,direct,False
+2023-11-13,007,8,6,referral,False
+2023-11-24,071,3,31,social media,False
+2023-11-21,553,5,11,direct,False
+2023-11-19,386,12,9,direct,False
