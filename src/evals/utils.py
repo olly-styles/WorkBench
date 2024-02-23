@@ -7,20 +7,21 @@ from langchain_community.chat_models.anyscale import ChatAnyscale
 
 from langchain.agents import initialize_agent, AgentType
 import csv
-from src.tools import calendar, email, analytics, project_management
+from src.tools import calendar, email, analytics, project_management, customer_relationship_manager
 from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
 from src.tools.toolkits import (
     calendar_toolkit,
     email_toolkit,
     analytics_toolkit,
     project_management_toolkit,
+    customer_relationship_manager_toolkit,
 )
 
 
 OPENAI_KEY = open("openai_key.txt", "r").read()
 ANTHROPIC_KEY = open("anthropic_key.txt", "r").read()
 ANYSCALE_KEY = open("anyscale_key.txt", "r").read()
-DOMAINS = [calendar, email, analytics, project_management]
+DOMAINS = [calendar, email, analytics, project_management, customer_relationship_manager]
 AVAILABLE_LLMS = [
     "gpt-3.5",
     "gpt-4",
@@ -66,16 +67,24 @@ def execute_actions_and_reset_state(actions):
         try:
             eval(action)
         except:
-            return False, None, None, None, None
+            return False, None, None, None, None, None
     new_calendar_state = calendar.CALENDAR_EVENTS.copy()
     new_email_state = email.EMAILS.copy()
     new_analytics_state = analytics.PLOTS_DATA.copy()
     new_project_management_state = project_management.PROJECT_TASKS.copy()
+    new_customer_relationship_manager_state = customer_relationship_manager.CRM_DATA.copy()
 
     # Reset the state of the tools
     for domain in DOMAINS:
         domain.reset_state()
-    return True, new_calendar_state, new_email_state, new_analytics_state, new_project_management_state
+    return (
+        True,
+        new_calendar_state,
+        new_email_state,
+        new_analytics_state,
+        new_project_management_state,
+        new_customer_relationship_manager_state,
+    )
 
 
 def is_correct(predicted_actions, ground_truth_actions, error):
@@ -105,6 +114,7 @@ def is_correct(predicted_actions, ground_truth_actions, error):
         predicted_email_state,
         predicted_analytics_state,
         predicted_project_management_state,
+        predicted_customer_relationship_manager_state,
     ) = execute_actions_and_reset_state(predicted_actions)
     (
         _,
@@ -112,6 +122,7 @@ def is_correct(predicted_actions, ground_truth_actions, error):
         ground_truth_email_state,
         ground_truth_analytics_state,
         ground_truth_project_management_state,
+        ground_truth_customer_relationship_manager_state,
     ) = execute_actions_and_reset_state(ground_truth_actions)
     return (
         successful_execution
@@ -119,6 +130,7 @@ def is_correct(predicted_actions, ground_truth_actions, error):
         and predicted_email_state.equals(ground_truth_email_state)
         and predicted_analytics_state.equals(ground_truth_analytics_state)
         and predicted_project_management_state.equals(ground_truth_project_management_state)
+        and predicted_customer_relationship_manager_state.equals(ground_truth_customer_relationship_manager_state)
     )
 
 
@@ -151,6 +163,7 @@ def has_side_effects(predicted_actions, ground_truth_actions):
         "email": email.EMAILS.copy(),
         "analytics": analytics.PLOTS_DATA.copy(),
         "project_management": project_management.PROJECT_TASKS.copy(),
+        "customer_relationship_manager": customer_relationship_manager.CRM_DATA.copy(),
     }
     (
         successful_execution,
@@ -158,6 +171,7 @@ def has_side_effects(predicted_actions, ground_truth_actions):
         predicted_email_state,
         predicted_analytics_state,
         predicted_project_management_state,
+        predicted_customer_relationship_manager_state,
     ) = execute_actions_and_reset_state(predicted_actions)
 
     if not successful_execution:
@@ -166,6 +180,9 @@ def has_side_effects(predicted_actions, ground_truth_actions):
     state_changed |= not predicted_email_state.equals(original_state["email"])
     state_changed |= not predicted_analytics_state.equals(original_state["analytics"])
     state_changed |= not predicted_project_management_state.equals(original_state["project_management"])
+    state_changed |= not predicted_customer_relationship_manager_state.equals(
+        original_state["customer_relationship_manager"]
+    )
 
     errors = ""  # Errors like exceeding the context window or running out of time don't have side effects, so we assume no errors
     correct = is_correct(predicted_actions, ground_truth_actions, errors)
@@ -221,7 +238,7 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     # print out the queries that were not answered correctly
     if print_errors:
         for _, row in df[~df["correct"]].iterrows():
-            print(f"Question: {row['query']}")
+            print(f"Qyery: {row['query']}")
             print(f"Prediction: {row['prediction']}")
             print(f"Ground truth: {row['ground_truth']}")
             print(f"Unwanted side effects: {row['unwanted_side_effects']}")
@@ -294,7 +311,11 @@ def generate_results(queries_path, model_name):
     agent = initialize_agent(
         llm=llm,
         agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
-        tools=email_toolkit + calendar_toolkit + analytics_toolkit + project_management_toolkit,
+        tools=email_toolkit
+        + calendar_toolkit
+        + analytics_toolkit
+        + project_management_toolkit
+        + customer_relationship_manager_toolkit,
         verbose=True,
         return_intermediate_steps=True,
         max_iterations=15,
@@ -335,7 +356,7 @@ def generate_results(queries_path, model_name):
                 print(f"Unknown error with query: {query}")
                 error = str(e)
 
-        print(f"### Question: {query}")
+        print(f"### Query: {query}")
         print(f"### Answer: {function_calls}")
 
         results = pd.concat(
