@@ -167,7 +167,7 @@ def traffic_source_count(time_min=None, time_max=None, traffic_source=None):
     time_max : str, optional
         End date of the time range. Date format is "YYYY-MM-DD".
     traffic_source : str, optional
-        Traffic source to filter the visits.
+        Traffic source to filter the visits. Available values are: "direct", "referral", "search engine", "social media"
 
     Returns
     -------
