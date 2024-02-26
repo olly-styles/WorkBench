@@ -4,7 +4,7 @@ from langchain.tools import tool
 ANALYTICS_DATA = pd.read_csv("data/processed/analytics_data.csv", dtype=str)
 PLOTS_DATA = pd.DataFrame(columns=["file_path"])
 METRICS = ["page_views", "session_duration_seconds"]
-METRIC_NAMES = ["total visits", "average session duration"]
+METRIC_NAMES = ["total page views", "average session duration"]
 
 def reset_state():
     """

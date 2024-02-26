@@ -29,6 +29,7 @@ def get_plot_string(metric, date_min, date_max, plot_type):
 def get_random_dict():
     date_min = random.choice(dates)
     metric = random.choice(METRICS)
+    metric2 = random.choice([m for m in METRICS if m != metric])
     more_or_less = random.choice(["more", "less"])
     fell_or_grew = random.choice(["fell", "grew"])
     threshold = get_threshold(metric)
@@ -36,8 +37,10 @@ def get_random_dict():
         "date_min": date_min,
         "date_max": str(HARDCODED_CURRENT_TIME.date()),
         "metric": metric,
+        "metric2": metric2,
         "natural_language_date": get_natural_language_date(date_min),
         "natural_language_metric": metric_naming_dict[metric],
+        "natural_language_metric_2": metric_naming_dict[metric2],
         "plot_type": random.choice(["line", "bar", "scatter", "histogram"]),
         "more_or_less": more_or_less,
         "threshold": threshold,
@@ -47,7 +50,7 @@ def get_random_dict():
 def get_threshold(metric):
     """Gets the threshold for a given metric over the whole time series"""
     data = ANALYTICS_DATA[["date_of_visit", metric]]
-    data[metric] = data[metric].astype(float)
+    data.loc[:, metric] = data[metric].astype(float)
     threshold_percentage = random.randint(1, 99)
     threshold = np.percentile(data.groupby("date_of_visit").mean(), threshold_percentage)
     return int(threshold)
@@ -87,6 +90,14 @@ def distribution_plot_on_day_logic():
     answer = [get_plot_string(base_dict["metric"], base_dict["date_min"], base_dict["date_min"], "histogram")]
     return {**base_dict, "answer": answer}
 
+def distribution_plot_on_day_two_metrics_logic():
+    base_dict = get_random_dict()
+    answer = [
+        get_plot_string(base_dict["metric"], base_dict["date_min"], base_dict["date_max"], "histogram"),
+        get_plot_string(base_dict["metric2"], base_dict["date_min"], base_dict["date_max"], "histogram"),
+    ]
+    return {**base_dict, "answer": answer}
+
 
 def metric_more_or_less_plot_logic():
     query_info = get_threshold_and_metric_more_or_less()
@@ -105,40 +116,41 @@ def metric_fell_or_grew_plot_logic():
     return {"answer": answer, **query_info}
 
 ANALYTICS_TEMPLATES = [
-    {
-        "query": """Can you make a {plot_type} chart of {natural_language_metric} since {natural_language_date}?""",
-        "logic": metric_plot_logic,
-    },
-    {
-        "query": """Plot the distribution of {natural_language_metric} on {natural_language_date}""",
-        "logic": distribution_plot_on_day_logic,
-    },
+    # {
+    #     "query": """Can you make a {plot_type} chart of {natural_language_metric} since {natural_language_date}?""",
+    #     "logic": metric_plot_logic,
+    # },
+    # {
+    #     "query": """Plot the distribution of {natural_language_metric} on {natural_language_date}""",
+    #     "logic": distribution_plot_on_day_logic,
+    # },
     {
         "query": """Can you chart the distribution of both {natural_language_metric} and {natural_language_metric_2} between {date_min} and {date_max}?""",
+        "logic": distribution_plot_on_day_two_metrics_logic,
     },
-    {
-        "query": """If {natural_language_metric} was {more_or_less} than {threshold} since {natural_language_date}, make a line plot of it since then""",
-        "logic": metric_more_or_less_plot_logic,
-    },
-    {
-        "query": """If {natural_language_metric} {fell_or_grew} from {natural_language_date} to {natural_language_date_max}, plot a line of that""",
-        "logic": metric_fell_or_grew_plot_logic,
-    },
-    {
-        "query": """Make a chart of the correlation between {natural_language_metric} and {natural_language_metric_2} with data from {date_min} to {date_max}""",
-    },
-    {
-        "query": """If there's a {positive_or_negative} correlation between {natural_language_metric} and {natural_language_metric_2} since {date_min}, make a plot of it""",
-    },
-    {
-        "query": """Can you plot the correlation between {natural_language_metric} and {natural_language_metric_2} since {date_min}?""",
-    },
-    {
-        "query": """Make a bar chart comparing {natural_language_metric} and {natural_language_metric_2} since {date_min}""",
-    },
-    {
-        "query": """Plot the {most_or_least} popular traffic source since {date_min}""", 
-    },
+    # {
+    #     "query": """If {natural_language_metric} was {more_or_less} than {threshold} since {natural_language_date}, make a line plot of it since then""",
+    #     "logic": metric_more_or_less_plot_logic,
+    # },
+    # {
+    #     "query": """If {natural_language_metric} {fell_or_grew} from {natural_language_date} to {natural_language_date_max}, plot a line of that""",
+    #     "logic": metric_fell_or_grew_plot_logic,
+    # },
+    # {
+    #     "query": """Make a chart of the correlation between {natural_language_metric} and {natural_language_metric_2} with data from {date_min} to {date_max}""",
+    # },
+    # {
+    #     "query": """If there's a {positive_or_negative} correlation between {natural_language_metric} and {natural_language_metric_2} since {date_min}, make a plot of it""",
+    # },
+    # {
+    #     "query": """Can you plot the correlation between {natural_language_metric} and {natural_language_metric_2} since {date_min}?""",
+    # },
+    # {
+    #     "query": """Make a bar chart comparing {natural_language_metric} and {natural_language_metric_2} since {date_min}""",
+    # },
+    # {
+    #     "query": """Plot the {most_or_least} popular traffic source since {date_min}""", 
+    # },
 ]
 
 max_queries_per_template = 1  # Limit the number of queries per template
