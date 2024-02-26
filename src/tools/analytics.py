@@ -151,7 +151,7 @@ def engaged_users_count(time_min=None, time_max=None):
     if time_max:
         data = data[data["date_of_visit"] <= time_max]
 
-    engaged_users = (data["user_engaged"]=="True").sum()
+    engaged_users = (data["user_engaged"]).sum()
     return engaged_users
 
 
