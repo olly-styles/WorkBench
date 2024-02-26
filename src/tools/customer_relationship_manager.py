@@ -125,6 +125,12 @@ def update_customer(customer_id=None, field=None, new_value=None):
 
     if not customer_id or not field or not new_value:
         return "Customer ID, field, or new value not provided."
+    
+    if field == "status" and new_value not in ["Qualified", "Won", "Lost", "Lead", "Proposal"]:
+        return "Status not valid. Please choose from: 'Qualified', 'Won', 'Lost', 'Lead', 'Proposal'"
+
+    if field == "product_interest" and new_value not in ["Software", "Hardware", "Services", "Consulting", "Training"]:
+        return "Product interest not valid. Please choose from: 'Software', 'Hardware', 'Services', 'Consulting', 'Training'"            
 
     if customer_id in CRM_DATA["customer_id"].values:
         if field in CRM_DATA.columns:

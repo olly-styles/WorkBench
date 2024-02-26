@@ -264,8 +264,22 @@ def get_latest_results_from_dir(results_root_dir, tool, action, model_list, prin
             print(f"\nCalculating metrics for {tool}, {action} action with {model}")
             calculate_metrics(ground_truth, predictions, print_errors=print_errors)
 
+def get_toolkits(toolkits):
+    """Get the toolkits to be used for the agent."""
+    tools = []
+    if "email" in toolkits:
+        tools += email_toolkit
+    if "calendar" in toolkits:
+        tools += calendar_toolkit
+    if "analytics" in toolkits:
+        tools += analytics_toolkit
+    if "project_management" in toolkits:
+        tools += project_management_toolkit
+    if "customer_relationship_manager" in toolkits:
+        tools += customer_relationship_manager_toolkit
+    return tools
 
-def generate_results(queries_path, model_name):
+def generate_results(queries_path, model_name, toolkits=["email", "calendar", "analytics", "project_management", "customer_relationship_manager"]):
     """Generates results for a given model and set of queries. Saves the results to a csv file."""
     queries = pd.read_csv(
         queries_path,
@@ -308,14 +322,13 @@ def generate_results(queries_path, model_name):
 
     else:
         raise ValueError("Invalid --model_name. Must be one of " + ", ".join(AVAILABLE_LLMS))
+
+    tools = get_toolkits(toolkits)
+        
     agent = initialize_agent(
         llm=llm,
         agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
-        tools=email_toolkit
-        + calendar_toolkit
-        + analytics_toolkit
-        + project_management_toolkit
-        + customer_relationship_manager_toolkit,
+        tools=tools,
         verbose=True,
         return_intermediate_steps=True,
         max_iterations=15,

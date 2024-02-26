@@ -26,59 +26,70 @@ def generate_new_customer_name():
     last_names = ["Jones", "Miller", "Davis", "Garcia", "Martinez", "Robinson", "Mehta"]
     return generate_random_name(first_names, last_names)
 
+def get_random_dict():
+    current_customer_name = random.choice(customer_names)
+    current_customer_id = CRM_DATA[CRM_DATA["customer_name"] == current_customer_name]["customer_id"].values[0]
+    new_customer_name = random.choice(customer_names)
+    new_status = random.choice(statuses)
+    while new_status == CRM_DATA[CRM_DATA["customer_id"] == current_customer_id]["status"].values[0]:
+        new_status = random.choice(statuses)
+    new_status_natural_language = new_status.lower()
+    assigned_to = random.choice(assigned_tos)
+    assigned_to_first_name = assigned_to.split("@")[0].split(".")[0].capitalize()
+
+    return {
+        "new_customer_name": new_customer_name,
+        "new_status": new_status,
+        "new_status_natural_language": new_status_natural_language,
+        "current_customer_name": current_customer_name,
+        "current_customer_id": current_customer_id,
+        "assigned_to": assigned_to,
+        "assigned_to_first_name": assigned_to_first_name,
+    }
+
 
 def update_customer_status_logic():
-    customer_name = random.choice(customer_names)
-    customer_id = CRM_DATA[CRM_DATA["customer_name"] == customer_name]["customer_id"].values[0]
-    new_status = random.choice(statuses).lower()
-    while new_status == CRM_DATA[CRM_DATA["customer_id"] == customer_id]["status"].values[0]:
-        new_status = random.choice(statuses)
+    base_dict = get_random_dict()
     return {
-        "customer_name": customer_name,
-        "new_status": new_status,
+        **base_dict,
         "answer": [
-            f"""customer_relationship_manager.update_customer.func(customer_id='{customer_id}', field='status', new_value='{new_status}')"""
+            f"""customer_relationship_manager.update_customer.func(customer_id='{base_dict['current_customer_id']}', field='status', new_value='{base_dict['new_status']}')"""
         ],
     }
 
-
 def delete_customer_logic():
-    customer_name = random.choice(customer_names)
-    customer_id = CRM_DATA[CRM_DATA["customer_name"] == customer_name]["customer_id"].values[0]
+    base_dict = get_random_dict()
     return {
-        "customer_name": customer_name,
-        "answer": [f"""customer_relationship_manager.delete_customer.func(customer_id='{customer_id}')"""],
+        **base_dict,
+        "answer": [f"""customer_relationship_manager.delete_customer.func(customer_id='{base_dict['current_customer_id']}')"""],
     }
-
-
+    
 def add_lead_logic():
-    customer_name = generate_new_customer_name()
-    assigned_to = random.choice(assigned_tos)
-    assigned_to_first_name = assigned_to.split("@")[0].split(".")[0].capitalize()
+    base_dict = get_random_dict()
     return {
-        "customer_name": customer_name,
-        "assigned_to_first_name": assigned_to_first_name,
+        **base_dict,
         "answer": [
-            f"""customer_relationship_manager.add_customer.func(customer_name='{customer_name}', assigned_to='{assigned_to}', status='Lead')"""
+            f"""customer_relationship_manager.add_customer.func(customer_name='{base_dict['new_customer_name']}', assigned_to='{base_dict['assigned_to']}', status='Lead')"""
         ],
     }
 
 
 CRM_TEMPLATES = [
     {
-        "query": "Update the status of {customer_name} to {new_status} in the crm",
+        "query": "Update the status of {current_customer_name} to {new_status_natural_language} in the crm",
         "logic": update_customer_status_logic,
     },
     {
-        "query": "Delete {customer_name} from the crm",
+        "query": "Delete {current_customer_name} from the crm",
         "logic": delete_customer_logic,
     },
     {
-        "query": "Add {customer_name} as a new lead in the crm and assign them to {assigned_to_first_name}",
+        "query": "Add {new_customer_name} as a new lead in the crm and assign them to {assigned_to_first_name}",
         "logic": add_lead_logic,
     },
     {
         "query": "Reassign {customer_name} to {employee_name} in the crm",
+        # "logic": reassign_customer_logic,
     },
     {
         "query": "Reassign all of {employee_name}'s leads to {new_employee_name} in the crm",
