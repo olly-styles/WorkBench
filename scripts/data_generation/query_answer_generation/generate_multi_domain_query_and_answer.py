@@ -18,8 +18,13 @@ from src.data_generation.data_generation_utils import (
 from src.tools import calendar
 from src.evals.utils import generate_all_queries_and_answers
 from scripts.data_generation.query_answer_generation.generate_analytics_query_and_answer import get_metric_fell_vs_grew
-from scripts.data_generation.query_answer_generation.generate_project_management_query_and_answer import get_random_task_dict, get_new_task_string
-from scripts.data_generation.query_answer_generation.generate_calendar_query_and_answer import create_event_on_first_free_slot_tomorrow
+from scripts.data_generation.query_answer_generation.generate_project_management_query_and_answer import (
+    get_random_task_dict,
+    get_new_task_string,
+)
+from scripts.data_generation.query_answer_generation.generate_calendar_query_and_answer import (
+    create_event_on_first_free_slot_tomorrow,
+)
 
 random.seed(42)
 
@@ -74,37 +79,45 @@ def find_event_send_email_logic():
         "answer": answer,
     }
 
+
 def get_metric_fell_create_task_logic():
     fell_vs_grew = get_metric_fell_vs_grew()
     new_task_dict = get_random_task_dict()
     new_task_dict["task_name"] = f"Improve {fell_vs_grew['natural_language_metric']}"
     if fell_vs_grew["fell_vs_grew"] == "fell":
-        answer = [get_new_task_string(new_task_dict["task_name"], new_task_dict["name"], new_task_dict["board"], new_task_dict["due_date"])]
+        answer = [
+            get_new_task_string(
+                new_task_dict["task_name"], new_task_dict["name"], new_task_dict["board"], new_task_dict["due_date"]
+            )
+        ]
     else:
         answer = []
     return {**fell_vs_grew, **new_task_dict, "answer": answer}
+
 
 def get_metric_fell_create_task_book_meeting_logic():
     create_task_dict = get_metric_fell_create_task_logic()
     event_name = f"Catch up on {create_task_dict['natural_language_metric']}"
     create_event_action = create_event_on_first_free_slot_tomorrow(event_name, create_task_dict["email"], 30)
-    
+
     if create_task_dict["answer"] == []:
         answer = []
     else:
         answer = create_task_dict["answer"] + [create_event_action]
     return {**create_task_dict, "answer": answer}
 
+
 def get_metric_fell_create_task_book_meeting_send_email_logic():
     create_task_book_meeting_dict = get_metric_fell_create_task_book_meeting_logic()
     if create_task_book_meeting_dict["answer"] == []:
         answer = []
     else:
-        subject=f"Discuss {create_task_book_meeting_dict['natural_language_metric']}"
-        body=f"I need you to look at {create_task_book_meeting_dict['natural_language_metric']} - more details on the task I just made."
+        subject = f"Discuss {create_task_book_meeting_dict['natural_language_metric']}"
+        body = f"I need you to look at {create_task_book_meeting_dict['natural_language_metric']} - more details on the task I just made."
         email_action = f"""email.send_email.func(recipient='{create_task_book_meeting_dict['email']}', subject='{subject}', body='{body}"""
         answer = create_task_book_meeting_dict["answer"] + [email_action]
     return {**create_task_book_meeting_dict, "answer": answer}
+
 
 MULTI_DOMAIN_TEMPLATES = [
     {
@@ -127,7 +140,7 @@ MULTI_DOMAIN_TEMPLATES = [
     {
         "query": """If my next meeting with {name} is more than {days} days away, send them an email titled 'Can we meet sooner?' saying 'We're not meeting until {next_meeting_date} - can we meet sooner?'""",
     },
-    {   
+    {
         "query": """Send an email to {name} titled '{natural_language_metric}' and tell them 'There were {number} {natural_language_metric} on {natural_language_date}'""",
     },
     {
@@ -170,7 +183,7 @@ MULTI_DOMAIN_TEMPLATES = [
         email {name} saying 'I noticed {natural_language_metric} was {more_or_less} than {threshold} recently - can we discuss?' 
         and title it 'Discuss {natural_language_metric}'""",
     },
-    {   # examples of 3-domain query
+    {  # examples of 3-domain query
         "query": """If {netural_language_metric} {fell_or_grew} since {date_min},
         email {name} saying 'We'r e not doing well on {natural_language_metric} recently - can we discuss?'
         and title it 'Discuss {natural_language_metric}'. 

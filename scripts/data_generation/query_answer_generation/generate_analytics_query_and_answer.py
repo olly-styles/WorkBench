@@ -20,11 +20,13 @@ metric_to_func_dict = {
     "page_views": analytics.total_visits_count,
     "session_duration_seconds": analytics.get_average_session_duration,
     "traffic_source": analytics.traffic_source_count,
-    "user_engaged": analytics.engaged_users_count
+    "user_engaged": analytics.engaged_users_count,
 }
+
 
 def get_plot_string(metric, date_min, date_max, plot_type):
     return f"""analytics.create_plot.func(time_min='{date_min}', time_max='{date_max}', value_to_plot='{metric}', plot_type='{plot_type}')"""
+
 
 def get_random_dict():
     date_min = random.choice(dates)
@@ -47,6 +49,7 @@ def get_random_dict():
         "fell_or_grew": fell_or_grew,
     }
 
+
 def get_threshold(metric):
     """Gets the threshold for a given metric over the whole time series"""
     data = ANALYTICS_DATA[["date_of_visit", metric]]
@@ -55,14 +58,17 @@ def get_threshold(metric):
     threshold = np.percentile(data.groupby("date_of_visit").mean(), threshold_percentage)
     return int(threshold)
 
+
 def metric_more_or_less(metric, date_min, threshold):
     metric_on_date = metric_to_func_dict[metric](date_min)
     return "more" if metric_on_date > threshold else "less"
+
 
 def get_threshold_and_metric_more_or_less():
     base_dict = get_random_dict()
     metric_vs_threshold = metric_more_or_less(base_dict["metric"], base_dict["date_min"], base_dict["threshold"])
     return {**base_dict, "metric_vs_threshold": metric_vs_threshold}
+
 
 def fell_or_grew(metric, start_date, end_date):
     """Returns True if the metric grew or fell between the start and end date"""
@@ -70,9 +76,12 @@ def fell_or_grew(metric, start_date, end_date):
     end_value = metric_to_func_dict[metric](end_date)
     return "grew" if end_value > start_value else "fell"
 
+
 def get_metric_fell_vs_grew():
     base_dict = get_random_dict()
-    base_dict["date_max"] = str((pd.to_datetime(base_dict["date_min"]) + pd.Timedelta(days=random.randint(7, 30))).date())
+    base_dict["date_max"] = str(
+        (pd.to_datetime(base_dict["date_min"]) + pd.Timedelta(days=random.randint(7, 30))).date()
+    )
     if base_dict["date_max"] > str(HARDCODED_CURRENT_TIME.date()):
         base_dict["date_max"] = str(HARDCODED_CURRENT_TIME.date())
     base_dict["natural_language_date_max"] = get_natural_language_date(base_dict["date_max"])
@@ -82,13 +91,17 @@ def get_metric_fell_vs_grew():
 
 def metric_plot_logic():
     base_dict = get_random_dict()
-    answer = [get_plot_string(base_dict["metric"], base_dict["date_min"], base_dict["date_max"], base_dict["plot_type"])]
+    answer = [
+        get_plot_string(base_dict["metric"], base_dict["date_min"], base_dict["date_max"], base_dict["plot_type"])
+    ]
     return {**base_dict, "answer": answer}
+
 
 def distribution_plot_on_day_logic():
     base_dict = get_random_dict()
     answer = [get_plot_string(base_dict["metric"], base_dict["date_min"], base_dict["date_min"], "histogram")]
     return {**base_dict, "answer": answer}
+
 
 def distribution_plot_on_day_two_metrics_logic():
     base_dict = get_random_dict()
@@ -107,6 +120,7 @@ def metric_more_or_less_plot_logic():
         answer = []
     return {"answer": answer, **query_info}
 
+
 def metric_fell_or_grew_plot_logic():
     query_info = get_metric_fell_vs_grew()
     if query_info["fell_or_grew"] == query_info["fell_vs_grew"]:
@@ -115,6 +129,7 @@ def metric_fell_or_grew_plot_logic():
         answer = []
     return {"answer": answer, **query_info}
 
+
 def metric_two_plots_logic():
     base_dict = get_random_dict()
     answer = [
@@ -122,6 +137,7 @@ def metric_two_plots_logic():
         get_plot_string(base_dict["metric2"], base_dict["date_min"], base_dict["date_max"], "bar"),
     ]
     return {**base_dict, "answer": answer}
+
 
 ANALYTICS_TEMPLATES = [
     {

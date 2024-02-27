@@ -1,201 +1,201 @@
-customer_id,assigned_to,customer_name,customer_email,customer_phone,last_contact_date,product_interest,status,follow_up_by,notes
-00000072,Lena.Schmidt@company.com,Riley Wilson,riley.wilson@peach.com,144-425-8749,2023-11-30,Software,Lead,2023-12-19,2023-11-19: On holiday. 2023-10-07: Had a call. 2023-07-05: Saw the demo. 
-00000156,Akira.Sato@company.com,Avery Taylor,avery.taylor@mango.com,404-889-5735,2023-11-30,Training,Proposal,2023-12-13,2023-08-23: Met in person. 2023-08-31: Saw the demo. 2023-08-15: Had a call. 
-00000187,Sofia.Santos@company.com,Riley Jackson,riley.jackson@cherry.com,587-157-1154,2023-11-29,Consulting,Lead,2023-12-11,
-00000061,Nadia.Moreau@company.com,Peyton Johnson,peyton.johnson@mango.com,395-823-5632,2023-11-29,Hardware,Lost,2023-12-20,
-00000166,Lena.Schmidt@company.com,Kerry Thomas,kerry.thomas@peach.com,,2023-11-29,Training,Lost,2023-12-23,2023-10-18: On holiday. 2023-08-05: Had a call. 2023-10-15: Met in person. 
-00000190,Lena.Schmidt@company.com,Riley Garcia,riley.garcia@grape.com,493-873-3292,2023-11-26,Training,Lost,2023-12-26,
-00000165,Akira.Sato@company.com,Morgan Jackson,morgan.jackson@cherry.com,820-888-6095,2023-11-26,Consulting,Won,2023-12-06,2023-09-05: On holiday. 2023-07-29: On holiday. 
-00000063,Nadia.Moreau@company.com,Kerry Martinez,kerry.martinez@pear.com,549-227-8679,2023-11-26,Consulting,Lost,2023-12-12,2023-08-11: Met in person. 2023-09-23: Had a call. 2023-11-03: Had a call. 
-00000033,Nadia.Moreau@company.com,Alex Thompson,alex.thompson@cherry.com,,2023-11-25,Software,Lost,2023-12-25,2023-09-04: Met in person. 
-00000118,Sofia.Santos@company.com,Angel Miller,angel.miller@grape.com,,2023-11-23,Training,Won,2023-12-18,2023-09-29: Saw the demo. 2023-09-08: Met in person. 2023-07-14: On holiday. 
-00000064,Nadia.Moreau@company.com,Quinn Smith,quinn.smith@orange.com,334-790-1339,2023-11-22,Hardware,Lead,2023-12-07,
-00000047,Nadia.Moreau@company.com,Cameron Smith,cameron.smith@kiwi.com,344-229-8758,2023-11-21,Services,Won,2023-12-01,2023-09-30: Saw the demo. 
-00000021,Sofia.Santos@company.com,Jaden Martinez,jaden.martinez@cherry.com,423-367-4346,2023-11-21,Services,Lead,2023-12-20,2023-08-03: Saw the demo. 2023-09-12: On holiday. 
-00000135,Sofia.Santos@company.com,Morgan Harris,morgan.harris@orange.com,929-798-6236,2023-11-20,Training,Proposal,2023-12-08,
-00000034,Akira.Sato@company.com,Peyton Thompson,peyton.thompson@pear.com,,2023-11-20,Hardware,Lead,2023-12-10,2023-09-14: Saw the demo. 2023-10-22: On holiday. 
-00000066,Sofia.Santos@company.com,Jessie Martin,jessie.martin@pear.com,,2023-11-19,Consulting,Qualified,2023-12-08,
-00000038,Raj.Patel@company.com,Cameron Jackson,cameron.jackson@plum.com,509-349-3417,2023-11-17,Software,Lead,2023-12-16,
-00000095,Sofia.Santos@company.com,Jessie Jones,jessie.jones@orange.com,,2023-11-17,Hardware,Lead,2023-12-14,2023-09-21: Met in person. 
-00000128,Sofia.Santos@company.com,Peyton Thomas,peyton.thomas@banana.com,,2023-11-17,Consulting,Lead,2023-12-04,2023-07-04: Saw the demo. 2023-09-22: Met in person. 
-00000198,Akira.Sato@company.com,Kerry Jackson,kerry.jackson@grape.com,550-442-8055,2023-11-16,Training,Won,2023-12-12,2023-08-18: Saw the demo. 
-00000177,Nadia.Moreau@company.com,Jamie Jackson,jamie.jackson@mango.com,361-308-6411,2023-11-15,Consulting,Proposal,2023-11-24,2023-09-05: Had a call. 2023-10-18: On holiday. 2023-06-16: Saw the demo. 
-00000131,Nadia.Moreau@company.com,Dakota Johnson,dakota.johnson@grape.com,729-545-5498,2023-11-13,Consulting,Lost,2023-11-21,
-00000040,Sofia.Santos@company.com,Dakota Davis,dakota.davis@plum.com,560-365-5050,2023-11-13,Hardware,Lost,2023-11-28,2023-11-10: On holiday. 2023-08-12: Met in person. 2023-06-22: Saw the demo. 
-00000175,Akira.Sato@company.com,Jordan Garcia,jordan.garcia@kiwi.com,,2023-11-10,Training,Lost,2023-12-08,2023-10-23: Met in person. 2023-06-15: Saw the demo. 2023-11-14: Met in person. 
-00000149,Akira.Sato@company.com,Dakota Garcia,dakota.garcia@pear.com,,2023-11-09,Hardware,Qualified,2023-12-07,
-00000022,Raj.Patel@company.com,Taylor Smith,taylor.smith@plum.com,,2023-11-09,Software,Proposal,2023-12-04,
-00000142,Sofia.Santos@company.com,Cameron Martinez,cameron.martinez@peach.com,,2023-11-08,Consulting,Proposal,2023-12-05,
-00000137,Akira.Sato@company.com,Avery Martinez,avery.martinez@grape.com,578-922-3126,2023-11-06,Services,Lead,2023-11-15,
-00000163,Akira.Sato@company.com,Jaden Miller,jaden.miller@kiwi.com,,2023-11-06,Hardware,Won,2023-12-03,2023-09-20: Saw the demo. 2023-06-25: Met in person. 2023-11-21: Had a call. 
-00000080,Raj.Patel@company.com,Jordan Robinson,jordan.robinson@plum.com,952-393-4770,2023-11-05,Training,Lost,2023-11-23,2023-11-12: On holiday. 
-00000025,Lena.Schmidt@company.com,Jamie Moore,jamie.moore@pear.com,,2023-11-04,Services,Qualified,2023-11-17,2023-07-25: Saw the demo. 2023-10-10: Met in person. 
-00000049,Nadia.Moreau@company.com,Riley Miller,riley.miller@orange.com,,2023-11-01,Training,Qualified,2023-11-30,2023-06-29: Saw the demo. 
-00000056,Sofia.Santos@company.com,Cameron Martin,cameron.martin@pear.com,,2023-10-31,Services,Won,2023-11-23,2023-06-28: On holiday. 2023-08-17: On holiday. 
-00000065,Sofia.Santos@company.com,Dakota Moore,dakota.moore@kiwi.com,,2023-10-30,Software,Won,2023-11-19,2023-06-26: Met in person. 2023-08-31: Met in person. 2023-08-27: Saw the demo. 
-00000152,Sofia.Santos@company.com,Alex Thomas,alex.thomas@grape.com,789-212-7824,2023-10-30,Training,Lead,2023-11-15,
-00000077,Lena.Schmidt@company.com,Kerry Wilson,kerry.wilson@plum.com,,2023-10-30,Consulting,Lost,2023-11-10,2023-09-29: Saw the demo. 
-00000020,Akira.Sato@company.com,Riley Jones,riley.jones@mango.com,,2023-10-29,Training,Qualified,2023-11-24,
-00000081,Raj.Patel@company.com,Peyton Harris,peyton.harris@banana.com,,2023-10-29,Services,Lead,2023-11-16,2023-06-26: Saw the demo. 
-00000146,Akira.Sato@company.com,Kerry White,kerry.white@mango.com,986-263-6364,2023-10-28,Consulting,Lost,2023-11-27,2023-07-21: On holiday. 2023-10-08: Met in person. 
-00000099,Sofia.Santos@company.com,Casey Thomas,casey.thomas@cherry.com,476-217-5564,2023-10-27,Services,Lost,2023-11-10,2023-10-24: Had a call. 2023-11-05: Saw the demo. 2023-06-10: On holiday. 
-00000180,Nadia.Moreau@company.com,Shannon Miller,shannon.miller@grape.com,420-523-1749,2023-10-25,Training,Proposal,2023-11-08,2023-06-07: Saw the demo. 
-00000184,Sofia.Santos@company.com,Kerry Martin,kerry.martin@plum.com,116-106-9719,2023-10-22,Software,Proposal,2023-11-11,
-00000070,Lena.Schmidt@company.com,Angel Wilson,angel.wilson@plum.com,,2023-10-22,Training,Lost,2023-11-02,2023-07-21: On holiday. 2023-06-20: Saw the demo. 2023-09-17: Saw the demo. 
-00000060,Akira.Sato@company.com,Cameron Moore,cameron.moore@orange.com,260-345-3847,2023-10-22,Consulting,Proposal,2023-10-31,2023-06-03: Met in person. 
-00000057,Nadia.Moreau@company.com,Alex Garcia,alex.garcia@kiwi.com,380-146-1893,2023-10-22,Software,Qualified,2023-11-07,2023-11-13: Met in person. 
-00000182,Lena.Schmidt@company.com,Rahul Davis,rahul.davis@kiwi.com,,2023-10-20,Training,Qualified,2023-11-11,2023-10-19: Had a call. 
-00000124,Lena.Schmidt@company.com,Morgan Williams,morgan.williams@cherry.com,469-169-9618,2023-10-20,Consulting,Lead,2023-11-12,
-00000173,Sofia.Santos@company.com,Riley Harris,riley.harris@mango.com,,2023-10-19,Hardware,Proposal,2023-11-01,
-00000003,Raj.Patel@company.com,Rahul Thomas,rahul.thomas@pear.com,926-144-8527,2023-10-18,Software,Qualified,2023-10-28,2023-06-23: Saw the demo. 2023-11-10: Saw the demo. 2023-10-28: On holiday. 
-00000155,Sofia.Santos@company.com,Shannon Davis,shannon.davis@plum.com,,2023-10-17,Hardware,Won,2023-11-03,2023-11-23: Saw the demo. 2023-11-06: Met in person. 
-00000160,Raj.Patel@company.com,Shannon Taylor,shannon.taylor@banana.com,887-191-4804,2023-10-17,Hardware,Lead,2023-11-16,
-00000008,Sofia.Santos@company.com,Morgan White,morgan.white@orange.com,494-490-8668,2023-10-16,Software,Proposal,2023-10-31,
-00000010,Lena.Schmidt@company.com,Cameron Brown,cameron.brown@grape.com,880-265-9837,2023-10-16,Services,Won,2023-10-23,2023-10-06: Had a call. 2023-07-01: Saw the demo. 
-00000076,Akira.Sato@company.com,Jessie Brown,jessie.brown@mango.com,,2023-10-16,Software,Proposal,2023-11-05,2023-07-16: On holiday. 
-00000103,Sofia.Santos@company.com,Peyton Martinez,peyton.martinez@plum.com,,2023-10-15,Software,Won,2023-11-12,2023-06-14: On holiday. 2023-09-12: Had a call. 
-00000059,Raj.Patel@company.com,Reese Jones,reese.jones@cherry.com,882-526-4697,2023-10-14,Training,Qualified,2023-11-02,2023-09-24: Saw the demo. 2023-10-31: Met in person. 2023-08-20: Had a call. 
-00000007,Raj.Patel@company.com,Jaden White,jaden.white@peach.com,470-324-3266,2023-10-11,Software,Qualified,2023-11-02,
-00000110,Lena.Schmidt@company.com,Jaden Johnson,jaden.johnson@grape.com,,2023-10-10,Services,Lost,2023-10-19,2023-09-29: Met in person. 2023-06-12: Had a call. 
-00000043,Raj.Patel@company.com,Avery Robinson,avery.robinson@mango.com,,2023-10-05,Services,Lead,2023-10-19,2023-09-22: Met in person. 2023-06-10: Met in person. 
-00000051,Akira.Sato@company.com,Quinn Robinson,quinn.robinson@cherry.com,,2023-10-04,Consulting,Won,2023-10-25,2023-11-01: Saw the demo. 2023-08-24: On holiday. 2023-06-25: Saw the demo. 
-00000178,Raj.Patel@company.com,Jordan Williams,jordan.williams@mango.com,923-879-4555,2023-10-03,Software,Lead,2023-10-16,2023-08-19: Had a call. 2023-07-27: On holiday. 
-00000084,Akira.Sato@company.com,Jaden Jackson,jaden.jackson@grape.com,210-791-4830,2023-10-01,Consulting,Lost,2023-10-08,2023-11-06: On holiday. 2023-11-15: Had a call. 
-00000109,Akira.Sato@company.com,Jamie Williams,jamie.williams@kiwi.com,891-743-9095,2023-09-29,Software,Lead,2023-10-24,2023-11-24: Saw the demo. 2023-11-10: Saw the demo. 2023-07-11: Met in person. 
-00000105,Lena.Schmidt@company.com,Jordan White,jordan.white@banana.com,,2023-09-28,Consulting,Lost,2023-10-07,2023-10-28: Met in person. 2023-10-27: Met in person. 
-00000143,Akira.Sato@company.com,Reese Jackson,reese.jackson@pear.com,,2023-09-27,Hardware,Lead,2023-10-06,
-00000168,Sofia.Santos@company.com,Angel Williams,angel.williams@cherry.com,556-928-1911,2023-09-27,Software,Lead,2023-10-08,2023-09-27: Had a call. 2023-10-24: Met in person. 2023-11-22: Saw the demo. 
-00000092,Akira.Sato@company.com,Rahul Thompson,rahul.thompson@orange.com,,2023-09-26,Training,Lost,2023-10-19,2023-11-07: Had a call. 
-00000111,Lena.Schmidt@company.com,Taylor Robinson,taylor.robinson@cherry.com,493-573-1672,2023-09-26,Training,Won,2023-10-21,2023-08-24: Met in person. 
-00000009,Nadia.Moreau@company.com,Shannon Jones,shannon.jones@pear.com,,2023-09-22,Services,Proposal,2023-10-04,2023-06-03: Saw the demo. 2023-10-09: On holiday. 2023-10-10: Had a call. 
-00000086,Akira.Sato@company.com,Avery White,avery.white@kiwi.com,,2023-09-17,Consulting,Proposal,2023-10-14,
-00000154,Akira.Sato@company.com,Shannon White,shannon.white@kiwi.com,522-807-4340,2023-09-16,Consulting,Proposal,2023-10-09,2023-06-18: On holiday. 2023-10-13: On holiday. 2023-10-24: Saw the demo. 
-00000053,Lena.Schmidt@company.com,Cameron Williams,cameron.williams@mango.com,,2023-09-15,Consulting,Lead,2023-10-07,2023-11-26: Met in person. 
-00000093,Lena.Schmidt@company.com,Alex Johnson,alex.johnson@plum.com,,2023-09-13,Consulting,Lead,2023-10-03,
-00000041,Akira.Sato@company.com,Shannon Garcia,shannon.garcia@orange.com,241-254-4788,2023-09-09,Software,Lead,2023-10-08,2023-11-30: On holiday. 
-00000195,Raj.Patel@company.com,Kerry Robinson,kerry.robinson@grape.com,,2023-09-09,Training,Proposal,2023-09-16,2023-09-16: Met in person. 2023-06-24: On holiday. 
-00000074,Akira.Sato@company.com,Riley Williams,riley.williams@grape.com,972-790-9742,2023-09-08,Hardware,Qualified,2023-09-25,2023-10-19: Had a call. 2023-11-08: Had a call. 2023-08-02: Saw the demo. 
-00000030,Raj.Patel@company.com,Reese Moore,reese.moore@kiwi.com,906-818-2771,2023-09-08,Hardware,Qualified,2023-09-16,2023-07-29: On holiday. 2023-09-28: Saw the demo. 2023-08-20: On holiday. 
-00000181,Akira.Sato@company.com,Jessie Taylor,jessie.taylor@kiwi.com,300-437-4768,2023-09-08,Services,Lead,2023-10-03,2023-10-08: Saw the demo. 
-00000018,Sofia.Santos@company.com,Riley Johnson,riley.johnson@kiwi.com,,2023-09-08,Hardware,Won,2023-09-15,2023-08-09: Met in person. 2023-08-15: Met in person. 2023-11-28: Met in person. 
-00000097,Nadia.Moreau@company.com,Taylor White,taylor.white@orange.com,,2023-09-06,Training,Proposal,2023-09-17,
-00000133,Lena.Schmidt@company.com,Riley Martinez,riley.martinez@banana.com,719-257-8371,2023-09-05,Services,Won,2023-09-23,2023-06-22: On holiday. 2023-10-16: Saw the demo. 2023-09-12: Saw the demo. 
-00000129,Nadia.Moreau@company.com,Morgan Martin,morgan.martin@plum.com,,2023-09-05,Training,Won,2023-09-28,2023-06-24: Met in person. 2023-06-23: Met in person. 
-00000199,Akira.Sato@company.com,Shannon Jackson,shannon.jackson@pear.com,936-904-7437,2023-09-04,Training,Qualified,2023-09-14,2023-11-01: On holiday. 
-00000031,Lena.Schmidt@company.com,Riley Anderson,riley.anderson@pear.com,985-171-5573,2023-08-31,Training,Lost,2023-09-27,2023-11-23: Saw the demo. 2023-06-10: Had a call. 2023-08-08: On holiday. 
-00000023,Nadia.Moreau@company.com,Parker Moore,parker.moore@kiwi.com,,2023-08-31,Hardware,Lead,2023-09-09,2023-09-05: Saw the demo. 
-00000108,Raj.Patel@company.com,Parker Miller,parker.miller@grape.com,,2023-08-31,Hardware,Lost,2023-09-30,2023-08-02: Had a call. 
-00000114,Lena.Schmidt@company.com,Kerry Brown,kerry.brown@grape.com,183-696-3317,2023-08-31,Hardware,Proposal,2023-09-16,2023-07-06: Had a call. 2023-08-21: Met in person. 2023-11-14: Saw the demo. 
-00000032,Akira.Sato@company.com,Casey Robinson,casey.robinson@peach.com,,2023-08-30,Services,Qualified,2023-09-29,2023-09-22: Had a call. 2023-09-09: On holiday. 
-00000078,Raj.Patel@company.com,Dakota Taylor,dakota.taylor@cherry.com,261-175-8237,2023-08-30,Consulting,Lost,2023-09-24,2023-11-13: Met in person. 2023-11-26: Saw the demo. 
-00000140,Nadia.Moreau@company.com,Morgan Anderson,morgan.anderson@mango.com,,2023-08-30,Hardware,Lost,2023-09-22,2023-06-23: Saw the demo. 2023-07-23: Saw the demo. 
-00000101,Raj.Patel@company.com,Riley White,riley.white@plum.com,,2023-08-29,Software,Won,2023-09-10,2023-08-21: Saw the demo. 2023-10-26: Had a call. 
-00000159,Sofia.Santos@company.com,Jordan Jones,jordan.jones@peach.com,,2023-08-26,Consulting,Won,2023-09-24,2023-06-28: On holiday. 2023-06-04: On holiday. 2023-09-15: Met in person. 
-00000191,Akira.Sato@company.com,Reese Williams,reese.williams@grape.com,719-887-7499,2023-08-25,Training,Lead,2023-09-01,2023-09-26: Met in person. 2023-07-31: Saw the demo. 
-00000052,Nadia.Moreau@company.com,Jaden Robinson,jaden.robinson@peach.com,444-129-9098,2023-08-25,Training,Qualified,2023-09-06,2023-07-27: Saw the demo. 2023-08-08: Saw the demo. 2023-08-13: Saw the demo. 
-00000045,Lena.Schmidt@company.com,Jordan Moore,jordan.moore@peach.com,,2023-08-25,Software,Lead,2023-09-07,2023-08-25: Saw the demo. 2023-09-08: Saw the demo. 2023-09-18: Saw the demo. 
-00000144,Lena.Schmidt@company.com,Cameron Anderson,cameron.anderson@kiwi.com,,2023-08-22,Training,Proposal,2023-09-20,2023-08-30: Met in person. 2023-07-06: Saw the demo. 
-00000107,Nadia.Moreau@company.com,Parker Williams,parker.williams@peach.com,,2023-08-21,Training,Qualified,2023-09-20,2023-07-29: Saw the demo. 2023-07-16: Had a call. 
-00000012,Sofia.Santos@company.com,Parker Robinson,parker.robinson@peach.com,316-652-4295,2023-08-21,Hardware,Qualified,2023-09-09,2023-09-23: Met in person. 2023-07-03: On holiday. 
-00000048,Akira.Sato@company.com,Kerry Jones,kerry.jones@kiwi.com,,2023-08-21,Services,Proposal,2023-08-31,
-00000054,Sofia.Santos@company.com,Taylor Taylor,taylor.taylor@mango.com,514-808-4986,2023-08-20,Services,Lead,2023-09-17,2023-10-02: Saw the demo. 2023-09-19: Saw the demo. 
-00000035,Akira.Sato@company.com,Morgan Robinson,morgan.robinson@pear.com,515-661-1006,2023-08-19,Consulting,Lead,2023-09-04,2023-09-21: Saw the demo. 
-00000161,Akira.Sato@company.com,Angel Davis,angel.davis@pear.com,997-138-1151,2023-08-18,Services,Lost,2023-09-12,
-00000186,Akira.Sato@company.com,Jaden Wilson,jaden.wilson@mango.com,,2023-08-18,Software,Qualified,2023-09-15,
-00000068,Nadia.Moreau@company.com,Quinn Garcia,quinn.garcia@kiwi.com,,2023-08-15,Training,Qualified,2023-09-05,2023-07-04: Had a call. 2023-11-11: On holiday. 2023-07-13: Saw the demo. 
-00000157,Sofia.Santos@company.com,Jamie Taylor,jamie.taylor@banana.com,,2023-08-15,Services,Lead,2023-09-13,
-00000179,Akira.Sato@company.com,Kerry Miller,kerry.miller@peach.com,345-665-6269,2023-08-14,Consulting,Qualified,2023-09-02,2023-10-17: Saw the demo. 2023-08-20: Saw the demo. 2023-09-03: Met in person. 
-00000113,Akira.Sato@company.com,Morgan Thomas,morgan.thomas@grape.com,,2023-08-14,Software,Proposal,2023-09-02,2023-08-28: Had a call. 2023-11-11: Saw the demo. 2023-06-19: Saw the demo. 
-00000004,Nadia.Moreau@company.com,Peyton Williams,peyton.williams@mango.com,987-203-7227,2023-08-13,Services,Qualified,2023-09-03,2023-07-14: Saw the demo. 2023-09-01: On holiday. 
-00000102,Lena.Schmidt@company.com,Kerry Johnson,kerry.johnson@orange.com,,2023-08-11,Services,Lead,2023-09-01,2023-10-05: Met in person. 2023-09-17: Saw the demo. 2023-07-28: Had a call. 
-00000188,Nadia.Moreau@company.com,Parker Johnson,parker.johnson@mango.com,316-988-8790,2023-08-11,Services,Proposal,2023-08-19,
-00000062,Sofia.Santos@company.com,Cameron White,cameron.white@orange.com,657-330-3441,2023-08-10,Software,Won,2023-08-21,
-00000196,Akira.Sato@company.com,Riley Davis,riley.davis@kiwi.com,,2023-08-10,Consulting,Lost,2023-08-26,2023-10-07: On holiday. 2023-06-19: On holiday. 
-00000134,Akira.Sato@company.com,Alex Davis,alex.davis@plum.com,630-496-2929,2023-08-09,Hardware,Qualified,2023-08-24,2023-07-27: Saw the demo. 2023-11-27: Met in person. 2023-07-24: Had a call. 
-00000091,Akira.Sato@company.com,Shannon Smith,shannon.smith@kiwi.com,,2023-08-09,Software,Lead,2023-08-17,2023-09-18: Had a call. 
-00000083,Sofia.Santos@company.com,Taylor Jackson,taylor.jackson@banana.com,,2023-08-09,Consulting,Lost,2023-09-02,
-00000082,Akira.Sato@company.com,Avery Thomas,avery.thomas@cherry.com,613-379-3695,2023-08-07,Hardware,Won,2023-08-29,2023-08-28: Had a call. 2023-09-30: Had a call. 
-00000197,Sofia.Santos@company.com,Taylor Thomas,taylor.thomas@pear.com,,2023-08-05,Software,Lead,2023-09-04,2023-11-02: On holiday. 2023-09-28: Had a call. 2023-07-07: Saw the demo. 
-00000192,Raj.Patel@company.com,Morgan Martinez,morgan.martinez@peach.com,187-890-5839,2023-08-05,Software,Lost,2023-09-03,
-00000145,Akira.Sato@company.com,Shannon Wilson,shannon.wilson@plum.com,225-373-8366,2023-08-05,Software,Lost,2023-08-16,
-00000185,Akira.Sato@company.com,Jessie Davis,jessie.davis@orange.com,198-636-3439,2023-08-03,Services,Lead,2023-08-16,2023-09-01: Saw the demo. 2023-09-12: Had a call. 
-00000176,Nadia.Moreau@company.com,Peyton Jackson,peyton.jackson@kiwi.com,872-650-8758,2023-08-03,Consulting,Proposal,2023-08-17,2023-07-09: Met in person. 2023-06-17: Met in person. 
-00000087,Sofia.Santos@company.com,Quinn Johnson,quinn.johnson@grape.com,322-554-8285,2023-08-02,Services,Proposal,2023-08-20,
-00000014,Lena.Schmidt@company.com,Shannon Williams,shannon.williams@cherry.com,,2023-08-02,Consulting,Won,2023-08-17,2023-07-27: On holiday. 2023-10-27: Met in person. 2023-08-04: Met in person. 
-00000029,Akira.Sato@company.com,Jessie Robinson,jessie.robinson@kiwi.com,,2023-08-02,Hardware,Lost,2023-08-14,2023-09-16: Had a call. 
-00000079,Sofia.Santos@company.com,Riley Martin,riley.martin@orange.com,,2023-08-02,Software,Lead,2023-08-21,2023-10-28: Saw the demo. 2023-11-29: Saw the demo. 
-00000164,Raj.Patel@company.com,Alex Moore,alex.moore@peach.com,,2023-08-02,Services,Lost,2023-08-23,2023-08-26: Saw the demo. 2023-10-30: Had a call. 
-00000174,Sofia.Santos@company.com,Shannon Martinez,shannon.martinez@grape.com,,2023-08-02,Consulting,Lost,2023-08-18,2023-11-19: On holiday. 
-00000089,Raj.Patel@company.com,Avery Miller,avery.miller@mango.com,,2023-08-01,Services,Won,2023-08-18,2023-11-02: Had a call. 
-00000001,Nadia.Moreau@company.com,Alex Williams,alex.williams@mango.com,,2023-08-01,Training,Won,2023-08-24,
-00000046,Raj.Patel@company.com,Avery Johnson,avery.johnson@grape.com,,2023-07-30,Software,Qualified,2023-08-26,
-00000136,Sofia.Santos@company.com,Peyton Davis,peyton.davis@kiwi.com,912-470-9335,2023-07-30,Consulting,Qualified,2023-08-09,2023-07-08: On holiday. 
-00000171,Nadia.Moreau@company.com,Casey Davis,casey.davis@cherry.com,502-641-3086,2023-07-30,Services,Lead,2023-08-06,
-00000006,Sofia.Santos@company.com,Quinn Williams,quinn.williams@mango.com,680-997-6155,2023-07-27,Training,Proposal,2023-08-23,2023-09-12: Met in person. 2023-07-09: Saw the demo. 2023-07-08: On holiday. 
-00000042,Akira.Sato@company.com,Dakota White,dakota.white@banana.com,,2023-07-25,Services,Lost,2023-08-14,2023-10-30: Had a call. 2023-10-28: Met in person. 2023-10-03: Had a call. 
-00000167,Lena.Schmidt@company.com,Jaden Jones,jaden.jones@banana.com,948-660-9281,2023-07-24,Training,Lead,2023-08-18,2023-07-15: Saw the demo. 
-00000127,Raj.Patel@company.com,Taylor Harris,taylor.harris@banana.com,400-306-1717,2023-07-24,Services,Qualified,2023-08-01,2023-08-21: Met in person. 2023-10-20: Met in person. 
-00000150,Akira.Sato@company.com,Rahul Anderson,rahul.anderson@cherry.com,474-873-3363,2023-07-23,Consulting,Proposal,2023-08-18,2023-10-09: Had a call. 2023-06-14: Had a call. 2023-07-08: Saw the demo. 
-00000016,Nadia.Moreau@company.com,Casey Wilson,casey.wilson@mango.com,,2023-07-21,Software,Lead,2023-08-14,2023-07-08: Met in person. 2023-07-19: Saw the demo. 2023-09-29: On holiday. 
-00000088,Nadia.Moreau@company.com,Jordan Jackson,jordan.jackson@pear.com,,2023-07-21,Hardware,Won,2023-07-31,2023-06-26: On holiday. 2023-11-14: Had a call. 2023-06-15: Saw the demo. 
-00000036,Nadia.Moreau@company.com,Cameron Thompson,cameron.thompson@plum.com,,2023-07-16,Services,Proposal,2023-08-13,
-00000141,Sofia.Santos@company.com,Avery Williams,avery.williams@cherry.com,756-272-3526,2023-07-16,Software,Proposal,2023-08-13,2023-10-25: Had a call. 2023-06-10: Had a call. 
-00000106,Akira.Sato@company.com,Riley Smith,riley.smith@grape.com,,2023-07-16,Consulting,Proposal,2023-08-11,2023-11-26: Saw the demo. 2023-06-25: Met in person. 2023-06-30: On holiday. 
-00000075,Sofia.Santos@company.com,Casey Jones,casey.jones@plum.com,,2023-07-15,Services,Lost,2023-08-13,2023-06-10: Had a call. 2023-08-25: Had a call. 
-00000151,Akira.Sato@company.com,Jamie Robinson,jamie.robinson@cherry.com,243-435-6218,2023-07-14,Training,Lost,2023-08-02,2023-11-01: Saw the demo. 2023-10-10: Met in person. 
-00000005,Akira.Sato@company.com,Morgan Garcia,morgan.garcia@mango.com,,2023-07-14,Software,Lost,2023-08-04,2023-08-11: On holiday. 2023-11-25: Saw the demo. 2023-06-17: On holiday. 
-00000002,Lena.Schmidt@company.com,Jessie Wilson,jessie.wilson@plum.com,703-384-1106,2023-07-13,Software,Lead,2023-08-11,2023-08-29: Saw the demo. 2023-07-12: On holiday. 2023-08-28: Had a call. 
-00000071,Nadia.Moreau@company.com,Peyton Taylor,peyton.taylor@plum.com,,2023-07-11,Hardware,Won,2023-08-01,2023-08-30: Saw the demo. 2023-10-22: Met in person. 2023-09-27: Saw the demo. 
-00000153,Akira.Sato@company.com,Reese Johnson,reese.johnson@plum.com,274-636-7229,2023-07-10,Hardware,Qualified,2023-08-07,2023-06-11: Had a call. 
-00000121,Raj.Patel@company.com,Rahul Wilson,rahul.wilson@banana.com,426-201-6493,2023-07-10,Services,Lead,2023-07-21,
-00000073,Nadia.Moreau@company.com,Parker Harris,parker.harris@banana.com,,2023-07-09,Services,Lost,2023-07-29,2023-06-22: Met in person. 
-00000158,Raj.Patel@company.com,Cameron Garcia,cameron.garcia@pear.com,675-812-5450,2023-07-08,Training,Won,2023-07-18,2023-08-04: Had a call. 
-00000162,Lena.Schmidt@company.com,Avery Thompson,avery.thompson@plum.com,,2023-07-07,Services,Won,2023-07-30,2023-08-11: On holiday. 2023-07-01: Saw the demo. 2023-07-14: Met in person. 
-00000170,Sofia.Santos@company.com,Peyton White,peyton.white@kiwi.com,,2023-07-07,Training,Won,2023-08-03,2023-09-06: Met in person. 2023-09-25: Met in person. 2023-09-07: Had a call. 
-00000139,Raj.Patel@company.com,Rahul Brown,rahul.brown@cherry.com,755-701-3981,2023-07-06,Software,Proposal,2023-07-26,
-00000138,Nadia.Moreau@company.com,Parker White,parker.white@peach.com,943-688-2208,2023-07-05,Consulting,Lead,2023-07-22,
-00000039,Nadia.Moreau@company.com,Morgan Thompson,morgan.thompson@plum.com,151-670-5082,2023-07-04,Consulting,Proposal,2023-07-25,2023-09-29: Saw the demo. 
-00000119,Akira.Sato@company.com,Jordan Martin,jordan.martin@grape.com,667-205-9452,2023-07-04,Hardware,Lost,2023-07-20,
-00000104,Sofia.Santos@company.com,Quinn Taylor,quinn.taylor@grape.com,,2023-07-03,Training,Proposal,2023-07-10,2023-09-21: On holiday. 2023-07-06: Met in person. 2023-10-17: On holiday. 
-00000055,Raj.Patel@company.com,Peyton Moore,peyton.moore@mango.com,,2023-07-03,Training,Won,2023-08-02,2023-08-22: Had a call. 
-00000069,Sofia.Santos@company.com,Jessie Williams,jessie.williams@mango.com,,2023-07-02,Hardware,Lead,2023-07-23,
-00000085,Sofia.Santos@company.com,Casey Brown,casey.brown@banana.com,138-411-9071,2023-07-02,Consulting,Lead,2023-07-12,2023-10-18: On holiday. 
-00000172,Akira.Sato@company.com,Reese Harris,reese.harris@grape.com,258-382-4088,2023-07-01,Training,Qualified,2023-07-09,2023-11-07: Had a call. 2023-08-03: On holiday. 2023-06-20: Had a call. 
-00000027,Nadia.Moreau@company.com,Jessie Garcia,jessie.garcia@banana.com,,2023-07-01,Services,Proposal,2023-07-10,2023-10-20: Had a call. 
-00000090,Sofia.Santos@company.com,Avery Moore,avery.moore@kiwi.com,,2023-07-01,Hardware,Qualified,2023-07-29,
-00000194,Lena.Schmidt@company.com,Jessie Harris,jessie.harris@cherry.com,668-624-7685,2023-06-29,Services,Proposal,2023-07-06,
-00000000,Lena.Schmidt@company.com,Casey Smith,casey.smith@pear.com,350-328-3286,2023-06-29,Training,Lead,2023-07-27,
-00000096,Lena.Schmidt@company.com,Dakota Jackson,dakota.jackson@peach.com,,2023-06-27,Software,Qualified,2023-07-14,2023-08-22: Saw the demo. 2023-09-06: On holiday. 2023-11-25: Met in person. 
-00000120,Lena.Schmidt@company.com,Parker Brown,parker.brown@peach.com,,2023-06-26,Hardware,Lead,2023-07-10,2023-08-31: Had a call. 2023-09-17: Had a call. 2023-09-12: Saw the demo. 
-00000193,Raj.Patel@company.com,Riley Brown,riley.brown@peach.com,424-469-2745,2023-06-26,Hardware,Qualified,2023-07-03,2023-09-24: Saw the demo. 2023-08-11: Had a call. 
-00000112,Nadia.Moreau@company.com,Dakota Jones,dakota.jones@grape.com,,2023-06-24,Consulting,Lead,2023-07-17,2023-06-13: On holiday. 
-00000130,Sofia.Santos@company.com,Peyton Anderson,peyton.anderson@orange.com,,2023-06-23,Hardware,Lead,2023-07-10,2023-08-20: Met in person. 2023-11-04: Met in person. 
-00000122,Raj.Patel@company.com,Angel Harris,angel.harris@banana.com,,2023-06-23,Software,Lost,2023-06-30,2023-07-28: On holiday. 2023-10-21: Met in person. 
-00000183,Sofia.Santos@company.com,Jordan Smith,jordan.smith@peach.com,240-962-4791,2023-06-20,Training,Lead,2023-07-19,2023-06-05: On holiday. 
-00000011,Sofia.Santos@company.com,Reese Martinez,reese.martinez@orange.com,187-849-8962,2023-06-20,Training,Won,2023-07-14,2023-07-05: Met in person. 
-00000050,Akira.Sato@company.com,Jordan Thomas,jordan.thomas@cherry.com,538-777-7071,2023-06-20,Consulting,Lost,2023-07-13,2023-06-06: Met in person. 2023-10-06: Had a call. 
-00000100,Raj.Patel@company.com,Rahul Smith,rahul.smith@kiwi.com,990-246-7566,2023-06-20,Software,Proposal,2023-07-01,
-00000123,Nadia.Moreau@company.com,Jordan Wilson,jordan.wilson@peach.com,754-912-8489,2023-06-19,Consulting,Qualified,2023-06-29,2023-11-02: Had a call. 2023-11-11: On holiday. 2023-07-09: Saw the demo. 
-00000094,Nadia.Moreau@company.com,Taylor Anderson,taylor.anderson@kiwi.com,,2023-06-19,Consulting,Proposal,2023-06-30,2023-11-09: Saw the demo. 2023-09-08: Saw the demo. 
-00000019,Raj.Patel@company.com,Cameron Johnson,cameron.johnson@cherry.com,162-865-6138,2023-06-17,Training,Qualified,2023-06-25,2023-10-09: On holiday. 2023-06-17: Had a call. 2023-07-20: Had a call. 
-00000148,Nadia.Moreau@company.com,Quinn Thomas,quinn.thomas@peach.com,474-146-7563,2023-06-16,Software,Lead,2023-07-11,2023-09-03: Saw the demo. 
-00000015,Sofia.Santos@company.com,Casey White,casey.white@grape.com,533-520-8651,2023-06-16,Software,Lead,2023-07-14,
-00000098,Raj.Patel@company.com,Jessie Thomas,jessie.thomas@peach.com,,2023-06-16,Hardware,Lead,2023-07-02,2023-09-01: Had a call. 2023-10-28: On holiday. 
-00000058,Nadia.Moreau@company.com,Peyton Martin,peyton.martin@plum.com,551-448-4020,2023-06-16,Hardware,Won,2023-07-01,2023-07-02: Had a call. 2023-09-13: Met in person. 2023-06-21: Had a call. 
-00000147,Raj.Patel@company.com,Riley Thompson,riley.thompson@plum.com,346-320-6781,2023-06-15,Software,Lead,2023-06-23,2023-10-07: Met in person. 2023-08-15: Had a call. 
-00000126,Raj.Patel@company.com,Jaden Anderson,jaden.anderson@kiwi.com,,2023-06-14,Consulting,Won,2023-07-02,2023-11-14: On holiday. 2023-11-25: Met in person. 
-00000169,Lena.Schmidt@company.com,Alex Miller,alex.miller@orange.com,,2023-06-14,Software,Lead,2023-07-04,2023-11-29: Had a call. 2023-10-19: Had a call. 
-00000117,Nadia.Moreau@company.com,Kerry Davis,kerry.davis@plum.com,,2023-06-14,Consulting,Won,2023-07-04,2023-11-23: On holiday. 2023-09-24: Saw the demo. 
-00000028,Nadia.Moreau@company.com,Jamie White,jamie.white@kiwi.com,,2023-06-13,Software,Lost,2023-06-29,2023-06-13: Saw the demo. 2023-07-26: On holiday. 
-00000116,Raj.Patel@company.com,Peyton Jones,peyton.jones@cherry.com,889-652-9626,2023-06-12,Hardware,Won,2023-07-10,2023-11-08: On holiday. 2023-11-02: Met in person. 
-00000132,Sofia.Santos@company.com,Morgan Smith,morgan.smith@kiwi.com,969-722-8179,2023-06-11,Hardware,Lost,2023-06-22,
-00000044,Raj.Patel@company.com,Dakota Brown,dakota.brown@cherry.com,,2023-06-09,Software,Lead,2023-06-28,
-00000037,Nadia.Moreau@company.com,Reese Taylor,reese.taylor@mango.com,925-303-3414,2023-06-09,Consulting,Lead,2023-06-17,2023-10-02: Had a call. 
-00000189,Nadia.Moreau@company.com,Jordan Davis,jordan.davis@grape.com,,2023-06-07,Services,Won,2023-06-20,2023-09-12: Had a call. 
-00000125,Lena.Schmidt@company.com,Riley Thomas,riley.thomas@pear.com,,2023-06-07,Services,Won,2023-06-25,
-00000115,Raj.Patel@company.com,Jessie Thompson,jessie.thompson@grape.com,,2023-06-07,Hardware,Won,2023-06-25,2023-07-19: On holiday. 2023-08-29: Met in person. 
-00000017,Raj.Patel@company.com,Casey Johnson,casey.johnson@cherry.com,,2023-06-06,Consulting,Lead,2023-06-15,2023-07-15: Met in person. 
-00000024,Nadia.Moreau@company.com,Peyton Robinson,peyton.robinson@cherry.com,,2023-06-05,Software,Qualified,2023-07-03,2023-11-19: Had a call. 2023-07-07: Saw the demo. 
-00000013,Lena.Schmidt@company.com,Alex Martinez,alex.martinez@cherry.com,335-702-4608,2023-06-04,Hardware,Qualified,2023-06-13,
-00000026,Nadia.Moreau@company.com,Jessie Moore,jessie.moore@banana.com,,2023-06-03,Hardware,Lead,2023-06-20,2023-11-13: Saw the demo. 
-00000067,Raj.Patel@company.com,Quinn Anderson,quinn.anderson@orange.com,891-513-9431,2023-06-03,Consulting,Qualified,2023-07-01,2023-09-16: Had a call. 2023-07-21: Saw the demo. 2023-11-09: Met in person. 
+customer_id,assigned_to_email,customer_name,customer_email,customer_phone,last_contact_date,product_interest,status,follow_up_by,notes
+00000043,Raj.Patel@company.com,Parker Garcia,parker.garcia@grape.com,,2023-11-30,Consulting,Lost,2023-12-21,2023-11-23: Met in person. 2023-11-27: On holiday. 2023-11-17: Met in person. 
+00000063,Raj.Patel@company.com,Peyton Martinez,peyton.martinez@banana.com,724-857-2625,2023-11-30,Hardware,Won,2023-12-13,2023-10-17: Had a call. 
+00000192,Raj.Patel@company.com,Avery Johnson,avery.johnson@cherry.com,134-959-2217,2023-11-30,Software,Lead,2023-12-28,
+00000019,Akira.Sato@company.com,Casey Johnson,casey.johnson@cherry.com,956-115-2528,2023-11-29,Consulting,Won,2023-12-13,2023-10-27: Met in person. 
+00000154,Akira.Sato@company.com,Kerry White,kerry.white@mango.com,986-263-6364,2023-11-29,Consulting,Lost,2023-12-24,2023-10-13: On holiday. 2023-11-01: Met in person. 
+00000052,Nadia.Moreau@company.com,Kerry Jones,kerry.jones@kiwi.com,418-210-1420,2023-11-29,Training,Qualified,2023-12-15,2023-10-26: On holiday. 2023-10-05: On holiday. 2023-10-07: Saw the demo. 
+00000068,Akira.Sato@company.com,Angel Thompson,angel.thompson@plum.com,,2023-11-28,Consulting,Qualified,2023-12-13,2023-11-07: Met in person. 
+00000113,Lena.Schmidt@company.com,Jessie Smith,jessie.smith@plum.com,,2023-11-28,Consulting,Lost,2023-12-07,2023-11-06: Met in person. 2023-11-06: Met in person. 
+00000197,Lena.Schmidt@company.com,Jordan Wilson,jordan.wilson@mango.com,,2023-11-27,Training,Proposal,2023-12-26,2023-10-18: Had a call. 2023-11-29: Had a call. 2023-11-13: Saw the demo. 
+00000102,Sofia.Santos@company.com,Cameron White,cameron.white@plum.com,,2023-11-26,Services,Lead,2023-12-10,2023-10-22: Met in person. 2023-10-26: Met in person. 2023-11-16: Had a call. 
+00000130,Akira.Sato@company.com,Taylor Wilson,taylor.wilson@plum.com,,2023-11-26,Consulting,Qualified,2023-12-14,
+00000028,Sofia.Santos@company.com,Jamie Moore,jamie.moore@orange.com,,2023-11-26,Training,Won,2023-12-06,2023-10-18: Saw the demo. 
+00000118,Sofia.Santos@company.com,Dakota Martinez,dakota.martinez@grape.com,,2023-11-25,Consulting,Lost,2023-12-22,2023-10-10: Met in person. 2023-10-05: Met in person. 
+00000080,Raj.Patel@company.com,Taylor Anderson,taylor.anderson@cherry.com,489-424-8994,2023-11-25,Training,Qualified,2023-12-19,
+00000187,Sofia.Santos@company.com,Avery Miller,avery.miller@banana.com,374-486-1647,2023-11-25,Consulting,Won,2023-12-04,2023-11-21: On holiday. 
+00000105,Sofia.Santos@company.com,Jessie Thomas,jessie.thomas@peach.com,,2023-11-25,Services,Proposal,2023-12-25,
+00000185,Akira.Sato@company.com,Avery Martin,avery.martin@mango.com,969-330-5927,2023-11-24,Software,Proposal,2023-12-23,2023-11-21: Met in person. 
+00000089,Akira.Sato@company.com,Jamie Wilson,jamie.wilson@peach.com,,2023-11-24,Training,Qualified,2023-12-18,2023-10-06: Met in person. 2023-10-01: Saw the demo. 
+00000146,Lena.Schmidt@company.com,Rahul Williams,rahul.williams@cherry.com,655-397-5914,2023-11-24,Training,Won,2023-12-06,2023-11-20: Saw the demo. 
+00000022,Raj.Patel@company.com,Jordan Thompson,jordan.thompson@orange.com,,2023-11-24,Training,Qualified,2023-12-06,
+00000129,Akira.Sato@company.com,Avery Jones,avery.jones@cherry.com,,2023-11-24,Training,Won,2023-12-04,2023-10-06: On holiday. 2023-10-18: Met in person. 
+00000086,Nadia.Moreau@company.com,Jordan Robinson,jordan.robinson@plum.com,,2023-11-23,Hardware,Won,2023-12-09,2023-11-08: Saw the demo. 
+00000114,Nadia.Moreau@company.com,Riley Smith,riley.smith@grape.com,275-920-8538,2023-11-23,Hardware,Lead,2023-12-22,2023-10-06: Met in person. 2023-11-24: Had a call. 
+00000126,Sofia.Santos@company.com,Jamie Davis,jamie.davis@kiwi.com,,2023-11-23,Software,Lead,2023-12-22,2023-11-16: Met in person. 
+00000034,Sofia.Santos@company.com,Angel Wilson,angel.wilson@mango.com,,2023-11-22,Hardware,Lead,2023-12-13,2023-10-20: On holiday. 2023-10-15: Had a call. 
+00000090,Sofia.Santos@company.com,Rahul Moore,rahul.moore@peach.com,,2023-11-22,Training,Proposal,2023-12-19,2023-10-07: On holiday. 2023-10-31: Had a call. 
+00000070,Sofia.Santos@company.com,Angel Taylor,angel.taylor@peach.com,,2023-11-22,Consulting,Qualified,2023-12-16,
+00000194,Nadia.Moreau@company.com,Parker Moore,parker.moore@cherry.com,393-117-9228,2023-11-22,Hardware,Won,2023-12-21,2023-11-21: On holiday. 2023-10-07: Had a call. 2023-11-03: On holiday. 
+00000147,Akira.Sato@company.com,Alex Thomas,alex.thomas@cherry.com,686-477-8657,2023-11-21,Software,Lost,2023-12-15,2023-11-09: Had a call. 
+00000159,Nadia.Moreau@company.com,Jordan Brown,jordan.brown@grape.com,,2023-11-21,Training,Lost,2023-12-13,2023-10-10: On holiday. 2023-10-21: Saw the demo. 2023-10-11: Met in person. 
+00000104,Nadia.Moreau@company.com,Jessie Jones,jessie.jones@grape.com,,2023-11-21,Training,Proposal,2023-12-02,
+00000128,Sofia.Santos@company.com,Jessie Davis,jessie.davis@mango.com,,2023-11-21,Software,Lead,2023-12-17,2023-11-25: Saw the demo. 
+00000137,Nadia.Moreau@company.com,Taylor Harris,taylor.harris@banana.com,400-306-1717,2023-11-20,Services,Lost,2023-12-03,
+00000033,Lena.Schmidt@company.com,Alex Davis,alex.davis@grape.com,,2023-11-20,Software,Lead,2023-12-10,2023-10-18: On holiday. 
+00000011,Akira.Sato@company.com,Cameron Brown,cameron.brown@grape.com,880-265-9837,2023-11-19,Training,Lost,2023-12-12,
+00000071,Akira.Sato@company.com,Quinn Anderson,quinn.anderson@orange.com,,2023-11-19,Training,Lead,2023-12-08,
+00000117,Akira.Sato@company.com,Morgan Robinson,morgan.robinson@kiwi.com,,2023-11-18,Hardware,Lead,2023-12-15,
+00000198,Nadia.Moreau@company.com,Morgan Anderson,morgan.anderson@banana.com,312-701-3362,2023-11-18,Training,Lead,2023-12-17,2023-11-29: Had a call. 2023-10-20: On holiday. 2023-11-06: On holiday. 
+00000002,Akira.Sato@company.com,Jessie Wilson,jessie.wilson@plum.com,703-384-1106,2023-11-18,Software,Qualified,2023-11-30,2023-10-22: Saw the demo. 2023-10-10: On holiday. 2023-11-18: Saw the demo. 
+00000000,Lena.Schmidt@company.com,Casey Smith,casey.smith@pear.com,350-328-3286,2023-11-17,Training,Lead,2023-11-27,
+00000188,Nadia.Moreau@company.com,Peyton Smith,peyton.smith@mango.com,294-859-2922,2023-11-17,Consulting,Won,2023-12-09,2023-11-14: On holiday. 
+00000116,Raj.Patel@company.com,Parker Thompson,parker.thompson@mango.com,894-457-6752,2023-11-16,Hardware,Lost,2023-12-13,2023-10-16: Had a call. 
+00000079,Akira.Sato@company.com,Parker Harris,parker.harris@banana.com,,2023-11-16,Services,Proposal,2023-11-27,2023-11-25: On holiday. 2023-10-05: Met in person. 2023-11-20: Saw the demo. 
+00000010,Nadia.Moreau@company.com,Casey Taylor,casey.taylor@peach.com,261-564-1053,2023-11-16,Services,Proposal,2023-12-16,2023-11-02: On holiday. 2023-11-02: Had a call. 
+00000191,Raj.Patel@company.com,Avery Anderson,avery.anderson@pear.com,881-941-9005,2023-11-16,Training,Lead,2023-12-13,2023-10-30: On holiday. 2023-11-16: Saw the demo. 2023-10-11: On holiday. 
+00000003,Nadia.Moreau@company.com,Casey Thomas,casey.thomas@grape.com,718-370-1711,2023-11-16,Consulting,Qualified,2023-12-07,
+00000059,Sofia.Santos@company.com,Morgan Miller,morgan.miller@mango.com,856-595-5530,2023-11-16,Services,Won,2023-12-11,2023-10-07: On holiday. 2023-10-19: On holiday. 
+00000164,Akira.Sato@company.com,Reese Taylor,reese.taylor@pear.com,,2023-11-15,Training,Proposal,2023-11-28,2023-10-21: Met in person. 2023-10-23: Saw the demo. 2023-10-19: Had a call. 
+00000165,Raj.Patel@company.com,Riley Thomas,riley.thomas@kiwi.com,397-143-5712,2023-11-15,Consulting,Won,2023-11-24,2023-11-29: Met in person. 2023-11-11: Saw the demo. 
+00000078,Lena.Schmidt@company.com,Riley Wilson,riley.wilson@peach.com,144-425-8749,2023-11-15,Software,Lead,2023-12-04,2023-11-12: On holiday. 2023-11-01: Had a call. 2023-10-09: Saw the demo. 
+00000100,Nadia.Moreau@company.com,Angel Jackson,angel.jackson@peach.com,802-210-9032,2023-11-15,Software,Lost,2023-12-06,
+00000041,Raj.Patel@company.com,Kerry Williams,kerry.williams@plum.com,524-744-4185,2023-11-15,Software,Lead,2023-12-14,2023-11-01: Met in person. 2023-10-16: On holiday. 2023-11-11: Had a call. 
+00000027,Lena.Schmidt@company.com,Morgan Harris,morgan.harris@cherry.com,,2023-11-15,Training,Lost,2023-12-01,
+00000139,Akira.Sato@company.com,Riley Harris,riley.harris@peach.com,447-291-9129,2023-11-14,Consulting,Qualified,2023-12-06,2023-11-29: Saw the demo. 2023-11-21: Had a call. 
+00000064,Raj.Patel@company.com,Avery Williams,avery.williams@kiwi.com,102-518-8381,2023-11-14,Consulting,Qualified,2023-12-10,2023-10-19: Had a call. 2023-10-15: Saw the demo. 2023-11-15: Saw the demo. 
+00000094,Lena.Schmidt@company.com,Reese Thomas,reese.thomas@orange.com,,2023-11-13,Software,Lead,2023-12-01,2023-10-04: Met in person. 2023-10-18: On holiday. 
+00000103,Lena.Schmidt@company.com,Quinn Thomas,quinn.thomas@kiwi.com,,2023-11-13,Software,Qualified,2023-12-05,
+00000017,Akira.Sato@company.com,Cameron Jones,cameron.jones@orange.com,,2023-11-12,Software,Qualified,2023-12-02,2023-10-28: Met in person. 2023-10-30: Had a call. 
+00000183,Nadia.Moreau@company.com,Shannon Martinez,shannon.martinez@grape.com,342-409-3347,2023-11-12,Services,Qualified,2023-12-05,2023-10-27: Saw the demo. 
+00000134,Lena.Schmidt@company.com,Kerry Thomas,kerry.thomas@mango.com,684-526-4068,2023-11-12,Training,Lost,2023-12-10,
+00000093,Akira.Sato@company.com,Jaden Brown,jaden.brown@peach.com,,2023-11-11,Hardware,Lead,2023-11-21,2023-11-09: Met in person. 2023-11-30: Saw the demo. 2023-10-03: Saw the demo. 
+00000050,Raj.Patel@company.com,Angel Smith,angel.smith@cherry.com,153-458-4673,2023-11-11,Software,Won,2023-11-20,
+00000054,Akira.Sato@company.com,Rahul Harris,rahul.harris@kiwi.com,545-280-9548,2023-11-11,Software,Lost,2023-11-26,2023-10-30: Met in person. 2023-11-22: Saw the demo. 2023-10-21: On holiday. 
+00000144,Nadia.Moreau@company.com,Rahul Jackson,rahul.jackson@grape.com,,2023-11-11,Hardware,Lead,2023-11-26,2023-10-08: Had a call. 
+00000044,Sofia.Santos@company.com,Quinn Thompson,quinn.thompson@plum.com,,2023-11-10,Hardware,Lost,2023-11-24,2023-10-29: Had a call. 2023-11-15: Saw the demo. 
+00000135,Lena.Schmidt@company.com,Avery Smith,avery.smith@peach.com,994-581-1713,2023-11-10,Services,Won,2023-11-29,2023-10-17: Had a call. 2023-10-23: Had a call. 
+00000005,Lena.Schmidt@company.com,Riley Moore,riley.moore@plum.com,,2023-11-10,Hardware,Lost,2023-11-28,2023-10-24: Saw the demo. 
+00000091,Sofia.Santos@company.com,Kerry Wilson,kerry.wilson@orange.com,,2023-11-10,Software,Qualified,2023-12-01,2023-11-11: Met in person. 2023-10-08: On holiday. 
+00000072,Nadia.Moreau@company.com,Jordan Miller,jordan.miller@cherry.com,470-737-9167,2023-11-10,Hardware,Lost,2023-12-01,
+00000199,Lena.Schmidt@company.com,Kerry Robinson,kerry.robinson@peach.com,892-434-1485,2023-11-10,Training,Lead,2023-11-25,2023-11-01: On holiday. 2023-10-23: Met in person. 2023-10-28: On holiday. 
+00000122,Lena.Schmidt@company.com,Dakota Thompson,dakota.thompson@cherry.com,,2023-11-09,Services,Proposal,2023-11-21,2023-10-24: Saw the demo. 2023-10-25: Met in person. 
+00000150,Nadia.Moreau@company.com,Cameron Garcia,cameron.garcia@pear.com,228-740-5961,2023-11-09,Training,Won,2023-12-03,
+00000032,Akira.Sato@company.com,Rahul Garcia,rahul.garcia@peach.com,,2023-11-09,Hardware,Won,2023-12-09,2023-11-29: On holiday. 
+00000141,Raj.Patel@company.com,Dakota Thomas,dakota.thomas@plum.com,143-844-6776,2023-11-09,Services,Proposal,2023-11-29,2023-11-10: Had a call. 2023-10-05: Met in person. 
+00000145,Sofia.Santos@company.com,Casey Moore,casey.moore@pear.com,820-556-4515,2023-11-09,Consulting,Qualified,2023-11-25,2023-10-13: Had a call. 2023-10-09: Had a call. 2023-10-29: On holiday. 
+00000067,Nadia.Moreau@company.com,Dakota Williams,dakota.williams@banana.com,542-852-6280,2023-11-08,Software,Won,2023-11-23,
+00000143,Nadia.Moreau@company.com,Riley Martinez,riley.martinez@banana.com,,2023-11-08,Training,Won,2023-11-19,2023-11-30: Saw the demo. 2023-10-24: Met in person. 2023-11-18: Had a call. 
+00000062,Sofia.Santos@company.com,Peyton Williams,peyton.williams@mango.com,221-671-7818,2023-11-08,Consulting,Lead,2023-12-04,2023-11-19: Met in person. 
+00000155,Akira.Sato@company.com,Dakota Wilson,dakota.wilson@mango.com,,2023-11-07,Software,Lost,2023-11-25,
+00000023,Akira.Sato@company.com,Riley Jones,riley.jones@mango.com,,2023-11-07,Training,Qualified,2023-12-03,
+00000085,Nadia.Moreau@company.com,Cameron Jackson,cameron.jackson@plum.com,209-342-7248,2023-11-06,Services,Qualified,2023-11-24,2023-11-14: Saw the demo. 2023-10-02: Met in person. 
+00000038,Nadia.Moreau@company.com,Parker Taylor,parker.taylor@peach.com,434-512-5844,2023-11-05,Hardware,Proposal,2023-11-16,2023-10-27: Met in person. 
+00000060,Nadia.Moreau@company.com,Alex Garcia,alex.garcia@kiwi.com,380-146-1893,2023-11-05,Software,Qualified,2023-11-21,2023-11-10: Met in person. 
+00000158,Lena.Schmidt@company.com,Jamie Jones,jamie.jones@peach.com,482-913-6555,2023-11-05,Training,Qualified,2023-11-23,2023-10-13: Met in person. 
+00000168,Raj.Patel@company.com,Shannon Taylor,shannon.taylor@banana.com,887-191-4804,2023-11-04,Hardware,Lead,2023-12-04,
+00000008,Raj.Patel@company.com,Jaden White,jaden.white@peach.com,470-324-3266,2023-11-02,Software,Qualified,2023-11-24,
+00000170,Raj.Patel@company.com,Dakota Garcia,dakota.garcia@cherry.com,,2023-11-01,Consulting,Lost,2023-11-12,2023-10-18: On holiday. 2023-11-21: Had a call. 2023-10-22: On holiday. 
+00000083,Sofia.Santos@company.com,Kerry Jackson,kerry.jackson@mango.com,,2023-11-01,Services,Lead,2023-11-26,2023-10-15: Met in person. 
+00000029,Sofia.Santos@company.com,Cameron Moore,cameron.moore@cherry.com,,2023-11-01,Software,Lead,2023-11-16,
+00000160,Akira.Sato@company.com,Shannon Thompson,shannon.thompson@cherry.com,645-601-5911,2023-10-31,Software,Proposal,2023-11-07,2023-10-22: Had a call. 2023-10-27: Saw the demo. 
+00000077,Nadia.Moreau@company.com,Jamie Harris,jamie.harris@cherry.com,,2023-10-31,Hardware,Won,2023-11-18,2023-11-05: Met in person. 2023-10-30: Saw the demo. 
+00000006,Lena.Schmidt@company.com,Kerry Davis,kerry.davis@cherry.com,846-350-3677,2023-10-30,Software,Won,2023-11-18,2023-11-29: On holiday. 2023-11-13: Saw the demo. 
+00000119,Sofia.Santos@company.com,Jaden Johnson,jaden.johnson@grape.com,619-175-6085,2023-10-30,Software,Lost,2023-11-20,
+00000046,Akira.Sato@company.com,Jessie Anderson,jessie.anderson@cherry.com,,2023-10-30,Hardware,Lead,2023-11-19,
+00000193,Akira.Sato@company.com,Reese Williams,reese.williams@kiwi.com,109-323-9285,2023-10-30,Training,Proposal,2023-11-17,
+00000074,Akira.Sato@company.com,Avery White,avery.white@orange.com,330-961-2858,2023-10-30,Training,Lost,2023-11-09,2023-11-01: Saw the demo. 
+00000075,Raj.Patel@company.com,Angel Martin,angel.martin@mango.com,,2023-10-30,Training,Proposal,2023-11-23,2023-10-25: On holiday. 
+00000121,Akira.Sato@company.com,Shannon Robinson,shannon.robinson@plum.com,613-254-2013,2023-10-29,Software,Won,2023-11-08,2023-11-15: Had a call. 2023-11-02: On holiday. 
+00000099,Akira.Sato@company.com,Angel Harris,angel.harris@grape.com,625-707-2786,2023-10-29,Training,Lost,2023-11-21,2023-11-30: Had a call. 
+00000110,Lena.Schmidt@company.com,Jordan Williams,jordan.williams@pear.com,,2023-10-29,Services,Lead,2023-11-26,2023-11-01: Met in person. 2023-10-27: Saw the demo. 2023-10-14: Had a call. 
+00000182,Sofia.Santos@company.com,Reese Johnson,reese.johnson@peach.com,,2023-10-29,Hardware,Proposal,2023-11-12,2023-11-18: Had a call. 
+00000148,Lena.Schmidt@company.com,Jessie White,jessie.white@orange.com,228-424-2215,2023-10-29,Consulting,Proposal,2023-11-19,2023-10-09: On holiday. 2023-11-19: On holiday. 
+00000180,Lena.Schmidt@company.com,Alex Smith,alex.smith@pear.com,574-789-9920,2023-10-28,Services,Won,2023-11-21,2023-11-22: On holiday. 2023-10-16: Met in person. 2023-10-23: On holiday. 
+00000081,Sofia.Santos@company.com,Peyton Wilson,peyton.wilson@orange.com,,2023-10-28,Consulting,Won,2023-11-07,
+00000156,Akira.Sato@company.com,Kerry Martin,kerry.martin@pear.com,649-108-2761,2023-10-28,Services,Qualified,2023-11-08,2023-11-16: Saw the demo. 2023-11-18: Met in person. 
+00000065,Lena.Schmidt@company.com,Quinn Martinez,quinn.martinez@mango.com,,2023-10-28,Services,Won,2023-11-07,2023-11-11: On holiday. 
+00000053,Akira.Sato@company.com,Jordan Thomas,jordan.thomas@cherry.com,,2023-10-28,Consulting,Qualified,2023-11-25,2023-10-05: Saw the demo. 2023-10-01: Met in person. 
+00000162,Akira.Sato@company.com,Jamie White,jamie.white@mango.com,,2023-10-27,Training,Lost,2023-11-19,2023-11-25: Had a call. 2023-11-15: On holiday. 2023-11-03: On holiday. 
+00000115,Lena.Schmidt@company.com,Riley Thompson,riley.thompson@orange.com,,2023-10-26,Software,Proposal,2023-11-11,2023-10-15: Saw the demo. 2023-11-19: On holiday. 
+00000195,Lena.Schmidt@company.com,Riley Williams,riley.williams@grape.com,,2023-10-26,Services,Qualified,2023-11-16,2023-11-14: On holiday. 
+00000173,Raj.Patel@company.com,Dakota Taylor,dakota.taylor@kiwi.com,,2023-10-26,Services,Proposal,2023-11-23,2023-11-14: Had a call. 2023-11-10: Saw the demo. 
+00000035,Sofia.Santos@company.com,Quinn Williams,quinn.williams@pear.com,459-756-9346,2023-10-26,Hardware,Proposal,2023-11-23,2023-11-30: Had a call. 2023-10-08: Saw the demo. 
+00000120,Raj.Patel@company.com,Taylor Williams,taylor.williams@cherry.com,,2023-10-25,Consulting,Proposal,2023-11-15,
+00000009,Sofia.Santos@company.com,Morgan White,morgan.white@orange.com,,2023-10-25,Training,Lost,2023-11-13,2023-11-03: Saw the demo. 2023-11-05: Had a call. 2023-11-13: Had a call. 
+00000196,Nadia.Moreau@company.com,Taylor Jackson,taylor.jackson@peach.com,,2023-10-25,Consulting,Lost,2023-11-18,2023-10-04: Had a call. 2023-11-14: On holiday. 2023-10-06: Met in person. 
+00000037,Sofia.Santos@company.com,Alex Thompson,alex.thompson@cherry.com,803-836-4228,2023-10-24,Services,Proposal,2023-11-13,
+00000058,Nadia.Moreau@company.com,Angel Garcia,angel.garcia@cherry.com,452-535-6419,2023-10-23,Services,Qualified,2023-11-21,2023-10-18: Saw the demo. 2023-10-17: On holiday. 2023-10-08: On holiday. 
+00000036,Akira.Sato@company.com,Jordan Jones,jordan.jones@peach.com,,2023-10-23,Services,Qualified,2023-11-22,2023-10-28: Had a call. 2023-10-25: On holiday. 
+00000082,Lena.Schmidt@company.com,Alex Johnson,alex.johnson@grape.com,915-157-5806,2023-10-23,Hardware,Won,2023-11-10,2023-10-10: On holiday. 2023-11-03: Met in person. 2023-11-06: On holiday. 
+00000184,Raj.Patel@company.com,Jaden Davis,jaden.davis@peach.com,669-607-1768,2023-10-23,Services,Lead,2023-11-19,2023-11-20: Saw the demo. 2023-11-14: Met in person. 2023-10-27: On holiday. 
+00000076,Akira.Sato@company.com,Taylor Moore,taylor.moore@peach.com,,2023-10-22,Training,Proposal,2023-11-14,2023-11-22: Had a call. 2023-10-19: Saw the demo. 
+00000136,Raj.Patel@company.com,Jaden Anderson,jaden.anderson@kiwi.com,145-460-9945,2023-10-22,Consulting,Won,2023-11-18,2023-11-23: Met in person. 
+00000055,Sofia.Santos@company.com,Reese Harris,reese.harris@peach.com,,2023-10-22,Services,Lost,2023-10-29,2023-11-24: Saw the demo. 2023-10-12: Met in person. 2023-10-14: Saw the demo. 
+00000096,Raj.Patel@company.com,Jaden Miller,jaden.miller@mango.com,,2023-10-22,Services,Won,2023-11-02,
+00000153,Akira.Sato@company.com,Riley Brown,riley.brown@grape.com,627-675-2739,2023-10-21,Software,Lost,2023-11-04,2023-10-08: Saw the demo. 2023-10-29: On holiday. 2023-10-10: Had a call. 
+00000025,Nadia.Moreau@company.com,Jamie Taylor,jamie.taylor@plum.com,,2023-10-21,Consulting,Proposal,2023-10-30,
+00000024,Akira.Sato@company.com,Jaden Martinez,jaden.martinez@cherry.com,,2023-10-21,Hardware,Lost,2023-11-05,2023-11-12: Saw the demo. 
+00000069,Akira.Sato@company.com,Rahul White,rahul.white@grape.com,,2023-10-21,Hardware,Lost,2023-11-18,
+00000109,Nadia.Moreau@company.com,Riley White,riley.white@plum.com,449-261-7062,2023-10-20,Hardware,Won,2023-11-19,2023-11-19: Had a call. 2023-11-26: Had a call. 
+00000087,Raj.Patel@company.com,Quinn Brown,quinn.brown@orange.com,742-761-1645,2023-10-20,Training,Lost,2023-11-10,
+00000149,Sofia.Santos@company.com,Casey Thompson,casey.thompson@kiwi.com,,2023-10-20,Services,Proposal,2023-11-01,2023-10-21: On holiday. 
+00000127,Akira.Sato@company.com,Kerry Taylor,kerry.taylor@plum.com,339-646-4918,2023-10-20,Consulting,Lost,2023-11-11,2023-10-24: Met in person. 
+00000047,Akira.Sato@company.com,Jaden Smith,jaden.smith@peach.com,588-106-6763,2023-10-20,Consulting,Qualified,2023-11-08,2023-11-04: On holiday. 2023-11-01: On holiday. 2023-10-18: Met in person. 
+00000138,Lena.Schmidt@company.com,Riley Garcia,riley.garcia@plum.com,359-137-4131,2023-10-19,Services,Lost,2023-11-06,
+00000178,Akira.Sato@company.com,Taylor Garcia,taylor.garcia@banana.com,170-583-1519,2023-10-19,Consulting,Lost,2023-11-08,2023-11-19: On holiday. 
+00000039,Raj.Patel@company.com,Peyton Jackson,peyton.jackson@cherry.com,953-100-5978,2023-10-19,Training,Lead,2023-11-01,2023-11-20: Saw the demo. 2023-10-30: Met in person. 2023-10-29: On holiday. 
+00000123,Sofia.Santos@company.com,Shannon Williams,shannon.williams@grape.com,196-671-7333,2023-10-19,Training,Won,2023-11-03,2023-10-22: Had a call. 
+00000101,Nadia.Moreau@company.com,Jamie Williams,jamie.williams@kiwi.com,,2023-10-18,Software,Qualified,2023-11-13,2023-10-25: Saw the demo. 2023-10-30: Met in person. 
+00000049,Akira.Sato@company.com,Dakota Davis,dakota.davis@banana.com,,2023-10-17,Consulting,Lost,2023-11-05,2023-10-14: Met in person. 2023-10-21: Saw the demo. 
+00000190,Akira.Sato@company.com,Jessie Johnson,jessie.johnson@mango.com,859-249-1265,2023-10-17,Training,Won,2023-11-10,2023-10-19: On holiday. 2023-10-13: Saw the demo. 2023-10-15: Met in person. 
+00000013,Akira.Sato@company.com,Avery Brown,avery.brown@kiwi.com,775-586-3705,2023-10-17,Consulting,Proposal,2023-11-09,2023-10-14: On holiday. 2023-11-15: Saw the demo. 2023-10-26: Saw the demo. 
+00000189,Sofia.Santos@company.com,Avery Thomas,avery.thomas@pear.com,,2023-10-17,Hardware,Lost,2023-11-04,2023-10-30: Had a call. 2023-11-21: Met in person. 2023-11-18: Saw the demo. 
+00000177,Sofia.Santos@company.com,Avery Harris,avery.harris@pear.com,840-122-7487,2023-10-17,Software,Lead,2023-10-24,2023-11-07: Had a call. 
+00000012,Lena.Schmidt@company.com,Alex Jones,alex.jones@grape.com,999-951-6038,2023-10-16,Software,Lead,2023-10-24,2023-11-26: Had a call. 
+00000166,Akira.Sato@company.com,Kerry Martinez,kerry.martinez@mango.com,,2023-10-16,Software,Qualified,2023-10-24,2023-11-10: On holiday. 
+00000172,Raj.Patel@company.com,Angel Anderson,angel.anderson@mango.com,106-367-7284,2023-10-16,Services,Lost,2023-11-06,2023-10-22: Saw the demo. 2023-11-07: Had a call. 
+00000051,Nadia.Moreau@company.com,Alex Robinson,alex.robinson@kiwi.com,,2023-10-16,Services,Won,2023-10-27,2023-11-12: Had a call. 2023-11-06: On holiday. 2023-10-30: Saw the demo. 
+00000092,Akira.Sato@company.com,Angel Jones,angel.jones@orange.com,,2023-10-16,Services,Proposal,2023-11-09,2023-10-25: Met in person. 
+00000001,Nadia.Moreau@company.com,Alex Williams,alex.williams@mango.com,,2023-10-15,Training,Won,2023-11-07,
+00000015,Nadia.Moreau@company.com,Jaden Wilson,jaden.wilson@banana.com,172-824-1964,2023-10-15,Services,Qualified,2023-10-24,
+00000131,Lena.Schmidt@company.com,Parker Thomas,parker.thomas@mango.com,495-183-7142,2023-10-15,Hardware,Won,2023-10-22,2023-11-29: Had a call. 2023-11-23: Saw the demo. 
+00000007,Sofia.Santos@company.com,Shannon Jackson,shannon.jackson@pear.com,167-316-6155,2023-10-14,Training,Proposal,2023-11-10,2023-10-26: Met in person. 2023-10-10: Saw the demo. 2023-10-09: On holiday. 
+00000106,Akira.Sato@company.com,Rahul Jones,rahul.jones@cherry.com,,2023-10-14,Training,Won,2023-10-25,2023-10-15: Had a call. 2023-10-23: Saw the demo. 2023-10-08: Saw the demo. 
+00000026,Sofia.Santos@company.com,Casey Williams,casey.williams@cherry.com,,2023-10-14,Hardware,Lost,2023-11-06,2023-10-09: Saw the demo. 2023-11-26: Had a call. 
+00000016,Akira.Sato@company.com,Reese Moore,reese.moore@plum.com,,2023-10-14,Hardware,Lead,2023-11-07,2023-11-16: Met in person. 
+00000018,Nadia.Moreau@company.com,Shannon Jones,shannon.jones@mango.com,,2023-10-13,Software,Lead,2023-10-26,2023-10-09: Met in person. 2023-10-12: Saw the demo. 2023-10-30: On holiday. 
+00000088,Sofia.Santos@company.com,Shannon White,shannon.white@kiwi.com,,2023-10-13,Services,Lead,2023-10-24,2023-11-03: Saw the demo. 2023-11-23: On holiday. 
+00000157,Nadia.Moreau@company.com,Jordan Martinez,jordan.martinez@cherry.com,,2023-10-13,Training,Lost,2023-10-31,2023-10-05: Met in person. 2023-11-02: Met in person. 
+00000171,Raj.Patel@company.com,Alex Anderson,alex.anderson@pear.com,681-790-4164,2023-10-12,Software,Won,2023-11-07,2023-11-22: Met in person. 2023-11-02: Saw the demo. 2023-10-06: Met in person. 
+00000169,Lena.Schmidt@company.com,Jordan Jackson,jordan.jackson@plum.com,,2023-10-12,Training,Proposal,2023-11-11,2023-11-26: Had a call. 2023-10-01: Saw the demo. 
+00000163,Raj.Patel@company.com,Parker Jackson,parker.jackson@grape.com,,2023-10-12,Training,Lead,2023-11-02,2023-11-04: Saw the demo. 2023-11-13: Saw the demo. 
+00000152,Sofia.Santos@company.com,Reese Jackson,reese.jackson@pear.com,564-174-1981,2023-10-11,Services,Lost,2023-11-01,2023-10-31: Met in person. 2023-10-14: Saw the demo. 2023-11-08: On holiday. 
+00000030,Lena.Schmidt@company.com,Jordan Smith,jordan.smith@grape.com,889-233-5291,2023-10-11,Hardware,Proposal,2023-11-10,2023-11-05: Met in person. 2023-11-05: Had a call. 2023-10-08: Had a call. 
+00000174,Lena.Schmidt@company.com,Reese Brown,reese.brown@plum.com,,2023-10-10,Hardware,Proposal,2023-10-31,2023-10-27: Met in person. 2023-11-18: On holiday. 
+00000125,Raj.Patel@company.com,Cameron Wilson,cameron.wilson@kiwi.com,,2023-10-10,Services,Proposal,2023-10-19,2023-11-24: Had a call. 2023-11-02: Had a call. 
+00000161,Akira.Sato@company.com,Angel Davis,angel.davis@cherry.com,744-838-7229,2023-10-10,Hardware,Qualified,2023-11-07,2023-10-03: Had a call. 
+00000112,Lena.Schmidt@company.com,Angel White,angel.white@kiwi.com,,2023-10-09,Software,Lead,2023-10-28,2023-11-02: Saw the demo. 
+00000045,Akira.Sato@company.com,Shannon Garcia,shannon.garcia@orange.com,,2023-10-09,Hardware,Qualified,2023-10-20,2023-10-25: On holiday. 
+00000186,Akira.Sato@company.com,Jessie Garcia,jessie.garcia@cherry.com,,2023-10-09,Services,Qualified,2023-10-28,2023-10-17: On holiday. 
+00000179,Raj.Patel@company.com,Dakota Jackson,dakota.jackson@peach.com,182-799-9835,2023-10-09,Training,Won,2023-11-05,2023-10-08: On holiday. 2023-11-04: Met in person. 
+00000097,Sofia.Santos@company.com,Avery Moore,avery.moore@kiwi.com,,2023-10-08,Hardware,Qualified,2023-11-05,
+00000066,Akira.Sato@company.com,Jaden Taylor,jaden.taylor@plum.com,,2023-10-08,Training,Proposal,2023-10-29,2023-11-14: Met in person. 2023-11-30: Saw the demo. 
+00000181,Lena.Schmidt@company.com,Jordan White,jordan.white@banana.com,346-311-2102,2023-10-07,Consulting,Proposal,2023-11-02,
+00000140,Raj.Patel@company.com,Avery Taylor,avery.taylor@grape.com,,2023-10-07,Training,Lead,2023-10-16,2023-11-12: Saw the demo. 2023-10-20: Met in person. 
+00000057,Sofia.Santos@company.com,Reese Martin,reese.martin@plum.com,558-911-1282,2023-10-06,Services,Proposal,2023-10-22,2023-10-26: On holiday. 
+00000124,Akira.Sato@company.com,Avery Jackson,avery.jackson@grape.com,932-230-9624,2023-10-06,Hardware,Lost,2023-11-02,2023-11-02: Saw the demo. 2023-10-02: Saw the demo. 2023-10-20: On holiday. 
+00000040,Akira.Sato@company.com,Taylor Taylor,taylor.taylor@cherry.com,779-748-6491,2023-10-06,Software,Won,2023-10-20,2023-10-15: On holiday. 2023-10-10: Had a call. 
+00000176,Lena.Schmidt@company.com,Dakota Jones,dakota.jones@mango.com,834-697-9008,2023-10-06,Consulting,Proposal,2023-10-29,2023-11-21: Had a call. 2023-10-30: On holiday. 2023-11-02: Met in person. 
+00000151,Akira.Sato@company.com,Kerry Anderson,kerry.anderson@banana.com,945-984-1464,2023-10-06,Training,Qualified,2023-10-14,2023-11-11: On holiday. 2023-11-19: Met in person. 
+00000084,Sofia.Santos@company.com,Alex Harris,alex.harris@pear.com,793-659-3588,2023-10-05,Services,Lead,2023-10-26,2023-11-07: Saw the demo. 2023-11-10: Met in person. 
+00000014,Raj.Patel@company.com,Casey Wilson,casey.wilson@mango.com,,2023-10-05,Training,Proposal,2023-10-22,
+00000133,Lena.Schmidt@company.com,Peyton Jones,peyton.jones@banana.com,344-529-8489,2023-10-05,Services,Lead,2023-10-15,2023-11-08: Had a call. 2023-11-10: On holiday. 2023-11-15: On holiday. 
+00000108,Raj.Patel@company.com,Morgan Brown,morgan.brown@peach.com,,2023-10-05,Software,Proposal,2023-10-16,
+00000095,Raj.Patel@company.com,Cameron Robinson,cameron.robinson@banana.com,,2023-10-04,Software,Proposal,2023-10-21,2023-10-09: On holiday. 
+00000021,Raj.Patel@company.com,Cameron Taylor,cameron.taylor@mango.com,159-693-9883,2023-10-04,Training,Proposal,2023-11-03,2023-10-04: Had a call. 2023-11-07: Met in person. 
+00000175,Nadia.Moreau@company.com,Taylor Martinez,taylor.martinez@orange.com,,2023-10-04,Hardware,Lost,2023-10-28,2023-11-06: On holiday. 
+00000061,Nadia.Moreau@company.com,Peyton Martin,peyton.martin@plum.com,551-448-4020,2023-10-04,Hardware,Won,2023-10-19,2023-10-08: Had a call. 2023-10-26: Met in person. 2023-10-05: Had a call. 
+00000042,Akira.Sato@company.com,Morgan Thompson,morgan.thompson@plum.com,,2023-10-04,Consulting,Won,2023-10-28,2023-11-28: Had a call. 
+00000004,Lena.Schmidt@company.com,Peyton Robinson,peyton.robinson@grape.com,691-296-2139,2023-10-03,Software,Won,2023-10-31,2023-11-19: Saw the demo. 
+00000031,Lena.Schmidt@company.com,Rahul Martinez,rahul.martinez@cherry.com,251-540-3088,2023-10-03,Hardware,Won,2023-10-19,2023-11-27: Had a call. 2023-11-27: Saw the demo. 
+00000142,Sofia.Santos@company.com,Alex Brown,alex.brown@plum.com,,2023-10-03,Hardware,Lost,2023-10-14,
+00000098,Lena.Schmidt@company.com,Reese Martinez,reese.martinez@grape.com,,2023-10-02,Training,Qualified,2023-10-14,2023-10-04: On holiday. 2023-11-17: Met in person. 
+00000048,Raj.Patel@company.com,Jamie Robinson,jamie.robinson@cherry.com,,2023-10-02,Software,Lead,2023-10-21,
+00000073,Lena.Schmidt@company.com,Dakota Martin,dakota.martin@orange.com,,2023-10-02,Services,Proposal,2023-10-29,2023-11-15: On holiday. 
+00000132,Nadia.Moreau@company.com,Jamie Martin,jamie.martin@plum.com,730-105-2298,2023-10-02,Training,Proposal,2023-10-17,2023-11-23: On holiday. 
+00000107,Lena.Schmidt@company.com,Avery Robinson,avery.robinson@cherry.com,,2023-10-02,Services,Lost,2023-10-28,2023-10-02: On holiday. 2023-10-18: Saw the demo. 
+00000111,Sofia.Santos@company.com,Peyton Johnson,peyton.johnson@mango.com,504-713-1897,2023-10-01,Services,Lost,2023-10-14,2023-11-30: On holiday. 2023-11-19: On holiday. 
+00000020,Raj.Patel@company.com,Jordan Davis,jordan.davis@peach.com,,2023-10-01,Training,Lead,2023-10-20,2023-11-29: Met in person. 2023-10-19: Met in person. 
+00000167,Sofia.Santos@company.com,Shannon Martin,shannon.martin@orange.com,797-889-3252,2023-10-01,Consulting,Won,2023-10-25,2023-10-27: Met in person. 
+00000056,Nadia.Moreau@company.com,Kerry Moore,kerry.moore@cherry.com,,2023-10-01,Consulting,Lead,2023-10-24,2023-10-06: On holiday. 

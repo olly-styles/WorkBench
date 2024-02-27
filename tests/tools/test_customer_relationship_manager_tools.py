@@ -116,13 +116,9 @@ def test_add_customer_missing_args():
     """
     Tests add_customer with missing arguments.
     """
+    assert crm.add_customer.func() == "Please provide all required fields: customer_name, assigned_to, status."
     assert (
-        crm.add_customer.func()
-        == "Please provide all required fields: customer_name, assigned_to, status."
-    )
-    assert (
-        crm.add_customer.func("John Smith")
-        == "Please provide all required fields: customer_name, assigned_to, status."
+        crm.add_customer.func("John Smith") == "Please provide all required fields: customer_name, assigned_to, status."
     )
 
 

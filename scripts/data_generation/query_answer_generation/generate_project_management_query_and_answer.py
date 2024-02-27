@@ -34,8 +34,10 @@ def get_random_task_dict():
         "name": email.split("@")[0].split(".")[0],
     }
 
+
 def get_new_task_string(task_name, email, board, due_date):
     return f"""project_management.create_task.func(task_name='{task_name}', board='{board}', assigned_to='{email}', due_date='{due_date}', list_name='Backlog')"""
+
 
 def move_tasks_to_in_review_logic():
     """
@@ -61,8 +63,11 @@ def add_new_task_logic():
     Add a new task to the backlog and assign it to someone.
     """
     task_dict = get_random_task_dict()
-    answer = [get_new_task_string(task_dict["task_name"], task_dict["email"], task_dict["board"], task_dict["due_date"])]
+    answer = [
+        get_new_task_string(task_dict["task_name"], task_dict["email"], task_dict["board"], task_dict["due_date"])
+    ]
     return {"answer": answer, **task_dict}
+
 
 def move_overdue_tasks_logic():
     """
@@ -140,24 +145,16 @@ PROJECT_MANAGEMENT_TEMPLATES = [
         "query": "Move any of {name}'s tasks that are in review to completed",
         "logic": move_overdue_in_review_tasks_logic,
     },
-    {
-        "query": """{name_1} is sick so reassign their unfinished tasks to {name_2}."""
-    },
-    {
-        "query": """{name_1} is on vacation now so move all their unfinished tasks to the backlog."""
-    },
+    {"query": """{name_1} is sick so reassign their unfinished tasks to {name_2}."""},
+    {"query": """{name_1} is on vacation now so move all their unfinished tasks to the backlog."""},
     {
         "query": """{name_1} is sick, so move any tasks they haven't started to the backlog and anything in progress to the person with the fewest unfinished tasks."""
     },
-    {
-        "query" """Give all of {name_1}'s overdue tasks to {name_2}."""
-    },
+    {"query" """Give all of {name_1}'s overdue tasks to {name_2}."""},
     {
         "query": """On {board}, make a backlog task on called {task_name} and assign it to the person with the fewest {in_progress_or_backlog} tasks. It's due on {day_of_week}.""",
     },
-    {
-        "query": """Take {name_1}'s most urgent task and reassign it to {name_2}."""
-    },
+    {"query": """Take {name_1}'s most urgent task and reassign it to {name_2}."""},
     {
         "query": """Reassign {name_1}'s most urgent task to {name_2} - give them a deadline of {days} days after their final {in_progress_or_backlog} task."""
     },
@@ -169,7 +166,7 @@ PROJECT_MANAGEMENT_TEMPLATES = [
     },
     {
         "query": """If {name} hasn't got any overdue tasks, make one for them called {task_name}. It's due tomorrow.""",
-    }
+    },
 ]
 
 max_queries_per_template = 1  # Limit the number of queries per template

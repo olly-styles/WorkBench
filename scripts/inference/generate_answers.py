@@ -28,20 +28,22 @@ parser.add_argument(
 
 parser.add_argument(
     "--toolkits",
-    action='append',
-    nargs='*',
+    action="append",
+    nargs="*",
     help="toolkits to be used for generating answers. By default all toolkits are used: 'email', 'calendar', 'analytics', 'project_management', 'customer_relationship_manager'",
     default=[],
 )
 args = parser.parse_args()
 
-if not args.toolkits[0]:
-    args.toolkits[0] = [
-        "email",
-        "calendar",
-        "analytics",
-        "project_management",
-        "customer_relationship_manager",
+if not args.toolkits:
+    args.toolkits = [
+        [
+            "email",
+            "calendar",
+            "analytics",
+            "project_management",
+            "customer_relationship_manager",
+        ]
     ]
 
 if __name__ == "__main__":

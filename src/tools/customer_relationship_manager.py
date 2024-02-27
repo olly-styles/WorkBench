@@ -18,7 +18,7 @@ def search_customers(
     customer_email=None,
     product_interest=None,
     status=None,
-    assigned_to=None,
+    assigned_to_email=None,
     last_contact_date_min=None,
     last_contact_date_max=None,
     follow_up_by_min=None,
@@ -37,7 +37,7 @@ def search_customers(
         Product interest of the customer.
     status : str, optional
         Current status of the customer.
-    assigned_to : str, optional
+    assigned_to_email : str, optional
         Email address of the person assigned to the customer.
     last_contact_date_min : str, optional
         Minimum last contact date. Format: "YYYY-MM-DD"
@@ -56,7 +56,7 @@ def search_customers(
     Examples
     --------
     >>> crm.search_customers(customer_name="John")
-    {{"customer_id": "00000001", "assigned_to": "sam@example.com", "customer_name": "John Smith",
+    {{"customer_id": "00000001", "assigned_to_email": "sam@example.com", "customer_name": "John Smith",
     "customer_email": "john.smith@example.com", "customer_phone": "123-456-7890", "last_contact_date": "2023-01-01",
     "product_interest": "Software", "status": "Qualified", "follow_up_by": "2023-01-15", "notes": "Had a call on 2023-01-01. "}}
     """
@@ -67,7 +67,7 @@ def search_customers(
             customer_email,
             product_interest,
             status,
-            assigned_to,
+            assigned_to_email,
             last_contact_date_min,
             last_contact_date_max,
             follow_up_by_min,
@@ -84,8 +84,8 @@ def search_customers(
         customers = customers[customers["product_interest"].str.contains(product_interest, case=False)]
     if status:
         customers = customers[customers["status"].str.contains(status, case=False)]
-    if assigned_to:
-        customers = customers[customers["assigned_to"].str.contains(assigned_to, case=False)]
+    if assigned_to_email:
+        customers = customers[customers["assigned_to_email"].str.contains(assigned_to_email, case=False)]
     if last_contact_date_min:
         customers = customers[customers["last_contact_date"] >= last_contact_date_min]
     if last_contact_date_max:
@@ -107,7 +107,7 @@ def update_customer(customer_id=None, field=None, new_value=None):
     customer_id : str
         ID of the customer.
     field : str
-        Field to update. Available fields are: "customer_name", "assigned_to", "customer_email", "customer_phone", "last_contact_date", "product_interest", "status", "notes", "follow_up_by"
+        Field to update. Available fields are: "customer_name", "assigned_to_email", "customer_email", "customer_phone", "last_contact_date", "product_interest", "status", "notes", "follow_up_by"
     new_value : str
         New value for the field.
 
@@ -125,19 +125,19 @@ def update_customer(customer_id=None, field=None, new_value=None):
 
     if not customer_id or not field or not new_value:
         return "Customer ID, field, or new value not provided."
-    
+
     if field == "status" and new_value not in ["Qualified", "Won", "Lost", "Lead", "Proposal"]:
         return "Status not valid. Please choose from: 'Qualified', 'Won', 'Lost', 'Lead', 'Proposal'"
 
     if field == "product_interest" and new_value not in ["Software", "Hardware", "Services", "Consulting", "Training"]:
-        return "Product interest not valid. Please choose from: 'Software', 'Hardware', 'Services', 'Consulting', 'Training'"            
+        return "Product interest not valid. Please choose from: 'Software', 'Hardware', 'Services', 'Consulting', 'Training'"
 
     if customer_id in CRM_DATA["customer_id"].values:
         if field in CRM_DATA.columns:
             CRM_DATA.loc[CRM_DATA["customer_id"] == customer_id, field] = new_value
             return "Customer updated successfully."
         else:
-            return "Field not valid. Please choose from: 'customer_name', 'assigned_to', 'customer_email', 'customer_phone', 'last_contact_date', 'product_interest', 'status', 'notes', 'follow_up_by'"
+            return "Field not valid. Please choose from: 'customer_name', 'assigned_to_email', 'customer_email', 'customer_phone', 'last_contact_date', 'product_interest', 'status', 'notes', 'follow_up_by'"
     else:
         return "Customer not found."
 
@@ -145,7 +145,7 @@ def update_customer(customer_id=None, field=None, new_value=None):
 @tool("customer_relationship_manager.add_customer", return_direct=False)
 def add_customer(
     customer_name=None,
-    assigned_to=None,
+    assigned_to_email=None,
     status=None,
     customer_email=None,
     customer_phone=None,
@@ -161,7 +161,7 @@ def add_customer(
     ----------
     customer_name : str
         Name of the customer.
-    assigned_to : str
+    assigned_to_email : str
         Email address of the person assigned to the customer.
     status : str
         Current status of the customer. One of: "Qualified", "Won", "Lost", "Lead", "Proposal"
@@ -189,8 +189,8 @@ def add_customer(
     "00000201"
     """
     global CRM_DATA
-    if not all([customer_name, assigned_to, status]):
-        return "Please provide all required fields: customer_name, assigned_to, status."
+    if not all([customer_name, assigned_to_email, status]):
+        return "Please provide all required fields: customer_name, assigned_to_email, status."
 
     new_id = str(int(CRM_DATA["customer_id"].max()) + 1).zfill(8)
     new_customer = pd.DataFrame(
@@ -202,7 +202,7 @@ def add_customer(
             "last_contact_date": [last_contact_date],
             "product_interest": [product_interest],
             "status": [status],
-            "assigned_to": [assigned_to],
+            "assigned_to_email": [assigned_to_email],
             "notes": [notes],
             "follow_up_by": [follow_up_by],
         }

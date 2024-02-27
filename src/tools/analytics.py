@@ -6,6 +6,7 @@ PLOTS_DATA = pd.DataFrame(columns=["file_path"])
 METRICS = ["page_views", "session_duration_seconds"]
 METRIC_NAMES = ["total page views", "average session duration"]
 
+
 def reset_state():
     """
     Resets the analytics data to the original state.
@@ -191,6 +192,7 @@ def traffic_source_count(time_min=None, time_max=None, traffic_source=None):
     else:
         traffic_source_visits = data.shape[0]
     return traffic_source_visits
+
 
 @tool("analytics.get_average_session_duration", return_direct=False)
 def get_average_session_duration(time_min=None, time_max=None):
