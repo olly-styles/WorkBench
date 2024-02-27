@@ -6,7 +6,7 @@ test_customers = [
     {
         "customer_id": "00000001",
         "customer_name": "John Smith",
-        "assigned_to": "email1@test.com",
+        "assigned_to_email": "email1@test.com",
         "customer_email": "customeremail1@test.com",
         "customer_phone": "123-456-7890",
         "last_contact_date": "2023-01-01",
@@ -18,7 +18,7 @@ test_customers = [
     {
         "customer_id": "00000002",
         "customer_name": "Jane Doe",
-        "assigned_to": "email2@test.com",
+        "assigned_to_email": "email2@test.com",
         "customer_email": "customeremail2@test.com",
         "customer_phone": "123-456-7890",
         "last_contact_date": "2023-01-01",
@@ -47,7 +47,7 @@ def test_search_customers():
     assert crm.search_customers.func("John")[0] == {
         "customer_id": "00000001",
         "customer_name": "John Smith",
-        "assigned_to": "email1@test.com",
+        "assigned_to_email": "email1@test.com",
         "customer_email": "customeremail1@test.com",
         "customer_phone": "123-456-7890",
         "last_contact_date": "2023-01-01",
@@ -88,7 +88,7 @@ def test_update_customer_invalid_field():
     """
     assert (
         crm.update_customer.func("00000001", "non_existent_field", "Won")
-        == "Field not valid. Please choose from: 'customer_name', 'assigned_to', 'customer_email', 'customer_phone', 'last_contact_date', 'product_interest', 'status', 'notes', 'follow_up_by'"
+        == "Field not valid. Please choose from: 'customer_name', 'assigned_to_email', 'customer_email', 'customer_phone', 'last_contact_date', 'product_interest', 'status', 'notes', 'follow_up_by'"
     )
 
 
@@ -116,9 +116,10 @@ def test_add_customer_missing_args():
     """
     Tests add_customer with missing arguments.
     """
-    assert crm.add_customer.func() == "Please provide all required fields: customer_name, assigned_to, status."
+    assert crm.add_customer.func() == "Please provide all required fields: customer_name, assigned_to_email, status."
     assert (
-        crm.add_customer.func("John Smith") == "Please provide all required fields: customer_name, assigned_to, status."
+        crm.add_customer.func("John Smith")
+        == "Please provide all required fields: customer_name, assigned_to_email, status."
     )
 
 

@@ -14,7 +14,7 @@ from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME, ge
 from scripts.data_generation.mocked_data.generate_project_management_data import project_management_team_emails
 
 project_tasks = pd.read_csv("data/processed/project_tasks.csv", dtype=str)
-emails = project_tasks["assigned_to"].unique()
+emails = project_tasks["assigned_to_email"].unique()
 task_names = project_tasks["task_name"].unique()
 boards = project_tasks["board"].unique()
 
@@ -36,7 +36,7 @@ def get_random_task_dict():
 
 
 def get_new_task_string(task_name, email, board, due_date):
-    return f"""project_management.create_task.func(task_name='{task_name}', board='{board}', assigned_to='{email}', due_date='{due_date}', list_name='Backlog')"""
+    return f"""project_management.create_task.func(task_name='{task_name}', board='{board}', assigned_to_email='{email}', due_date='{due_date}', list_name='Backlog')"""
 
 
 def move_tasks_to_in_review_logic():
@@ -47,7 +47,7 @@ def move_tasks_to_in_review_logic():
     name = email.split("@")[0].split(".")[0]
 
     tasks_in_progress = project_tasks[
-        (project_tasks["assigned_to"] == email) & (project_tasks["list_name"] == "In Progress")
+        (project_tasks["assigned_to_email"] == email) & (project_tasks["list_name"] == "In Progress")
     ]
     answer = []
     for _, task in tasks_in_progress.iterrows():
@@ -77,7 +77,7 @@ def move_overdue_tasks_logic():
     name = email.split("@")[0].split(".")[0]
 
     tasks = project_tasks[
-        (project_tasks["assigned_to"] == email)
+        (project_tasks["assigned_to_email"] == email)
         & (project_tasks["list_name"] == "Backlog")
         & (project_tasks["due_date"] < str(HARDCODED_CURRENT_TIME))
     ]
@@ -113,7 +113,7 @@ def move_overdue_in_review_tasks_logic():
     email = random.choice(project_management_team_emails)
     name = email.split("@")[0].split(".")[0]
     tasks_in_review = project_tasks[
-        (project_tasks["assigned_to"] == email) & (project_tasks["list_name"] == "In Review")
+        (project_tasks["assigned_to_email"] == email) & (project_tasks["list_name"] == "In Review")
     ]
     answer = []
     for _, task in tasks_in_review.iterrows():
@@ -123,38 +123,86 @@ def move_overdue_in_review_tasks_logic():
         )
     return {"name": name, "answer": answer}
 
+def reassign_unfinished_tasks_logic():
+    """
+    Reassign all of {name_1}'s in progress tasks to {name_2}
+    """
+    email_1 = random.choice(project_management_team_emails)
+    email_2 = random.choice(project_management_team_emails)
+    while email_1 == email_2:
+        email_2 = random.choice(project_management_team_emails)
+    name_1 = email_1.split("@")[0].split(".")[0]
+    name_2 = email_2.split("@")[0].split(".")[0]
+    tasks_in_progress = project_tasks[
+        (project_tasks["assigned_to_email"] == email_1) & (project_tasks["list_name"] == "In Progress")
+    ]
+    answer = []
+    for _, task in tasks_in_progress.iterrows():
+        task_id = task["task_id"]
+        answer.append(
+            f"""project_management.update_task.func(task_id='{task_id}', field='assigned_to_email', new_value='{email_2}')"""
+        )
+    return {"name_1": name_1, "name_2": name_2, "answer": answer}
+
+
+def move_unfinished_tasks_to_backlog_logic():
+    """
+    Move all of {name_1}'s unfinished tasks to the backlog
+    """
+    email_1 = random.choice(project_management_team_emails)
+    name_1 = email_1.split("@")[0].split(".")[0]
+    tasks_in_progress = project_tasks[
+        (project_tasks["assigned_to_email"] == email_1) & (project_tasks["list_name"].isin(["In Progress", "In Review"]))
+    ]
+    answer = []
+    for _, task in tasks_in_progress.iterrows():
+        task_id = task["task_id"]
+        answer.append(
+            f"""project_management.update_task.func(task_id='{task_id}', field='list_name', new_value='Backlog')"""
+        )
+    return {"name_1": name_1, "answer": answer, "email_1": email_1}
 
 PROJECT_MANAGEMENT_TEMPLATES = [
-    {
-        "query": "Move all of {name}'s tasks that are in progress to in review",
-        "logic": move_tasks_to_in_review_logic,
-    },
-    {
-        "query": "Add a new task to the {board} backlog called {task_name} and assign it to {name}. It's due on {natural_language_due_date}.",
-        "logic": add_new_task_logic,
-    },
-    {
-        "query": "Move all of {name}'s overdue tasks in the backlog to in progress",
-        "logic": move_overdue_tasks_logic,
-    },
-    {
-        "query": "We've finished our {board} sprint. Can you move all in progress tasks on the {board} board back to the backlog?",
-        "logic": move_tasks_to_backlog_and_delete_completed_logic,
-    },
-    {
-        "query": "Move any of {name}'s tasks that are in review to completed",
-        "logic": move_overdue_in_review_tasks_logic,
-    },
-    {"query": """{name_1} is sick so reassign their unfinished tasks to {name_2}."""},
-    {"query": """{name_1} is on vacation now so move all their unfinished tasks to the backlog."""},
+    # {
+    #     "query": "Move all of {name}'s tasks that are in progress to in review",
+    #     "logic": move_tasks_to_in_review_logic,
+    # },
+    # {
+    #     "query": "Add a new task to the {board} backlog called {task_name} and assign it to {name}. It's due on {natural_language_due_date}.",
+    #     "logic": add_new_task_logic,
+    # },
+    # {
+    #     "query": "Move all of {name}'s overdue tasks in the backlog to in progress",
+    #     "logic": move_overdue_tasks_logic,
+    # },
+    # {
+    #     "query": "We've finished our {board} sprint. Can you move all in progress tasks on the {board} board back to the backlog?",
+    #     "logic": move_tasks_to_backlog_and_delete_completed_logic,
+    # },
+    # {
+    #     "query": "Move any of {name}'s tasks that are in review to completed",
+    #     "logic": move_overdue_in_review_tasks_logic,
+    # },
+    # {
+    #     "query": """{name_1} is sick so reassign their in progress tasks to {name_2}.""",
+    #     "logic": reassign_unfinished_tasks_logic,
+    # },
+    # {
+    #     "query": """{email_1} is on vacation now so move all their unfinished tasks to the backlog.""",
+    #     "logic": move_unfinished_tasks_to_backlog_logic,
+    # },
     {
         "query": """{name_1} is sick, so move any tasks they haven't started to the backlog and anything in progress to the person with the fewest unfinished tasks."""
     },
-    {"query" """Give all of {name_1}'s overdue tasks to {name_2}."""},
+    {
+        "query" """Give all of {name_1}'s overdue tasks to {name_2}."""
+    },
     {
         "query": """On {board}, make a backlog task on called {task_name} and assign it to the person with the fewest {in_progress_or_backlog} tasks. It's due on {day_of_week}.""",
     },
-    {"query": """Take {name_1}'s most urgent task and reassign it to {name_2}."""},
+    {
+        "query": """Take {name_1}'s most urgent task and reassign it to {name_2}."""
+    },
     {
         "query": """Reassign {name_1}'s most urgent task to {name_2} - give them a deadline of {days} days after their final {in_progress_or_backlog} task."""
     },
@@ -169,7 +217,7 @@ PROJECT_MANAGEMENT_TEMPLATES = [
     },
 ]
 
-max_queries_per_template = 1  # Limit the number of queries per template
+max_queries_per_template = 3  # Limit the number of queries per template
 
 if __name__ == "__main__":
     PROJECT_MANAGEMENT_TEMPLATES = [t for t in PROJECT_MANAGEMENT_TEMPLATES if "logic" in t]
