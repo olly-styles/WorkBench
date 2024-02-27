@@ -123,6 +123,7 @@ def move_overdue_in_review_tasks_logic():
         )
     return {"name": name, "answer": answer}
 
+
 def reassign_unfinished_tasks_logic():
     """
     Reassign all of {name_1}'s in progress tasks to {name_2}
@@ -152,7 +153,8 @@ def move_unfinished_tasks_to_backlog_logic():
     email_1 = random.choice(project_management_team_emails)
     name_1 = email_1.split("@")[0].split(".")[0]
     tasks_in_progress = project_tasks[
-        (project_tasks["assigned_to_email"] == email_1) & (project_tasks["list_name"].isin(["In Progress", "In Review"]))
+        (project_tasks["assigned_to_email"] == email_1)
+        & (project_tasks["list_name"].isin(["In Progress", "In Review"]))
     ]
     answer = []
     for _, task in tasks_in_progress.iterrows():
@@ -162,58 +164,89 @@ def move_unfinished_tasks_to_backlog_logic():
         )
     return {"name_1": name_1, "answer": answer, "email_1": email_1}
 
+
+def reassign_overdue_tasks_logic():
+    """
+    Give all of {name_1}'s overdue tasks to {name_2}
+    """
+    email_1 = random.choice(project_management_team_emails)
+    email_2 = random.choice(project_management_team_emails)
+    while email_1 == email_2:
+        email_2 = random.choice(project_management_team_emails)
+    name_1 = email_1.split("@")[0].split(".")[0]
+    name_2 = email_2.split("@")[0].split(".")[0]
+    tasks_overdue = project_tasks[
+        (project_tasks["assigned_to_email"] == email_1)
+        & (project_tasks["due_date"] < str(HARDCODED_CURRENT_TIME))
+        & (project_tasks["list_name"] == "Backlog")
+    ]
+    answer = []
+    for _, task in tasks_overdue.iterrows():
+        task_id = task["task_id"]
+        answer.append(
+            f"""project_management.update_task.func(task_id='{task_id}', field='assigned_to_email', new_value='{email_2}')"""
+        )
+    return {"name_1": name_1, "name_2": name_2, "answer": answer, "email_1": email_1, "email_2": email_2}
+
+
+def reassign_most_urgent_task_logic():
+    """
+    Take {name_1}'s most urgent task and reassign it to {name_2}
+    """
+    email_1 = random.choice(project_management_team_emails)
+    email_2 = random.choice(project_management_team_emails)
+    while email_1 == email_2:
+        email_2 = random.choice(project_management_team_emails)
+    name_1 = email_1.split("@")[0].split(".")[0]
+    name_2 = email_2.split("@")[0].split(".")[0]
+    tasks = project_tasks[(project_tasks["assigned_to_email"] == email_1) & (project_tasks["list_name"] == "Backlog")]
+    most_urgent_task = tasks[tasks["due_date"] == tasks["due_date"].min()]
+    # If there are multiple tasks with the same due date, try again
+    if (len(most_urgent_task) > 1) or (most_urgent_task.empty):
+        return reassign_most_urgent_task_logic()
+    task_id = most_urgent_task["task_id"].values[0]
+    answer = [
+        f"""project_management.update_task.func(task_id='{task_id}', field='assigned_to_email', new_value='{email_2}')"""
+    ]
+    return {"name_1": name_1, "name_2": name_2, "answer": answer, "email_1": email_1, "email_2": email_2}
+
+
 PROJECT_MANAGEMENT_TEMPLATES = [
-    # {
-    #     "query": "Move all of {name}'s tasks that are in progress to in review",
-    #     "logic": move_tasks_to_in_review_logic,
-    # },
-    # {
-    #     "query": "Add a new task to the {board} backlog called {task_name} and assign it to {name}. It's due on {natural_language_due_date}.",
-    #     "logic": add_new_task_logic,
-    # },
-    # {
-    #     "query": "Move all of {name}'s overdue tasks in the backlog to in progress",
-    #     "logic": move_overdue_tasks_logic,
-    # },
-    # {
-    #     "query": "We've finished our {board} sprint. Can you move all in progress tasks on the {board} board back to the backlog?",
-    #     "logic": move_tasks_to_backlog_and_delete_completed_logic,
-    # },
-    # {
-    #     "query": "Move any of {name}'s tasks that are in review to completed",
-    #     "logic": move_overdue_in_review_tasks_logic,
-    # },
-    # {
-    #     "query": """{name_1} is sick so reassign their in progress tasks to {name_2}.""",
-    #     "logic": reassign_unfinished_tasks_logic,
-    # },
-    # {
-    #     "query": """{email_1} is on vacation now so move all their unfinished tasks to the backlog.""",
-    #     "logic": move_unfinished_tasks_to_backlog_logic,
-    # },
     {
-        "query": """{name_1} is sick, so move any tasks they haven't started to the backlog and anything in progress to the person with the fewest unfinished tasks."""
+        "query": "Move all of {name}'s tasks that are in progress to in review",
+        "logic": move_tasks_to_in_review_logic,
     },
     {
-        "query" """Give all of {name_1}'s overdue tasks to {name_2}."""
+        "query": "Add a new task to the {board} backlog called {task_name} and assign it to {name}. It's due on {natural_language_due_date}.",
+        "logic": add_new_task_logic,
     },
     {
-        "query": """On {board}, make a backlog task on called {task_name} and assign it to the person with the fewest {in_progress_or_backlog} tasks. It's due on {day_of_week}.""",
+        "query": "Move all of {name}'s overdue tasks in the backlog to in progress",
+        "logic": move_overdue_tasks_logic,
     },
     {
-        "query": """Take {name_1}'s most urgent task and reassign it to {name_2}."""
+        "query": "We've finished our {board} sprint. Can you move all in progress tasks on the {board} board back to the backlog?",
+        "logic": move_tasks_to_backlog_and_delete_completed_logic,
     },
     {
-        "query": """Reassign {name_1}'s most urgent task to {name_2} - give them a deadline of {days} days after their final {in_progress_or_backlog} task."""
+        "query": "Move any of {name}'s tasks that are in review to completed",
+        "logic": move_overdue_in_review_tasks_logic,
     },
     {
-        "query": """If {name} has more than {threshold} backlog tasks, assign the most urgent one to the person with the fewest {in_progress_or_backlog} tasks.""",
+        "query": """{name_1} is sick so reassign their in progress tasks to {name_2}.""",
+        "logic": reassign_unfinished_tasks_logic,
     },
     {
-        "query": """If {name} has finished their tasks, give them one called {task_name}. It's due on {day_of_week}.""",
+        "query": """{name_1} is on vacation now so move all their unfinished tasks to the backlog.""",
+        "logic": move_unfinished_tasks_to_backlog_logic,
     },
     {
-        "query": """If {name} hasn't got any overdue tasks, make one for them called {task_name}. It's due tomorrow.""",
+        "query": """Give all the overdue tasks that {name_1} hasn't started to {name_2}.""",
+        "logic": reassign_overdue_tasks_logic,
+    },
+    {
+        "query": """Take {email_1}'s most urgent task and reassign it to {email_2}.""",
+        "logic": reassign_most_urgent_task_logic,
     },
 ]
 

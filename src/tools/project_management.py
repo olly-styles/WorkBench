@@ -76,7 +76,7 @@ def search_tasks(task_name=None, assigned_to_email=None, list_name=None, due_dat
     Examples
     --------
     >>> project_management.search_tasks("Refactor code", "tishtrya@example.com" "In progress", "2023-06-01", "Front end")
-    {{"task_id": "00000000", "task_name": "Refactor code", "assigned_to_email": "tishtrya@example.com", "list_name": "In progress", "due_date": "2023-06-01", "board": "Front end"}}
+    {{"task_id": "00000000", "task_name": "Refactor code", "assigned_to_email": "tishtrya@example.com", "list_name": "In Progress", "due_date": "2023-06-01", "board": "Front End"}}
     """
     if not any([task_name, assigned_to_email, list_name, due_date, board]):
         return "No search parameters provided."
