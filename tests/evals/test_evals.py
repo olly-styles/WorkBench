@@ -19,6 +19,17 @@ def test_is_correct_single_action():
     assert not is_correct(predicted_actions, ground_truth_actions, error)
 
 
+def test_is_correct_case_insensitive():
+    error = ""
+    predicted_actions = [
+        "calendar.create_event.func(event_name='My event', participant_email='sam@company.com', event_start='2023-10-02 12:00:00', duration=60)"
+    ]
+    ground_truth_actions = [
+        "calendar.create_event.func(event_name='My event', participant_email='Sam@Company.com', event_start='2023-10-02 12:00:00', duration=60)"
+    ]
+    assert is_correct(predicted_actions, ground_truth_actions, error)
+
+
 def test_is_correct_multiple_actions():
     error = ""
     predicted_actions = [

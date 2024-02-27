@@ -33,6 +33,7 @@ emails_data = pd.read_csv("data/processed/emails.csv", dtype=str)
 calendar_events = pd.read_csv("data/processed/calendar_events.csv", dtype=str)
 dates = list(calendar_events["event_start"].str.split(" ").str[0].unique())
 times = list(calendar_events["event_start"].str.split(" ").str[1].unique())
+project_tasks = pd.read_csv("data/processed/project_tasks.csv", dtype=str)
 
 
 def find_email_schedule_meeting_sender_logic():
@@ -152,7 +153,7 @@ def schedule_meeting_if_no_emails_logic():
     }
 
 
-def send_email_if_no_meetings_logic():
+def send_email_if_no_past_meetings_logic():
     """If I haven't met with {name} in the past {days} days, send them an email titled 'Catch up soon?' saying 'We haven't caught up since {last_meeting_date} - can you send some availability over next week?'"""
     email = random.choice(calendar_events["participant_email"].unique())
     name = email.split(".")[0]
@@ -181,39 +182,83 @@ def send_email_if_no_meetings_logic():
     }
 
 
+def send_email_if_no_future_meetings_logic():
+    """If I don't have any meetings scheduled with {name} in the next {days} days, send them an email titled 'Catch up soon?' saying 'We have not caught up in a while - can you send some availability over next week?'""",
+    email = random.choice(calendar_events["participant_email"].unique())
+    name = email.split(".")[0]
+    threshold_days_until_next_meeting = random.randint(2, 4)
+    next_meeting_date = (
+        calendar_events[
+            (calendar_events["participant_email"] == email)
+            & (calendar_events["event_start"] > str(HARDCODED_CURRENT_TIME))
+        ]
+        .sort_values("event_start", ascending=True)
+        .iloc[0]["event_start"]
+        .split(" ")[0]
+    )
+    threshold_date = str((HARDCODED_CURRENT_TIME + pd.Timedelta(days=threshold_days_until_next_meeting)).date())
+    answer = []
+    if next_meeting_date > threshold_date:
+        subject = "Catch up soon?"
+        body = f"We have not caught up in a while - can you send some availability over next week?"
+        answer.append(f"email.send_email.func(recipient='{email}', subject='{subject}', body='{body}')")
+    return {
+        "email": email,
+        "days": threshold_days_until_next_meeting,
+        "next_meeting_date": next_meeting_date,
+        "answer": answer,
+    }
+
+
+def send_email_for_overdue_tasks_logic():
+    """If {name} has any overdue tasks, send them an email titled 'Overdue tasks' saying 'You have a few overdue tasks - can you update me on them?'.
+    Otherwise email them with 'Nice work keeping on top of your tasks this sprint!' titled 'Good work this sprint'"""
+    email = random.choice(emails_data["sender/recipient"].unique())
+    name = email.split(".")[0]
+    overdue_tasks = project_tasks[
+        (project_tasks["assigned_to_email"] == email) & (project_tasks["due_date"] < str(HARDCODED_CURRENT_TIME.date()))
+    ]
+    answer = []
+    if len(overdue_tasks):
+        subject = "Overdue tasks"
+        body = "You have a few overdue tasks - can you update me on them?"
+        answer.append(f"email.send_email.func(recipient='{email}', subject='{subject}', body='{body}')")
+    else:
+        subject = "Good work this sprint"
+        body = "Nice work keeping on top of your tasks this sprint!"
+        answer.append(f"email.send_email.func(recipient='{email}', subject='{subject}', body='{body}')")
+    return {
+        "email": email,
+        "overdue_tasks": overdue_tasks,
+        "answer": answer,
+    }
+
+
 MULTI_DOMAIN_TEMPLATES = [
+    # {
+    #     "query": """Find the email from {natural_language_email_date} about '{subject}' and schedule a {natural_language_duration} meeting called '{subject}' at {natural_language_time} with the sender for {natural_language_meeting_date}.""",
+    #     "logic": find_email_schedule_meeting_sender_logic,
+    # },
+    # {
+    #     "query": """Send an email to attendees of the first event on {natural_language_event_date}. Title it with the event name and tell them 'Remember to attend this event.'""",
+    #     "logic": find_event_send_email_logic,
+    # },
+    # {
+    #     "query": """If {name} hasn't sent me any emails in the past {days} days, schedule a 30 minute meeting with them for {day_of_week} at {natural_language_time} called 'Catch up with {name}'""",
+    #     "logic": schedule_meeting_if_no_emails_logic,
+    # },
+    # {
+    #     "query": """If I haven't met with {name} in the past {days} days, send them an email titled 'Catch up soon?' saying 'We have not caught up in over {days} days - can you send some availability over next week?'""",
+    #     "logic": send_email_if_no_past_meetings_logic,
+    # },
+    # {
+    #     "query": """If I don't have any meetings scheduled with {email} in the next {days} days, send them an email titled 'Catch up soon?' saying 'We have not caught up in a while - can you send some availability over next week?'""",
+    #     "logic": send_email_if_no_future_meetings_logic,
+    # },
     {
-        "query": """Find the email from {natural_language_email_date} about '{subject}' and schedule a {natural_language_duration} meeting called '{subject}' at {natural_language_time} with the sender for {natural_language_meeting_date}.""",
-        "logic": find_email_schedule_meeting_sender_logic,
-    },
-    {
-        "query": """Send an email to attendees of the first event on {natural_language_event_date}. Title it with the event name and tell them 'Remember to attend this event.'""",
-        "logic": find_event_send_email_logic,
-    },
-    {
-        "query": """If {name} hasn't sent me any emails in the past {days} days, schedule a 30 minute meeting with them for {day_of_week} at {natural_language_time} called 'Catch up with {name}'""",
-        "logic": schedule_meeting_if_no_emails_logic,
-    },
-    {
-        "query": """If I haven't met with {name} in the past {days} days, send them an email titled 'Catch up soon?' saying 'We have not caught up in over {days} days - can you send some availability over next week?'""",
-        "logic": send_email_if_no_meetings_logic,
-    },
-    {
-        "query": """If I don't have any meetings scheduled with {name} in the next {days} days, send them an email titled 'Catch up soon?' saying 'We haven't caught up since {last_meeting_date} - can you send some availability over next week?'""",
-    },
-    {
-        "query": """If my next meeting with {name} is more than {days} days away, send them an email titled 'Can we meet sooner?' saying 'We're not meeting until {next_meeting_date} - can we meet sooner?'""",
-    },
-    {
-        "query": """Send an email to {name} titled '{natural_language_metric}' and tell them 'There were {number} {natural_language_metric} on {natural_language_date}'""",
-    },
-    {
-        "query": """If {natural_language_metric} {fell_or_grew} since {date_min}, 
-        make a task for {name} called 'Improve {natural_language_metric}'. It's due in a week.""",
-    },
-    {
-        "query": """If {name} has any overdue tasks, send them an email titled 'Overdue tasks' saying 'You have {number} overdue tasks - can you update me on them?'.
-        Otherwise email them with 'Nice work keeping on top of your tasks this sprint - {number_of_tasks} is a lot!' titled 'Good work this sprint'""",
+        "query": """If {email} has any overdue tasks, send them an email titled 'Overdue tasks' saying 'You have a few overdue tasks - can you update me on them?'.
+        Otherwise email them with 'Nice work keeping on top of your tasks this sprint!' titled 'Good work this sprint'""",
+        "logic": send_email_for_overdue_tasks_logic,
     },
     {
         "query": """Find the correlation between {natural_language_metric_1} and {natural_language_metric_2},

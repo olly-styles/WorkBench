@@ -65,7 +65,7 @@ def execute_actions_and_reset_state(actions):
     # Execute the actions
     for action in actions:
         try:
-            eval(action)
+            eval(action.lower())
         except:
             return False, None, None, None, None, None
     new_calendar_state = calendar.CALENDAR_EVENTS.copy()
