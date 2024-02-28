@@ -21,7 +21,7 @@ emails = pd.read_csv("data/raw/email_addresses.csv", header=None)
 events = pd.DataFrame(columns=["event_id", "event_name", "participant_email", "event_start", "duration"])
 
 if __name__ == "__main__":
-    for _ in tqdm(range(500)):
+    for _ in tqdm(range(300)):
         event_id, event_name, email, event_start, duration = create_calendar_event(event_names, emails, events)
         events.loc[len(events)] = [event_id, event_name, email, event_start, duration]
 

@@ -128,9 +128,13 @@ def cancel_next_event_with_name_logic():
 
 def create_event_on_first_free_slot_tomorrow(event_name, participant, duration_minutes):
     tomorrow_date = str(HARDCODED_CURRENT_TIME + pd.Timedelta(days=1)).split(" ")[0]
-    events_on_date = calendar_events[calendar_events["event_start"].str.split(" ").str[0] >= tomorrow_date]
-    first_free_time = get_first_free_slot(events_on_date)
-    return f"""calendar.create_event.func(event_name='{event_name}', participant_email='{participant}', event_start='{tomorrow_date} {first_free_time}', duration='{duration_minutes}')"""
+    following_day = str(HARDCODED_CURRENT_TIME + pd.Timedelta(days=2)).split(" ")[0]
+    events_on_date = calendar_events[
+        (calendar_events["event_start"].str.split(" ").str[0] >= tomorrow_date)
+        & (calendar_events["event_start"].str.split(" ").str[0] < following_day)
+    ]
+    first_free_time = get_first_free_slot(tomorrow_date, events_on_date, duration_minutes)
+    return f"""calendar.create_event.func(event_name='{event_name}', participant_email='{participant}', event_start='{first_free_time}', duration='{duration_minutes}')"""
 
 
 def check_last_meeting_with_name_schedule_30_tomorrow():

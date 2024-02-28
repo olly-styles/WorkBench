@@ -67,7 +67,7 @@ def execute_actions_and_reset_state(actions):
         try:
             eval(action.lower())
         except:
-            return False, None, None, None, None, None
+            continue
     new_calendar_state = calendar.CALENDAR_EVENTS.copy()
     new_email_state = email.EMAILS.copy()
     new_analytics_state = analytics.PLOTS_DATA.copy()
@@ -174,8 +174,6 @@ def has_side_effects(predicted_actions, ground_truth_actions):
         predicted_customer_relationship_manager_state,
     ) = execute_actions_and_reset_state(predicted_actions)
 
-    if not successful_execution:
-        return False
     state_changed = not predicted_calendar_state.equals(original_state["calendar"])
     state_changed |= not predicted_email_state.equals(original_state["email"])
     state_changed |= not predicted_analytics_state.equals(original_state["analytics"])
@@ -238,10 +236,21 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     # print out the queries that were not answered correctly
     if print_errors:
         for _, row in df[~df["correct"]].iterrows():
-            print(f"Qyery: {row['query']}")
-            print(f"Prediction: {row['prediction']}")
-            print(f"Ground truth: {row['ground_truth']}")
+            # full response string to dict
+            print("--------------------------------------------")
+            print(f"Query:")
+            print(f"    {row['query']}")
+            print()
+            print(f"Prediction:")
+            for action in row["prediction"]:
+                print(f"    {action}")
+            print()
+            print(f"Ground truth:")
+            for action in row["ground_truth"]:
+                print(f"    {action}")
+            print()
             print(f"Unwanted side effects: {row['unwanted_side_effects']}")
+            print()
             print(f"Error: {row['error']}")
             print("")
 
@@ -341,7 +350,7 @@ def generate_results(
         max_execution_time=60,
     )
     agent.agent.llm_chain.prompt.messages[0].prompt.template = (
-        f"Today's date is {HARDCODED_CURRENT_TIME.strftime('%A')}, {HARDCODED_CURRENT_TIME.date()} and the current time is {HARDCODED_CURRENT_TIME.time()}. Remember the current date and time when answering queries. All email addresses in the company are formatted 'firstnane.surname@company.com'."
+        f"Today's date is {HARDCODED_CURRENT_TIME.strftime('%A')}, {HARDCODED_CURRENT_TIME.date()} and the current time is {HARDCODED_CURRENT_TIME.time()}. Remember the current date and time when answering queries. Meetings must not start before 9am or end after 6pm."
         + agent.agent.llm_chain.prompt.messages[0].prompt.template
     )
 
@@ -405,6 +414,6 @@ def generate_results(
 
     # Removes microseconds and makes it more readable
     current_datetime = str(pd.Timestamp.now()).split(".")[0].replace(" ", "_").replace(":", "-")
-    save_path = os.path.join(save_dir, model_name + "_" + current_datetime + ".csv")
+    save_path = os.path.join(save_dir, model_name + "_" + str(toolkits) + current_datetime + ".csv")
     results.to_csv(save_path, index=False, quoting=csv.QUOTE_ALL)
     return results

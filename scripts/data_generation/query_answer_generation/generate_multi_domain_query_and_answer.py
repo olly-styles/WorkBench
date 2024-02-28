@@ -234,84 +234,77 @@ def send_email_for_overdue_tasks_logic():
     }
 
 
+def book_meeting_send_email_if_overdue_tasks_logic():
+    """If {name} has any overdue tasks, book a half hour meeting with them called 'Catch up on overdue tasks' at the earliest time I'm free tomorrow and
+    send them an email titled 'Discuss overdue tasks' saying 'I noticed you have a few overdue tasks - lets catch up tomorrow.
+    Otherwise email them with 'Nice work keeping on top of your tasks this sprint!' titled 'Good work this sprint'"""
+    email = random.choice(emails_data["sender/recipient"].unique())
+    name = email.split(".")[0]
+    overdue_tasks = project_tasks[
+        (project_tasks["assigned_to_email"] == email) & (project_tasks["due_date"] < str(HARDCODED_CURRENT_TIME.date()))
+    ]
+    answer = []
+    if len(overdue_tasks):
+        event_name = "Catch up on overdue tasks"
+        create_event_action = create_event_on_first_free_slot_tomorrow(event_name, email, 30)
+        subject = "Discuss overdue tasks"
+        body = "I noticed you have a few overdue tasks - lets catch up tomorrow."
+        email_action = f"email.send_email.func(recipient='{email}', subject='{subject}', body='{body}')"
+        answer.append(create_event_action)
+        answer.append(email_action)
+    else:
+        subject = "Good work this sprint"
+        body = "Nice work keeping on top of your tasks this sprint!"
+        answer.append(f"email.send_email.func(recipient='{email}', subject='{subject}', body='{body}')")
+    return {
+        "email": email,
+        "name": name,
+        "overdue_tasks": overdue_tasks,
+        "answer": answer,
+    }
+
+
 MULTI_DOMAIN_TEMPLATES = [
-    # {
-    #     "query": """Find the email from {natural_language_email_date} about '{subject}' and schedule a {natural_language_duration} meeting called '{subject}' at {natural_language_time} with the sender for {natural_language_meeting_date}.""",
-    #     "logic": find_email_schedule_meeting_sender_logic,
-    # },
-    # {
-    #     "query": """Send an email to attendees of the first event on {natural_language_event_date}. Title it with the event name and tell them 'Remember to attend this event.'""",
-    #     "logic": find_event_send_email_logic,
-    # },
-    # {
-    #     "query": """If {name} hasn't sent me any emails in the past {days} days, schedule a 30 minute meeting with them for {day_of_week} at {natural_language_time} called 'Catch up with {name}'""",
-    #     "logic": schedule_meeting_if_no_emails_logic,
-    # },
-    # {
-    #     "query": """If I haven't met with {name} in the past {days} days, send them an email titled 'Catch up soon?' saying 'We have not caught up in over {days} days - can you send some availability over next week?'""",
-    #     "logic": send_email_if_no_past_meetings_logic,
-    # },
-    # {
-    #     "query": """If I don't have any meetings scheduled with {email} in the next {days} days, send them an email titled 'Catch up soon?' saying 'We have not caught up in a while - can you send some availability over next week?'""",
-    #     "logic": send_email_if_no_future_meetings_logic,
-    # },
     {
-        "query": """If {email} has any overdue tasks, send them an email titled 'Overdue tasks' saying 'You have a few overdue tasks - can you update me on them?'.
-        Otherwise email them with 'Nice work keeping on top of your tasks this sprint!' titled 'Good work this sprint'""",
+        "query": """Find the email from {natural_language_email_date} about '{subject}' and schedule a {natural_language_duration} meeting called '{subject}' at {natural_language_time} with the sender for {natural_language_meeting_date}.""",
+        "logic": find_email_schedule_meeting_sender_logic,
+    },
+    {
+        "query": """Send an email to attendees of the first event on {natural_language_event_date}. Title it with the event name and tell them 'Remember to attend this event.'""",
+        "logic": find_event_send_email_logic,
+    },
+    {
+        "query": """If {name} hasn't sent me any emails in the past {days} days, schedule a 30 minute meeting with them for {day_of_week} at {natural_language_time} called 'Catch up with {name}'""",
+        "logic": schedule_meeting_if_no_emails_logic,
+    },
+    {
+        "query": """If I haven't met with {name} in the past {days} days, send them an email titled 'Catch up soon?' saying 'We have not caught up in over {days} days - can you send some availability over next week?'""",
+        "logic": send_email_if_no_past_meetings_logic,
+    },
+    {
+        "query": """If I don't have any meetings scheduled with {email} in the next {days} days, send them an email titled 'Catch up soon?' saying 'We have not caught up in a while - can you send some availability over next week?'""",
+        "logic": send_email_if_no_future_meetings_logic,
+    },
+    {
+        "query": (
+            "If {email} has any overdue tasks, send them an email titled 'Overdue tasks' saying 'You have a few overdue tasks - can you update me on them?'. "
+            "Otherwise email them with 'Nice work keeping on top of your tasks this sprint!' titled 'Good work this sprint'"
+        ),
         "logic": send_email_for_overdue_tasks_logic,
-    },
-    {
-        "query": """Find the correlation between {natural_language_metric_1} and {natural_language_metric_2},
-        then send an email to {name} titled '{natural_language_metric_1} and {natural_language_metric_2}'.
-        If there's a positive correlation, tell them 'Their correlation is {correlation}. We should discuss.'
-        Otherwise, tell them 'They're unrelated, no need to discuss.'""",
-    },
-    {
-        "query": """If {natural_language_metric} was {more_or_less} than {threshold} at any time between {date_min} and {date_max}, 
-        book a meeting with {name} for {day_of_week} at {natural_language_time} titled 'Discuss {natural_language_metric}'""",
-    },
-    {
-        "query": """If {natural_language_metric} {fell_or_grew} by more than {threshold} from {date_min} to {date_max},
-        book a meeting with {name} for {day_of_week} at {natural_language_time} titled 'Discuss {natural_language_metric}'""",
-    },
-    {
-        "query": """If there's a {positive_or_negative} correlation between {natural_language_metric_1} and {natural_language_metric_2} since {date_min},
-        book a meeting with {name} for {day_of_week} at {natural_language_time} titled 'Discuss {natural_language_metric_1} and {natural_language_metric_2}'""",
-    },
-    {
-        "query": """If {natural_language_metric} {fell_or_grew} since {date_min},
-        email {name} saying 'I noticed {natural_language_metric} {fell_or_grew} recently - can we discuss?'
-        and title it  'Discuss {natural_language_metric}'""",
-    },
-    {
-        "query": """If {natural_language_metric} was {more_or_less} than {threshold} at any time since {date_min}, 
-        email {name} saying 'I noticed {natural_language_metric} was {more_or_less} than {threshold} recently - can we discuss?' 
-        and title it 'Discuss {natural_language_metric}'""",
     },
     # 3 domain
     {
-        "query": """If {netural_language_metric} {fell_or_grew} since {date_min},
-        email {name} saying 'We'r e not doing well on {natural_language_metric} recently - can we discuss?'
-        and title it 'Discuss {natural_language_metric}'. 
-        then also book a meeting with them called 'Catch up on {natural_language_metric}' at the earliest time I'm free tomorrow""",
-    },
-    {
-        "query": """If {name} has any overdue tasks, book a meeting with them called 'Catch up on overdue tasks' at the earliest time I'm free tomorrow.
-        Otherwise email them with 'Nice work keeping on top of your tasks this sprint - {number_of_tasks} is a lot!' titled 'Good work this sprint'""",
-    },
-    {
-        "query": """If {natural_language_metric} was {more_or_less} than {threshold} at any time since {date_min},
-        email {name} saying 'We're not doing well on {natural_language_metric} recently - can we discuss?'
-        and title it 'Discuss {natural_language_metric}', 
-        and also book a meeting with them called 'Catch up on {natural_language_metric}' at the earliest time I'm free {day_of_week}.
-        Otherwise, email {name} saying 'I just checked {natural_language_metric} since {date_min} and they're doing great - nice work!' 
-        Title it 'Nice work on {natural_language_metric}'""",
+        "query": (
+            "If {email} has any overdue tasks, book a half hour meeting with them called 'Catch up on overdue tasks' at the earliest time I'm free tomorrow and "
+            "send them an email titled 'Discuss overdue tasks' saying 'I noticed you have a few overdue tasks - lets catch up tomorrow. "
+            "Otherwise email them with 'Nice work keeping on top of your tasks this sprint!' titled 'Good work this sprint'"
+        ),
+        "logic": book_meeting_send_email_if_overdue_tasks_logic,
     },
 ]
 
 max_queries_per_template = 3
 if __name__ == "__main__":
-    MULTI_DOMAIN_TEMPLATES = [t for t in MULTI_DOMAIN_TEMPLATES if "logic" in t.keys()]
     generated_queries_and_answers = generate_all_queries_and_answers(MULTI_DOMAIN_TEMPLATES, max_queries_per_template)
     df = pd.DataFrame(generated_queries_and_answers)
     df.to_csv(

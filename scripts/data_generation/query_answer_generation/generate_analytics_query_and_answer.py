@@ -166,7 +166,7 @@ ANALYTICS_TEMPLATES = [
     },
 ]
 
-max_queries_per_template = 1  # Limit the number of queries per template
+max_queries_per_template = 3  # Limit the number of queries per template
 
 if __name__ == "__main__":
     generated_queries_and_answers = generate_all_queries_and_answers(ANALYTICS_TEMPLATES, max_queries_per_template)
