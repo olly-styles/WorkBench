@@ -11,7 +11,7 @@ def test_no_two_tasks_same_name_same_person():
     """
     Tests that no two tasks with the same name are assigned to the same person.
     """
-    grouped = project_management_data.groupby(["task_name", "assigned_to"]).size()
+    grouped = project_management_data.groupby(["task_name", "assigned_to_email"]).size()
     assert len(grouped[grouped > 1]) == 0
 
 
@@ -19,11 +19,11 @@ def test_no_sales_team_in_project_management_system():
     """
     Tests that there are no sales team members in the project management system.
     """
-    assert not project_management_data["assigned_to"].isin(sales_team_emails).any()
+    assert not project_management_data["assigned_to_email"].isin(sales_team_emails).any()
 
 
 def all_project_management_team_members_have_tasks():
     """
     Tests that all project management team members have tasks assigned to them.
     """
-    assert project_management_data["assigned_to"].isin(project_management_team_emails).all()
+    assert project_management_data["assigned_to_email"].isin(project_management_team_emails).all()

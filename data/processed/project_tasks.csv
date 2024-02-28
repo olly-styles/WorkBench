@@ -1,4 +1,4 @@
-task_id,task_name,assigned_to,list_name,due_date,board
+task_id,task_name,assigned_to_email,list_name,due_date,board
 00000149,Add animation to carousel,Leila.Azizi@company.com,Backlog,2023-11-28,Front end
 00000037,Add authentication for email notification,Carlos.Rodriguez@company.com,Backlog,2023-11-28,Back end
 00000061,Update Flask to latest version,Aisha.Chen@company.com,Backlog,2023-11-28,Back end

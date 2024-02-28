@@ -32,8 +32,8 @@ def generate_visit_date(start_date, end_date):
 
 
 # Parameters for data generation
-start_date = datetime(2023, 10, 1)
-end_date = datetime(2023, 12, 31)
+start_date = datetime(2023, 9, 1)
+end_date = datetime(2023, 11, 30)
 num_records = 500
 
 # Data structure to keep track of used visitor IDs per day

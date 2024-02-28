@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from datetime import datetime
+from datetime import datetime, timedelta
 import random
 
 np.random.seed(42)
@@ -9,22 +9,38 @@ calendar_days_in_future = 31  # end date is 31 december
 calendar_days_in_past = 90  # start date is 1 september
 
 
-def get_first_free_slot(original_meetings_df):
-    meetings_df = original_meetings_df.copy()
-    meetings_df["event_start"] = pd.to_datetime(meetings_df["event_start"])
-    meetings_df["event_end"] = meetings_df["event_start"] + pd.to_timedelta(
-        meetings_df["duration"].astype(int), unit="m"
-    )
-    meetings_df = meetings_df.sort_values("event_start")
-    meetings_df["next_event_start"] = meetings_df["event_start"].shift(-1)
-    meetings_df["next_event_start"] = meetings_df["next_event_start"].fillna(HARDCODED_CURRENT_TIME)
-    meetings_df["next_event_start"] = pd.to_datetime(meetings_df["next_event_start"])
-    meetings_df["free_time"] = meetings_df["next_event_start"] - meetings_df["event_end"]
-    free_time = meetings_df[meetings_df["free_time"] >= pd.Timedelta(30)]
-    if len(free_time) == 0:
-        return None
-    else:
-        return free_time.iloc[0]["event_end"]
+def get_first_free_slot(date, original_events_on_date, duration_minutes):
+    if original_events_on_date.empty:
+        return pd.to_datetime(date).replace(hour=9, minute=0, second=0)
+
+    events_df = original_events_on_date.copy()
+
+    events_df["duration"] = pd.to_numeric(events_df["duration"])
+    events_df["event_start"] = pd.to_datetime(events_df["event_start"])
+    events_df["event_end"] = events_df["event_start"] + pd.to_timedelta(events_df["duration"], unit="m")
+
+    # Define work hours
+    work_start = events_df["event_start"].iloc[0].replace(hour=9, minute=0, second=0)
+    work_end = events_df["event_start"].iloc[0].replace(hour=18, minute=0, second=0)
+
+    # Sort events by start time
+    events_df = events_df.sort_values(by="event_start")
+
+    # Start checking from the beginning of the work day
+    current_time = work_start
+    for _, row in events_df.iterrows():
+        if current_time + timedelta(minutes=duration_minutes) <= row["event_start"]:
+            # Found a slot
+            return current_time
+        # Move to the end of the current meeting before checking the next slot
+        current_time = max(current_time, row["event_end"])
+
+    # Check if there's a slot at the end of the day
+    if current_time + timedelta(minutes=duration_minutes) <= work_end:
+        return current_time
+
+    # If no slot found
+    return None
 
 
 def get_random_future_date(dates):
@@ -120,7 +136,7 @@ def get_natural_language_date(str_date):
 
 
 def generate_event_duration():
-    return np.random.choice([1, 2, 3, 4, 5, 6]) * 0.5
+    return np.random.choice([1, 2, 3, 4]) * 0.5
 
 
 def generate_event_duration_minutes():

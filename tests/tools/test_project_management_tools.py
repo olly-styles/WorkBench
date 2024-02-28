@@ -7,7 +7,7 @@ test_tasks = [
     {
         "task_id": "00000144",
         "task_name": "Add animation to modal window",
-        "assigned_to": "Santiago.Martinez@company.com",
+        "assigned_to_email": "Santiago.Martinez@company.com",
         "list_name": "Backlog",
         "due_date": "2023-11-28",
         "board": "Front end",
@@ -15,7 +15,7 @@ test_tasks = [
     {
         "task_id": "00000044",
         "task_name": "Add authentication for cloud storage",
-        "assigned_to": "Fatima.Khan@company.com",
+        "assigned_to_email": "Fatima.Khan@company.com",
         "list_name": "Backlog",
         "due_date": "2023-11-28",
         "board": "Back end",
@@ -23,7 +23,7 @@ test_tasks = [
     {
         "task_id": "00000244",
         "task_name": "Create wireframe for landing page",
-        "assigned_to": "Akira.Sato@company.com",
+        "assigned_to_email": "Akira.Sato@company.com",
         "list_name": "Backlog",
         "due_date": "2023-11-28",
         "board": "Design",

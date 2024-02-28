@@ -94,7 +94,7 @@ def generate_random_date(start, end):
 def generate_customer_notes():
     notes = ""
     for _ in range(random.randint(0, 3)):
-        notes += f"{generate_random_date(HARDCODED_CURRENT_TIME - timedelta(days=180), HARDCODED_CURRENT_TIME).date()}: {random.choice(['Had a call', 'On holiday', 'Saw the demo', 'Met in person'])}. "
+        notes += f"{generate_random_date(HARDCODED_CURRENT_TIME - timedelta(days=60), HARDCODED_CURRENT_TIME).date()}: {random.choice(['Had a call', 'On holiday', 'Saw the demo', 'Met in person'])}. "
     return notes
 
 
@@ -108,7 +108,7 @@ statuses = ["Qualified", "Won", "Lost", "Lead", "Proposal"]
 crm_data = pd.DataFrame(
     columns=[
         "customer_id",
-        "assigned_to",
+        "assigned_to_email",
         "customer_name",
         "customer_email",
         "customer_phone",
@@ -130,16 +130,16 @@ for i in range(num_customers):
     customer_id = str(i).zfill(8)
     customer_email = generate_random_email(customer_name)
     customer_phone = generate_random_phone() if np.random.choice([True, False]) else None
-    last_contact_date = generate_random_date(HARDCODED_CURRENT_TIME - timedelta(days=180), HARDCODED_CURRENT_TIME)
+    last_contact_date = generate_random_date(HARDCODED_CURRENT_TIME - timedelta(days=60), HARDCODED_CURRENT_TIME)
     follow_up_by = last_contact_date + timedelta(days=random.randint(7, 30))
     notes = generate_customer_notes()
     product_interest = random.choice(product_interests)
     status = random.choice(statuses)
-    assigned_to = random.choice(sales_team_emails)
+    assigned_to_email = random.choice(sales_team_emails)
 
     crm_data.loc[len(crm_data)] = [
         customer_id,
-        assigned_to,
+        assigned_to_email,
         customer_name,
         customer_email,
         customer_phone,

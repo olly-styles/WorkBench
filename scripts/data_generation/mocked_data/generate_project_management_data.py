@@ -42,8 +42,12 @@ def generate_random_due_date(start, end):
     return start + timedelta(days=random.randint(0, (end - start).days))
 
 
-def choose_list(lists, probability_list_1=0.7, probability_list_2=0.04, probability_list_3=0.16, probability_list_4=0.1):
-    list_name = np.random.choice(lists, p=[probability_list_1, probability_list_2, probability_list_3, probability_list_4])
+def choose_list(
+    lists, probability_list_1=0.7, probability_list_2=0.04, probability_list_3=0.16, probability_list_4=0.1
+):
+    list_name = np.random.choice(
+        lists, p=[probability_list_1, probability_list_2, probability_list_3, probability_list_4]
+    )
     return list_name
 
 
@@ -55,7 +59,7 @@ def create_task(task_templates, team_emails_by_board, lists, start_date, end_dat
 
     # Choose a unique task-person combination
     while True:
-        assigned_to = random.choice(team_member_emails)
+        assigned_to_email = random.choice(team_member_emails)
         task_name = template.format(
             feature=random.choice(
                 [
@@ -92,14 +96,14 @@ def create_task(task_templates, team_emails_by_board, lists, start_date, end_dat
         # If this person has not been assigned this task, break the loop
         if not (
             (project_management_data["task_name"] == task_name)
-            & (project_management_data["assigned_to"] == assigned_to)
+            & (project_management_data["assigned_to_email"] == assigned_to_email)
         ).any():
             break
 
     list_name = choose_list(lists)
     due_date = generate_random_due_date(start_date, end_date)
     task_id = str(len(project_management_data)).zfill(8)
-    return task_id, task_name, assigned_to, list_name, due_date, board
+    return task_id, task_name, assigned_to_email, list_name, due_date, board
 
 
 # Sample data for tasks, team members, and lists
@@ -107,9 +111,13 @@ team_member_emails = pd.read_csv("data/raw/email_addresses.csv", header=None).va
 
 num_teams = 4
 backend_team_emails = team_member_emails[: len(team_member_emails) // num_teams]
-frontend_team_emails = team_member_emails[len(team_member_emails) // num_teams : 2 * len(team_member_emails) // num_teams]
-design_team_emails = team_member_emails[2 * len(team_member_emails) // num_teams : 3 * len(team_member_emails) // num_teams]
-project_management_team_emails = backend_team_emails + frontend_team_emails + design_team_emails
+frontend_team_emails = team_member_emails[
+    len(team_member_emails) // num_teams : 2 * len(team_member_emails) // num_teams
+]
+design_team_emails = team_member_emails[
+    2 * len(team_member_emails) // num_teams : 3 * len(team_member_emails) // num_teams
+]
+project_management_team_emails = list(backend_team_emails) + list(frontend_team_emails) + list(design_team_emails)
 sales_team_emails = team_member_emails[3 * len(team_member_emails) // num_teams :]
 
 lists = ["Backlog", "In Progress", "In Review", "Completed"]
@@ -117,7 +125,7 @@ boards = ["Back end", "Front end", "Design"]
 
 # Setting up the project board
 project_management_data = pd.DataFrame(
-    columns=["task_id", "task_name", "assigned_to", "list_name", "due_date", "board"]
+    columns=["task_id", "task_name", "assigned_to_email", "list_name", "due_date", "board"]
 )
 
 # Simulate task generation

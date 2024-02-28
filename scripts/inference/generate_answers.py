@@ -26,10 +26,28 @@ parser.add_argument(
     required=True,
 )
 
+parser.add_argument(
+    "--toolkits",
+    action="append",
+    nargs="*",
+    help="toolkits to be used for generating answers. By default all toolkits are used: 'email', 'calendar', 'analytics', 'project_management', 'customer_relationship_manager'",
+    default=[],
+)
 args = parser.parse_args()
+
+if not args.toolkits:
+    args.toolkits = [
+        [
+            "email",
+            "calendar",
+            "analytics",
+            "project_management",
+            "customer_relationship_manager",
+        ]
+    ]
 
 if __name__ == "__main__":
     ground_truth = pd.read_csv(args.queries_path)
     ground_truth["answer"] = ground_truth["answer"].apply(ast.literal_eval)
-    results = generate_results(args.queries_path, args.model_name)
+    results = generate_results(args.queries_path, args.model_name, args.toolkits[0])
     calculate_metrics(ground_truth, results)

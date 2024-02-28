@@ -24,7 +24,7 @@ def get_task_information_by_id(task_id=None, field=None):
     task_id : str, optional
         8-digit ID of the task.
     field : str, optional
-        Field to return. Available fields are: "task_id", "task_name", "assigned_to", "list_name", "due_date", "board"
+        Field to return. Available fields are: "task_id", "task_name", "assigned_to_email", "list_name", "due_date", "board"
 
     Returns
     -------
@@ -51,7 +51,7 @@ def get_task_information_by_id(task_id=None, field=None):
 
 
 @tool("project_management.search_tasks", return_direct=False)
-def search_tasks(task_name=None, assigned_to=None, list_name=None, due_date=None, board=None):
+def search_tasks(task_name=None, assigned_to_email=None, list_name=None, due_date=None, board=None):
     """
     Searches for tasks based on the given parameters.
 
@@ -59,7 +59,7 @@ def search_tasks(task_name=None, assigned_to=None, list_name=None, due_date=None
     ----------
     task_name : str, optional
         Name of the task.
-    assigned_to : str, optional
+    assigned_to_email : str, optional
         Email address of the person assigned to the task.
     list_name : str, optional
         Name of the list the task belongs to.
@@ -76,15 +76,15 @@ def search_tasks(task_name=None, assigned_to=None, list_name=None, due_date=None
     Examples
     --------
     >>> project_management.search_tasks("Refactor code", "tishtrya@example.com" "In progress", "2023-06-01", "Front end")
-    {{"task_id": "00000000", "task_name": "Refactor code", "assigned_to": "tishtrya@example.com", "list_name": "In progress", "due_date": "2023-06-01", "board": "Front end"}}
+    {{"task_id": "00000000", "task_name": "Refactor code", "assigned_to_email": "tishtrya@example.com", "list_name": "In Progress", "due_date": "2023-06-01", "board": "Front End"}}
     """
-    if not any([task_name, assigned_to, list_name, due_date, board]):
+    if not any([task_name, assigned_to_email, list_name, due_date, board]):
         return "No search parameters provided."
     tasks = PROJECT_TASKS.copy()
     if task_name:
         tasks = tasks[tasks["task_name"].str.contains(task_name, case=False)]
-    if assigned_to:
-        tasks = tasks[tasks["assigned_to"].str.contains(assigned_to, case=False)]
+    if assigned_to_email:
+        tasks = tasks[tasks["assigned_to_email"].str.contains(assigned_to_email, case=False)]
     if list_name:
         tasks = tasks[tasks["list_name"].str.contains(list_name, case=False)]
     if due_date:
@@ -95,7 +95,7 @@ def search_tasks(task_name=None, assigned_to=None, list_name=None, due_date=None
 
 
 @tool("project_management.create_task", return_direct=False)
-def create_task(task_name=None, assigned_to=None, list_name=None, due_date=None, board=None):
+def create_task(task_name=None, assigned_to_email=None, list_name=None, due_date=None, board=None):
     """
     Creates a new task.
 
@@ -103,7 +103,7 @@ def create_task(task_name=None, assigned_to=None, list_name=None, due_date=None,
     ----------
     task_name : str
         Name of the task.
-    assigned_to : str
+    assigned_to_email : str
         Email address of the person assigned to the task.
     list_name : str
         Name of the list the task belongs to.
@@ -124,10 +124,10 @@ def create_task(task_name=None, assigned_to=None, list_name=None, due_date=None,
     """
     global PROJECT_TASKS
 
-    if not all([task_name, assigned_to, list_name, due_date, board]):
+    if not all([task_name, assigned_to_email, list_name, due_date, board]):
         return "Missing task details."
 
-    if assigned_to not in PROJECT_TASKS["assigned_to"].values:
+    if assigned_to_email not in PROJECT_TASKS["assigned_to_email"].values:
         return "Assignee email not valid. Please choose from the list of team members."
     if list_name not in ["Backlog", "In Progress", "In Review", "Completed"]:
         return "List not valid. Please choose from: 'Backlog', 'In Progress', 'In Review', 'Completed'."
@@ -139,7 +139,7 @@ def create_task(task_name=None, assigned_to=None, list_name=None, due_date=None,
         {
             "task_id": [task_id],
             "task_name": [task_name],
-            "assigned_to": [assigned_to],
+            "assigned_to_email": [assigned_to_email],
             "list_name": [list_name],
             "due_date": [due_date],
             "board": [board],
@@ -191,7 +191,7 @@ def update_task(task_id=None, field=None, new_value=None):
     task_id : str
         8-digit ID of the task.
     field : str
-        Field to update. Available fields are: "task_name", "assigned_to", "list_name", "due_date", "board"
+        Field to update. Available fields are: "task_name", "assigned_to_email", "list_name", "due_date", "board"
     new_value : str
         New value for the field.
 
@@ -214,7 +214,7 @@ def update_task(task_id=None, field=None, new_value=None):
         return "Board not valid. Please choose from: 'Back end', 'Front end', 'Design'."
     if field == "list_name" and new_value not in ["Backlog", "In Progress", "In Review", "Completed"]:
         return "List not valid. Please choose from: 'Backlog', 'In Progress', 'In Review', 'Completed'."
-    if field == "assigned_to" and new_value not in PROJECT_TASKS["assigned_to"].values:
+    if field == "assigned_to_email" and new_value not in PROJECT_TASKS["assigned_to_email"].values:
         return "Assignee email not valid. Please choose from the list of team members."
 
     if task_id in PROJECT_TASKS["task_id"].values:
