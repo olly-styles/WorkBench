@@ -48,7 +48,7 @@ def find_email_schedule_meeting_sender_logic():
     natural_language_meeting_date = get_natural_language_date(meeting_date)
     natural_language_meeting_time = get_natural_language_time(meeting_datetime.split(" ")[1])
     answer = [
-        f"""calendar.create_event.func(event_name='{subject}', participant_email='{sender}', event_start='{meeting_datetime}', duration='{duration_minutes}')"""
+        f"""calendar.create_event.func(event_name="{subject}", participant_email="{sender}", event_start="{meeting_datetime}", duration="{duration_minutes}")"""
     ]
     return {
         "natural_language_email_date": natural_language_email_date,
@@ -73,7 +73,7 @@ def find_event_send_email_logic():
     participant = calendar_events.set_index("event_id").loc[first_event_id, "participant_email"]
     event_name = calendar_events.set_index("event_id").loc[first_event_id, "event_name"]
     answer = [
-        f"""email.send_email.func(recipient='{participant}', subject='{event_name}', body='Remember to attend this event.')"""
+        f"""email.send_email.func(recipient="{participant}", subject="{event_name}", body="Remember to attend this event.")"""
     ]
     return {
         "natural_language_event_date": natural_language_event_date,
@@ -117,7 +117,7 @@ def get_metric_fell_create_task_book_meeting_send_email_logic():
     else:
         subject = f"Discuss {create_task_book_meeting_dict['natural_language_metric']}"
         body = f"I need you to look at {create_task_book_meeting_dict['natural_language_metric']} - more details on the task I just made."
-        email_action = f"""email.send_email.func(recipient='{create_task_book_meeting_dict['email']}', subject='{subject}', body='{body}"""
+        email_action = f"""email.send_email.func(recipient="{create_task_book_meeting_dict["email"]}", subject="{subject}", body="{body}")"""
         answer = create_task_book_meeting_dict["answer"] + [email_action]
     return {**create_task_book_meeting_dict, "answer": answer}
 
@@ -141,7 +141,7 @@ def schedule_meeting_if_no_emails_logic():
         & (emails_data["sent_datetime"] > str(HARDCODED_CURRENT_TIME - pd.Timedelta(days=days_since_email)))
     ].empty:
         answer.append(
-            f"calendar.create_event.func(event_name='Catch up with {name}', participant_email='{email}', event_start='{meeting_date} {time}', duration='30')"
+            f"""calendar.create_event.func(event_name="Catch up with {name}", participant_email="{email}", event_start="{meeting_date} {time}", duration="30")"""
         )
 
     return {
@@ -173,7 +173,7 @@ def send_email_if_no_past_meetings_logic():
     if last_meeting_date < threshold_date:
         subject = "Catch up soon?"
         body = f"We have not caught up in over {threshold_days_since_last_meeting} days - can you send some availability over next week?"
-        answer.append(f"email.send_email.func(recipient='{email}', subject='{subject}', body='{body}')")
+        answer.append(f"""email.send_email.func(recipient="{email}", subject="{subject}", body="{body}")""")
     return {
         "name": name,
         "days": threshold_days_since_last_meeting,
@@ -201,7 +201,7 @@ def send_email_if_no_future_meetings_logic():
     if next_meeting_date > threshold_date:
         subject = "Catch up soon?"
         body = f"We have not caught up in a while - can you send some availability over next week?"
-        answer.append(f"email.send_email.func(recipient='{email}', subject='{subject}', body='{body}')")
+        answer.append(f"""email.send_email.func(recipient="{email}", subject="{subject}", body="{body}")""")
     return {
         "email": email,
         "days": threshold_days_until_next_meeting,
@@ -222,13 +222,14 @@ def send_email_for_overdue_tasks_logic():
     if len(overdue_tasks):
         subject = "Overdue tasks"
         body = "You have a few overdue tasks - can you update me on them?"
-        answer.append(f"email.send_email.func(recipient='{email}', subject='{subject}', body='{body}')")
+        answer.append(f"""email.send_email.func(recipient="{email}", subject="{subject}", body="{body}")""")
     else:
         subject = "Good work this sprint"
         body = "Nice work keeping on top of your tasks this sprint!"
-        answer.append(f"email.send_email.func(recipient='{email}', subject='{subject}', body='{body}')")
+        answer.append(f"""email.send_email.func(recipient="{email}", subject="{subject}", body="{body}")""")
     return {
         "email": email,
+        "name": name,
         "overdue_tasks": overdue_tasks,
         "answer": answer,
     }
@@ -248,14 +249,14 @@ def book_meeting_send_email_if_overdue_tasks_logic():
         event_name = "Catch up on overdue tasks"
         create_event_action = create_event_on_first_free_slot_tomorrow(event_name, email, 30)
         subject = "Discuss overdue tasks"
-        body = "I noticed you have a few overdue tasks - lets catch up tomorrow."
-        email_action = f"email.send_email.func(recipient='{email}', subject='{subject}', body='{body}')"
+        body = "I noticed you have a few overdue tasks - let's catch up tomorrow."
+        email_action = f"""email.send_email.func(recipient="{email}", subject="{subject}", body="{body}")"""
         answer.append(create_event_action)
         answer.append(email_action)
     else:
         subject = "Good work this sprint"
         body = "Nice work keeping on top of your tasks this sprint!"
-        answer.append(f"email.send_email.func(recipient='{email}', subject='{subject}', body='{body}')")
+        answer.append(f"""email.send_email.func(recipient="{email}", subject="{subject}", body="{body}")""")
     return {
         "email": email,
         "name": name,
@@ -287,7 +288,7 @@ MULTI_DOMAIN_TEMPLATES = [
     },
     {
         "query": (
-            "If {email} has any overdue tasks, send them an email titled 'Overdue tasks' saying 'You have a few overdue tasks - can you update me on them?'. "
+            "If {name} has any overdue tasks, send them an email titled 'Overdue tasks' saying 'You have a few overdue tasks - can you update me on them?'. "
             "Otherwise email them with 'Nice work keeping on top of your tasks this sprint!' titled 'Good work this sprint'"
         ),
         "logic": send_email_for_overdue_tasks_logic,
@@ -295,8 +296,8 @@ MULTI_DOMAIN_TEMPLATES = [
     # 3 domain
     {
         "query": (
-            "If {email} has any overdue tasks, book a half hour meeting with them called 'Catch up on overdue tasks' at the earliest time I'm free tomorrow and "
-            "send them an email titled 'Discuss overdue tasks' saying 'I noticed you have a few overdue tasks - lets catch up tomorrow. "
+            "If {name} has any overdue tasks, book a half hour meeting with them called 'Catch up on overdue tasks' at the earliest time I'm free tomorrow and "
+            "send them an email titled 'Discuss overdue tasks' saying 'I noticed you have a few overdue tasks - let's catch up tomorrow.' "
             "Otherwise email them with 'Nice work keeping on top of your tasks this sprint!' titled 'Good work this sprint'"
         ),
         "logic": book_meeting_send_email_if_overdue_tasks_logic,

@@ -35,7 +35,7 @@ def convert_agent_action_to_function_call(action):
     """Converts langchain_core.agents.AgentAction to an API call"""
     args = []
     for k, v in action.tool_input.items():
-        args.append(f"{k}='{v}'")
+        args.append(f'{k}="{v}"')
     return action.tool + ".func(" + ", ".join(args) + ")"
 
 

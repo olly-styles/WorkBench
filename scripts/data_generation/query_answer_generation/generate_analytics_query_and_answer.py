@@ -25,7 +25,7 @@ metric_to_func_dict = {
 
 
 def get_plot_string(metric, date_min, date_max, plot_type):
-    return f"""analytics.create_plot.func(time_min='{date_min}', time_max='{date_max}', value_to_plot='{metric}', plot_type='{plot_type}')"""
+    return f"""analytics.create_plot.func(time_min="{date_min}", time_max="{date_max}", value_to_plot="{metric}", plot_type="{plot_type}")"""
 
 
 def get_random_dict():
