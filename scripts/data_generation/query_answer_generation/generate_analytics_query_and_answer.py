@@ -157,10 +157,6 @@ ANALYTICS_TEMPLATES = [
         "logic": metric_more_or_less_plot_logic,
     },
     {
-        "query": """If {natural_language_metric} {fell_or_grew} from {natural_language_date} to {natural_language_date_max}, plot a line of that""",
-        "logic": metric_fell_or_grew_plot_logic,
-    },
-    {
         "query": """Make bar charts showing {natural_language_metric} and {natural_language_metric_2} since {date_min}""",
         "logic": metric_two_plots_logic,
     },
