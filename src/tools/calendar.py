@@ -140,7 +140,7 @@ def create_event(event_name=None, participant_email=None, event_start=None, dura
         return "Event start not provided."
     if not duration:
         return "Event duration not provided."
-    
+
     participant_email = participant_email.lower()
 
     event_id = str(int(CALENDAR_EVENTS["event_id"].max()) + 1).zfill(8)

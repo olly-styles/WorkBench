@@ -198,7 +198,7 @@ def add_customer(
     assigned_to_email = assigned_to_email.lower()
     if customer_email:
         customer_email = customer_email.lower()
-    
+
     new_id = str(int(CRM_DATA["customer_id"].max()) + 1).zfill(8)
     new_customer = pd.DataFrame(
         {
