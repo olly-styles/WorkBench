@@ -127,7 +127,8 @@ def create_task(task_name=None, assigned_to_email=None, list_name=None, due_date
     if not all([task_name, assigned_to_email, list_name, due_date, board]):
         return "Missing task details."
 
-    if assigned_to_email not in PROJECT_TASKS["assigned_to_email"].values:
+    assigned_to_email = assigned_to_email.lower()
+    if assigned_to_email not in PROJECT_TASKS["assigned_to_email"].str.lower().values:
         return "Assignee email not valid. Please choose from the list of team members."
     if list_name not in ["Backlog", "In Progress", "In Review", "Completed"]:
         return "List not valid. Please choose from: 'Backlog', 'In Progress', 'In Review', 'Completed'."
@@ -210,11 +211,14 @@ def update_task(task_id=None, field=None, new_value=None):
     if not task_id or not field or not new_value:
         return "Task ID, field, or new value not provided."
 
+    if field == "assigned_to_email":
+        new_value = new_value.lower()
+
     if field == "board" and new_value not in ["Back end", "Front end", "Design"]:
         return "Board not valid. Please choose from: 'Back end', 'Front end', 'Design'."
     if field == "list_name" and new_value not in ["Backlog", "In Progress", "In Review", "Completed"]:
         return "List not valid. Please choose from: 'Backlog', 'In Progress', 'In Review', 'Completed'."
-    if field == "assigned_to_email" and new_value not in PROJECT_TASKS["assigned_to_email"].values:
+    if field == "assigned_to_email" and new_value not in PROJECT_TASKS["assigned_to_email"].str.lower().values:
         return "Assignee email not valid. Please choose from the list of team members."
 
     if task_id in PROJECT_TASKS["task_id"].values:
