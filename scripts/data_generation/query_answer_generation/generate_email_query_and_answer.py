@@ -26,7 +26,7 @@ def delete_last_email_logic():
     sender = random.choice(senders)
     name = sender.split("@")[0].split(".")[0]
     last_email_id = emails_data[emails_data["sender/recipient"] == sender].iloc[-1]["email_id"]
-    answer = [f"""email.delete_email.func(email_id='{last_email_id}')"""]
+    answer = [f"""email.delete_email.func(email_id="{last_email_id}")"""]
     return {
         "name": name,
         "last_email_id": last_email_id,
@@ -45,7 +45,7 @@ def delete_last_days_emails_logic():
     last_days_emails = last_days_emails["email_id"].tolist()
     answer = []
     for email_id in last_days_emails:
-        answer.append(f"""email.delete_email.func(email_id='{email_id}')""")
+        answer.append(f"""email.delete_email.func(email_id="{email_id}")""")
     return {
         "name": name,
         "days": days,
@@ -61,7 +61,7 @@ def forward_recent_email_from_sender_logic():
     while recipient_email == sender_email:
         recipient_email = random.choice(senders)
     recipient_name = recipient_email.split("@")[0].split(".")[0]
-    answer = [f"""email.forward_email.func(email_id='{last_email_id}', recipient='{recipient_email}')"""]
+    answer = [f"""email.forward_email.func(email_id="{last_email_id}", recipient="{recipient_email}")"""]
     return {
         "sender_name": sender_name,
         "recipient_name": recipient_name,
@@ -78,7 +78,7 @@ def forward_recent_email_about_topic_logic():
     while recipient_email == email["sender/recipient"]:
         recipient_email = random.choice(senders)
     recipient_name = recipient_email.split("@")[0].split(".")[0]
-    answer = [f"""email.forward_email.func(email_id='{email["email_id"]}', recipient='{recipient_email}')"""]
+    answer = [f"""email.forward_email.func(email_id="{email['email_id']}", recipient="{recipient_email}")"""]
     return {
         "recipient_name": recipient_name,
         "recipient_email": recipient_email,
@@ -95,7 +95,7 @@ def forward_recent_email_about_topic_to_multiple_logic():
     recipient_name1, recipient_name2 = recipient_names
     answer = []
     for recipient_email in recipient_emails:
-        answer.append(f"""email.forward_email.func(email_id='{email["email_id"]}', recipient='{recipient_email}')""")
+        answer.append(f"""email.forward_email.func(email_id="{email["email_id"]}", recipient="{recipient_email}")""")
     return {
         "recipient_name1": recipient_name1,
         "recipient_name2": recipient_name2,
@@ -119,7 +119,7 @@ def reply_to_email_logic():
 
     del emails_data["name"]
     answer = [
-        f"""email.reply_email.func(email_id='{email_id}', body='Thanks for the update - I will get back to you tomorrow.')"""
+        f"""email.reply_email.func(email_id="{email_id}", body="Thanks for the update - I will get back to you tomorrow.")"""
     ]
     return {
         "name": name,
@@ -133,7 +133,7 @@ def reply_to_latest_email_logic():
     sender_email = random.choice(senders)
     sender_name = sender_email.split("@")[0].split(".")[0]
     last_email_id = emails_data[emails_data["sender/recipient"] == sender_email].iloc[-1]["email_id"]
-    answer = [f"""email.reply_email.func(email_id='{last_email_id}', body='Got it, thank you!')"""]
+    answer = [f"""email.reply_email.func(email_id="{last_email_id}", body="Got it, thank you!")"""]
     return {
         "sender_name": sender_name,
         "answer": answer,
@@ -146,7 +146,7 @@ def send_email_logic():
     subject = subjects[index]
     recipient_email = random.choice(senders)
     name = recipient_email.split("@")[0].split(".")[0]
-    answer = [f"""email.send_email.func(recipient='{recipient_email}', subject='{subject}', body='{body}')"""]
+    answer = [f"""email.send_email.func(recipient="{recipient_email}", subject="{subject}", body="{body}")"""]
     return {
         "body": body,
         "subject": subject,
@@ -170,7 +170,7 @@ def forward_last_weeks_email_logic():
     recipient_name = recipient_email.split("@")[0].split(".")[0]
     answer = []
     for email_id in last_week_email["email_id"]:
-        answer.append(f"""email.forward_email.func(email_id='{email_id}', recipient='{recipient_email}')""")
+        answer.append(f"""email.forward_email.func(email_id="{email_id}", recipient="{recipient_email}")""")
     return {
         "name": email.split("@")[0].split(".")[0],
         "recipient_name": recipient_name,
