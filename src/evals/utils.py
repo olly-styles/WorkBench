@@ -15,6 +15,7 @@ from src.tools.toolkits import (
     analytics_toolkit,
     project_management_toolkit,
     customer_relationship_manager_toolkit,
+    company_directory_toolkit,
 )
 
 
@@ -35,7 +36,7 @@ def convert_agent_action_to_function_call(action):
     """Converts langchain_core.agents.AgentAction to an API call"""
     args = []
     for k, v in action.tool_input.items():
-        args.append(f"{k}='{v}'")
+        args.append(f'{k}="{v}"')
     return action.tool + ".func(" + ", ".join(args) + ")"
 
 
@@ -65,7 +66,7 @@ def execute_actions_and_reset_state(actions):
     # Execute the actions
     for action in actions:
         try:
-            eval(action.lower())
+            eval(action)
         except:
             continue
     new_calendar_state = calendar.CALENDAR_EVENTS.copy()
@@ -236,6 +237,11 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     df["unwanted_side_effects"] = [has_side_effects(pred, gt) for pred, gt in zip(df["prediction"], df["ground_truth"])]
 
     # print out the queries that were not answered correctly
+    print("--------------------------------------------")
+    print("--------------------------------------------")
+    print("ERRORS:")
+    print("--------------------------------------------")
+    print("--------------------------------------------")
     if print_errors:
         for _, row in df[~df["correct"]].iterrows():
             # full response string to dict
@@ -255,8 +261,32 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
             print()
             print(f"Error: {row['error']}")
             print("")
+    print("--------------------------------------------")
+    print("--------------------------------------------")
+    print("Correct:")
+    print("--------------------------------------------")
+    print("--------------------------------------------")
+    if print_errors:
+        for _, row in df[df["correct"]].iterrows():
+            # full response string to dict
+            print("--------------------------------------------")
+            print(f"Query:")
+            print(f"    {row['query']}")
+            print()
+            print(f"Prediction:")
+            for action in row["prediction"]:
+                print(f"    {action}")
+            print()
+            print(f"Ground truth:")
+            for action in row["ground_truth"]:
+                print(f"    {action}")
+            print()
+            print(f"Unwanted side effects: {row['unwanted_side_effects']}")
+            print()
+            print(f"Error: {row['error']}")
+            print("")
 
-    print(f"Accuracy: {round(df['correct'].mean() * 100, 2)}%")
+    print(f"Accuracy: {round(df['correct'].mean() * 100, 2)}% ({df['correct'].sum()} out of {len(df)})")
 
 
 def get_latest_results_from_dir(results_root_dir, tool, action, model_list, print_errors=False):
@@ -289,6 +319,8 @@ def get_toolkits(toolkits):
         tools += project_management_toolkit
     if "customer_relationship_manager" in toolkits:
         tools += customer_relationship_manager_toolkit
+    # The company directory toolkit is always included in order to find email addresses by name
+    tools += company_directory_toolkit
     return tools
 
 

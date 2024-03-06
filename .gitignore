@@ -8,3 +8,5 @@ anyscale_key.txt
 downloads
 .vscode
 run_all.sh
+run_all_single_tool.sh
+data/results

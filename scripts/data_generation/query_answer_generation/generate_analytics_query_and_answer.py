@@ -25,7 +25,7 @@ metric_to_func_dict = {
 
 
 def get_plot_string(metric, date_min, date_max, plot_type):
-    return f"""analytics.create_plot.func(time_min='{date_min}', time_max='{date_max}', value_to_plot='{metric}', plot_type='{plot_type}')"""
+    return f"""analytics.create_plot.func(time_min="{date_min}", time_max="{date_max}", value_to_plot="{metric}", plot_type="{plot_type}")"""
 
 
 def get_random_dict():
@@ -155,10 +155,6 @@ ANALYTICS_TEMPLATES = [
     {
         "query": """If {natural_language_metric} was {more_or_less} than {threshold} since {natural_language_date}, make a line plot of it since then""",
         "logic": metric_more_or_less_plot_logic,
-    },
-    {
-        "query": """If {natural_language_metric} {fell_or_grew} from {natural_language_date} to {natural_language_date_max}, plot a line of that""",
-        "logic": metric_fell_or_grew_plot_logic,
     },
     {
         "query": """Make bar charts showing {natural_language_metric} and {natural_language_metric_2} since {date_min}""",

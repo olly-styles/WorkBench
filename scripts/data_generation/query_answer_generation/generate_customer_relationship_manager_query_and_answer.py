@@ -66,7 +66,7 @@ def update_customer_status_logic():
     return {
         **base_dict,
         "answer": [
-            f"""customer_relationship_manager.update_customer.func(customer_id='{base_dict['current_customer_id']}', field='status', new_value='{base_dict['new_status']}')"""
+            f"""customer_relationship_manager.update_customer.func(customer_id="{base_dict['current_customer_id']}", field="status", new_value="{base_dict['new_status']}")"""
         ],
     }
 
@@ -76,7 +76,7 @@ def delete_customer_logic():
     return {
         **base_dict,
         "answer": [
-            f"""customer_relationship_manager.delete_customer.func(customer_id='{base_dict['current_customer_id']}')"""
+            f"""customer_relationship_manager.delete_customer.func(customer_id="{base_dict['current_customer_id']}")"""
         ],
     }
 
@@ -86,7 +86,7 @@ def add_lead_logic():
     return {
         **base_dict,
         "answer": [
-            f"""customer_relationship_manager.add_customer.func(customer_name='{base_dict['new_customer_name']}', assigned_to_email='{base_dict['assigned_to_email']}', status='Lead')"""
+            f"""customer_relationship_manager.add_customer.func(customer_name="{base_dict['new_customer_name']}", assigned_to_email="{base_dict['assigned_to_email']}", status="Lead")"""
         ],
     }
 
@@ -96,7 +96,7 @@ def reassign_customer_logic():
     return {
         **base_dict,
         "answer": [
-            f"""customer_relationship_manager.update_customer.func(customer_id='{base_dict['current_customer_id']}', field='assigned_to_email', new_value='{base_dict['assigned_to_email']}')"""
+            f"""customer_relationship_manager.update_customer.func(customer_id="{base_dict['current_customer_id']}", field="assigned_to_email", new_value="{base_dict['assigned_to_email']}")"""
         ],
     }
 
@@ -111,7 +111,7 @@ def reassign_all_leads_for_product_logic():
     answer = []
     for _, row in employee_leads.iterrows():
         answer.append(
-            f"""customer_relationship_manager.update_customer.func(customer_id='{row['customer_id']}', field='assigned_to_email', new_value='{base_dict['new_assigned_to_email']}')"""
+            f"""customer_relationship_manager.update_customer.func(customer_id="{row['customer_id']}", field="assigned_to_email", new_value="{base_dict['new_assigned_to_email']}")"""
         )
     return {
         **base_dict,
@@ -129,7 +129,7 @@ def reassign_all_qualified_leads_for_product_logic():
     answer = []
     for _, row in employee_leads.iterrows():
         answer.append(
-            f"""customer_relationship_manager.update_customer.func(customer_id='{row['customer_id']}', field='assigned_to_email', new_value='{base_dict['new_assigned_to_email']}')"""
+            f"""customer_relationship_manager.update_customer.func(customer_id="{row['customer_id']}", field="assigned_to_email", new_value="{base_dict['new_assigned_to_email']}")"""
         )
     return {
         **base_dict,
@@ -146,7 +146,7 @@ def delete_all_customers_in_stage_logic():
     ]
     answer = []
     for _, row in customers_to_delete.iterrows():
-        answer.append(f"""customer_relationship_manager.delete_customer.func(customer_id='{row['customer_id']}')""")
+        answer.append(f"""customer_relationship_manager.delete_customer.func(customer_id="{row['customer_id']}")""")
     return {
         **base_dict,
         "answer": answer,
@@ -164,7 +164,7 @@ def move_unresponsive_customers_to_lost_logic():
     answer = []
     for _, row in customers_to_move.iterrows():
         answer.append(
-            f"""customer_relationship_manager.update_customer.func(customer_id='{row['customer_id']}', field='status', new_value='Lost')"""
+            f"""customer_relationship_manager.update_customer.func(customer_id="{row['customer_id']}", field="status", new_value="Lost")"""
         )
     return {
         **base_dict,

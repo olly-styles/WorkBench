@@ -9,7 +9,6 @@ sys.path.append(project_root)
 random.seed(42)
 
 from src.evals.utils import generate_all_queries_and_answers
-from src.tools import project_management
 from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME, get_natural_language_date
 from scripts.data_generation.mocked_data.generate_project_management_data import project_management_team_emails
 
@@ -36,7 +35,7 @@ def get_random_task_dict():
 
 
 def get_new_task_string(task_name, email, board, due_date):
-    return f"""project_management.create_task.func(task_name='{task_name}', board='{board}', assigned_to_email='{email}', due_date='{due_date}', list_name='Backlog')"""
+    return f"""project_management.create_task.func(task_name="{task_name}", board="{board}", assigned_to_email="{email}", due_date="{due_date}", list_name="Backlog")"""
 
 
 def move_tasks_to_in_review_logic():
@@ -53,7 +52,7 @@ def move_tasks_to_in_review_logic():
     for _, task in tasks_in_progress.iterrows():
         task_id = task["task_id"]
         answer.append(
-            f"""project_management.update_task.func(task_id='{task_id}', field='list_name', new_value='In Review')"""
+            f"""project_management.update_task.func(task_id="{task_id}", field="list_name", new_value="In Review")"""
         )
     return {"name": name, "answer": answer}
 
@@ -85,7 +84,7 @@ def move_overdue_tasks_logic():
     for _, task in tasks.iterrows():
         task_id = task["task_id"]
         answer.append(
-            f"""project_management.update_task.func(task_id='{task_id}', field='list_name', new_value='In Progress')"""
+            f"""project_management.update_task.func(task_id="{task_id}", field="list_name", new_value="In Progress")"""
         )
     return {"name": name, "answer": answer}
 
@@ -101,7 +100,7 @@ def move_tasks_to_backlog_and_delete_completed_logic():
     for _, task in tasks_in_progress.iterrows():
         task_id = task["task_id"]
         answer.append(
-            f"""project_management.update_task.func(task_id='{task_id}', field='list_name', new_value='Backlog')"""
+            f"""project_management.update_task.func(task_id="{task_id}", field="list_name", new_value="Backlog")"""
         )
     return {"board": board, "answer": answer}
 
@@ -119,7 +118,7 @@ def move_overdue_in_review_tasks_logic():
     for _, task in tasks_in_review.iterrows():
         task_id = task["task_id"]
         answer.append(
-            f"""project_management.update_task.func(task_id='{task_id}', field='list_name', new_value='Completed')"""
+            f"""project_management.update_task.func(task_id="{task_id}", field="list_name", new_value="Completed")"""
         )
     return {"name": name, "answer": answer}
 
@@ -141,7 +140,7 @@ def reassign_unfinished_tasks_logic():
     for _, task in tasks_in_progress.iterrows():
         task_id = task["task_id"]
         answer.append(
-            f"""project_management.update_task.func(task_id='{task_id}', field='assigned_to_email', new_value='{email_2}')"""
+            f"""project_management.update_task.func(task_id="{task_id}", field="assigned_to_email", new_value="{email_2}")"""
         )
     return {"name_1": name_1, "name_2": name_2, "answer": answer}
 
@@ -160,7 +159,7 @@ def move_unfinished_tasks_to_backlog_logic():
     for _, task in tasks_in_progress.iterrows():
         task_id = task["task_id"]
         answer.append(
-            f"""project_management.update_task.func(task_id='{task_id}', field='list_name', new_value='Backlog')"""
+            f"""project_management.update_task.func(task_id="{task_id}", field="list_name", new_value="Backlog")"""
         )
     return {"name_1": name_1, "answer": answer, "email_1": email_1}
 
@@ -184,7 +183,7 @@ def reassign_overdue_tasks_logic():
     for _, task in tasks_overdue.iterrows():
         task_id = task["task_id"]
         answer.append(
-            f"""project_management.update_task.func(task_id='{task_id}', field='assigned_to_email', new_value='{email_2}')"""
+            f"""project_management.update_task.func(task_id="{task_id}", field="assigned_to_email", new_value="{email_2}")"""
         )
     return {"name_1": name_1, "name_2": name_2, "answer": answer, "email_1": email_1, "email_2": email_2}
 
@@ -206,7 +205,7 @@ def reassign_most_urgent_task_logic():
         return reassign_most_urgent_task_logic()
     task_id = most_urgent_task["task_id"].values[0]
     answer = [
-        f"""project_management.update_task.func(task_id='{task_id}', field='assigned_to_email', new_value='{email_2}')"""
+        f"""project_management.update_task.func(task_id="{task_id}", field="assigned_to_email", new_value="{email_2}")"""
     ]
     return {"name_1": name_1, "name_2": name_2, "answer": answer, "email_1": email_1, "email_2": email_2}
 
@@ -245,7 +244,7 @@ PROJECT_MANAGEMENT_TEMPLATES = [
         "logic": reassign_overdue_tasks_logic,
     },
     {
-        "query": """Take {email_1}'s most urgent task and reassign it to {email_2}.""",
+        "query": """Take {name_1}'s most urgent task and reassign it to {name_2}.""",
         "logic": reassign_most_urgent_task_logic,
     },
 ]
