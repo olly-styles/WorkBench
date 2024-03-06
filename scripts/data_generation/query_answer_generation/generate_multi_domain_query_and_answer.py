@@ -268,22 +268,27 @@ MULTI_DOMAIN_TEMPLATES = [
     {
         "query": """Find the email from {natural_language_email_date} about '{subject}' and schedule a {natural_language_duration} meeting called '{subject}' at {natural_language_time} with the sender for {natural_language_meeting_date}.""",
         "logic": find_email_schedule_meeting_sender_logic,
+        "domains": ["email", "calendar"]
     },
     {
         "query": """Send an email to attendees of the first event on {natural_language_event_date}. Title it with the event name and tell them 'Remember to attend this event.'""",
         "logic": find_event_send_email_logic,
+        "domains": ["email", "calendar"]
     },
     {
         "query": """If {name} hasn't sent me any emails in the past {days} days, schedule a 30 minute meeting with them for {day_of_week} at {natural_language_time} called 'Catch up with {name}'""",
         "logic": schedule_meeting_if_no_emails_logic,
+        "domains": ["email", "calendar"]
     },
     {
         "query": """If I haven't met with {name} in the past {days} days, send them an email titled 'Catch up soon?' saying 'We have not caught up in over {days} days - can you send some availability over next week?'""",
         "logic": send_email_if_no_past_meetings_logic,
+        "domains": ["email", "calendar"]
     },
     {
         "query": """If I don't have any meetings scheduled with {email} in the next {days} days, send them an email titled 'Catch up soon?' saying 'We have not caught up in a while - can you send some availability over next week?'""",
         "logic": send_email_if_no_future_meetings_logic,
+        "domains": ["email", "calendar"]
     },
     {
         "query": (
@@ -291,6 +296,7 @@ MULTI_DOMAIN_TEMPLATES = [
             "Otherwise email them with 'Nice work keeping on top of your tasks this sprint!' titled 'Good work this sprint'"
         ),
         "logic": send_email_for_overdue_tasks_logic,
+        "domains": ["email", "project_management"]
     },
     # 3 domain
     {
@@ -300,6 +306,7 @@ MULTI_DOMAIN_TEMPLATES = [
             "Otherwise email them with 'Nice work keeping on top of your tasks this sprint!' titled 'Good work this sprint'"
         ),
         "logic": book_meeting_send_email_if_overdue_tasks_logic,
+        "domains": ["email", "calendar", "project_management"]
     },
 ]
 

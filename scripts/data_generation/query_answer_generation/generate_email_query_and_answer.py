@@ -218,6 +218,8 @@ EMAIL_TEMPLATES = [
         "logic": reply_to_latest_email_logic,
     },
 ]
+for d in EMAIL_TEMPLATES:
+    d["domains"] = ["email"] 
 
 # Generate a limited number of unique multi-action queries and answers
 generated_queries_and_answers = []

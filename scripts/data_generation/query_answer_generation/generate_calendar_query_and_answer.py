@@ -293,6 +293,8 @@ CALENDAR_TEMPLATES = [
         "logic": create_event_logic,
     },
 ]
+for d in CALENDAR_TEMPLATES:
+    d["domains"] = ["calendar"] 
 
 # Generate a limited number of unique multi-action queries and answers
 generated_queries_and_answers = []
