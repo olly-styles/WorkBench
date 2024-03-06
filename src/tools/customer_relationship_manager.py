@@ -132,6 +132,9 @@ def update_customer(customer_id=None, field=None, new_value=None):
     if field == "product_interest" and new_value not in ["Software", "Hardware", "Services", "Consulting", "Training"]:
         return "Product interest not valid. Please choose from: 'Software', 'Hardware', 'Services', 'Consulting', 'Training'"
 
+    if field == "customer_email" or field == "assigned_to_email":
+        new_value = new_value.lower()
+
     if customer_id in CRM_DATA["customer_id"].values:
         if field in CRM_DATA.columns:
             CRM_DATA.loc[CRM_DATA["customer_id"] == customer_id, field] = new_value
@@ -191,6 +194,10 @@ def add_customer(
     global CRM_DATA
     if not all([customer_name, assigned_to_email, status]):
         return "Please provide all required fields: customer_name, assigned_to_email, status."
+
+    assigned_to_email = assigned_to_email.lower()
+    if customer_email:
+        customer_email = customer_email.lower()
 
     new_id = str(int(CRM_DATA["customer_id"].max()) + 1).zfill(8)
     new_customer = pd.DataFrame(

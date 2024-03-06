@@ -244,7 +244,7 @@ PROJECT_MANAGEMENT_TEMPLATES = [
         "logic": reassign_overdue_tasks_logic,
     },
     {
-        "query": """Take {email_1}'s most urgent task and reassign it to {email_2}.""",
+        "query": """Take {name_1}'s most urgent task and reassign it to {name_2}.""",
         "logic": reassign_most_urgent_task_logic,
     },
 ]

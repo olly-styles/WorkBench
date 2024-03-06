@@ -141,6 +141,8 @@ def create_event(event_name=None, participant_email=None, event_start=None, dura
     if not duration:
         return "Event duration not provided."
 
+    participant_email = participant_email.lower()
+
     event_id = str(int(CALENDAR_EVENTS["event_id"].max()) + 1).zfill(8)
     new_event = pd.DataFrame(
         {
@@ -218,6 +220,8 @@ def update_event(event_id=None, field=None, new_value=None):
     if not event_id or not field or not new_value:
         return "Event ID, field, or new value not provided."
     if event_id in CALENDAR_EVENTS["event_id"].values:
+        if field == "participant_email":
+            new_value = new_value.lower()
         CALENDAR_EVENTS.loc[CALENDAR_EVENTS["event_id"] == event_id, field] = new_value
         return "Event updated successfully."
     else:

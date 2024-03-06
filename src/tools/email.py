@@ -134,6 +134,7 @@ def send_email(recipient=None, subject=None, body=None):
         return "Recipient, subject, or body not provided."
     if "@" not in recipient or "." not in recipient:
         return "Invalid recipient email address."
+    recipient = recipient.lower()
 
     email_id = str(int(EMAILS["email_id"].max()) + 1)
     sent_datetime = HARDCODED_CURRENT_TIME
@@ -209,6 +210,7 @@ def forward_email(email_id=None, recipient=None):
         return "Email not found."
     if "@" not in recipient or "." not in recipient:
         return "Invalid recipient email address."
+    recipient = recipient.lower()
     email = EMAILS[EMAILS["email_id"] == email_id].to_dict(orient="records")[0]
     result = send_email.func(recipient, f"FW: {email['subject']}", email["body"])
     return "Email forwarded successfully." if result == "Email sent successfully." else result
