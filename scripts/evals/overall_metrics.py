@@ -4,11 +4,18 @@ import argparse
 
 project_root = os.path.abspath(os.path.curdir)
 sys.path.append(project_root)
-from src.evals.utils import get_latest_results_from_dir
+from src.evals.utils import AVAILABLE_LLMS, get_latest_results_from_dir
 
 results_root_dir = os.path.join("data", "results")
-full_tools_list = ["multi_domain", "calendar", "email"]
-full_models_list = ["gpt-3.5-turbo-instruct", "gpt-4-0125-preview"]
+full_tools_list = [
+    "multi_domain",
+    "email",
+    "calendar",
+    "analytics",
+    "project_management",
+    "customer_relationship_manager",
+]
+
 
 arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument(
@@ -21,7 +28,7 @@ arg_parser.add_argument(
     "--models",
     action="append",
     default=[],
-    help=f"Call with --models <model 1> --models <model 2> etc. Defaults to {full_models_list}.",
+    help=f"Call with --models <model 1> --models <model 2> etc. Defaults to {AVAILABLE_LLMS}.",
 )
 arg_parser.add_argument(
     "--print_errors",
@@ -33,9 +40,6 @@ args = arg_parser.parse_args()
 
 if __name__ == "__main__":
     tools = args.tools if len(args.tools) else full_tools_list
-    models = args.models if len(args.models) else full_models_list
+    models = args.models if len(args.models) else AVAILABLE_LLMS
     for tool in tools:
-        for action in ["single", "multi"]:
-            if action == "single" and tool == "multi_domain":
-                continue
-            get_latest_results_from_dir(results_root_dir, tool, action, models, args.print_errors)
+        get_latest_results_from_dir(results_root_dir, tool, models, args.print_errors)

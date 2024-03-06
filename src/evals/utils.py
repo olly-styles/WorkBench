@@ -1,10 +1,10 @@
 import re
 import os
 import pandas as pd
+import ast
 from langchain_openai import ChatOpenAI, OpenAI
 from langchain_community.chat_models.anthropic import ChatAnthropic
 from langchain_community.chat_models.anyscale import ChatAnyscale
-
 from langchain.agents import initialize_agent, AgentType
 import csv
 from src.tools import calendar, email, analytics, project_management, customer_relationship_manager
@@ -233,74 +233,95 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
         is_correct(pred, gt, error) for pred, gt, error in zip(df["prediction"], df["ground_truth"], df["error"])
     ]
     df["unwanted_side_effects"] = [has_side_effects(pred, gt) for pred, gt in zip(df["prediction"], df["ground_truth"])]
+    df["no_actions"] = [not len(pred) for pred in df["prediction"]]
+    # wrong email if @example is in the prediction and @atlas is not in the prediction. Prediction is a list so needs to be converted to a string
+    df["wrong_email"] = [("@example" in str(pred)) and ("@atlas" not in str(pred)) for pred in df["prediction"]]
+    # as above but it also needs to not be correct
+    df["wrong_email"] = df["wrong_email"] & ~df["correct"]
 
     # print out the queries that were not answered correctly
-    print("--------------------------------------------")
-    print("--------------------------------------------")
-    print("ERRORS:")
-    print("--------------------------------------------")
-    print("--------------------------------------------")
     if print_errors:
+        print("--------------------------------------------")
+        print("--------------------------------------------")
+        print("ERRORS:")
+        print("--------------------------------------------")
+        print("--------------------------------------------")
         for _, row in df[~df["correct"]].iterrows():
-            # full response string to dict
-            print("--------------------------------------------")
-            print(f"Query:")
-            print(f"    {row['query']}")
-            print()
-            print(f"Prediction:")
-            for action in row["prediction"]:
-                print(f"    {action}")
-            print()
-            print(f"Ground truth:")
-            for action in row["ground_truth"]:
-                print(f"    {action}")
-            print()
-            print(f"Unwanted side effects: {row['unwanted_side_effects']}")
-            print()
-            print(f"Error: {row['error']}")
-            print("")
-    print("--------------------------------------------")
-    print("--------------------------------------------")
-    print("Correct:")
-    print("--------------------------------------------")
-    print("--------------------------------------------")
-    if print_errors:
-        for _, row in df[df["correct"]].iterrows():
-            # full response string to dict
-            print("--------------------------------------------")
-            print(f"Query:")
-            print(f"    {row['query']}")
-            print()
-            print(f"Prediction:")
-            for action in row["prediction"]:
-                print(f"    {action}")
-            print()
-            print(f"Ground truth:")
-            for action in row["ground_truth"]:
-                print(f"    {action}")
-            print()
-            print(f"Unwanted side effects: {row['unwanted_side_effects']}")
-            print()
-            print(f"Error: {row['error']}")
-            print("")
+            if not row["wrong_email"] and not row["no_actions"]:
+                # full response string to dict
+                print("--------------------------------------------")
+                print(f"Query:")
+                print(f"    {row['query']}")
+                print()
+                print(f"Prediction:")
+                for action in row["prediction"]:
+                    print(f"    {action}")
+                print()
+                print(f"Ground truth:")
+                for action in row["ground_truth"]:
+                    print(f"    {action}")
+                print()
+                print(f"Unwanted side effects: {row['unwanted_side_effects']}")
+                print()
+                print(f"Error: {row['error']}")
+                print("")
+                # print the full response
+                print(f"Output:")
+                output = get_output(row["full_response"])
+                print(f"    {output}")
 
     print(f"Accuracy: {round(df['correct'].mean() * 100, 2)}% ({df['correct'].sum()} out of {len(df)})")
+    print(
+        f"Errors without unwanted side effects: {round((~df['correct'] & ~df['unwanted_side_effects']).mean() * 100, 2)}% ({(~df['correct'] & ~df['unwanted_side_effects']).sum()} out of {len(df)})"
+    )
+    print(
+        f"Wrong email, no side effects: {round((df['wrong_email'] & ~df['unwanted_side_effects']).mean() * 100, 2)}% ({(df['wrong_email'] & ~df['unwanted_side_effects']).sum()} out of {len(df)})"
+    )
+    print(
+        f"Didn't follow REACT framework: {round(df['no_actions'].mean() * 100, 2)}% ({df['no_actions'].sum()} out of {len(df)})"
+    )
+    print(
+        f"Errors with unwanted side effects: {round(df['unwanted_side_effects'].mean() * 100, 2)}% ({df['unwanted_side_effects'].sum()} out of {len(df)})"
+    )
+    print(
+        f"Wrong email with side effects: {round((df['wrong_email'] & df['unwanted_side_effects']).mean() * 100, 2)}% ({(df['wrong_email'] & df['unwanted_side_effects']).sum()} out of {len(df)})"
+    )
 
 
-def get_latest_results_from_dir(results_root_dir, tool, action, model_list, print_errors=False):
+def get_output(full_response):
+    """Get the output from the full response"""
+    pattern = r"AgentAction\(.*?\)"
+    array_pattern = r"array\((.*?)\)"
+
+    def quote_match(match):
+        escaped_match = match.group().replace('"', '\\"')
+        return f'"{escaped_match}"'
+
+    simplified_string = re.sub(pattern, quote_match, full_response)
+    simplified_string = re.sub(array_pattern, quote_match, simplified_string)
+    simplified_string = simplified_string.replace("nan", "None")
+    a = ast.literal_eval(simplified_string)
+    return a["output"]
+
+
+def get_latest_results_from_dir(results_root_dir, tool, model_list, print_errors=False):
     """Get the latest results for each model in the results directory"""
-    results_dir = os.path.join(results_root_dir, tool, action)
+    results_dir = os.path.join(results_root_dir, tool)
     results_files = os.listdir(results_dir)
     for model in model_list:
         model_results_files = [os.path.join(results_dir, file) for file in results_files if model in file]
         if not len(model_results_files):
-            print(f"\nNo results found for {tool}, {action} action with {model}")
+            print(f"\nNo results found for {tool} with {model}")
         else:
             latest_results_file = max(model_results_files, key=os.path.getctime)
-            ground_truth_path = os.path.join("data", "processed", f"{tool}_queries_and_answers_{action}_action.csv")
-            predictions = pd.read_csv(latest_results_file)
+            ground_truth_path = os.path.join(
+                "data", "processed", "queries_and_answers", f"{tool}_queries_and_answers.csv"
+            )
+            predictions = pd.read_csv(latest_results_file, dtype=str)
             ground_truth = pd.read_csv(ground_truth_path, dtype=str)
-            print(f"\nCalculating metrics for {tool}, {action} action with {model}")
+            ground_truth["answer"] = ground_truth["answer"].apply(ast.literal_eval)
+            predictions["function_calls"] = predictions["function_calls"].apply(ast.literal_eval)
+            print(f"\nCalculating metrics for {tool} with {model}")
             calculate_metrics(ground_truth, predictions, print_errors=print_errors)
 
 
