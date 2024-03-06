@@ -193,10 +193,12 @@ def generate_query_and_answer(template):
     logic = template["logic"]()
     query = template["query"].format(**logic)
     answer = logic["answer"]
+    domains = template.get("domains", [])
     return {
         "query": query,
         "answer": answer,
         "template": {k: template[k] for k in template if k != "logic"},
+        "domains": domains,
     }
 
 
@@ -326,13 +328,12 @@ def generate_results(
     queries_path,
     model_name,
     toolkits=["email", "calendar", "analytics", "project_management", "customer_relationship_manager"],
+    tool_selection="all"
 ):
     """Generates results for a given model and set of queries. Saves the results to a csv file."""
-    queries = pd.read_csv(
-        queries_path,
-        usecols=["query"],
-    )["query"].tolist()
-
+    queries_df = pd.read_csv(queries_path)
+    queries = queries_df["query"].tolist()
+    
     results = pd.DataFrame(columns=["query", "function_calls", "full_response", "error"])
     if model_name == "gpt-3.5":
         llm = OpenAI(
@@ -372,21 +373,26 @@ def generate_results(
 
     tools = get_toolkits(toolkits)
 
-    agent = initialize_agent(
-        llm=llm,
-        agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
-        tools=tools,
-        verbose=True,
-        return_intermediate_steps=True,
-        max_iterations=15,
-        max_execution_time=60,
-    )
-    agent.agent.llm_chain.prompt.messages[0].prompt.template = (
-        f"Today's date is {HARDCODED_CURRENT_TIME.strftime('%A')}, {HARDCODED_CURRENT_TIME.date()} and the current time is {HARDCODED_CURRENT_TIME.time()}. Remember the current date and time when answering queries. Meetings must not start before 9am or end after 6pm."
-        + agent.agent.llm_chain.prompt.messages[0].prompt.template
-    )
 
-    for query in queries:
+
+    for i, query in enumerate(queries):
+        if tool_selection == "domains":
+            toolkits = queries_df["domains"].iloc[i].strip("][").replace("'","").split(', ')
+            tools = get_toolkits(toolkits)
+        
+        agent = initialize_agent(
+            llm=llm,
+            agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
+            tools=tools,
+            verbose=True,
+            return_intermediate_steps=True,
+            max_iterations=15,
+            max_execution_time=60,
+        )
+        agent.agent.llm_chain.prompt.messages[0].prompt.template = (
+            f"Today's date is {HARDCODED_CURRENT_TIME.strftime('%A')}, {HARDCODED_CURRENT_TIME.date()} and the current time is {HARDCODED_CURRENT_TIME.time()}. Remember the current date and time when answering queries. Meetings must not start before 9am or end after 6pm."
+            + agent.agent.llm_chain.prompt.messages[0].prompt.template
+        )
         error = ""
         function_calls = []
         response = ""
@@ -446,6 +452,6 @@ def generate_results(
 
     # Removes microseconds and makes it more readable
     current_datetime = str(pd.Timestamp.now()).split(".")[0].replace(" ", "_").replace(":", "-")
-    save_path = os.path.join(save_dir, model_name + "_" + str(toolkits) + current_datetime + ".csv")
+    save_path = os.path.join(save_dir, model_name + "_" + tool_selection + "_" + current_datetime + ".csv")
     results.to_csv(save_path, index=False, quoting=csv.QUOTE_ALL)
     return results

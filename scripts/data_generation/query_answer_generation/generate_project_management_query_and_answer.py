@@ -248,11 +248,12 @@ PROJECT_MANAGEMENT_TEMPLATES = [
         "logic": reassign_most_urgent_task_logic,
     },
 ]
+for d in PROJECT_MANAGEMENT_TEMPLATES:
+    d["domains"] = ["project_management"]
 
 max_queries_per_template = 3  # Limit the number of queries per template
 
 if __name__ == "__main__":
-    PROJECT_MANAGEMENT_TEMPLATES = [t for t in PROJECT_MANAGEMENT_TEMPLATES if "logic" in t]
     generated_queries_and_answers = generate_all_queries_and_answers(
         PROJECT_MANAGEMENT_TEMPLATES, max_queries_per_template
     )

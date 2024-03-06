@@ -207,13 +207,14 @@ CRM_TEMPLATES = [
         "logic": move_unresponsive_customers_to_lost_logic,
     },
 ]
+for d in CRM_TEMPLATES:
+    d["domains"] = ["customer_relationship_manager"]
 
 # Generate a limited number of unique CRM queries and answers
 generated_crm_queries_and_answers = []
 max_queries_per_template = 3  # Limit the number of queries per template
 
 if __name__ == "__main__":
-    CRM_TEMPLATES = [t for t in CRM_TEMPLATES if "logic" in t]  # fix until we do logic for all templates
     generated_crm_queries_and_answers = generate_all_queries_and_answers(CRM_TEMPLATES, max_queries_per_template)
 
     df = pd.DataFrame(generated_crm_queries_and_answers)
