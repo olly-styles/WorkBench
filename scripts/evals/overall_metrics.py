@@ -41,5 +41,28 @@ args = arg_parser.parse_args()
 if __name__ == "__main__":
     tools = args.tools if len(args.tools) else full_tools_list
     models = args.models if len(args.models) else AVAILABLE_LLMS
-    for tool in tools:
-        get_latest_results_from_dir(results_root_dir, tool, models, args.print_errors)
+    for model in models:
+        total_correct = 0
+        total_incorrect = 0
+        total_side_effects = 0
+        for tool in tools:
+            results = get_latest_results_from_dir(results_root_dir, model, tool, args.print_errors)
+            if results is None:
+                continue
+            else:
+                correct, incorrect, side_effects = results
+            total_correct += correct
+            total_incorrect += incorrect
+            total_side_effects += side_effects
+        if total_correct + total_incorrect == 0:
+            print(f"No results found for {model}.")
+            continue
+        print()
+        print(f"Calculating overall metrics for {model}")
+        print(f"Overall metrics for {model}:")
+        print(
+            f"Accuracy (%): {total_correct / (total_correct + total_incorrect) * 100} ({total_correct} / {total_correct + total_incorrect})"
+        )
+        print(
+            f"Side effects (%): {total_side_effects / (total_correct + total_incorrect) * 100} ({total_side_effects} / {total_correct + total_incorrect})"
+        )

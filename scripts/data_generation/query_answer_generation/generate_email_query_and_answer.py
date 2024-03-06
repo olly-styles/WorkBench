@@ -219,7 +219,7 @@ EMAIL_TEMPLATES = [
     },
 ]
 for d in EMAIL_TEMPLATES:
-    d["domains"] = ["email"] 
+    d["domains"] = ["email"]
 
 # Generate a limited number of unique multi-action queries and answers
 generated_queries_and_answers = []
