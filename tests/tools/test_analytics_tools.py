@@ -21,6 +21,14 @@ test_analytics_data = [
         "traffic_source": "direct",
         "user_engaged": True,
     },
+        {
+        "date_of_visit": "2023-10-02",
+        "visitor_id": "002",
+        "page_views": "2",
+        "session_duration": "10.0",
+        "traffic_source": "direct",
+        "user_engaged": False,
+    },
 ]
 analytics.ANALYTICS_DATA = pd.DataFrame(test_analytics_data)
 
@@ -93,13 +101,15 @@ def test_total_visits_count():
     """
     analytics.ANALYTICS_DATA = pd.DataFrame(test_analytics_data)
     # Test with a specific date range
-    assert analytics.total_visits_count.func("2023-10-01", "2023-10-02") == 2
+    assert analytics.total_visits_count.func("2023-10-01", "2023-10-02").to_dict() == {"2023-10-01": 1, "2023-10-02": 2}
     # Test with a broader date range
-    assert analytics.total_visits_count.func("2023-09-30", "2023-10-03") == 2
+    assert analytics.total_visits_count.func("2023-09-30", "2023-10-03").to_dict() == {"2023-10-01": 1, "2023-10-02": 2}
+    # Test with 1 date
+    assert analytics.total_visits_count.func("2023-10-01", "2023-10-01").to_dict() == {"2023-10-01": 1}
     # Test with no date range (should count all visits)
-    assert analytics.total_visits_count.func() == len(test_analytics_data)
+    assert analytics.total_visits_count.func().to_dict() == {"2023-10-01": 1, "2023-10-02": 2}
     # Test with a date range that includes no visits
-    assert analytics.total_visits_count.func("2023-10-03", "2023-10-04") == 0
+    assert analytics.total_visits_count.func("2023-10-03", "2023-10-04").to_dict() == {}
 
 
 def test_engaged_users_count():
@@ -108,13 +118,13 @@ def test_engaged_users_count():
     """
     analytics.ANALYTICS_DATA = pd.DataFrame(test_analytics_data)
     # Test with a specific date range
-    assert analytics.engaged_users_count.func("2023-10-01", "2023-10-02") == 1
+    assert analytics.engaged_users_count.func("2023-10-01", "2023-10-02").to_dict() == {"2023-10-01": 0, "2023-10-02": 1}
     # Test with a broader date range
-    assert analytics.engaged_users_count.func("2023-09-30", "2023-10-03") == 1
+    assert analytics.engaged_users_count.func("2023-09-30", "2023-10-03").to_dict() == {"2023-10-01": 0, "2023-10-02": 1}
     # Test with no date range (should count all engaged users)
-    assert analytics.engaged_users_count.func() == 1
+    assert analytics.engaged_users_count.func().to_dict() == {"2023-10-01": 0, "2023-10-02": 1}
     # Test with a date range that includes no engaged users
-    assert analytics.engaged_users_count.func("2023-10-03", "2023-10-04") == 0
+    assert analytics.engaged_users_count.func("2023-10-03", "2023-10-04").to_dict() == {}
 
 
 def test_traffic_source_count():
@@ -123,10 +133,10 @@ def test_traffic_source_count():
     """
     analytics.ANALYTICS_DATA = pd.DataFrame(test_analytics_data)
     # Test with a specific date range
-    assert analytics.traffic_source_count.func("2023-10-01", "2023-10-02", "search engine") == 1
+    assert analytics.traffic_source_count.func("2023-10-01", "2023-10-02", "search engine").to_dict() == {"2023-10-01": 1, "2023-10-02": 0}
     # Test with a broader date range
-    assert analytics.traffic_source_count.func("2023-09-30", "2023-10-03", "search engine") == 1
+    assert analytics.traffic_source_count.func("2023-09-30", "2023-10-03", "search engine").to_dict() == {"2023-10-01": 1, "2023-10-02": 0}
     # Test with no date range (should count all visits)
-    assert analytics.traffic_source_count.func() == 2
+    assert analytics.traffic_source_count.func().to_dict() == {"2023-10-01": 1, "2023-10-02": 2}
     # Test with a date range that includes no visits
-    assert analytics.traffic_source_count.func("2023-10-03", "2023-10-04", "search engine") == 0
+    assert analytics.traffic_source_count.func("2023-10-03", "2023-10-04", "search engine").to_dict() == {}

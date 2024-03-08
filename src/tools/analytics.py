@@ -118,9 +118,7 @@ def total_visits_count(time_min=None, time_max=None):
         data = ANALYTICS_DATA
     if time_max:
         data = data[data["date_of_visit"] <= time_max]
-
-    total_visits = data.shape[0]
-    return total_visits
+    return data.groupby("date_of_visit").size()
 
 
 @tool("analytics.engaged_users_count", return_direct=False)
@@ -152,8 +150,7 @@ def engaged_users_count(time_min=None, time_max=None):
     if time_max:
         data = data[data["date_of_visit"] <= time_max]
 
-    engaged_users = (data["user_engaged"]).sum()
-    return engaged_users
+    return data.groupby("date_of_visit").sum()["user_engaged"]
 
 
 @tool("analytics.traffic_source_count", return_direct=False)
@@ -183,15 +180,15 @@ def traffic_source_count(time_min=None, time_max=None, traffic_source=None):
     if time_min:
         data = ANALYTICS_DATA[ANALYTICS_DATA["date_of_visit"] >= time_min]
     else:
-        data = ANALYTICS_DATA
+        data = ANALYTICS_DATA[:]
     if time_max:
         data = data[data["date_of_visit"] <= time_max]
 
     if traffic_source:
-        traffic_source_visits = data[data["traffic_source"] == traffic_source].shape[0]
+        data["visits_from_source"] = (data["traffic_source"] == traffic_source).astype(int)
+        return data.groupby("date_of_visit").sum()["visits_from_source"]
     else:
-        traffic_source_visits = data.shape[0]
-    return traffic_source_visits
+        return data.groupby("date_of_visit").size()
 
 
 @tool("analytics.get_average_session_duration", return_direct=False)
