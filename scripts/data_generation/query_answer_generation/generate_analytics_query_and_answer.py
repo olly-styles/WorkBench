@@ -60,9 +60,20 @@ def get_threshold(metric):
 
 
 def metric_more_or_less(metric, date_min, threshold):
-    metric_on_date = metric_to_func_dict[metric](date_min)
+    metric_series = metric_to_func_dict[metric](date_min)
+    metric_on_date = metric_series[date_min]
     return "more" if metric_on_date > threshold else "less"
 
+
+def metric_more_or_less_any_time(metric, date_min, threshold):
+    series_func = metric_to_func_dict[metric]
+    metric_series = pd.Series(series_func(date_min))
+    if (metric_series > threshold).sum() == 0:
+        return "less"
+    elif (metric_series < threshold).sum() == 0:
+        return "more"
+    else:
+        return "both more and less"
 
 def get_threshold_and_metric_more_or_less():
     base_dict = get_random_dict()
@@ -72,9 +83,8 @@ def get_threshold_and_metric_more_or_less():
 
 def fell_or_grew(metric, start_date, end_date):
     """Returns True if the metric grew or fell between the start and end date"""
-    start_value = metric_to_func_dict[metric](start_date)
-    end_value = metric_to_func_dict[metric](end_date)
-    return "grew" if end_value > start_value else "fell"
+    metric_series = metric_to_func_dict[metric](start_date, end_date)
+    return "grew" if metric_series[end_date] > metric_series[start_date] else "fell"
 
 
 def get_metric_fell_vs_grew():
@@ -114,7 +124,7 @@ def distribution_plot_on_day_two_metrics_logic():
 
 def metric_more_or_less_plot_logic():
     query_info = get_threshold_and_metric_more_or_less()
-    if query_info["metric_vs_threshold"] == query_info["more_or_less"]:
+    if query_info["more_or_less"] in query_info["metric_vs_threshold"]:
         answer = [get_plot_string(query_info["metric"], query_info["date_min"], query_info["date_max"], "line")]
     else:
         answer = []
@@ -153,7 +163,7 @@ ANALYTICS_TEMPLATES = [
         "logic": distribution_plot_on_day_two_metrics_logic,
     },
     {
-        "query": """If {natural_language_metric} was {more_or_less} than {threshold} since {natural_language_date}, make a line plot of it since then""",
+        "query": """If {natural_language_metric} has been {more_or_less} than {threshold} at any time since {natural_language_date}, make a line plot of it since then""",
         "logic": metric_more_or_less_plot_logic,
     },
     {
@@ -164,10 +174,10 @@ ANALYTICS_TEMPLATES = [
 for d in ANALYTICS_TEMPLATES:
     d["domains"] = ["analytics"] 
 
-max_queries_per_template = 3  # Limit the number of queries per template
+max_queries_per_template = 10  # Limit the number of queries per template
 
 if __name__ == "__main__":
-    generated_queries_and_answers = generate_all_queries_and_answers(ANALYTICS_TEMPLATES, max_queries_per_template)
+    generated_queries_and_answers = generate_all_queries_and_answers(ANALYTICS_TEMPLATES[-2:-1], max_queries_per_template)
     df = pd.DataFrame(generated_queries_and_answers)
     df.to_csv(
         "data/processed/queries_and_answers/analytics_queries_and_answers.csv",
