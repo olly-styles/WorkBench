@@ -191,7 +191,7 @@ def traffic_source_count(time_min=None, time_max=None, traffic_source=None):
         return data.groupby("date_of_visit").size().to_dict()
 
 
-@tool("analytics.get_average_session_duration", return_direct=True)
+@tool("analytics.get_average_session_duration", return_direct=False)
 def get_average_session_duration(time_min=None, time_max=None):
     """
     Returns the average session duration within a specified time range.

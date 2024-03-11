@@ -302,8 +302,12 @@ def get_output(full_response):
     simplified_string = re.sub(pattern, quote_match, full_response)
     simplified_string = re.sub(array_pattern, quote_match, simplified_string)
     simplified_string = simplified_string.replace("nan", "None")
-    a = ast.literal_eval(simplified_string)
-    return a["output"]
+    try:
+        a = ast.literal_eval(simplified_string)
+        return a["output"]
+    except:
+        return simplified_string
+
 
 
 def get_latest_results_from_dir(results_root_dir, tool, model_list, print_errors=False):

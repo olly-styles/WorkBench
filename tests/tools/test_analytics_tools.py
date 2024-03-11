@@ -9,7 +9,7 @@ test_analytics_data = [
         "date_of_visit": "2023-10-01",
         "visitor_id": "000",
         "page_views": "3",
-        "session_duration": "10.0",
+        "session_duration_seconds": "10.0",
         "traffic_source": "search engine",
         "user_engaged": False,
     },
@@ -17,7 +17,7 @@ test_analytics_data = [
         "date_of_visit": "2023-10-02",
         "visitor_id": "001",
         "page_views": "5",
-        "session_duration": "15.0",
+        "session_duration_seconds": "15.0",
         "traffic_source": "direct",
         "user_engaged": True,
     },
@@ -25,7 +25,7 @@ test_analytics_data = [
         "date_of_visit": "2023-10-02",
         "visitor_id": "002",
         "page_views": "2",
-        "session_duration": "10.0",
+        "session_duration_seconds": "10.0",
         "traffic_source": "direct",
         "user_engaged": False,
     },
@@ -42,7 +42,7 @@ def test_get_visitor_information_by_id():
         "date_of_visit": "2023-10-01",
         "visitor_id": "000",
         "page_views": "3",
-        "session_duration": "10.0",
+        "session_duration_seconds": "10.0",
         "traffic_source": "search engine",
         "user_engaged": False,
     }
@@ -70,7 +70,7 @@ def test_create_plot():
     Tests create_plot.
     """
     analytics.ANALYTICS_DATA = pd.DataFrame(test_analytics_data)
-    value_to_plot = "page_views"
+    value_to_plot = "total_visits"
     time_min = "2023-10-01"
     time_max = "2023-10-02"
     plot_type = "bar"
@@ -87,10 +87,10 @@ def test_create_plot_missing_arguments():
     assert analytics.create_plot.func("2023-10-01") == "End date not provided."
     assert (
         analytics.create_plot.func("2023-10-01", "2023-10-02")
-        == "Value to plot must be one of 'page_views', 'session_duration_seconds', 'traffic_source', 'user_engaged'"
+        == "Value to plot must be one of 'total_visits', 'session_duration_seconds', 'traffic_source', 'user_engaged'"
     )
     assert (
-        analytics.create_plot.func("2023-10-01", "2023-10-02", "page_views")
+        analytics.create_plot.func("2023-10-01", "2023-10-02", "total_visits")
         == "Plot type must be one of 'bar', 'line', 'scatter', or 'histogram'"
     )
 
@@ -140,3 +140,17 @@ def test_traffic_source_count():
     assert analytics.traffic_source_count.func() == {"2023-10-01": 1, "2023-10-02": 2}
     # Test with a date range that includes no visits
     assert analytics.traffic_source_count.func("2023-10-03", "2023-10-04", "search engine") == {}
+
+def test_average_session_duration():
+    """
+    Tests the average_session_duration function.
+    """
+    analytics.ANALYTICS_DATA = pd.DataFrame(test_analytics_data)
+    # Test with a specific date range
+    assert analytics.get_average_session_duration.func("2023-10-01", "2023-10-02") == {"2023-10-01": 10.0, "2023-10-02": 12.5}
+    # Test with a broader date range
+    assert analytics.get_average_session_duration.func("2023-09-30", "2023-10-03") == {"2023-10-01": 10.0, "2023-10-02": 12.5}
+    # Test with no date range (should count all visits)
+    assert analytics.get_average_session_duration.func() == {"2023-10-01": 10.0, "2023-10-02": 12.5}
+    # Test with a date range that includes no visits
+    assert analytics.get_average_session_duration.func("2023-10-03", "2023-10-04") == {}
