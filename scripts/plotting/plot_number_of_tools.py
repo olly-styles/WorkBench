@@ -33,6 +33,8 @@ plt.legend(title=None)
 # make x and y labels bold
 plt.xlabel("Domain", weight="bold")
 plt.ylabel("Accuracy (%)", weight="bold")
+# make background white
+plt.gca().set_facecolor("white")
 
 
 # plt.title("Comparison of Accuracy Between Providing on Toolkit vs All Toolkits")
