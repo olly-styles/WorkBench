@@ -206,11 +206,13 @@ def generate_all_queries_and_answers(templates, max_queries_per_template, verbos
     """Generates a limited number of unique queries and answers for each template."""
     generated_queries_and_answers = []
     for template in templates:
-        for _ in range(max_queries_per_template):
+        queries_generated_for_template = 0
+        while queries_generated_for_template < max_queries_per_template:
             q_and_a = generate_query_and_answer(template)
             queries = [q["query"] for q in generated_queries_and_answers]
             if q_and_a["query"] not in queries:
                 generated_queries_and_answers.append(q_and_a)
+                queries_generated_for_template += 1
 
     if verbose:
         for query_and_answer in generated_queries_and_answers:
