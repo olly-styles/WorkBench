@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-# Define the variables and repeat the plot with adjusted title spacing
+# Hard-coded results
 correct = 0.5524
 incorrrect_with_side_effects = 0.1608
 incorrect_without_side_effects = 0.2868
@@ -23,7 +23,7 @@ plt.axis("equal")  # Ensure pie is drawn as a circle.
 plt.tight_layout()
 plt.savefig("data/plots/error_breakdown.png", bbox_inches="tight")  # Save the plot to a file
 
-
+# Hard-coded results
 total = 2 + 1 + 15 + 3 + 20
 failed_to_follow_react = 2 + 9 + 1 + 4
 failed_to_retrive_email = 1 + 5 + 16
@@ -48,6 +48,7 @@ plt.savefig("data/plots/error_breakdown_no_side_effects.png", bbox_inches="tight
 
 # Errors with side effects
 
+# Hard-coded results
 total = 6 + 6 + 3 + 8
 wrong_email = 6 + 1 + 8
 updated_wrong_event = 4

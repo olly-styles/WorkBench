@@ -13,6 +13,8 @@ domains = [
     "CRM (24)\n",
     "Overall (143)\n",
 ]
+
+# Hard-coded results
 accuracy_all_tools = [61.9, 59.26, 76.67, 100.0, 23.08, 25.0, 55.24]
 accuracy_single_tool = [66.67, 51.85, 63.33, 93.33, 30.77, 33.33, 53.85]
 
@@ -25,6 +27,7 @@ domains = [
     "Multi\nDomain\n(21)\n",
     "Overall\n(143)\n",
 ]
+# Hard-coded results
 accuracy_all_tools = [100.0, 25.0, 76.67, 59.26, 23.08, 61.9, 55.24]
 accuracy_single_tool = [93.33, 33.33, 63.33, 51.85, 30.77, 66.67, 53.85]
 
