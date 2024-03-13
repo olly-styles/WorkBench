@@ -288,6 +288,7 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     print(
         f"Wrong email with side effects: {round((df['wrong_email'] & df['unwanted_side_effects']).mean() * 100, 2)}% ({(df['wrong_email'] & df['unwanted_side_effects']).sum()} out of {len(df)})"
     )
+    return df
 
 
 def get_output(full_response):
@@ -306,25 +307,35 @@ def get_output(full_response):
     return a["output"]
 
 
-def get_latest_results_from_dir(results_root_dir, tool, model_list, print_errors=False):
-    """Get the latest results for each model in the results directory"""
+def get_latest_results_path(results_root_dir, model, tool):
+    """Get the latest results file path and ground truth path for a given model and tool"""
     results_dir = os.path.join(results_root_dir, tool)
     results_files = os.listdir(results_dir)
-    for model in model_list:
-        model_results_files = [os.path.join(results_dir, file) for file in results_files if model in file]
-        if not len(model_results_files):
-            print(f"\nNo results found for {tool} with {model}")
-        else:
-            latest_results_file = max(model_results_files, key=os.path.getctime)
-            ground_truth_path = os.path.join(
-                "data", "processed", "queries_and_answers", f"{tool}_queries_and_answers.csv"
-            )
-            predictions = pd.read_csv(latest_results_file, dtype=str)
-            ground_truth = pd.read_csv(ground_truth_path, dtype=str)
-            ground_truth["answer"] = ground_truth["answer"].apply(ast.literal_eval)
-            predictions["function_calls"] = predictions["function_calls"].apply(ast.literal_eval)
-            print(f"\nCalculating metrics for {tool} with {model}")
-            calculate_metrics(ground_truth, predictions, print_errors=print_errors)
+    model_results_files = [os.path.join(results_dir, file) for file in results_files if model in file]
+    ground_truth_path = os.path.join("data", "processed", "queries_and_answers", f"{tool}_queries_and_answers.csv")
+    if not len(model_results_files):
+        return None
+    else:
+        return max(model_results_files, key=os.path.getctime), ground_truth_path
+
+
+def get_latest_results_from_dir(results_root_dir, model, tool, print_errors=False):
+    """Get the latest results for each model in the results directory"""
+    model_results_path, ground_truth_path = get_latest_results_path(results_root_dir, model, tool)
+    if not model_results_path:
+        print(f"\nNo results found for {tool} with {model}")
+        return None
+    else:
+        predictions = pd.read_csv(model_results_path, dtype=str)
+        ground_truth = pd.read_csv(ground_truth_path, dtype=str)
+        ground_truth["answer"] = ground_truth["answer"].apply(ast.literal_eval)
+        predictions["function_calls"] = predictions["function_calls"].apply(ast.literal_eval)
+        print(f"\nCalculating metrics for {tool} with {model}")
+        df = calculate_metrics(ground_truth, predictions, print_errors=print_errors)
+        num_correct = df["correct"].sum()
+        num_incorrect = len(df) - num_correct
+        num_side_effects = df["unwanted_side_effects"].sum()
+        return num_correct, num_incorrect, num_side_effects
 
 
 def get_toolkits(toolkits):
@@ -345,16 +356,12 @@ def get_toolkits(toolkits):
     return tools
 
 
-def generate_results(
-    queries_path,
-    model_name,
-    toolkits=["email", "calendar", "analytics", "project_management", "customer_relationship_manager"],
-    tool_selection="all"
-):
+def generate_results(queries_path, model_name, tool_selection="all"):
     """Generates results for a given model and set of queries. Saves the results to a csv file."""
+    toolkits = (["email", "calendar", "analytics", "project_management", "customer_relationship_manager"],)
     queries_df = pd.read_csv(queries_path)
     queries = queries_df["query"].tolist()
-    
+
     results = pd.DataFrame(columns=["query", "function_calls", "full_response", "error"])
     if model_name == "gpt-3.5":
         llm = OpenAI(
@@ -394,13 +401,11 @@ def generate_results(
 
     tools = get_toolkits(toolkits)
 
-
-
     for i, query in enumerate(queries):
         if tool_selection == "domains":
-            toolkits = queries_df["domains"].iloc[i].strip("][").replace("'","").split(', ')
+            toolkits = queries_df["domains"].iloc[i].strip("][").replace("'", "").split(", ")
             tools = get_toolkits(toolkits)
-        
+
         agent = initialize_agent(
             llm=llm,
             agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
