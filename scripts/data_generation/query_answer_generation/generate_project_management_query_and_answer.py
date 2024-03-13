@@ -213,38 +213,74 @@ def reassign_most_urgent_task_logic():
 PROJECT_MANAGEMENT_TEMPLATES = [
     {
         "query": "Move all of {name}'s tasks that are in progress to in review",
+        "alternative_queries": [
+            "{name} has a bunch of tasks that are in progress. Can you move them to in review?",
+            "can you move all of {name}'s tasks that are in progress to in review?",
+        ],
         "logic": move_tasks_to_in_review_logic,
     },
     {
         "query": "Add a new task to the {board} backlog called {task_name} and assign it to {name}. It's due on {natural_language_due_date}.",
+        "alternative_queries": [
+            "can you add a new task called {task_name} to the {board} backlog and assign it to {name}? It's due on {natural_language_due_date}.",
+            "I need to add a new task to the {board} backlog called {task_name} and assign it to {name}. It's due on {natural_language_due_date}. Can you do that?",
+        ],
         "logic": add_new_task_logic,
     },
     {
         "query": "Move all of {name}'s overdue tasks in the backlog to in progress",
+        "alternative_queries": [
+            "{name} has a bunch of overdue tasks in the backlog. Can you move them to in progress?",
+            "can you move all of {name}'s overdue tasks in the backlog to in progress?",
+        ],
         "logic": move_overdue_tasks_logic,
     },
     {
         "query": "We've finished our {board} sprint. Can you move all in progress tasks on the {board} board back to the backlog?",
+        "alternative_queries": [
+            "can you move all in progress tasks on the {board} board back to the backlog?",
+            "I noticed we have some in progress tasks on the {board} board. Can you move them back to the backlog?",
+        ],
         "logic": move_tasks_to_backlog_and_delete_completed_logic,
     },
     {
         "query": "Move any of {name}'s tasks that are in review to completed",
+        "alternative_queries": [
+            "I've finished reviewing all of {name}'s tasks. Can you move all the ones that are in review to completed?",
+            "can you move any of {name}'s tasks that are in review to completed?",
+        ],
         "logic": move_overdue_in_review_tasks_logic,
     },
     {
         "query": """{name_1} is sick so reassign their in progress tasks to {name_2}.""",
+        "alternative_queries": [
+            "can you reassign all of {name_1}'s in progress tasks to {name_2}?",
+            "I need to reassign all of {name_1}'s in progress tasks to {name_2}. Can you do that?",
+        ],
         "logic": reassign_unfinished_tasks_logic,
     },
     {
         "query": """{name_1} is on vacation now so move all their unfinished tasks to the backlog.""",
+        "alternative_queries": [
+            "can you move all of {name_1}'s unfinished tasks to the backlog?",
+            "I need to move all of {name_1}'s unfinished tasks to the backlog. Can you do that?",
+        ],
         "logic": move_unfinished_tasks_to_backlog_logic,
     },
     {
         "query": """Give all the overdue tasks that {name_1} hasn't started to {name_2}.""",
+        "alternative_queries": [
+            "{name_2} has some free time so can you give them all of {name_1}'s overdue tasks that they haven't started?",
+            "can you give all of {name_1}'s overdue tasks that they haven't started to {name_2}?",
+        ],
         "logic": reassign_overdue_tasks_logic,
     },
     {
         "query": """Take {name_1}'s most urgent task and reassign it to {name_2}.""",
+        "alternative_queries": [
+            "can you take {name_1}'s most urgent task and reassign it to {name_2}?",
+            "I need to take {name_1}'s most urgent task and reassign it to {name_2}. Can you do that?",
+        ],
         "logic": reassign_most_urgent_task_logic,
     },
 ]
