@@ -192,7 +192,7 @@ ANALYTICS_TEMPLATES = [
     },
 ]
 for d in ANALYTICS_TEMPLATES:
-    d["domains"] = ["analytics"] 
+    d["domains"] = ["analytics"]
 
 max_queries_per_template = 3  # Limit the number of queries per template
 

@@ -35,27 +35,13 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    "--tool_selection",
-    type=str,
-    help="tool selection method. Must be one of 'all', 'domains', 'oracle'",
-    default='all'
+    "--tool_selection", type=str, help="tool selection method. Must be one of 'all', 'domains', 'oracle'", default="all"
 )
 
 args = parser.parse_args()
 
-if not args.toolkits:
-    args.toolkits = [
-        [
-            "email",
-            "calendar",
-            "analytics",
-            "project_management",
-            "customer_relationship_manager",
-        ]
-    ]
-
 if __name__ == "__main__":
     ground_truth = pd.read_csv(args.queries_path)
     ground_truth["answer"] = ground_truth["answer"].apply(ast.literal_eval)
-    results = generate_results(args.queries_path, args.model_name, args.toolkits[0], args.tool_selection)
+    results = generate_results(args.queries_path, args.model_name, args.tool_selection)
     calculate_metrics(ground_truth, results)

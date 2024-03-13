@@ -294,7 +294,7 @@ CALENDAR_TEMPLATES = [
     },
 ]
 for d in CALENDAR_TEMPLATES:
-    d["domains"] = ["calendar"] 
+    d["domains"] = ["calendar"]
 
 # Generate a limited number of unique multi-action queries and answers
 generated_queries_and_answers = []
