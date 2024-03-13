@@ -87,7 +87,7 @@ def test_create_plot_missing_arguments():
     assert analytics.create_plot.func("2023-10-01") == "End date not provided."
     assert (
         analytics.create_plot.func("2023-10-01", "2023-10-02")
-        == "Value to plot must be one of 'total_visits', 'session_duration_seconds', 'traffic_source', 'user_engaged'"
+        == "Value to plot must be one of 'total_visits', 'session_duration_seconds', 'user_engaged', 'direct', 'referral', 'search engine', 'social media'"
     )
     assert (
         analytics.create_plot.func("2023-10-01", "2023-10-02", "total_visits")

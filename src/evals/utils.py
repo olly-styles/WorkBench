@@ -365,7 +365,7 @@ def get_toolkits(toolkits):
 
 def generate_results(queries_path, model_name, tool_selection="all"):
     """Generates results for a given model and set of queries. Saves the results to a csv file."""
-    toolkits = (["email", "calendar", "analytics", "project_management", "customer_relationship_manager"],)
+    toolkits = (["email", "calendar", "analytics", "project_management", "customer_relationship_manager"])
     queries_df = pd.read_csv(queries_path)
     queries = queries_df["query"].tolist()
 

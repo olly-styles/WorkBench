@@ -3,8 +3,8 @@ from langchain.tools import tool
 
 ANALYTICS_DATA = pd.read_csv("data/processed/analytics_data.csv", dtype=str)
 PLOTS_DATA = pd.DataFrame(columns=["file_path"])
-METRICS = ["total_visits", "session_duration_seconds"]
-METRIC_NAMES = ["total visits", "average session duration"]
+METRICS = ["total_visits", "session_duration_seconds", "user_engaged"]
+METRIC_NAMES = ["total visits", "average session duration", "engaged users"]
 
 
 def reset_state():
@@ -59,7 +59,7 @@ def create_plot(time_min=None, time_max=None, value_to_plot=None, plot_type=None
     time_max : str, optional
         End date of the time range. Date format is "YYYY-MM-DD".
     value_to_plot : str, optional
-        Value to plot. Available values are: "total_visits", "session_duration_seconds", "traffic_source", "user_engaged"
+        Value to plot. Available values are: "total_visits", "session_duration_seconds", "user_engaged", "direct", "referral", "search engine", "social media"
     plot_type : str, optional
         Type of plot. Can be "bar", "line", "scatter" or "histogram"
 
@@ -79,8 +79,8 @@ def create_plot(time_min=None, time_max=None, value_to_plot=None, plot_type=None
         return "Start date not provided."
     if not time_max:
         return "End date not provided."
-    if value_to_plot not in METRICS:
-        return "Value to plot must be one of 'total_visits', 'session_duration_seconds', 'traffic_source', 'user_engaged'"
+    if value_to_plot not in ["total_visits", "session_duration_seconds", "user_engaged", "direct", "referral", "search engine", "social media"]:
+        return "Value to plot must be one of 'total_visits', 'session_duration_seconds', 'user_engaged', 'direct', 'referral', 'search engine', 'social media'"
     if plot_type not in ["bar", "line", "scatter", "histogram"]:
         return "Plot type must be one of 'bar', 'line', 'scatter', or 'histogram'"
 
@@ -146,9 +146,10 @@ def engaged_users_count(time_min=None, time_max=None):
     if time_min:
         data = ANALYTICS_DATA[ANALYTICS_DATA["date_of_visit"] >= time_min]
     else:
-        data = ANALYTICS_DATA
+        data = ANALYTICS_DATA[:]
     if time_max:
         data = data[data["date_of_visit"] <= time_max]
+    data["user_engaged"] = data["user_engaged"].astype(bool).astype(int)
 
     return data.groupby("date_of_visit").sum()["user_engaged"].to_dict()
 
