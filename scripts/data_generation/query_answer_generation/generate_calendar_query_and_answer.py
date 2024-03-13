@@ -120,6 +120,8 @@ def cancel_next_event_with_name_logic():
     participant = random.choice(emails)
     events_with_name = calendar_events[calendar_events["participant_email"] == participant]
     future_events_with_name = events_with_name[events_with_name["event_start"] > str(HARDCODED_CURRENT_TIME)]
+    if len(future_events_with_name) == 0:
+        return cancel_next_event_with_name_logic()
     next_event_id = future_events_with_name.sort_values("event_start").iloc[0]["event_id"]
     name = participant.split(".")[0]
     answer = [f"""calendar.delete_event.func(event_id="{next_event_id}")"""]
