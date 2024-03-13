@@ -89,21 +89,6 @@ def move_overdue_tasks_logic():
     return {"name": name, "answer": answer}
 
 
-def move_tasks_to_backlog_and_delete_completed_logic():
-    """
-    Move all In Progress tasks on the {board} board back to the Backlog and delete any tasks in the Completed list
-    """
-    board = random.choice(boards)
-    tasks_in_progress = project_tasks[(project_tasks["board"] == board) & (project_tasks["list_name"] == "In Progress")]
-    tasks_completed = project_tasks[(project_tasks["board"] == board) & (project_tasks["list_name"] == "Completed")]
-    answer = []
-    for _, task in tasks_in_progress.iterrows():
-        task_id = task["task_id"]
-        answer.append(
-            f"""project_management.update_task.func(task_id="{task_id}", field="list_name", new_value="Backlog")"""
-        )
-    return {"board": board, "answer": answer}
-
 
 def move_overdue_in_review_tasks_logic():
     """
@@ -234,14 +219,6 @@ PROJECT_MANAGEMENT_TEMPLATES = [
             "can you move all of {name}'s overdue tasks in the backlog to in progress?",
         ],
         "logic": move_overdue_tasks_logic,
-    },
-    {
-        "query": "We've finished our {board} sprint. Can you move all in progress tasks on the {board} board back to the backlog?",
-        "alternative_queries": [
-            "can you move all in progress tasks on the {board} board back to the backlog?",
-            "I noticed we have some in progress tasks on the {board} board. Can you move them back to the backlog?",
-        ],
-        "logic": move_tasks_to_backlog_and_delete_completed_logic,
     },
     {
         "query": "Move any of {name}'s tasks that are in review to completed",
