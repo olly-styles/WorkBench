@@ -164,7 +164,9 @@ def check_last_meeting_with_name_schedule_30_tomorrow():
 def cancel_events_on_day_logic():
     next_7_days = [str(HARDCODED_CURRENT_TIME + pd.Timedelta(days=i)).split(" ")[0] for i in range(1, 8)]
     date = random.choice(next_7_days)
-
+    while pd.to_datetime(date).weekday() in [5, 6]:
+        date = random.choice(next_7_days)
+    
     next_day = pd.to_datetime(date).day_name()
     before_or_after = random.choice(["before", "after"])
 
@@ -289,7 +291,7 @@ CALENDAR_TEMPLATES = [
         "logic": cancel_future_meetings_with_name_logic,
     },
     {
-        "query": "Create a {duration} event called {event_name} on {natural_language_date} at {time} with {email}",
+        "query": "Create a {duration} event called {event_name} on {natural_language_date} at {natural_language_time} with {email}",
         "logic": create_event_logic,
     },
 ]
