@@ -302,11 +302,13 @@ def get_output(full_response):
     simplified_string = re.sub(pattern, quote_match, full_response)
     simplified_string = re.sub(array_pattern, quote_match, simplified_string)
     simplified_string = simplified_string.replace("nan", "None")
-    try:
-        a = ast.literal_eval(simplified_string)
-        return a["output"]
-    except:
-        return simplified_string
+    
+    # Remove everything after "intermediate_steps" and add a curl bracket at close the dict 
+    simplified_string = simplified_string.split("intermediate_steps")[0]
+    simplified_string = simplified_string[:-3] + "}"
+    
+    a = ast.literal_eval(simplified_string)
+    return a["output"]
 
 
 
