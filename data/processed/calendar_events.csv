@@ -1,5 +1,5 @@
 event_id,event_name,participant_email,event_start,duration
-00000013,synchronization meeting,luis.ortiz@atlas.com,2023-08-01 09:00:00,90
+00000013,sync up,luis.ortiz@atlas.com,2023-08-01 09:00:00,90
 00000275,process review,fatima.khan@atlas.com,2023-08-01 11:30:00,90
 00000098,Data Security and Compliance Training,amir.ali@atlas.com,2023-08-02 11:00:00,30
 00000190,Product Launch Analysis,yuki.tanaka@atlas.com,2023-08-02 11:30:00,30
@@ -19,7 +19,7 @@ event_id,event_name,participant_email,event_start,duration
 00000214,IT Systems Update Briefing,nadia.moreau@atlas.com,2023-08-08 15:30:00,90
 00000034,process review,aisha.chen@atlas.com,2023-08-09 14:00:00,60
 00000196,process review,kofi.mensah@atlas.com,2023-08-10 10:00:00,30
-00000079,synchronization meeting,akira.sato@atlas.com,2023-08-10 12:30:00,60
+00000079,sync up,akira.sato@atlas.com,2023-08-10 12:30:00,60
 00000203,Corporate Social Responsibility Initiative,anaya.patel@atlas.com,2023-08-10 15:30:00,120
 00000227,team evaluation,jinsoo.kim@atlas.com,2023-08-11 09:30:00,60
 00000168,Machine Learning Chat,yuki.tanaka@atlas.com,2023-08-11 15:30:00,120
@@ -55,7 +55,7 @@ event_id,event_name,participant_email,event_start,duration
 00000298,Leadership Training Workshop,akira.sato@atlas.com,2023-08-30 11:00:00,30
 00000113,feedback discussion,chenwei.zhang@atlas.com,2023-08-30 11:30:00,30
 00000231,Year-End Performance Assessment,nia.johnson@atlas.com,2023-08-30 13:00:00,120
-00000150,synchronization meeting,akira.sato@atlas.com,2023-08-31 09:30:00,120
+00000150,sync up,akira.sato@atlas.com,2023-08-31 09:30:00,120
 00000080,project debrief,aisha.chen@atlas.com,2023-08-31 11:30:00,120
 00000238,casual catch-up,nia.johnson@atlas.com,2023-08-31 13:30:00,90
 00000147,Health & Wellness Expo,anaya.patel@atlas.com,2023-08-31 15:00:00,90
@@ -65,13 +65,13 @@ event_id,event_name,participant_email,event_start,duration
 00000222,Corporate Social Responsibility Initiative,chenwei.zhang@atlas.com,2023-09-04 10:30:00,30
 00000000,introductory call,akira.sato@atlas.com,2023-09-04 14:00:00,90
 00000158,casual catch-up,dmitri.ivanov@atlas.com,2023-09-05 11:00:00,60
-00000022,synchronization meeting,fatima.khan@atlas.com,2023-09-05 12:00:00,60
+00000022,sync up,fatima.khan@atlas.com,2023-09-05 12:00:00,60
 00000193,team evaluation,sofia.santos@atlas.com,2023-09-05 15:30:00,90
 00000286,casual catch-up,santiago.martinez@atlas.com,2023-09-06 11:00:00,120
 00000063,Leadership Training Workshop,sofia.santos@atlas.com,2023-09-06 13:00:00,90
 00000274,Diversity & Inclusion Workshop,olga.petrova@atlas.com,2023-09-07 10:00:00,60
 00000191,process review,chenwei.zhang@atlas.com,2023-09-07 12:30:00,30
-00000297,synchronization meeting,yuki.tanaka@atlas.com,2023-09-07 13:00:00,60
+00000297,sync up,yuki.tanaka@atlas.com,2023-09-07 13:00:00,60
 00000015,Product Launch Analysis,dmitri.ivanov@atlas.com,2023-09-08 11:00:00,30
 00000135,Annual Budget Planning Session,amir.ali@atlas.com,2023-09-08 13:00:00,60
 00000031,Digital Transformation Conference,lena.schmidt@atlas.com,2023-09-08 14:00:00,120
@@ -135,7 +135,7 @@ event_id,event_name,participant_email,event_start,duration
 00000134,Diversity & Inclusion Workshop,lena.schmidt@atlas.com,2023-10-06 11:30:00,30
 00000102,Team Building Retreat,amir.ali@atlas.com,2023-10-06 13:00:00,30
 00000257,team orientation,nia.johnson@atlas.com,2023-10-09 09:30:00,30
-00000053,synchronization meeting,fatima.khan@atlas.com,2023-10-09 10:30:00,60
+00000053,sync up,fatima.khan@atlas.com,2023-10-09 10:30:00,60
 00000295,Data Security and Compliance Training,jinsoo.kim@atlas.com,2023-10-09 11:30:00,90
 00000240,Project Initiation Meeting,dmitri.ivanov@atlas.com,2023-10-09 13:30:00,30
 00000187,Leadership Training Workshop,santiago.martinez@atlas.com,2023-10-09 15:30:00,90
@@ -146,7 +146,7 @@ event_id,event_name,participant_email,event_start,duration
 00000044,Product Launch Analysis,anaya.patel@atlas.com,2023-10-11 13:30:00,90
 00000083,Board of Directors Conclave,nia.johnson@atlas.com,2023-10-11 15:30:00,90
 00000262,team coordination meeting,jinsoo.kim@atlas.com,2023-10-12 09:00:00,30
-00000291,synchronization meeting,luis.ortiz@atlas.com,2023-10-12 10:00:00,90
+00000291,sync up,luis.ortiz@atlas.com,2023-10-12 10:00:00,90
 00000221,Supply Chain Enhancement Workshop,fatima.khan@atlas.com,2023-10-12 15:00:00,90
 00000025,Year-End Performance Assessment,anaya.patel@atlas.com,2023-10-13 11:00:00,60
 00000078,Board of Directors Conclave,luis.ortiz@atlas.com,2023-10-13 12:00:00,60
@@ -218,13 +218,13 @@ event_id,event_name,participant_email,event_start,duration
 00000026,Supply Chain Enhancement Workshop,sofia.santos@atlas.com,2023-11-14 12:30:00,90
 00000111,retrospective meeting,olga.petrova@atlas.com,2023-11-14 14:00:00,30
 00000182,Client Appreciation Gala,dmitri.ivanov@atlas.com,2023-11-15 11:00:00,90
-00000260,synchronization meeting,akira.sato@atlas.com,2023-11-15 13:30:00,120
+00000260,sync up,akira.sato@atlas.com,2023-11-15 13:30:00,120
 00000195,Creative Thinking Workshop,akira.sato@atlas.com,2023-11-16 11:00:00,90
 00000130,introductory call,kofi.mensah@atlas.com,2023-11-16 15:00:00,60
 00000228,Health & Wellness Expo,olga.petrova@atlas.com,2023-11-17 09:30:00,30
 00000141,Diversity & Inclusion Workshop,lena.schmidt@atlas.com,2023-11-17 11:00:00,120
 00000030,Client Appreciation Gala,luis.ortiz@atlas.com,2023-11-17 13:30:00,30
-00000207,synchronization meeting,aisha.chen@atlas.com,2023-11-17 15:30:00,30
+00000207,sync up,aisha.chen@atlas.com,2023-11-17 15:30:00,30
 00000232,Innovation and Creativity Hackathon,carlos.rodriguez@atlas.com,2023-11-20 10:00:00,90
 00000234,project checkpoint,leila.azizi@atlas.com,2023-11-20 13:00:00,120
 00000114,New Employee Onboarding,kofi.mensah@atlas.com,2023-11-20 15:00:00,30
@@ -274,7 +274,7 @@ event_id,event_name,participant_email,event_start,duration
 00000012,strategic planning meeting,raj.patel@atlas.com,2023-12-11 14:30:00,120
 00000055,casual catch-up,aisha.chen@atlas.com,2023-12-12 09:00:00,90
 00000205,strategic planning meeting,carlos.rodriguez@atlas.com,2023-12-12 11:30:00,30
-00000016,synchronization meeting,santiago.martinez@atlas.com,2023-12-12 12:00:00,90
+00000016,sync up,santiago.martinez@atlas.com,2023-12-12 12:00:00,90
 00000208,project runway briefing,nia.johnson@atlas.com,2023-12-12 14:30:00,60
 00000256,project progress update,santiago.martinez@atlas.com,2023-12-13 09:00:00,60
 00000100,performance evaluation,dmitri.ivanov@atlas.com,2023-12-13 10:00:00,60
