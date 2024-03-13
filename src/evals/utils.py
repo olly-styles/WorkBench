@@ -1,6 +1,7 @@
 import re
 import os
 import pandas as pd
+import random
 import ast
 from langchain_openai import ChatOpenAI, OpenAI
 from langchain_community.chat_models.anthropic import ChatAnthropic
@@ -125,6 +126,28 @@ def is_correct(predicted_actions, ground_truth_actions, error):
         ground_truth_project_management_state,
         ground_truth_customer_relationship_manager_state,
     ) = execute_actions_and_reset_state(ground_truth_actions)
+    
+    def convert_strs_to_lowercase(df):
+        # For some fields the case matters, so we don't convert them to lowercase
+        fields_not_to_convert = ["status", "list_name", "board"]
+        for col in df.columns:
+            if col not in fields_not_to_convert:
+                df[col] = df[col].str.lower()
+        return df
+
+    # We allow for case-insensitive comparison of strings for most fields
+    predicted_calendar_state = convert_strs_to_lowercase(predicted_calendar_state)
+    predicted_email_state = convert_strs_to_lowercase(predicted_email_state)
+    predicted_analytics_state = convert_strs_to_lowercase(predicted_analytics_state)
+    predicted_project_management_state = convert_strs_to_lowercase(predicted_project_management_state)
+    predicted_customer_relationship_manager_state = convert_strs_to_lowercase(predicted_customer_relationship_manager_state)
+    
+    ground_truth_calendar_state = convert_strs_to_lowercase(ground_truth_calendar_state)
+    ground_truth_email_state = convert_strs_to_lowercase(ground_truth_email_state)
+    ground_truth_analytics_state = convert_strs_to_lowercase(ground_truth_analytics_state)
+    ground_truth_project_management_state = convert_strs_to_lowercase(ground_truth_project_management_state)
+    ground_truth_customer_relationship_manager_state = convert_strs_to_lowercase(ground_truth_customer_relationship_manager_state)
+    
     return (
         successful_execution
         and predicted_calendar_state.equals(ground_truth_calendar_state)
@@ -191,13 +214,20 @@ def has_side_effects(predicted_actions, ground_truth_actions):
 def generate_query_and_answer(template):
     """Generates query and answer from template."""
     logic = template["logic"]()
-    query = template["query"].format(**logic)
+    if "alternative_queries" in template:
+        possible_queries = [template["query"]] + template["alternative_queries"]
+        query_template = random.choice(possible_queries)
+        query = query_template.format(**logic)
+    else:
+        query_template = template["query"]
+        query = query_template.format(**logic)
     answer = logic["answer"]
     domains = template.get("domains", [])
     return {
         "query": query,
         "answer": answer,
-        "template": {k: template[k] for k in template if k != "logic"},
+        "base_template": template["query"],
+        "chosen_template": query_template,
         "domains": domains,
     }
 
@@ -215,10 +245,12 @@ def generate_all_queries_and_answers(templates, max_queries_per_template, verbos
                 queries_generated_for_template += 1
 
     if verbose:
-        for query_and_answer in generated_queries_and_answers:
-            print(query_and_answer["query"])
-            print(query_and_answer["answer"])
-            print(query_and_answer["template"])
+        for query_and_answer in generated_queries_and_answers:            
+            print(f"Base template:   {query_and_answer['base_template']}")
+            print(f"Chosen template: {query_and_answer['chosen_template']}")
+            print(f"Query:           {query_and_answer['query']}")
+            print(f"Answer:          {query_and_answer['answer']}")
+            print("--------------------------------------------")
 
     return generated_queries_and_answers
 

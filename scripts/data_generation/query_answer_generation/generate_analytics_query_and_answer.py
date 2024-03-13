@@ -142,22 +142,42 @@ def metric_two_plots_logic():
 ANALYTICS_TEMPLATES = [
     {
         "query": """Can you make a {plot_type} chart of {natural_language_metric} since {natural_language_date}?""",
+        "alternative_queries": [
+            """Plot {natural_language_metric} since {natural_language_date} as a {plot_type} chart""",
+            """Create a {plot_type} chart of {natural_language_metric} since {natural_language_date}""",
+        ],  
         "logic": metric_plot_logic,
     },
     {
         "query": """Plot the distribution of {natural_language_metric} on {natural_language_date}""",
+        "alternative_queries": [
+            """Can you make a histogram of {natural_language_metric} on {natural_language_date}?""",
+            """please plot the distribution of the {natural_language_metric} metric on {natural_language_date}""",
+        ],
         "logic": distribution_plot_on_day_logic,
     },
     {
         "query": """Can you chart the distribution of both {natural_language_metric} and {natural_language_metric_2} between {date_min} and {date_max}?""",
+        "alternative_queries": [
+            """I need a histogram of {natural_language_metric} and {natural_language_metric_2} between {date_min} and {date_max}""",
+            """Show me the distribution of {natural_language_metric} and {natural_language_metric_2} between {date_min} and {date_max}""",
+        ],
         "logic": distribution_plot_on_day_two_metrics_logic,
     },
     {
         "query": """If {natural_language_metric} was {more_or_less} than {threshold} since {natural_language_date}, make a line plot of it since then""",
+        "alternative_queries": [
+            """was {natural_language_metric} {more_or_less} than {threshold} since {natural_language_date}? If so, please plot it as a line chart""",
+            """Can you make a line chart of {natural_language_metric} since {natural_language_date} if it was {more_or_less} than {threshold} since {natural_language_date}?""",
+        ],
         "logic": metric_more_or_less_plot_logic,
     },
     {
         "query": """Make bar charts showing {natural_language_metric} and {natural_language_metric_2} since {date_min}""",
+        "alternative_queries": [
+            """can you show me bar charts of {natural_language_metric} and {natural_language_metric_2} since {date_min}?""",
+            """I need bar charts of {natural_language_metric} and {natural_language_metric_2} since {date_min}""",
+        ],
         "logic": metric_two_plots_logic,
     },
 ]
