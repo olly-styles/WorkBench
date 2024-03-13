@@ -179,6 +179,7 @@ def forward_last_weeks_email_logic():
         "answer": answer,
     }
 
+
 EMAIL_TEMPLATES = [
     {
         "query": "Delete my last email from {name}",

@@ -145,7 +145,7 @@ ANALYTICS_TEMPLATES = [
         "alternative_queries": [
             """Plot {natural_language_metric} since {natural_language_date} as a {plot_type} chart""",
             """Create a {plot_type} chart of {natural_language_metric} since {natural_language_date}""",
-        ],  
+        ],
         "logic": metric_plot_logic,
     },
     {

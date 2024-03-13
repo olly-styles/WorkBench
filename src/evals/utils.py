@@ -126,7 +126,7 @@ def is_correct(predicted_actions, ground_truth_actions, error):
         ground_truth_project_management_state,
         ground_truth_customer_relationship_manager_state,
     ) = execute_actions_and_reset_state(ground_truth_actions)
-    
+
     def convert_strs_to_lowercase(df):
         # For some fields the case matters, so we don't convert them to lowercase
         fields_not_to_convert = ["status", "list_name", "board"]
@@ -140,14 +140,18 @@ def is_correct(predicted_actions, ground_truth_actions, error):
     predicted_email_state = convert_strs_to_lowercase(predicted_email_state)
     predicted_analytics_state = convert_strs_to_lowercase(predicted_analytics_state)
     predicted_project_management_state = convert_strs_to_lowercase(predicted_project_management_state)
-    predicted_customer_relationship_manager_state = convert_strs_to_lowercase(predicted_customer_relationship_manager_state)
-    
+    predicted_customer_relationship_manager_state = convert_strs_to_lowercase(
+        predicted_customer_relationship_manager_state
+    )
+
     ground_truth_calendar_state = convert_strs_to_lowercase(ground_truth_calendar_state)
     ground_truth_email_state = convert_strs_to_lowercase(ground_truth_email_state)
     ground_truth_analytics_state = convert_strs_to_lowercase(ground_truth_analytics_state)
     ground_truth_project_management_state = convert_strs_to_lowercase(ground_truth_project_management_state)
-    ground_truth_customer_relationship_manager_state = convert_strs_to_lowercase(ground_truth_customer_relationship_manager_state)
-    
+    ground_truth_customer_relationship_manager_state = convert_strs_to_lowercase(
+        ground_truth_customer_relationship_manager_state
+    )
+
     return (
         successful_execution
         and predicted_calendar_state.equals(ground_truth_calendar_state)
@@ -245,7 +249,7 @@ def generate_all_queries_and_answers(templates, max_queries_per_template, verbos
                 queries_generated_for_template += 1
 
     if verbose:
-        for query_and_answer in generated_queries_and_answers:            
+        for query_and_answer in generated_queries_and_answers:
             print(f"Base template:   {query_and_answer['base_template']}")
             print(f"Chosen template: {query_and_answer['chosen_template']}")
             print(f"Query:           {query_and_answer['query']}")

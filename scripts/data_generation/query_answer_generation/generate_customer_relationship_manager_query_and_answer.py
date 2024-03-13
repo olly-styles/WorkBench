@@ -172,6 +172,7 @@ def move_unresponsive_customers_to_lost_logic():
         "answer": answer,
     }
 
+
 CRM_TEMPLATES = [
     {
         "query": "Update the status of {current_customer_name} to {new_status_natural_language} in the crm",
