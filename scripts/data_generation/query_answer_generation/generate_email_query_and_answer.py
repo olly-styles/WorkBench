@@ -179,42 +179,77 @@ def forward_last_weeks_email_logic():
         "answer": answer,
     }
 
-
 EMAIL_TEMPLATES = [
     {
         "query": "Delete my last email from {name}",
+        "alternative_queries": [
+            "I need to delete my last email from {name}. Can you do that?",
+            "{name} just sent me an email that I need to delete. Can you get rid of of the most recent email they sent me?",
+        ],
         "logic": delete_last_email_logic,
     },
     {
         "query": "Delete all my emails from {name} from the last {days} days",
+        "alternative_queries": [
+            "I need to get rid of all my emails from {name} from the last {days} days. Can you do delete them?",
+            "All my emails from {name} from the last {days} days need to be deleted. Can you do that?",
+        ],
         "logic": delete_last_days_emails_logic,
     },
     {
         "query": "Send an email to {name} saying '{body}' and title it '{subject}'",
+        "alternative_queries": [
+            "please send an email to {name} saying '{body}' and title it '{subject}'",
+            "I need to send an email to {name} saying '{body}' and title it '{subject}'. Can you do that?",
+        ],
         "logic": send_email_logic,
     },
     {
         "query": "Reply to {name}'s last email about '{subject}' with 'Thanks for the update - I will get back to you tomorrow.'",
+        "alternative_queries": [
+            "can you reply to {name}'s last email about '{subject}' with 'Thanks for the update - I will get back to you tomorrow.'",
+            "I need to get back to {name}'s last email about '{subject}' with 'Thanks for the update - I will get back to you tomorrow. Can you send the reply for me?",
+        ],
         "logic": reply_to_email_logic,
     },
     {
         "query": "Forward all the emails from {name} last week about '{subject}' to {recipient_name}",
+        "alternative_queries": [
+            "{recipient_name} needs all the emails from {name} last week about '{subject}'. Can you forward them?",
+            "can you forward all the emails from {name} last week about '{subject}' to {recipient_name}",
+        ],
         "logic": forward_last_weeks_email_logic,
     },
     {
         "query": "Forward the latest email about '{subject}' to {recipient_name}",
+        "alternative_queries": [
+            "{recipient_name} needs the latest email about '{subject}'. Can you forward it?",
+            "can you forward the latest email about '{subject}' to {recipient_name}",
+        ],
         "logic": forward_recent_email_about_topic_logic,
     },
     {
         "query": "Forward my most recent email from {sender_name} to {recipient_name}",
+        "alternative_queries": [
+            "{recipient_name} needs my most recent email from {sender_name}. Can you forward it?",
+            "can you forward my most recent email from {sender_name} to {recipient_name}",
+        ],
         "logic": forward_recent_email_from_sender_logic,
     },
     {
         "query": "Forward the last email about '{subject}' to {recipient_name1} and {recipient_name2}",
+        "alternative_queries": [
+            "{recipient_name1} and {recipient_name2} need the last email about '{subject}'. Can you forward it?",
+            "can you forward the last email about '{subject}' to {recipient_name1} and {recipient_name2}",
+        ],
         "logic": forward_recent_email_about_topic_to_multiple_logic,
     },
     {
         "query": "Reply to the latest email from {sender_name} with 'Got it, thank you!'",
+        "alternative_queries": [
+            "can you reply to the latest email from {sender_name} with 'Got it, thank you!'",
+            "I need to reply to the latest email from {sender_name} with 'Got it, thank you!'. Can you do that?",
+        ],
         "logic": reply_to_latest_email_logic,
     },
 ]

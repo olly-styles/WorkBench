@@ -172,130 +172,69 @@ def move_unresponsive_customers_to_lost_logic():
         "answer": answer,
     }
 
-CALENDAR_TEMPLATES = [
-    {
-        "query": "Cancel my first meeting on {natural_language_date}",
-        "alternative_queries": [
-            "Delete my first meeting on {natural_language_date}",
-            "can you cancel my first meeting on {natural_language_date}",
-        ],
-        "logic": first_event_logic,
-    },
-    {
-        "query": "Change the name of the last event on {natural_language_date} to {event_name}",
-        "alternative_queries": [
-            "Rename the last event on {natural_language_date} to {event_name}",
-            "Can you change the name of the last event on {natural_language_date} to {event_name}",
-        ],
-        "logic": last_event_name_change_logic,
-    },
-    {
-        "query": "Push back my first meeting with {name} on {natural_language_date} by {duration}s",
-        "alternative_queries": [
-            "Delay my first meeting with {name} on {natural_language_date} by {duration}s",
-            "please move my first meeting with {name} on {natural_language_date} by {duration}s",
-        ],
-        "logic": delay_first_meeting_logic,
-    },
-    {
-        "query": "Cancel the next {event_name} meeting",
-        "alternative_queries": [
-            "Delete the next {event_name} meeting",
-            "Can you cancel the next {event_name} meeting",
-        ],
-        "logic": cancel_event_logic,
-    },
-    {
-        "query": "Rename the next {event_name} meeting to {new_event_name}",
-        "alternative_queries": [
-            "Change the name of the next {event_name} meeting to {new_event_name}",
-            "can you rename the next {event_name} meeting to {new_event_name}",
-        ],
-        "logic": rename_event_logic,
-    },
-    {
-        "query": "Cancel my next meeting with {name}",
-        "alternative_queries": [
-            "{name} is off sick. Can you cancel my next meeting with them?",
-            "I need to cancel my next meeting with {name}. Can you do that for me please?",
-        ],
-        "logic": cancel_next_event_with_name_logic,
-    },
-    {
-        "query": "If I haven't met with {name} in the last {duration} days, schedule a 30-minute meeting called 'catch-up' for my first free slot from tomorrow",
-        "alternative_queries": [
-            "I think I might need to catch up with {name}. Can you check if I've met with them in the last {duration} days? If not, schedule a 30-minute meeting for my first free slot from tomorrow",
-            "have I met with {name} in the last {duration} days? If not, schedule a 30-minute meeting called 'catch-up' for my first free slot from tomorrow",
-        ],
-        "logic": check_last_meeting_with_name_schedule_30_tomorrow,
-    },
-    {
-        "query": "Cancel my meetings on {next_day} {before_or_after} {natural_language_time}",
-        "alternative_queries": [
-            "Delete my meetings on {next_day} {before_or_after} {natural_language_time}",
-            "something came up. Can you cancel my meetings on {next_day} {before_or_after} {natural_language_time}?",
-        ],
-        "logic": cancel_events_on_day_logic,
-    },
-    {
-        "query": "Cancel all future meetings with {name}",
-        "alternative_queries": [
-            "{name} is leaving the company. Can you cancel all future meetings with them?",
-            "I need to cancel all future meetings with {name}. Can you do that for me please?",
-        ],
-        "logic": cancel_all_future_meetings_with_person_logic,
-    },
-    {
-        "query": "Cancel future {event_name} meetings",
-        "alternative_queries": [
-            "Delete all the future {event_name} meetings",
-            "We've decided we don't need any any more {event_name} meetings. Can you cancel all future ones?",
-        ],
-        "logic": cancel_future_meetings_with_name_logic,
-    },
-    {
-        "query": "Create a {duration} event called {event_name} on {natural_language_date} at {natural_language_time} with {name}",
-        "alternative_queries": [
-            "I haven't met with {name} in a while. Can you schedule a {duration} event called {event_name} on {natural_language_date} at {natural_language_time}?",
-            "I need to catch up with {name}. can you schedule a {duration} event called {event_name} on {natural_language_date} at {natural_language_time}?",
-        ],
-        "logic": create_event_logic,
-    },
-]
 CRM_TEMPLATES = [
     {
         "query": "Update the status of {current_customer_name} to {new_status_natural_language} in the crm",
         "alternative_queries": [
             "{current_customer_name} has moved to {new_status_natural_language} status. Can you update that in the crm?",
             "We've got a new customer that's moved to {new_status_natural_language} status. Can you update {current_customer_name} to {new_status_natural_language} in the crm?",
+        ],
         "logic": update_customer_status_logic,
     },
     {
         "query": "Delete {current_customer_name} from the crm",
+        "alternative_queries": [
+            "We no longer need to keep {current_customer_name} in the crm. Can you delete them?",
+            "{current_customer_name} is no longer a customer. Can you delete them from the crm?",
+        ],
         "logic": delete_customer_logic,
     },
     {
         "query": "Add {new_customer_name} as a new lead in the crm and assign them to {assigned_to_first_name}",
+        "alternative_queries": [
+            "We've got a new lead called {new_customer_name}. Can you add them to the crm and assign them to {assigned_to_first_name}?",
+            "can you add {new_customer_name} to the crm? They're a new lead and need to be assigned to {assigned_to_first_name}",
+        ],
         "logic": add_lead_logic,
     },
     {
         "query": "Reassign {current_customer_name} to {assigned_to_first_name} in the crm",
+        "alternative_queries": [
+            "{assigned_to_first_name} is taking over {current_customer_name}. Can you reassign them in the crm?",
+            "We're moving {current_customer_name} to {assigned_to_first_name}. Can you make that change in the crm?",
+        ],
         "logic": reassign_customer_logic,
     },
     {
-        "query": "Reassign all of {assigned_to_first_name}'s leads that are interested in {natural_language_product_interest} to {assigned_to_first_name} in the crm.",
+        "query": "Reassign all of {assigned_to_first_name}'s leads that are interested in {natural_language_product_interest} to {new_assigned_to_first_name} in the crm.",
+        "alternative_queries": [
+            "We're moving all of {assigned_to_first_name}'s leads that are interested in {natural_language_product_interest} to {new_assigned_to_first_name}. Can you make that change in the crm?",
+            "{new_assigned_to_first_name} is taking over all of {assigned_to_first_name}'s leads that are interested in {natural_language_product_interest}. Can you reassign them in the crm?",
+        ],
         "logic": reassign_all_leads_for_product_logic,
     },
     {
         "query": "Give {new_assigned_to_first_name} all of {assigned_to_first_name}'s customers that are interested in {natural_language_product_interest} and are either qualified or in proposal in the crm",
+        "alternative_queries": [
+            "{new_assigned_to_first_name} is taking over all of {assigned_to_first_name}'s customers that are interested in {natural_language_product_interest} and are either qualified or in proposal. Can you reassign them in the crm?",
+            "I need to move all of {assigned_to_first_name}'s customers that are interested in {natural_language_product_interest} and are either qualified or in proposal to {new_assigned_to_first_name}. Can you make that change in the crm?",
+        ],
         "logic": reassign_all_qualified_leads_for_product_logic,
     },
     {
         "query": "Delete all of {assigned_to_first_name}'s customers that are in the {new_status_natural_language} stage and interested in {natural_language_product_interest} in the crm",
+        "alternative_queries": [
+            "We no longer need to keep all of {assigned_to_first_name}'s customers that are in the {new_status_natural_language} stage and interested in {natural_language_product_interest}. Can you delete them from the crm?",
+            "I need to move all of {assigned_to_first_name}'s customers that are in the {new_status_natural_language} stage and interested in {natural_language_product_interest} to lost. Can you make that change in the crm?",
+        ],
         "logic": delete_all_customers_in_stage_logic,
     },
     {
         "query": "Move all customers that haven't responded to a proposal for the {natural_language_product_interest} product in {weeks} weeks to lost in the crm",
+        "alternative_queries": [
+            "I think there's a few customers that haven't responded to a proposal for the {natural_language_product_interest} product in {weeks} weeks. Can you move them to lost in the crm?",
+            "We need to move all customers that haven't responded to a proposal for the {natural_language_product_interest} product in {weeks} weeks to lost. Can you update the CRM?",
+        ],
         "logic": move_unresponsive_customers_to_lost_logic,
     },
 ]
