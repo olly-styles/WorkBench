@@ -66,26 +66,80 @@ def generate_random_name(first_names, last_names):
 
 # Define a function to generate random email addresses
 def generate_random_email(name):
-    company_prefixes = ["Tech", "Bio", "Green", "Quant", "Next", "Inno", "Ultra", "Cyber", "Future", "Pro",
-                    "Neo", "Smart", "Alpha", "Omni", "Solar", "Geo", "Nano", "Aero", "Blue", "Eco"]
-    company_suffixes = ["Solutions", "Tech", "Logics", "Systems", "Robotics", "Energy", "Dynamics", "Networks", "Labs", 
-                        "Analytics", "Innovations", "Ventures", "Designs", "Electronics", "Software", "Hardware", "Cloud", 
-                        "Security", "Foods", "Biotech"]
-    company_modifiers = ["Global", "Dynamic", "Interactive", "Vision", "Peak", "Edge", "Stream", "Link", "Wave", "Core",
-                        "Flex", "Point", "Access", "Force", "Space", "Mind", "Port", "Path", "Scope", "Trace"]
+    company_prefixes = [
+        "Tech",
+        "Bio",
+        "Green",
+        "Quant",
+        "Next",
+        "Inno",
+        "Ultra",
+        "Cyber",
+        "Future",
+        "Pro",
+        "Neo",
+        "Smart",
+        "Alpha",
+        "Omni",
+        "Solar",
+        "Geo",
+        "Nano",
+        "Aero",
+        "Blue",
+        "Eco",
+    ]
+    company_suffixes = [
+        "Solutions",
+        "Tech",
+        "Logics",
+        "Systems",
+        "Robotics",
+        "Energy",
+        "Dynamics",
+        "Networks",
+        "Labs",
+        "Analytics",
+        "Innovations",
+        "Ventures",
+        "Designs",
+        "Electronics",
+        "Software",
+        "Hardware",
+        "Cloud",
+        "Security",
+        "Foods",
+        "Biotech",
+    ]
+    company_modifiers = [
+        "Global",
+        "Dynamic",
+        "Interactive",
+        "Vision",
+        "Peak",
+        "Edge",
+        "Stream",
+        "Link",
+        "Wave",
+        "Core",
+        "Flex",
+        "Point",
+        "Access",
+        "Force",
+        "Space",
+        "Mind",
+        "Port",
+        "Path",
+        "Scope",
+        "Trace",
+    ]
 
     prefix = random.choice(company_prefixes)
     suffix = random.choice(company_suffixes)
     modifier = random.choice(company_modifiers)
     # Format: Prefix+Modifier+Suffix, Prefix+Suffix, Modifier+Suffix (avoid repetitions)
-    formats = [
-        f"{prefix}{modifier}{suffix}",
-        f"{prefix}{suffix}",
-        f"{modifier}{suffix}"
-    ]
+    formats = [f"{prefix}{modifier}{suffix}", f"{prefix}{suffix}", f"{modifier}{suffix}"]
     name_parts = name.lower().split()
     return f"{name_parts[0]}.{name_parts[1]}@{random.choice(formats)}".lower()
-
 
 
 def generate_random_phone():

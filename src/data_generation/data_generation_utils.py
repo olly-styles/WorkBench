@@ -97,7 +97,7 @@ def create_calendar_event(event_names, emails, existing_events):
         )
         # continue if the event start is on a weekend
         if event_start.weekday() in [5, 6]:
-            continue 
+            continue
         duration_minutes = generate_event_duration_minutes()
         event_id = str(len(existing_events)).zfill(8)
 
@@ -113,7 +113,7 @@ def create_calendar_event(event_names, emails, existing_events):
 # generate_datetime_between option do nearest 30 minutes or not
 def generate_datetime_between(start, end, nearest_30_minutes=True):
     month = np.random.randint(start.month, end.month + 1)
-    min_day = start.day if month == start.month else 1  
+    min_day = start.day if month == start.month else 1
     max_day = end.day if month == end.month else 31
     # get max day accounting for months with different number of days
     max_day = min(max_day, 30) if month in [4, 6, 9, 11] else max_day
@@ -170,11 +170,12 @@ def generate_end_time(start_time, duration):
     return end_time
 
 
-def create_email(existing_emails, sample_emails, email_content_pairs):
+def create_email(existing_emails, email_content):
     email_id = str(len(existing_emails)).zfill(8)
-    recipient = sample_emails.sample().iloc[0, 0]
-    subject = np.random.choice(list(email_content_pairs.keys()))
-    body = email_content_pairs[subject]
+    email_content_pairs = email_content.sample().iloc[0].to_dict()
+    recipient = email_content_pairs["Sender"]
+    subject = email_content_pairs["Subject"]
+    body = email_content_pairs["Content"]
     sent_datetime = generate_datetime_between(
         start=pd.to_datetime("2023-10-01T00:00:00"),
         end=HARDCODED_CURRENT_TIME,
@@ -189,7 +190,7 @@ def create_email(existing_emails, sample_emails, email_content_pairs):
             "subject"
         ].values
     ):
-        return create_email(existing_emails, sample_emails, email_content_pairs)
+        return create_email(existing_emails, email_content)
 
     return email_id, recipient, subject, sent_datetime, body
 

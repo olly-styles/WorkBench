@@ -166,7 +166,7 @@ def cancel_events_on_day_logic():
     date = random.choice(next_7_days)
     while pd.to_datetime(date).weekday() in [5, 6]:
         date = random.choice(next_7_days)
-    
+
     next_day = pd.to_datetime(date).day_name()
     before_or_after = random.choice(["before", "after"])
 
