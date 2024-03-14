@@ -3,8 +3,8 @@ from langchain.tools import tool
 
 ANALYTICS_DATA = pd.read_csv("data/processed/analytics_data.csv", dtype=str)
 PLOTS_DATA = pd.DataFrame(columns=["file_path"])
-METRICS = ["page_views", "session_duration_seconds"]
-METRIC_NAMES = ["total page views", "average session duration"]
+METRICS = ["total_visits", "session_duration_seconds", "user_engaged"]
+METRIC_NAMES = ["total visits", "average session duration", "engaged users"]
 
 
 def reset_state():
@@ -59,7 +59,7 @@ def create_plot(time_min=None, time_max=None, value_to_plot=None, plot_type=None
     time_max : str, optional
         End date of the time range. Date format is "YYYY-MM-DD".
     value_to_plot : str, optional
-        Value to plot. Available values are: "page_views", "session_duration_seconds", "traffic_source", "user_engaged"
+        Value to plot. Available values are: "total_visits", "session_duration_seconds", "user_engaged", "direct", "referral", "search engine", "social media"
     plot_type : str, optional
         Type of plot. Can be "bar", "line", "scatter" or "histogram"
 
@@ -70,8 +70,8 @@ def create_plot(time_min=None, time_max=None, value_to_plot=None, plot_type=None
 
     Examples
     --------
-    >>> analytics.create_plot("2023-10-01", "2023-12-31", "page_views")
-    "plots/2023-10-01_2023-12-31_page_views.png"
+    >>> analytics.create_plot("2023-10-01", "2023-12-31", "total_visits")
+    "plots/2023-10-01_2023-12-31_total_visits.png"
 
     """
     global PLOTS_DATA
@@ -79,8 +79,8 @@ def create_plot(time_min=None, time_max=None, value_to_plot=None, plot_type=None
         return "Start date not provided."
     if not time_max:
         return "End date not provided."
-    if value_to_plot not in METRICS:
-        return "Value to plot must be one of 'page_views', 'session_duration_seconds', 'traffic_source', 'user_engaged'"
+    if value_to_plot not in ["total_visits", "session_duration_seconds", "user_engaged", "direct", "referral", "search engine", "social media"]:
+        return "Value to plot must be one of 'total_visits', 'session_duration_seconds', 'user_engaged', 'direct', 'referral', 'search engine', 'social media'"
     if plot_type not in ["bar", "line", "scatter", "histogram"]:
         return "Plot type must be one of 'bar', 'line', 'scatter', or 'histogram'"
 
@@ -104,13 +104,13 @@ def total_visits_count(time_min=None, time_max=None):
 
     Returns
     -------
-    total_visits : int
+    total_visits : dict
         Total number of visits in the specified time range.
 
     Examples
     --------
-    >>> analytics.total_visits_count("2023-10-01", "2023-12-31")
-    500
+    >>> analytics.total_visits_count("2023-10-01", "2023-10-06")
+    {{"2023-10-01": 1, "2023-10-02": 2, "2023-10-03": 3, "2023-10-04": 1, "2023-10-05": 0, "2023-10-06": 4}}
     """
     if time_min:
         data = ANALYTICS_DATA[ANALYTICS_DATA["date_of_visit"] >= time_min]
@@ -118,9 +118,7 @@ def total_visits_count(time_min=None, time_max=None):
         data = ANALYTICS_DATA
     if time_max:
         data = data[data["date_of_visit"] <= time_max]
-
-    total_visits = data.shape[0]
-    return total_visits
+    return data.groupby("date_of_visit").size().to_dict()
 
 
 @tool("analytics.engaged_users_count", return_direct=False)
@@ -137,23 +135,23 @@ def engaged_users_count(time_min=None, time_max=None):
 
     Returns
     -------
-    engaged_users : int
+    engaged_users : dict
         Number of engaged users in the specified time range.
 
     Examples
     --------
-    >>> analytics.engaged_users_count("2023-10-01", "2023-12-31")
-    100
+    >>> analytics.engaged_users_count("2023-10-01", "2023-10-06")
+    {{"2023-10-01": 1, "2023-10-02": 2, "2023-10-03": 2, "2023-10-04": 1, "2023-10-05": 0, "2023-10-06": 4}}
     """
     if time_min:
         data = ANALYTICS_DATA[ANALYTICS_DATA["date_of_visit"] >= time_min]
     else:
-        data = ANALYTICS_DATA
+        data = ANALYTICS_DATA[:]
     if time_max:
         data = data[data["date_of_visit"] <= time_max]
+    data["user_engaged"] = data["user_engaged"].astype(bool).astype(int)
 
-    engaged_users = (data["user_engaged"]).sum()
-    return engaged_users
+    return data.groupby("date_of_visit").sum()["user_engaged"].to_dict()
 
 
 @tool("analytics.traffic_source_count", return_direct=False)
@@ -172,26 +170,26 @@ def traffic_source_count(time_min=None, time_max=None, traffic_source=None):
 
     Returns
     -------
-    traffic_source_visits : int
+    traffic_source_visits : dict
         Number of visits from the specified traffic source in the specified time range.
 
     Examples
     --------
-    >>> analytics.traffic_source_count("2023-10-01", "2023-12-31", "search engine")
-    250
+    >>> analytics.traffic_source_count("2023-10-01", "2023-10-06", "search engine")
+    {{"2023-10-01": 0, "2023-10-02": 1, "2023-10-03": 0, "2023-10-04": 3, "2023-10-05": 2, "2023-10-06": 4}}
     """
     if time_min:
         data = ANALYTICS_DATA[ANALYTICS_DATA["date_of_visit"] >= time_min]
     else:
-        data = ANALYTICS_DATA
+        data = ANALYTICS_DATA[:]
     if time_max:
         data = data[data["date_of_visit"] <= time_max]
 
     if traffic_source:
-        traffic_source_visits = data[data["traffic_source"] == traffic_source].shape[0]
+        data["visits_from_source"] = (data["traffic_source"] == traffic_source).astype(int)
+        return data.groupby("date_of_visit").sum()["visits_from_source"].to_dict()
     else:
-        traffic_source_visits = data.shape[0]
-    return traffic_source_visits
+        return data.groupby("date_of_visit").size().to_dict()
 
 
 @tool("analytics.get_average_session_duration", return_direct=False)
@@ -213,8 +211,8 @@ def get_average_session_duration(time_min=None, time_max=None):
 
     Examples
     --------
-    >>> analytics.get_average_session_duration("2023-10-01", "2023-12-31")
-    30.0
+    >>> analytics.get_average_session_duration("2023-10-01", "2023-10-06")
+    {{"2023-10-01": 10.0, "2023-10-02": 20.5, "2023-10-03": 32.8, "2023-10-04": 40.2, "2023-10-05": 5.3, "2023-10-06": 53.0}}
     """
     if time_min:
         data = ANALYTICS_DATA[ANALYTICS_DATA["date_of_visit"] >= time_min]
@@ -223,5 +221,5 @@ def get_average_session_duration(time_min=None, time_max=None):
     if time_max:
         data = data[data["date_of_visit"] <= time_max]
 
-    average_session_duration = data["session_duration_seconds"].astype(float).mean()
-    return average_session_duration
+    data["session_duration_seconds"] = data["session_duration_seconds"].astype(float)
+    return data[["date_of_visit", "session_duration_seconds"]].groupby("date_of_visit").mean()["session_duration_seconds"].to_dict()
