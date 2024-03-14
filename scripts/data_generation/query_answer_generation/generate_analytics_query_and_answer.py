@@ -80,11 +80,13 @@ def distribution_plot_on_day_logic():
 
 def distribution_plot_on_day_two_metrics_logic():
     base_dict = get_random_dict()
+    base_dict["date_max"] = random.choice([d for d in dates if d > base_dict["date_min"]])
+    natural_language_date_max = get_natural_language_date(base_dict["date_max"])
     answer = [
         get_plot_string(base_dict["metric"], base_dict["date_min"], base_dict["date_max"], "histogram"),
         get_plot_string(base_dict["metric2"], base_dict["date_min"], base_dict["date_max"], "histogram"),
     ]
-    return {**base_dict, "answer": answer}
+    return {**base_dict, "answer": answer, "natural_language_date_max": natural_language_date_max}
 
 
 def metric_more_or_less_any_time(metric, date_min, threshold):
@@ -243,7 +245,7 @@ ANALYTICS_TEMPLATES = [
         "logic": metric_plot_logic,
     },
     {
-        "query": """Can you plot the distribution of both {natural_language_metric} and {natural_language_metric_2} between {date_min} and {date_max}?""",
+        "query": """Can you plot the distribution of both {natural_language_metric} and {natural_language_metric_2} between {natural_language_date} and {natural_language_date_max}?""",
         "logic": distribution_plot_on_day_two_metrics_logic,
     },
     {
