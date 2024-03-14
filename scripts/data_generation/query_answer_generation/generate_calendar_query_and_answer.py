@@ -118,10 +118,12 @@ def rename_event_logic():
 
 def cancel_next_event_with_name_logic():
     participant = random.choice(emails)
+    name = participant.split(".")[0]
     events_with_name = calendar_events[calendar_events["participant_email"] == participant]
     future_events_with_name = events_with_name[events_with_name["event_start"] > str(HARDCODED_CURRENT_TIME)]
+    if len(future_events_with_name) == 0:
+        return {"event_id": None, "name": name, "answer": []}
     next_event_id = future_events_with_name.sort_values("event_start").iloc[0]["event_id"]
-    name = participant.split(".")[0]
     answer = [f"""calendar.delete_event.func(event_id="{next_event_id}")"""]
     return {"event_id": next_event_id, "name": name, "answer": answer}
 
@@ -164,6 +166,9 @@ def check_last_meeting_with_name_schedule_30_tomorrow():
 def cancel_events_on_day_logic():
     next_7_days = [str(HARDCODED_CURRENT_TIME + pd.Timedelta(days=i)).split(" ")[0] for i in range(1, 8)]
     date = random.choice(next_7_days)
+    weekend_days = [5, 6]
+    while pd.to_datetime(date).weekday() in weekend_days:
+        date = random.choice(next_7_days)
 
     next_day = pd.to_datetime(date).day_name()
     before_or_after = random.choice(["before", "after"])
@@ -289,7 +294,7 @@ CALENDAR_TEMPLATES = [
         "logic": cancel_future_meetings_with_name_logic,
     },
     {
-        "query": "Create a {duration} event called {event_name} on {natural_language_date} at {time} with {email}",
+        "query": "Create a {duration} event called {event_name} on {natural_language_date} at {natural_language_time} with {email}",
         "logic": create_event_logic,
     },
 ]
