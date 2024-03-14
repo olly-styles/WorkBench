@@ -207,6 +207,7 @@ def send_email_if_no_future_meetings_logic():
         "days": threshold_days_until_next_meeting,
         "next_meeting_date": next_meeting_date,
         "answer": answer,
+        "name": name,
     }
 
 
@@ -268,26 +269,46 @@ def book_meeting_send_email_if_overdue_tasks_logic():
 MULTI_DOMAIN_TEMPLATES = [
     {
         "query": """Find the email from {natural_language_email_date} about '{subject}' and schedule a {natural_language_duration} meeting called '{subject}' at {natural_language_time} with the sender for {natural_language_meeting_date}.""",
+        "alternative_queries": [
+            "I need to schedule a meeting called '{subject}' at {natural_language_time} for {natural_language_meeting_date}. It's with the sender of the email from {natural_language_email_date} about '{subject}'. Can you do that?",
+            "Can you find the email from {natural_language_email_date} about '{subject}' and schedule a {natural_language_duration} meeting called '{subject}' at {natural_language_time} with the sender for {natural_language_meeting_date}?",
+        ],
         "logic": find_email_schedule_meeting_sender_logic,
         "domains": ["email", "calendar"],
     },
     {
         "query": """Send an email to attendees of the first event on {natural_language_event_date}. Title it with the event name and tell them 'Remember to attend this event.'""",
+        "alternative_queries": [
+            "Can you send an email to attendees of the first event on {natural_language_event_date}? Title it with the event name and tell them 'Remember to attend this event.'",
+            "I need to make sure everyone remembers to attend the first event on {natural_language_event_date}. Can you send an email to the attendees with the event name as the title and 'Remember to attend this event.' in the email?",
+        ],
         "logic": find_event_send_email_logic,
         "domains": ["email", "calendar"],
     },
     {
         "query": """If {name} hasn't sent me any emails in the past {days} days, schedule a 30 minute meeting with them for {day_of_week} at {natural_language_time} called 'Catch up with {name}'""",
+        "alternative_queries": [
+            "I can't remember the last time I heard from {name}. Can you check if they've sent me any emails in the past {days} days? If not, schedule a 30 minute meeting with them for {day_of_week} at {natural_language_time} called 'Catch up with {name}'",
+            "if {name} hasn't sent me any emails in the past {days} days, schedule a half hour meeting with them for {day_of_week} at {natural_language_time} and call it 'Catch up with {name}'",
+        ],
         "logic": schedule_meeting_if_no_emails_logic,
         "domains": ["email", "calendar"],
     },
     {
         "query": """If I haven't met with {name} in the past {days} days, send them an email titled 'Catch up soon?' saying 'We have not caught up in over {days} days - can you send some availability over next week?'""",
+        "alternative_queries": [
+            "can't remember the last time I met with {name}. Can you check if it's been over {days} days? If so, send them an email titled 'Catch up soon?' saying 'We have not caught up in over {days} days - can you send some availability over next week?'",
+            "I haven't met with {name} in a while. if it's been longer than {days} days can you send them an email titled 'Catch up soon?' saying 'We have not caught up in over {days} days - can you send some availability over next week?'",
+        ],
         "logic": send_email_if_no_past_meetings_logic,
         "domains": ["email", "calendar"],
     },
     {
-        "query": """If I don't have any meetings scheduled with {email} in the next {days} days, send them an email titled 'Catch up soon?' saying 'We have not caught up in a while - can you send some availability over next week?'""",
+        "query": """If I don't have any meetings scheduled with {name} in the next {days} days, send them an email titled 'Catch up soon?' saying 'We have not caught up in a while - can you send some availability over next week?'""",
+        "alternative_queries": [
+            "Did I already schedule a meeting with {name} in the next {days} days? If not, send them an email titled 'Catch up soon?' saying 'We have not caught up in a while - can you send some availability over next week?'",
+            "I need to check if I have any meetings scheduled with {name} in the next {days} days. If not, send them an email titled 'Catch up soon?' saying 'We have not caught up in a while - can you send some availability over next week?'",
+        ],
         "logic": send_email_if_no_future_meetings_logic,
         "domains": ["email", "calendar"],
     },
@@ -296,6 +317,16 @@ MULTI_DOMAIN_TEMPLATES = [
             "If {name} has any overdue tasks, send them an email titled 'Overdue tasks' saying 'You have a few overdue tasks - can you update me on them?'. "
             "Otherwise email them with 'Nice work keeping on top of your tasks this sprint!' titled 'Good work this sprint'"
         ),
+        "alternative_queries": [
+            (
+                "can you check if {name} has any overdue tasks? If so, send them an email titled 'Overdue tasks' saying 'You have a few overdue tasks"
+                "- can you update me on them?'. Otherwise email them with 'Nice work keeping on top of your tasks this sprint!' titled 'Good work this sprint'"
+            ),
+            (
+                "I think {name} might have some overdue tasks. Can you check and if so, send them an email titled 'Overdue tasks' saying 'You have a few overdue "
+                "tasks - can you update me on them?'. Otherwise email them with 'Nice work keeping on top of your tasks this sprint!' titled 'Good work this sprint'"
+            ),
+        ],
         "logic": send_email_for_overdue_tasks_logic,
         "domains": ["email", "project_management"],
     },
@@ -306,6 +337,18 @@ MULTI_DOMAIN_TEMPLATES = [
             "send them an email titled 'Discuss overdue tasks' saying 'I noticed you have a few overdue tasks - let's catch up tomorrow.' "
             "Otherwise email them with 'Nice work keeping on top of your tasks this sprint!' titled 'Good work this sprint'"
         ),
+        "alternative_queries": [
+            (
+                "can you check if {name} has any overdue tasks? If so, book a 30 minute meeting with them called 'Catch up on overdue tasks' at the earliest time "
+                "I'm free tomorrow and send them an email titled 'Discuss overdue tasks' saying 'I noticed you have a few overdue tasks - let's catch up tomorrow.' "
+                "Otherwise send them an email saying 'Nice work keeping on top of your tasks this sprint!' titled 'Good work this sprint'"
+            ),
+            (
+                "I think {name} might have some overdue tasks. Can you check and if so, book a half hour meeting with them called 'Catch up on overdue tasks' at the "
+                "earliest time I'm free tomorrow and send them an email titled 'Discuss overdue tasks' saying 'I noticed you have a few overdue tasks - let's catch up "
+                "tomorrow.' Otherwise email them with 'Nice work keeping on top of your tasks this sprint!' titled 'Good work this sprint'"
+            ),
+        ],
         "logic": book_meeting_send_email_if_overdue_tasks_logic,
         "domains": ["email", "calendar", "project_management"],
     },

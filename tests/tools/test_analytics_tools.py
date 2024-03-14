@@ -21,7 +21,7 @@ test_analytics_data = [
         "traffic_source": "direct",
         "user_engaged": True,
     },
-        {
+    {
         "date_of_visit": "2023-10-02",
         "visitor_id": "002",
         "page_views": "2",
@@ -133,13 +133,20 @@ def test_traffic_source_count():
     """
     analytics.ANALYTICS_DATA = pd.DataFrame(test_analytics_data)
     # Test with a specific date range
-    assert analytics.traffic_source_count.func("2023-10-01", "2023-10-02", "search engine") == {"2023-10-01": 1, "2023-10-02": 0}
+    assert analytics.traffic_source_count.func("2023-10-01", "2023-10-02", "search engine") == {
+        "2023-10-01": 1,
+        "2023-10-02": 0,
+    }
     # Test with a broader date range
-    assert analytics.traffic_source_count.func("2023-09-30", "2023-10-03", "search engine") == {"2023-10-01": 1, "2023-10-02": 0}
+    assert analytics.traffic_source_count.func("2023-09-30", "2023-10-03", "search engine") == {
+        "2023-10-01": 1,
+        "2023-10-02": 0,
+    }
     # Test with no date range (should count all visits)
     assert analytics.traffic_source_count.func() == {"2023-10-01": 1, "2023-10-02": 2}
     # Test with a date range that includes no visits
     assert analytics.traffic_source_count.func("2023-10-03", "2023-10-04", "search engine") == {}
+
 
 def test_average_session_duration():
     """
@@ -147,9 +154,15 @@ def test_average_session_duration():
     """
     analytics.ANALYTICS_DATA = pd.DataFrame(test_analytics_data)
     # Test with a specific date range
-    assert analytics.get_average_session_duration.func("2023-10-01", "2023-10-02") == {"2023-10-01": 10.0, "2023-10-02": 12.5}
+    assert analytics.get_average_session_duration.func("2023-10-01", "2023-10-02") == {
+        "2023-10-01": 10.0,
+        "2023-10-02": 12.5,
+    }
     # Test with a broader date range
-    assert analytics.get_average_session_duration.func("2023-09-30", "2023-10-03") == {"2023-10-01": 10.0, "2023-10-02": 12.5}
+    assert analytics.get_average_session_duration.func("2023-09-30", "2023-10-03") == {
+        "2023-10-01": 10.0,
+        "2023-10-02": 12.5,
+    }
     # Test with no date range (should count all visits)
     assert analytics.get_average_session_duration.func() == {"2023-10-01": 10.0, "2023-10-02": 12.5}
     # Test with a date range that includes no visits

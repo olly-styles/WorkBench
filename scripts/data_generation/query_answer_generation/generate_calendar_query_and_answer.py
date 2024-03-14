@@ -249,52 +249,97 @@ def create_event_logic():
         "time": time,
         "natural_language_time": natural_language_time,
         "answer": answer,
+        "name": email.split(".")[0],
     }
 
 
 CALENDAR_TEMPLATES = [
     {
         "query": "Cancel my first meeting on {natural_language_date}",
+        "alternative_queries": [
+            "Delete my first meeting on {natural_language_date}",
+            "can you cancel my first meeting on {natural_language_date}",
+        ],
         "logic": first_event_logic,
     },
     {
         "query": "Change the name of the last event on {natural_language_date} to {event_name}",
+        "alternative_queries": [
+            "Rename the last event on {natural_language_date} to {event_name}",
+            "Can you change the name of the last event on {natural_language_date} to {event_name}",
+        ],
         "logic": last_event_name_change_logic,
     },
     {
         "query": "Push back my first meeting with {name} on {natural_language_date} by {duration}s",
+        "alternative_queries": [
+            "Delay my first meeting with {name} on {natural_language_date} by {duration}s",
+            "please move my first meeting with {name} on {natural_language_date} by {duration}s",
+        ],
         "logic": delay_first_meeting_logic,
     },
     {
         "query": "Cancel the next {event_name} meeting",
+        "alternative_queries": [
+            "Delete the next {event_name} meeting",
+            "Can you cancel the next {event_name} meeting",
+        ],
         "logic": cancel_event_logic,
     },
     {
         "query": "Rename the next {event_name} meeting to {new_event_name}",
+        "alternative_queries": [
+            "Change the name of the next {event_name} meeting to {new_event_name}",
+            "can you rename the next {event_name} meeting to {new_event_name}",
+        ],
         "logic": rename_event_logic,
     },
     {
         "query": "Cancel my next meeting with {name}",
+        "alternative_queries": [
+            "{name} is off sick. Can you cancel my next meeting with them?",
+            "I need to cancel my next meeting with {name}. Can you do that for me please?",
+        ],
         "logic": cancel_next_event_with_name_logic,
     },
     {
         "query": "If I haven't met with {name} in the last {duration} days, schedule a 30-minute meeting called 'catch-up' for my first free slot from tomorrow",
+        "alternative_queries": [
+            "I think I might need to catch up with {name}. Can you check if I've met with them in the last {duration} days? If not, schedule a 30-minute meeting for my first free slot from tomorrow",
+            "have I met with {name} in the last {duration} days? If not, schedule a 30-minute meeting called 'catch-up' for my first free slot from tomorrow",
+        ],
         "logic": check_last_meeting_with_name_schedule_30_tomorrow,
     },
     {
         "query": "Cancel my meetings on {next_day} {before_or_after} {natural_language_time}",
+        "alternative_queries": [
+            "Delete my meetings on {next_day} {before_or_after} {natural_language_time}",
+            "something came up. Can you cancel my meetings on {next_day} {before_or_after} {natural_language_time}?",
+        ],
         "logic": cancel_events_on_day_logic,
     },
     {
         "query": "Cancel all future meetings with {name}",
+        "alternative_queries": [
+            "{name} is leaving the company. Can you cancel all future meetings with them?",
+            "I need to cancel all future meetings with {name}. Can you do that for me please?",
+        ],
         "logic": cancel_all_future_meetings_with_person_logic,
     },
     {
         "query": "Cancel future {event_name} meetings",
+        "alternative_queries": [
+            "Delete all the future {event_name} meetings",
+            "We've decided we don't need any any more {event_name} meetings. Can you cancel all future ones?",
+        ],
         "logic": cancel_future_meetings_with_name_logic,
     },
     {
-        "query": "Create a {duration} event called {event_name} on {natural_language_date} at {natural_language_time} with {email}",
+        "query": "Create a {duration} event called {event_name} on {natural_language_date} at {natural_language_time} with {name}",
+        "alternative_queries": [
+            "I haven't met with {name} in a while. Can you schedule a {duration} event called {event_name} on {natural_language_date} at {natural_language_time}?",
+            "I need to catch up with {name}. can you schedule a {duration} event called {event_name} on {natural_language_date} at {natural_language_time}?",
+        ],
         "logic": create_event_logic,
     },
 ]

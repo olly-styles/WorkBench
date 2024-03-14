@@ -79,7 +79,15 @@ def create_plot(time_min=None, time_max=None, value_to_plot=None, plot_type=None
         return "Start date not provided."
     if not time_max:
         return "End date not provided."
-    if value_to_plot not in ["total_visits", "session_duration_seconds", "user_engaged", "direct", "referral", "search engine", "social media"]:
+    if value_to_plot not in [
+        "total_visits",
+        "session_duration_seconds",
+        "user_engaged",
+        "direct",
+        "referral",
+        "search engine",
+        "social media",
+    ]:
         return "Value to plot must be one of 'total_visits', 'session_duration_seconds', 'user_engaged', 'direct', 'referral', 'search engine', 'social media'"
     if plot_type not in ["bar", "line", "scatter", "histogram"]:
         return "Plot type must be one of 'bar', 'line', 'scatter', or 'histogram'"
@@ -222,4 +230,9 @@ def get_average_session_duration(time_min=None, time_max=None):
         data = data[data["date_of_visit"] <= time_max]
 
     data["session_duration_seconds"] = data["session_duration_seconds"].astype(float)
-    return data[["date_of_visit", "session_duration_seconds"]].groupby("date_of_visit").mean()["session_duration_seconds"].to_dict()
+    return (
+        data[["date_of_visit", "session_duration_seconds"]]
+        .groupby("date_of_visit")
+        .mean()["session_duration_seconds"]
+        .to_dict()
+    )

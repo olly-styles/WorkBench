@@ -176,34 +176,66 @@ def move_unresponsive_customers_to_lost_logic():
 CRM_TEMPLATES = [
     {
         "query": "Update the status of {current_customer_name} to {new_status_natural_language} in the crm",
+        "alternative_queries": [
+            "{current_customer_name} has moved to {new_status_natural_language} status. Can you update that in the crm?",
+            "We've got a new customer that's moved to {new_status_natural_language} status. Can you update {current_customer_name} to {new_status_natural_language} in the crm?",
+        ],
         "logic": update_customer_status_logic,
     },
     {
         "query": "Delete {current_customer_name} from the crm",
+        "alternative_queries": [
+            "We no longer need to keep {current_customer_name} in the crm. Can you delete them?",
+            "{current_customer_name} is no longer a customer. Can you delete them from the crm?",
+        ],
         "logic": delete_customer_logic,
     },
     {
         "query": "Add {new_customer_name} as a new lead in the crm and assign them to {assigned_to_first_name}",
+        "alternative_queries": [
+            "We've got a new lead called {new_customer_name}. Can you add them to the crm and assign them to {assigned_to_first_name}?",
+            "can you add {new_customer_name} to the crm? They're a new lead and need to be assigned to {assigned_to_first_name}",
+        ],
         "logic": add_lead_logic,
     },
     {
         "query": "Reassign {current_customer_name} to {assigned_to_first_name} in the crm",
+        "alternative_queries": [
+            "{assigned_to_first_name} is taking over {current_customer_name}. Can you reassign them in the crm?",
+            "We're moving {current_customer_name} to {assigned_to_first_name}. Can you make that change in the crm?",
+        ],
         "logic": reassign_customer_logic,
     },
     {
-        "query": "Reassign all of {assigned_to_first_name}'s leads that are interested in {natural_language_product_interest} to {assigned_to_first_name} in the crm.",
+        "query": "Reassign all of {assigned_to_first_name}'s leads that are interested in {natural_language_product_interest} to {new_assigned_to_first_name} in the crm.",
+        "alternative_queries": [
+            "We're moving all of {assigned_to_first_name}'s leads that are interested in {natural_language_product_interest} to {new_assigned_to_first_name}. Can you make that change in the crm?",
+            "{new_assigned_to_first_name} is taking over all of {assigned_to_first_name}'s leads that are interested in {natural_language_product_interest}. Can you reassign them in the crm?",
+        ],
         "logic": reassign_all_leads_for_product_logic,
     },
     {
         "query": "Give {new_assigned_to_first_name} all of {assigned_to_first_name}'s customers that are interested in {natural_language_product_interest} and are either qualified or in proposal in the crm",
+        "alternative_queries": [
+            "{new_assigned_to_first_name} is taking over all of {assigned_to_first_name}'s customers that are interested in {natural_language_product_interest} and are either qualified or in proposal. Can you reassign them in the crm?",
+            "I need to move all of {assigned_to_first_name}'s customers that are interested in {natural_language_product_interest} and are either qualified or in proposal to {new_assigned_to_first_name}. Can you make that change in the crm?",
+        ],
         "logic": reassign_all_qualified_leads_for_product_logic,
     },
     {
         "query": "Delete all of {assigned_to_first_name}'s customers that are in the {new_status_natural_language} stage and interested in {natural_language_product_interest} in the crm",
+        "alternative_queries": [
+            "We no longer need to keep all of {assigned_to_first_name}'s customers that are in the {new_status_natural_language} stage and interested in {natural_language_product_interest}. Can you delete them from the crm?",
+            "I need to move all of {assigned_to_first_name}'s customers that are in the {new_status_natural_language} stage and interested in {natural_language_product_interest} to lost. Can you make that change in the crm?",
+        ],
         "logic": delete_all_customers_in_stage_logic,
     },
     {
         "query": "Move all customers that haven't responded to a proposal for the {natural_language_product_interest} product in {weeks} weeks to lost in the crm",
+        "alternative_queries": [
+            "I think there's a few customers that haven't responded to a proposal for the {natural_language_product_interest} product in {weeks} weeks. Can you move them to lost in the crm?",
+            "We need to move all customers that haven't responded to a proposal for the {natural_language_product_interest} product in {weeks} weeks to lost. Can you update the CRM?",
+        ],
         "logic": move_unresponsive_customers_to_lost_logic,
     },
 ]
