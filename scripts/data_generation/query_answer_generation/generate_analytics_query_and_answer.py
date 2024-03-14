@@ -282,30 +282,58 @@ ANALYTICS_TEMPLATES = [
     },
     {
         "query": """If {natural_language_metric} was {more_or_less} than {threshold} any time in the last {past_n_weeks} weeks, make a line plot of it since then""",
+        "alternative_queries": [
+            """Was {natural_language_metric} {more_or_less} than {threshold} at any time in the last {past_n_weeks} weeks? If so, please plot it as a line chart""",
+            """Can you make a line chart of {natural_language_metric} since the last {past_n_weeks} weeks if it was {more_or_less} than {threshold} at any time in the last {past_n_weeks} weeks?""",
+        ],
         "logic": metric_more_or_less_past_weeks_plot_logic,
     },
     {
         "query": """If {natural_language_metric} today is more than {natural_language_growth_threshold} {higher_or_lower} than {natural_language_date}, make a line plot of it since then""",
+        "alternative_queries": [
+            """Was {natural_language_metric} today more than {natural_language_growth_threshold} {higher_or_lower} than {natural_language_date}? If so, please plot it as a line chart""",
+            """Can you make a line chart of {natural_language_metric} since {natural_language_date} if it was more than {natural_language_growth_threshold} {higher_or_lower} than {natural_language_date} today?""",
+        ],
         "logic": metric_higher_or_lower_plot_logic,
     },
     {
         "query": """If {natural_language_metric} today is more than {natural_language_growth_threshold} {higher_or_lower} than it was on {day_of_week}, make a line plot of it since then""",
+        "alternative_queries": [
+            """Was {natural_language_metric} today more than {natural_language_growth_threshold} {higher_or_lower} than it was on {day_of_week}? If so, please plot it as a line chart""",
+            """Can you make a line chart of {natural_language_metric} since {day_of_week} if it was more than {natural_language_growth_threshold} {higher_or_lower} than it was today?""",
+        ],    
         "logic": metric_higher_or_lower_day_of_week_plot_logic,
     },
     {
         "query": """If {natural_language_metric} on {day_of_week} was more than {natural_language_growth_threshold} {higher_or_lower} than it was the previous {day_of_week}, make a line plot of it over that period.""",
-        "logic": metric_higher_or_lower_past_weeks_plot_logic,
+        "alternative_queries": [
+            """Was {natural_language_metric} on {day_of_week} more than {natural_language_growth_threshold} {higher_or_lower} than it was the previous {day_of_week}? If so, please plot it as a line chart""",
+            """make a line chart of {natural_language_metric} over the period from {day_of_week} to the previous {day_of_week} if it was more than {natural_language_growth_threshold} {higher_or_lower} on {day_of_week} than it was the previous {day_of_week}""",
+        ],
+            "logic": metric_higher_or_lower_past_weeks_plot_logic,
     },
     {
-        "query": """Can you check the % growth of {natural_language_metric} since {day_of_week}? If it grew by more than {natural_language_metric_2}, plot both lines since then""",
+        "query": """Can you check the percent growth of {natural_language_metric} since {day_of_week}? If it grew by more than {natural_language_metric_2}, plot both lines since then""",
+        "alternative_queries": [
+            """Check the percent growth of {natural_language_metric} since {day_of_week}. If it grew by more than {natural_language_metric_2}, plot both lines since then""",
+            """if {natural_language_metric} grew by more than {natural_language_metric_2} since {day_of_week}, make a line plot of both since then""",
+        ],
         "logic": relative_growth_two_plots_logic,
     },
     {
         "query": """Can you make a line plot of the {most_or_least} popular traffic source since {natural_language_date}?""",
+        "alternative_queries": [
+            """Make a line plot of the {most_or_least} popular traffic source since {natural_language_date}""",
+            """plot the {most_or_least} popular traffic source since {natural_language_date}""",
+        ],
         "logic": plot_most_popular_traffic_source_logic,
     },
     {
         "query": """If we got more traffic from {traffic_source_1} than {traffic_source_2} during the last {n_weeks} weeks, make bar charts of both over that period""",
+        "alternative_queries": [
+            """Make bar charts of {traffic_source_1} and {traffic_source_2} over the last {n_weeks} weeks if we got more traffic from {traffic_source_1} than {traffic_source_2}""",
+            """did we get more traffic from {traffic_source_1} than {traffic_source_2} during the last {n_weeks} weeks? If so, make bar charts of both over that period""",
+        ],
         "logic":  plot_relative_traffic_source_logic,
     }
 ]
