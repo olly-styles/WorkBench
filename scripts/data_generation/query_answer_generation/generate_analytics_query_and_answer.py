@@ -25,6 +25,7 @@ metric_to_func_dict = {
 
 traffic_sources = ANALYTICS_DATA["traffic_source"].unique()
 
+
 def get_plot_string(metric, date_min, date_max, plot_type):
     return f"""analytics.create_plot.func(time_min="{date_min}", time_max="{date_max}", value_to_plot="{metric}", plot_type="{plot_type}")"""
 
@@ -65,12 +66,14 @@ def metric_more_or_less(metric, date_min, threshold):
     metric_on_date = metric_series[date_min]
     return "more" if metric_on_date > threshold else "less"
 
+
 def metric_plot_logic():
     base_dict = get_random_dict()
     answer = [
         get_plot_string(base_dict["metric"], base_dict["date_min"], base_dict["date_max"], base_dict["plot_type"])
     ]
     return {**base_dict, "answer": answer}
+
 
 def distribution_plot_on_day_logic():
     base_dict = get_random_dict()
@@ -99,12 +102,14 @@ def metric_more_or_less_any_time(metric, date_min, threshold):
     else:
         return "both more and less"
 
+
 def get_threshold_and_metric_more_or_less(date_min=None):
     base_dict = get_random_dict()
     base_dict["more_or_less"] = random.choice(["more", "less"])
     date_min = base_dict["date_min"] if date_min is None else date_min
     metric_vs_threshold = metric_more_or_less_any_time(base_dict["metric"], date_min, base_dict["threshold"])
     return {**base_dict, "metric_vs_threshold": metric_vs_threshold}
+
 
 def metric_more_or_less_plot_logic(date_min=None):
     query_info = get_threshold_and_metric_more_or_less(date_min)
@@ -115,10 +120,12 @@ def metric_more_or_less_plot_logic(date_min=None):
         answer = []
     return {"answer": answer, **query_info}
 
+
 def metric_more_or_less_past_weeks_plot_logic():
     n_weeks = random.choice([1, 2, 3, 4, 5, 6])
     date_min = str(HARDCODED_CURRENT_TIME.date() - pd.Timedelta(n_weeks, "W"))
     return {**metric_more_or_less_plot_logic(date_min), "past_n_weeks": n_weeks}
+
 
 def metric_higher_or_lower(metric, date_min, date_max=None, threshold=0):
     metric_series = pd.Series(metric_to_func_dict[metric](date_min))
@@ -132,6 +139,7 @@ def metric_higher_or_lower(metric, date_min, date_max=None, threshold=0):
     else:
         return "not changed"
 
+
 def get_threshold_and_higher_or_lower(date_min=None, date_max=None):
     base_dict = get_random_dict()
     base_dict["higher_or_lower"] = random.choice(["higher", "lower"])
@@ -139,6 +147,7 @@ def get_threshold_and_higher_or_lower(date_min=None, date_max=None):
     date_max = base_dict["date_max"] if date_max is None else date_max
     higher_or_lower = metric_higher_or_lower(base_dict["metric"], date_min, date_max, base_dict["growth_threshold"])
     return {**base_dict, "growth_vs_threshold": higher_or_lower}
+
 
 def metric_higher_or_lower_plot_logic(date_min=None, date_max=None):
     query_info = get_threshold_and_higher_or_lower(date_min)
@@ -157,6 +166,7 @@ def metric_higher_or_lower_day_of_week_plot_logic():
     day_of_week = pd.to_datetime(date_min).day_name()
     query_info = metric_higher_or_lower_plot_logic(date_min)
     return {**query_info, "day_of_week": day_of_week}
+
 
 def metric_higher_or_lower_past_weeks_plot_logic():
     day_in_last_week = random.choice([1, 2, 3, 4, 5, 6])
@@ -177,6 +187,7 @@ def get_relative_growth(metric1, metric2, date_min):
 
     return metric1_growth, metric2_growth
 
+
 def relative_growth_two_plots_logic():
     base_dict = get_random_dict()
     day_in_last_week = random.choice([1, 2, 3, 4, 5, 6])
@@ -194,6 +205,7 @@ def relative_growth_two_plots_logic():
         answer = []
     return {**base_dict, "answer": answer, "day_of_week": day_of_week}
 
+
 def metric_two_plots_logic():
     base_dict = get_random_dict()
     answer = [
@@ -205,13 +217,16 @@ def metric_two_plots_logic():
 
 def plot_most_popular_traffic_source_logic():
     base_dict = get_random_dict()
-    traffic_source_popularity = {s: pd.Series(analytics.traffic_source_count.func(base_dict["date_min"], traffic_source=s)).mean() for s in traffic_sources}
+    traffic_source_popularity = {
+        s: pd.Series(analytics.traffic_source_count.func(base_dict["date_min"], traffic_source=s)).mean()
+        for s in traffic_sources
+    }
     growth = -10000
     for pop in traffic_source_popularity:
         if traffic_source_popularity[pop] > growth:
             growth = traffic_source_popularity[pop]
             most_popular = pop
-        
+
     answer = [get_plot_string(most_popular, base_dict["date_min"], base_dict["date_max"], "line")]
     return {**base_dict, "most_or_least": "most", "answer": answer}
 
@@ -224,19 +239,28 @@ def plot_relative_traffic_source_logic():
     n_weeks = random.choice([2, 3, 4, 5, 6])
     date_min = str(HARDCODED_CURRENT_TIME.date() - pd.Timedelta(n_weeks, "W"))
     base_dict["date_min"] = date_min
-    traffic_source_1_popularity = pd.Series(analytics.traffic_source_count.func(date_min, traffic_source=traffic_source_1)).mean()
-    traffic_source_2_popularity = pd.Series(analytics.traffic_source_count.func(date_min, traffic_source=traffic_source_2)).mean()
+    traffic_source_1_popularity = pd.Series(
+        analytics.traffic_source_count.func(date_min, traffic_source=traffic_source_1)
+    ).mean()
+    traffic_source_2_popularity = pd.Series(
+        analytics.traffic_source_count.func(date_min, traffic_source=traffic_source_2)
+    ).mean()
 
     if traffic_source_1_popularity > traffic_source_2_popularity:
         answer = [
-        get_plot_string(traffic_source_1, base_dict["date_min"], base_dict["date_max"], "bar"),
-        get_plot_string(traffic_source_2, base_dict["date_min"], base_dict["date_max"], "bar"),
+            get_plot_string(traffic_source_1, base_dict["date_min"], base_dict["date_max"], "bar"),
+            get_plot_string(traffic_source_2, base_dict["date_min"], base_dict["date_max"], "bar"),
         ]
 
     else:
         answer = []
-    return {**base_dict, "traffic_source_1": traffic_source_1, "traffic_source_2": traffic_source_2, "answer": answer, "n_weeks": n_weeks}
-
+    return {
+        **base_dict,
+        "traffic_source_1": traffic_source_1,
+        "traffic_source_2": traffic_source_2,
+        "answer": answer,
+        "n_weeks": n_weeks,
+    }
 
 
 ANALYTICS_TEMPLATES = [
@@ -301,7 +325,7 @@ ANALYTICS_TEMPLATES = [
         "alternative_queries": [
             """Was {natural_language_metric} today more than {natural_language_growth_threshold} {higher_or_lower} than it was on {day_of_week}? If so, please plot it as a line chart""",
             """Can you make a line chart of {natural_language_metric} since {day_of_week} if it was more than {natural_language_growth_threshold} {higher_or_lower} than it was today?""",
-        ],    
+        ],
         "logic": metric_higher_or_lower_day_of_week_plot_logic,
     },
     {
@@ -310,7 +334,7 @@ ANALYTICS_TEMPLATES = [
             """Was {natural_language_metric} on {day_of_week} more than {natural_language_growth_threshold} {higher_or_lower} than it was the previous {day_of_week}? If so, please plot it as a line chart""",
             """make a line chart of {natural_language_metric} over the period from {day_of_week} to the previous {day_of_week} if it was more than {natural_language_growth_threshold} {higher_or_lower} on {day_of_week} than it was the previous {day_of_week}""",
         ],
-            "logic": metric_higher_or_lower_past_weeks_plot_logic,
+        "logic": metric_higher_or_lower_past_weeks_plot_logic,
     },
     {
         "query": """Can you check the percent growth of {natural_language_metric} since {day_of_week}? If it grew by more than {natural_language_metric_2}, plot both lines since then""",
@@ -334,8 +358,8 @@ ANALYTICS_TEMPLATES = [
             """Make bar charts of {traffic_source_1} and {traffic_source_2} over the last {n_weeks} weeks if we got more traffic from {traffic_source_1} than {traffic_source_2}""",
             """did we get more traffic from {traffic_source_1} than {traffic_source_2} during the last {n_weeks} weeks? If so, make bar charts of both over that period""",
         ],
-        "logic":  plot_relative_traffic_source_logic,
-    }
+        "logic": plot_relative_traffic_source_logic,
+    },
 ]
 for d in ANALYTICS_TEMPLATES:
     d["domains"] = ["analytics"]

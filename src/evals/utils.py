@@ -341,11 +341,11 @@ def get_output(full_response):
     simplified_string = re.sub(pattern, quote_match, full_response)
     simplified_string = re.sub(array_pattern, quote_match, simplified_string)
     simplified_string = simplified_string.replace("nan", "None")
-    
-    # Remove everything after "intermediate_steps" and add a curl bracket at close the dict 
+
+    # Remove everything after "intermediate_steps" and add a curl bracket at close the dict
     simplified_string = simplified_string.split("intermediate_steps")[0]
     simplified_string = simplified_string[:-3] + "}"
-    
+
     a = ast.literal_eval(simplified_string)
     return a["output"]
 
@@ -401,7 +401,7 @@ def get_toolkits(toolkits):
 
 def generate_results(queries_path, model_name, tool_selection="all"):
     """Generates results for a given model and set of queries. Saves the results to a csv file."""
-    toolkits = (["email", "calendar", "analytics", "project_management", "customer_relationship_manager"])
+    toolkits = ["email", "calendar", "analytics", "project_management", "customer_relationship_manager"]
     queries_df = pd.read_csv(queries_path)
     queries = queries_df["query"].tolist()
 
