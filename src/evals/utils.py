@@ -432,9 +432,9 @@ def generate_results(queries_path, model_name, tool_selection="all"):
             anyscale_api_key=ANYSCALE_KEY,
             temperature=0,
         )
-    elif model_name == "mistral-7B":
+    elif model_name == "mistral-8x7B":
         llm = ChatAnyscale(
-            model="mistralai/Mistral-7B-Instruct-v0.1",
+            model="mistralai/Mixtral-8x7B-Instruct-v0.1",
             anyscale_api_key=ANYSCALE_KEY,
             temperature=0,
         )

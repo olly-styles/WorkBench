@@ -35,20 +35,22 @@ accuracy_single_tool = [93.33, 33.33, 63.33, 51.85, 30.77, 66.67, 53.85]
 data = {
     "Domain": domains * 2,
     "Accuracy (%)": accuracy_single_tool + accuracy_all_tools,
-    "Run Type": ["Required Toolkit"] * len(domains) + ["All Toolkits"] * len(domains),
+    "Run Type": ["Required toolkit(s) only"] * len(domains) + ["All toolkits"] * len(domains),
 }
 
 # Convert dictionary to DataFrame
 df = pd.DataFrame(data)
 
 # Increase font size
-sns.set(font_scale=2.5)
+sns.set(font_scale=2.7)
 
 # Set up the seaborn plot
-plt.figure(figsize=(18, 8))
+plt.figure(figsize=(28, 8))
 sns.barplot(x="Domain", y="Accuracy (%)", hue="Run Type", data=df, palette="coolwarm")
 # remove heading from key
-plt.legend(title=None)
+plt.legend(title=None, loc="upper right")
+# nudge legend up
+plt.legend(loc="upper right", bbox_to_anchor=(1, 1.1))
 # make x and y labels bold
 plt.xlabel("Domain", weight="bold")
 plt.ylabel("Accuracy (%)", weight="bold")
