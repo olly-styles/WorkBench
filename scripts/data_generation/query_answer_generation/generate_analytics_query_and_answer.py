@@ -313,18 +313,18 @@ ANALYTICS_TEMPLATES = [
         "logic": metric_more_or_less_past_weeks_plot_logic,
     },
     {
-        "query": """If {natural_language_metric} today is more than {natural_language_growth_threshold} {higher_or_lower} than {natural_language_date}, make a line plot of it since then""",
+        "query": """If {natural_language_metric} yesterday is more than {natural_language_growth_threshold} {higher_or_lower} than {natural_language_date}, make a line plot of it since then""",
         "alternative_queries": [
-            """Was {natural_language_metric} today more than {natural_language_growth_threshold} {higher_or_lower} than {natural_language_date}? If so, please plot it as a line chart""",
-            """Can you make a line chart of {natural_language_metric} since {natural_language_date} if it was more than {natural_language_growth_threshold} {higher_or_lower} than {natural_language_date} today?""",
+            """Was {natural_language_metric} yesterday more than {natural_language_growth_threshold} {higher_or_lower} than {natural_language_date}? If so, please plot it as a line chart""",
+            """Can you make a line chart of {natural_language_metric} since {natural_language_date} if it was more than {natural_language_growth_threshold} {higher_or_lower} than {natural_language_date} yesterday?""",
         ],
         "logic": metric_higher_or_lower_plot_logic,
     },
     {
-        "query": """If {natural_language_metric} today is more than {natural_language_growth_threshold} {higher_or_lower} than it was on {day_of_week}, make a line plot of it since then""",
+        "query": """If {natural_language_metric} yesterday is more than {natural_language_growth_threshold} {higher_or_lower} than it was on {day_of_week}, make a line plot of it since then""",
         "alternative_queries": [
-            """Was {natural_language_metric} today more than {natural_language_growth_threshold} {higher_or_lower} than it was on {day_of_week}? If so, please plot it as a line chart""",
-            """Can you make a line chart of {natural_language_metric} since {day_of_week} if it was more than {natural_language_growth_threshold} {higher_or_lower} than it was today?""",
+            """Was {natural_language_metric} yesterday more than {natural_language_growth_threshold} {higher_or_lower} than it was on {day_of_week}? If so, please plot it as a line chart""",
+            """Can you make a line chart of {natural_language_metric} since {day_of_week} if it was more than {natural_language_growth_threshold} {higher_or_lower} than it was yesterday?""",
         ],
         "logic": metric_higher_or_lower_day_of_week_plot_logic,
     },
