@@ -91,12 +91,7 @@ def search_events(query="", time_min=None, time_max=None):
     if time_min:
         events = [event for event in events if pd.Timestamp(event["event_start"]) >= pd.Timestamp(time_min)]
     if time_max:
-        events = [
-            event
-            for event in events
-            if pd.Timestamp(event["event_start"]) + pd.Timedelta(minutes=int(event["duration"]))
-            <= pd.Timestamp(time_max)
-        ]
+        events = [event for event in events if pd.Timestamp(event["event_start"]) <= pd.Timestamp(time_max)]
     if events:
         return events[:5]
     else:
