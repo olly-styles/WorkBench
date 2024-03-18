@@ -133,9 +133,9 @@ def metric_higher_or_lower(metric, date_min, date_max=None, threshold=0):
     current_value = metric_series.iloc[-1] if date_max is None else metric_series[date_max]
     pct_change = (current_value - previous_value) / previous_value
     if pct_change < 0 and abs(pct_change) > threshold:
-        return "higher"
-    elif pct_change > 0 and pct_change > threshold:
         return "lower"
+    elif pct_change > 0 and pct_change > threshold:
+        return "higher"
     else:
         return "not changed"
 
@@ -150,7 +150,7 @@ def get_threshold_and_higher_or_lower(date_min=None, date_max=None):
 
 
 def metric_higher_or_lower_plot_logic(date_min=None, date_max=None):
-    query_info = get_threshold_and_higher_or_lower(date_min)
+    query_info = get_threshold_and_higher_or_lower(date_min, date_max)
     query_info["date_min"] = date_min if date_min is not None else query_info["date_min"]
     query_info["date_max"] = date_max if date_max is not None else query_info["date_max"]
     if query_info["higher_or_lower"] == query_info["growth_vs_threshold"]:
