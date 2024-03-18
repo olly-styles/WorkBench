@@ -29,7 +29,7 @@ AVAILABLE_LLMS = [
     "gpt-4",
     "claude-2",
     "llama2-70b",
-    "mistral-7B",
+    "mistral-8x7B",
 ]
 
 
