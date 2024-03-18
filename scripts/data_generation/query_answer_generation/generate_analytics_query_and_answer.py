@@ -35,7 +35,7 @@ def get_random_dict():
     metric = random.choice(METRICS)
     metric2 = random.choice([m for m in METRICS if m != metric])
     threshold = get_threshold(metric)
-    growth_threshold = random.choice([0.1, 0.2, 0.3, 0.4, 0.5])
+    growth_threshold = random.choice([0.05, 0.1, 0.15, 0.2, 0.25])
     natural_language_growth_threshold = f"{int(100*growth_threshold)}%"
     return {
         "date_min": date_min,
@@ -364,7 +364,7 @@ ANALYTICS_TEMPLATES = [
 for d in ANALYTICS_TEMPLATES:
     d["domains"] = ["analytics"]
 
-max_queries_per_template = 3  # Limit the number of queries per template
+max_queries_per_template = 10  # Limit the number of queries per template
 
 if __name__ == "__main__":
     generated_queries_and_answers = generate_all_queries_and_answers(ANALYTICS_TEMPLATES, max_queries_per_template)

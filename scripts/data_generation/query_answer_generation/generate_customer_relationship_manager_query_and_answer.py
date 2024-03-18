@@ -244,7 +244,7 @@ for d in CRM_TEMPLATES:
 
 # Generate a limited number of unique CRM queries and answers
 generated_crm_queries_and_answers = []
-max_queries_per_template = 3  # Limit the number of queries per template
+max_queries_per_template = 10  # Limit the number of queries per template
 
 if __name__ == "__main__":
     generated_crm_queries_and_answers = generate_all_queries_and_answers(CRM_TEMPLATES, max_queries_per_template)
