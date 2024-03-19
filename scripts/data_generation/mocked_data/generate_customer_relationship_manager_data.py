@@ -157,8 +157,8 @@ def generate_customer_notes():
         notes += f"{generate_random_date(HARDCODED_CURRENT_TIME - timedelta(days=60), HARDCODED_CURRENT_TIME).date()}: {random.choice(['Had a call', 'On holiday', 'Saw the demo', 'Met in person'])}. "
     return notes
 
-if __name__ == "__main__":
 
+if __name__ == "__main__":
     # Define product interests
     product_interests = ["Software", "Hardware", "Services", "Consulting", "Training"]
 

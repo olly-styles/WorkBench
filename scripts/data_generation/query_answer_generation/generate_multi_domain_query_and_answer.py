@@ -557,11 +557,13 @@ MULTI_DOMAIN_TEMPLATES = [
             "book a 30-minute meeting with whoever is assigned to them called 'Update on {current_customer_name}' at the first time I'm free tomorrow"
         ),
         "alternative_queries": [
-            ("I haven't spoken to {current_customer_name} in a while. Can you check if it's been over 14 days? If so, "
-             "book a 30-minute meeting with whoever is assigned to them called 'Update on {current_customer_name}' at the first time I'm free tomorrow"
+            (
+                "I haven't spoken to {current_customer_name} in a while. Can you check if it's been over 14 days? If so, "
+                "book a 30-minute meeting with whoever is assigned to them called 'Update on {current_customer_name}' at the first time I'm free tomorrow"
             ),
-            ("If we haven't spoken to {current_customer_name} in the past 2 weeks, book a half hour meeting with whoever"
-             "is assigned to them called 'Update on {current_customer_name}' at the first time I'm free tomorrow"
+            (
+                "If we haven't spoken to {current_customer_name} in the past 2 weeks, book a half hour meeting with whoever"
+                "is assigned to them called 'Update on {current_customer_name}' at the first time I'm free tomorrow"
             ),
         ],
         "logic": book_meeting_if_no_customer_contact_logic,
@@ -574,8 +576,12 @@ MULTI_DOMAIN_TEMPLATES = [
             "with the fewest overdue tasks"
         ),
         "alternative_queries": [
-            ("I need to add {new_customer_name} as a new lead in the crm. Can you assign them to the person with the fewest overdue tasks?"),
-            ("Can you find the person with the fewest overdue tasks and assign {new_customer_name} to them as a new lead in the crm?"),
+            (
+                "I need to add {new_customer_name} as a new lead in the crm. Can you assign them to the person with the fewest overdue tasks?"
+            ),
+            (
+                "Can you find the person with the fewest overdue tasks and assign {new_customer_name} to them as a new lead in the crm?"
+            ),
         ],
         "logic": add_new_customer_fewest_overdue_tasks_logic,
         "domains": ["crm", "project_management"],
@@ -817,7 +823,7 @@ MULTI_DOMAIN_TEMPLATES = [
                 "make a backlog task called 'Improve {natural_language_metric}' for {name} on the front-end board with a deadline of next Friday "
                 "otherwise send them an email titled 'Recent {natural_language_metric}' saying 'I noticed {natural_language_metric} has been stable, nice work!'"
             ),
-        ],                
+        ],
         "logic": make_task_or_send_email_if_metric_more_or_less_than_threshold_logic,
         "domains": ["analytics", "email", "project_management"],
     },
