@@ -140,12 +140,18 @@ def reply_to_latest_email_logic():
     }
 
 
+def replace_name(body, name):
+    """Replaced the first occurance of "Sam" with the name of the email recipient."""
+    return body.replace("Sam", name, 1)
+
+
 def send_email_logic():
     index = random.randint(0, len(subjects) - 1)
-    body = bodies[index]
     subject = subjects[index]
     recipient_email = random.choice(senders)
     name = recipient_email.split("@")[0].split(".")[0]
+    body = bodies[index]
+    body = replace_name(body, name)
     answer = [f"""email.send_email.func(recipient="{recipient_email}", subject="{subject}", body="{body}")"""]
     return {
         "body": body,

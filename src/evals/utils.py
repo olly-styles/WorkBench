@@ -89,6 +89,7 @@ def execute_actions_and_reset_state(actions):
         new_customer_relationship_manager_state,
     )
 
+
 def is_exact_match(predicted_actions, ground_truth_actions):
     """
     Checks if the predicted actions are an exact match to the ground truth actions.
@@ -108,15 +109,19 @@ def is_exact_match(predicted_actions, ground_truth_actions):
     """
 
     tools_with_side_effects_names = [str(function.name) for function in tools_with_side_effects]
-    predicted_actions_with_side_effects = [action for action in predicted_actions if get_function_name(action) in tools_with_side_effects_names]
+    predicted_actions_with_side_effects = [
+        action for action in predicted_actions if get_function_name(action) in tools_with_side_effects_names
+    ]
     predicted_actions_with_side_effects = sorted([action.lower() for action in predicted_actions_with_side_effects])
     ground_truth_actions = sorted([action.lower() for action in ground_truth_actions])
-    
+
     return predicted_actions_with_side_effects == ground_truth_actions
+
 
 def get_function_name(action):
     """Extracts the function name from a string"""
     return ".".join(action.split("(")[0].split(".")[0:2])
+
 
 def is_correct(predicted_actions, ground_truth_actions, error):
     """
@@ -155,6 +160,7 @@ def is_correct(predicted_actions, ground_truth_actions, error):
         ground_truth_project_management_state,
         ground_truth_customer_relationship_manager_state,
     ) = execute_actions_and_reset_state(ground_truth_actions)
+
     def convert_strs_to_lowercase(df):
         # For some fields the case matters, so we don't convert them to lowercase
         fields_not_to_convert = ["status", "list_name", "board"]
@@ -354,9 +360,7 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     print(
         f"Wrong email with side effects: {round((df['wrong_email'] & df['unwanted_side_effects']).mean() * 100, 2)}% ({(df['wrong_email'] & df['unwanted_side_effects']).sum()} out of {len(df)})"
     )
-    print(
-        f"Exact match: {round(df['exact_match'].mean() * 100, 2)}% ({df['exact_match'].sum()} out of {len(df)})"
-    )
+    print(f"Exact match: {round(df['exact_match'].mean() * 100, 2)}% ({df['exact_match'].sum()} out of {len(df)})")
     # print rows that were correct but not exact match
     if print_errors:
         print("--------------------------------------------")
@@ -384,7 +388,7 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
             print(f"Output:")
             output = get_output(row["full_response"])
             print(f"    {output}")
-    
+
     return df
 
 
