@@ -130,6 +130,7 @@ def send_email(recipient=None, subject=None, body=None):
     >>> email.send_email("jane@example.com", "Meeting Reminder", "Don't forget our meeting at 10am tomorrow.")
     "Email sent successfully."
     """
+    global EMAILS
     if not recipient or not subject or not body:
         return "Recipient, subject, or body not provided."
     if "@" not in recipient or "." not in recipient:
@@ -204,6 +205,7 @@ def forward_email(email_id=None, recipient=None):
     >>> email.forward_email("12345678", "jane@example.com")
     "Email forwarded successfully."
     """
+    global EMAILS
     if not email_id or not recipient:
         return "Email ID or recipient not provided."
     if email_id not in EMAILS["email_id"].values:
@@ -238,6 +240,7 @@ def reply_email(email_id=None, body=None):
     >>> email.reply_email("12345678", "Thank you for the update.")
     "Email replied successfully."
     """
+    global EMAILS
     if not email_id or not body:
         return "Email ID or body not provided."
     if email_id not in EMAILS["email_id"].values:
