@@ -10,8 +10,7 @@ from src.data_generation.data_generation_utils import create_email
 
 if __name__ == "__main__":
     sample_emails = pd.read_csv("data/raw/email_addresses.csv", header=None)
-    email_content_pairs = pd.read_csv("data/raw/email_content_pairs.csv")
-    email_content_pairs = dict(zip(email_content_pairs["Subject"], email_content_pairs["Content"]))
+    email_content = pd.read_csv("data/raw/email_content_pairs.csv")
 
     # Create a DataFrame for the fake emails
     num_emails = 500
@@ -27,7 +26,7 @@ if __name__ == "__main__":
     )
 
     for _ in tqdm(range(num_emails)):
-        email_id, sender, subject, sent_datetime, body = create_email(emails_df, sample_emails, email_content_pairs)
+        email_id, sender, subject, sent_datetime, body = create_email(emails_df, email_content)
         emails_df.loc[len(emails_df)] = [
             email_id,
             "inbox",

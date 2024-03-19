@@ -5,8 +5,8 @@ import random
 
 np.random.seed(42)
 HARDCODED_CURRENT_TIME = pd.to_datetime("2023-11-30T00:00:00")
-calendar_days_in_future = 31  # end date is 31 december
-calendar_days_in_past = 90  # start date is 1 september
+calendar_days_in_future = 21  # end date is 21 december
+calendar_days_in_past = 121  # start date is 1 august
 
 
 def get_first_free_slot(date, original_events_on_date, duration_minutes):
@@ -95,6 +95,9 @@ def create_calendar_event(event_names, emails, existing_events):
             start=HARDCODED_CURRENT_TIME - pd.Timedelta(calendar_days_in_past, unit="d"),
             end=HARDCODED_CURRENT_TIME + pd.Timedelta(calendar_days_in_future, unit="d"),
         )
+        # continue if the event start is on a weekend
+        if event_start.weekday() in [5, 6]:
+            continue
         duration_minutes = generate_event_duration_minutes()
         event_id = str(len(existing_events)).zfill(8)
 
@@ -110,12 +113,12 @@ def create_calendar_event(event_names, emails, existing_events):
 # generate_datetime_between option do nearest 30 minutes or not
 def generate_datetime_between(start, end, nearest_30_minutes=True):
     month = np.random.randint(start.month, end.month + 1)
-    if month in [1, 3, 5, 7, 8, 10, 12]:
-        day = np.random.randint(1, 31)
-    elif month in [4, 6, 9, 11]:
-        day = np.random.randint(1, 30)
-    else:
-        day = np.random.randint(1, 28)
+    min_day = start.day if month == start.month else 1
+    max_day = end.day if month == end.month else 31
+    # get max day accounting for months with different number of days
+    max_day = min(max_day, 30) if month in [4, 6, 9, 11] else max_day
+    max_day = min(max_day, 28) if month == 2 else max_day
+    day = np.random.randint(min_day, max_day + 1)
     hour = np.random.randint(9, 16)
     if nearest_30_minutes:
         minute = np.random.choice([0, 30])
@@ -167,11 +170,12 @@ def generate_end_time(start_time, duration):
     return end_time
 
 
-def create_email(existing_emails, sample_emails, email_content_pairs):
+def create_email(existing_emails, email_content):
     email_id = str(len(existing_emails)).zfill(8)
-    recipient = sample_emails.sample().iloc[0, 0]
-    subject = np.random.choice(list(email_content_pairs.keys()))
-    body = email_content_pairs[subject]
+    email_content_pairs = email_content.sample().iloc[0].to_dict()
+    recipient = email_content_pairs["Sender"]
+    subject = email_content_pairs["Subject"]
+    body = email_content_pairs["Content"]
     sent_datetime = generate_datetime_between(
         start=pd.to_datetime("2023-10-01T00:00:00"),
         end=HARDCODED_CURRENT_TIME,
@@ -186,7 +190,7 @@ def create_email(existing_emails, sample_emails, email_content_pairs):
             "subject"
         ].values
     ):
-        return create_email(existing_emails, sample_emails, email_content_pairs)
+        return create_email(existing_emails, email_content)
 
     return email_id, recipient, subject, sent_datetime, body
 
@@ -194,10 +198,10 @@ def create_email(existing_emails, sample_emails, email_content_pairs):
 def get_natural_language_time(str_time):
     """Transforms a datetime string into just natural language time.
 
-    For example: 09:30:00 -> 9:30am, 13:00:00 -> 1pm
+    For example: 09:30:00 -> 9:30am, 13:00:00 -> 1
     """
     dt = datetime.strptime(str_time, "%H:%M:%S")
     if dt.minute == 0:
-        return dt.strftime("%-I%p").lower()
+        return dt.strftime("%-I%p").lower()[:-2]
     else:
-        return dt.strftime("%-I:%M%p").lower()
+        return dt.strftime("%-I:%M%p").lower()[:-2]

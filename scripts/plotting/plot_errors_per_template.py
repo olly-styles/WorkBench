@@ -23,7 +23,7 @@ for tool in full_tools_list:
     ground_truth["answer"] = ground_truth["answer"].apply(ast.literal_eval)
     predictions["function_calls"] = predictions["function_calls"].apply(ast.literal_eval)
     df = calculate_metrics(ground_truth, predictions, print_errors=False)
-    precentage_correct.append(df.groupby("template")["correct"].mean().values * 100)
+    precentage_correct.append(df.groupby("base_template")["correct"].mean().values * 100)
 
 # flatten
 precentage_correct = [item for sublist in precentage_correct for item in sublist]
