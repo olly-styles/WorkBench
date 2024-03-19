@@ -10,8 +10,9 @@ sys.path.append(project_root)
 random.seed(42)
 
 from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
+
 team_member_emails = pd.read_csv("data/raw/email_addresses.csv", header=None).values.flatten()
-team_with_no_overdue_tasks = team_member_emails[:int(len(team_member_emails)/3)]
+team_with_no_overdue_tasks = team_member_emails[: int(len(team_member_emails) / 3)]
 
 
 task_templates = {
@@ -146,6 +147,7 @@ team_emails_by_board = {
 if __name__ == "__main__":
     # Adjusted task generation loop
     import tqdm
+
     for board in boards:
         for i in tqdm.tqdm(range(100)):
             task = create_task(task_templates, team_emails_by_board, lists, start_date, end_date, board)

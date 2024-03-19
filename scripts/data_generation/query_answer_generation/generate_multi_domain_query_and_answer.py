@@ -20,9 +20,18 @@ from src.evals.utils import generate_all_queries_and_answers
 from scripts.data_generation.query_answer_generation.generate_calendar_query_and_answer import (
     create_event_on_first_free_slot_tomorrow,
 )
-from scripts.data_generation.query_answer_generation.generate_analytics_query_and_answer import metric_more_or_less_plot_logic, relative_growth_two_plots_logic
-from scripts.data_generation.query_answer_generation.generate_project_management_query_and_answer import get_new_task_string, get_random_task_dict
-from scripts.data_generation.query_answer_generation.generate_customer_relationship_manager_query_and_answer import get_random_dict as get_crm_dict, CRM_DATA
+from scripts.data_generation.query_answer_generation.generate_analytics_query_and_answer import (
+    metric_more_or_less_plot_logic,
+    relative_growth_two_plots_logic,
+)
+from scripts.data_generation.query_answer_generation.generate_project_management_query_and_answer import (
+    get_new_task_string,
+    get_random_task_dict,
+)
+from scripts.data_generation.query_answer_generation.generate_customer_relationship_manager_query_and_answer import (
+    get_random_dict as get_crm_dict,
+    CRM_DATA,
+)
 
 random.seed(42)
 
@@ -64,6 +73,7 @@ def get_base_event_dict():
         "duration": duration_minutes,
     }
 
+
 def new_event_string(event_name, email, event_datetime, duration):
     return f"""calendar.create_event.func(event_name="{event_name}", participant_email="{email}", event_start="{event_datetime}", duration="{duration}")"""
 
@@ -77,7 +87,6 @@ def get_first_event_id_on_date(date):
     if events == "No events found.":
         return events
     return events[0]["event_id"]
-    
 
 
 def get_next_friday_date():
@@ -100,7 +109,8 @@ def book_meeting_if_no_customer_contact_logic():
 def find_person_with_fewest_overdue_tasks():
     overdue_tasks = project_tasks[
         (project_tasks["due_date"] < str(HARDCODED_CURRENT_TIME.date()))
-        & (project_tasks["list_name"].isin(["Completed"]) == False)]
+        & (project_tasks["list_name"].isin(["Completed"]) == False)
+    ]
     return overdue_tasks["assigned_to_email"].value_counts().idxmin()
 
 
@@ -108,14 +118,20 @@ def add_new_customer_fewest_overdue_tasks_logic():
     """Add {new_customer_name} as a new lead in the crm and assign them to the person with the fewest overdue tasks"""
     crm_dict = get_crm_dict()
     person_with_fewest_overdue_tasks = find_person_with_fewest_overdue_tasks()
-    answer = [f"""customer_relationship_manager.add_customer.func(customer_name="{crm_dict['new_customer_name']}", assigned_to_email="{person_with_fewest_overdue_tasks}")"""]
+    answer = [
+        f"""customer_relationship_manager.add_customer.func(customer_name="{crm_dict['new_customer_name']}", assigned_to_email="{person_with_fewest_overdue_tasks}")"""
+    ]
     return {**crm_dict, "answer": answer}
 
 
 def find_email_schedule_event_sender_logic():
     email_dict = get_base_email_dict()
     event_dict = get_base_event_dict()
-    answer = [new_event_string(email_dict["subject"], email_dict["sender"], event_dict["event_datetime"], event_dict["duration"])]
+    answer = [
+        new_event_string(
+            email_dict["subject"], email_dict["sender"], event_dict["event_datetime"], event_dict["duration"]
+        )
+    ]
     return {**email_dict, **event_dict, "answer": answer}
 
 
@@ -145,7 +161,14 @@ def schedule_event_if_no_emails_logic():
         (emails_data["sender/recipient"] == email_dict["sender"])
         & (emails_data["sent_datetime"] > str(HARDCODED_CURRENT_TIME - pd.Timedelta(days=days_since_email)))
     ].empty:
-        answer.append(new_event_string(f"Catch up with {email_dict['sender_name']}", email_dict["sender"], event_datetime, event_dict["duration"]))
+        answer.append(
+            new_event_string(
+                f"Catch up with {email_dict['sender_name']}",
+                email_dict["sender"],
+                event_datetime,
+                event_dict["duration"],
+            )
+        )
 
     return {**email_dict, **event_dict, "days": days_since_email, "answer": answer, "day_of_week": day_of_week}
 
@@ -155,17 +178,27 @@ def send_email_if_no_past_meetings_logic():
     email = random.choice(calendar_events["participant_email"].unique())
     name = email.split(".")[0]
     threshold_days_since_last_meeting = random.choice([2, 10])
-    past_events = calendar_events[(calendar_events["participant_email"] == email) & (calendar_events["event_start"] < str(HARDCODED_CURRENT_TIME))]
+    past_events = calendar_events[
+        (calendar_events["participant_email"] == email) & (calendar_events["event_start"] < str(HARDCODED_CURRENT_TIME))
+    ]
     if not len(past_events):
-        answer = [new_email_string(email, "Catch up soon?", f"We haven't caught up in a while - can you send some availability over next week?")]
-    last_event_date = (past_events
-        .sort_values("event_start", ascending=False)
-        .iloc[0]["event_start"]
-        .split(" ")[0]
-    )
+        answer = [
+            new_email_string(
+                email,
+                "Catch up soon?",
+                f"We haven't caught up in a while - can you send some availability over next week?",
+            )
+        ]
+    last_event_date = past_events.sort_values("event_start", ascending=False).iloc[0]["event_start"].split(" ")[0]
     threshold_date = str((HARDCODED_CURRENT_TIME - pd.Timedelta(days=threshold_days_since_last_meeting)).date())
     if last_event_date < threshold_date:
-        answer = [new_email_string(email, "Catch up soon?", f"We haven't caught up in a while - can you send some availability over next week?")]
+        answer = [
+            new_email_string(
+                email,
+                "Catch up soon?",
+                f"We haven't caught up in a while - can you send some availability over next week?",
+            )
+        ]
     else:
         answer = []
     return {
@@ -181,7 +214,10 @@ def send_email_if_no_future_meetings_logic():
     base_dict = get_base_email_dict()
 
     threshold_days_until_next_meeting = random.randint(2, 4)
-    future_events = calendar_events[(calendar_events["participant_email"] == base_dict["sender"]) & (calendar_events["event_start"] > str(HARDCODED_CURRENT_TIME))]
+    future_events = calendar_events[
+        (calendar_events["participant_email"] == base_dict["sender"])
+        & (calendar_events["event_start"] > str(HARDCODED_CURRENT_TIME))
+    ]
     answer = []
     if not len(future_events):
         answer = []
@@ -189,7 +225,13 @@ def send_email_if_no_future_meetings_logic():
         next_event_date = future_events.sort_values("event_start", ascending=True).iloc[0]["event_start"].split(" ")[0]
         threshold_date = str((HARDCODED_CURRENT_TIME + pd.Timedelta(days=threshold_days_until_next_meeting)).date())
         if next_event_date > threshold_date:
-            answer = [new_email_string(base_dict["sender"], "Catch up soon?", "We have not caught up in a while - can you send some availability over next week?")]
+            answer = [
+                new_email_string(
+                    base_dict["sender"],
+                    "Catch up soon?",
+                    "We have not caught up in a while - can you send some availability over next week?",
+                )
+            ]
         else:
             answer = []
     return {
@@ -199,6 +241,7 @@ def send_email_if_no_future_meetings_logic():
         "answer": answer,
         "name": name,
     }
+
 
 def overdue_tasks_base_dict():
     email = random.choice(project_tasks["assigned_to_email"].unique())
@@ -210,21 +253,38 @@ def overdue_tasks_base_dict():
     ]
     return {"email": email, "name": name, "overdue_tasks": overdue_tasks}
 
+
 def send_email_for_overdue_tasks_logic():
     """If {name} has any overdue tasks, send them an email titled 'Overdue tasks' saying 'You have a few overdue tasks - can you update me on them?'.
     Otherwise email them with 'Nice work keeping on top of your tasks this sprint!' titled 'Good work this sprint'"""
     base_dict = overdue_tasks_base_dict()
     if len(base_dict["overdue_tasks"]):
-        answer = [(new_email_string(base_dict["email"], "Overdue tasks", "You have a few overdue tasks - can you update me on them?"))]
+        answer = [
+            (
+                new_email_string(
+                    base_dict["email"], "Overdue tasks", "You have a few overdue tasks - can you update me on them?"
+                )
+            )
+        ]
     else:
-        answer = [(new_email_string(base_dict["email"], "Good work this sprint", "Nice work keeping on top of your tasks this sprint!"))]
+        answer = [
+            (
+                new_email_string(
+                    base_dict["email"], "Good work this sprint", "Nice work keeping on top of your tasks this sprint!"
+                )
+            )
+        ]
     return {**base_dict, "answer": answer}
 
 
 def find_person_with_most_completed_tasks(board):
-    return project_tasks[
-        (project_tasks["list_name"] == "Completed") & (project_tasks["board"] == board)
-    ]["assigned_to_email"].value_counts().idxmax()
+    return (
+        project_tasks[(project_tasks["list_name"] == "Completed") & (project_tasks["board"] == board)][
+            "assigned_to_email"
+        ]
+        .value_counts()
+        .idxmax()
+    )
 
 
 def book_meeting_with_overdue_tasks_logic():
@@ -240,17 +300,25 @@ def book_meeting_with_overdue_tasks_logic():
 
 def send_email_if_metric_more_or_less_than_threshold_logic():
     """If {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date}
-    send an email to {email} titled 'Update on {metric}' saying 'I noticed {metric} was {more_or_less} than {threshold} - can you update me?'"""
+    send an email to {email} titled 'Update on {metric}' saying 'I noticed {metric} was {more_or_less} than {threshold} - can you update me?'
+    """
     metric_dict = metric_more_or_less_plot_logic()
     email_dict = get_base_email_dict()
     if len(metric_dict["answer"]):  # If the metric was more or less than the threshold there will be a plot here
-        metric_dict["answer"] = [new_email_string(email_dict["sender"], f"Update on {metric_dict['natural_language_metric']}", f"I noticed {metric_dict['natural_language_metric']} was {metric_dict['more_or_less']} than {metric_dict['threshold']} - can you update me?")]
+        metric_dict["answer"] = [
+            new_email_string(
+                email_dict["sender"],
+                f"Update on {metric_dict['natural_language_metric']}",
+                f"I noticed {metric_dict['natural_language_metric']} was {metric_dict['more_or_less']} than {metric_dict['threshold']} - can you update me?",
+            )
+        ]
     return {**metric_dict, "sender": email_dict["sender"]}
 
 
 def schedule_event_if_metric_more_or_less_than_threshold_logic():
     """If {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date}
-    schedule a half-hour meeting called 'Discuss {natural_language_metric}' with {sender_name} at the earliest time I'm free tomorrow"""
+    schedule a half-hour meeting called 'Discuss {natural_language_metric}' with {sender_name} at the earliest time I'm free tomorrow
+    """
     metric_dict = metric_more_or_less_plot_logic()
     event_dict = get_base_event_dict()
     email_dict = get_base_email_dict()
@@ -260,6 +328,7 @@ def schedule_event_if_metric_more_or_less_than_threshold_logic():
         metric_dict["answer"] = [create_event_action]
     return {**metric_dict, **event_dict, **email_dict}
 
+
 def make_task_if_metric_more_or_less_than_threshold_logic():
     """If {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date}
     make a task 'Improve {natural_language_metric}' for {name} on the front-end board with a deadline of next Friday"""
@@ -268,20 +337,26 @@ def make_task_if_metric_more_or_less_than_threshold_logic():
     next_friday_date = get_next_friday_date()
     if len(metric_dict["answer"]):  # If the metric was more or less than the threshold there will be a plot here
         task_dict["task_name"] = f"Improve {metric_dict['natural_language_metric']}"
-        metric_dict["answer"] = [get_new_task_string(task_dict["task_name"], task_dict["email"], "Front end", next_friday_date)]
+        metric_dict["answer"] = [
+            get_new_task_string(task_dict["task_name"], task_dict["email"], "Front end", next_friday_date)
+        ]
     return {**metric_dict, **task_dict}
 
 
 def make_task_if_relative_growth_logic():
     """Can you check the % growth of {natural_language_metric} since {day_of_week}? If it grew by more than {natural_language_metric_2}
-    make a backlog task called 'Improve {natural_language_metric_2}' for {name} on the front-end board with a deadline of next Friday"""
+    make a backlog task called 'Improve {natural_language_metric_2}' for {name} on the front-end board with a deadline of next Friday
+    """
     metric_dict = relative_growth_two_plots_logic()
     task_dict = get_random_task_dict()
     next_friday_date = get_next_friday_date()
     if len(metric_dict["answer"]):  # If the metric was more or less than the threshold there will be a plot here
         task_dict["task_name"] = f"Improve {metric_dict['natural_language_metric_2']}"
-        metric_dict["answer"] = [get_new_task_string(task_dict["task_name"], task_dict["email"], "Front end", next_friday_date)]
+        metric_dict["answer"] = [
+            get_new_task_string(task_dict["task_name"], task_dict["email"], "Front end", next_friday_date)
+        ]
     return {**metric_dict, **task_dict}
+
 
 def book_event_send_email_if_overdue_tasks_logic():
     """If {name} has any overdue tasks, book a half hour meeting with them called 'Catch up on overdue tasks' at the earliest time I'm free tomorrow and
@@ -292,10 +367,18 @@ def book_event_send_email_if_overdue_tasks_logic():
     if len(base_dict["overdue_tasks"]):
         event_name = "Catch up on overdue tasks"
         create_event_action = create_event_on_first_free_slot_tomorrow(event_name, base_dict["email"], 30)
-        email_action = new_email_string(base_dict["email"], "Discuss overdue tasks", "I noticed you have a few overdue tasks - let's catch up tomorrow.")
+        email_action = new_email_string(
+            base_dict["email"],
+            "Discuss overdue tasks",
+            "I noticed you have a few overdue tasks - let's catch up tomorrow.",
+        )
         answer = [create_event_action, email_action]
     else:
-        answer = [new_email_string(base_dict["email"], "Good work this sprint", "Nice work keeping on top of your tasks this sprint!")]
+        answer = [
+            new_email_string(
+                base_dict["email"], "Good work this sprint", "Nice work keeping on top of your tasks this sprint!"
+            )
+        ]
     return {**base_dict, "answer": answer}
 
 
@@ -309,48 +392,65 @@ def make_task_person_most_completed_if_metric_vs_threshold_logic():
     if len(metric_dict["answer"]):  # If the metric was more or less than the threshold there will be a plot here
         task_dict["email"] = find_person_with_most_completed_tasks("Front end")
         task_dict["task_name"] = f"Improve {metric_dict['natural_language_metric']}"
-        metric_dict["answer"] = [get_new_task_string(task_dict["task_name"], task_dict["email"], "Front end", next_friday_date)]
+        metric_dict["answer"] = [
+            get_new_task_string(task_dict["task_name"], task_dict["email"], "Front end", next_friday_date)
+        ]
     return {**metric_dict, **task_dict}
 
 
 def make_task_if_relative_growth_logic():
     """Check the % growth of {natural_language_metric} since {day_of_week} and if was more than {natural_language_metric_2}
-    make a backlog task called 'Improve {natural_language_metric_2}' for {name} on the front-end board with a deadline of next Friday"""
+    make a backlog task called 'Improve {natural_language_metric_2}' for {name} on the front-end board with a deadline of next Friday
+    """
     metric_dict = relative_growth_two_plots_logic()
     task_dict = get_random_task_dict()
     next_friday_date = get_next_friday_date()
     if len(metric_dict["answer"]):  # If the metric grew by more than the threshold there will be a plot here
         task_dict["task_name"] = f"Improve {metric_dict['natural_language_metric_2']}"
-        metric_dict["answer"] = [get_new_task_string(task_dict["task_name"], task_dict["email"], "Front end", next_friday_date)]
+        metric_dict["answer"] = [
+            get_new_task_string(task_dict["task_name"], task_dict["email"], "Front end", next_friday_date)
+        ]
     return {**metric_dict, **task_dict}
 
 
 def make_task_or_send_email_if_metric_more_or_less_than_threshold_logic():
     """If {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date}
     make a task 'Improve {natural_language_metric}' for {name} on the front-end board with a deadline of next Friday
-    other send them an email titled '{natural_language_metric}' saying 'I noticed {natural_language_metric} has been stable, nice work!' """
+    other send them an email titled '{natural_language_metric}' saying 'I noticed {natural_language_metric} has been stable, nice work!'
+    """
     metric_dict = metric_more_or_less_plot_logic()
     task_dict = get_random_task_dict()
     next_friday_date = get_next_friday_date()
     if len(metric_dict["answer"]):  # If the metric was more or less than the threshold there will be a plot here
         task_dict["task_name"] = f"Improve {metric_dict['natural_language_metric']}"
-        metric_dict["answer"] = [get_new_task_string(task_dict["task_name"], task_dict["email"], "Front end", next_friday_date)]
+        metric_dict["answer"] = [
+            get_new_task_string(task_dict["task_name"], task_dict["email"], "Front end", next_friday_date)
+        ]
     else:
-        metric_dict["answer"] = [new_email_string(task_dict["email"], metric_dict["natural_language_metric"], f"I noticed {metric_dict['natural_language_metric']} has been stable, nice work!")]
+        metric_dict["answer"] = [
+            new_email_string(
+                task_dict["email"],
+                metric_dict["natural_language_metric"],
+                f"I noticed {metric_dict['natural_language_metric']} has been stable, nice work!",
+            )
+        ]
     return {**metric_dict, **task_dict}
 
 
 def make_task_and_book_meeting_if_relative_growth_logic():
     """Check the % growth of {natural_language_metric} since {day_of_week} and if was more than {natural_language_metric_2}
     make a backlog task called 'Improve {natural_language_metric_2}' for {name} on the front-end board with a deadline of next Friday
-    and schedule a half-hour meeting called 'Discuss {natural_language_metric}' with {name} at the first time I can do tomorrow"""
+    and schedule a half-hour meeting called 'Discuss {natural_language_metric}' with {name} at the first time I can do tomorrow
+    """
     metric_dict = relative_growth_two_plots_logic()
     task_dict = get_random_task_dict()
     event_dict = get_base_event_dict()
     next_friday_date = get_next_friday_date()
     if len(metric_dict["answer"]):  # If the metric grew by more than the threshold there will be a plot here
         task_dict["task_name"] = f"Improve {metric_dict['natural_language_metric_2']}"
-        metric_dict["answer"] = [get_new_task_string(task_dict["task_name"], task_dict["email"], "Front end", next_friday_date)]
+        metric_dict["answer"] = [
+            get_new_task_string(task_dict["task_name"], task_dict["email"], "Front end", next_friday_date)
+        ]
         event_name = f"Discuss {metric_dict['natural_language_metric']}"
         create_event_action = create_event_on_first_free_slot_tomorrow(event_name, task_dict["email"], 30)
         metric_dict["answer"].append(create_event_action)
@@ -364,44 +464,63 @@ def delete_all_customers_if_metric_more_than_threshold_logic():
     crm_dict = get_crm_dict()
     if len(metric_dict["answer"]):
         leads_to_delete = CRM_DATA[
-            (CRM_DATA["assigned_to_email"] == crm_dict["assigned_to_email"])
-            & (CRM_DATA["status"] == "Lead")
+            (CRM_DATA["assigned_to_email"] == crm_dict["assigned_to_email"]) & (CRM_DATA["status"] == "Lead")
         ]
-        answer = [f"""customer_relationship_manager.delete_customer.func(customer_id="{lead_id}")""" for lead_id in leads_to_delete["customer_id"]]
+        answer = [
+            f"""customer_relationship_manager.delete_customer.func(customer_id="{lead_id}")"""
+            for lead_id in leads_to_delete["customer_id"]
+        ]
         metric_dict["answer"] = answer
     return {**metric_dict, **crm_dict}
 
 
 def delete_all_customers_send_email_if_metric_more_than_threshold_logic():
     """If {natural_language_metric} was more than {threshold} at any time since {natural_language_date}
-    delete all {assigned_to_name}'s leads in the CRM and send them an email titled 'Reprioritising' 
-    saying ''{natural_language_metric} looks good, so we no longer need you finding new leads' 
-    If not say in the email 'We need you to improve {natural_language_metric} - TBD.' """
+    delete all {assigned_to_name}'s leads in the CRM and send them an email titled 'Reprioritising'
+    saying ''{natural_language_metric} looks good, so we no longer need you finding new leads'
+    If not say in the email 'We need you to improve {natural_language_metric} - TBD.'"""
     metric_dict = metric_more_or_less_plot_logic()
     crm_dict = get_crm_dict()
     if len(metric_dict["answer"]):
         leads_to_delete = CRM_DATA[
-            (CRM_DATA["assigned_to_email"] == crm_dict["assigned_to_email"])
-            & (CRM_DATA["status"] == "Lead")
+            (CRM_DATA["assigned_to_email"] == crm_dict["assigned_to_email"]) & (CRM_DATA["status"] == "Lead")
         ]
-        answer = [f"""customer_relationship_manager.delete_customer.func(customer_id="{lead_id}")""" for lead_id in leads_to_delete["customer_id"]]
-        answer.append(new_email_string(crm_dict["assigned_to_email"], "Reprioritising", f"{metric_dict['natural_language_metric']} looks good, so we no longer need you finding new leads"))
+        answer = [
+            f"""customer_relationship_manager.delete_customer.func(customer_id="{lead_id}")"""
+            for lead_id in leads_to_delete["customer_id"]
+        ]
+        answer.append(
+            new_email_string(
+                crm_dict["assigned_to_email"],
+                "Reprioritising",
+                f"{metric_dict['natural_language_metric']} looks good, so we no longer need you finding new leads",
+            )
+        )
         metric_dict["answer"] = answer
     else:
-        metric_dict["answer"] = [new_email_string(crm_dict["assigned_to_email"], "Reprioritising", f"We need you to improve {metric_dict['natural_language_metric']} - TBD.")]
+        metric_dict["answer"] = [
+            new_email_string(
+                crm_dict["assigned_to_email"],
+                "Reprioritising",
+                f"We need you to improve {metric_dict['natural_language_metric']} - TBD.",
+            )
+        ]
     return {**metric_dict, **crm_dict}
+
 
 def make_task_book_meeting_or_send_email_if_metric_more_or_less_than_threshold_logic():
     """If {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date}
     make a backlog task called 'Improve {natural_language_metric}' for {name} on the front-end board with a deadline of next Friday
     and book a half-hour meeting with {name} called 'Discuss {natural_language_metric}' at the earliest time I'm free tomorrow
-    otherwise send them an email titled '{natural_language_metric}' saying 'I noticed {natural_language_metric} has been stable, nice work!' """
+    otherwise send them an email titled '{natural_language_metric}' saying 'I noticed {natural_language_metric} has been stable, nice work!'
+    """
     metric_dict = make_task_or_send_email_if_metric_more_or_less_than_threshold_logic()
     if metric_dict["more_or_less"] in metric_dict["metric_vs_threshold"]:  # condition matches
         event_name = f"Discuss {metric_dict['natural_language_metric']}"
         create_event_action = create_event_on_first_free_slot_tomorrow(event_name, metric_dict["email"], 30)
         metric_dict["answer"].append(create_event_action)
     return metric_dict
+
 
 def make_task_book_meeting_or_send_email_new_leads_if_metric_more_or_less_than_threshold_logic():
     """If {natural_language_metric} was less than {threshold} at any time since {natural_language_date}
@@ -415,15 +534,22 @@ def make_task_book_meeting_or_send_email_new_leads_if_metric_more_or_less_than_t
         return {**metric_dict, **crm_dict}
     else:
         leads_to_reassign = CRM_DATA[
-            (CRM_DATA["assigned_to_email"] == crm_dict["assigned_to_email"])
-            & (CRM_DATA["status"] == "Lead")
+            (CRM_DATA["assigned_to_email"] == crm_dict["assigned_to_email"]) & (CRM_DATA["status"] == "Lead")
         ]
-        answer = [f"""customer_relationship_manager.reassign_customer.func(customer_id="{lead_id}", assigned_to_email="{metric_dict['email']}")""" for lead_id in leads_to_reassign["customer_id"]]
-        new_email = new_email_string(metric_dict["email"], "New leads for you", f"{metric_dict['natural_language_metric']} looks good, so there are new leads for you")
+        answer = [
+            f"""customer_relationship_manager.reassign_customer.func(customer_id="{lead_id}", assigned_to_email="{metric_dict['email']}")"""
+            for lead_id in leads_to_reassign["customer_id"]
+        ]
+        new_email = new_email_string(
+            metric_dict["email"],
+            "New leads for you",
+            f"{metric_dict['natural_language_metric']} looks good, so there are new leads for you",
+        )
         answer.append(new_email)
         metric_dict["answer"] = answer
         return {**metric_dict, **crm_dict}
-    
+
+
 MULTI_DOMAIN_TEMPLATES = [
     # CRM + calendar
     {
@@ -434,7 +560,6 @@ MULTI_DOMAIN_TEMPLATES = [
         "logic": book_meeting_if_no_customer_contact_logic,
         "domains": ["crm", "calendar"],
     },
-
     # CRM + project management
     {
         "query": (
@@ -444,7 +569,6 @@ MULTI_DOMAIN_TEMPLATES = [
         "logic": add_new_customer_fewest_overdue_tasks_logic,
         "domains": ["crm", "project_management"],
     },
-
     # Email + calendar
     {
         "query": """Find the email from {natural_language_email_date} about {subject} and schedule a {natural_language_duration} meeting called '{subject}' at {natural_language_time} with the sender for {natural_language_event_date}.""",
@@ -514,7 +638,7 @@ MULTI_DOMAIN_TEMPLATES = [
     {
         "query": (
             "Book a half-hour meeting with {name} called 'Catch up on overdue tasks' at the earliest time I'm free tomorrow"
-             "if they have any overdue tasks"
+            "if they have any overdue tasks"
         ),
         "logic": book_meeting_with_overdue_tasks_logic,
         "domains": ["calendar", "project_management"],
@@ -522,8 +646,8 @@ MULTI_DOMAIN_TEMPLATES = [
     # Analytics + email
     {
         "query": (
-        "If {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date} "
-        "send an email to {sender} titled 'Update on {natural_language_metric}' saying 'I noticed {metric} was {more_or_less} than {threshold} - can you update me?'"
+            "If {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date} "
+            "send an email to {sender} titled 'Update on {natural_language_metric}' saying 'I noticed {metric} was {more_or_less} than {threshold} - can you update me?'"
         ),
         "logic": send_email_if_metric_more_or_less_than_threshold_logic,
         "domains": ["analytics", "email"],
@@ -537,7 +661,6 @@ MULTI_DOMAIN_TEMPLATES = [
         "logic": schedule_event_if_metric_more_or_less_than_threshold_logic,
         "domains": ["analytics", "calendar"],
     },
-
     # Analytics + project management
     {
         "query": (
@@ -556,11 +679,10 @@ MULTI_DOMAIN_TEMPLATES = [
         "logic": make_task_person_most_completed_if_metric_vs_threshold_logic,
         "domains": ["analytics", "project_management"],
     },
-
     {
         "query": (
-        "Check the % growth of {natural_language_metric} since {day_of_week} and if was more than {natural_language_metric_2} "
-        "make a backlog task called 'Improve {natural_language_metric_2}' for {name} on the front-end board with a deadline of next Friday"
+            "Check the % growth of {natural_language_metric} since {day_of_week} and if was more than {natural_language_metric_2} "
+            "make a backlog task called 'Improve {natural_language_metric_2}' for {name} on the front-end board with a deadline of next Friday"
         ),
         "logic": make_task_if_relative_growth_logic,
         "domains": ["analytics", "project_management"],
@@ -574,7 +696,6 @@ MULTI_DOMAIN_TEMPLATES = [
         "logic": delete_all_customers_if_metric_more_than_threshold_logic,
         "domains": ["analytics", "crm"],
     },
-
     # Email + calendar + project management
     {
         "query": (
@@ -605,14 +726,14 @@ MULTI_DOMAIN_TEMPLATES = [
             "otherwise send an email titled 'Recent {natural_language_metric}' saying 'I noticed {natural_language_metric} has been stable, nice work!' "
         ),
         "logic": make_task_or_send_email_if_metric_more_or_less_than_threshold_logic,
-        "domains": ["analytics", "email", "project_management"], 
+        "domains": ["analytics", "email", "project_management"],
     },
     # Analytics + calendar + project management
     {
         "query": (
             "Check the % growth of {natural_language_metric} since {day_of_week} and if was more than {natural_language_metric_2} "
             "make a backlog task called 'Improve {natural_language_metric_2}' for {name} on the front-end board with a deadline of next Friday. "
-            "Also schedule a half-hour meeting called 'Discuss {natural_language_metric}' with them at the first time I can do tomorrow" 
+            "Also schedule a half-hour meeting called 'Discuss {natural_language_metric}' with them at the first time I can do tomorrow"
         ),
         "logic": make_task_and_book_meeting_if_relative_growth_logic,
         "domains": ["analytics", "calendar", "project_management"],
@@ -623,7 +744,7 @@ MULTI_DOMAIN_TEMPLATES = [
             "If {natural_language_metric} was more than {threshold} at any time since {natural_language_date} "
             "delete {assigned_to_first_name}'s new leads in the CRM and send them an email titled 'Reprioritising'"
             "saying '{natural_language_metric} looks good, so we no longer need you finding new leads'."
-             "If not say in the email 'We need you to improve {natural_language_metric} - TBD.'"
+            "If not say in the email 'We need you to improve {natural_language_metric} - TBD.'"
         ),
         "logic": delete_all_customers_send_email_if_metric_more_than_threshold_logic,
         "domains": ["analytics", "crm", "email"],
@@ -636,8 +757,8 @@ MULTI_DOMAIN_TEMPLATES = [
             "and schedule a half-hour meeting called 'Discuss {natural_language_metric}' for us at the first time I can do tomorrow "
             "otherwise send them an email titled '{natural_language_metric}' saying 'I noticed {natural_language_metric} has been stable, nice work!''"
         ),
-    "logic": make_task_book_meeting_or_send_email_if_metric_more_or_less_than_threshold_logic,
-    "domains": ["analytics", "calendar", "email", "project_management"],
+        "logic": make_task_book_meeting_or_send_email_if_metric_more_or_less_than_threshold_logic,
+        "domains": ["analytics", "calendar", "email", "project_management"],
     },
     # Analytics + calendar + email + project management + crm
     {
