@@ -30,7 +30,7 @@ plt.ylabel("Frequency", labelpad=20)
 
 
 plt.xticks(range(0, max(answer_lengths) + 1))
-plt.yticks(range(0, 120, 20))
+plt.yticks(range(0, 420, 50))
 # tight_layout() adjusts the plot to fit into the figure area
 plt.tight_layout()
 plt.savefig("data/plots/answer_action_lengths.png")

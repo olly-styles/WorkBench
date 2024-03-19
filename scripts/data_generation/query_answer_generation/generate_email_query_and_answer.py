@@ -259,7 +259,7 @@ for d in EMAIL_TEMPLATES:
 
 # Generate a limited number of unique multi-action queries and answers
 generated_queries_and_answers = []
-max_queries_per_template = 3  # Limit the number of queries per template
+max_queries_per_template = 10  # Limit the number of queries per template
 
 
 if __name__ == "__main__":

@@ -2,6 +2,7 @@ import pandas as pd
 from langchain.tools import tool
 
 ANALYTICS_DATA = pd.read_csv("data/processed/analytics_data.csv", dtype=str)
+ANALYTICS_DATA["user_engaged"] = ANALYTICS_DATA["user_engaged"] == "True"  # Convert to boolean
 PLOTS_DATA = pd.DataFrame(columns=["file_path"])
 METRICS = ["total_visits", "session_duration_seconds", "user_engaged"]
 METRIC_NAMES = ["total visits", "average session duration", "engaged users"]
@@ -13,6 +14,7 @@ def reset_state():
     """
     global ANALYTICS_DATA
     ANALYTICS_DATA = pd.read_csv("data/processed/analytics_data.csv", dtype=str)
+    ANALYTICS_DATA["user_engaged"] = ANALYTICS_DATA["user_engaged"] == "True"  # Convert to boolean
     global PLOTS_DATA
     PLOTS_DATA = pd.DataFrame(columns=["file_path"])
 

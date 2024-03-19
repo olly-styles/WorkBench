@@ -78,7 +78,7 @@ def test_search_for_event_no_results():
 
 def test_search_for_event_time_max():
     """
-    Tests search_events with time_min.
+    Tests search_events with time_max.
     """
     calendar.CALENDAR_EVENTS = pd.DataFrame(test_events)
     assert calendar.search_events.func(time_max="2023-10-01 11:00:00") == [
@@ -89,6 +89,30 @@ def test_search_for_event_time_max():
             "event_start": "2023-10-01 10:00:00",
             "duration": "60",
         }
+    ]
+    calendar.reset_state()
+
+
+def test_search_for_event_time_during_meeting():
+    """
+    Tests search_events with time_max where the time is during a meeting. We should still returning the meeting if it is ongoing.
+    """
+    calendar.CALENDAR_EVENTS = pd.DataFrame(test_events)
+    assert calendar.search_events.func(time_max="2023-10-02 11:30:00") == [
+        {
+            "event_id": "70838584",
+            "event_name": "Board of Directors Meeting",
+            "participant_email": "Yuki.Tanaka@company.com",
+            "event_start": "2023-10-01 10:00:00",
+            "duration": "60",
+        },
+        {
+            "event_id": "70838585",
+            "event_name": "Meeting with Sam",
+            "participant_email": "sam@company.com",
+            "event_start": "2023-10-02 11:00:00",
+            "duration": "60",
+        },
     ]
     calendar.reset_state()
 
