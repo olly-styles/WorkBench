@@ -11,6 +11,9 @@ random.seed(42)
 
 from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
 
+team_member_emails = pd.read_csv("data/raw/email_addresses.csv", header=None).values.flatten()
+team_with_no_overdue_tasks = team_member_emails[: int(len(team_member_emails) / 3)]
+
 
 task_templates = {
     "Back end": [
@@ -100,14 +103,15 @@ def create_task(task_templates, team_emails_by_board, lists, start_date, end_dat
         ).any():
             break
 
-    list_name = choose_list(lists)
     due_date = generate_random_due_date(start_date, end_date)
     task_id = str(len(project_management_data)).zfill(8)
+    list_name = choose_list(lists)
+    if due_date < HARDCODED_CURRENT_TIME.date() and assigned_to_email in team_with_no_overdue_tasks:
+        list_name = "Completed"
     return task_id, task_name, assigned_to_email, list_name, due_date, board
 
 
 # Sample data for tasks, team members, and lists
-team_member_emails = pd.read_csv("data/raw/email_addresses.csv", header=None).values.flatten()
 
 num_teams = 4
 backend_team_emails = team_member_emails[: len(team_member_emails) // num_teams]
@@ -129,8 +133,8 @@ project_management_data = pd.DataFrame(
 )
 
 # Simulate task generation
-start_date = HARDCODED_CURRENT_TIME.date() - timedelta(days=2)  # Some tasks are overdue
-end_date = HARDCODED_CURRENT_TIME.date() + timedelta(days=14)  # All tasks are due within 14 days
+start_date = HARDCODED_CURRENT_TIME.date() - timedelta(days=3)  # Some tasks are overdue
+end_date = HARDCODED_CURRENT_TIME.date() + timedelta(days=13)  # All tasks are due within 14 days
 
 # Dictionary of team member emails by board
 team_emails_by_board = {
@@ -139,10 +143,13 @@ team_emails_by_board = {
     "Design": design_team_emails,
 }
 
+
 if __name__ == "__main__":
     # Adjusted task generation loop
+    import tqdm
+
     for board in boards:
-        for i in range(100):
+        for i in tqdm.tqdm(range(100)):
             task = create_task(task_templates, team_emails_by_board, lists, start_date, end_date, board)
             project_management_data.loc[len(project_management_data)] = task
 
