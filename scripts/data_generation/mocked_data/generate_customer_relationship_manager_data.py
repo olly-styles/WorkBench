@@ -157,60 +157,61 @@ def generate_customer_notes():
         notes += f"{generate_random_date(HARDCODED_CURRENT_TIME - timedelta(days=60), HARDCODED_CURRENT_TIME).date()}: {random.choice(['Had a call', 'On holiday', 'Saw the demo', 'Met in person'])}. "
     return notes
 
+if __name__ == "__main__":
 
-# Define product interests
-product_interests = ["Software", "Hardware", "Services", "Consulting", "Training"]
+    # Define product interests
+    product_interests = ["Software", "Hardware", "Services", "Consulting", "Training"]
 
-# Define crm stages
-statuses = ["Qualified", "Won", "Lost", "Lead", "Proposal"]
+    # Define crm stages
+    statuses = ["Qualified", "Won", "Lost", "Lead", "Proposal"]
 
-# Initialize an empty DataFrame
-crm_data = pd.DataFrame(
-    columns=[
-        "customer_id",
-        "assigned_to_email",
-        "customer_name",
-        "customer_email",
-        "customer_phone",
-        "last_contact_date",
-        "product_interest",
-        "status",
-        "follow_up_by",
-        "notes",
-    ]
-)
+    # Initialize an empty DataFrame
+    crm_data = pd.DataFrame(
+        columns=[
+            "customer_id",
+            "assigned_to_email",
+            "customer_name",
+            "customer_email",
+            "customer_phone",
+            "last_contact_date",
+            "product_interest",
+            "status",
+            "follow_up_by",
+            "notes",
+        ]
+    )
 
-# Generate random data
-num_customers = 200
+    # Generate random data
+    num_customers = 200
 
-for i in range(num_customers):
-    customer_name = generate_random_name(first_names, last_names)
-    while customer_name in crm_data["customer_name"].values:
+    for i in range(num_customers):
         customer_name = generate_random_name(first_names, last_names)
-    customer_id = str(i).zfill(8)
-    customer_email = generate_random_email(customer_name)
-    customer_phone = generate_random_phone() if np.random.choice([True, False]) else None
-    last_contact_date = generate_random_date(HARDCODED_CURRENT_TIME - timedelta(days=60), HARDCODED_CURRENT_TIME)
-    follow_up_by = last_contact_date + timedelta(days=random.randint(7, 30))
-    notes = generate_customer_notes()
-    product_interest = random.choice(product_interests)
-    status = random.choice(statuses)
-    assigned_to_email = random.choice(sales_team_emails)
+        while customer_name in crm_data["customer_name"].values:
+            customer_name = generate_random_name(first_names, last_names)
+        customer_id = str(i).zfill(8)
+        customer_email = generate_random_email(customer_name)
+        customer_phone = generate_random_phone() if np.random.choice([True, False]) else None
+        last_contact_date = generate_random_date(HARDCODED_CURRENT_TIME - timedelta(days=60), HARDCODED_CURRENT_TIME)
+        follow_up_by = last_contact_date + timedelta(days=random.randint(7, 30))
+        notes = generate_customer_notes()
+        product_interest = random.choice(product_interests)
+        status = random.choice(statuses)
+        assigned_to_email = random.choice(sales_team_emails)
 
-    crm_data.loc[len(crm_data)] = [
-        customer_id,
-        assigned_to_email,
-        customer_name,
-        customer_email,
-        customer_phone,
-        last_contact_date,
-        product_interest,
-        status,
-        follow_up_by,
-        notes,
-    ]
+        crm_data.loc[len(crm_data)] = [
+            customer_id,
+            assigned_to_email,
+            customer_name,
+            customer_email,
+            customer_phone,
+            last_contact_date,
+            product_interest,
+            status,
+            follow_up_by,
+            notes,
+        ]
 
-crm_data = crm_data.sort_values(by="last_contact_date", ascending=False)
-crm_data.to_csv("data/processed/customer_relationship_manager_data.csv", index=False)
+    crm_data = crm_data.sort_values(by="last_contact_date", ascending=False)
+    crm_data.to_csv("data/processed/customer_relationship_manager_data.csv", index=False)
 
-print("Mocked CRM data generated successfully.")
+    print("Mocked CRM data generated successfully.")

@@ -212,7 +212,7 @@ def send_email_if_no_past_meetings_logic():
 def send_email_if_no_future_meetings_logic():
     """If I don't have any meetings scheduled with {name} in the next {days} days, send them an email titled 'Catch up soon?' saying 'We have not caught up in a while - can you send some availability over next week?'""",
     base_dict = get_base_email_dict()
-
+    next_event_date = None
     threshold_days_until_next_meeting = random.randint(2, 4)
     future_events = calendar_events[
         (calendar_events["participant_email"] == base_dict["sender"])
@@ -239,7 +239,6 @@ def send_email_if_no_future_meetings_logic():
         "days": threshold_days_until_next_meeting,
         "next_event_date": next_event_date,
         "answer": answer,
-        "name": name,
     }
 
 
@@ -557,6 +556,14 @@ MULTI_DOMAIN_TEMPLATES = [
             "If we haven't spoke to {current_customer_name} in the past fortnight "
             "book a 30-minute meeting with whoever is assigned to them called 'Update on {current_customer_name}' at the first time I'm free tomorrow"
         ),
+        "alternative_queries": [
+            ("I haven't spoken to {current_customer_name} in a while. Can you check if it's been over 14 days? If so, "
+             "book a 30-minute meeting with whoever is assigned to them called 'Update on {current_customer_name}' at the first time I'm free tomorrow"
+            ),
+            ("If we haven't spoken to {current_customer_name} in the past 2 weeks, book a half hour meeting with whoever"
+             "is assigned to them called 'Update on {current_customer_name}' at the first time I'm free tomorrow"
+            ),
+        ],
         "logic": book_meeting_if_no_customer_contact_logic,
         "domains": ["crm", "calendar"],
     },
@@ -566,6 +573,10 @@ MULTI_DOMAIN_TEMPLATES = [
             " Add {new_customer_name} as a new lead in the crm and assign them to the person "
             "with the fewest overdue tasks"
         ),
+        "alternative_queries": [
+            ("I need to add {new_customer_name} as a new lead in the crm. Can you assign them to the person with the fewest overdue tasks?"),
+            ("Can you find the person with the fewest overdue tasks and assign {new_customer_name} to them as a new lead in the crm?"),
+        ],
         "logic": add_new_customer_fewest_overdue_tasks_logic,
         "domains": ["crm", "project_management"],
     },
@@ -573,8 +584,8 @@ MULTI_DOMAIN_TEMPLATES = [
     {
         "query": """Find the email from {natural_language_email_date} about {subject} and schedule a {natural_language_duration} meeting called '{subject}' at {natural_language_time} with the sender for {natural_language_event_date}.""",
         "alternative_queries": [
-            "I need to schedule a meeting called '{subject}' at {natural_language_time} for {natural_language_meeting_date}. It's with the sender of the email from {natural_language_email_date} about '{subject}'. Can you do that?",
-            "Can you find the email from {natural_language_email_date} about '{subject}' and schedule a {natural_language_duration} meeting called '{subject}' at {natural_language_time} with the sender for {natural_language_meeting_date}?",
+            "I need to schedule a meeting called '{subject}' at {natural_language_time} for {natural_language_event_date}. It's with the sender of the email from {natural_language_email_date} about '{subject}'. Can you do that?",
+            "Can you find the email from {natural_language_email_date} about '{subject}' and schedule a {natural_language_duration} meeting called '{subject}' at {natural_language_time} with the sender for {natural_language_event_date}?",
         ],
         "logic": find_email_schedule_event_sender_logic,
         "domains": ["email", "calendar"],
@@ -640,6 +651,16 @@ MULTI_DOMAIN_TEMPLATES = [
             "Book a half-hour meeting with {name} called 'Catch up on overdue tasks' at the earliest time I'm free tomorrow"
             "if they have any overdue tasks"
         ),
+        "alternative_queries": [
+            (
+                "can you check if {name} has any overdue tasks? If so, book a 30 minute meeting with them called 'Catch up on overdue tasks' at the earliest time "
+                "I'm free tomorrow"
+            ),
+            (
+                "I think {name} might have some overdue tasks. Can you check and if so, book a half hour meeting with them called 'Catch up on overdue tasks' at the "
+                "earliest time I'm free tomorrow"
+            ),
+        ],
         "logic": book_meeting_with_overdue_tasks_logic,
         "domains": ["calendar", "project_management"],
     },
@@ -649,6 +670,16 @@ MULTI_DOMAIN_TEMPLATES = [
             "If {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date} "
             "send an email to {sender} titled 'Update on {natural_language_metric}' saying 'I noticed {metric} was {more_or_less} than {threshold} - can you update me?'"
         ),
+        "alternative_queries": [
+            (
+                "can you check if {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date}? If so, "
+                "send an email to {sender} titled 'Update on {natural_language_metric}' saying 'I noticed {metric} was {more_or_less} than {threshold} - can you update me?'"
+            ),
+            (
+                "I think {natural_language_metric} might have been {more_or_less} than {threshold} at any time since {natural_language_date}. Can you check and if so, "
+                "send an email to {sender} titled 'Update on {natural_language_metric}' saying 'I noticed {metric} was {more_or_less} than {threshold} - can you update me?'"
+            ),
+        ],
         "logic": send_email_if_metric_more_or_less_than_threshold_logic,
         "domains": ["analytics", "email"],
     },
@@ -658,6 +689,16 @@ MULTI_DOMAIN_TEMPLATES = [
             "If {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date} "
             "schedule a half-hour meeting called 'Discuss {natural_language_metric}' with {sender_name} at the earliest time I'm free tomorrow"
         ),
+        "alternative_queries": [
+            (
+                "can you check if {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date}? If so, "
+                "schedule a 30 minute meeting called 'Discuss {natural_language_metric}' with {sender_name} at the earliest time I'm free tomorrow"
+            ),
+            (
+                "I think {natural_language_metric} might have been {more_or_less} than {threshold} at any time since {natural_language_date}. Can you check and if so, "
+                "schedule a half-hour meeting called 'Discuss {natural_language_metric}' with {sender_name} at the earliest time I'm free tomorrow"
+            ),
+        ],
         "logic": schedule_event_if_metric_more_or_less_than_threshold_logic,
         "domains": ["analytics", "calendar"],
     },
@@ -667,6 +708,16 @@ MULTI_DOMAIN_TEMPLATES = [
             "If {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date} "
             "make a backlog task called 'Improve {natural_language_metric}' for {name} on the front-end board with a deadline of next Friday"
         ),
+        "alternative_queries": [
+            (
+                "can you check if {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date}? If so, "
+                "make a backlog task called 'Improve {natural_language_metric}' for {name} on the front-end board with a deadline of next Friday"
+            ),
+            (
+                "Was {natural_language_metric} {more_or_less} than {threshold} at any time since {natural_language_date}? If so, "
+                "make a backlog task called 'Improve {natural_language_metric}' on the front-end board and assign it to for {name} with next Friday as the deadline"
+            ),
+        ],
         "logic": make_task_if_metric_more_or_less_than_threshold_logic,
         "domains": ["analytics", "project_management"],
     },
@@ -676,14 +727,34 @@ MULTI_DOMAIN_TEMPLATES = [
             "make a backlog task called 'Improve {natural_language_metric}' on the front-end board with a deadline of next Friday"
             " for the person with the most completed front end tasks"
         ),
+        "alternative_queries": [
+            (
+                "can you check if {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date}? If so, "
+                "make a backlog task called 'Improve {natural_language_metric}' due next Friday on the front-end board and assign it to the person with the most completed front end tasks"
+            ),
+            (
+                "Was {natural_language_metric} {more_or_less} than {threshold} at any time since {natural_language_date}? If so, "
+                "make a backlog task called 'Improve {natural_language_metric}' on the front-end board and assign it to the person with the most completed front end tasks"
+            ),
+        ],
         "logic": make_task_person_most_completed_if_metric_vs_threshold_logic,
         "domains": ["analytics", "project_management"],
     },
     {
         "query": (
-            "Check the % growth of {natural_language_metric} since {day_of_week} and if was more than {natural_language_metric_2} "
+            "Check the percent growth of {natural_language_metric} since {day_of_week} and if was more than {natural_language_metric_2} "
             "make a backlog task called 'Improve {natural_language_metric_2}' for {name} on the front-end board with a deadline of next Friday"
         ),
+        "alternative_queries": [
+            (
+                "can you check the percent growth of {natural_language_metric} since {day_of_week}? If it grew by more than {natural_language_metric_2} "
+                "make a task called 'Improve {natural_language_metric_2}' on the front-end backlog for {name} that's due next Friday"
+            ),
+            (
+                "I need to check the percent growth of {natural_language_metric} since {day_of_week}. If it grew by more than {natural_language_metric_2} "
+                "make a backlog task called 'Improve {natural_language_metric_2}' for {name} on the front-end board with a deadline of next Friday"
+            ),
+        ],
         "logic": make_task_if_relative_growth_logic,
         "domains": ["analytics", "project_management"],
     },
@@ -693,6 +764,16 @@ MULTI_DOMAIN_TEMPLATES = [
             "If {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date} "
             "delete all {assigned_to_first_name}'s leads in the CRM"
         ),
+        "alternative_queries": [
+            (
+                "can you check if {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date}? If so, "
+                "delete all the leads assigned to {assigned_to_first_name} in the CRM"
+            ),
+            (
+                "I think {natural_language_metric} might have been {more_or_less} than {threshold} at any time since {natural_language_date}. Can you check and if so, "
+                "delete all {assigned_to_first_name}'s leads in the CRM"
+            ),
+        ],
         "logic": delete_all_customers_if_metric_more_than_threshold_logic,
         "domains": ["analytics", "crm"],
     },
@@ -723,18 +804,42 @@ MULTI_DOMAIN_TEMPLATES = [
         "query": (
             "If {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date} "
             "make a task 'Improve {natural_language_metric}' for {name} on the front-end board with a deadline of next Friday "
-            "otherwise send an email titled 'Recent {natural_language_metric}' saying 'I noticed {natural_language_metric} has been stable, nice work!' "
+            "otherwise send them an email titled 'Recent {natural_language_metric}' saying 'I noticed {natural_language_metric} has been stable, nice work!' "
         ),
+        "alternative_queries": [
+            (
+                "can you check if {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date}? If so, "
+                "make a task 'Improve {natural_language_metric}' for {name} on the front-end board with a deadline of next Friday "
+                "otherwise send them an email titled 'Recent {natural_language_metric}' saying 'I noticed {natural_language_metric} has been stable, nice work!'"
+            ),
+            (
+                "Was {natural_language_metric} {more_or_less} than {threshold} at any time since {natural_language_date}? If so, "
+                "make a backlog task called 'Improve {natural_language_metric}' for {name} on the front-end board with a deadline of next Friday "
+                "otherwise send them an email titled 'Recent {natural_language_metric}' saying 'I noticed {natural_language_metric} has been stable, nice work!'"
+            ),
+        ],                
         "logic": make_task_or_send_email_if_metric_more_or_less_than_threshold_logic,
         "domains": ["analytics", "email", "project_management"],
     },
     # Analytics + calendar + project management
     {
         "query": (
-            "Check the % growth of {natural_language_metric} since {day_of_week} and if was more than {natural_language_metric_2} "
+            "Check the percent growth of {natural_language_metric} since {day_of_week} and if was more than {natural_language_metric_2} "
             "make a backlog task called 'Improve {natural_language_metric_2}' for {name} on the front-end board with a deadline of next Friday. "
             "Also schedule a half-hour meeting called 'Discuss {natural_language_metric}' with them at the first time I can do tomorrow"
         ),
+        "alternative_queries": [
+            (
+                "can you check the percent growth of {natural_language_metric} since {day_of_week}? If it grew by more than {natural_language_metric_2} "
+                "make a backlog task called 'Improve {natural_language_metric_2}' for {name} on the front-end board with a deadline of next Friday "
+                "and schedule a half-hour meeting called 'Discuss {natural_language_metric}' for us at the first time I can do tomorrow"
+            ),
+            (
+                "please check the percent growth of {natural_language_metric} since {day_of_week}. If it grew by more than {natural_language_metric_2} "
+                "make a front-end backlog task called 'Improve {natural_language_metric_2}' for {name} that's due next Friday "
+                "and schedule a 30 minute meeting called 'Discuss {natural_language_metric}' for us at the earliest slot i'm free tomorrow"
+            ),
+        ],
         "logic": make_task_and_book_meeting_if_relative_growth_logic,
         "domains": ["analytics", "calendar", "project_management"],
     },
@@ -746,6 +851,18 @@ MULTI_DOMAIN_TEMPLATES = [
             "saying '{natural_language_metric} looks good, so we no longer need you finding new leads'."
             "If not say in the email 'We need you to improve {natural_language_metric} - TBD.'"
         ),
+        "alternative_queries": [
+            (
+                "can you check if {natural_language_metric} was more than {threshold} at any time since {natural_language_date}? If so, "
+                "delete all the leads assigned to {assigned_to_first_name}'s in the CRM and send them an email titled 'Reprioritising' saying '{natural_language_metric} looks good, "
+                "so we no longer need you finding new leads'. If not say 'We need you to improve {natural_language_metric} - TBD.'"
+            ),
+            (
+                "Was {natural_language_metric} more than {threshold} at any time since {natural_language_date}? If so, "
+                "delete all {assigned_to_first_name}'s leads in the CRM and then send them an email titled 'Reprioritising' saying '{natural_language_metric} looks good, "
+                "so we no longer need you finding new leads'. If not say in the email 'We need you to improve {natural_language_metric} - TBD.'"
+            ),
+        ],
         "logic": delete_all_customers_send_email_if_metric_more_than_threshold_logic,
         "domains": ["analytics", "crm", "email"],
     },
@@ -757,6 +874,20 @@ MULTI_DOMAIN_TEMPLATES = [
             "and schedule a half-hour meeting called 'Discuss {natural_language_metric}' for us at the first time I can do tomorrow "
             "otherwise send them an email titled '{natural_language_metric}' saying 'I noticed {natural_language_metric} has been stable, nice work!''"
         ),
+        "alternative_queries": [
+            (
+                "can you check if {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date}? If so, "
+                "make a task 'Improve {natural_language_metric}' for {name} on the front-end board that's due next Friday "
+                "and schedule a half-hour meeting called 'Discuss {natural_language_metric}' for us at the first time I can do tomorrow "
+                "otherwise send them an email titled '{natural_language_metric}' saying 'I noticed {natural_language_metric} has been stable, nice work!''"
+            ),
+            (
+                "Was {natural_language_metric} {more_or_less} than {threshold} at any time since {natural_language_date}? If so, "
+                "add a task to the backlog called 'Improve {natural_language_metric}' for {name} on the front-end board with a deadline of next Friday "
+                "and schedule a half hour meeting called 'Discuss {natural_language_metric}' for us at the earliest time I'm free tomorrow "
+                "otherwise send them an email titled '{natural_language_metric}' saying 'I noticed {natural_language_metric} has been stable, nice work!''"
+            ),
+        ],
         "logic": make_task_book_meeting_or_send_email_if_metric_more_or_less_than_threshold_logic,
         "domains": ["analytics", "calendar", "email", "project_management"],
     },
@@ -769,6 +900,22 @@ MULTI_DOMAIN_TEMPLATES = [
             "otherwise send them an email titled 'New leads for you' saying '{natural_language_metric} looks good, so there are new leads for you' "
             "and then give them all {assigned_to_first_name}'s leads in the CRM"
         ),
+        "alternative_queries": [
+            (
+                "can you check if {natural_language_metric} was less than {threshold} at any time since {natural_language_date}? If so, "
+                "make a task for {name} on the backlog called 'Improve {natural_language_metric}' on the front-end board that's due next Friday "
+                "and book a half-hour meeting for us called 'Discuss {natural_language_metric}' at the earliest time I can do tomorrow. "
+                "otherwise send them an email titled 'New leads for you' saying '{natural_language_metric} looks good, so there are new leads for you' "
+                "and then give them all {assigned_to_first_name}'s leads in the CRM"
+            ),
+            (
+                "Was {natural_language_metric} less than {threshold} at any time since {natural_language_date}? If so, "
+                "make a backlog task called 'Improve {natural_language_metric}' for {name} on the front-end board with a deadline of next Friday "
+                "and book a 30 minute meeting for us called 'Discuss {natural_language_metric}' at the earliest time I'm free tomorrow. "
+                "otherwise send them an email and title it 'New leads for you' saying '{natural_language_metric} looks good, so there are new leads for you' "
+                "and then give them all {assigned_to_first_name}'s leads in the CRM"
+            ),
+        ],
         "logic": make_task_book_meeting_or_send_email_new_leads_if_metric_more_or_less_than_threshold_logic,
         "domains": ["analytics", "calendar", "email", "project_management", "crm"],
     },
