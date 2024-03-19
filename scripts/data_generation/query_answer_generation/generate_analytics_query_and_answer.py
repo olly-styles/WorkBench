@@ -35,7 +35,7 @@ def get_random_dict():
     metric = random.choice(METRICS)
     metric2 = random.choice([m for m in METRICS if m != metric])
     threshold = get_threshold(metric)
-    growth_threshold = random.choice([0.1, 0.2, 0.3, 0.4, 0.5])
+    growth_threshold = random.choice([0.05, 0.1, 0.15, 0.2, 0.25])
     natural_language_growth_threshold = f"{int(100*growth_threshold)}%"
     return {
         "date_min": date_min,
@@ -133,9 +133,9 @@ def metric_higher_or_lower(metric, date_min, date_max=None, threshold=0):
     current_value = metric_series.iloc[-1] if date_max is None else metric_series[date_max]
     pct_change = (current_value - previous_value) / previous_value
     if pct_change < 0 and abs(pct_change) > threshold:
-        return "higher"
-    elif pct_change > 0 and pct_change > threshold:
         return "lower"
+    elif pct_change > 0 and pct_change > threshold:
+        return "higher"
     else:
         return "not changed"
 
@@ -150,7 +150,7 @@ def get_threshold_and_higher_or_lower(date_min=None, date_max=None):
 
 
 def metric_higher_or_lower_plot_logic(date_min=None, date_max=None):
-    query_info = get_threshold_and_higher_or_lower(date_min)
+    query_info = get_threshold_and_higher_or_lower(date_min, date_max)
     query_info["date_min"] = date_min if date_min is not None else query_info["date_min"]
     query_info["date_max"] = date_max if date_max is not None else query_info["date_max"]
     if query_info["higher_or_lower"] == query_info["growth_vs_threshold"]:
@@ -313,18 +313,18 @@ ANALYTICS_TEMPLATES = [
         "logic": metric_more_or_less_past_weeks_plot_logic,
     },
     {
-        "query": """If {natural_language_metric} today is more than {natural_language_growth_threshold} {higher_or_lower} than {natural_language_date}, make a line plot of it since then""",
+        "query": """If {natural_language_metric} is more than {natural_language_growth_threshold} {higher_or_lower} than {natural_language_date}, make a line plot of it since then""",
         "alternative_queries": [
-            """Was {natural_language_metric} today more than {natural_language_growth_threshold} {higher_or_lower} than {natural_language_date}? If so, please plot it as a line chart""",
-            """Can you make a line chart of {natural_language_metric} since {natural_language_date} if it was more than {natural_language_growth_threshold} {higher_or_lower} than {natural_language_date} today?""",
+            """Is {natural_language_metric} more than {natural_language_growth_threshold} {higher_or_lower} than {natural_language_date}? If so, please plot it as a line chart""",
+            """Can you make a line chart of {natural_language_metric} since {natural_language_date} if it was more than {natural_language_growth_threshold} {higher_or_lower} than {natural_language_date}?""",
         ],
         "logic": metric_higher_or_lower_plot_logic,
     },
     {
-        "query": """If {natural_language_metric} today is more than {natural_language_growth_threshold} {higher_or_lower} than it was on {day_of_week}, make a line plot of it since then""",
+        "query": """If {natural_language_metric} is more than {natural_language_growth_threshold} {higher_or_lower} than it was on {day_of_week}, make a line plot of it since then""",
         "alternative_queries": [
-            """Was {natural_language_metric} today more than {natural_language_growth_threshold} {higher_or_lower} than it was on {day_of_week}? If so, please plot it as a line chart""",
-            """Can you make a line chart of {natural_language_metric} since {day_of_week} if it was more than {natural_language_growth_threshold} {higher_or_lower} than it was today?""",
+            """Is {natural_language_metric} more than {natural_language_growth_threshold} {higher_or_lower} than it was on {day_of_week}? If so, please plot it as a line chart since then""",
+            """Can you make a line chart of {natural_language_metric} since {day_of_week} if it is more than {natural_language_growth_threshold} {higher_or_lower} than {day_of_week}?""",
         ],
         "logic": metric_higher_or_lower_day_of_week_plot_logic,
     },
@@ -364,7 +364,7 @@ ANALYTICS_TEMPLATES = [
 for d in ANALYTICS_TEMPLATES:
     d["domains"] = ["analytics"]
 
-max_queries_per_template = 3  # Limit the number of queries per template
+max_queries_per_template = 10  # Limit the number of queries per template
 
 if __name__ == "__main__":
     generated_queries_and_answers = generate_all_queries_and_answers(ANALYTICS_TEMPLATES, max_queries_per_template)

@@ -29,7 +29,7 @@ AVAILABLE_LLMS = [
     "gpt-4",
     "claude-2",
     "llama2-70b",
-    "mistral-7B",
+    "mistral-8x7B",
 ]
 
 
@@ -455,8 +455,8 @@ def generate_results(queries_path, model_name, tool_selection="all"):
             tools=tools,
             verbose=True,
             return_intermediate_steps=True,
-            max_iterations=15,
-            max_execution_time=60,
+            max_iterations=20,
+            max_execution_time=120,
         )
         agent.agent.llm_chain.prompt.messages[0].prompt.template = (
             f"Today's date is {HARDCODED_CURRENT_TIME.strftime('%A')}, {HARDCODED_CURRENT_TIME.date()} and the current time is {HARDCODED_CURRENT_TIME.time()}. Remember the current date and time when answering queries. Meetings must not start before 9am or end after 6pm."
