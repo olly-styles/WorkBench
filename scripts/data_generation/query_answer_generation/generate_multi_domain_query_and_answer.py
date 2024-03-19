@@ -119,7 +119,7 @@ def add_new_customer_fewest_overdue_tasks_logic():
     crm_dict = get_crm_dict()
     person_with_fewest_overdue_tasks = find_person_with_fewest_overdue_tasks()
     answer = [
-        f"""customer_relationship_manager.add_customer.func(customer_name="{crm_dict['new_customer_name']}", assigned_to_email="{person_with_fewest_overdue_tasks}")"""
+        f"""customer_relationship_manager.add_customer.func(customer_name="{crm_dict['new_customer_name']}", assigned_to_email="{person_with_fewest_overdue_tasks}", status="Lead")"""
     ]
     return {**crm_dict, "answer": answer}
 
@@ -220,7 +220,13 @@ def send_email_if_no_future_meetings_logic():
     ]
     answer = []
     if not len(future_events):
-        answer = []
+        answer = [
+            new_email_string(
+                base_dict["sender"],
+                "Catch up soon?",
+                "We have not caught up in a while - can you send some availability over next week?",
+            )
+        ]
     else:
         next_event_date = future_events.sort_values("event_start", ascending=True).iloc[0]["event_start"].split(" ")[0]
         threshold_date = str((HARDCODED_CURRENT_TIME + pd.Timedelta(days=threshold_days_until_next_meeting)).date())
@@ -590,7 +596,7 @@ MULTI_DOMAIN_TEMPLATES = [
     {
         "query": """Find the email from {natural_language_email_date} about {subject} and schedule a {natural_language_duration} meeting called '{subject}' at {natural_language_time} with the sender for {natural_language_event_date}.""",
         "alternative_queries": [
-            "I need to schedule a meeting called '{subject}' at {natural_language_time} for {natural_language_event_date}. It's with the sender of the email from {natural_language_email_date} about '{subject}'. Can you do that?",
+            "I need to schedule a {natural_language_duration} meeting called '{subject}' at {natural_language_time} for {natural_language_event_date}. It's with the sender of the email from {natural_language_email_date} about '{subject}'. Can you do that?",
             "Can you find the email from {natural_language_email_date} about '{subject}' and schedule a {natural_language_duration} meeting called '{subject}' at {natural_language_time} with the sender for {natural_language_event_date}?",
         ],
         "logic": find_email_schedule_event_sender_logic,
