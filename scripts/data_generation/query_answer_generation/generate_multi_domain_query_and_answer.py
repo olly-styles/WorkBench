@@ -936,7 +936,7 @@ MULTI_DOMAIN_TEMPLATES = [
     },
 ]
 
-max_queries_per_template = 3
+max_queries_per_template = 10
 if __name__ == "__main__":
     generated_queries_and_answers = generate_all_queries_and_answers(MULTI_DOMAIN_TEMPLATES, max_queries_per_template)
     df = pd.DataFrame(generated_queries_and_answers)
