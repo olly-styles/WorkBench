@@ -748,8 +748,8 @@ MULTI_DOMAIN_TEMPLATES = [
                 "make a backlog task called 'Improve {natural_language_metric}' due next Friday on the front-end board and assign it to the person with the most completed front end tasks"
             ),
             (
-                "Was {natural_language_metric} {more_or_less} than {threshold} at any time since {natural_language_date}? If so, "
-                "make a backlog task called 'Improve {natural_language_metric}' on the front-end board and assign it to the person with the most completed front end tasks"
+                "Was {natural_language_metric} {more_or_less} than {threshold} at any time since {natural_language_date}? We need to fix this by next Friday if so "
+                "- make a backlog task called 'Improve {natural_language_metric}' on the front-end board and assign it to the person with the most completed front end tasks"
             ),
         ],
         "logic": make_task_person_most_completed_if_metric_vs_threshold_logic,
