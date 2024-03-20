@@ -466,7 +466,7 @@ def make_task_and_book_meeting_if_relative_growth_logic():
 
 
 def delete_all_customers_if_metric_more_than_threshold_logic():
-    """If {natural_language_metric} was more than {threshold} at any time since {natural_language_date}
+    """If {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date}
     delete all {assigned_to_first_name}'s leads in the CRM"""
     metric_dict = metric_more_or_less_plot_logic()
     crm_dict = get_crm_dict()
