@@ -89,6 +89,27 @@ def execute_actions_and_reset_state(actions):
         new_customer_relationship_manager_state,
     )
 
+def end_date_minor_error(ground_truth, prediction):
+    """Function to check if the end date is off by one day in the prediction
+    
+    Parameters
+    ----------
+    ground_truth : list
+        List of ground truth actions as strings.
+    prediction : list
+        List of predicted actions as strings.
+
+    Returns
+    -------
+    bool
+        True if the end date is off by one day in the prediction.
+    """
+    matches = 0
+    for func in ground_truth:
+        if "2023-11-29" in func:
+            if func.replace("2023-11-29", "2023-11-30") in prediction:
+                matches+=1
+    return matches==len(ground_truth)
 
 def is_exact_match(predicted_actions, ground_truth_actions):
     """
@@ -315,8 +336,10 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     df["no_actions"] = [not len(pred) for pred in df["prediction"]]
     # wrong email if @example is in the prediction and @atlas is not in the prediction. Prediction is a list so needs to be converted to a string
     df["wrong_email"] = [("@example" in str(pred)) and ("@atlas" not in str(pred)) for pred in df["prediction"]]
-    # as above but it also needs to not be correct
     df["wrong_email"] = df["wrong_email"] & ~df["correct"]
+    # Puts in end of November to plot instead of 29th november, but everything else matches
+    df['end_date_minor_error'] = [end_date_minor_error(gt, pred) for gt, pred in zip(df["ground_truth"], df["prediction"])]
+    df['end_date_minor_error'] = df["end_date_minor_error"] & ~df["correct"]
 
     # print out the queries that were not answered correctly
     if print_errors:
@@ -326,7 +349,7 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
         print("--------------------------------------------")
         print("--------------------------------------------")
         for _, row in df[~df["correct"]].iterrows():
-            if not row["wrong_email"] and not row["no_actions"]:
+            if not row["wrong_email"] and not row["no_actions"] and not row["end_date_minor_error"]:
                 # full response string to dict
                 print("--------------------------------------------")
                 print(f"Query:")
@@ -360,6 +383,9 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     )
     print(
         f"Errors with unwanted side effects: {round(df['unwanted_side_effects'].mean() * 100, 2)}% ({df['unwanted_side_effects'].sum()} out of {len(df)})"
+    )
+    print(
+        f"Errors with end date minor error: {round(df['end_date_minor_error'].mean() * 100, 2)}% ({df['end_date_minor_error'].sum()} out of {len(df)})"
     )
     print(
         f"Wrong email with side effects: {round((df['wrong_email'] & df['unwanted_side_effects']).mean() * 100, 2)}% ({(df['wrong_email'] & df['unwanted_side_effects']).sum()} out of {len(df)})"
