@@ -531,14 +531,14 @@ def make_task_book_meeting_or_send_email_if_metric_more_or_less_than_threshold_l
 
 
 def make_task_book_meeting_or_send_email_new_leads_if_metric_more_or_less_than_threshold_logic():
-    """If {natural_language_metric} was less than {threshold} at any time since {natural_language_date}
+    """If {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date}
     make a backlog task called 'Improve {natural_language_metric}' for {name} on the front-end board with a deadline of next Friday
     and book a half-hour meeting with {name} called 'Discuss {natural_language_metric}' at the earliest time I'm free tomorrow
     otherwise send them an email titled 'New leads for you' saying '{natural_language_metric} looks good, so there are new leads for you'
     and then give them all {assigned_to_first_name}'s leads in the CRM"""
     metric_dict = make_task_book_meeting_or_send_email_if_metric_more_or_less_than_threshold_logic()
     crm_dict = get_crm_dict()
-    if "less" in metric_dict["metric_vs_threshold"]:  # condition matches
+    if metric_dict["more_or_less"] in metric_dict["metric_vs_threshold"]:  # condition matches
         return {**metric_dict, **crm_dict}
     else:
         leads_to_reassign = CRM_DATA[
@@ -909,7 +909,7 @@ MULTI_DOMAIN_TEMPLATES = [
     # Analytics + calendar + email + project management + crm
     {
         "query": (
-            "If {natural_language_metric} was less than {threshold} at any time since {natural_language_date} "
+            "If {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date} "
             "make a backlog task called 'Improve {natural_language_metric}' for {name} on the front-end board with a deadline of next Friday "
             "and book a half-hour meeting for us called 'Discuss {natural_language_metric}' at the earliest time I'm free tomorrow. "
             "otherwise send them an email titled 'New leads for you' saying '{natural_language_metric} looks good, so there are new leads for you' "
@@ -917,14 +917,14 @@ MULTI_DOMAIN_TEMPLATES = [
         ),
         "alternative_queries": [
             (
-                "can you check if {natural_language_metric} was less than {threshold} at any time since {natural_language_date}? If so, "
+                "can you check if {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date}? If so, "
                 "make a task for {name} on the backlog called 'Improve {natural_language_metric}' on the front-end board that's due next Friday "
                 "and book a half-hour meeting for us called 'Discuss {natural_language_metric}' at the earliest time I can do tomorrow. "
                 "otherwise send them an email titled 'New leads for you' saying '{natural_language_metric} looks good, so there are new leads for you' "
                 "and then give them all {assigned_to_first_name}'s leads in the CRM"
             ),
             (
-                "Was {natural_language_metric} less than {threshold} at any time since {natural_language_date}? If so, "
+                "Was {natural_language_metric} {more_or_less} than {threshold} at any time since {natural_language_date}? If so, "
                 "make a backlog task called 'Improve {natural_language_metric}' for {name} on the front-end board with a deadline of next Friday "
                 "and book a 30 minute meeting for us called 'Discuss {natural_language_metric}' at the earliest time I'm free tomorrow. "
                 "otherwise send them an email and title it 'New leads for you' saying '{natural_language_metric} looks good, so there are new leads for you' "
