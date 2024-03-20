@@ -649,8 +649,8 @@ MULTI_DOMAIN_TEMPLATES = [
         ),
         "alternative_queries": [
             (
-                "can you check if {name} has any overdue tasks? If so, send them an email titled 'Overdue tasks' saying 'You have a few overdue tasks"
-                "- can you update me on them?'. Otherwise email them with 'Nice work keeping on top of your tasks this sprint!' titled 'Good work this sprint'"
+                "can you check if {name} has any overdue tasks? If so, send them an email titled 'Overdue tasks' saying 'You have a few overdue tasks - "
+                "can you update me on them?'. Otherwise email them with 'Nice work keeping on top of your tasks this sprint!' titled 'Good work this sprint'"
             ),
             (
                 "I think {name} might have some overdue tasks. Can you check and if so, send them an email titled 'Overdue tasks' saying 'You have a few overdue "
