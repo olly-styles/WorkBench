@@ -169,7 +169,7 @@ def schedule_event_if_no_emails_logic():
                 f"Catch up with {email_dict['sender_name']}",
                 email_dict["sender"],
                 event_datetime,
-                event_dict["duration"],
+                30,
             )
         )
 
