@@ -137,7 +137,7 @@ def move_unfinished_tasks_to_backlog_logic():
     name_1 = email_1.split("@")[0].split(".")[0]
     tasks_in_progress = project_tasks[
         (project_tasks["assigned_to_email"] == email_1)
-        & (project_tasks["list_name"].isin(["In Progress", "In Review"]))
+        & (project_tasks["list_name"].isin(["In Progress", "Not Started"]))
     ]
     answer = []
     for _, task in tasks_in_progress.iterrows():
