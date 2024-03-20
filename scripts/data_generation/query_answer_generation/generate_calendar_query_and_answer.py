@@ -177,8 +177,10 @@ def cancel_events_on_day_logic():
     natural_language_time = get_natural_language_time(time)
 
     events_on_date = calendar_events[calendar_events["event_start"].str.split(" ").str[0] == date]
+
+    # For events before a time, we want a strict less than comparison, and for events after a time, we want a greater than or equal to comparison
     if before_or_after == "before":
-        events_to_delete = events_on_date[events_on_date["event_start"].str.split(" ").str[1] <= time]
+        events_to_delete = events_on_date[events_on_date["event_start"].str.split(" ").str[1] < time]
     else:
         events_to_delete = events_on_date[events_on_date["event_start"].str.split(" ").str[1] >= time]
     if len(events_to_delete) == 0:
