@@ -141,7 +141,10 @@ def reply_to_latest_email_logic():
 
 
 def replace_name(body, name):
-    """Replaced the first occurance of "Sam" with the name of the email recipient."""
+    """Replaced the first occurance of "Sam" with the name of the email recipient. And replace the sign off with "Sam"."""
+    body = body.split("\\n")
+    body[-1] = f"\\nSam"
+    body = "\\n".join(body)
     return body.replace("Sam", name, 1)
 
 
