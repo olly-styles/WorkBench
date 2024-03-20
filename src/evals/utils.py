@@ -107,6 +107,8 @@ def is_exact_match(predicted_actions, ground_truth_actions):
         True if the predicted actions are an exact match to the ground truth actions.
 
     """
+    predicted_actions = [action.replace("\n", "\\n") for action in predicted_actions]
+    ground_truth_actions = [action.replace("\n", "\\n") for action in ground_truth_actions]
 
     tools_with_side_effects_names = [str(function.name) for function in tools_with_side_effects]
     predicted_actions_with_side_effects = [
@@ -142,6 +144,9 @@ def is_correct(predicted_actions, ground_truth_actions, error):
         True if the predicted actions result in the same state change as the ground truth actions.
 
     """
+    # Replace all newlines with "\\n" for all actions
+    predicted_actions = [action.replace("\n", "\\n") for action in predicted_actions]
+    ground_truth_actions = [action.replace("\n", "\\n") for action in ground_truth_actions]
     if error:
         return False
     (
