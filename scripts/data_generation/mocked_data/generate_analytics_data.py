@@ -6,7 +6,7 @@ np.random.seed(42)
 
 
 def generate_visitor_id(used_ids):
-    visitor_id = str(np.random.randint(0, 999)).zfill(3)
+    visitor_id = str(np.random.randint(0, 9999)).zfill(4)
     while visitor_id in used_ids:
         visitor_id = generate_visitor_id(used_ids)
     return visitor_id
@@ -34,7 +34,7 @@ def generate_visit_date(start_date, end_date):
 # Parameters for data generation
 start_date = datetime(2023, 9, 1)
 end_date = datetime(2023, 11, 30)
-num_records = 500
+num_records = 1000
 
 # Data structure to keep track of used visitor IDs per day
 used_visitor_ids_per_day = {}
@@ -50,7 +50,7 @@ for _ in range(num_records):
 
     session_duration_seconds = generate_session_duration_seconds()
     page_views = generate_page_views()
-    user_engaged = (session_duration_seconds > 30) & (page_views > 3)
+    user_engaged = (session_duration_seconds > 10) & (page_views > 1)
     record = {
         "date_of_visit": date_of_visit,
         "visitor_id": visitor_id,
