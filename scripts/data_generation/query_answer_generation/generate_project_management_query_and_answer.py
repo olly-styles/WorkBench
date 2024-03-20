@@ -78,7 +78,7 @@ def move_overdue_tasks_logic():
     tasks = project_tasks[
         (project_tasks["assigned_to_email"] == email)
         & (project_tasks["list_name"] == "Backlog")
-        & (project_tasks["due_date"] < str(HARDCODED_CURRENT_TIME))
+        & (project_tasks["due_date"] < str(HARDCODED_CURRENT_TIME.date()))
     ]
     answer = []
     for _, task in tasks.iterrows():
@@ -160,7 +160,7 @@ def reassign_overdue_tasks_logic():
     name_2 = email_2.split("@")[0].split(".")[0]
     tasks_overdue = project_tasks[
         (project_tasks["assigned_to_email"] == email_1)
-        & (project_tasks["due_date"] < str(HARDCODED_CURRENT_TIME))
+        & (project_tasks["due_date"] < str(HARDCODED_CURRENT_TIME.date()))
         & (project_tasks["list_name"] == "Backlog")
     ]
     answer = []
