@@ -58,7 +58,7 @@ def get_threshold(metric):
     series = pd.Series(func(dates.min()))
     threshold_percentage = random.choice([0, 50, 100])
     threshold = np.percentile(series, threshold_percentage)
-    return int(threshold)
+    return max(1, int(threshold))  # Ensure threshold is at least 1
 
 
 def metric_more_or_less(metric, date_min, threshold):
