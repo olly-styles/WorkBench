@@ -17,6 +17,7 @@ from src.tools.toolkits import (
     project_management_toolkit,
     customer_relationship_manager_toolkit,
     company_directory_toolkit,
+    tools_with_side_effects,
 )
 
 
@@ -87,6 +88,39 @@ def execute_actions_and_reset_state(actions):
         new_project_management_state,
         new_customer_relationship_manager_state,
     )
+
+
+def is_exact_match(predicted_actions, ground_truth_actions):
+    """
+    Checks if the predicted actions are an exact match to the ground truth actions.
+
+    Parameters
+    ----------
+    predicted_actions : list
+        List of predicted actions as strings.
+    ground_truth_actions : list
+        List of ground truth actions as strings.
+
+    Returns
+    -------
+    bool
+        True if the predicted actions are an exact match to the ground truth actions.
+
+    """
+
+    tools_with_side_effects_names = [str(function.name) for function in tools_with_side_effects]
+    predicted_actions_with_side_effects = [
+        action for action in predicted_actions if get_function_name(action) in tools_with_side_effects_names
+    ]
+    predicted_actions_with_side_effects = sorted([action.lower() for action in predicted_actions_with_side_effects])
+    ground_truth_actions = sorted([action.lower() for action in ground_truth_actions])
+
+    return predicted_actions_with_side_effects == ground_truth_actions
+
+
+def get_function_name(action):
+    """Extracts the function name from a string"""
+    return ".".join(action.split("(")[0].split(".")[0:2])
 
 
 def is_correct(predicted_actions, ground_truth_actions, error):
@@ -269,6 +303,7 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     assert (
         len(predictions) == len(ground_truth) == len(df)
     ), f"{len(predictions)} predictions does not match {len(ground_truth_df)} ground truth answers. Check that the predictions and ground truth are for the same queries."
+    df["exact_match"] = [is_exact_match(pred, gt) for pred, gt in zip(df["prediction"], df["ground_truth"])]
     df["correct"] = [
         is_correct(pred, gt, error) for pred, gt, error in zip(df["prediction"], df["ground_truth"], df["error"])
     ]
@@ -305,7 +340,6 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
                 print()
                 print(f"Error: {row['error']}")
                 print("")
-                # print the full response
                 print(f"Output:")
                 output = get_output(row["full_response"])
                 print(f"    {output}")
@@ -326,6 +360,35 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     print(
         f"Wrong email with side effects: {round((df['wrong_email'] & df['unwanted_side_effects']).mean() * 100, 2)}% ({(df['wrong_email'] & df['unwanted_side_effects']).sum()} out of {len(df)})"
     )
+    print(f"Exact match: {round(df['exact_match'].mean() * 100, 2)}% ({df['exact_match'].sum()} out of {len(df)})")
+    # print rows that were correct but not exact match
+    if print_errors:
+        print("--------------------------------------------")
+        print("--------------------------------------------")
+        print("Correct but not exact match:")
+        print("--------------------------------------------")
+        print("--------------------------------------------")
+        for _, row in df[df["correct"] & ~df["exact_match"]].iterrows():
+            print("--------------------------------------------")
+            print(f"Query:")
+            print(f"    {row['query']}")
+            print()
+            print(f"Prediction:")
+            for action in row["prediction"]:
+                print(f"    {action}")
+            print()
+            print(f"Ground truth:")
+            for action in row["ground_truth"]:
+                print(f"    {action}")
+            print()
+            print(f"Unwanted side effects: {row['unwanted_side_effects']}")
+            print()
+            print(f"Error: {row['error']}")
+            print("")
+            print(f"Output:")
+            output = get_output(row["full_response"])
+            print(f"    {output}")
+
     return df
 
 

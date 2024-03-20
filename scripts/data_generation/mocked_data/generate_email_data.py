@@ -37,5 +37,6 @@ if __name__ == "__main__":
         ]
 
     emails_df = emails_df.sort_values(by="sent_datetime").reset_index(drop=True)
+    emails_df["body"] = emails_df["body"].str.replace("\n", "\\n")  # replace newlines in bodies with \n
     emails_df.to_csv("data/processed/emails.csv", index=False)
     print("Emails generated and saved to data/processed/emails.csv")

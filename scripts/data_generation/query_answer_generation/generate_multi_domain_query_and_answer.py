@@ -98,6 +98,9 @@ def book_meeting_if_no_customer_contact_logic():
     called 'Update on {current_customer_name}' at the first time I'm free tomorrow"""
     crm_dict = get_crm_dict()
     customer_data = CRM_DATA[CRM_DATA["customer_name"] == crm_dict["current_customer_name"]]
+    crm_dict["assigned_to_email"] = customer_data["assigned_to_email"].values[
+        0
+    ]  # Override the assignee email with the one from the CRM
     last_contact_date = pd.to_datetime(customer_data["last_contact_date"].values[0])
     if HARDCODED_CURRENT_TIME - last_contact_date > pd.Timedelta(14, "D"):
         event_name = f"Update on {crm_dict['current_customer_name']}"
@@ -623,8 +626,8 @@ MULTI_DOMAIN_TEMPLATES = [
     {
         "query": """If I haven't met with {name} in the past {days} days, send them an email titled 'Catch up soon?' saying 'We haven't caught up in a while - can you send some availability over next week?'""",
         "alternative_queries": [
-            "can't remember the last time I met with {name}. Can you check if it's been over {days} days? If so, send them an email titled 'Catch up soon?' saying 'We have not caught up in over {days} days - can you send some availability over next week?'",
-            "I haven't met with {name} in a while. if it's been longer than {days} days can you send them an email titled 'Catch up soon?' saying 'We have not caught up in over {days} days - can you send some availability over next week?'",
+            "can't remember the last time I met with {name}. Can you check if it's been over {days} days? If so, send them an email titled 'Catch up soon?' saying 'We haven't caught up in a while - can you send some availability over next week?'",
+            "I haven't met with {name} in a while. if it's been longer than {days} days can you send them an email titled 'Catch up soon?' saying 'We haven't caught up in a while - can you send some availability over next week?'",
         ],
         "logic": send_email_if_no_past_meetings_logic,
         "domains": ["email", "calendar"],
@@ -680,16 +683,16 @@ MULTI_DOMAIN_TEMPLATES = [
     {
         "query": (
             "If {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date} "
-            "send an email to {sender} titled 'Update on {natural_language_metric}' saying 'I noticed {metric} was {more_or_less} than {threshold} - can you update me?'"
+            "send an email to {sender} titled 'Update on {natural_language_metric}' saying 'I noticed {natural_language_metric} was {more_or_less} than {threshold} - can you update me?'"
         ),
         "alternative_queries": [
             (
                 "can you check if {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date}? If so, "
-                "send an email to {sender} titled 'Update on {natural_language_metric}' saying 'I noticed {metric} was {more_or_less} than {threshold} - can you update me?'"
+                "send an email to {sender} titled 'Update on {natural_language_metric}' saying 'I noticed {natural_language_metric} was {more_or_less} than {threshold} - can you update me?'"
             ),
             (
-                "I think {natural_language_metric} might have been {more_or_less} than {threshold} at any time since {natural_language_date}. Can you check and if so, "
-                "send an email to {sender} titled 'Update on {natural_language_metric}' saying 'I noticed {metric} was {more_or_less} than {threshold} - can you update me?'"
+                "I think {natural_language_metric} might have been {more_or_less} than {threshold}. If it has been at any time since {natural_language_date}, can you"
+                "send an email to {sender} titled 'Update on {natural_language_metric}' saying 'I noticed {natural_language_metric} was {more_or_less} than {threshold} - can you update me?'"
             ),
         ],
         "logic": send_email_if_metric_more_or_less_than_threshold_logic,
@@ -933,7 +936,7 @@ MULTI_DOMAIN_TEMPLATES = [
     },
 ]
 
-max_queries_per_template = 3
+max_queries_per_template = 10
 if __name__ == "__main__":
     generated_queries_and_answers = generate_all_queries_and_answers(MULTI_DOMAIN_TEMPLATES, max_queries_per_template)
     df = pd.DataFrame(generated_queries_and_answers)
