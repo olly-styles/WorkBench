@@ -432,13 +432,13 @@ def make_task_or_send_email_if_metric_more_or_less_than_threshold_logic():
     if len(metric_dict["answer"]):  # If the metric was more or less than the threshold there will be a plot here
         task_dict["task_name"] = f"Improve {metric_dict['natural_language_metric']}"
         metric_dict["answer"] = [
-            get_new_task_string(task_dict["task_name"], task_dict["email"], "Front end", next_friday_date)
+            get_new_task_string(f'Improve {task_dict["task_name"]}', task_dict["email"], "Front end", next_friday_date)
         ]
     else:
         metric_dict["answer"] = [
             new_email_string(
                 task_dict["email"],
-                metric_dict["natural_language_metric"],
+                f'Recent {metric_dict["natural_language_metric"]}',
                 f"I noticed {metric_dict['natural_language_metric']} has been stable, nice work!",
             )
         ]
