@@ -107,9 +107,6 @@ def is_exact_match(predicted_actions, ground_truth_actions):
         True if the predicted actions are an exact match to the ground truth actions.
 
     """
-    predicted_actions = [action.replace("\n", "\\n") for action in predicted_actions]
-    ground_truth_actions = [action.replace("\n", "\\n") for action in ground_truth_actions]
-
     tools_with_side_effects_names = [str(function.name) for function in tools_with_side_effects]
     predicted_actions_with_side_effects = [
         action for action in predicted_actions if get_function_name(action) in tools_with_side_effects_names
@@ -144,9 +141,6 @@ def is_correct(predicted_actions, ground_truth_actions, error):
         True if the predicted actions result in the same state change as the ground truth actions.
 
     """
-    # Replace all newlines with "\\n" for all actions
-    predicted_actions = [action.replace("\n", "\\n") for action in predicted_actions]
-    ground_truth_actions = [action.replace("\n", "\\n") for action in ground_truth_actions]
     if error:
         return False
     (
@@ -308,6 +302,11 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     assert (
         len(predictions) == len(ground_truth) == len(df)
     ), f"{len(predictions)} predictions does not match {len(ground_truth_df)} ground truth answers. Check that the predictions and ground truth are for the same queries."
+
+    # Replace all newlines with "\\n" for all actions
+    df["prediction"] = df["prediction"].apply(lambda actions: [action.replace("\n", "\\n") for action in actions])
+    df["ground_truth"] = df["ground_truth"].apply(lambda actions: [action.replace("\n", "\\n") for action in actions])
+
     df["exact_match"] = [is_exact_match(pred, gt) for pred, gt in zip(df["prediction"], df["ground_truth"])]
     df["correct"] = [
         is_correct(pred, gt, error) for pred, gt, error in zip(df["prediction"], df["ground_truth"], df["error"])
