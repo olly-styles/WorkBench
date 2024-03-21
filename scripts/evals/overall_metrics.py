@@ -6,6 +6,11 @@ project_root = os.path.abspath(os.path.curdir)
 sys.path.append(project_root)
 from src.evals.utils import AVAILABLE_LLMS, get_latest_results_from_dir
 
+# ignore pandas warning
+import warnings
+
+warnings.filterwarnings("ignore")
+
 results_root_dir = os.path.join("data", "results")
 full_tools_list = [
     "multi_domain",
@@ -36,6 +41,13 @@ arg_parser.add_argument(
     help="Print errors when calculating metrics.",
     default=False,
 )
+arg_parser.add_argument(
+    "--all_tools_in_prompt",
+    action="store_true",
+    help="Get results when all tools are in the prompt.",
+    default=False,
+)
+
 args = arg_parser.parse_args()
 
 if __name__ == "__main__":
@@ -46,7 +58,9 @@ if __name__ == "__main__":
         total_incorrect = 0
         total_side_effects = 0
         for tool in tools:
-            results = get_latest_results_from_dir(results_root_dir, model, tool, args.print_errors)
+            results = get_latest_results_from_dir(
+                results_root_dir, model, tool, args.print_errors, args.all_tools_in_prompt
+            )
             if results is None:
                 continue
             else:
