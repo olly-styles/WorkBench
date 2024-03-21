@@ -433,7 +433,6 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
             output = get_output(row["full_response"])
             print(f"    {output}")
 
-
     return df
 
 
