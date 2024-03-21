@@ -395,6 +395,16 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
         f"Wrong email with side effects: {round((df['wrong_email'] & df['unwanted_side_effects']).mean() * 100, 2)}% ({(df['wrong_email'] & df['unwanted_side_effects']).sum()} out of {len(df)})"
     )
     print(f"Exact match: {round(df['exact_match'].mean() * 100, 2)}% ({df['exact_match'].sum()} out of {len(df)})")
+
+    df_with_actions_required = df[df["ground_truth"].apply(len) > 0]
+    df_with_no_actions_requied = df[df["ground_truth"].apply(len) == 0]
+    print(
+        f"\nAccuracy (excluding queries that require no actions): {round(df_with_actions_required['correct'].mean() * 100, 2)}% ({df_with_actions_required['correct'].sum()} out of {len(df_with_actions_required)})"
+    )
+    print(
+        f"Accuracy (only queries that require no actions): {round(df_with_no_actions_requied['correct'].mean() * 100, 2)}% ({df_with_no_actions_requied['correct'].sum()} out of {len(df_with_no_actions_requied)})"
+    )
+
     # print rows that were correct but not exact match
     if print_errors:
         print("--------------------------------------------")
@@ -422,6 +432,7 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
             print(f"Output:")
             output = get_output(row["full_response"])
             print(f"    {output}")
+
 
     return df
 
