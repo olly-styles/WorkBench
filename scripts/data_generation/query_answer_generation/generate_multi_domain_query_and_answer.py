@@ -432,7 +432,7 @@ def make_task_or_send_email_if_metric_more_or_less_than_threshold_logic():
     if len(metric_dict["answer"]):  # If the metric was more or less than the threshold there will be a plot here
         task_dict["task_name"] = f"Improve {metric_dict['natural_language_metric']}"
         metric_dict["answer"] = [
-            get_new_task_string(f'Improve {task_dict["task_name"]}', task_dict["email"], "Front end", next_friday_date)
+            get_new_task_string(f'{task_dict["task_name"]}', task_dict["email"], "Front end", next_friday_date)
         ]
     else:
         metric_dict["answer"] = [
@@ -818,13 +818,13 @@ MULTI_DOMAIN_TEMPLATES = [
     {
         "query": (
             "If {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date} "
-            "make a task 'Improve {natural_language_metric}' for {name} on the front-end board with a deadline of next Friday "
+            "make a backlog task 'Improve {natural_language_metric}' for {name} on the front-end board with a deadline of next Friday "
             "otherwise send them an email titled 'Recent {natural_language_metric}' saying 'I noticed {natural_language_metric} has been stable, nice work!' "
         ),
         "alternative_queries": [
             (
                 "can you check if {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date}? If so, "
-                "make a task 'Improve {natural_language_metric}' for {name} on the front-end board with a deadline of next Friday "
+                "make a task 'Improve {natural_language_metric}' for {name} on the front-end backlog with a deadline of next Friday "
                 "otherwise send them an email titled 'Recent {natural_language_metric}' saying 'I noticed {natural_language_metric} has been stable, nice work!'"
             ),
             (
@@ -885,14 +885,14 @@ MULTI_DOMAIN_TEMPLATES = [
     {
         "query": (
             "If {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date} "
-            "make a task 'Improve {natural_language_metric}' for {name} on the front-end board with a deadline of next Friday "
+            "make a backlog task 'Improve {natural_language_metric}' for {name} on the front-end board with a deadline of next Friday "
             "and schedule a half-hour meeting called 'Discuss {natural_language_metric}' for us at the first time I can do tomorrow "
             "otherwise send them an email titled '{natural_language_metric}' saying 'I noticed {natural_language_metric} has been stable, nice work!''"
         ),
         "alternative_queries": [
             (
                 "can you check if {natural_language_metric} was {more_or_less} than {threshold} at any time since {natural_language_date}? If so, "
-                "make a task 'Improve {natural_language_metric}' for {name} on the front-end board that's due next Friday "
+                "make a task 'Improve {natural_language_metric}' for {name} on the front-end backlog that's due next Friday "
                 "and schedule a half-hour meeting called 'Discuss {natural_language_metric}' for us at the first time I can do tomorrow "
                 "otherwise send them an email titled '{natural_language_metric}' saying 'I noticed {natural_language_metric} has been stable, nice work!''"
             ),
