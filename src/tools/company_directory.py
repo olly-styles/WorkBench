@@ -5,7 +5,7 @@ EMAILS = pd.read_csv("data/raw/email_addresses.csv", header=None, names=["email_
 
 
 @tool("company_directory.find_email_address", return_direct=False)
-def find_email_address_by_name(name=""):
+def find_email_address(name=""):
     """
     Finds the email address of an employee by their name.
 
@@ -21,7 +21,7 @@ def find_email_address_by_name(name=""):
 
     Examples
     --------
-    >>> directory.find_email_address_by_name("John")
+    >>> directory.find_email_address("John")
     "john.smith@example.com"
     """
     global EMAILS

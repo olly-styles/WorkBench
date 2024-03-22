@@ -30,7 +30,7 @@ tools_without_side_effects = [
     project_management.get_task_information_by_id,
     project_management.search_tasks,
     customer_relationship_manager.search_customers,
-    company_directory.find_email_address_by_name,
+    company_directory.find_email_address,
 ]
 
 all_tools = tools_with_side_effects + tools_without_side_effects

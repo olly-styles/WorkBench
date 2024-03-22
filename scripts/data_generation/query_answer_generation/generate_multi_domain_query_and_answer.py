@@ -545,7 +545,7 @@ def make_task_book_meeting_or_send_email_new_leads_if_metric_more_or_less_than_t
             (CRM_DATA["assigned_to_email"] == crm_dict["assigned_to_email"]) & (CRM_DATA["status"] == "Lead")
         ]
         answer = [
-            f"""customer_relationship_manager.reassign_customer.func(customer_id="{lead_id}", assigned_to_email="{metric_dict['email']}")"""
+            f"""customer_relationship_manager.update_customer.func(customer_id="{lead_id}", field="assigned_to_email", new_value="{metric_dict['email']}")"""
             for lead_id in leads_to_reassign["customer_id"]
         ]
         new_email = new_email_string(
