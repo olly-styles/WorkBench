@@ -24,6 +24,14 @@ for tool in full_tools_list:
     predictions["function_calls"] = predictions["function_calls"].apply(ast.literal_eval)
     df = calculate_metrics(ground_truth, predictions, print_errors=False)
     precentage_correct.append(df.groupby("base_template")["correct"].mean().values * 100)
+    # print base template with 0% correct
+    templates_with_0_percent_correct = (
+        df.groupby("base_template")["correct"].mean().loc[df.groupby("base_template")["correct"].mean() == 0]
+    )
+    print(f"Tool: {tool}")
+    print(f"Base templates with 0% correct:")
+    for template in templates_with_0_percent_correct.index:
+        print(template)
 
 # flatten
 precentage_correct = [item for sublist in precentage_correct for item in sublist]
@@ -36,14 +44,16 @@ print(
     f"Number of templates where percentage correct is neither 100 or 0: {len(precentage_correct) - precentage_correct.count(100) - precentage_correct.count(0)} out of {len(precentage_correct)} ({(len(precentage_correct) - precentage_correct.count(100) - precentage_correct.count(0)) / len(precentage_correct) * 100:.1f}%)"
 )
 
-bin_edges = np.linspace(start=min(precentage_correct), stop=max(precentage_correct), num=6)
-bin_centers = (bin_edges[:-1] + bin_edges[1:]) / 2
+# Group percentage_correct by value and count
+percentage_correct_df = pd.DataFrame(precentage_correct, columns=["percentage_correct"])
+percentage_correct_df["count"] = 1
+percentage_correct_df = percentage_correct_df.groupby("percentage_correct").count().reset_index()
 
-sns.histplot(precentage_correct, bins=bin_edges)
-plt.xlabel("Percentage correct")
-plt.ylabel("Frequency")
+sns.set_theme(style="whitegrid")
+plt.figure(figsize=(12, 6))
+ax = sns.barplot(x="percentage_correct", y="count", data=percentage_correct_df)
+ax.set(xlabel="Percentage correct", ylabel="Number of templates")
+ax.set_xticklabels([f"{x}%" for x in range(0, 200, 10)])
 
-labels = [f"{bin_edges[i]:.0f}%-{bin_edges[i+1]:.0f}%" for i in range(len(bin_edges) - 1)]
 
-plt.xticks(bin_centers, labels)
 plt.savefig("data/plots/percentage_correct_per_template.png")

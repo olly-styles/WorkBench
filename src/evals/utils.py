@@ -8,7 +8,7 @@ from langchain_community.chat_models.anthropic import ChatAnthropic
 from langchain_community.chat_models.anyscale import ChatAnyscale
 from langchain.agents import initialize_agent, AgentType
 import csv
-from src.tools import calendar, email, analytics, project_management, customer_relationship_manager
+from src.tools import calendar, email, analytics, project_management, customer_relationship_manager, company_directory
 from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
 from src.tools.toolkits import (
     calendar_toolkit,
@@ -457,7 +457,7 @@ def get_output(full_response):
     return a["output"]
 
 
-def get_latest_results_path(results_root_dir, model, tool, all_tools_in_prompt):
+def get_latest_results_path(results_root_dir, model, tool, all_tools_in_prompt=False):
     """Get the latest results file path and ground truth path for a given model and tool"""
     results_dir = os.path.join(results_root_dir, tool)
     results_files = os.listdir(results_dir)
