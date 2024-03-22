@@ -123,7 +123,7 @@ def reassign_all_qualified_leads_for_product_logic():
     base_dict = get_random_dict()
     employee_leads = CRM_DATA[
         (CRM_DATA["assigned_to_email"] == base_dict["assigned_to_email"])
-        & (CRM_DATA["status"].isin(["Qualified", "Proposal", "Won"]))
+        & (CRM_DATA["status"].isin(["Qualified", "Proposal"]))
         & (CRM_DATA["product_interest"] == base_dict["product_interest"])
     ]
     answer = []
