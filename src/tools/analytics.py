@@ -61,7 +61,7 @@ def create_plot(time_min=None, time_max=None, value_to_plot=None, plot_type=None
     time_max : str, optional
         End date of the time range. Date format is "YYYY-MM-DD".
     value_to_plot : str, optional
-        Value to plot. Available values are: "total_visits", "session_duration_seconds", "user_engaged", "direct", "referral", "search engine", "social media"
+        Value to plot. Available values are: "total_visits", "session_duration_seconds", "user_engaged", "visits_direct", "visits_referral", "visits_search_engine", "visits_social_media"
     plot_type : str, optional
         Type of plot. Can be "bar", "line", "scatter" or "histogram"
 
@@ -85,10 +85,10 @@ def create_plot(time_min=None, time_max=None, value_to_plot=None, plot_type=None
         "total_visits",
         "session_duration_seconds",
         "user_engaged",
-        "direct",
-        "referral",
-        "search engine",
-        "social media",
+        "visits_direct",
+        "visits_referral",
+        "visits_search_engine",
+        "visits_social_media",
     ]:
         return "Value to plot must be one of 'total_visits', 'session_duration_seconds', 'user_engaged', 'direct', 'referral', 'search engine', 'social media'"
     if plot_type not in ["bar", "line", "scatter", "histogram"]:

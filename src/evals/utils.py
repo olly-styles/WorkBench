@@ -349,10 +349,37 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     if print_errors:
         print("--------------------------------------------")
         print("--------------------------------------------")
-        print("ERRORS:")
+        print("ERRORS without unwanted side effects:")
         print("--------------------------------------------")
         print("--------------------------------------------")
-        for _, row in df[~df["correct"]].iterrows():
+        for _, row in df[~df["correct"] & ~df["unwanted_side_effects"]].iterrows():
+            if not row["wrong_email"] and not row["no_actions"] and not row["end_date_minor_error"]:
+                # full response string to dict
+                print("--------------------------------------------")
+                print(f"Query:")
+                print(f"    {row['query']}")
+                print()
+                print(f"Prediction:")
+                for action in row["prediction"]:
+                    print(f"    {action}")
+                print()
+                print(f"Ground truth:")
+                for action in row["ground_truth"]:
+                    print(f"    {action}")
+                print()
+                print(f"Unwanted side effects: {row['unwanted_side_effects']}")
+                print()
+                print(f"Error: {row['error']}")
+                print("")
+                print(f"Output:")
+                output = get_output(row["full_response"])
+                print(f"    {output}")
+        print("--------------------------------------------")
+        print("--------------------------------------------")
+        print("ERRORS with unwanted side effects:")
+        print("--------------------------------------------")
+        print("--------------------------------------------")
+        for _, row in df[~df["correct"] & df["unwanted_side_effects"]].iterrows():
             if not row["wrong_email"] and not row["no_actions"] and not row["end_date_minor_error"]:
                 # full response string to dict
                 print("--------------------------------------------")
