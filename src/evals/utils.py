@@ -621,7 +621,7 @@ def generate_results(queries_path, model_name, tool_selection="all"):
                 "Request too large",
             ]
             if any([msg in str(e) for msg in context_window_error_messages]):
-                print(f"Error with query: {query}")
+                print(f"Context window exceeded with query: {query}")
                 error = "Context window exceeded"
             else:
                 print(f"Unknown error with query: {query}")
