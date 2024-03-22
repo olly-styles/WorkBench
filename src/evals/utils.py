@@ -376,33 +376,31 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
                 print(f"    {output}")
 
     print(f"Accuracy: {round(df['correct'].mean() * 100, 2)}% ({df['correct'].sum()} out of {len(df)})")
-    print(
-        f"Errors without unwanted side effects: {round((~df['correct'] & ~df['unwanted_side_effects']).mean() * 100, 2)}% ({(~df['correct'] & ~df['unwanted_side_effects']).sum()} out of {len(df)})"
-    )
-    print(
-        f"Wrong email, no side effects: {round((df['wrong_email'] & ~df['unwanted_side_effects']).mean() * 100, 2)}% ({(df['wrong_email'] & ~df['unwanted_side_effects']).sum()} out of {len(df)})"
-    )
-    print(
-        f"Didn't follow REACT framework: {round(df['no_actions'].mean() * 100, 2)}% ({df['no_actions'].sum()} out of {len(df)})"
-    )
-    print(
-        f"Errors with unwanted side effects: {round(df['unwanted_side_effects'].mean() * 100, 2)}% ({df['unwanted_side_effects'].sum()} out of {len(df)})"
-    )
-    print(
-        f"Errors with end date minor error: {round(df['end_date_minor_error'].mean() * 100, 2)}% ({df['end_date_minor_error'].sum()} out of {len(df)})"
-    )
-    print(
-        f"Wrong email with side effects: {round((df['wrong_email'] & df['unwanted_side_effects']).mean() * 100, 2)}% ({(df['wrong_email'] & df['unwanted_side_effects']).sum()} out of {len(df)})"
-    )
-    print(f"Exact match: {round(df['exact_match'].mean() * 100, 2)}% ({df['exact_match'].sum()} out of {len(df)})")
 
-    df_with_actions_required = df[df["ground_truth"].apply(len) > 0]
-    df_with_no_actions_requied = df[df["ground_truth"].apply(len) == 0]
+    num_errors_without_side_effects = len(df[(~df["correct"]) & ~df["unwanted_side_effects"]])
+    num_failed_to_follow_react = len(df[(~df["correct"]) & ~df["unwanted_side_effects"] & df["no_actions"]])
+    num_wrong_email_no_side_effects = len(df[(~df["correct"]) & df["wrong_email"] & ~df["unwanted_side_effects"]])
     print(
-        f"\nAccuracy (excluding queries that require no actions): {round(df_with_actions_required['correct'].mean() * 100, 2)}% ({df_with_actions_required['correct'].sum()} out of {len(df_with_actions_required)})"
+        f"Errors without unwanted side effects: {round(num_errors_without_side_effects / len(df) * 100, 2)}% ({num_errors_without_side_effects} out of {len(df)})"
     )
     print(
-        f"Accuracy (only queries that require no actions): {round(df_with_no_actions_requied['correct'].mean() * 100, 2)}% ({df_with_no_actions_requied['correct'].sum()} out of {len(df_with_no_actions_requied)})"
+        f"Wrong email, no side effects: {round(num_wrong_email_no_side_effects / len(df) * 100, 2)}% ({num_wrong_email_no_side_effects} out of {len(df)})"
+    )
+    print(
+        f"Didn't follow REACT framework, no side effects: {round(num_failed_to_follow_react / len(df) * 100, 2)}% ({num_failed_to_follow_react} out of {len(df)})"
+    )
+
+    num_errors_with_side_effects = len(df[(~df["correct"]) & df["unwanted_side_effects"]])
+    num_wrong_email_with_side_effects = len(df[(~df["correct"]) & df["wrong_email"] & df["unwanted_side_effects"]])
+    num_end_date_minor_error = len(df[(~df["correct"]) & df["end_date_minor_error"]])
+    print(
+        f"Errors with unwanted side effects: {round(num_errors_with_side_effects / len(df) * 100, 2)}% ({num_errors_with_side_effects} out of {len(df)})"
+    )
+    print(
+        f"Wrong email, with side effects: {round(num_wrong_email_with_side_effects / len(df) * 100, 2)}% ({num_wrong_email_with_side_effects} out of {len(df)})"
+    )
+    print(
+        f"End date minor error, with side effects: {round(num_end_date_minor_error / len(df) * 100, 2)}% ({num_end_date_minor_error} out of {len(df)})"
     )
 
     # print rows that were correct but not exact match
@@ -457,7 +455,7 @@ def get_output(full_response):
     return a["output"]
 
 
-def get_latest_results_path(results_root_dir, model, tool, all_tools_in_prompt=False):
+def get_latest_results_path(results_root_dir, model, tool, all_tools_in_prompt=True):
     """Get the latest results file path and ground truth path for a given model and tool"""
     results_dir = os.path.join(results_root_dir, tool)
     results_files = os.listdir(results_dir)
@@ -473,7 +471,7 @@ def get_latest_results_path(results_root_dir, model, tool, all_tools_in_prompt=F
         return max(model_results_files, key=os.path.getctime), ground_truth_path
 
 
-def get_latest_results_from_dir(results_root_dir, model, tool, print_errors=False, all_tools_in_prompt=False):
+def get_latest_results_from_dir(results_root_dir, model, tool, print_errors=False, all_tools_in_prompt=True):
     """Get the latest results for each model in the results directory"""
     model_results_path, ground_truth_path = get_latest_results_path(results_root_dir, model, tool, all_tools_in_prompt)
     if not model_results_path:

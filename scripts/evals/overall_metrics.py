@@ -42,13 +42,14 @@ arg_parser.add_argument(
     default=False,
 )
 arg_parser.add_argument(
-    "--all_tools_in_prompt",
+    "--domain_only",
     action="store_true",
-    help="Get results when all tools are in the prompt.",
+    help="Only consider domain specific tools.",
     default=False,
 )
 
 args = arg_parser.parse_args()
+all_tools_in_prompt = not args.domain_only
 
 if __name__ == "__main__":
     tools = args.tools if len(args.tools) else full_tools_list
@@ -58,9 +59,7 @@ if __name__ == "__main__":
         total_incorrect = 0
         total_side_effects = 0
         for tool in tools:
-            results = get_latest_results_from_dir(
-                results_root_dir, model, tool, args.print_errors, args.all_tools_in_prompt
-            )
+            results = get_latest_results_from_dir(results_root_dir, model, tool, args.print_errors, all_tools_in_prompt)
             if results is None:
                 continue
             else:
