@@ -284,7 +284,7 @@ ANALYTICS_TEMPLATES = [
         "query": """Can you plot the distribution of both {natural_language_metric} and {natural_language_metric_2} between {natural_language_date} and {natural_language_date_max}??""",
         "alternative_queries": [
             """I need a histogram of {natural_language_metric} and {natural_language_metric_2} between {natural_language_date} and {natural_language_date_max}""",
-            """Show me the distribution of {natural_language_metric} and {natural_language_metric_2} between {natural_language_date} and {natural_language_date_max}""",
+            """Please plot for me the distribution of {natural_language_metric} and {natural_language_metric_2} between {natural_language_date} and {natural_language_date_max}""",
         ],
         "logic": distribution_plot_on_day_two_metrics_logic,
     },
@@ -299,7 +299,7 @@ ANALYTICS_TEMPLATES = [
     {
         "query": """Make bar charts showing {natural_language_metric} and {natural_language_metric_2} since {date_min}""",
         "alternative_queries": [
-            """can you show me bar charts of {natural_language_metric} and {natural_language_metric_2} since {date_min}?""",
+            """can you make bar charts of {natural_language_metric} and {natural_language_metric_2} since {date_min}?""",
             """I need bar charts of {natural_language_metric} and {natural_language_metric_2} since {date_min}""",
         ],
         "logic": metric_two_plots_logic,
