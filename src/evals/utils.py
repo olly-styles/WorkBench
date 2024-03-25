@@ -8,7 +8,7 @@ from langchain_community.chat_models.anthropic import ChatAnthropic
 from langchain_community.chat_models.anyscale import ChatAnyscale
 from langchain.agents import initialize_agent, AgentType
 import csv
-from src.tools import calendar, email, analytics, project_management, customer_relationship_manager
+from src.tools import calendar, email, analytics, project_management, customer_relationship_manager, company_directory
 from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
 from src.tools.toolkits import (
     calendar_toolkit,
@@ -89,9 +89,10 @@ def execute_actions_and_reset_state(actions):
         new_customer_relationship_manager_state,
     )
 
+
 def end_date_minor_error(ground_truth, prediction):
     """Function to check if the end date is off by one day in the prediction
-    
+
     Parameters
     ----------
     ground_truth : list
@@ -108,8 +109,9 @@ def end_date_minor_error(ground_truth, prediction):
     for func in ground_truth:
         if "2023-11-29" in func:
             if func.replace("2023-11-29", "2023-11-30") in prediction:
-                matches+=1
-    return matches==len(ground_truth)
+                matches += 1
+    return matches == len(ground_truth)
+
 
 def is_exact_match(predicted_actions, ground_truth_actions):
     """
@@ -338,8 +340,10 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     df["wrong_email"] = [("@example" in str(pred)) and ("@atlas" not in str(pred)) for pred in df["prediction"]]
     df["wrong_email"] = df["wrong_email"] & ~df["correct"]
     # Puts in end of November to plot instead of 29th november, but everything else matches
-    df['end_date_minor_error'] = [end_date_minor_error(gt, pred) for gt, pred in zip(df["ground_truth"], df["prediction"])]
-    df['end_date_minor_error'] = df["end_date_minor_error"] & ~df["correct"]
+    df["end_date_minor_error"] = [
+        end_date_minor_error(gt, pred) for gt, pred in zip(df["ground_truth"], df["prediction"])
+    ]
+    df["end_date_minor_error"] = df["end_date_minor_error"] & ~df["correct"]
 
     # print out the queries that were not answered correctly
     if print_errors:
@@ -429,7 +433,6 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
             output = get_output(row["full_response"])
             print(f"    {output}")
 
-
     return df
 
 
@@ -454,11 +457,15 @@ def get_output(full_response):
     return a["output"]
 
 
-def get_latest_results_path(results_root_dir, model, tool):
+def get_latest_results_path(results_root_dir, model, tool, all_tools_in_prompt=False):
     """Get the latest results file path and ground truth path for a given model and tool"""
     results_dir = os.path.join(results_root_dir, tool)
     results_files = os.listdir(results_dir)
     model_results_files = [os.path.join(results_dir, file) for file in results_files if model in file]
+    if all_tools_in_prompt:
+        model_results_files = [file for file in model_results_files if "all" in file]
+    else:
+        model_results_files = [file for file in model_results_files if "domains" in file]
     ground_truth_path = os.path.join("data", "processed", "queries_and_answers", f"{tool}_queries_and_answers.csv")
     if not len(model_results_files):
         return None
@@ -466,9 +473,9 @@ def get_latest_results_path(results_root_dir, model, tool):
         return max(model_results_files, key=os.path.getctime), ground_truth_path
 
 
-def get_latest_results_from_dir(results_root_dir, model, tool, print_errors=False):
+def get_latest_results_from_dir(results_root_dir, model, tool, print_errors=False, all_tools_in_prompt=False):
     """Get the latest results for each model in the results directory"""
-    model_results_path, ground_truth_path = get_latest_results_path(results_root_dir, model, tool)
+    model_results_path, ground_truth_path = get_latest_results_path(results_root_dir, model, tool, all_tools_in_prompt)
     if not model_results_path:
         print(f"\nNo results found for {tool} with {model}")
         return None
