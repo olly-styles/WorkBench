@@ -49,11 +49,15 @@ percentage_correct_df = pd.DataFrame(precentage_correct, columns=["percentage_co
 percentage_correct_df["count"] = 1
 percentage_correct_df = percentage_correct_df.groupby("percentage_correct").count().reset_index()
 
-sns.set_theme(style="whitegrid")
+
+# increase fontsize
+sns.set(font_scale=1.8)
+
 plt.figure(figsize=(12, 6))
 ax = sns.barplot(x="percentage_correct", y="count", data=percentage_correct_df)
-ax.set(xlabel="Percentage correct", ylabel="Number of templates")
+ax.set(xlabel="Percentage tasks completed correctly", ylabel="Number of templates")
 ax.set_xticklabels([f"{x}%" for x in range(0, 200, 10)])
+plt.tight_layout()
 
 
 plt.savefig("data/plots/percentage_correct_per_template.png")
