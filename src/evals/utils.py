@@ -591,7 +591,19 @@ def get_latest_results_from_dir(results_root_dir, model, tool, print_errors=Fals
         num_correct = df["correct"].sum()
         num_incorrect = len(df) - num_correct
         num_side_effects = df["unwanted_side_effects"].sum()
-        return num_correct, num_incorrect, num_side_effects
+        num_correct_no_actions = df[df["ground_truth"].apply(len) == 0]["correct"].sum()
+        num_incorrect_no_actions = len(df[df["ground_truth"].apply(len) == 0]) - num_correct_no_actions
+        num_correct_non_zero_actions = df[df["ground_truth"].apply(len) > 0]["correct"].sum()
+        num_incorrect_non_zero_actions = len(df[df["ground_truth"].apply(len) > 0]) - num_correct_non_zero_actions
+        return (
+            num_correct,
+            num_incorrect,
+            num_side_effects,
+            num_correct_no_actions,
+            num_incorrect_no_actions,
+            num_correct_non_zero_actions,
+            num_incorrect_non_zero_actions,
+        )
 
 
 def get_toolkits(toolkits):

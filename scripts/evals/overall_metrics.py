@@ -58,15 +58,31 @@ if __name__ == "__main__":
         total_correct = 0
         total_incorrect = 0
         total_side_effects = 0
+        total_correct_no_actions = 0
+        total_incorrect_no_actions = 0
+        total_correct_non_zero_actions = 0
+        total_incorrect_non_zero_actions = 0
         for tool in tools:
             results = get_latest_results_from_dir(results_root_dir, model, tool, args.print_errors, all_tools_in_prompt)
             if results is None:
                 continue
             else:
-                correct, incorrect, side_effects = results
+                (
+                    correct,
+                    incorrect,
+                    side_effects,
+                    correct_no_actions,
+                    incorrect_no_actions,
+                    correct_non_zero_actions,
+                    incorrect_non_zero_actions,
+                ) = results
             total_correct += correct
             total_incorrect += incorrect
             total_side_effects += side_effects
+            total_correct_no_actions += correct_no_actions
+            total_incorrect_no_actions += incorrect_no_actions
+            total_correct_non_zero_actions += correct_non_zero_actions
+            total_incorrect_non_zero_actions += incorrect_non_zero_actions
         if total_correct + total_incorrect == 0:
             print(f"No results found for {model}.")
             continue
@@ -78,4 +94,10 @@ if __name__ == "__main__":
         )
         print(
             f"Side effects (%): {total_side_effects / (total_correct + total_incorrect) * 100} ({total_side_effects} / {total_correct + total_incorrect})"
+        )
+        print(
+            f"Accuracy without actions (%): {total_correct_no_actions / (total_correct_no_actions + total_incorrect_no_actions) * 100} ({total_correct_no_actions} / {total_correct_no_actions + total_incorrect_no_actions})"
+        )
+        print(
+            f"Accuracy with non-zero actions (%): {total_correct_non_zero_actions / (total_correct_non_zero_actions + total_incorrect_non_zero_actions) * 100} ({total_correct_non_zero_actions} / {total_correct_non_zero_actions + total_incorrect_non_zero_actions})"
         )
