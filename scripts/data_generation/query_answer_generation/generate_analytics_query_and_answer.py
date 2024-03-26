@@ -27,7 +27,17 @@ traffic_sources = ANALYTICS_DATA["traffic_source"].unique()
 
 
 def get_plot_string(metric, date_min, date_max, plot_type):
-    return f"""analytics.create_plot.func(time_min="{date_min}", time_max="{date_max}", value_to_plot="{metric}", plot_type="{plot_type}")"""
+    plotting_metric_name_dict = {
+        "direct": "visits_direct",
+        "social media": "visits_social_media",
+        "referral": "visits_referral",
+        "search engine": "visits_search_engine",
+    }
+    if metric in plotting_metric_name_dict:
+        metric_plotting_name = plotting_metric_name_dict[metric]
+    else:
+        metric_plotting_name = metric
+    return f"""analytics.create_plot.func(time_min="{date_min}", time_max="{date_max}", value_to_plot="{metric_plotting_name}", plot_type="{plot_type}")"""
 
 
 def get_random_dict():

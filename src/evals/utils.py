@@ -110,6 +110,39 @@ def end_date_minor_error(ground_truth, prediction):
         if "2023-11-29" in func:
             if func.replace("2023-11-29", "2023-11-30") in prediction:
                 matches += 1
+    if len(ground_truth) == 0:
+        return False
+    return matches == len(ground_truth)
+
+
+def meeting_start_time_error(ground_truth, prediction):
+    """Function to check if the meeting start time is off where the agent predicts the wrong first available time
+
+    Parameters
+    ----------
+    ground_truth : list
+        List of ground truth actions as strings.
+    prediction : list
+        List of predicted actions as strings.
+
+    Returns
+    -------
+    bool
+        True if the meeting start time is off by one hour in the prediction.
+    """
+    matches = 0
+    for func in ground_truth:
+        if "13:00:00" in func:
+            if func.replace("13:00:00", "09:00:00") in prediction:
+                matches += 1
+            elif func.replace("13:00:00", "15:00:00") in prediction:
+                matches += 1
+            elif func.replace("13:00:00", "15:30:00") in prediction:
+                matches += 1
+            elif func.replace("13:00:00", "11:00:00") in prediction:
+                matches += 1
+    if len(ground_truth) == 0:
+        return False
     return matches == len(ground_truth)
 
 
@@ -344,6 +377,10 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
         end_date_minor_error(gt, pred) for gt, pred in zip(df["ground_truth"], df["prediction"])
     ]
     df["end_date_minor_error"] = df["end_date_minor_error"] & ~df["correct"]
+    df["meeting_start_time_error"] = [
+        meeting_start_time_error(gt, pred) for gt, pred in zip(df["ground_truth"], df["prediction"])
+    ]
+    df["meeting_start_time_error"] = df["meeting_start_time_error"] & ~df["correct"]
 
     # print out the queries that were not answered correctly
     if print_errors:
@@ -353,7 +390,12 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
         print("--------------------------------------------")
         print("--------------------------------------------")
         for _, row in df[~df["correct"] & ~df["unwanted_side_effects"]].iterrows():
-            if not row["wrong_email"] and not row["no_actions"] and not row["end_date_minor_error"]:
+            if (
+                not row["wrong_email"]
+                and not row["no_actions"]
+                and not row["end_date_minor_error"]
+                and not row["meeting_start_time_error"]
+            ):
                 # full response string to dict
                 print("--------------------------------------------")
                 print(f"Query:")
@@ -380,7 +422,12 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
         print("--------------------------------------------")
         print("--------------------------------------------")
         for _, row in df[~df["correct"] & df["unwanted_side_effects"]].iterrows():
-            if not row["wrong_email"] and not row["no_actions"] and not row["end_date_minor_error"]:
+            if (
+                not row["wrong_email"]
+                and not row["no_actions"]
+                and not row["end_date_minor_error"]
+                and not row["meeting_start_time_error"]
+            ):
                 # full response string to dict
                 print("--------------------------------------------")
                 print(f"Query:")
@@ -396,6 +443,7 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
                 print()
                 print(f"Unwanted side effects: {row['unwanted_side_effects']}")
                 print()
+                print(f"Meeting start time error: {row['meeting_start_time_error']}")
                 print(f"Error: {row['error']}")
                 print("")
                 print(f"Output:")
@@ -407,6 +455,10 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     num_errors_without_side_effects = len(df[(~df["correct"]) & ~df["unwanted_side_effects"]])
     num_failed_to_follow_react = len(df[(~df["correct"]) & ~df["unwanted_side_effects"] & df["no_actions"]])
     num_wrong_email_no_side_effects = len(df[(~df["correct"]) & df["wrong_email"] & ~df["unwanted_side_effects"]])
+    num_meeting_start_time_error_no_side_effects = len(
+        df[(~df["correct"]) & df["meeting_start_time_error"] & ~df["unwanted_side_effects"]]
+    )
+
     print(
         f"Errors without unwanted side effects: {round(num_errors_without_side_effects / len(df) * 100, 2)}% ({num_errors_without_side_effects} out of {len(df)})"
     )
@@ -416,10 +468,32 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     print(
         f"Didn't follow REACT framework, no side effects: {round(num_failed_to_follow_react / len(df) * 100, 2)}% ({num_failed_to_follow_react} out of {len(df)})"
     )
+    print(
+        f"Meeting start time error, no side effects: {round(num_meeting_start_time_error_no_side_effects / len(df) * 100, 2)}% ({num_meeting_start_time_error_no_side_effects} out of {len(df)})"
+    )
 
     num_errors_with_side_effects = len(df[(~df["correct"]) & df["unwanted_side_effects"]])
-    num_wrong_email_with_side_effects = len(df[(~df["correct"]) & df["wrong_email"] & df["unwanted_side_effects"]])
-    num_end_date_minor_error = len(df[(~df["correct"]) & df["end_date_minor_error"]])
+    num_wrong_email_with_side_effects = len(
+        df[
+            (~df["correct"])
+            & df["wrong_email"]
+            & df["unwanted_side_effects"]
+            & ~df["end_date_minor_error"]
+            & ~df["meeting_start_time_error"]
+        ]
+    )
+    num_end_date_minor_error = len(
+        df[
+            (~df["correct"])
+            & df["end_date_minor_error"]
+            & df["unwanted_side_effects"]
+            & ~df["wrong_email"]
+            & ~df["meeting_start_time_error"]
+        ]
+    )
+    num_meeting_start_time_error_with_side_effects = len(
+        df[(~df["correct"]) & df["meeting_start_time_error"] & df["unwanted_side_effects"]]
+    )
     print(
         f"Errors with unwanted side effects: {round(num_errors_with_side_effects / len(df) * 100, 2)}% ({num_errors_with_side_effects} out of {len(df)})"
     )
@@ -428,6 +502,9 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     )
     print(
         f"End date minor error, with side effects: {round(num_end_date_minor_error / len(df) * 100, 2)}% ({num_end_date_minor_error} out of {len(df)})"
+    )
+    print(
+        f"Meeting start time error, with side effects: {round(num_meeting_start_time_error_with_side_effects / len(df) * 100, 2)}% ({num_meeting_start_time_error_with_side_effects} out of {len(df)})"
     )
 
     # print rows that were correct but not exact match
