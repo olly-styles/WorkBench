@@ -131,16 +131,14 @@ def meeting_start_time_error(ground_truth, prediction):
         True if the meeting start time is off by one hour in the prediction.
     """
     matches = 0
+    next_free_time_ground_truth = "13:00:00"
+    common_error_times = ["09:00:00", "11:00:00", "15:00:00", "15:30:00"]
     for func in ground_truth:
-        if "13:00:00" in func:
-            if func.replace("13:00:00", "09:00:00") in prediction:
-                matches += 1
-            elif func.replace("13:00:00", "15:00:00") in prediction:
-                matches += 1
-            elif func.replace("13:00:00", "15:30:00") in prediction:
-                matches += 1
-            elif func.replace("13:00:00", "11:00:00") in prediction:
-                matches += 1
+        if next_free_time_ground_truth in func:
+            for time in common_error_times:
+                if func.replace(next_free_time_ground_truth, time) in prediction:
+                    matches += 1
+                    break
     if len(ground_truth) == 0:
         return False
     return matches == len(ground_truth)
