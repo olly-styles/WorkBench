@@ -9,7 +9,7 @@ incorrrect_with_side_effects = 0.25652
 incorrect_without_side_effects = 1 - correct - incorrrect_with_side_effects
 
 # Plot a pie chart with adjusted title spacing
-labels = ["Correct", "Side\nEffects", "No Side\nEffects"]
+labels = ["Correct", "Incorrect with \n Side Effects", "Incorrect without\nSide Effects"]
 sizes = [correct, incorrrect_with_side_effects, incorrect_without_side_effects]
 colors = ["gold", "lightcoral", "lightskyblue"]
 
@@ -53,8 +53,8 @@ other = total - failed_to_follow_react - failed_to_retrive_email - used_search_i
 labels = ["Failed to\nfollow ReAct", "Wrong\nemail", "Used search\nincorrectly", "Other"]
 
 sizes = [failed_to_follow_react, failed_to_retrive_email, used_search_incorrectly, other]
-# new set of colors that are all different from the previous ones
-colors = ["lightgreen", "darkorange", "lightpink", "lightgrey"]
+# new set of colors that are all shades of blue
+colors = ["lightblue", "skyblue", "lightcyan", "paleturquoise"]
 axs[1].pie(
     sizes,
     labels=labels,
@@ -115,7 +115,8 @@ sizes = [
     other,
 ]
 
-colors = ["darkorange", "lightyellow", "violet", "lightcyan", "greenyellow", "lightgrey"]
+# new set of colors that are all shades of red
+colors = ["lightcoral", "salmon", "tomato", "darksalmon", "mistyrose", "lightsalmon"]
 axs[2].pie(
     sizes,
     labels=labels,

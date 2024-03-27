@@ -595,6 +595,9 @@ def get_latest_results_from_dir(results_root_dir, model, tool, print_errors=Fals
         num_incorrect_no_actions = len(df[df["ground_truth"].apply(len) == 0]) - num_correct_no_actions
         num_correct_non_zero_actions = df[df["ground_truth"].apply(len) > 0]["correct"].sum()
         num_incorrect_non_zero_actions = len(df[df["ground_truth"].apply(len) > 0]) - num_correct_non_zero_actions
+        num_correct_two_or_more_actions = df[df["ground_truth"].apply(len) > 1]["correct"].sum()
+        num_incorrect_two_or_more_actions = len(df[df["ground_truth"].apply(len) > 1]) - num_correct_two_or_more_actions
+        num_context_window_errors = len(df[df["error"] == "Context window exceeded"])
         return (
             num_correct,
             num_incorrect,
@@ -603,6 +606,9 @@ def get_latest_results_from_dir(results_root_dir, model, tool, print_errors=Fals
             num_incorrect_no_actions,
             num_correct_non_zero_actions,
             num_incorrect_non_zero_actions,
+            num_correct_two_or_more_actions,
+            num_incorrect_two_or_more_actions,
+            num_context_window_errors,
         )
 
 
