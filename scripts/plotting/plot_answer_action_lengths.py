@@ -24,7 +24,9 @@ plt.rcParams.update({"font.size": 26})
 
 # Plotting the histogram of the length of the answer list
 plt.figure(figsize=(15, 5))
-plt.hist(answer_lengths, bins=range(0, max(answer_lengths) + 2), align="left", color="skyblue", edgecolor="black")
+plt.hist(
+    answer_lengths, bins=range(0, max(answer_lengths) + 2), align="left", color="mediumseagreen", edgecolor="black"
+)
 plt.xlabel("Number of actions", labelpad=20)
 plt.ylabel("Frequency", labelpad=20)
 
@@ -33,4 +35,11 @@ plt.xticks(range(0, max(answer_lengths) + 1))
 plt.yticks(range(0, 420, 100))
 # tight_layout() adjusts the plot to fit into the figure area
 plt.tight_layout()
+# no margin at the bottom
+plt.subplots_adjust(bottom=0.22)
+
+# no border around top and right
+plt.gca().spines["top"].set_visible(False)
+plt.gca().spines["right"].set_visible(False)
+
 plt.savefig("data/plots/answer_action_lengths.png")

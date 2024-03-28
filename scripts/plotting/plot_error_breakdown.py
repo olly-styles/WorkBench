@@ -1,70 +1,143 @@
 import matplotlib.pyplot as plt
 
+LABEL_DISTANCE = 1.2
+CAPTION_FONTSIZE = 36
+
 # Hard-coded results
-correct = 0.5524
-incorrrect_with_side_effects = 0.1608
-incorrect_without_side_effects = 0.2868
+correct = 0.42609
+incorrrect_with_side_effects = 0.25652
+incorrect_without_side_effects = 1 - correct - incorrrect_with_side_effects
 
 # Plot a pie chart with adjusted title spacing
-labels = ["Correct", "Side Effects", "No Side Effects"]
+labels = ["Correct", "Incorrect with \n Side Effects", "Incorrect without\nSide Effects"]
 sizes = [correct, incorrrect_with_side_effects, incorrect_without_side_effects]
 colors = ["gold", "lightcoral", "lightskyblue"]
+
+fig, axs = plt.subplots(1, 3, figsize=(30, 6))  # Adjust figsize as needed to accommodate the charts
+
 # increase font size
 plt.rcParams.update({"font.size": 30})
 
-plt.figure(figsize=(8, 6))  # Adjusting figure size for better layout
-plt.pie(sizes, labels=labels, colors=colors, autopct="%1.0f%%", startangle=-10)
-plt.axis("equal")  # Ensure pie is drawn as a circle.
+# pie with label padding
+axs[0].pie(
+    sizes,
+    labels=labels,
+    colors=colors,
+    autopct="%1.0f%%",
+    startangle=70,
+    wedgeprops=dict(edgecolor="black", linewidth=2),
+    labeldistance=LABEL_DISTANCE,
+    pctdistance=0.6,
+    textprops={"fontsize": 24},
+)
+# plt.axis("equal")  # Ensure pie is drawn as a circle.
+plt.text(
+    0.5,
+    -0.2,
+    "(a) Overall Error Breakdown",
+    horizontalalignment="center",
+    verticalalignment="center",
+    fontsize=CAPTION_FONTSIZE,
+    transform=axs[0].transAxes,
+)
 
-# Adjust title to prevent overlap
-# bold title
-# plt.title('Error Breakdown', pad=40, weight='bold')
-# make sure labels are not cut off
-plt.tight_layout()
-plt.savefig("data/plots/error_breakdown.png", bbox_inches="tight")  # Save the plot to a file
 
 # Hard-coded results
-total = 2 + 1 + 15 + 3 + 20
-failed_to_follow_react = 2 + 9 + 1 + 4
-failed_to_retrive_email = 1 + 5 + 16
-used_search_incorrectly = 1 + 2
-
-assert total == failed_to_follow_react + failed_to_retrive_email + used_search_incorrectly
+total = 57 + 28 + 8 + 15 + 46 + 65
+failed_to_follow_react = 36 + 17 + 2 + 6 + 7 + 40
+failed_to_retrive_email = 17 + 30 + 15
+used_search_incorrectly = 3 + 11 + 7 + 1
+other = total - failed_to_follow_react - failed_to_retrive_email - used_search_incorrectly
 
 # Plot a pie chart for the errors with no side effects
-labels = ["Failed to\nfollow ReAct", "Wrong\nemail", "Used search\nincorrectly"]
+labels = ["Failed to\nfollow ReAct", "Wrong\nemail", "Used search\nincorrectly", "Other"]
 
-sizes = [failed_to_follow_react, failed_to_retrive_email, used_search_incorrectly]
-# new set of colors that are all different from the previous ones
-colors = ["lightgreen", "darkorange", "lightpink"]
-plt.figure(figsize=(8, 6))
-plt.pie(sizes, labels=labels, colors=colors, autopct="%1.0f%%", startangle=20)
-plt.axis("equal")
+sizes = [failed_to_follow_react, failed_to_retrive_email, used_search_incorrectly, other]
+# new set of colors that are all shades of blue
+colors = ["lightblue", "skyblue", "lightcyan", "paleturquoise"]
+axs[1].pie(
+    sizes,
+    labels=labels,
+    colors=colors,
+    autopct="%1.0f%%",
+    startangle=20,
+    wedgeprops=dict(edgecolor="black", linewidth=2),
+    labeldistance=LABEL_DISTANCE,
+    pctdistance=0.6,
+    textprops={"fontsize": 24},
+)
+plt.text(
+    0.5,
+    -0.2,
+    "(b) Errors without Side Effects",
+    horizontalalignment="center",
+    verticalalignment="center",
+    fontsize=CAPTION_FONTSIZE,
+    transform=axs[1].transAxes,
+)
+# plt.axis("equal")
 # tight layout
 # plt.title("Errors with No Side Effects", pad=40, weight='bold')
-plt.tight_layout()
-
-plt.savefig("data/plots/error_breakdown_no_side_effects.png", bbox_inches="tight")  # Save the plot to a file
 
 # Errors with side effects
 
 # Hard-coded results
-total = 6 + 6 + 3 + 8
-wrong_email = 6 + 1 + 8
-updated_wrong_event = 4
-partial_update = 1 + 3
-
-assert total == wrong_email + updated_wrong_event + partial_update
+total = 5 + 19 + 65 + 24 + 3 + 61
+wrong_email = 17 + 5 + 12
+updated_wrong_event = 16
+misinterpreted_retrieved_data = 1 + 12 + 1 + 11
+failed_to_identify_available_slot_in_calendar = 1 + 33
+tried_to_plot_future_data = 44 + 1 + 1
+other = (
+    total
+    - wrong_email
+    - updated_wrong_event
+    - misinterpreted_retrieved_data
+    - failed_to_identify_available_slot_in_calendar
+    - tried_to_plot_future_data
+)
 
 # Plot a pie chart for the errors with side effects
-labels = ["Wrong\nemail", "Updated wrong\nevent", "Partial\nupdate"]
-sizes = [wrong_email, updated_wrong_event, partial_update]
+labels = [
+    "Wrong\nemail",
+    "Updated\nwrong event",
+    "Misinterpreted\nretrieved data",
+    "Failed to identify\navailable slot\nin calendar",
+    "Tried to plot\nfuture data",
+    "Other",
+]
+sizes = [
+    wrong_email,
+    updated_wrong_event,
+    misinterpreted_retrieved_data,
+    failed_to_identify_available_slot_in_calendar,
+    tried_to_plot_future_data,
+    other,
+]
 
-colors = ["violet", "yellow", "lightblue"]
-plt.figure(figsize=(8, 6))
-plt.pie(sizes, labels=labels, colors=colors, autopct="%1.0f%%", startangle=0)
-plt.axis("equal")
+# new set of colors that are all shades of red
+colors = ["lightcoral", "salmon", "tomato", "darksalmon", "mistyrose", "lightsalmon"]
+axs[2].pie(
+    sizes,
+    labels=labels,
+    colors=colors,
+    autopct="%1.0f%%",
+    startangle=160,
+    wedgeprops=dict(edgecolor="black", linewidth=2),
+    labeldistance=LABEL_DISTANCE,
+    pctdistance=0.6,
+    textprops={"fontsize": 24},
+)
+plt.text(
+    0.5,
+    -0.2,
+    "(c) Errors with Side Effects",
+    horizontalalignment="center",
+    verticalalignment="center",
+    fontsize=CAPTION_FONTSIZE,
+    transform=axs[2].transAxes,
+)
+# plt.axis("equal")
 # tight layout
 # plt.title("Errors with Side Effects", pad=40, weight='bold')
-plt.tight_layout()
-plt.savefig("data/plots/error_breakdown_side_effects.png", bbox_inches="tight")  # Save the plot to a file
+plt.savefig("data/plots/error_breakdown_all.png", bbox_inches="tight")  # Save the plot to a file
