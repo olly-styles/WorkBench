@@ -42,14 +42,14 @@ arg_parser.add_argument(
     default=False,
 )
 arg_parser.add_argument(
-    "--domain_only",
+    "--all_tools",
     action="store_true",
     help="Only consider domain specific tools.",
     default=False,
 )
 
 args = arg_parser.parse_args()
-all_tools_in_prompt = not args.domain_only
+all_tools_in_prompt = args.all_tools
 
 if __name__ == "__main__":
     tools = args.tools if len(args.tools) else full_tools_list
@@ -104,15 +104,17 @@ if __name__ == "__main__":
         print(
             f"Side effects (%): {total_side_effects / (total_correct + total_incorrect) * 100} ({total_side_effects} / {total_correct + total_incorrect})"
         )
-        print(
-            f"Accuracy without actions (%): {total_correct_no_actions / (total_correct_no_actions + total_incorrect_no_actions) * 100} ({total_correct_no_actions} / {total_correct_no_actions + total_incorrect_no_actions})"
-        )
-        print(
-            f"Accuracy with non-zero actions (%): {total_correct_non_zero_actions / (total_correct_non_zero_actions + total_incorrect_non_zero_actions) * 100} ({total_correct_non_zero_actions} / {total_correct_non_zero_actions + total_incorrect_non_zero_actions})"
-        )
-        print(
-            f"Accuracy with two or more actions (%): {total_correct_two_or_more_actions / (total_correct_two_or_more_actions + total_incorrect_two_or_more_actions) * 100} ({total_correct_two_or_more_actions} / {total_correct_two_or_more_actions + total_incorrect_two_or_more_actions})"
-        )
-        print(
-            f"Context window errors (%): {total_context_window_errors / (total_correct + total_incorrect) * 100} ({total_context_window_errors} / {total_correct + total_incorrect})"
-        )
+        if args.print_errors:
+            print(
+                f"Accuracy without actions (%): {total_correct_no_actions / (total_correct_no_actions + total_incorrect_no_actions) * 100} ({total_correct_no_actions} / {total_correct_no_actions + total_incorrect_no_actions})"
+            )
+            print(
+                f"Accuracy with non-zero actions (%): {total_correct_non_zero_actions / (total_correct_non_zero_actions + total_incorrect_non_zero_actions) * 100} ({total_correct_non_zero_actions} / {total_correct_non_zero_actions + total_incorrect_non_zero_actions})"
+            )
+            print(
+                f"Accuracy with two or more actions (%): {total_correct_two_or_more_actions / (total_correct_two_or_more_actions + total_incorrect_two_or_more_actions) * 100} ({total_correct_two_or_more_actions} / {total_correct_two_or_more_actions + total_incorrect_two_or_more_actions})"
+            )
+            print(
+                f"Context window errors (%): {total_context_window_errors / (total_correct + total_incorrect) * 100} ({total_context_window_errors} / {total_correct + total_incorrect})"
+            )
+        print("==============================")
