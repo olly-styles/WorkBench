@@ -1,66 +1,13 @@
 import random
 import csv
 import pandas as pd
-
-tasks = [
-    "Add animation to carousel",
-    "Add authentication for email notification",
-    "Update Flask to latest version",
-    "Optimize database query for search functionality",
-    "Add authentication for third-party login",
-    "Fix alignment issue in homepage",
-    "Add animation to form submission button",
-    "Fix alignment issue in settings page",
-    "Implement responsive layout for profile page",
-    "Fix alignment issue in profile page",
-    "Add animation to form submission button",
-    "Update brand colors in website",
-    "Design logo for e-commerce platform",
-    "Develop prototype for payment gateway",
-    "Design logo for blog",
-    "Design logo for website",
-    "Create wireframe for homepage",
-    "Develop prototype for login system",
-    "Fix bug in user management module",
-    "Optimize database query for user management",
-    "Improve UX of onboarding process",
-    "Update Django to latest version",
-    "Fix bug in content delivery module",
-    "Implement report generation API",
-    "Add animation to form submission button",
-    "Fix alignment issue in homepage",
-    "Update react to latest version",
-    "Design UI for landing page",
-    "Add authentication for email notification",
-    "Add authentication for cloud storage",
-    "Design UI for settings page",
-    "Develop prototype for login system",
-    "Implement user profile management API",
-    "Develop prototype for report generation",
-    "Optimize database query for report generation",
-    "Improve UX of feedback submission",
-    "Design logo for website",
-    "Develop prototype for payment gateway",
-    "Implement payment gateway API",
-    "Integrate Google Maps API with frontend",
-    "Design UI for landing page",
-    "Implement report generation API",
-    "Design logo for admin panel",
-    "Implement user profile management API",
-    "Optimize database query for user management",
-    "Add authentication for third-party login",
-    "Update brand colors in e-commerce platform",
-    "Add authentication for third-party login",
-    "Fix alignment issue in homepage",
-]
-events = pd.read_csv("data/raw/events.csv", header=None)[0].tolist()
-
-greetings = ["Hi Sam,", "Hey Sam,", "Dear Sam,", "Sam,"]
-sender_emails = pd.read_csv("data/raw/email_addresses.csv", header=None)[0].tolist()
+from tqdm import tqdm
+import numpy as np
 
 
 # Update generate_email_content to include both events and tasks
 def generate_email_content_updated(sender_email, event, is_long=False, task=None, contains_typo=False):
+    greetings = ["Hi Sam,", "Hey Sam,", "Dear Sam,", "Sam,"]
     sender = sender_email.split(".")[0]
     sender = sender[0].upper() + sender[1:]
     bodies_event = [
@@ -127,25 +74,86 @@ def generate_email_content_updated(sender_email, event, is_long=False, task=None
     return body
 
 
-# Update the CSV file generation with these improvements
-filename_updated = "data/raw/email_content_pairs.csv"
+def generate_data():
+    np.random.seed(42)
+    tasks = [
+        "Add animation to carousel",
+        "Add authentication for email notification",
+        "Update Flask to latest version",
+        "Optimize database query for search functionality",
+        "Add authentication for third-party login",
+        "Fix alignment issue in homepage",
+        "Add animation to form submission button",
+        "Fix alignment issue in settings page",
+        "Implement responsive layout for profile page",
+        "Fix alignment issue in profile page",
+        "Add animation to form submission button",
+        "Update brand colors in website",
+        "Design logo for e-commerce platform",
+        "Develop prototype for payment gateway",
+        "Design logo for blog",
+        "Design logo for website",
+        "Create wireframe for homepage",
+        "Develop prototype for login system",
+        "Fix bug in user management module",
+        "Optimize database query for user management",
+        "Improve UX of onboarding process",
+        "Update Django to latest version",
+        "Fix bug in content delivery module",
+        "Implement report generation API",
+        "Add animation to form submission button",
+        "Fix alignment issue in homepage",
+        "Update react to latest version",
+        "Design UI for landing page",
+        "Add authentication for email notification",
+        "Add authentication for cloud storage",
+        "Design UI for settings page",
+        "Develop prototype for login system",
+        "Implement user profile management API",
+        "Develop prototype for report generation",
+        "Optimize database query for report generation",
+        "Improve UX of feedback submission",
+        "Design logo for website",
+        "Develop prototype for payment gateway",
+        "Implement payment gateway API",
+        "Integrate Google Maps API with frontend",
+        "Design UI for landing page",
+        "Implement report generation API",
+        "Design logo for admin panel",
+        "Implement user profile management API",
+        "Optimize database query for user management",
+        "Add authentication for third-party login",
+        "Update brand colors in e-commerce platform",
+        "Add authentication for third-party login",
+        "Fix alignment issue in homepage",
+    ]
+    events = pd.read_csv("data/raw/events.csv", header=None)[0].tolist()
 
-with open(filename_updated, mode="w", newline="") as file:
-    writer = csv.writer(file)
-    writer.writerow(["Subject", "Content", "Sender"])
+    sender_emails = pd.read_csv("data/raw/email_addresses.csv", header=None)[0].tolist()
 
-    for i in range(500):
-        sender_email = random.choice(sender_emails)
-        if i % 2 == 0:  # Alternate between events and tasks
-            event = random.choice(events)
-            subject = f"Update on {event}"
-            content = generate_email_content_updated(
-                sender_email, event, is_long=(i % 5 == 0), contains_typo=(i % 5 == 0)
-            )
-        else:
-            task = random.choice(tasks)
-            subject = f"Task Update on {task}"
-            content = generate_email_content_updated(
-                sender_email, event=None, is_long=(i % 5 == 0), task=task, contains_typo=(i % 5 == 0)
-            )
-        writer.writerow([subject, content, sender_email])
+    # Update the CSV file generation with these improvements
+    filename_updated = "data/raw/email_content_pairs.csv"
+
+    with open(filename_updated, mode="w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow(["Subject", "Content", "Sender"])
+
+        for i in range(500):
+            sender_email = random.choice(sender_emails)
+            if i % 2 == 0:  # Alternate between events and tasks
+                event = random.choice(events)
+                subject = f"Update on {event}"
+                content = generate_email_content_updated(
+                    sender_email, event, is_long=(i % 5 == 0), contains_typo=(i % 5 == 0)
+                )
+            else:
+                task = random.choice(tasks)
+                subject = f"Task Update on {task}"
+                content = generate_email_content_updated(
+                    sender_email, event=None, is_long=(i % 5 == 0), task=task, contains_typo=(i % 5 == 0)
+                )
+            writer.writerow([subject, content, sender_email])
+
+
+if __name__ == "__main__":
+    generate_data()
