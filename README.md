@@ -9,6 +9,8 @@ WorkBench - the first open-source benchmark for evaluating agent performance on 
 Python Version: 3.10.11
 
 ```bash
+git clone https://github.com/olly-styles/WorkBench.git
+cd WorkBench
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
