@@ -36,7 +36,7 @@ All generated data is provided pre-computed in the `data` directory. If you want
 
 ```bash
 python scripts/data_generation/mocked_data/generate_all_mocked_data.py;
-python scripts/data_generation/query_answer_generation/generate_all_queries_and_answers.py;
+python scripts/data_generation/query_answer_generation/generate_all_query_and_answer.py;
 ```
 
 

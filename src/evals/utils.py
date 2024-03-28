@@ -23,8 +23,8 @@ from src.tools.toolkits import (
 
 DOMAINS = [calendar, email, analytics, project_management, customer_relationship_manager]
 AVAILABLE_LLMS = [
-    "gpt-3.5",
     "gpt-4",
+    "gpt-3.5",
     "claude-2",
     "llama2-70b",
     "mistral-8x7B",
