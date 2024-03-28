@@ -21,9 +21,6 @@ from src.tools.toolkits import (
 )
 
 
-OPENAI_KEY = open("openai_key.txt", "r").read()
-ANTHROPIC_KEY = open("anthropic_key.txt", "r").read()
-ANYSCALE_KEY = open("anyscale_key.txt", "r").read()
 DOMAINS = [calendar, email, analytics, project_management, customer_relationship_manager]
 AVAILABLE_LLMS = [
     "gpt-3.5",
@@ -637,6 +634,7 @@ def generate_results(queries_path, model_name, tool_selection="all"):
 
     results = pd.DataFrame(columns=["query", "function_calls", "full_response", "error"])
     if model_name == "gpt-3.5":
+        OPENAI_KEY = open("openai_key.txt", "r").read()
         llm = OpenAI(
             model_name="gpt-3.5-turbo-instruct",
             openai_api_key=OPENAI_KEY,
@@ -644,6 +642,7 @@ def generate_results(queries_path, model_name, tool_selection="all"):
             model_kwargs={"seed": 42},
         )
     elif model_name == "gpt-4":
+        OPENAI_KEY = open("openai_key.txt", "r").read()
         llm = ChatOpenAI(
             model_name="gpt-4-0125-preview",
             openai_api_key=OPENAI_KEY,
@@ -651,18 +650,21 @@ def generate_results(queries_path, model_name, tool_selection="all"):
             model_kwargs={"seed": 42},
         )
     elif model_name == "claude-2":
+        ANTHROPIC_KEY = open("anthropic_key.txt", "r").read()
         llm = ChatAnthropic(
             model_name="claude-2",
             anthropic_api_key=ANTHROPIC_KEY,
             temperature=0,
         )
     elif model_name == "llama2-70b":
+        ANYSCALE_KEY = open("anyscale_key.txt", "r").read()
         llm = ChatAnyscale(
             model="meta-llama/Llama-2-70b-chat-hf",
             anyscale_api_key=ANYSCALE_KEY,
             temperature=0,
         )
     elif model_name == "mistral-8x7B":
+        ANYSCALE_KEY = open("anyscale_key.txt", "r").read()
         llm = ChatAnyscale(
             model="mistralai/Mixtral-8x7B-Instruct-v0.1",
             anyscale_api_key=ANYSCALE_KEY,
