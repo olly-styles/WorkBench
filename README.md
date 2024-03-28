@@ -1,6 +1,6 @@
 # WorkBench
 
-WorkBench - the first open-source benchmark for evaluating agent performance on realistic workplace tasks. Created by [MindsDB](https://mindsdb.com/). 
+WorkBench - the first open-source benchmark for evaluating agent performance on realistic workplace tasks. Created by [MindsDB](https://mindsdb.com/). Special thanks to Jorge Torres, Adam Carrigan, and the rest of the MindsDB team for their support.
 
 ![WorkBench full pipeline](data/figures/full_pipeline.png)
 
