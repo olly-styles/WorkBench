@@ -374,9 +374,10 @@ ANALYTICS_TEMPLATES = [
 for d in ANALYTICS_TEMPLATES:
     d["domains"] = ["analytics"]
 
-max_queries_per_template = 10  # Limit the number of queries per template
 
-if __name__ == "__main__":
+def generate_query_and_answer():
+    np.random.seed(42)
+    max_queries_per_template = 10  # Limit the number of queries per template
     generated_queries_and_answers = generate_all_queries_and_answers(ANALYTICS_TEMPLATES, max_queries_per_template)
     df = pd.DataFrame(generated_queries_and_answers)
     df.to_csv(
@@ -384,3 +385,7 @@ if __name__ == "__main__":
         index=False,
         quoting=csv.QUOTE_ALL,
     )
+
+
+if __name__ == "__main__":
+    generate_query_and_answer()

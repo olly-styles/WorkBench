@@ -21,13 +21,10 @@ from src.tools.toolkits import (
 )
 
 
-OPENAI_KEY = open("openai_key.txt", "r").read()
-ANTHROPIC_KEY = open("anthropic_key.txt", "r").read()
-ANYSCALE_KEY = open("anyscale_key.txt", "r").read()
 DOMAINS = [calendar, email, analytics, project_management, customer_relationship_manager]
 AVAILABLE_LLMS = [
-    "gpt-3.5",
     "gpt-4",
+    "gpt-3.5",
     "claude-2",
     "llama2-70b",
     "mistral-8x7B",
@@ -323,7 +320,7 @@ def generate_query_and_answer(template):
     }
 
 
-def generate_all_queries_and_answers(templates, max_queries_per_template, verbose=True):
+def generate_all_queries_and_answers(templates, max_queries_per_template, verbose=False):
     """Generates a limited number of unique queries and answers for each template."""
     generated_queries_and_answers = []
     for template in templates:
@@ -448,29 +445,33 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
                 output = get_output(row["full_response"])
                 print(f"    {output}")
 
-    print(f"Accuracy: {round(df['correct'].mean() * 100, 2)}% ({df['correct'].sum()} out of {len(df)})")
-
     num_errors_without_side_effects = len(df[(~df["correct"]) & ~df["unwanted_side_effects"]])
+    num_errors_with_side_effects = len(df[(~df["correct"]) & df["unwanted_side_effects"]])
+    print(f"Accuracy: {round(df['correct'].mean() * 100, 2)}% ({df['correct'].sum()} out of {len(df)})")
+    print(
+        f"Errors without unwanted side effects: {round(num_errors_without_side_effects / len(df) * 100, 2)}% ({num_errors_without_side_effects} out of {len(df)})"
+    )
+    print(
+        f"Errors with unwanted side effects: {round(num_errors_with_side_effects / len(df) * 100, 2)}% ({num_errors_with_side_effects} out of {len(df)})"
+    )
+
     num_failed_to_follow_react = len(df[(~df["correct"]) & ~df["unwanted_side_effects"] & df["no_actions"]])
     num_wrong_email_no_side_effects = len(df[(~df["correct"]) & df["wrong_email"] & ~df["unwanted_side_effects"]])
     num_meeting_start_time_error_no_side_effects = len(
         df[(~df["correct"]) & df["meeting_start_time_error"] & ~df["unwanted_side_effects"]]
     )
 
-    print(
-        f"Errors without unwanted side effects: {round(num_errors_without_side_effects / len(df) * 100, 2)}% ({num_errors_without_side_effects} out of {len(df)})"
-    )
-    print(
-        f"Wrong email, no side effects: {round(num_wrong_email_no_side_effects / len(df) * 100, 2)}% ({num_wrong_email_no_side_effects} out of {len(df)})"
-    )
-    print(
-        f"Didn't follow REACT framework, no side effects: {round(num_failed_to_follow_react / len(df) * 100, 2)}% ({num_failed_to_follow_react} out of {len(df)})"
-    )
-    print(
-        f"Meeting start time error, no side effects: {round(num_meeting_start_time_error_no_side_effects / len(df) * 100, 2)}% ({num_meeting_start_time_error_no_side_effects} out of {len(df)})"
-    )
+    if print_errors:
+        print(
+            f"Wrong email, no side effects: {round(num_wrong_email_no_side_effects / len(df) * 100, 2)}% ({num_wrong_email_no_side_effects} out of {len(df)})"
+        )
+        print(
+            f"Didn't follow REACT framework, no side effects: {round(num_failed_to_follow_react / len(df) * 100, 2)}% ({num_failed_to_follow_react} out of {len(df)})"
+        )
+        print(
+            f"Meeting start time error, no side effects: {round(num_meeting_start_time_error_no_side_effects / len(df) * 100, 2)}% ({num_meeting_start_time_error_no_side_effects} out of {len(df)})"
+        )
 
-    num_errors_with_side_effects = len(df[(~df["correct"]) & df["unwanted_side_effects"]])
     num_wrong_email_with_side_effects = len(
         df[
             (~df["correct"])
@@ -492,21 +493,17 @@ def calculate_metrics(ground_truth_df, predictions_df, print_errors=True):
     num_meeting_start_time_error_with_side_effects = len(
         df[(~df["correct"]) & df["meeting_start_time_error"] & df["unwanted_side_effects"]]
     )
-    print(
-        f"Errors with unwanted side effects: {round(num_errors_with_side_effects / len(df) * 100, 2)}% ({num_errors_with_side_effects} out of {len(df)})"
-    )
-    print(
-        f"Wrong email, with side effects: {round(num_wrong_email_with_side_effects / len(df) * 100, 2)}% ({num_wrong_email_with_side_effects} out of {len(df)})"
-    )
-    print(
-        f"End date minor error, with side effects: {round(num_end_date_minor_error / len(df) * 100, 2)}% ({num_end_date_minor_error} out of {len(df)})"
-    )
-    print(
-        f"Meeting start time error, with side effects: {round(num_meeting_start_time_error_with_side_effects / len(df) * 100, 2)}% ({num_meeting_start_time_error_with_side_effects} out of {len(df)})"
-    )
-
     # print rows that were correct but not exact match
     if print_errors:
+        print(
+            f"Wrong email, with side effects: {round(num_wrong_email_with_side_effects / len(df) * 100, 2)}% ({num_wrong_email_with_side_effects} out of {len(df)})"
+        )
+        print(
+            f"End date minor error, with side effects: {round(num_end_date_minor_error / len(df) * 100, 2)}% ({num_end_date_minor_error} out of {len(df)})"
+        )
+        print(
+            f"Meeting start time error, with side effects: {round(num_meeting_start_time_error_with_side_effects / len(df) * 100, 2)}% ({num_meeting_start_time_error_with_side_effects} out of {len(df)})"
+        )
         print("--------------------------------------------")
         print("--------------------------------------------")
         print("Correct but not exact match:")
@@ -575,11 +572,12 @@ def get_latest_results_path(results_root_dir, model, tool, all_tools_in_prompt=T
 
 def get_latest_results_from_dir(results_root_dir, model, tool, print_errors=False, all_tools_in_prompt=True):
     """Get the latest results for each model in the results directory"""
-    model_results_path, ground_truth_path = get_latest_results_path(results_root_dir, model, tool, all_tools_in_prompt)
-    if not model_results_path:
+    results = get_latest_results_path(results_root_dir, model, tool, all_tools_in_prompt)
+    if not results:
         print(f"\nNo results found for {tool} with {model}")
         return None
     else:
+        model_results_path, ground_truth_path = results
         predictions = pd.read_csv(model_results_path, dtype=str)
         ground_truth = pd.read_csv(ground_truth_path, dtype=str)
         ground_truth["answer"] = ground_truth["answer"].apply(ast.literal_eval)
@@ -636,6 +634,7 @@ def generate_results(queries_path, model_name, tool_selection="all"):
 
     results = pd.DataFrame(columns=["query", "function_calls", "full_response", "error"])
     if model_name == "gpt-3.5":
+        OPENAI_KEY = open("openai_key.txt", "r").read()
         llm = OpenAI(
             model_name="gpt-3.5-turbo-instruct",
             openai_api_key=OPENAI_KEY,
@@ -643,6 +642,7 @@ def generate_results(queries_path, model_name, tool_selection="all"):
             model_kwargs={"seed": 42},
         )
     elif model_name == "gpt-4":
+        OPENAI_KEY = open("openai_key.txt", "r").read()
         llm = ChatOpenAI(
             model_name="gpt-4-0125-preview",
             openai_api_key=OPENAI_KEY,
@@ -650,18 +650,21 @@ def generate_results(queries_path, model_name, tool_selection="all"):
             model_kwargs={"seed": 42},
         )
     elif model_name == "claude-2":
+        ANTHROPIC_KEY = open("anthropic_key.txt", "r").read()
         llm = ChatAnthropic(
             model_name="claude-2",
             anthropic_api_key=ANTHROPIC_KEY,
             temperature=0,
         )
     elif model_name == "llama2-70b":
+        ANYSCALE_KEY = open("anyscale_key.txt", "r").read()
         llm = ChatAnyscale(
             model="meta-llama/Llama-2-70b-chat-hf",
             anyscale_api_key=ANYSCALE_KEY,
             temperature=0,
         )
     elif model_name == "mistral-8x7B":
+        ANYSCALE_KEY = open("anyscale_key.txt", "r").read()
         llm = ChatAnyscale(
             model="mistralai/Mixtral-8x7B-Instruct-v0.1",
             anyscale_api_key=ANYSCALE_KEY,

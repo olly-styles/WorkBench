@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import random
 from datetime import timedelta
+from tqdm import tqdm
 import os
 import sys
 
@@ -10,53 +11,6 @@ sys.path.append(project_root)
 
 from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
 from scripts.data_generation.mocked_data.generate_project_management_data import sales_team_emails
-
-random.seed(42)
-
-first_names = [
-    "Alex",
-    "Jordan",
-    "Taylor",
-    "Casey",
-    "Jamie",
-    "Morgan",
-    "Cameron",
-    "Reese",
-    "Quinn",
-    "Peyton",
-    "Shannon",
-    "Rahul",
-    "Riley",
-    "Jessie",
-    "Dakota",
-    "Angel",
-    "Parker",
-    "Avery",
-    "Jaden",
-    "Kerry",
-]
-last_names = [
-    "Smith",
-    "Johnson",
-    "Williams",
-    "Jones",
-    "Brown",
-    "Davis",
-    "Miller",
-    "Wilson",
-    "Moore",
-    "Taylor",
-    "Anderson",
-    "Thomas",
-    "Jackson",
-    "White",
-    "Harris",
-    "Martin",
-    "Thompson",
-    "Garcia",
-    "Martinez",
-    "Robinson",
-]
 
 
 # Define a function to generate random customer names
@@ -158,7 +112,54 @@ def generate_customer_notes():
     return notes
 
 
-if __name__ == "__main__":
+def generate_data():
+    random.seed(42)
+    np.random.seed(42)
+    first_names = [
+        "Alex",
+        "Jordan",
+        "Taylor",
+        "Casey",
+        "Jamie",
+        "Morgan",
+        "Cameron",
+        "Reese",
+        "Quinn",
+        "Peyton",
+        "Shannon",
+        "Rahul",
+        "Riley",
+        "Jessie",
+        "Dakota",
+        "Angel",
+        "Parker",
+        "Avery",
+        "Jaden",
+        "Kerry",
+    ]
+    last_names = [
+        "Smith",
+        "Johnson",
+        "Williams",
+        "Jones",
+        "Brown",
+        "Davis",
+        "Miller",
+        "Wilson",
+        "Moore",
+        "Taylor",
+        "Anderson",
+        "Thomas",
+        "Jackson",
+        "White",
+        "Harris",
+        "Martin",
+        "Thompson",
+        "Garcia",
+        "Martinez",
+        "Robinson",
+    ]
+
     # Define product interests
     product_interests = ["Software", "Hardware", "Services", "Consulting", "Training"]
 
@@ -184,7 +185,7 @@ if __name__ == "__main__":
     # Generate random data
     num_customers = 200
 
-    for i in range(num_customers):
+    for i in tqdm(range(num_customers)):
         customer_name = generate_random_name(first_names, last_names)
         while customer_name in crm_data["customer_name"].values:
             customer_name = generate_random_name(first_names, last_names)
@@ -214,4 +215,6 @@ if __name__ == "__main__":
     crm_data = crm_data.sort_values(by="last_contact_date", ascending=False)
     crm_data.to_csv("data/processed/customer_relationship_manager_data.csv", index=False)
 
-    print("Mocked CRM data generated successfully.")
+
+if __name__ == "__main__":
+    generate_data()

@@ -3,6 +3,7 @@ import random
 import csv
 import sys
 import os
+import numpy as np
 
 project_root = os.path.abspath(os.path.curdir)
 sys.path.append(project_root)
@@ -347,11 +348,15 @@ CALENDAR_TEMPLATES = [
 for d in CALENDAR_TEMPLATES:
     d["domains"] = ["calendar"]
 
-# Generate a limited number of unique multi-action queries and answers
-generated_queries_and_answers = []
-max_queries_per_template = 10  # Limit the number of queries per template
 
-if __name__ == "__main__":
+def generate_query_and_answer():
+    np.random.seed(42)
+    random.seed(42)
+
+    # Generate a limited number of unique multi-action queries and answers
+    generated_queries_and_answers = []
+    max_queries_per_template = 10  # Limit the number of queries per template
+
     generated_queries_and_answers = generate_all_queries_and_answers(CALENDAR_TEMPLATES, max_queries_per_template)
 
     df = pd.DataFrame(generated_queries_and_answers)
@@ -360,3 +365,7 @@ if __name__ == "__main__":
         index=False,
         quoting=csv.QUOTE_ALL,
     )
+
+
+if __name__ == "__main__":
+    generate_query_and_answer()

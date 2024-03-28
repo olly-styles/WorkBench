@@ -35,7 +35,7 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    "--tool_selection", type=str, help="tool selection method. Must be one of 'all', 'domains', 'oracle'", default="all"
+    "--tool_selection", type=str, help="tool selection method. Must be one of 'all', 'domains'", default="all"
 )
 
 args = parser.parse_args()

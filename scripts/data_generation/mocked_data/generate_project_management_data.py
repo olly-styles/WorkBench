@@ -4,6 +4,7 @@ import random
 from datetime import timedelta
 import sys
 import os
+from tqdm import tqdm
 
 project_root = os.path.abspath(os.path.curdir)
 sys.path.append(project_root)
@@ -13,6 +14,16 @@ from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
 
 team_member_emails = pd.read_csv("data/raw/email_addresses.csv", header=None).values.flatten()
 team_with_no_overdue_tasks = team_member_emails[: int(len(team_member_emails) / 3)]
+num_teams = 4
+backend_team_emails = team_member_emails[: len(team_member_emails) // num_teams]
+frontend_team_emails = team_member_emails[
+    len(team_member_emails) // num_teams : 2 * len(team_member_emails) // num_teams
+]
+design_team_emails = team_member_emails[
+    2 * len(team_member_emails) // num_teams : 3 * len(team_member_emails) // num_teams
+]
+project_management_team_emails = list(backend_team_emails) + list(frontend_team_emails) + list(design_team_emails)
+sales_team_emails = team_member_emails[3 * len(team_member_emails) // num_teams :]
 
 
 task_templates = {
@@ -55,7 +66,7 @@ def choose_list(
 
 
 # Function to generate a random task
-def create_task(task_templates, team_emails_by_board, lists, start_date, end_date, board):
+def create_task(project_management_data, task_templates, team_emails_by_board, lists, start_date, end_date, board):
     template = random.choice(task_templates[board])
     # Selecting the appropriate team member emails based on the board
     team_member_emails = team_emails_by_board[board]
@@ -113,44 +124,34 @@ def create_task(task_templates, team_emails_by_board, lists, start_date, end_dat
 
 # Sample data for tasks, team members, and lists
 
-num_teams = 4
-backend_team_emails = team_member_emails[: len(team_member_emails) // num_teams]
-frontend_team_emails = team_member_emails[
-    len(team_member_emails) // num_teams : 2 * len(team_member_emails) // num_teams
-]
-design_team_emails = team_member_emails[
-    2 * len(team_member_emails) // num_teams : 3 * len(team_member_emails) // num_teams
-]
-project_management_team_emails = list(backend_team_emails) + list(frontend_team_emails) + list(design_team_emails)
-sales_team_emails = team_member_emails[3 * len(team_member_emails) // num_teams :]
 
-lists = ["Backlog", "In Progress", "In Review", "Completed"]
-boards = ["Back end", "Front end", "Design"]
+def generate_data():
+    np.random.seed(42)
+    random.seed(42)
 
-# Setting up the project board
-project_management_data = pd.DataFrame(
-    columns=["task_id", "task_name", "assigned_to_email", "list_name", "due_date", "board"]
-)
+    lists = ["Backlog", "In Progress", "In Review", "Completed"]
+    boards = ["Back end", "Front end", "Design"]
 
-# Simulate task generation
-start_date = HARDCODED_CURRENT_TIME.date() - timedelta(days=3)  # Some tasks are overdue
-end_date = HARDCODED_CURRENT_TIME.date() + timedelta(days=13)  # All tasks are due within 14 days
+    # Setting up the project board
+    project_management_data = pd.DataFrame(
+        columns=["task_id", "task_name", "assigned_to_email", "list_name", "due_date", "board"]
+    )
 
-# Dictionary of team member emails by board
-team_emails_by_board = {
-    "Back end": backend_team_emails,
-    "Front end": frontend_team_emails,
-    "Design": design_team_emails,
-}
+    # Simulate task generation
+    start_date = HARDCODED_CURRENT_TIME.date() - timedelta(days=3)  # Some tasks are overdue
+    end_date = HARDCODED_CURRENT_TIME.date() + timedelta(days=13)  # All tasks are due within 14 days
 
-
-if __name__ == "__main__":
-    # Adjusted task generation loop
-    import tqdm
-
-    for board in boards:
-        for i in tqdm.tqdm(range(100)):
-            task = create_task(task_templates, team_emails_by_board, lists, start_date, end_date, board)
+    # Dictionary of team member emails by board
+    team_emails_by_board = {
+        "Back end": backend_team_emails,
+        "Front end": frontend_team_emails,
+        "Design": design_team_emails,
+    }
+    for board in tqdm(boards):
+        for _ in range(100):
+            task = create_task(
+                project_management_data.copy(), task_templates, team_emails_by_board, lists, start_date, end_date, board
+            )
             project_management_data.loc[len(project_management_data)] = task
 
     # Optional: Sort by due date or any other column as needed
@@ -159,4 +160,6 @@ if __name__ == "__main__":
     # Save to CSV
     project_management_data.to_csv("data/processed/project_tasks.csv", index=False)
 
-    print("Mocked project management data generated successfully.")
+
+if __name__ == "__main__":
+    generate_data()

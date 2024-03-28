@@ -2,14 +2,16 @@ import pandas as pd
 from tqdm import tqdm
 import os
 import sys
+import numpy as np
 
 project_root = os.path.abspath(os.path.curdir)
 sys.path.append(project_root)
 
 from src.data_generation.data_generation_utils import create_email
 
-if __name__ == "__main__":
-    sample_emails = pd.read_csv("data/raw/email_addresses.csv", header=None)
+
+def generate_data():
+    np.random.seed(42)
     email_content = pd.read_csv("data/raw/email_content_pairs.csv")
 
     # Create a DataFrame for the fake emails
@@ -39,4 +41,7 @@ if __name__ == "__main__":
     emails_df = emails_df.sort_values(by="sent_datetime").reset_index(drop=True)
     emails_df["body"] = emails_df["body"].str.replace("\n", "\\n")  # replace newlines in bodies with \n
     emails_df.to_csv("data/processed/emails.csv", index=False)
-    print("Emails generated and saved to data/processed/emails.csv")
+
+
+if __name__ == "__main__":
+    generate_data()
