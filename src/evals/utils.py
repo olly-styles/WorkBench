@@ -323,7 +323,7 @@ def generate_query_and_answer(template):
     }
 
 
-def generate_all_queries_and_answers(templates, max_queries_per_template, verbose=True):
+def generate_all_queries_and_answers(templates, max_queries_per_template, verbose=False):
     """Generates a limited number of unique queries and answers for each template."""
     generated_queries_and_answers = []
     for template in templates:
