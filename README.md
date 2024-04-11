@@ -29,7 +29,7 @@ python scripts/evals/calculate_all_metrics.py;
 python scripts/evals/calculate_all_metrics.py --all_tools;
 ```
 
-Not that results are not provided for the all_tools variant of GPT3.5 and LLama2-70B as the prompt does not fit into the context window for these models. 
+Note that results are not provided for the all_tools variant of GPT3.5 and LLama2-70B as the prompt does not fit into the context window for these models. 
 
 ### Data generation
 All generated data is provided pre-computed in the `data` directory. If you want to generate the data yourself, follow the steps below.
