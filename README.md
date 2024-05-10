@@ -1,6 +1,6 @@
 # WorkBench
 
-WorkBench - the first open-source benchmark for evaluating agent performance on realistic workplace tasks. Created by [MindsDB](https://mindsdb.com/). Special thanks to Jorge Torres, Adam Carrigan, and the rest of the MindsDB team for their support.
+WorkBench - the first open-source benchmark for evaluating agent performance on realistic workplace tasks. Created by [MindsDB](https://mindsdb.com/). Special thanks to Jorge Torres, Adam Carrigan, and the rest of the MindsDB team for their support. Check out the paper here - https://arxiv.org/abs/2405.00823
 
 ![WorkBench full pipeline](data/figures/full_pipeline.png)
 
@@ -85,3 +85,6 @@ Similar to the "queries" and "answers" terminology, we originally called the san
 
 #### Can I contact the authors?
 Yes! The fastest way to reach us is by opening an issue on this repository. If you want to reach out for any other reason, please send an email to ollystyles@gmail.com
+
+#### Where's the paper?
+https://arxiv.org/abs/2405.00823
