@@ -626,7 +626,7 @@ def get_toolkits(toolkits):
     return tools
 
 
-def generate_results(queries_path, model_name, tool_selection="all"):
+def generate_results(queries_path, model_name, tool_selection="all", num_retrys=0):
     """Generates results for a given model and set of queries. Saves the results to a csv file."""
     toolkits = ["email", "calendar", "analytics", "project_management", "customer_relationship_manager"]
     queries_df = pd.read_csv(queries_path)
@@ -701,7 +701,16 @@ def generate_results(queries_path, model_name, tool_selection="all"):
             response = agent({"input": query})
             for step in response["intermediate_steps"]:
                 function_calls.append(convert_agent_action_to_function_call(step[-2]))
-
+            if len(response["intermediate_steps"]) == 0:
+                for retry_num in range(num_retrys):
+                    temprature_for_retry = 0.5
+                    agent.agent.llm_chain.llm.temperature=temprature_for_retry
+                    print(f"No actions taken. Retry {retry_num + 1} of {num_retrys}")
+                    response = agent({"input": query})
+                    for step in response["intermediate_steps"]:
+                        function_calls.append(convert_agent_action_to_function_call(step[-2]))
+                    if len(response["intermediate_steps"]) > 0:
+                        break
             error = (
                 response["output"]
                 if response["output"] == "Agent stopped due to iteration limit or time limit."
