@@ -1,21 +1,23 @@
+import json
+
 import pandas as pd
-from langchain.tools import tool
 
-# Data is hard-coded so that the agent can call them without passing the dataframe as an argument.
-# We cannot use a class because LangChain does not support tools inside classes.
-PROJECT_TASKS = pd.read_csv("data/processed/project_tasks.csv", dtype=str)
+from src.tools._utils import (
+    delete_record,
+    generate_next_id,
+    get_record_field,
+    normalize_email,
+)
+from src.tools.state import get_state
+from src.tools.tool import tool
+
+VALID_LISTS = ["Backlog", "In Progress", "In Review", "Completed"]
+VALID_BOARDS = ["Back end", "Front end", "Design"]
+SEARCH_TASKS_RESULT_LIMIT = 200
 
 
-def reset_state():
-    """
-    Resets the project tasks to the original state.
-    """
-    global PROJECT_TASKS
-    PROJECT_TASKS = pd.read_csv("data/processed/project_tasks.csv", dtype=str)
-
-
-@tool("project_management.get_task_information_by_id", return_direct=False)
-def get_task_information_by_id(task_id=None, field=None):
+@tool("project_management.get_task_information_by_id")
+def get_task_information_by_id(task_id: str | None = None, field: str | None = None) -> str:
     """
     Returns the task infomration for a given ID.
 
@@ -36,22 +38,17 @@ def get_task_information_by_id(task_id=None, field=None):
     >>> project_management.get_task_information_by_id("00000000", "task_name")
     {{"task_name": "Refactor code"}}
     """
-    if not task_id:
-        return "Task ID not provided."
-    if not field:
-        return "Field not provided."
-    task = PROJECT_TASKS[PROJECT_TASKS["task_id"] == task_id].to_dict(orient="records")
-    if task:
-        if field in task[0]:
-            return {field: task[0][field]}
-        else:
-            return "Field not found."
-    else:
-        return "Task not found."
+    return get_record_field(get_state().project_tasks, "task_id", task_id, field, "Task")
 
 
-@tool("project_management.search_tasks", return_direct=False)
-def search_tasks(task_name=None, assigned_to_email=None, list_name=None, due_date=None, board=None):
+@tool("project_management.search_tasks")
+def search_tasks(
+    task_name: str | None = None,
+    assigned_to_email: str | None = None,
+    list_name: str | None = None,
+    due_date: str | None = None,
+    board: str | None = None,
+) -> str:
     """
     Searches for tasks based on the given parameters.
 
@@ -62,40 +59,47 @@ def search_tasks(task_name=None, assigned_to_email=None, list_name=None, due_dat
     assigned_to_email : str, optional
         Email address of the person assigned to the task.
     list_name : str, optional
-        Name of the list the task belongs to.
+        Name of the list the task belongs to. One of: "Backlog", "In Progress", "In Review", "Completed".
     due_date : str, optional
         Due date of the task in "YYYY-MM-DD" format.
     board : str, optional
-        Name of the board the task belongs to.
+        Name of the board the task belongs to. One of: "Back end", "Front end", "Design".
 
     Returns
     -------
-    tasks : dict
-        Task information for the given parameters.
+    tasks : list
+        List of tasks matching the given parameters. Returns at most 200 tasks.
 
     Examples
     --------
     >>> project_management.search_tasks("Refactor code", "tishtrya@example.com" "In progress", "2023-06-01", "Front end")
     {{"task_id": "00000000", "task_name": "Refactor code", "assigned_to_email": "tishtrya@example.com", "list_name": "In Progress", "due_date": "2023-06-01", "board": "Front End"}}
     """
-    if not any([task_name, assigned_to_email, list_name, due_date, board]):
+    if not any((task_name, assigned_to_email, list_name, due_date, board)):
         return "No search parameters provided."
-    tasks = PROJECT_TASKS.copy()
+    tasks = get_state().project_tasks.copy()
     if task_name:
-        tasks = tasks[tasks["task_name"].str.contains(task_name, case=False)]
+        tasks = tasks[tasks["task_name"].str.contains(task_name, regex=False)]
     if assigned_to_email:
-        tasks = tasks[tasks["assigned_to_email"].str.contains(assigned_to_email, case=False)]
+        tasks = tasks[tasks["assigned_to_email"].str.contains(assigned_to_email, regex=False)]
     if list_name:
-        tasks = tasks[tasks["list_name"].str.contains(list_name, case=False)]
+        tasks = tasks[tasks["list_name"].str.contains(list_name, regex=False)]
     if due_date:
-        tasks = tasks[tasks["due_date"].str.contains(due_date, case=False)]
+        tasks = tasks[tasks["due_date"].str.contains(due_date, regex=False)]
     if board:
-        tasks = tasks[tasks["board"].str.contains(board, case=False)]
-    return tasks.to_dict(orient="records")
+        tasks = tasks[tasks["board"].str.contains(board, regex=False)]
+    results = tasks.to_dict(orient="records")
+    return json.dumps(results[:SEARCH_TASKS_RESULT_LIMIT])
 
 
-@tool("project_management.create_task", return_direct=False)
-def create_task(task_name=None, assigned_to_email=None, list_name=None, due_date=None, board=None):
+@tool("project_management.create_task")
+def create_task(
+    task_name: str | None = None,
+    assigned_to_email: str | None = None,
+    list_name: str | None = None,
+    due_date: str | None = None,
+    board: str | None = None,
+) -> str:
     """
     Creates a new task.
 
@@ -106,11 +110,11 @@ def create_task(task_name=None, assigned_to_email=None, list_name=None, due_date
     assigned_to_email : str
         Email address of the person assigned to the task.
     list_name : str
-        Name of the list the task belongs to.
+        Name of the list the task belongs to. One of: "Backlog", "In Progress", "In Review", "Completed".
     due_date : str
         Due date of the task in "YYYY-MM-DD" format.
     board : str
-        Name of the board the task belongs to.
+        Name of the board the task belongs to. One of: "Back end", "Front end", "Design".
 
     Returns
     -------
@@ -122,20 +126,21 @@ def create_task(task_name=None, assigned_to_email=None, list_name=None, due_date
     >>> project_management.create_task("Integrate API service with frontend", "sam@example.com", "In progress", "2023-06-01", "Front end")
     "00000001"
     """
-    global PROJECT_TASKS
+    state = get_state()
 
-    if not all([task_name, assigned_to_email, list_name, due_date, board]):
+    if not all((task_name, assigned_to_email, list_name, due_date, board)):
         return "Missing task details."
 
-    assigned_to_email = assigned_to_email.lower()
-    if assigned_to_email not in PROJECT_TASKS["assigned_to_email"].str.lower().values:
+    assert assigned_to_email is not None
+    assigned_to_email = normalize_email(assigned_to_email)
+    if assigned_to_email not in state.project_tasks["assigned_to_email"].str.lower().values:
         return "Assignee email not valid. Please choose from the list of team members."
-    if list_name not in ["Backlog", "In Progress", "In Review", "Completed"]:
-        return "List not valid. Please choose from: 'Backlog', 'In Progress', 'In Review', 'Completed'."
-    if board not in ["Back end", "Front end", "Design"]:
-        return "Board not valid. Please choose from: 'Back end', 'Front end', 'Design'."
+    if list_name not in VALID_LISTS:
+        return f"List not valid. Please choose from: {', '.join(repr(v) for v in VALID_LISTS)}."
+    if board not in VALID_BOARDS:
+        return f"Board not valid. Please choose from: {', '.join(repr(v) for v in VALID_BOARDS)}."
 
-    task_id = str(int(PROJECT_TASKS["task_id"].max()) + 1).zfill(8)
+    task_id = generate_next_id(state.project_tasks, "task_id")
     new_task = pd.DataFrame(
         {
             "task_id": [task_id],
@@ -146,12 +151,12 @@ def create_task(task_name=None, assigned_to_email=None, list_name=None, due_date
             "board": [board],
         }
     )
-    PROJECT_TASKS = pd.concat([PROJECT_TASKS, new_task], ignore_index=True)
+    state.project_tasks = pd.concat([state.project_tasks, new_task], ignore_index=True)
     return task_id
 
 
-@tool("project_management.delete_task", return_direct=False)
-def delete_task(task_id=None):
+@tool("project_management.delete_task")
+def delete_task(task_id: str | None = None) -> str:
     """
     Deletes a task by ID.
 
@@ -170,20 +175,13 @@ def delete_task(task_id=None):
     >>> project_management.delete_task("00000000")
     "Task deleted successfully."
     """
-    global PROJECT_TASKS
-
-    if not task_id:
-        return "Task ID not provided."
-
-    if task_id in PROJECT_TASKS["task_id"].values:
-        PROJECT_TASKS = PROJECT_TASKS[PROJECT_TASKS["task_id"] != task_id]
-        return "Task deleted successfully."
-    else:
-        return "Task not found."
+    state = get_state()
+    state.project_tasks, message = delete_record(state.project_tasks, "task_id", task_id, "Task")
+    return message
 
 
-@tool("project_management.update_task", return_direct=False)
-def update_task(task_id=None, field=None, new_value=None):
+@tool("project_management.update_task")
+def update_task(task_id: str | None = None, field: str | None = None, new_value: str | None = None) -> str:
     """
     Updates a task by ID.
 
@@ -194,7 +192,7 @@ def update_task(task_id=None, field=None, new_value=None):
     field : str
         Field to update. Available fields are: "task_name", "assigned_to_email", "list_name", "due_date", "board"
     new_value : str
-        New value for the field.
+        New value for the field. When field is "list_name", one of: "Backlog", "In Progress", "In Review", "Completed". When field is "board", one of: "Back end", "Front end", "Design".
 
     Returns
     -------
@@ -206,26 +204,24 @@ def update_task(task_id=None, field=None, new_value=None):
     >>> project_management.update_task("00000000", "task_name", "New Task Name")
     "Task updated successfully."
     """
-    global PROJECT_TASKS
+    state = get_state()
 
     if not task_id or not field or not new_value:
         return "Task ID, field, or new value not provided."
 
     if field == "assigned_to_email":
-        new_value = new_value.lower()
+        new_value = normalize_email(new_value)
 
-    if field == "board" and new_value not in ["Back end", "Front end", "Design"]:
-        return "Board not valid. Please choose from: 'Back end', 'Front end', 'Design'."
-    if field == "list_name" and new_value not in ["Backlog", "In Progress", "In Review", "Completed"]:
-        return "List not valid. Please choose from: 'Backlog', 'In Progress', 'In Review', 'Completed'."
-    if field == "assigned_to_email" and new_value not in PROJECT_TASKS["assigned_to_email"].str.lower().values:
+    if field == "board" and new_value not in VALID_BOARDS:
+        return f"Board not valid. Please choose from: {', '.join(repr(v) for v in VALID_BOARDS)}."
+    if field == "list_name" and new_value not in VALID_LISTS:
+        return f"List not valid. Please choose from: {', '.join(repr(v) for v in VALID_LISTS)}."
+    if field == "assigned_to_email" and new_value not in state.project_tasks["assigned_to_email"].str.lower().values:
         return "Assignee email not valid. Please choose from the list of team members."
 
-    if task_id in PROJECT_TASKS["task_id"].values:
-        if field in PROJECT_TASKS.columns:
-            PROJECT_TASKS.loc[PROJECT_TASKS["task_id"] == task_id, field] = new_value
-            return "Task updated successfully."
-        else:
-            return "Field not valid."
-    else:
+    if task_id not in state.project_tasks["task_id"].values:
         return "Task not found."
+    if field not in state.project_tasks.columns:
+        return "Field not valid."
+    state.project_tasks.loc[state.project_tasks["task_id"] == task_id, field] = new_value
+    return "Task updated successfully."

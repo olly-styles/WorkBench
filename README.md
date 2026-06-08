@@ -1,90 +1,135 @@
 # WorkBench
 
+## WorkBench Revisited (2026)
+
+[**WorkBench Revisited**](retro/main.pdf) re-evaluates 21 models released between 2023 and 2026.
+
+![Outcome composition by model](retro/figs/side_effects_composition.png)
+
+**Outcome composition by model.** Each model's 690 WorkBench tasks split into correct, failed-but-harmless, and harmful side effect, ordered by task completion. GPT-4 is the original 2024 result; the others are 2026 runs.
+
+The best agent on WorkBench in March 2024, GPT-4, completed 43% of tasks and took an unintended harmful action on 26% of them. In June 2026 the best agent, Claude Opus 4.8, completes 89% and takes a harmful action on just 2.5%. Three things stand out:
+
+- **Capability and safety go together** rather than trade off — the models that finish the most tasks also do the least unintended damage.
+- **Basic mistakes persist.** Several classes of error have been eliminated, but frontier models still occasionally cause irreversible harm, such as sending an email to the wrong person.
+- **Open-weight models have collapsed costs** for a performance level that was previously only accessible to proprietary models, while frontier costs have stayed relatively stable.
+
+The 2026 release also includes data and code quality improvements, new model scores, and analysis of agent progress since 2024. Read the full write-up in [`retro/main.pdf`](retro/main.pdf).
+
+## About WorkBench
+
 WorkBench - the first open-source benchmark for evaluating agent performance on realistic workplace tasks. Created by [MindsDB](https://mindsdb.com/). Special thanks to Jorge Torres, Adam Carrigan, and the rest of the MindsDB team for their support. Check out the paper here - https://arxiv.org/abs/2405.00823
 
 ![WorkBench full pipeline](data/figures/full_pipeline.png)
 
+**Figure 1: The WorkBench pipeline.** Tasks are generated from templates over five sandbox databases, executed by an agent with 26 read/write tools, and graded by comparing the sandbox's final state against the ground truth.
+
 ## Installation
 
-Python Version: 3.10.11
+Requires Python 3.10+ and [uv](https://docs.astral.sh/uv/).
 
 ```bash
 git clone https://github.com/olly-styles/WorkBench.git
 cd WorkBench
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+uv sync --frozen
 ```
 
 ## Usage
 
-All five sandbox databases, task-outcome pairs, and pre-computed inference results are provided in the `data` directory.
+All five sandbox databases, task-outcome pairs, and pre-computed inference results are provided in the `data` directory. Three console scripts are registered by `pyproject.toml` and can be invoked via `uv run`:
+
+| Script | Purpose |
+| --- | --- |
+| `workbench-evaluate` | Compute metrics over existing results in `data/results/` |
+| `workbench-inference` | Run a model against a task file and write a fresh results CSV |
+| `workbench-generate-data` | Regenerate sandbox databases and task/outcome pairs from scratch |
+
+The underlying scripts in `scripts/` are still callable directly (`uv run scripts/inference/generate_results.py ...`); the console scripts are thin wrappers around them.
 
 ### Evaluation
 
-As all the pre-computed inference results are provided, you can reproduce the evaluation results in the paper without running inference. Use the following script to calculate the metrics.
+All pre-computed inference results are committed under `data/results/`, so the evaluation numbers in the paper can be reproduced without running inference.
 
 ```bash
-python scripts/evals/calculate_all_metrics.py;
-python scripts/evals/calculate_all_metrics.py --all_tools;
+uv run workbench-evaluate
+uv run workbench-evaluate --all_tools
 ```
 
-Note that results are not provided for the all_tools variant of GPT3.5 and LLama2-70B as the prompt does not fit into the context window for these models. 
+Note that results are not provided for the `all_tools` variant of GPT3.5 and LLama2-70B as the prompt does not fit into the context window for these models.
 
 ### Data generation
-All generated data is provided pre-computed in the `data` directory. If you want to generate the data yourself, follow the steps below.
+
+All generated data is committed under `data/`. To regenerate it from scratch:
 
 ```bash
-python scripts/data_generation/mocked_data/generate_all_mocked_data.py;
-python scripts/data_generation/query_answer_generation/generate_all_query_and_answer.py;
+uv run workbench-generate-data
 ```
 
-
+This regenerates the five sandbox databases (`data/processed/*.csv`) and the per-domain task/outcome files (`data/processed/tasks_and_outcomes/*.csv`).
 
 ### Inference
 
-Pre-computed inference results are provided in the `data` directory. If you want to run inference yourself, you will need to provide your own API keys.
+Pre-computed inference results are provided in the `data` directory. To run inference yourself, you need an [OpenRouter](https://openrouter.ai/) API key. All LLM calls use the OpenAI-compatible chat-completions API, so no provider-specific SDKs are required.
 
-- An openai key is required for GPT-3.5 and GPT-4. 
-- An anthropic key is required for Claude-2.
-- An anyscale key is required for llama2-70b and mistral-8x7B.
-
+Create a `.env` file in the project root:
 
 ```bash
-touch openai_key.txt && echo YOUR_OPENAI_API_KEY > openai_key.txt
-touch anthropic_key.txt && echo YOUR_ANTHROPIC_API_KEY > anthropic_key.txt
-touch anyscale_key.txt && echo YOUR_ANYSCALE_API_KEY > anyscale_key.txt
+OPENROUTER_API_KEY=your-openrouter-key
+# Optional — direct-provider keys. When present, a model's native provider is
+# used directly so calls bill that vendor's credits instead of OpenRouter.
+OPENAI_API_KEY=your-openai-key
+ANTHROPIC_API_KEY=your-anthropic-key
+GEMINI_API_KEY=your-google-key
 ```
 
-#### Run inference for specific domain and model
+**Routing.** Each model has a native provider (OpenAI, Anthropic, Google, or OpenRouter). If that provider's direct key is set, the call goes straight to the vendor (`api.openai.com`, `api.anthropic.com`, Gemini's OpenAI-compatible endpoint) and bills its credits; otherwise it falls back to OpenRouter with `OPENROUTER_API_KEY`. OpenRouter-only models (Qwen, Llama, Mixtral) always use OpenRouter. The chosen route is logged at the start of each run and recorded in the run's `_meta.json` (`provider`, `base_url`, `model_id`).
+
+#### Run inference for a specific model and task file
+
 ```bash
-python scripts/inference/generate_results.py --model_name MODEL_NAME --queries_path QUERIES_PATH
+uv run workbench-inference \
+    --model_name claude-sonnet-4.6 \
+    --tasks_path data/processed/tasks_and_outcomes/email_tasks_and_outcomes.csv
 ```
 
-#### Run inference for all domains and models 
+Useful flags:
+
+- `--tool_selection {all,domains}` — pass every tool to the model on every task (`all`, default) or only the tools relevant to the task's domain (`domains`).
+- `--workers N` — number of parallel workers; tasks are dispatched via a thread pool, with per-thread sandbox state.
+- `--structured_outputs` — use the model's native tool-calling API instead of ReAct text parsing.
+- `--act_without_confirmation` — append a system-prompt suffix telling the model to act without asking the user to confirm.
+- `--log_traces` — also write the full per-task LLM trace as JSON alongside the results CSV.
+
+The available model names are the keys of `MODEL_REGISTRY` in [`src/evals/agent.py`](src/evals/agent.py). Current entries include `gpt-5.4`, `gpt-5-nano`, `claude-sonnet-4.6`, `gemini-3-flash`, `gemini-2.5-flash`, `gemini-3.1-flash-lite`, `qwen-3.5-flash`, `deepseek-v4-pro`, plus the original-paper models (`gpt-4`, `gpt-3.5`, `claude-2`, `llama2-70b`, `mixtral-8x7b`).
+
+#### Run inference for all domains and models
+
 ```bash
-python scripts/inference/generate_all_results.py
+uv run scripts/inference/generate_all_results.py
 ```
 
 #### Run inference for a new agent
 
-Getting results for a new agent dependings on the how different the new agent is from existing agents. Here we go through three possible scenarios:
+The agent layer was rewritten to call OpenRouter directly (no LangChain). To experiment with a new agent there are three entry points, all in [`src/evals/agent.py`](src/evals/agent.py):
 
-1. If the new agent is the same as an existing agent with a different prompt, you can modify the [prompt directly](https://github.com/olly-styles/WorkBench/blob/bf1ed266770d40b544472f6335e8d366e552e4b8/src/evals/utils.py#L690). 
-2. If the new agent uses an LLM that's supported by LangChain but not by the current implementation, then the new agent can be added to the [supported LLMs](https://github.com/olly-styles/WorkBench/blob/bf1ed266770d40b544472f6335e8d366e552e4b8/src/evals/utils.py#L638)
-3. To implement a new agent outside of the LangChain framework, update the [inference loop](https://github.com/olly-styles/WorkBench/blob/bf1ed266770d40b544472f6335e8d366e552e4b8/src/evals/utils.py#L676)
+1. **Different prompt, same agent** — edit `PREFIX`, `SUFFIX`, or `ACT_WITHOUT_CONFIRMATION_SUFFIX`, or change `build_system_prompt`.
+2. **New model** — add an entry to `MODEL_REGISTRY` mapping a friendly name to a `ModelConfig(model_id, supports_temperature, provider)` whose `model_id` is the OpenRouter slug (e.g. `openai/...`) and whose `provider` is `openai`, `anthropic`, `google`, or `openrouter`. Direct providers strip the slug prefix automatically; see "Routing" above.
+3. **A different agent loop entirely** — implement an alternative to `run_agent` (ReAct text parsing) or `run_agent_structured` (native tool calling) and dispatch to it from `src/evals/inference.py:_run_single_task`.
 
+### Development
+
+Install pre-commit hooks to run linting, formatting, type checking, and tests automatically before each commit:
+
+```bash
+uv run pre-commit install
+```
 
 ### FAQ
-
-#### What are "queries" and "answers"?
-We originally called tasks "queries" and outcomes "answers". We updated the terminology in the paper but have not yet updated the code.
-
-#### What is "mocked data"?
-Similar to the "queries" and "answers" terminology, we originally called the sandbox databases "mocked data". We updated the terminology in the paper but have not yet updated the code.
 
 #### Can I contact the authors?
 Yes! The fastest way to reach us is by opening an issue on this repository. If you want to reach out for any other reason, please send an email to ollystyles@gmail.com
 
 #### Where's the paper?
 https://arxiv.org/abs/2405.00823
+
+The 2026 follow-up, [WorkBench Revisited](retro/main.pdf), re-runs the benchmark on 21 newer models.

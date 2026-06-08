@@ -1,6 +1,10 @@
+import json
+
 import pandas as pd
 import pytest
+
 from src.tools import customer_relationship_manager as crm
+from src.tools.state import get_state, reset_state
 
 test_customers = [
     {
@@ -33,18 +37,18 @@ test_customers = [
 @pytest.fixture(autouse=True)
 def setup_and_teardown():
     # Setup: Load test data
-    crm.CRM_DATA = pd.DataFrame(test_customers)
+    get_state().crm_data = pd.DataFrame(test_customers)
     # This will run before each test
     yield
     # Teardown: Reset state after each test
-    crm.reset_state()
+    reset_state()
 
 
 def test_search_customers():
     """
     Tests search_customers.
     """
-    assert crm.search_customers.func("John")[0] == {
+    assert json.loads(crm.search_customers.func("John"))[0] == {
         "customer_id": "00000001",
         "customer_name": "John Smith",
         "assigned_to_email": "email1@test.com",
@@ -65,12 +69,43 @@ def test_search_customers_no_parameters():
     assert crm.search_customers.func() == "No search parameters provided. Please provide at least one parameter."
 
 
+def test_search_customers_no_results():
+    """
+    Tests search_customers with no matching results.
+    """
+    assert json.loads(crm.search_customers.func("nonexistent")) == []
+
+
+def test_search_customers_result_limit():
+    """
+    Tests search_customers returns at most 5 results.
+    """
+    many_customers = [
+        {
+            "customer_id": f"0000000{i}",
+            "customer_name": "Test Customer",
+            "assigned_to_email": "test@test.com",
+            "customer_email": f"customer{i}@test.com",
+            "customer_phone": "123-456-7890",
+            "last_contact_date": "2023-01-01",
+            "product_interest": "Software",
+            "status": "Lead",
+            "notes": "Notes.",
+            "follow_up_by": "2023-01-15",
+        }
+        for i in range(7)
+    ]
+    get_state().crm_data = pd.DataFrame(many_customers)
+    results = json.loads(crm.search_customers.func(customer_name="Test"))
+    assert len(results) == 5
+
+
 def test_update_customer():
     """
     Tests update_customer.
     """
     assert crm.update_customer.func("00000001", "status", "Won") == "Customer updated successfully."
-    assert crm.CRM_DATA.loc[crm.CRM_DATA["customer_id"] == "00000001", "status"].values[0] == "Won"
+    assert get_state().crm_data.loc[get_state().crm_data["customer_id"] == "00000001", "status"].values[0] == "Won"
 
 
 def test_update_customer_missing_args():
@@ -108,7 +143,7 @@ def test_add_customer():
     )
     assert new_id == "00000003"
 
-    new_customer = crm.CRM_DATA.loc[crm.CRM_DATA["customer_id"] == "00000003"]
+    new_customer = get_state().crm_data.loc[get_state().crm_data["customer_id"] == "00000003"]
     assert new_customer["customer_name"].values[0] == "John Smith"
 
 
@@ -129,7 +164,7 @@ def test_delete_customer():
     """
     message = crm.delete_customer.func("00000001")
     assert message == "Customer deleted successfully."
-    assert "00000001" not in crm.CRM_DATA["customer_id"].values
+    assert "00000001" not in get_state().crm_data["customer_id"].values
 
 
 def test_delete_customer_no_id_provided():

@@ -1,0 +1,15 @@
+.vscode/
+# LaTeX source and helpers: only the rendered PDF and the figures are tracked.
+*.tex
+*.bib
+*.sty
+*.bst
+figs/pull.png
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz

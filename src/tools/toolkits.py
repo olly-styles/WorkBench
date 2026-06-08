@@ -1,6 +1,7 @@
-from src.tools import calendar, email, analytics, project_management, customer_relationship_manager, company_directory
+from src.tools import analytics, calendar, company_directory, customer_relationship_manager, email, project_management
+from src.tools.tool import Tool
 
-tools_with_side_effects = [
+tools_with_side_effects: list[Tool] = [
     calendar.create_event,
     calendar.delete_event,
     calendar.update_event,
@@ -17,7 +18,7 @@ tools_with_side_effects = [
     customer_relationship_manager.delete_customer,
 ]
 
-tools_without_side_effects = [
+all_tools: list[Tool] = tools_with_side_effects + [
     calendar.get_event_information_by_id,
     calendar.search_events,
     email.get_email_information_by_id,
@@ -33,22 +34,14 @@ tools_without_side_effects = [
     company_directory.find_email_address,
 ]
 
-all_tools = tools_with_side_effects + tools_without_side_effects
 
-tool_information = [
-    {
-        "toolkit": tool.__module__,
-        "tool": tool,
-        "name": tool.name,
-    }
-    for tool in all_tools
-]
+def _tools_for_prefix(prefix: str) -> list[Tool]:
+    return [t for t in all_tools if t.name.startswith(prefix + ".")]
 
-calendar_toolkit = [t["tool"] for t in tool_information if t["name"].split(".")[0] == "calendar"]
-email_toolkit = [t["tool"] for t in tool_information if t["name"].split(".")[0] == "email"]
-analytics_toolkit = [t["tool"] for t in tool_information if t["name"].split(".")[0] == "analytics"]
-project_management_toolkit = [t["tool"] for t in tool_information if t["name"].split(".")[0] == "project_management"]
-customer_relationship_manager_toolkit = [
-    t["tool"] for t in tool_information if t["name"].split(".")[0] == "customer_relationship_manager"
-]
-company_directory_toolkit = [t["tool"] for t in tool_information if t["name"].split(".")[0] == "company_directory"]
+
+calendar_toolkit: list[Tool] = _tools_for_prefix("calendar")
+email_toolkit: list[Tool] = _tools_for_prefix("email")
+analytics_toolkit: list[Tool] = _tools_for_prefix("analytics")
+project_management_toolkit: list[Tool] = _tools_for_prefix("project_management")
+customer_relationship_manager_toolkit: list[Tool] = _tools_for_prefix("customer_relationship_manager")
+company_directory_toolkit: list[Tool] = _tools_for_prefix("company_directory")

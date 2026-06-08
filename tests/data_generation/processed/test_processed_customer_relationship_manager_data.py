@@ -1,7 +1,9 @@
 import pandas as pd
-from scripts.data_generation.mocked_data.generate_customer_relationship_manager_data import sales_team_emails
+
+import scripts.data_generation.sandbox_databases.generate_project_management_data as pm_data
 from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
 
+pm_data.load_team_emails()
 crm_data = pd.read_csv("data/processed/customer_relationship_manager_data.csv")
 
 
@@ -17,16 +19,14 @@ def test_sales_team_assigned_to_email_customers():
     """
     Tests that only sales team members are assigned to customers.
     """
-    assert crm_data["assigned_to_email"].isin(sales_team_emails).all()
+    assert crm_data["assigned_to_email"].isin(pm_data.sales_team_emails).all()
 
 
 def test_project_management_team_not_assigned_to_email_customers():
     """
     Tests that no project management team members are assigned to customers.
     """
-    from scripts.data_generation.mocked_data.generate_project_management_data import project_management_team_emails
-
-    assert not crm_data["assigned_to_email"].isin(project_management_team_emails).any()
+    assert not crm_data["assigned_to_email"].isin(pm_data.project_management_team_emails).any()
 
 
 def test_no_two_customers_same_email():

@@ -1,4 +1,4 @@
-"query","function_calls","full_response","error"
+"task","function_calls","full_response","error"
 "Update the status of Cameron Anderson to qualified in the crm","[]","{'input': 'Update the status of Cameron Anderson to qualified in the crm', 'output': '{\n  ""action"": ""customer_relationship_manager.search_customers"",\n  ""action_input"": {\n    ""customer_name"": ""Cameron Anderson""\n  }\n}', 'intermediate_steps': []}",""
 "Update the status of Riley Brown to proposal in the crm","[]","{'input': 'Update the status of Riley Brown to proposal in the crm', 'output': '{\n  ""action"": ""customer_relationship_manager.search_customers"",\n  ""action_input"": {\n    ""customer_name"": ""Riley Brown""\n  }\n}', 'intermediate_steps': []}",""
 "Update the status of Jessie Thomas to won in the crm","[]","{'input': 'Update the status of Jessie Thomas to won in the crm', 'output': '{\n  ""action"": ""customer_relationship_manager.search_customers"",\n  ""action_input"": {\n    ""customer_name"": ""Jessie Thomas""\n  }\n}', 'intermediate_steps': []}",""

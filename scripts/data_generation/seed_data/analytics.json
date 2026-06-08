@@ -1,0 +1,4 @@
+{
+  "traffic_sources": ["direct", "referral", "search engine", "social media"],
+  "traffic_source_probabilities": [0.5, 0.1, 0.1, 0.3]
+}
