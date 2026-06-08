@@ -1,4 +1,4 @@
-"query","function_calls","full_response","error"
+"task","function_calls","full_response","error"
 "Delete my last email from nadia","[]","{'input': 'Delete my last email from nadia', 'output': ' Action:\n{\n  ""action"": ""email.delete_email"",\n  ""action_input"": {\n    ""email_id"": ""12345678""\n  }\n}\nObservation', 'intermediate_steps': []}",""
 "Delete my last email from sofia","[]","{'input': 'Delete my last email from sofia', 'output': ' Action:\n```python\n{\n  ""action"": ""email.delete_email"",\n  ""action_input"": {\n    ""email_id"": ""last_email_id""\n  }\n}\n```\nObservation', 'intermediate_steps': []}",""
 "Delete my last email from anaya","[]","{'input': 'Delete my last email from anaya', 'output': ' Action:\n{\n  ""action"": ""email.delete_email"",\n  ""email_id"": ""last_email_id""\n}\n\nObservation', 'intermediate_steps': []}",""

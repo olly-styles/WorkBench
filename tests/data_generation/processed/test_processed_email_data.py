@@ -1,4 +1,5 @@
 import pandas as pd
+
 from src.data_generation.data_generation_utils import HARDCODED_CURRENT_TIME
 
 email_data = pd.read_csv("data/processed/emails.csv").sort_values("sent_datetime")

@@ -1,0 +1,33 @@
+{
+  "company_prefixes": [
+    "Tech", "Bio", "Green", "Quant", "Next", "Inno", "Ultra", "Cyber",
+    "Future", "Pro", "Neo", "Smart", "Alpha", "Omni", "Solar", "Geo",
+    "Nano", "Aero", "Blue", "Eco"
+  ],
+  "company_suffixes": [
+    "Solutions", "Tech", "Logics", "Systems", "Robotics", "Energy",
+    "Dynamics", "Networks", "Labs", "Analytics", "Innovations", "Ventures",
+    "Designs", "Electronics", "Software", "Hardware", "Cloud", "Security",
+    "Foods", "Biotech"
+  ],
+  "company_modifiers": [
+    "Global", "Dynamic", "Interactive", "Vision", "Peak", "Edge", "Stream",
+    "Link", "Wave", "Core", "Flex", "Point", "Access", "Force", "Space",
+    "Mind", "Port", "Path", "Scope", "Trace"
+  ],
+  "first_names": [
+    "Alex", "Jordan", "Taylor", "Casey", "Jamie", "Morgan", "Cameron",
+    "Reese", "Quinn", "Peyton", "Shannon", "Rahul", "Riley", "Jessie",
+    "Dakota", "Angel", "Parker", "Avery", "Jaden", "Kerry"
+  ],
+  "last_names": [
+    "Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller",
+    "Wilson", "Moore", "Taylor", "Anderson", "Thomas", "Jackson", "White",
+    "Harris", "Martin", "Thompson", "Garcia", "Martinez", "Robinson"
+  ],
+  "product_interests": ["Software", "Hardware", "Services", "Consulting", "Training"],
+  "statuses": ["Qualified", "Won", "Lost", "Lead", "Proposal"],
+  "customer_note_options": ["Had a call", "On holiday", "Saw the demo", "Met in person"],
+  "query_first_names": ["David", "James", "Robert", "William", "Mary", "Patricia", "Linda"],
+  "query_last_names": ["Jones", "Miller", "Davis", "Garcia", "Martinez", "Robinson", "Mehta"]
+}

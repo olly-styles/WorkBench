@@ -1,11 +1,11 @@
-import pandas as pd
-from langchain.tools import tool
+import json
 
-EMAILS = pd.read_csv("data/raw/email_addresses.csv", header=None, names=["email_address"])
+from src.tools.state import get_state
+from src.tools.tool import tool
 
 
-@tool("company_directory.find_email_address", return_direct=False)
-def find_email_address(name=""):
+@tool("company_directory.find_email_address")
+def find_email_address(name: str = "") -> str:
     """
     Finds the email address of an employee by their name.
 
@@ -16,17 +16,18 @@ def find_email_address(name=""):
 
     Returns
     -------
-    email_address : str
+    email_address : list[str]
         Email addresses of the person.
 
     Examples
     --------
     >>> directory.find_email_address("John")
-    "john.smith@example.com"
+    ["john.smith@example.com"]
     """
-    global EMAILS
-    if name == "":
+    state = get_state()
+    if not name:
         return "Name not provided."
-    name = name.lower()
-    email_address = EMAILS[EMAILS["email_address"].str.contains(name)]
-    return email_address["email_address"].values
+    results = state.directory_emails[state.directory_emails["email_address"].str.contains(name.lower(), regex=False)][
+        "email_address"
+    ].values.tolist()
+    return json.dumps(results) if results else "No employee found with that name."

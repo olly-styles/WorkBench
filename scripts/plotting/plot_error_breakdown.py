@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 LABEL_DISTANCE = 1.2
 CAPTION_FONTSIZE = 36
 
-# Hard-coded results
+# Hand-counted results from manual error analysis
 correct = 0.42609
 incorrrect_with_side_effects = 0.25652
 incorrect_without_side_effects = 1 - correct - incorrrect_with_side_effects
@@ -42,7 +42,7 @@ plt.text(
 )
 
 
-# Hard-coded results
+# Hard-coded error counts matching published paper figures
 total = 57 + 28 + 8 + 15 + 46 + 65
 failed_to_follow_react = 36 + 17 + 2 + 6 + 7 + 40
 failed_to_retrive_email = 17 + 30 + 15
@@ -81,7 +81,7 @@ plt.text(
 
 # Errors with side effects
 
-# Hard-coded results
+# Hard-coded error counts matching published paper figures
 total = 5 + 19 + 65 + 24 + 3 + 61
 wrong_email = 17 + 5 + 12
 updated_wrong_event = 16

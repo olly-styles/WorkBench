@@ -1,26 +1,28 @@
-import pandas as pd
-from langchain.tools import tool
+import json
 
-ANALYTICS_DATA = pd.read_csv("data/processed/analytics_data.csv", dtype=str)
-ANALYTICS_DATA["user_engaged"] = ANALYTICS_DATA["user_engaged"] == "True"  # Convert to boolean
-PLOTS_DATA = pd.DataFrame(columns=["file_path"])
+import pandas as pd
+
+from src.tools._utils import filter_by_date_range
+from src.tools.state import get_state
+from src.tools.tool import tool
+
+VALID_VALUES_TO_PLOT = [
+    "total_visits",
+    "session_duration_seconds",
+    "user_engaged",
+    "visits_direct",
+    "visits_referral",
+    "visits_search_engine",
+    "visits_social_media",
+]
+VALID_PLOT_TYPES = ["bar", "line", "scatter", "histogram"]
+
 METRICS = ["total_visits", "session_duration_seconds", "user_engaged"]
 METRIC_NAMES = ["total visits", "average session duration", "engaged users"]
 
 
-def reset_state():
-    """
-    Resets the analytics data to the original state.
-    """
-    global ANALYTICS_DATA
-    ANALYTICS_DATA = pd.read_csv("data/processed/analytics_data.csv", dtype=str)
-    ANALYTICS_DATA["user_engaged"] = ANALYTICS_DATA["user_engaged"] == "True"  # Convert to boolean
-    global PLOTS_DATA
-    PLOTS_DATA = pd.DataFrame(columns=["file_path"])
-
-
-@tool("analytics.get_visitor_information_by_id", return_direct=False)
-def get_visitor_information_by_id(visitor_id=None):
+@tool("analytics.get_visitor_information_by_id")
+def get_visitor_information_by_id(visitor_id: str | None = None) -> str:
     """
     Returns the analytics data for a given visitor ID.
 
@@ -40,17 +42,20 @@ def get_visitor_information_by_id(visitor_id=None):
     {{"date_of_visit": "2023-10-01", "visitor_id": "000", "page_views": "3", "session_duration_seconds": "10.0", "traffic_source": "search engine", "user_engaged": "False"}}
 
     """
+    state = get_state()
     if not visitor_id:
         return "Visitor ID not provided."
-    visitor_data = ANALYTICS_DATA[ANALYTICS_DATA["visitor_id"] == visitor_id].to_dict(orient="records")
-    if visitor_data:
-        return visitor_data
-    else:
-        return "Visitor not found."
+    visitor_data = state.analytics_data[state.analytics_data["visitor_id"] == visitor_id].to_dict(orient="records")
+    return json.dumps(visitor_data) if visitor_data else "Visitor not found."
 
 
-@tool("analytics.create_plot", return_direct=False)
-def create_plot(time_min=None, time_max=None, value_to_plot=None, plot_type=None):
+@tool("analytics.create_plot")
+def create_plot(
+    time_min: str | None = None,
+    time_max: str | None = None,
+    value_to_plot: str | None = None,
+    plot_type: str | None = None,
+) -> str:
     """
     Plots the analytics data for a given time range and value.
 
@@ -76,32 +81,25 @@ def create_plot(time_min=None, time_max=None, value_to_plot=None, plot_type=None
     "plots/2023-10-01_2023-12-31_total_visits.png"
 
     """
-    global PLOTS_DATA
+    state = get_state()
     if not time_min:
         return "Start date not provided."
     if not time_max:
         return "End date not provided."
-    if value_to_plot not in [
-        "total_visits",
-        "session_duration_seconds",
-        "user_engaged",
-        "visits_direct",
-        "visits_referral",
-        "visits_search_engine",
-        "visits_social_media",
-    ]:
-        return "Value to plot must be one of 'total_visits', 'session_duration_seconds', 'user_engaged', 'direct', 'referral', 'search engine', 'social media'"
-    if plot_type not in ["bar", "line", "scatter", "histogram"]:
-        return "Plot type must be one of 'bar', 'line', 'scatter', or 'histogram'"
+    if value_to_plot not in VALID_VALUES_TO_PLOT:
+        return f"Value to plot must be one of {', '.join(repr(v) for v in VALID_VALUES_TO_PLOT)}"
+    if plot_type not in VALID_PLOT_TYPES:
+        return f"Plot type must be one of {', '.join(repr(v) for v in VALID_PLOT_TYPES)}"
 
     # Plot the data here and save it to a file
     file_path = f"plots/{time_min}_{time_max}_{value_to_plot}_{plot_type}.png"
-    PLOTS_DATA.loc[len(PLOTS_DATA)] = [file_path]
+    new_row = pd.DataFrame({"file_path": [file_path]})
+    state.plots_data = pd.concat([state.plots_data, new_row], ignore_index=True)
     return file_path
 
 
-@tool("analytics.total_visits_count", return_direct=False)
-def total_visits_count(time_min=None, time_max=None):
+@tool("analytics.total_visits_count")
+def total_visits_count(time_min: str | None = None, time_max: str | None = None) -> str:
     """
     Returns the total number of visits within a specified time range.
 
@@ -122,17 +120,12 @@ def total_visits_count(time_min=None, time_max=None):
     >>> analytics.total_visits_count("2023-10-01", "2023-10-06")
     {{"2023-10-01": 1, "2023-10-02": 2, "2023-10-03": 3, "2023-10-04": 1, "2023-10-05": 0, "2023-10-06": 4}}
     """
-    if time_min:
-        data = ANALYTICS_DATA[ANALYTICS_DATA["date_of_visit"] >= time_min]
-    else:
-        data = ANALYTICS_DATA
-    if time_max:
-        data = data[data["date_of_visit"] <= time_max]
-    return data.groupby("date_of_visit").size().to_dict()
+    data = filter_by_date_range(get_state().analytics_data, "date_of_visit", time_min, time_max)
+    return json.dumps(data.groupby("date_of_visit").size().to_dict())
 
 
-@tool("analytics.engaged_users_count", return_direct=False)
-def engaged_users_count(time_min=None, time_max=None):
+@tool("analytics.engaged_users_count")
+def engaged_users_count(time_min: str | None = None, time_max: str | None = None) -> str:
     """
     Returns the number of engaged users within a specified time range.
 
@@ -153,19 +146,16 @@ def engaged_users_count(time_min=None, time_max=None):
     >>> analytics.engaged_users_count("2023-10-01", "2023-10-06")
     {{"2023-10-01": 1, "2023-10-02": 2, "2023-10-03": 2, "2023-10-04": 1, "2023-10-05": 0, "2023-10-06": 4}}
     """
-    if time_min:
-        data = ANALYTICS_DATA[ANALYTICS_DATA["date_of_visit"] >= time_min]
-    else:
-        data = ANALYTICS_DATA[:]
-    if time_max:
-        data = data[data["date_of_visit"] <= time_max]
+    data = filter_by_date_range(get_state().analytics_data, "date_of_visit", time_min, time_max)
     data["user_engaged"] = data["user_engaged"].astype(bool).astype(int)
 
-    return data.groupby("date_of_visit").sum()["user_engaged"].to_dict()
+    return json.dumps(data.groupby("date_of_visit")["user_engaged"].sum().to_dict())
 
 
-@tool("analytics.traffic_source_count", return_direct=False)
-def traffic_source_count(time_min=None, time_max=None, traffic_source=None):
+@tool("analytics.traffic_source_count")
+def traffic_source_count(
+    time_min: str | None = None, time_max: str | None = None, traffic_source: str | None = None
+) -> str:
     """
     Returns the number of visits from a specific traffic source within a specified time range.
 
@@ -188,22 +178,16 @@ def traffic_source_count(time_min=None, time_max=None, traffic_source=None):
     >>> analytics.traffic_source_count("2023-10-01", "2023-10-06", "search engine")
     {{"2023-10-01": 0, "2023-10-02": 1, "2023-10-03": 0, "2023-10-04": 3, "2023-10-05": 2, "2023-10-06": 4}}
     """
-    if time_min:
-        data = ANALYTICS_DATA[ANALYTICS_DATA["date_of_visit"] >= time_min]
-    else:
-        data = ANALYTICS_DATA[:]
-    if time_max:
-        data = data[data["date_of_visit"] <= time_max]
+    data = filter_by_date_range(get_state().analytics_data, "date_of_visit", time_min, time_max)
 
     if traffic_source:
         data["visits_from_source"] = (data["traffic_source"] == traffic_source).astype(int)
-        return data.groupby("date_of_visit").sum()["visits_from_source"].to_dict()
-    else:
-        return data.groupby("date_of_visit").size().to_dict()
+        return json.dumps(data.groupby("date_of_visit")["visits_from_source"].sum().to_dict())
+    return json.dumps(data.groupby("date_of_visit").size().to_dict())
 
 
-@tool("analytics.get_average_session_duration", return_direct=False)
-def get_average_session_duration(time_min=None, time_max=None):
+@tool("analytics.get_average_session_duration")
+def get_average_session_duration(time_min: str | None = None, time_max: str | None = None) -> str:
     """
     Returns the average session duration within a specified time range.
 
@@ -224,17 +208,7 @@ def get_average_session_duration(time_min=None, time_max=None):
     >>> analytics.get_average_session_duration("2023-10-01", "2023-10-06")
     {{"2023-10-01": 10.0, "2023-10-02": 20.5, "2023-10-03": 32.8, "2023-10-04": 40.2, "2023-10-05": 5.3, "2023-10-06": 53.0}}
     """
-    if time_min:
-        data = ANALYTICS_DATA[ANALYTICS_DATA["date_of_visit"] >= time_min]
-    else:
-        data = ANALYTICS_DATA
-    if time_max:
-        data = data[data["date_of_visit"] <= time_max]
+    data = filter_by_date_range(get_state().analytics_data, "date_of_visit", time_min, time_max)
 
     data["session_duration_seconds"] = data["session_duration_seconds"].astype(float)
-    return (
-        data[["date_of_visit", "session_duration_seconds"]]
-        .groupby("date_of_visit")
-        .mean()["session_duration_seconds"]
-        .to_dict()
-    )
+    return json.dumps(data.groupby("date_of_visit")["session_duration_seconds"].mean().to_dict())
