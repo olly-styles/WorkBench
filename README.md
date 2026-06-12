@@ -8,7 +8,7 @@
 
 **Outcome composition by model.** Each model's 690 WorkBench tasks split into correct, failed-but-harmless, and harmful side effect, ordered by task completion. GPT-4 is the original 2024 result; the others are 2026 runs.
 
-The best agent on WorkBench in March 2024, GPT-4, completed 43% of tasks and took an unintended harmful action on 26% of them. In June 2026 the best agent, Claude Opus 4.8, completes 89% and takes a harmful action on just 2.5%. Three things stand out:
+The best agent on WorkBench in March 2024, GPT-4, completed 43% of tasks and took an unintended harmful action on 26% of them. In June 2026 the best agent, Claude Fable 5, completes 92% and takes a harmful action on just 1.9%. Three things stand out:
 
 - **Capability and safety go together** rather than trade off — the models that finish the most tasks also do the least unintended damage.
 - **Basic mistakes persist.** Several classes of error have been eliminated, but frontier models still occasionally cause irreversible harm, such as sending an email to the wrong person.
