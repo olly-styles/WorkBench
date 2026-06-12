@@ -192,7 +192,7 @@ def forward_email(email_id: str | None = None, recipient: str | None = None) -> 
         return "Invalid recipient email address."
     recipient = normalize_email(recipient)
     email = state.emails[state.emails["email_id"] == email_id].to_dict(orient="records")[0]
-    result = send_email.func(recipient, f"FW: {email['subject']}", email["body"])
+    result = send_email(recipient, f"FW: {email['subject']}", email["body"])
     return "Email forwarded successfully." if result == "Email sent successfully." else result
 
 
@@ -224,5 +224,5 @@ def reply_email(email_id: str | None = None, body: str | None = None) -> str:
     if email_id not in state.emails["email_id"].values:
         return "Email not found."
     email = state.emails[state.emails["email_id"] == email_id].to_dict(orient="records")[0]
-    result = send_email.func(email["sender/recipient"], email["subject"], body)
+    result = send_email(email["sender/recipient"], email["subject"], body)
     return "Email replied successfully." if result == "Email sent successfully." else result

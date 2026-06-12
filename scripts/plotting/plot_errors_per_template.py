@@ -5,8 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
-from scripts.evals.calculate_all_metrics import full_tools_list
-from src.evals.metrics import calculate_metrics, get_latest_results_path
+from src.evals.metrics import ALL_DOMAINS, calculate_metrics, get_latest_results_path
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--model", type=str, default="gpt-5-nano", help="Model name to plot errors for.")
@@ -18,7 +17,7 @@ if __name__ == "__main__":
     MODEL = args.model
 
     percentage_correct = []
-    for tool in full_tools_list:
+    for tool in ALL_DOMAINS:
         results_paths = get_latest_results_path(RESULTS_ROOT_DIR, MODEL, tool)
         if results_paths is None:
             continue

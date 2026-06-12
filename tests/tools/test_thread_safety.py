@@ -10,7 +10,7 @@ def test_thread_local_state_is_independent():
     def thread_fn(thread_id: int, new_subject: str):
         state = get_state()
         original_count = len(state.emails)
-        email.send_email.func("test@atlas.com", new_subject, "body")
+        email.send_email("test@atlas.com", new_subject, "body")
         results[thread_id] = {
             "original_count": original_count,
             "final_count": len(get_state().emails),
@@ -35,7 +35,7 @@ def test_state_mutations_do_not_leak_between_threads():
     def mutate_and_check(thread_id: int, event_id_to_delete: str):
         get_state()
         barrier.wait()
-        calendar.delete_event.func(event_id=event_id_to_delete)
+        calendar.delete_event(event_id=event_id_to_delete)
         results[thread_id] = len(get_state().calendar_events)
         reset_state()
 
@@ -60,7 +60,7 @@ def test_state_mutations_do_not_leak_between_threads():
 def test_reset_state_restores_original_data():
     state = get_state()
     original_email_count = len(state.emails)
-    email.send_email.func("test@atlas.com", "Test", "Body")
+    email.send_email("test@atlas.com", "Test", "Body")
     assert len(get_state().emails) == original_email_count + 1
     reset_state()
     assert len(get_state().emails) == original_email_count

@@ -14,7 +14,13 @@ The best agent on WorkBench in March 2024, GPT-4, completed 43% of tasks and too
 - **Basic mistakes persist.** Several classes of error have been eliminated, but frontier models still occasionally cause irreversible harm, such as sending an email to the wrong person.
 - **Open-weight models have collapsed costs** for a performance level that was previously only accessible to proprietary models, while frontier costs have stayed relatively stable.
 
+**Update (2026-06-09):** [Claude Fable 5](https://www.anthropic.com/news/claude-fable-5-mythos-5), released the day of this update, sets a new SOTA: 632/690 tasks completed (91.6%) with 13 harmful side effects (1.9%). Its results are committed alongside the other models and included in the figures.
+
+**Update (2026-06-12):** Added two Mistral open-weight models: [Mistral Small 4](https://mistral.ai/news/mistral-small-4/) (`mistral-small-2603`, 33.9% completion) and Mistral Medium 3.5 (`mistral-medium-3-5`, 55.2% completion). Results, figures, and the write-up now cover 24 models.
+
 The 2026 release also includes data and code quality improvements, new model scores, and analysis of agent progress since 2024. Read the full write-up in [`retro/main.pdf`](retro/main.pdf).
+
+All 2026 per-task results are committed under `data/results/` (gzipped CSVs plus `_meta.json` sidecars), and every figure in `retro/figs/` reads its numbers from [`retro/data/model_results.json`](retro/data/model_results.json), which [`scripts/evals/generate_results_summary.py`](scripts/evals/generate_results_summary.py) derives from those results via the same scoring pipeline as `workbench-evaluate`. No correctness or safety number is hand-maintained; the dollar costs in the cost figure are estimated from run traces by [`scripts/evals/estimate_model_costs.py`](scripts/evals/estimate_model_costs.py) (traces are not committed for size reasons).
 
 ## About WorkBench
 
@@ -26,7 +32,7 @@ WorkBench - the first open-source benchmark for evaluating agent performance on 
 
 ## Installation
 
-Requires Python 3.10+ and [uv](https://docs.astral.sh/uv/).
+Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/).
 
 ```bash
 git clone https://github.com/olly-styles/WorkBench.git
@@ -44,7 +50,7 @@ All five sandbox databases, task-outcome pairs, and pre-computed inference resul
 | `workbench-inference` | Run a model against a task file and write a fresh results CSV |
 | `workbench-generate-data` | Regenerate sandbox databases and task/outcome pairs from scratch |
 
-The underlying scripts in `scripts/` are still callable directly (`uv run scripts/inference/generate_results.py ...`); the console scripts are thin wrappers around them.
+Batch and analysis scripts (multi-model inference runs, cost estimates, plotting) live in `scripts/`.
 
 ### Evaluation
 
@@ -57,12 +63,14 @@ uv run workbench-evaluate --all_tools
 
 Note that results are not provided for the `all_tools` variant of GPT3.5 and LLama2-70B as the prompt does not fit into the context window for these models.
 
+Ground truth is versioned: the original March 2024 runs are scored against the pre-correction snapshot in `data/processed/tasks_and_outcomes/v1/`, while current runs use the top-level `data/processed/tasks_and_outcomes/` files (v2, which include the 2026 ground-truth corrections). `workbench-evaluate` picks the right version per results file from the `ground_truth_version` field in its `_meta.json` sidecar; runs without a sidecar predate the corrections and default to v1. This keeps published numbers reproducible after ground-truth fixes.
+
 ### Data generation
 
-All generated data is committed under `data/`. To regenerate it from scratch:
+All generated data is committed under `data/`. Regenerating overwrites the committed files, so the command requires `--force`:
 
 ```bash
-uv run workbench-generate-data
+uv run workbench-generate-data --force
 ```
 
 This regenerates the five sandbox databases (`data/processed/*.csv`) and the per-domain task/outcome files (`data/processed/tasks_and_outcomes/*.csv`).
@@ -99,8 +107,9 @@ Useful flags:
 - `--structured_outputs` — use the model's native tool-calling API instead of ReAct text parsing.
 - `--act_without_confirmation` — append a system-prompt suffix telling the model to act without asking the user to confirm.
 - `--log_traces` — also write the full per-task LLM trace as JSON alongside the results CSV.
+- `--resume` — resume the most recent matching run: keep rows with an empty error and only re-run missing or errored tasks.
 
-The available model names are the keys of `MODEL_REGISTRY` in [`src/evals/agent.py`](src/evals/agent.py). Current entries include `gpt-5.4`, `gpt-5-nano`, `claude-sonnet-4.6`, `gemini-3-flash`, `gemini-2.5-flash`, `gemini-3.1-flash-lite`, `qwen-3.5-flash`, `deepseek-v4-pro`, plus the original-paper models (`gpt-4`, `gpt-3.5`, `claude-2`, `llama2-70b`, `mixtral-8x7b`).
+The available model names are the keys of `MODEL_REGISTRY` in [`src/evals/agent.py`](src/evals/agent.py). Current entries include `claude-fable-5`, `gpt-5.4`, `gpt-5-nano`, `claude-sonnet-4.6`, `gemini-3-flash`, `gemini-2.5-flash`, `gemini-3.1-flash-lite`, `qwen-3.5-flash`, `deepseek-v4-pro`, `mistral-small-2603`, `mistral-medium-3-5`, plus the original-paper models (`gpt-4`, `gpt-3.5`, `claude-2`, `llama2-70b`, `mixtral-8x7b`).
 
 #### Run inference for all domains and models
 

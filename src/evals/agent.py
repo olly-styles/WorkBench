@@ -283,6 +283,7 @@ MODEL_REGISTRY: dict[str, ModelConfig] = {
     "gpt-5.1": ModelConfig("openai/gpt-5.1", False, "openai"),
     "gpt-5": ModelConfig("openai/gpt-5", False, "openai"),
     "gpt-5-nano": ModelConfig("openai/gpt-5-nano", False, "openai"),
+    "claude-fable-5": ModelConfig("anthropic/claude-fable-5", False, "anthropic"),
     "claude-opus-4.8": ModelConfig("anthropic/claude-opus-4-8", False, "anthropic"),
     "claude-opus-4.7": ModelConfig("anthropic/claude-opus-4-7", False, "anthropic"),
     "claude-opus-4.6": ModelConfig("anthropic/claude-opus-4-6", False, "anthropic"),
@@ -302,6 +303,8 @@ MODEL_REGISTRY: dict[str, ModelConfig] = {
     "deepseek-v4-pro": ModelConfig("deepseek/deepseek-v4-pro", True, "openrouter"),
     "kimi-k2.6": ModelConfig("moonshotai/kimi-k2.6", True, "openrouter"),
     "glm-4.6": ModelConfig("z-ai/glm-4.6", True, "openrouter"),
+    "mistral-small-2603": ModelConfig("mistralai/mistral-small-2603", True, "openrouter"),
+    "mistral-medium-3-5": ModelConfig("mistralai/mistral-medium-3-5", True, "openrouter"),
     # Prior-generation OpenAI models
     "gpt-4.1": ModelConfig("openai/gpt-4.1", True, "openai"),
     "o3": ModelConfig("openai/o3", False, "openai"),
@@ -479,9 +482,9 @@ def run_agent(
             t = tool_map[action]
             if isinstance(action_input, dict):
                 str_input = {k: str(v) for k, v in action_input.items()}
-                observation = str(t.func(**str_input))
+                observation = str(t(**str_input))
             else:
-                observation = str(t.func(str(action_input)))
+                observation = str(t(str(action_input)))
 
         trace.append(
             TraceStep(
@@ -608,7 +611,7 @@ def run_agent_structured(
             else:
                 t = tool_map[action]
                 str_input = {k: str(v) for k, v in action_input.items()} if isinstance(action_input, dict) else {}
-                observation = str(t.func(**str_input))
+                observation = str(t(**str_input))
 
             trace.append(
                 TraceStep(

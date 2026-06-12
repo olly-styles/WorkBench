@@ -58,6 +58,12 @@ def inference() -> None:
         action="store_true",
         help="use native API tool calling instead of ReAct text parsing",
     )
+    parser.add_argument(
+        "--resume",
+        action="store_true",
+        help="resume the most recent matching run for this (domain, model, tool_selection): "
+        "keep rows with empty error and only re-run missing/errored tasks",
+    )
 
     args = parser.parse_args()
     ground_truth = pd.read_csv(args.tasks_path)
@@ -70,6 +76,7 @@ def inference() -> None:
         log_traces=args.log_traces,
         act_without_confirmation=args.act_without_confirmation,
         structured_outputs=args.structured_outputs,
+        resume=args.resume,
     )
     calculate_metrics(ground_truth, results)
 
@@ -81,16 +88,7 @@ def evaluate() -> None:
     warnings.filterwarnings("ignore")
 
     from src.evals.inference import AVAILABLE_LLMS
-    from src.evals.metrics import ResultsSummary, get_latest_results_from_dir
-
-    full_tools_list = [
-        "multi_domain",
-        "email",
-        "calendar",
-        "analytics",
-        "project_management",
-        "customer_relationship_manager",
-    ]
+    from src.evals.metrics import ALL_DOMAINS, ResultsSummary, get_latest_results_from_dir
 
     parser = argparse.ArgumentParser(description="Calculate evaluation metrics")
     parser.add_argument("--tools", action="append", default=[], help="tools to evaluate")
@@ -99,12 +97,12 @@ def evaluate() -> None:
     parser.add_argument("--all_tools", action="store_true", default=False)
 
     args = parser.parse_args()
-    tools = args.tools or full_tools_list
+    tools = args.tools or ALL_DOMAINS
     models = args.models or AVAILABLE_LLMS
     results_root_dir = "data/results"
 
     for model in models:
-        totals = ResultsSummary(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        totals = ResultsSummary()
         for tool in tools:
             results = get_latest_results_from_dir(
                 results_root_dir,
@@ -165,6 +163,19 @@ def generate_data() -> None:
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
     logger = logging.getLogger(__name__)
     warnings.filterwarnings("ignore")
+
+    parser = argparse.ArgumentParser(
+        description="Regenerate the sandbox databases (data/processed/*.csv) and task/outcome files "
+        "(data/processed/tasks_and_outcomes/*.csv), overwriting the committed versions."
+    )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="confirm overwriting the committed data files under data/processed/",
+    )
+    args = parser.parse_args()
+    if not args.force:
+        parser.error("refusing to overwrite the committed data files under data/processed/; pass --force to confirm")
 
     import scripts.data_generation.sandbox_databases.generate_analytics_data as gen_analytics
     import scripts.data_generation.sandbox_databases.generate_calendar_data as gen_calendar

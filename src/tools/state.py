@@ -49,10 +49,32 @@ class ToolState:
             directory_emails=_load_directory_emails(),
         )
 
+    def copy(self) -> "ToolState":
+        return ToolState(**{f.name: getattr(self, f.name).copy() for f in fields(self)})
+
     def reset(self) -> None:
-        fresh = ToolState.from_csv_files()
+        fresh = _pristine_state().copy()
         for f in fields(self):
             setattr(self, f.name, getattr(fresh, f.name))
+
+
+_pristine_lock = threading.Lock()
+_pristine: ToolState | None = None
+
+
+def _pristine_state() -> ToolState:
+    """The CSV-backed state, loaded from disk once per process.
+
+    Evaluation resets the sandbox several times per task, so reset hands out
+    copies of this snapshot instead of re-reading the CSVs every time. The
+    data files never change while a process is running (regeneration is a
+    separate command), so the snapshot cannot go stale.
+    """
+    global _pristine
+    with _pristine_lock:
+        if _pristine is None:
+            _pristine = ToolState.from_csv_files()
+        return _pristine
 
 
 _local = threading.local()
@@ -61,7 +83,7 @@ _local = threading.local()
 def get_state() -> "ToolState":
     state = getattr(_local, "tool_state", None)
     if state is None:
-        _local.tool_state = ToolState.from_csv_files()
+        _local.tool_state = _pristine_state().copy()
     return _local.tool_state
 
 

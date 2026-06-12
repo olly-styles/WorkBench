@@ -1,5 +1,6 @@
 import ast
 import csv
+import json
 import os
 import re
 import sys
@@ -17,19 +18,82 @@ from src.evals.evaluation import (
 
 csv.field_size_limit(sys.maxsize)
 
+GROUND_TRUTH_DIR = os.path.join("data", "processed", "tasks_and_outcomes")
+CURRENT_GROUND_TRUTH_VERSION = "v2"
+
+ALL_DOMAINS = [
+    "multi_domain",
+    "email",
+    "calendar",
+    "analytics",
+    "project_management",
+    "customer_relationship_manager",
+]
+
+RESULTS_SUFFIXES = (".csv", ".csv.gz")
+
+
+def strip_results_suffix(filename: str) -> str:
+    """Strip the results-file extension (.csv or .csv.gz) from a filename."""
+    for suffix in RESULTS_SUFFIXES:
+        if filename.endswith(suffix):
+            return filename[: -len(suffix)]
+    raise ValueError(f"{filename!r} is not a results file; expected one of {RESULTS_SUFFIXES}.")
+
+
+def meta_path_for_results(results_path: str) -> str:
+    """Path of the ``_meta.json`` sidecar for a results file."""
+    return strip_results_suffix(results_path) + "_meta.json"
+
+
+def ground_truth_version_for_results(results_path: str) -> str:
+    """Resolve which ground-truth version a results file was scored against.
+
+    The version is recorded as ``ground_truth_version`` in the run's
+    ``_meta.json`` sidecar. Runs that predate metadata sidecars (the original
+    March 2024 paper runs) were produced against the pre-correction ground
+    truth, snapshotted as ``v1``. Sidecars without the key are runs from
+    before the version field existed; they all used the current ground truth.
+    """
+    meta_path = meta_path_for_results(results_path)
+    if not os.path.exists(meta_path):
+        return "v1"
+    with open(meta_path) as f:
+        meta = json.load(f)
+    return meta.get("ground_truth_version", CURRENT_GROUND_TRUTH_VERSION)
+
+
+def ground_truth_path(tool: str, version: str) -> str:
+    """Path to a tool's ground-truth CSV for a given version.
+
+    The current version lives at the top level of ``GROUND_TRUTH_DIR`` (it is
+    what the data generators write); older versions are frozen snapshots in
+    subdirectories named after the version.
+    """
+    filename = f"{tool}_tasks_and_outcomes.csv"
+    if version == CURRENT_GROUND_TRUTH_VERSION:
+        return os.path.join(GROUND_TRUTH_DIR, filename)
+    path = os.path.join(GROUND_TRUTH_DIR, version, filename)
+    if not os.path.exists(path):
+        raise FileNotFoundError(
+            f"No ground-truth snapshot for version {version!r} at {path}. "
+            f"Known versions are subdirectories of {GROUND_TRUTH_DIR} plus the current {CURRENT_GROUND_TRUTH_VERSION!r}."
+        )
+    return path
+
 
 @dataclass
 class ResultsSummary:
-    num_correct: int
-    num_incorrect: int
-    num_side_effects: int
-    num_correct_no_actions: int
-    num_incorrect_no_actions: int
-    num_correct_non_zero_actions: int
-    num_incorrect_non_zero_actions: int
-    num_correct_two_or_more_actions: int
-    num_incorrect_two_or_more_actions: int
-    num_context_window_errors: int
+    num_correct: int = 0
+    num_incorrect: int = 0
+    num_side_effects: int = 0
+    num_correct_no_actions: int = 0
+    num_incorrect_no_actions: int = 0
+    num_correct_non_zero_actions: int = 0
+    num_incorrect_non_zero_actions: int = 0
+    num_correct_two_or_more_actions: int = 0
+    num_incorrect_two_or_more_actions: int = 0
+    num_context_window_errors: int = 0
 
 
 def get_output(full_response: str) -> str:
@@ -46,35 +110,43 @@ def get_output(full_response: str) -> str:
 _SKIP_FIELDS = ["wrong_email", "no_actions", "end_date_minor_error", "meeting_start_time_error"]
 
 
-def _print_error_section(title: str, df: pd.DataFrame) -> None:
+def _print_section_header(title: str) -> None:
     print("--------------------------------------------")
     print("--------------------------------------------")
     print(f"{title}:")
     print("--------------------------------------------")
     print("--------------------------------------------")
+
+
+def _print_task_row(row: pd.Series) -> None:
+    print("--------------------------------------------")
+    print("Task:")
+    print(f"    {row['task']}")
+    print()
+    print("Prediction:")
+    for action in row["prediction"]:
+        print(f"    {action}")
+    print()
+    print("Ground truth:")
+    for action in row["ground_truth"]:
+        print(f"    {action}")
+    print()
+    print(f"Unwanted side effects: {row['unwanted_side_effects']}")
+    print()
+    if row["unwanted_side_effects"]:
+        print(f"Meeting start time error: {row['meeting_start_time_error']}")
+    print(f"Error: {row['error']}")
+    print("")
+    print("Output:")
+    output = get_output(row["full_response"])
+    print(f"    {output}")
+
+
+def _print_error_section(title: str, df: pd.DataFrame) -> None:
+    _print_section_header(title)
     for _, row in df.iterrows():
         if not any(row[field] for field in _SKIP_FIELDS):
-            print("--------------------------------------------")
-            print("Task:")
-            print(f"    {row['task']}")
-            print()
-            print("Prediction:")
-            for action in row["prediction"]:
-                print(f"    {action}")
-            print()
-            print("Ground truth:")
-            for action in row["ground_truth"]:
-                print(f"    {action}")
-            print()
-            print(f"Unwanted side effects: {row['unwanted_side_effects']}")
-            print()
-            if "meeting_start_time_error" in row and row["unwanted_side_effects"]:
-                print(f"Meeting start time error: {row['meeting_start_time_error']}")
-            print(f"Error: {row['error']}")
-            print("")
-            print("Output:")
-            output = get_output(row["full_response"])
-            print(f"    {output}")
+            _print_task_row(row)
 
 
 def compute_metrics(ground_truth_df: pd.DataFrame, predictions_df: pd.DataFrame) -> pd.DataFrame:
@@ -84,7 +156,10 @@ def compute_metrics(ground_truth_df: pd.DataFrame, predictions_df: pd.DataFrame)
     ground_truth = ground_truth_df.rename(columns={"outcome": "ground_truth"})
     df = predictions.merge(ground_truth, on="task")
     assert len(predictions) == len(ground_truth) == len(df), (
-        f"{len(predictions)} predictions does not match {len(ground_truth_df)} ground truth outcomes. Check that the predictions and ground truth are for the same tasks."
+        f"{len(predictions)} predictions and {len(ground_truth)} ground truth outcomes merged to {len(df)} rows. "
+        f"Tasks only in predictions: {sorted(set(predictions['task']) - set(ground_truth['task']))[:5]}; "
+        f"tasks only in ground truth: {sorted(set(ground_truth['task']) - set(predictions['task']))[:5]}. "
+        f"Check that the predictions were scored against the right ground truth version."
     )
 
     # Replace all newlines with "\\n" for all actions
@@ -153,31 +228,9 @@ def print_error_report(df: pd.DataFrame) -> None:
     print(
         f"Meeting start time error, with side effects: {round(num_meeting_start_time_error_with_side_effects / total * 100, 2)}% ({num_meeting_start_time_error_with_side_effects} out of {total})"
     )
-    print("--------------------------------------------")
-    print("--------------------------------------------")
-    print("Correct but not exact match:")
-    print("--------------------------------------------")
-    print("--------------------------------------------")
+    _print_section_header("Correct but not exact match")
     for _, row in df[df["correct"] & ~df["exact_match"]].iterrows():
-        print("--------------------------------------------")
-        print("Task:")
-        print(f"    {row['task']}")
-        print()
-        print("Prediction:")
-        for action in row["prediction"]:
-            print(f"    {action}")
-        print()
-        print("Ground truth:")
-        for action in row["ground_truth"]:
-            print(f"    {action}")
-        print()
-        print(f"Unwanted side effects: {row['unwanted_side_effects']}")
-        print()
-        print(f"Error: {row['error']}")
-        print("")
-        print("Output:")
-        output = get_output(row["full_response"])
-        print(f"    {output}")
+        _print_task_row(row)
 
 
 def _print_accuracy_summary(df: pd.DataFrame) -> None:
@@ -212,20 +265,24 @@ def get_latest_results_path(
     We match the model and tool_selection as exact filename components (not
     substrings) and pick the most recent run by its timestamp suffix, which sorts
     lexicographically because it is zero-padded.
+
+    The returned ground-truth path is the version the run was scored against
+    (see ``ground_truth_version_for_results``), so old results keep reproducing
+    their published numbers after ground-truth corrections.
     """
     results_dir = os.path.join(results_root_dir, tool)
     tool_selection = "all" if all_tools_in_prompt else "domains"
     prefix = f"{model}_{tool_selection}_"
-    timestamps = [
-        file[len(prefix) : -len(".csv")]
-        for file in os.listdir(results_dir)
-        if file.startswith(prefix) and file.endswith(".csv")
-    ]
-    ground_truth_path = os.path.join("data", "processed", "tasks_and_outcomes", f"{tool}_tasks_and_outcomes.csv")
-    if not timestamps:
+    by_timestamp = {
+        strip_results_suffix(file)[len(prefix) :]: file
+        for file in sorted(os.listdir(results_dir))
+        if file.startswith(prefix) and file.endswith(RESULTS_SUFFIXES)
+    }
+    if not by_timestamp:
         return None
-    latest = os.path.join(results_dir, f"{prefix}{max(timestamps)}.csv")
-    return latest, ground_truth_path
+    latest = os.path.join(results_dir, by_timestamp[max(by_timestamp)])
+    version = ground_truth_version_for_results(latest)
+    return latest, ground_truth_path(tool, version)
 
 
 def get_latest_results_from_dir(
@@ -237,9 +294,9 @@ def get_latest_results_from_dir(
         print(f"\nNo results found for {tool} with {model}")
         return None
 
-    model_results_path, ground_truth_path = results
+    model_results_path, gt_path = results
     predictions = pd.read_csv(model_results_path, dtype=str, engine="python", on_bad_lines="warn")
-    ground_truth = pd.read_csv(ground_truth_path, dtype=str)
+    ground_truth = pd.read_csv(gt_path, dtype=str)
     ground_truth["outcome"] = ground_truth["outcome"].apply(ast.literal_eval)
     predictions["function_calls"] = predictions["function_calls"].apply(ast.literal_eval)
     print(f"\nCalculating metrics for {tool} with {model}")

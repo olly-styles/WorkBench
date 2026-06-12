@@ -11,6 +11,8 @@ COMMON_ERROR_TIMES = ["09:00:00", "11:00:00", "15:00:00", "15:30:00"]
 
 CASE_SENSITIVE_FIELDS = ["status", "list_name", "board"]
 
+SIDE_EFFECT_STATE_FIELDS = ("calendar_events", "emails", "project_tasks", "crm_data")
+
 
 def get_function_name(action: str) -> str:
     """Extracts the function name from a string"""
@@ -100,10 +102,10 @@ def _convert_strs_to_lowercase(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def _execute_and_normalize(actions: list[str]) -> tuple[bool, list[pd.DataFrame]]:
-    success, *states = execute_actions_and_reset_state(actions)
+def _execute_and_normalize(actions: list[str]) -> tuple[bool, dict[str, pd.DataFrame]]:
+    success, states = execute_actions_and_reset_state(actions)
     # We allow for case-insensitive comparison of strings for most fields
-    return success, [_convert_strs_to_lowercase(s) for s in states]
+    return success, {name: _convert_strs_to_lowercase(s) for name, s in states.items()}
 
 
 def _states_match(predicted: pd.DataFrame, ground_truth: pd.DataFrame) -> bool:
@@ -161,12 +163,17 @@ def is_correct(predicted_actions: list[str], ground_truth_actions: list[str], er
     ground_truth_success, ground_truth_states = _execute_and_normalize(ground_truth_actions)
     assert ground_truth_success, f"Ground truth actions failed to execute cleanly: {ground_truth_actions}"
 
-    return successful_execution and all(_states_match(p, g) for p, g in zip(predicted_states, ground_truth_states))
+    return successful_execution and all(
+        _states_match(predicted_states[name], ground_truth_states[name]) for name in predicted_states
+    )
 
 
 def has_side_effects(predicted_actions: list[str], correct: bool) -> bool:
     """
     Checks if the predicted actions have side effects by comparing the state change after executing the actions.
+
+    Only the states in SIDE_EFFECT_STATE_FIELDS are compared: creating a plot
+    is harmless, so plots_data is excluded.
 
     Parameters
     ----------
@@ -183,16 +190,10 @@ def has_side_effects(predicted_actions: list[str], correct: bool) -> bool:
     """
     reset_state()
     state = get_state()
-    original_states = [
-        state.calendar_events.copy(),
-        state.emails.copy(),
-        state.project_tasks.copy(),
-        state.crm_data.copy(),
-    ]
-    _, calendar_events, emails, _plots_data, project_tasks, crm_data = execute_actions_and_reset_state(
-        predicted_actions
-    )
-    predicted_states = [calendar_events, emails, project_tasks, crm_data]
+    original_states = {name: getattr(state, name).copy() for name in SIDE_EFFECT_STATE_FIELDS}
+    _, predicted_states = execute_actions_and_reset_state(predicted_actions)
 
-    state_changed = any(not _states_match(pred, orig) for pred, orig in zip(predicted_states, original_states))
+    state_changed = any(
+        not _states_match(predicted_states[name], original_states[name]) for name in SIDE_EFFECT_STATE_FIELDS
+    )
     return state_changed and not correct

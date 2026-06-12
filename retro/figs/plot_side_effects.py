@@ -5,6 +5,7 @@ import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.ticker import FuncFormatter
+from results_data import load_model_results
 
 TOTAL_TASKS = 690
 
@@ -18,32 +19,39 @@ CORRECT_COLOR = "#2a9d5a"
 HARMLESS_COLOR = "#c9c9c9"
 HARM_COLOR = "#c1440e"
 
-# label, vendor, release, correct (/690), side_effects (/690)
+# label, vendor, release. Correct/side-effect counts come from the generated
+# results artifact (retro/data/model_results.json).
 MODELS = [
-    {"label": "GPT-3.5-turbo", "vendor": "OpenAI", "release": date(2023, 3, 1), "correct": 178, "side": 267},
-    {"label": "GPT-4-turbo", "vendor": "OpenAI", "release": date(2023, 11, 6), "correct": 391, "side": 154},
-    {"label": "GPT-4o", "vendor": "OpenAI", "release": date(2024, 5, 13), "correct": 434, "side": 104},
-    {"label": "GPT-4.1", "vendor": "OpenAI", "release": date(2025, 4, 14), "correct": 483, "side": 134},
-    {"label": "o3", "vendor": "OpenAI", "release": date(2025, 4, 16), "correct": 490, "side": 121},
-    {"label": "GPT-5", "vendor": "OpenAI", "release": date(2025, 8, 7), "correct": 536, "side": 90},
-    {"label": "GLM-4.6", "vendor": "Open weights", "release": date(2025, 9, 30), "correct": 488, "side": 118},
-    {"label": "Haiku 4.5", "vendor": "Anthropic", "release": date(2025, 10, 15), "correct": 466, "side": 115},
-    {"label": "GPT-5.1", "vendor": "OpenAI", "release": date(2025, 11, 12), "correct": 362, "side": 125},
-    {"label": "GPT-5.2", "vendor": "OpenAI", "release": date(2025, 12, 11), "correct": 437, "side": 130},
-    {"label": "Sonnet 4.6", "vendor": "Anthropic", "release": date(2026, 2, 17), "correct": 557, "side": 67},
-    {"label": "Gemini-3.1-pro", "vendor": "Google", "release": date(2026, 2, 19), "correct": 605, "side": 21},
-    {"label": "Qwen3.5", "vendor": "Open weights", "release": date(2026, 2, 23), "correct": 436, "side": 148},
-    {"label": "GPT-5.4-nano", "vendor": "OpenAI", "release": date(2026, 3, 5), "correct": 305, "side": 197},
-    {"label": "GPT-5.4-mini", "vendor": "OpenAI", "release": date(2026, 3, 5), "correct": 372, "side": 209},
-    {"label": "GPT-5.4", "vendor": "OpenAI", "release": date(2026, 3, 5), "correct": 491, "side": 116},
-    {"label": "Kimi-K2.6", "vendor": "Open weights", "release": date(2026, 4, 20), "correct": 556, "side": 47},
-    {"label": "GPT-5.5", "vendor": "OpenAI", "release": date(2026, 4, 23), "correct": 605, "side": 27},
-    {"label": "DeepSeek-V4-pro", "vendor": "Open weights", "release": date(2026, 4, 24), "correct": 537, "side": 88},
-    {"label": "Gemini-3.5-flash", "vendor": "Google", "release": date(2026, 5, 19), "correct": 581, "side": 21},
-    {"label": "Opus 4.8", "vendor": "Anthropic", "release": date(2026, 5, 28), "correct": 613, "side": 17},
+    {"label": "GPT-3.5-turbo", "vendor": "OpenAI", "release": date(2023, 3, 1)},
+    {"label": "GPT-4-turbo", "vendor": "OpenAI", "release": date(2023, 11, 6)},
+    {"label": "GPT-4o", "vendor": "OpenAI", "release": date(2024, 5, 13)},
+    {"label": "GPT-4.1", "vendor": "OpenAI", "release": date(2025, 4, 14)},
+    {"label": "o3", "vendor": "OpenAI", "release": date(2025, 4, 16)},
+    {"label": "GPT-5", "vendor": "OpenAI", "release": date(2025, 8, 7)},
+    {"label": "GLM-4.6", "vendor": "Open weights", "release": date(2025, 9, 30)},
+    {"label": "Haiku 4.5", "vendor": "Anthropic", "release": date(2025, 10, 15)},
+    {"label": "GPT-5.1", "vendor": "OpenAI", "release": date(2025, 11, 12)},
+    {"label": "GPT-5.2", "vendor": "OpenAI", "release": date(2025, 12, 11)},
+    {"label": "Sonnet 4.6", "vendor": "Anthropic", "release": date(2026, 2, 17)},
+    {"label": "Gemini-3.1-pro", "vendor": "Google", "release": date(2026, 2, 19)},
+    {"label": "Qwen3.5", "vendor": "Open weights", "release": date(2026, 2, 23)},
+    {"label": "GPT-5.4-nano", "vendor": "OpenAI", "release": date(2026, 3, 5)},
+    {"label": "GPT-5.4-mini", "vendor": "OpenAI", "release": date(2026, 3, 5)},
+    {"label": "GPT-5.4", "vendor": "OpenAI", "release": date(2026, 3, 5)},
+    {"label": "Mistral-Small-4", "vendor": "Open weights", "release": date(2026, 3, 16)},
+    {"label": "Kimi-K2.6", "vendor": "Open weights", "release": date(2026, 4, 20)},
+    {"label": "GPT-5.5", "vendor": "OpenAI", "release": date(2026, 4, 23)},
+    {"label": "DeepSeek-V4-pro", "vendor": "Open weights", "release": date(2026, 4, 24)},
+    {"label": "Mistral-Medium-3.5", "vendor": "Open weights", "release": date(2026, 4, 30)},
+    {"label": "Gemini-3.5-flash", "vendor": "Google", "release": date(2026, 5, 19)},
+    {"label": "Opus 4.8", "vendor": "Anthropic", "release": date(2026, 5, 28)},
+    {"label": "Fable 5", "vendor": "Anthropic", "release": date(2026, 6, 9)},
 ]
 
+RESULTS = load_model_results()
 for m in MODELS:
+    m["correct"] = RESULTS[m["label"]]["correct"]
+    m["side"] = RESULTS[m["label"]]["side_effects"]
     m["completion"] = 100 * m["correct"] / TOTAL_TASKS
     m["side_rate"] = 100 * m["side"] / TOTAL_TASKS
 
@@ -169,7 +177,7 @@ def plot_over_time() -> None:
 
 
 # The original 2024 GPT-4 result (43% completion, 26% side effects), scored with a
-# ReAct loop on the pre-revision benchmark, shown alongside seven 2026 models.
+# ReAct loop on the pre-revision benchmark, shown alongside eight 2026 models.
 OG_GPT4 = {"label": "GPT-4", "completion": 43.0, "side_rate": 26.0}
 COMPOSITION_2026 = [
     "GPT-5.5",
@@ -179,6 +187,7 @@ COMPOSITION_2026 = [
     "Sonnet 4.6",
     "Qwen3.5",
     "DeepSeek-V4-pro",
+    "Fable 5",
 ]
 
 
@@ -196,7 +205,7 @@ def plot_composition() -> None:
     ax.barh(y, harmless, left=correct, color=HARMLESS_COLOR, label="Failed, no harm")
     ax.barh(y, harm, left=correct + harmless, color=HARM_COLOR, label="Harmful side effect")
 
-    sota = {"GPT-4": "2024 SOTA", "Opus 4.8": "2026 SOTA"}
+    sota = {"GPT-4": "2024 SOTA", "Fable 5": "2026 SOTA"}
     for i, m in enumerate(ordered):
         if m["label"] in sota:
             ax.text(102, i, sota[m["label"]], va="center", ha="left", fontsize=8.5, fontweight="bold", color="#444444")

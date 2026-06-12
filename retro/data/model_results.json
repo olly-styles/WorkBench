@@ -1,0 +1,1134 @@
+{
+  "description": "Per-model WorkBench Revisited (2026) results, derived from the committed per-task results in data/results/ by scripts/evals/generate_results_summary.py. Do not edit by hand.",
+  "total_tasks": 690,
+  "models": {
+    "GPT-3.5-turbo": {
+      "model_name": "gpt-3.5",
+      "correct": 178,
+      "side_effects": 267,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 20,
+          "side_effects": 50,
+          "total": 110
+        },
+        "email": {
+          "correct": 15,
+          "side_effects": 40,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 26,
+          "side_effects": 1,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 46,
+          "side_effects": 13,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 26,
+          "side_effects": 28,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 45,
+          "side_effects": 135,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/gpt-3.5_all_2026-06-04_09-53-38.csv.gz",
+        "email": "data/results/email/gpt-3.5_all_2026-06-04_09-53-16.csv.gz",
+        "analytics": "data/results/analytics/gpt-3.5_all_2026-06-04_09-54-12.csv.gz",
+        "project_management": "data/results/project_management/gpt-3.5_all_2026-06-04_09-54-48.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/gpt-3.5_all_2026-06-04_09-55-12.csv.gz",
+        "multi_domain": "data/results/multi_domain/gpt-3.5_all_2026-06-04_09-55-36.csv.gz"
+      }
+    },
+    "GPT-4-turbo": {
+      "model_name": "gpt-4-turbo",
+      "correct": 391,
+      "side_effects": 154,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 56,
+          "side_effects": 36,
+          "total": 110
+        },
+        "email": {
+          "correct": 79,
+          "side_effects": 11,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 61,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 34,
+          "side_effects": 9,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 54,
+          "side_effects": 11,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 107,
+          "side_effects": 87,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/gpt-4-turbo_all_2026-06-03_18-37-49.csv.gz",
+        "email": "data/results/email/gpt-4-turbo_all_2026-06-03_18-36-30.csv.gz",
+        "analytics": "data/results/analytics/gpt-4-turbo_all_2026-06-03_18-39-15.csv.gz",
+        "project_management": "data/results/project_management/gpt-4-turbo_all_2026-06-03_18-41-59.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/gpt-4-turbo_all_2026-06-03_18-43-11.csv.gz",
+        "multi_domain": "data/results/multi_domain/gpt-4-turbo_all_2026-06-03_18-44-47.csv.gz"
+      }
+    },
+    "GPT-4o": {
+      "model_name": "gpt-4o",
+      "correct": 434,
+      "side_effects": 104,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 89,
+          "side_effects": 17,
+          "total": 110
+        },
+        "email": {
+          "correct": 81,
+          "side_effects": 9,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 58,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 41,
+          "side_effects": 4,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 57,
+          "side_effects": 1,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 108,
+          "side_effects": 73,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/gpt-4o_all_2026-06-04_09-57-25.csv.gz",
+        "email": "data/results/email/gpt-4o_all_2026-06-04_09-56-59.csv.gz",
+        "analytics": "data/results/analytics/gpt-4o_all_2026-06-04_09-57-51.csv.gz",
+        "project_management": "data/results/project_management/gpt-4o_all_2026-06-04_09-58-30.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/gpt-4o_all_2026-06-04_09-58-51.csv.gz",
+        "multi_domain": "data/results/multi_domain/gpt-4o_all_2026-06-04_09-59-11.csv.gz"
+      }
+    },
+    "GPT-4.1": {
+      "model_name": "gpt-4.1",
+      "correct": 483,
+      "side_effects": 134,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 91,
+          "side_effects": 17,
+          "total": 110
+        },
+        "email": {
+          "correct": 89,
+          "side_effects": 1,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 81,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 55,
+          "side_effects": 17,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 59,
+          "side_effects": 12,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 108,
+          "side_effects": 87,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/gpt-4.1_all_2026-06-04_10-11-26.csv.gz",
+        "email": "data/results/email/gpt-4.1_all_2026-06-04_10-10-16.csv.gz",
+        "analytics": "data/results/analytics/gpt-4.1_all_2026-06-04_10-11-57.csv.gz",
+        "project_management": "data/results/project_management/gpt-4.1_all_2026-06-04_10-12-27.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/gpt-4.1_all_2026-06-04_10-12-51.csv.gz",
+        "multi_domain": "data/results/multi_domain/gpt-4.1_all_2026-06-04_10-13-33.csv.gz"
+      }
+    },
+    "o3": {
+      "model_name": "o3",
+      "correct": 490,
+      "side_effects": 121,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 91,
+          "side_effects": 14,
+          "total": 110
+        },
+        "email": {
+          "correct": 81,
+          "side_effects": 9,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 63,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 56,
+          "side_effects": 21,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 64,
+          "side_effects": 13,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 135,
+          "side_effects": 64,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/o3_all_2026-06-04_10-01-06.csv.gz",
+        "email": "data/results/email/o3_all_2026-06-04_10-00-17.csv.gz",
+        "analytics": "data/results/analytics/o3_all_2026-06-04_10-02-20.csv.gz",
+        "project_management": "data/results/project_management/o3_all_2026-06-04_10-04-04.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/o3_all_2026-06-04_10-05-09.csv.gz",
+        "multi_domain": "data/results/multi_domain/o3_all_2026-06-04_10-06-07.csv.gz"
+      }
+    },
+    "GPT-5": {
+      "model_name": "gpt-5",
+      "correct": 536,
+      "side_effects": 90,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 90,
+          "side_effects": 20,
+          "total": 110
+        },
+        "email": {
+          "correct": 87,
+          "side_effects": 2,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 63,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 74,
+          "side_effects": 6,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 78,
+          "side_effects": 1,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 144,
+          "side_effects": 61,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/gpt-5_all_2026-06-04_10-16-56.csv.gz",
+        "email": "data/results/email/gpt-5_all_2026-06-04_10-14-51.csv.gz",
+        "analytics": "data/results/analytics/gpt-5_all_2026-06-04_10-21-22.csv.gz",
+        "project_management": "data/results/project_management/gpt-5_all_2026-06-04_10-25-29.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/gpt-5_all_2026-06-04_10-28-10.csv.gz",
+        "multi_domain": "data/results/multi_domain/gpt-5_all_2026-06-04_10-30-42.csv.gz"
+      }
+    },
+    "GLM-4.6": {
+      "model_name": "glm-4.6",
+      "correct": 488,
+      "side_effects": 117,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 91,
+          "side_effects": 6,
+          "total": 110
+        },
+        "email": {
+          "correct": 89,
+          "side_effects": 1,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 60,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 56,
+          "side_effects": 24,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 64,
+          "side_effects": 13,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 128,
+          "side_effects": 73,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/glm-4.6_all_2026-06-03_21-35-21.csv.gz",
+        "email": "data/results/email/glm-4.6_all_2026-06-03_21-32-58.csv.gz",
+        "analytics": "data/results/analytics/glm-4.6_all_2026-06-03_21-37-09.csv.gz",
+        "project_management": "data/results/project_management/glm-4.6_all_2026-06-03_21-39-22.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/glm-4.6_all_2026-06-03_21-43-01.csv.gz",
+        "multi_domain": "data/results/multi_domain/glm-4.6_all_2026-06-03_21-45-04.csv.gz"
+      }
+    },
+    "Haiku 4.5": {
+      "model_name": "claude-haiku-4.5",
+      "correct": 466,
+      "side_effects": 115,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 82,
+          "side_effects": 7,
+          "total": 110
+        },
+        "email": {
+          "correct": 78,
+          "side_effects": 2,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 58,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 60,
+          "side_effects": 18,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 71,
+          "side_effects": 6,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 117,
+          "side_effects": 82,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/claude-haiku-4.5_all_2026-06-03_18-00-33.csv.gz",
+        "email": "data/results/email/claude-haiku-4.5_all_2026-06-03_18-00-07.csv.gz",
+        "analytics": "data/results/analytics/claude-haiku-4.5_all_2026-06-03_18-00-59.csv.gz",
+        "project_management": "data/results/project_management/claude-haiku-4.5_all_2026-06-03_18-01-35.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/claude-haiku-4.5_all_2026-06-03_18-02-15.csv.gz",
+        "multi_domain": "data/results/multi_domain/claude-haiku-4.5_all_2026-06-03_18-02-53.csv.gz"
+      }
+    },
+    "GPT-5.1": {
+      "model_name": "gpt-5.1",
+      "correct": 362,
+      "side_effects": 125,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 81,
+          "side_effects": 18,
+          "total": 110
+        },
+        "email": {
+          "correct": 69,
+          "side_effects": 5,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 25,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 55,
+          "side_effects": 6,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 48,
+          "side_effects": 6,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 84,
+          "side_effects": 90,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/gpt-5.1_all_2026-06-04_10-42-58.csv.gz",
+        "email": "data/results/email/gpt-5.1_all_2026-06-04_10-42-28.csv.gz",
+        "analytics": "data/results/analytics/gpt-5.1_all_2026-06-04_10-43-33.csv.gz",
+        "project_management": "data/results/project_management/gpt-5.1_all_2026-06-04_10-44-17.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/gpt-5.1_all_2026-06-04_10-44-48.csv.gz",
+        "multi_domain": "data/results/multi_domain/gpt-5.1_all_2026-06-04_10-45-15.csv.gz"
+      }
+    },
+    "GPT-5.2": {
+      "model_name": "gpt-5.2",
+      "correct": 437,
+      "side_effects": 130,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 95,
+          "side_effects": 11,
+          "total": 110
+        },
+        "email": {
+          "correct": 82,
+          "side_effects": 7,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 41,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 46,
+          "side_effects": 7,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 68,
+          "side_effects": 4,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 105,
+          "side_effects": 101,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/gpt-5.2_all_2026-06-04_10-47-28.csv.gz",
+        "email": "data/results/email/gpt-5.2_all_2026-06-04_10-46-45.csv.gz",
+        "analytics": "data/results/analytics/gpt-5.2_all_2026-06-04_10-48-09.csv.gz",
+        "project_management": "data/results/project_management/gpt-5.2_all_2026-06-04_10-49-52.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/gpt-5.2_all_2026-06-04_10-50-24.csv.gz",
+        "multi_domain": "data/results/multi_domain/gpt-5.2_all_2026-06-04_10-50-55.csv.gz"
+      }
+    },
+    "Sonnet 4.6": {
+      "model_name": "claude-sonnet-4.6",
+      "correct": 557,
+      "side_effects": 61,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 103,
+          "side_effects": 4,
+          "total": 110
+        },
+        "email": {
+          "correct": 89,
+          "side_effects": 1,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 61,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 69,
+          "side_effects": 11,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 76,
+          "side_effects": 3,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 159,
+          "side_effects": 42,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/claude-sonnet-4.6_all_2026-06-03_13-28-00.csv.gz",
+        "email": "data/results/email/claude-sonnet-4.6_all_2026-06-03_13-27-33.csv.gz",
+        "analytics": "data/results/analytics/claude-sonnet-4.6_all_2026-06-03_13-30-26.csv.gz",
+        "project_management": "data/results/project_management/claude-sonnet-4.6_all_2026-06-03_13-31-06.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/claude-sonnet-4.6_all_2026-06-03_13-33-17.csv.gz",
+        "multi_domain": "data/results/multi_domain/claude-sonnet-4.6_all_2026-06-03_13-33-49.csv.gz"
+      }
+    },
+    "Gemini-3.1-pro": {
+      "model_name": "gemini-3.1-pro",
+      "correct": 605,
+      "side_effects": 20,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 108,
+          "side_effects": 0,
+          "total": 110
+        },
+        "email": {
+          "correct": 90,
+          "side_effects": 0,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 59,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 71,
+          "side_effects": 9,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 80,
+          "side_effects": 0,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 197,
+          "side_effects": 11,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/gemini-3.1-pro_all_2026-06-03_20-52-46.csv.gz",
+        "email": "data/results/email/gemini-3.1-pro_all_2026-06-03_20-51-56.csv.gz",
+        "analytics": "data/results/analytics/gemini-3.1-pro_all_2026-06-03_20-54-17.csv.gz",
+        "project_management": "data/results/project_management/gemini-3.1-pro_all_2026-06-03_20-55-56.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/gemini-3.1-pro_all_2026-06-03_20-57-40.csv.gz",
+        "multi_domain": "data/results/multi_domain/gemini-3.1-pro_all_2026-06-03_20-59-25.csv.gz"
+      }
+    },
+    "Qwen3.5": {
+      "model_name": "qwen-3.5-flash",
+      "correct": 436,
+      "side_effects": 148,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 95,
+          "side_effects": 9,
+          "total": 110
+        },
+        "email": {
+          "correct": 75,
+          "side_effects": 12,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 37,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 54,
+          "side_effects": 25,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 59,
+          "side_effects": 21,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 116,
+          "side_effects": 81,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/qwen-3.5-flash_all_2026-06-03_17-45-51.csv.gz",
+        "email": "data/results/email/qwen-3.5-flash_all_2026-06-03_17-45-13.csv.gz",
+        "analytics": "data/results/analytics/qwen-3.5-flash_all_2026-06-03_17-46-36.csv.gz",
+        "project_management": "data/results/project_management/qwen-3.5-flash_all_2026-06-03_17-51-45.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/qwen-3.5-flash_all_2026-06-03_17-56-38.csv.gz",
+        "multi_domain": "data/results/multi_domain/qwen-3.5-flash_all_2026-06-03_17-57-36.csv.gz"
+      }
+    },
+    "GPT-5.4-nano": {
+      "model_name": "gpt-5.4-nano",
+      "correct": 305,
+      "side_effects": 197,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 71,
+          "side_effects": 28,
+          "total": 110
+        },
+        "email": {
+          "correct": 48,
+          "side_effects": 24,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 29,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 49,
+          "side_effects": 13,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 45,
+          "side_effects": 15,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 63,
+          "side_effects": 117,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/gpt-5.4-nano_all_2026-06-03_18-04-33.csv.gz",
+        "email": "data/results/email/gpt-5.4-nano_all_2026-06-03_18-04-06.csv.gz",
+        "analytics": "data/results/analytics/gpt-5.4-nano_all_2026-06-03_18-05-01.csv.gz",
+        "project_management": "data/results/project_management/gpt-5.4-nano_all_2026-06-03_18-05-43.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/gpt-5.4-nano_all_2026-06-03_18-06-18.csv.gz",
+        "multi_domain": "data/results/multi_domain/gpt-5.4-nano_all_2026-06-03_18-06-42.csv.gz"
+      }
+    },
+    "GPT-5.4-mini": {
+      "model_name": "gpt-5.4-mini",
+      "correct": 372,
+      "side_effects": 209,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 72,
+          "side_effects": 37,
+          "total": 110
+        },
+        "email": {
+          "correct": 74,
+          "side_effects": 15,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 39,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 44,
+          "side_effects": 32,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 56,
+          "side_effects": 17,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 87,
+          "side_effects": 108,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/gpt-5.4-mini_all_2026-06-03_18-00-27.csv.gz",
+        "email": "data/results/email/gpt-5.4-mini_all_2026-06-03_17-59-59.csv.gz",
+        "analytics": "data/results/analytics/gpt-5.4-mini_all_2026-06-03_18-01-08.csv.gz",
+        "project_management": "data/results/project_management/gpt-5.4-mini_all_2026-06-03_18-01-38.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/gpt-5.4-mini_all_2026-06-03_18-02-18.csv.gz",
+        "multi_domain": "data/results/multi_domain/gpt-5.4-mini_all_2026-06-03_18-02-46.csv.gz"
+      }
+    },
+    "GPT-5.4": {
+      "model_name": "gpt-5.4",
+      "correct": 491,
+      "side_effects": 116,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 101,
+          "side_effects": 7,
+          "total": 110
+        },
+        "email": {
+          "correct": 89,
+          "side_effects": 1,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 47,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 69,
+          "side_effects": 11,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 74,
+          "side_effects": 4,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 111,
+          "side_effects": 93,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/gpt-5.4_all_2026-06-04_10-53-27.csv.gz",
+        "email": "data/results/email/gpt-5.4_all_2026-06-04_10-52-47.csv.gz",
+        "analytics": "data/results/analytics/gpt-5.4_all_2026-06-04_10-54-06.csv.gz",
+        "project_management": "data/results/project_management/gpt-5.4_all_2026-06-04_10-54-47.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/gpt-5.4_all_2026-06-04_10-55-19.csv.gz",
+        "multi_domain": "data/results/multi_domain/gpt-5.4_all_2026-06-04_10-55-54.csv.gz"
+      }
+    },
+    "Mistral-Small-4": {
+      "model_name": "mistral-small-2603",
+      "correct": 234,
+      "side_effects": 306,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 40,
+          "side_effects": 70,
+          "total": 110
+        },
+        "email": {
+          "correct": 52,
+          "side_effects": 38,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 23,
+          "side_effects": 1,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 26,
+          "side_effects": 29,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 37,
+          "side_effects": 26,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 56,
+          "side_effects": 142,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/mistral-small-2603_all_2026-06-12_12-58-01.csv.gz",
+        "email": "data/results/email/mistral-small-2603_all_2026-06-12_12-59-38.csv.gz",
+        "analytics": "data/results/analytics/mistral-small-2603_all_2026-06-12_12-59-58.csv.gz",
+        "project_management": "data/results/project_management/mistral-small-2603_all_2026-06-12_13-00-27.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/mistral-small-2603_all_2026-06-12_13-00-46.csv.gz",
+        "multi_domain": "data/results/multi_domain/mistral-small-2603_all_2026-06-12_13-01-00.csv.gz"
+      }
+    },
+    "Kimi-K2.6": {
+      "model_name": "kimi-k2.6",
+      "correct": 556,
+      "side_effects": 47,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 102,
+          "side_effects": 4,
+          "total": 110
+        },
+        "email": {
+          "correct": 87,
+          "side_effects": 2,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 63,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 66,
+          "side_effects": 14,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 80,
+          "side_effects": 0,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 158,
+          "side_effects": 27,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/kimi-k2.6_all_2026-06-03_21-15-28.csv.gz",
+        "email": "data/results/email/kimi-k2.6_all_2026-06-03_21-14-29.csv.gz",
+        "analytics": "data/results/analytics/kimi-k2.6_all_2026-06-03_21-17-46.csv.gz",
+        "project_management": "data/results/project_management/kimi-k2.6_all_2026-06-03_21-29-16.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/kimi-k2.6_all_2026-06-03_21-35-39.csv.gz",
+        "multi_domain": "data/results/multi_domain/kimi-k2.6_all_2026-06-03_21-37-19.csv.gz"
+      }
+    },
+    "GPT-5.5": {
+      "model_name": "gpt-5.5",
+      "correct": 605,
+      "side_effects": 27,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 108,
+          "side_effects": 2,
+          "total": 110
+        },
+        "email": {
+          "correct": 89,
+          "side_effects": 1,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 64,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 73,
+          "side_effects": 7,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 79,
+          "side_effects": 1,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 192,
+          "side_effects": 16,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/gpt-5.5_all_2026-06-03_16-33-06.csv.gz",
+        "email": "data/results/email/gpt-5.5_all_2026-06-03_16-32-20.csv.gz",
+        "analytics": "data/results/analytics/gpt-5.5_all_2026-06-03_16-34-20.csv.gz",
+        "project_management": "data/results/project_management/gpt-5.5_all_2026-06-03_16-35-45.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/gpt-5.5_all_2026-06-03_16-36-41.csv.gz",
+        "multi_domain": "data/results/multi_domain/gpt-5.5_all_2026-06-03_16-37-44.csv.gz"
+      }
+    },
+    "DeepSeek-V4-pro": {
+      "model_name": "deepseek-v4-pro",
+      "correct": 537,
+      "side_effects": 88,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 100,
+          "side_effects": 7,
+          "total": 110
+        },
+        "email": {
+          "correct": 88,
+          "side_effects": 1,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 63,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 59,
+          "side_effects": 21,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 75,
+          "side_effects": 4,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 152,
+          "side_effects": 55,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/deepseek-v4-pro_all_2026-06-03_18-10-02.csv.gz",
+        "email": "data/results/email/deepseek-v4-pro_all_2026-06-03_18-08-20.csv.gz",
+        "analytics": "data/results/analytics/deepseek-v4-pro_all_2026-06-03_18-12-23.csv.gz",
+        "project_management": "data/results/project_management/deepseek-v4-pro_all_2026-06-03_18-15-53.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/deepseek-v4-pro_all_2026-06-03_18-18-20.csv.gz",
+        "multi_domain": "data/results/multi_domain/deepseek-v4-pro_all_2026-06-03_18-21-45.csv.gz"
+      }
+    },
+    "Mistral-Medium-3.5": {
+      "model_name": "mistral-medium-3-5",
+      "correct": 381,
+      "side_effects": 210,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 80,
+          "side_effects": 28,
+          "total": 110
+        },
+        "email": {
+          "correct": 83,
+          "side_effects": 7,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 25,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 47,
+          "side_effects": 33,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 59,
+          "side_effects": 21,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 87,
+          "side_effects": 121,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/mistral-medium-3-5_all_2026-06-12_13-02-53.csv.gz",
+        "email": "data/results/email/mistral-medium-3-5_all_2026-06-12_13-04-12.csv.gz",
+        "analytics": "data/results/analytics/mistral-medium-3-5_all_2026-06-12_13-04-47.csv.gz",
+        "project_management": "data/results/project_management/mistral-medium-3-5_all_2026-06-12_13-05-33.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/mistral-medium-3-5_all_2026-06-12_13-06-10.csv.gz",
+        "multi_domain": "data/results/multi_domain/mistral-medium-3-5_all_2026-06-12_13-06-12.csv.gz"
+      }
+    },
+    "Gemini-3.5-flash": {
+      "model_name": "gemini-3.5-flash",
+      "correct": 581,
+      "side_effects": 21,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 105,
+          "side_effects": 3,
+          "total": 110
+        },
+        "email": {
+          "correct": 90,
+          "side_effects": 0,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 52,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 74,
+          "side_effects": 6,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 73,
+          "side_effects": 3,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 187,
+          "side_effects": 9,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/gemini-3.5-flash_all_2026-06-03_19-47-14.csv.gz",
+        "email": "data/results/email/gemini-3.5-flash_all_2026-06-03_19-46-17.csv.gz",
+        "analytics": "data/results/analytics/gemini-3.5-flash_all_2026-06-03_19-49-59.csv.gz",
+        "project_management": "data/results/project_management/gemini-3.5-flash_all_2026-06-03_19-50-00.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/gemini-3.5-flash_all_2026-06-03_19-50-01.csv.gz",
+        "multi_domain": "data/results/multi_domain/gemini-3.5-flash_all_2026-06-03_19-50-02.csv.gz"
+      }
+    },
+    "Opus 4.8": {
+      "model_name": "claude-opus-4.8",
+      "correct": 613,
+      "side_effects": 17,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 107,
+          "side_effects": 1,
+          "total": 110
+        },
+        "email": {
+          "correct": 89,
+          "side_effects": 1,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 66,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 74,
+          "side_effects": 6,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 79,
+          "side_effects": 0,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 198,
+          "side_effects": 9,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/claude-opus-4.8_all_2026-06-03_14-12-16.csv.gz",
+        "email": "data/results/email/claude-opus-4.8_all_2026-06-03_14-11-30.csv.gz",
+        "analytics": "data/results/analytics/claude-opus-4.8_all_2026-06-03_14-13-15.csv.gz",
+        "project_management": "data/results/project_management/claude-opus-4.8_all_2026-06-03_14-14-24.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/claude-opus-4.8_all_2026-06-03_16-43-51.csv.gz",
+        "multi_domain": "data/results/multi_domain/claude-opus-4.8_all_2026-06-03_14-16-21.csv.gz"
+      }
+    },
+    "Fable 5": {
+      "model_name": "claude-fable-5",
+      "correct": 632,
+      "side_effects": 13,
+      "total": 690,
+      "ground_truth_version": "v2",
+      "per_tool": {
+        "calendar": {
+          "correct": 109,
+          "side_effects": 1,
+          "total": 110
+        },
+        "email": {
+          "correct": 90,
+          "side_effects": 0,
+          "total": 90
+        },
+        "analytics": {
+          "correct": 77,
+          "side_effects": 0,
+          "total": 120
+        },
+        "project_management": {
+          "correct": 71,
+          "side_effects": 9,
+          "total": 80
+        },
+        "customer_relationship_manager": {
+          "correct": 80,
+          "side_effects": 0,
+          "total": 80
+        },
+        "multi_domain": {
+          "correct": 205,
+          "side_effects": 3,
+          "total": 210
+        }
+      },
+      "sources": {
+        "calendar": "data/results/calendar/claude-fable-5_all_2026-06-09_22-13-47.csv.gz",
+        "email": "data/results/email/claude-fable-5_all_2026-06-09_22-15-23.csv.gz",
+        "analytics": "data/results/analytics/claude-fable-5_all_2026-06-09_22-16-45.csv.gz",
+        "project_management": "data/results/project_management/claude-fable-5_all_2026-06-09_22-18-27.csv.gz",
+        "customer_relationship_manager": "data/results/customer_relationship_manager/claude-fable-5_all_2026-06-09_22-20-08.csv.gz",
+        "multi_domain": "data/results/multi_domain/claude-fable-5_all_2026-06-09_22-21-37.csv.gz"
+      }
+    }
+  }
+}

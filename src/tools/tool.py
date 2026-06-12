@@ -58,6 +58,9 @@ class Tool:
     args_schema: dict[str, Any]
     signature_str: str
 
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        return self.func(*args, **kwargs)
+
 
 def tool(name: str) -> Callable[..., Tool]:
     def decorator(func: Callable[..., Any]) -> Tool:

@@ -16,9 +16,9 @@ def generate_data() -> None:
     if not os.path.exists(CONTENT_PAIRS_PATH):
         raise FileNotFoundError(
             f"Required email-content seed '{CONTENT_PAIRS_PATH}' is missing. The email sandbox data is sampled "
-            f"from this committed corpus; regenerate it by running "
-            f"scripts/data_generation/sandbox_databases/generate_email_content_pairs.py first "
-            f"(note: regenerating it changes the email corpus and every downstream email/multi-domain task)."
+            f"from this frozen, committed corpus (like the other seeds in data/raw/); its original generator "
+            f"drifted from it and was retired, so it cannot be regenerated. Restore it from git history "
+            f"(e.g. `git checkout -- {CONTENT_PAIRS_PATH}`)."
         )
     email_content = pd.read_csv(CONTENT_PAIRS_PATH)
 

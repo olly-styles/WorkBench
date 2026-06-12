@@ -4,30 +4,34 @@ from pathlib import Path
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter, MultipleLocator
+from results_data import load_model_results
 
 TOTAL_TASKS = 690
 
 # OpenAI models on WorkBench, ordered by release date. "release" is the public
-# release date (verified against published announcements).
+# release date (verified against published announcements). Correct counts come
+# from the generated results artifact (retro/data/model_results.json).
 MODELS = [
-    {"label": "GPT-3.5-turbo", "release": date(2023, 3, 1), "correct": 178, "dx": 8, "dy": -4, "ha": "left"},
-    {"label": "GPT-4-turbo", "release": date(2023, 11, 6), "correct": 391, "dx": 8, "dy": -14, "ha": "left"},
-    {"label": "GPT-4o", "release": date(2024, 5, 13), "correct": 434, "dx": 8, "dy": 4, "ha": "left"},
-    {"label": "GPT-4.1", "release": date(2025, 4, 14), "correct": 483, "dx": -8, "dy": -14, "ha": "right"},
-    {"label": "o3", "release": date(2025, 4, 16), "correct": 490, "dx": 4, "dy": 9, "ha": "left"},
-    {"label": "GPT-5", "release": date(2025, 8, 7), "correct": 536, "dx": 0, "dy": 12, "ha": "center"},
-    {"label": "GPT-5.1", "release": date(2025, 11, 12), "correct": 362, "dx": 0, "dy": -17, "ha": "center"},
-    {"label": "GPT-5.2", "release": date(2025, 12, 11), "correct": 437, "dx": -9, "dy": 6, "ha": "right"},
-    {"label": "GPT-5.4-nano", "release": date(2026, 3, 5), "correct": 305, "dx": 9, "dy": -10, "ha": "left"},
-    {"label": "GPT-5.4-mini", "release": date(2026, 3, 5), "correct": 372, "dx": 9, "dy": 0, "ha": "left"},
-    {"label": "GPT-5.4", "release": date(2026, 3, 5), "correct": 491, "dx": -9, "dy": 8, "ha": "right"},
-    {"label": "GPT-5.5", "release": date(2026, 4, 23), "correct": 605, "dx": 8, "dy": 4, "ha": "left"},
+    {"label": "GPT-3.5-turbo", "release": date(2023, 3, 1), "dx": 8, "dy": -4, "ha": "left"},
+    {"label": "GPT-4-turbo", "release": date(2023, 11, 6), "dx": 8, "dy": -14, "ha": "left"},
+    {"label": "GPT-4o", "release": date(2024, 5, 13), "dx": 8, "dy": 4, "ha": "left"},
+    {"label": "GPT-4.1", "release": date(2025, 4, 14), "dx": -8, "dy": -14, "ha": "right"},
+    {"label": "o3", "release": date(2025, 4, 16), "dx": 4, "dy": 9, "ha": "left"},
+    {"label": "GPT-5", "release": date(2025, 8, 7), "dx": 0, "dy": 12, "ha": "center"},
+    {"label": "GPT-5.1", "release": date(2025, 11, 12), "dx": 0, "dy": -17, "ha": "center"},
+    {"label": "GPT-5.2", "release": date(2025, 12, 11), "dx": -9, "dy": 6, "ha": "right"},
+    {"label": "GPT-5.4-nano", "release": date(2026, 3, 5), "dx": 9, "dy": -10, "ha": "left"},
+    {"label": "GPT-5.4-mini", "release": date(2026, 3, 5), "dx": 9, "dy": 0, "ha": "left"},
+    {"label": "GPT-5.4", "release": date(2026, 3, 5), "dx": -9, "dy": 8, "ha": "right"},
+    {"label": "GPT-5.5", "release": date(2026, 4, 23), "dx": 8, "dy": 4, "ha": "left"},
 ]
 
 POINT_COLOR = "#1b6ca8"
 
-models = [m for m in MODELS if m["correct"] is not None]
+RESULTS = load_model_results()
+models = MODELS
 for model in models:
+    model["correct"] = RESULTS[model["label"]]["correct"]
     model["accuracy"] = 100 * model["correct"] / TOTAL_TASKS
 
 print(f"{'Model':<16}{'Release':>14}{'Completion':>16}")

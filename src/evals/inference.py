@@ -1,3 +1,4 @@
+import ast
 import csv
 import glob
 import json
@@ -22,6 +23,7 @@ from src.evals.agent import (
     run_agent,
     run_agent_structured,
 )
+from src.evals.metrics import CURRENT_GROUND_TRUTH_VERSION
 from src.tools.state import reset_state
 from src.tools.tool import Tool
 from src.tools.toolkits import (
@@ -229,6 +231,7 @@ def _write_run_metadata(
         "supports_temperature": route.supports_temperature,
         "tool_selection": tool_selection,
         "tasks_path": tasks_path,
+        "ground_truth_version": CURRENT_GROUND_TRUTH_VERSION,
         "num_tasks": num_tasks,
         "num_to_run_this_invocation": num_to_run,
         "num_resumed_from_prior_run": num_resumed,
@@ -265,7 +268,6 @@ def generate_results(
     if model_name not in MODEL_REGISTRY:
         raise ValueError("Invalid --model_name. Must be one of " + ", ".join(AVAILABLE_LLMS))
 
-    default_toolkits = ["email", "calendar", "analytics", "project_management", "customer_relationship_manager"]
     tasks_df = pd.read_csv(tasks_path)
     tasks = tasks_df["task"].tolist()
 
@@ -278,14 +280,11 @@ def generate_results(
         f"Meetings must not start before 9am or end after 6pm."
     )
 
-    default_tools = get_toolkits(default_toolkits)
-    per_task_tools = []
-    for i in range(len(tasks)):
-        if tool_selection == "domains":
-            toolkits = tasks_df["domains"].iloc[i].strip("][").replace("'", "").split(", ")
-            per_task_tools.append(get_toolkits(toolkits))
-        else:
-            per_task_tools.append(default_tools)
+    if tool_selection == "domains":
+        per_task_tools = [get_toolkits(ast.literal_eval(domains)) for domains in tasks_df["domains"]]
+    else:
+        default_tools = get_toolkits(list(_TOOLKIT_MAP))
+        per_task_tools = [default_tools] * len(tasks)
 
     domain = tasks_path.split("/")[-1].split(".")[0].replace("_tasks_and_outcomes", "")
     save_dir = os.path.join("data", "results", domain)

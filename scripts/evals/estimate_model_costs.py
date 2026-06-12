@@ -36,14 +36,14 @@ load_dotenv(_ROOT / ".env")
 
 from src.evals.agent import ACT_WITHOUT_CONFIRMATION_SUFFIX, _sanitized_tool_schemas  # noqa: E402
 from src.evals.inference import HARDCODED_CURRENT_TIME, get_toolkits  # noqa: E402
+from src.evals.metrics import ALL_DOMAINS as DOMAINS  # noqa: E402
 
 CHARS_PER_TOKEN = 4.0
-
-DOMAINS = ["email", "calendar", "analytics", "project_management", "customer_relationship_manager", "multi_domain"]
 
 # Dollars per million tokens, (input, output), standard no-caching tier.
 # Fetched 2026-06-03 from each provider / OpenRouter model page.
 PRICING: dict[str, tuple[float, float]] = {
+    "claude-fable-5": (10.00, 50.00),
     "claude-opus-4.8": (5.00, 25.00),
     "claude-opus-4.7": (5.00, 25.00),
     "claude-opus-4.6": (5.00, 25.00),
@@ -63,6 +63,22 @@ PRICING: dict[str, tuple[float, float]] = {
     # deepseek-v4-pro: launch-promo rate; regular is 1.74 / 3.48.
     "deepseek-v4-pro": (0.435, 0.87),
     "qwen-3.5-flash": (0.065, 0.26),
+    # Fetched 2026-06-12 from the OpenRouter models API.
+    "kimi-k2.6": (0.67, 3.39),
+    "glm-4.6": (0.43, 1.74),
+    "mistral-small-2603": (0.15, 0.60),
+    "mistral-medium-3-5": (1.50, 7.50),
+    "gemini-3-flash": (0.50, 3.00),
+    "gemini-2.5-flash": (0.30, 2.50),
+    "gemini-3.1-flash-lite": (0.25, 1.50),
+    "gpt-5-nano": (0.05, 0.40),
+    "gpt-4": (30.00, 60.00),
+    # Original-paper models with no 2026 traces (always skipped) and, for the
+    # OpenRouter-served pair, delisted from OpenRouter; rates are the last
+    # public list prices and are approximate.
+    "claude-2": (8.00, 24.00),
+    "llama2-70b": (0.70, 0.90),
+    "mixtral-8x7b": (0.24, 0.24),
     # Prior-generation and gpt-5-line OpenAI models; public list prices fetched
     # 2026-06-04. o1 is priced for reference but was not run this round.
     "gpt-3.5": (0.50, 1.00),  # gpt-3.5-turbo; classic 0125 output was 1.50

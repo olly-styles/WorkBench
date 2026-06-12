@@ -51,7 +51,7 @@ def test_get_visitor_information_by_id():
         "traffic_source": "search engine",
         "user_engaged": False,
     }
-    assert analytics.get_visitor_information_by_id.func("000") == json.dumps([expected_result])
+    assert analytics.get_visitor_information_by_id("000") == json.dumps([expected_result])
 
 
 def test_get_visitor_information_by_id_not_found():
@@ -59,7 +59,7 @@ def test_get_visitor_information_by_id_not_found():
     Tests get_visitor_information_by_id when visitor ID is not found.
     """
     _set_analytics(test_analytics_data)
-    assert analytics.get_visitor_information_by_id.func("999") == "Visitor not found."
+    assert analytics.get_visitor_information_by_id("999") == "Visitor not found."
 
 
 def test_get_visitor_information_by_id_no_id_provided():
@@ -67,7 +67,7 @@ def test_get_visitor_information_by_id_no_id_provided():
     Tests get_visitor_information_by_id with no visitor ID provided.
     """
     _set_analytics(test_analytics_data)
-    assert analytics.get_visitor_information_by_id.func() == "Visitor ID not provided."
+    assert analytics.get_visitor_information_by_id() == "Visitor ID not provided."
 
 
 def test_create_plot():
@@ -80,7 +80,7 @@ def test_create_plot():
     time_max = "2023-10-02"
     plot_type = "bar"
     expected_file_path = f"plots/{time_min}_{time_max}_{value_to_plot}_{plot_type}.png"
-    assert analytics.create_plot.func(time_min, time_max, value_to_plot, plot_type) == expected_file_path
+    assert analytics.create_plot(time_min, time_max, value_to_plot, plot_type) == expected_file_path
 
 
 def test_create_plot_missing_arguments():
@@ -88,14 +88,14 @@ def test_create_plot_missing_arguments():
     Tests create_plot with missing arguments.
     """
     _set_analytics(test_analytics_data)
-    assert analytics.create_plot.func() == "Start date not provided."
-    assert analytics.create_plot.func("2023-10-01") == "End date not provided."
+    assert analytics.create_plot() == "Start date not provided."
+    assert analytics.create_plot("2023-10-01") == "End date not provided."
     assert (
-        analytics.create_plot.func("2023-10-01", "2023-10-02")
+        analytics.create_plot("2023-10-01", "2023-10-02")
         == "Value to plot must be one of 'total_visits', 'session_duration_seconds', 'user_engaged', 'visits_direct', 'visits_referral', 'visits_search_engine', 'visits_social_media'"
     )
     assert (
-        analytics.create_plot.func("2023-10-01", "2023-10-02", "total_visits")
+        analytics.create_plot("2023-10-01", "2023-10-02", "total_visits")
         == "Plot type must be one of 'bar', 'line', 'scatter', 'histogram'"
     )
 
@@ -106,21 +106,21 @@ def test_total_visits_count():
     """
     _set_analytics(test_analytics_data)
     # Test with a specific date range
-    assert json.loads(analytics.total_visits_count.func("2023-10-01", "2023-10-02")) == {
+    assert json.loads(analytics.total_visits_count("2023-10-01", "2023-10-02")) == {
         "2023-10-01": 1,
         "2023-10-02": 2,
     }
     # Test with a broader date range
-    assert json.loads(analytics.total_visits_count.func("2023-09-30", "2023-10-03")) == {
+    assert json.loads(analytics.total_visits_count("2023-09-30", "2023-10-03")) == {
         "2023-10-01": 1,
         "2023-10-02": 2,
     }
     # Test with 1 date
-    assert json.loads(analytics.total_visits_count.func("2023-10-01", "2023-10-01")) == {"2023-10-01": 1}
+    assert json.loads(analytics.total_visits_count("2023-10-01", "2023-10-01")) == {"2023-10-01": 1}
     # Test with no date range (should count all visits)
-    assert json.loads(analytics.total_visits_count.func()) == {"2023-10-01": 1, "2023-10-02": 2}
+    assert json.loads(analytics.total_visits_count()) == {"2023-10-01": 1, "2023-10-02": 2}
     # Test with a date range that includes no visits
-    assert json.loads(analytics.total_visits_count.func("2023-10-03", "2023-10-04")) == {}
+    assert json.loads(analytics.total_visits_count("2023-10-03", "2023-10-04")) == {}
 
 
 def test_engaged_users_count():
@@ -129,19 +129,19 @@ def test_engaged_users_count():
     """
     _set_analytics(test_analytics_data)
     # Test with a specific date range
-    assert json.loads(analytics.engaged_users_count.func("2023-10-01", "2023-10-02")) == {
+    assert json.loads(analytics.engaged_users_count("2023-10-01", "2023-10-02")) == {
         "2023-10-01": 0,
         "2023-10-02": 1,
     }
     # Test with a broader date range
-    assert json.loads(analytics.engaged_users_count.func("2023-09-30", "2023-10-03")) == {
+    assert json.loads(analytics.engaged_users_count("2023-09-30", "2023-10-03")) == {
         "2023-10-01": 0,
         "2023-10-02": 1,
     }
     # Test with no date range (should count all engaged users)
-    assert json.loads(analytics.engaged_users_count.func()) == {"2023-10-01": 0, "2023-10-02": 1}
+    assert json.loads(analytics.engaged_users_count()) == {"2023-10-01": 0, "2023-10-02": 1}
     # Test with a date range that includes no engaged users
-    assert json.loads(analytics.engaged_users_count.func("2023-10-03", "2023-10-04")) == {}
+    assert json.loads(analytics.engaged_users_count("2023-10-03", "2023-10-04")) == {}
 
 
 def test_traffic_source_count():
@@ -150,19 +150,19 @@ def test_traffic_source_count():
     """
     _set_analytics(test_analytics_data)
     # Test with a specific date range
-    assert json.loads(analytics.traffic_source_count.func("2023-10-01", "2023-10-02", "search engine")) == {
+    assert json.loads(analytics.traffic_source_count("2023-10-01", "2023-10-02", "search engine")) == {
         "2023-10-01": 1,
         "2023-10-02": 0,
     }
     # Test with a broader date range
-    assert json.loads(analytics.traffic_source_count.func("2023-09-30", "2023-10-03", "search engine")) == {
+    assert json.loads(analytics.traffic_source_count("2023-09-30", "2023-10-03", "search engine")) == {
         "2023-10-01": 1,
         "2023-10-02": 0,
     }
     # Test with no date range (should count all visits)
-    assert json.loads(analytics.traffic_source_count.func()) == {"2023-10-01": 1, "2023-10-02": 2}
+    assert json.loads(analytics.traffic_source_count()) == {"2023-10-01": 1, "2023-10-02": 2}
     # Test with a date range that includes no visits
-    assert json.loads(analytics.traffic_source_count.func("2023-10-03", "2023-10-04", "search engine")) == {}
+    assert json.loads(analytics.traffic_source_count("2023-10-03", "2023-10-04", "search engine")) == {}
 
 
 def test_average_session_duration():
@@ -171,16 +171,16 @@ def test_average_session_duration():
     """
     _set_analytics(test_analytics_data)
     # Test with a specific date range
-    assert json.loads(analytics.get_average_session_duration.func("2023-10-01", "2023-10-02")) == {
+    assert json.loads(analytics.get_average_session_duration("2023-10-01", "2023-10-02")) == {
         "2023-10-01": 10.0,
         "2023-10-02": 12.5,
     }
     # Test with a broader date range
-    assert json.loads(analytics.get_average_session_duration.func("2023-09-30", "2023-10-03")) == {
+    assert json.loads(analytics.get_average_session_duration("2023-09-30", "2023-10-03")) == {
         "2023-10-01": 10.0,
         "2023-10-02": 12.5,
     }
     # Test with no date range (should count all visits)
-    assert json.loads(analytics.get_average_session_duration.func()) == {"2023-10-01": 10.0, "2023-10-02": 12.5}
+    assert json.loads(analytics.get_average_session_duration()) == {"2023-10-01": 10.0, "2023-10-02": 12.5}
     # Test with a date range that includes no visits
-    assert json.loads(analytics.get_average_session_duration.func("2023-10-03", "2023-10-04")) == {}
+    assert json.loads(analytics.get_average_session_duration("2023-10-03", "2023-10-04")) == {}

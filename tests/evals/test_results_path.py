@@ -1,4 +1,5 @@
 import os
+import re
 from pathlib import Path
 
 from src.evals.metrics import get_latest_results_path
@@ -42,3 +43,18 @@ def test_respects_tool_selection(tmp_path: Path):
 def test_returns_none_when_no_matching_file(tmp_path: Path):
     (tmp_path / "calendar").mkdir()
     assert get_latest_results_path(str(tmp_path), "gpt-4", "calendar", all_tools_in_prompt=True) is None
+
+
+def test_committed_result_filenames_match_a_registry_model():
+    from src.evals.agent import MODEL_REGISTRY
+
+    pattern = re.compile(r"(?P<model>.+?)_(all|domains)_\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2}")
+    unknown = set()
+    for tool_dir in Path("data/results").iterdir():
+        if tool_dir.name.startswith("_") or not tool_dir.is_dir():
+            continue
+        for file in tool_dir.iterdir():
+            match = pattern.match(file.name)
+            if match and match.group("model") not in MODEL_REGISTRY:
+                unknown.add(match.group("model"))
+    assert not unknown, f"results files reference models missing from MODEL_REGISTRY: {sorted(unknown)}"

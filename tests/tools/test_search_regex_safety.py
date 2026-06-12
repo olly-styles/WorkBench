@@ -27,7 +27,7 @@ def test_calendar_search_handles_regex_metacharacters():
             }
         ]
     )
-    results = json.loads(calendar.search_events.func("[Q1"))
+    results = json.loads(calendar.search_events("[Q1"))
     assert len(results) == 1
     assert results[0]["event_name"] == "Sprint [Q1]"
 
@@ -49,7 +49,7 @@ def test_crm_search_handles_regex_metacharacters():
             }
         ]
     )
-    results = json.loads(crm.search_customers.func(customer_name="(US)"))
+    results = json.loads(crm.search_customers(customer_name="(US)"))
     assert len(results) == 1
     assert results[0]["customer_name"] == "ACME (US) Inc."
 
@@ -67,12 +67,12 @@ def test_project_management_search_handles_regex_metacharacters():
             }
         ]
     )
-    results = json.loads(project_management.search_tasks.func(task_name="(login"))
+    results = json.loads(project_management.search_tasks(task_name="(login"))
     assert len(results) == 1
     assert results[0]["task_name"] == "Fix (login) bug"
 
 
 def test_company_directory_search_handles_regex_metacharacters():
     get_state().directory_emails = pd.DataFrame(["a.b+test@atlas.com"], columns=pd.Index(["email_address"]))
-    assert company_directory.find_email_address.func("b+test") == json.dumps(["a.b+test@atlas.com"])
-    assert company_directory.find_email_address.func("[") == "No employee found with that name."
+    assert company_directory.find_email_address("b+test") == json.dumps(["a.b+test@atlas.com"])
+    assert company_directory.find_email_address("[") == "No employee found with that name."

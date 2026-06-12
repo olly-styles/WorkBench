@@ -38,17 +38,17 @@ def test_dispatch_table_covers_all_tools():
     assert registered_names == dispatch_names
 
 
-def test_execute_actions_and_reset_state_returns_tuple():
-    result = execute_actions_and_reset_state([])
-    assert len(result) == 6
-    assert result[0] is True
+def test_execute_actions_and_reset_state_returns_all_states():
+    success, states = execute_actions_and_reset_state([])
+    assert success is True
+    assert set(states.keys()) == {"calendar_events", "emails", "plots_data", "project_tasks", "crm_data"}
 
 
 def test_execute_actions_creates_event():
     action = "calendar.create_event.func(event_name='Test', participant_email='test@atlas.com', event_start='2023-10-02 12:00:00', duration='60')"
-    success, cal_state, _, _, _, _ = execute_actions_and_reset_state([action])
+    success, states = execute_actions_and_reset_state([action])
     assert success
-    assert any(cal_state["event_name"].str.contains("Test"))
+    assert any(states["calendar_events"]["event_name"].str.contains("Test"))
     state = get_state()
     assert not any(state.calendar_events["event_name"].str.contains("Test"))
     reset_state()
@@ -59,19 +59,19 @@ def test_execute_actions_invalid_action_marks_failure_but_continues():
         "not_valid_python!!!",
         "calendar.create_event.func(event_name='Valid', participant_email='test@atlas.com', event_start='2023-10-02 12:00:00', duration='60')",
     ]
-    success, cal_state, _, _, _, _ = execute_actions_and_reset_state(actions)
+    success, states = execute_actions_and_reset_state(actions)
     assert not success
-    assert any(cal_state["event_name"].str.contains("Valid"))
+    assert any(states["calendar_events"]["event_name"].str.contains("Valid"))
     reset_state()
 
 
 def test_execute_actions_disallowed_tool_marks_failure():
-    success, *_ = execute_actions_and_reset_state(["foo.bar.func(x='1')"])
+    success, _ = execute_actions_and_reset_state(["foo.bar.func(x='1')"])
     assert not success
     reset_state()
 
 
 def test_execute_actions_wrong_kwarg_marks_failure():
-    success, *_ = execute_actions_and_reset_state(["calendar.create_event.func(unknown_kwarg='x')"])
+    success, _ = execute_actions_and_reset_state(["calendar.create_event.func(unknown_kwarg='x')"])
     assert not success
     reset_state()

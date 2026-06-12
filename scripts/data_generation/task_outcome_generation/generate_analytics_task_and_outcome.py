@@ -7,10 +7,9 @@ import pandas as pd
 
 from src.data_generation.data_generation_utils import (
     HARDCODED_CURRENT_TIME,
+    generate_and_write_tasks_and_outcomes,
     get_natural_language_date,
-    write_task_outcome_csv,
 )
-from src.evals.utils import generate_all_tasks_and_outcomes
 from src.tools import analytics
 from src.tools.analytics import METRIC_NAMES, METRICS
 from src.tools.state import get_state
@@ -28,10 +27,10 @@ def load_data() -> None:
     dates = get_state().analytics_data["date_of_visit"].unique()
     metric_naming_dict = dict(zip(METRICS, METRIC_NAMES))
     metric_to_func_dict = {
-        "total_visits": analytics.total_visits_count.func,
-        "session_duration_seconds": analytics.get_average_session_duration.func,
-        "traffic_source": analytics.traffic_source_count.func,
-        "user_engaged": analytics.engaged_users_count.func,
+        "total_visits": analytics.total_visits_count,
+        "session_duration_seconds": analytics.get_average_session_duration,
+        "traffic_source": analytics.traffic_source_count,
+        "user_engaged": analytics.engaged_users_count,
     }
     traffic_sources = get_state().analytics_data["traffic_source"].unique()
 
@@ -227,7 +226,7 @@ def metric_two_plots_logic() -> dict:
 def plot_most_popular_traffic_source_logic() -> dict:
     base_dict = get_random_dict()
     traffic_source_popularity = {
-        s: pd.Series(json.loads(analytics.traffic_source_count.func(base_dict["date_min"], traffic_source=s))).mean()
+        s: pd.Series(json.loads(analytics.traffic_source_count(base_dict["date_min"], traffic_source=s))).mean()
         for s in traffic_sources
     }
     most_popular = max(traffic_source_popularity, key=lambda s: traffic_source_popularity[s])
@@ -245,10 +244,10 @@ def plot_relative_traffic_source_logic() -> dict:
     date_min = str(HARDCODED_CURRENT_TIME.date() - pd.Timedelta(n_weeks, "W"))
     base_dict["date_min"] = date_min
     traffic_source_1_popularity = pd.Series(
-        json.loads(analytics.traffic_source_count.func(date_min, traffic_source=traffic_source_1))
+        json.loads(analytics.traffic_source_count(date_min, traffic_source=traffic_source_1))
     ).mean()
     traffic_source_2_popularity = pd.Series(
-        json.loads(analytics.traffic_source_count.func(date_min, traffic_source=traffic_source_2))
+        json.loads(analytics.traffic_source_count(date_min, traffic_source=traffic_source_2))
     ).mean()
 
     if traffic_source_1_popularity > traffic_source_2_popularity:
@@ -372,12 +371,9 @@ for d in ANALYTICS_TEMPLATES:
 
 def generate_task_and_outcome() -> None:
     load_data()
-    random.seed(42)
-    np.random.seed(42)
-    max_tasks_per_template = 10  # Limit the number of tasks per template
-    generated_tasks_and_outcomes = generate_all_tasks_and_outcomes(ANALYTICS_TEMPLATES, max_tasks_per_template)
-    df = pd.DataFrame(generated_tasks_and_outcomes)
-    write_task_outcome_csv(df, "data/processed/tasks_and_outcomes/analytics_tasks_and_outcomes.csv")
+    generate_and_write_tasks_and_outcomes(
+        ANALYTICS_TEMPLATES, "data/processed/tasks_and_outcomes/analytics_tasks_and_outcomes.csv"
+    )
 
 
 if __name__ == "__main__":

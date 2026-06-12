@@ -55,15 +55,16 @@ def _parse_and_dispatch(action: str) -> bool:
         value = ast.literal_eval(kw.value)
         kwargs[kw.arg] = str(value)
 
-    tool.func(**kwargs)
+    tool(**kwargs)
     return True
 
 
-def execute_actions_and_reset_state(
-    actions: list[str],
-) -> tuple[bool, pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+EXECUTED_STATE_FIELDS = ("calendar_events", "emails", "plots_data", "project_tasks", "crm_data")
+
+
+def execute_actions_and_reset_state(actions: list[str]) -> tuple[bool, dict[str, pd.DataFrame]]:
     """
-    Executes a list of actions on the calendar and returns the resulting calendar events.
+    Executes a list of actions against a fresh sandbox and returns the resulting state.
 
     Parameters
     ----------
@@ -72,14 +73,11 @@ def execute_actions_and_reset_state(
 
     Returns
     -------
-    success bool
-        True if the actions were executed successfully.
-    new_calendar_state pd.DataFrame
-        The resulting calendar events after executing the actions.
-    new_email_state pd.DataFrame
-        The resulting emails after executing the actions.
-    new_analytics_state pd.DataFrame
-        The resulting analytics data after executing the actions.
+    success : bool
+        True if all actions were executed successfully.
+    states : dict
+        The mutable sandbox states after executing the actions, keyed by the
+        field names in ``EXECUTED_STATE_FIELDS``.
     """
     reset_state()
 
@@ -95,15 +93,7 @@ def execute_actions_and_reset_state(
             all_actions_succeeded = False
 
     state = get_state()
-    result = (
-        all_actions_succeeded,
-        state.calendar_events.copy(),
-        state.emails.copy(),
-        state.plots_data.copy(),
-        state.project_tasks.copy(),
-        state.crm_data.copy(),
-    )
+    states = {name: getattr(state, name).copy() for name in EXECUTED_STATE_FIELDS}
 
-    # Reset the state of the tools
     reset_state()
-    return result
+    return all_actions_succeeded, states

@@ -2,7 +2,6 @@ import json
 import random
 from typing import Any
 
-import numpy as np
 import pandas as pd
 
 import scripts.data_generation.task_outcome_generation.generate_analytics_task_and_outcome as analytics_qa
@@ -26,14 +25,13 @@ from scripts.data_generation.task_outcome_generation.generate_project_management
 from src.data_generation.data_generation_utils import (
     HARDCODED_CURRENT_TIME,
     format_event_duration,
+    generate_and_write_tasks_and_outcomes,
     generate_event_duration_minutes,
     get_first_name,
     get_natural_language_date,
     get_natural_language_time,
     get_random_future_datetime,
-    write_task_outcome_csv,
 )
-from src.evals.utils import generate_all_tasks_and_outcomes
 from src.tools import calendar
 
 emails_data: Any = None
@@ -93,7 +91,7 @@ def new_email_string(email: str, subject: str, body: str) -> str:
 
 
 def get_first_event_id_on_date(date: str) -> str:
-    events = calendar.search_events.func(time_min=f"{date} 00:00:00", time_max=f"{date} 23:59:59")
+    events = calendar.search_events(time_min=f"{date} 00:00:00", time_max=f"{date} 23:59:59")
     if events == "No events found.":
         return events
     parsed = json.loads(events) if isinstance(events, str) else events
@@ -940,12 +938,9 @@ def generate_task_and_outcome() -> None:
     calendar_qa.load_data()
     crm_qa.load_data()
     pm_qa.load_data()
-    np.random.seed(42)
-    random.seed(42)
-    max_tasks_per_template = 10
-    generated_tasks_and_outcomes = generate_all_tasks_and_outcomes(MULTI_DOMAIN_TEMPLATES, max_tasks_per_template)
-    df = pd.DataFrame(generated_tasks_and_outcomes)
-    write_task_outcome_csv(df, "data/processed/tasks_and_outcomes/multi_domain_tasks_and_outcomes.csv")
+    generate_and_write_tasks_and_outcomes(
+        MULTI_DOMAIN_TEMPLATES, "data/processed/tasks_and_outcomes/multi_domain_tasks_and_outcomes.csv"
+    )
 
 
 if __name__ == "__main__":

@@ -1,16 +1,14 @@
 import random
 from typing import Any
 
-import numpy as np
 import pandas as pd
 
 from src.data_generation.data_generation_utils import (
     HARDCODED_CURRENT_TIME,
+    generate_and_write_tasks_and_outcomes,
     get_first_name,
     random_choice_excluding,
-    write_task_outcome_csv,
 )
-from src.evals.utils import generate_all_tasks_and_outcomes
 
 emails_data: Any = None
 subjects: Any = None
@@ -269,12 +267,9 @@ for d in EMAIL_TEMPLATES:
 
 def generate_task_and_outcome() -> None:
     load_data()
-    np.random.seed(42)
-    random.seed(42)
-    max_tasks_per_template = 10  # Limit the number of tasks per template
-    generated_tasks_and_outcomes = generate_all_tasks_and_outcomes(EMAIL_TEMPLATES, max_tasks_per_template)
-    df = pd.DataFrame(generated_tasks_and_outcomes)
-    write_task_outcome_csv(df, "data/processed/tasks_and_outcomes/email_tasks_and_outcomes.csv")
+    generate_and_write_tasks_and_outcomes(
+        EMAIL_TEMPLATES, "data/processed/tasks_and_outcomes/email_tasks_and_outcomes.csv"
+    )
 
 
 if __name__ == "__main__":
