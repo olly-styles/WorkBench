@@ -2,7 +2,7 @@
 
 ## WorkBench Revisited (2026)
 
-[**WorkBench Revisited**](retro/main.pdf) re-evaluates 21 models released between 2023 and 2026.
+[**WorkBench Revisited**](retro/main.pdf) re-evaluates 24 models released between 2023 and 2026.
 
 ![Outcome composition by model](retro/figs/side_effects_composition.png)
 
@@ -13,10 +13,6 @@ The best agent on WorkBench in March 2024, GPT-4, completed 43% of tasks and too
 - **Capability and safety go together** rather than trade off — the models that finish the most tasks also do the least unintended damage.
 - **Basic mistakes persist.** Several classes of error have been eliminated, but frontier models still occasionally cause irreversible harm, such as sending an email to the wrong person.
 - **Open-weight models have collapsed costs** for a performance level that was previously only accessible to proprietary models, while frontier costs have stayed relatively stable.
-
-**Update (2026-06-09):** [Claude Fable 5](https://www.anthropic.com/news/claude-fable-5-mythos-5), released the day of this update, sets a new SOTA: 632/690 tasks completed (91.6%) with 13 harmful side effects (1.9%). Its results are committed alongside the other models and included in the figures.
-
-**Update (2026-06-12):** Added two Mistral open-weight models: [Mistral Small 4](https://mistral.ai/news/mistral-small-4/) (`mistral-small-2603`, 33.9% completion) and Mistral Medium 3.5 (`mistral-medium-3-5`, 55.2% completion). Results, figures, and the write-up now cover 24 models.
 
 The 2026 release also includes data and code quality improvements, new model scores, and analysis of agent progress since 2024. Read the full write-up in [`retro/main.pdf`](retro/main.pdf).
 
