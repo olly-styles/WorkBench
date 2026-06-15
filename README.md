@@ -10,7 +10,7 @@
 
 The best agent on WorkBench in March 2024, GPT-4, completed 43% of tasks and took an unintended harmful action on 26% of them. In June 2026 the best agent, Claude Fable 5, completes 92% and takes a harmful action on just 1.9%. Three things stand out:
 
-- **Capability and safety go together** rather than trade off — the models that finish the most tasks also do the least unintended damage.
+- **Capability and safety have improved together** rather than trade off. On Workbench, the models that finish the most tasks also do the least unintended damage.
 - **Basic mistakes persist.** Several classes of error have been eliminated, but frontier models still occasionally cause irreversible harm, such as sending an email to the wrong person.
 - **Open-weight models have collapsed costs** for a performance level that was previously only accessible to proprietary models, while frontier costs have stayed relatively stable.
 
