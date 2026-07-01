@@ -198,3 +198,46 @@ def test_is_correct_additive_different_rows_still_incorrect():
     ground_truth_actions = [plot_a, plot_b]
     predicted_actions = [plot_c, plot_a]
     assert not is_correct(predicted_actions, ground_truth_actions, error)
+
+
+def test_is_correct_chart_end_date_today_accepted():
+    """
+    Ground truth plots charts ending on the last day with data (2023-11-29,
+    "yesterday"). A model that plots up to the current date (2023-11-30,
+    "today") draws the same chart and must be scored correct.
+    """
+    error = ""
+    ground_truth_actions = [
+        'analytics.create_plot.func(time_min="2023-11-01", time_max="2023-11-29", value_to_plot="total_visits", plot_type="bar")'
+    ]
+    predicted_actions = [
+        'analytics.create_plot.func(time_min="2023-11-01", time_max="2023-11-30", value_to_plot="total_visits", plot_type="bar")'
+    ]
+    assert is_correct(predicted_actions, ground_truth_actions, error)
+
+
+def test_is_correct_chart_end_date_yesterday_still_accepted():
+    """The unchanged ground-truth end date (2023-11-29) is still correct."""
+    error = ""
+    ground_truth_actions = [
+        'analytics.create_plot.func(time_min="2023-11-01", time_max="2023-11-29", value_to_plot="total_visits", plot_type="bar")'
+    ]
+    predicted_actions = [
+        'analytics.create_plot.func(time_min="2023-11-01", time_max="2023-11-29", value_to_plot="total_visits", plot_type="bar")'
+    ]
+    assert is_correct(predicted_actions, ground_truth_actions, error)
+
+
+def test_is_correct_chart_other_end_date_still_incorrect():
+    """
+    Only the today/yesterday pair is accepted: a different end date (here a
+    plot ending two days late) is still a genuine error.
+    """
+    error = ""
+    ground_truth_actions = [
+        'analytics.create_plot.func(time_min="2023-11-01", time_max="2023-11-29", value_to_plot="total_visits", plot_type="bar")'
+    ]
+    predicted_actions = [
+        'analytics.create_plot.func(time_min="2023-11-01", time_max="2023-12-01", value_to_plot="total_visits", plot_type="bar")'
+    ]
+    assert not is_correct(predicted_actions, ground_truth_actions, error)

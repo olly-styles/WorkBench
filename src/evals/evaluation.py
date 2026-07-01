@@ -42,6 +42,36 @@ def end_date_minor_error(ground_truth: list[str], prediction: list[str]) -> bool
     )
 
 
+def accept_either_chart_end_date(actions: list[str]) -> list[str]:
+    """Accept either yesterday's or today's date as a chart's plotting end date.
+
+    Analytics ground truth plots charts ending on the last day with data
+    (``BENCHMARK_END_DATE`` = 2023-11-29, "yesterday" relative to the benchmark's
+    current time of 2023-11-30). A model that instead plots up to the current
+    date ("today", ``BENCHMARK_END_DATE_OFF_BY_ONE`` = 2023-11-30) is drawing the
+    same chart over the same data, so the two end dates are treated as equivalent.
+
+    Only the ``time_max`` of ``analytics.create_plot`` calls is rewritten, so this
+    has no effect outside analytics plotting and never alters other dates.
+
+    Parameters
+    ----------
+    actions : list
+        List of actions as strings.
+
+    Returns
+    -------
+    list
+        Actions with today's chart end date canonicalised to yesterday's.
+    """
+    target = f'time_max="{BENCHMARK_END_DATE_OFF_BY_ONE}"'
+    canonical = f'time_max="{BENCHMARK_END_DATE}"'
+    return [
+        action.replace(target, canonical) if action.startswith("analytics.create_plot") else action
+        for action in actions
+    ]
+
+
 def _has_common_time_error(func: str, prediction: list[str]) -> bool:
     return any(func.replace(NEXT_FREE_TIME_GROUND_TRUTH, t) in prediction for t in COMMON_ERROR_TIMES)
 
@@ -159,6 +189,8 @@ def is_correct(predicted_actions: list[str], ground_truth_actions: list[str], er
     """
     if error:
         return False
+    predicted_actions = accept_either_chart_end_date(predicted_actions)
+    ground_truth_actions = accept_either_chart_end_date(ground_truth_actions)
     successful_execution, predicted_states = _execute_and_normalize(predicted_actions)
     ground_truth_success, ground_truth_states = _execute_and_normalize(ground_truth_actions)
     assert ground_truth_success, f"Ground truth actions failed to execute cleanly: {ground_truth_actions}"

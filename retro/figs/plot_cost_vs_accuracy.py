@@ -38,9 +38,9 @@ MODELS = [
         "label": "Opus 4.8",
         "family": "Claude",
         "total_cost": 125.55,
-        "dx": 9,
-        "dy": 4,
-        "ha": "left",
+        "dx": 0,
+        "dy": 11,
+        "ha": "center",
     },
     {
         "label": "GPT-5.5",
@@ -305,7 +305,7 @@ ax.grid(True, which="major", color="#dddddd", linewidth=0.8, zorder=0)
 ax.set_axisbelow(True)
 ax.spines["top"].set_visible(False)
 ax.spines["right"].set_visible(False)
-ax.legend(frameon=False, loc="upper left")
+ax.legend(frameon=False, loc="lower right")
 
 out_dir = Path(__file__).parent
 fig.savefig(out_dir / "cost_vs_accuracy.pdf")
