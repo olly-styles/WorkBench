@@ -4,7 +4,7 @@
   "models": {
     "GPT-3.5-turbo": {
       "model_name": "gpt-3.5",
-      "correct": 178,
+      "correct": 216,
       "side_effects": 267,
       "total": 690,
       "ground_truth_version": "v2",
@@ -20,7 +20,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 26,
+          "correct": 64,
           "side_effects": 1,
           "total": 120
         },
@@ -51,7 +51,7 @@
     },
     "GPT-4-turbo": {
       "model_name": "gpt-4-turbo",
-      "correct": 391,
+      "correct": 423,
       "side_effects": 154,
       "total": 690,
       "ground_truth_version": "v2",
@@ -67,7 +67,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 61,
+          "correct": 93,
           "side_effects": 0,
           "total": 120
         },
@@ -98,7 +98,7 @@
     },
     "GPT-4o": {
       "model_name": "gpt-4o",
-      "correct": 434,
+      "correct": 476,
       "side_effects": 104,
       "total": 690,
       "ground_truth_version": "v2",
@@ -114,7 +114,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 58,
+          "correct": 100,
           "side_effects": 0,
           "total": 120
         },
@@ -145,7 +145,7 @@
     },
     "GPT-4.1": {
       "model_name": "gpt-4.1",
-      "correct": 483,
+      "correct": 507,
       "side_effects": 134,
       "total": 690,
       "ground_truth_version": "v2",
@@ -161,7 +161,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 81,
+          "correct": 105,
           "side_effects": 0,
           "total": 120
         },
@@ -192,7 +192,7 @@
     },
     "o3": {
       "model_name": "o3",
-      "correct": 490,
+      "correct": 534,
       "side_effects": 121,
       "total": 690,
       "ground_truth_version": "v2",
@@ -208,7 +208,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 63,
+          "correct": 107,
           "side_effects": 0,
           "total": 120
         },
@@ -239,7 +239,7 @@
     },
     "GPT-5": {
       "model_name": "gpt-5",
-      "correct": 536,
+      "correct": 582,
       "side_effects": 90,
       "total": 690,
       "ground_truth_version": "v2",
@@ -255,7 +255,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 63,
+          "correct": 109,
           "side_effects": 0,
           "total": 120
         },
@@ -286,7 +286,7 @@
     },
     "GLM-4.6": {
       "model_name": "glm-4.6",
-      "correct": 488,
+      "correct": 534,
       "side_effects": 117,
       "total": 690,
       "ground_truth_version": "v2",
@@ -302,7 +302,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 60,
+          "correct": 106,
           "side_effects": 0,
           "total": 120
         },
@@ -333,7 +333,7 @@
     },
     "Haiku 4.5": {
       "model_name": "claude-haiku-4.5",
-      "correct": 466,
+      "correct": 516,
       "side_effects": 115,
       "total": 690,
       "ground_truth_version": "v2",
@@ -349,7 +349,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 58,
+          "correct": 108,
           "side_effects": 0,
           "total": 120
         },
@@ -380,7 +380,7 @@
     },
     "GPT-5.1": {
       "model_name": "gpt-5.1",
-      "correct": 362,
+      "correct": 414,
       "side_effects": 125,
       "total": 690,
       "ground_truth_version": "v2",
@@ -396,7 +396,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 25,
+          "correct": 77,
           "side_effects": 0,
           "total": 120
         },
@@ -427,7 +427,7 @@
     },
     "GPT-5.2": {
       "model_name": "gpt-5.2",
-      "correct": 437,
+      "correct": 486,
       "side_effects": 130,
       "total": 690,
       "ground_truth_version": "v2",
@@ -443,7 +443,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 41,
+          "correct": 90,
           "side_effects": 0,
           "total": 120
         },
@@ -474,7 +474,7 @@
     },
     "Sonnet 4.6": {
       "model_name": "claude-sonnet-4.6",
-      "correct": 557,
+      "correct": 609,
       "side_effects": 61,
       "total": 690,
       "ground_truth_version": "v2",
@@ -490,7 +490,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 61,
+          "correct": 113,
           "side_effects": 0,
           "total": 120
         },
@@ -521,7 +521,7 @@
     },
     "Gemini-3.1-pro": {
       "model_name": "gemini-3.1-pro",
-      "correct": 605,
+      "correct": 659,
       "side_effects": 20,
       "total": 690,
       "ground_truth_version": "v2",
@@ -537,7 +537,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 59,
+          "correct": 113,
           "side_effects": 0,
           "total": 120
         },
@@ -568,7 +568,7 @@
     },
     "Qwen3.5": {
       "model_name": "qwen-3.5-flash",
-      "correct": 436,
+      "correct": 488,
       "side_effects": 148,
       "total": 690,
       "ground_truth_version": "v2",
@@ -584,7 +584,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 37,
+          "correct": 89,
           "side_effects": 0,
           "total": 120
         },
@@ -615,7 +615,7 @@
     },
     "GPT-5.4-nano": {
       "model_name": "gpt-5.4-nano",
-      "correct": 305,
+      "correct": 335,
       "side_effects": 197,
       "total": 690,
       "ground_truth_version": "v2",
@@ -631,7 +631,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 29,
+          "correct": 59,
           "side_effects": 0,
           "total": 120
         },
@@ -662,7 +662,7 @@
     },
     "GPT-5.4-mini": {
       "model_name": "gpt-5.4-mini",
-      "correct": 372,
+      "correct": 406,
       "side_effects": 209,
       "total": 690,
       "ground_truth_version": "v2",
@@ -678,7 +678,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 39,
+          "correct": 73,
           "side_effects": 0,
           "total": 120
         },
@@ -709,7 +709,7 @@
     },
     "GPT-5.4": {
       "model_name": "gpt-5.4",
-      "correct": 491,
+      "correct": 542,
       "side_effects": 116,
       "total": 690,
       "ground_truth_version": "v2",
@@ -725,7 +725,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 47,
+          "correct": 98,
           "side_effects": 0,
           "total": 120
         },
@@ -756,7 +756,7 @@
     },
     "Mistral-Small-4": {
       "model_name": "mistral-small-2603",
-      "correct": 234,
+      "correct": 264,
       "side_effects": 306,
       "total": 690,
       "ground_truth_version": "v2",
@@ -772,7 +772,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 23,
+          "correct": 53,
           "side_effects": 1,
           "total": 120
         },
@@ -803,7 +803,7 @@
     },
     "Kimi-K2.6": {
       "model_name": "kimi-k2.6",
-      "correct": 556,
+      "correct": 607,
       "side_effects": 47,
       "total": 690,
       "ground_truth_version": "v2",
@@ -819,7 +819,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 63,
+          "correct": 114,
           "side_effects": 0,
           "total": 120
         },
@@ -850,7 +850,7 @@
     },
     "GPT-5.5": {
       "model_name": "gpt-5.5",
-      "correct": 605,
+      "correct": 655,
       "side_effects": 27,
       "total": 690,
       "ground_truth_version": "v2",
@@ -866,7 +866,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 64,
+          "correct": 114,
           "side_effects": 0,
           "total": 120
         },
@@ -897,7 +897,7 @@
     },
     "DeepSeek-V4-pro": {
       "model_name": "deepseek-v4-pro",
-      "correct": 537,
+      "correct": 581,
       "side_effects": 88,
       "total": 690,
       "ground_truth_version": "v2",
@@ -913,7 +913,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 63,
+          "correct": 107,
           "side_effects": 0,
           "total": 120
         },
@@ -944,7 +944,7 @@
     },
     "Mistral-Medium-3.5": {
       "model_name": "mistral-medium-3-5",
-      "correct": 381,
+      "correct": 424,
       "side_effects": 210,
       "total": 690,
       "ground_truth_version": "v2",
@@ -960,7 +960,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 25,
+          "correct": 68,
           "side_effects": 0,
           "total": 120
         },
@@ -991,7 +991,7 @@
     },
     "Gemini-3.5-flash": {
       "model_name": "gemini-3.5-flash",
-      "correct": 581,
+      "correct": 635,
       "side_effects": 21,
       "total": 690,
       "ground_truth_version": "v2",
@@ -1007,7 +1007,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 52,
+          "correct": 106,
           "side_effects": 0,
           "total": 120
         },
@@ -1038,7 +1038,7 @@
     },
     "Opus 4.8": {
       "model_name": "claude-opus-4.8",
-      "correct": 613,
+      "correct": 664,
       "side_effects": 17,
       "total": 690,
       "ground_truth_version": "v2",
@@ -1054,7 +1054,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 66,
+          "correct": 117,
           "side_effects": 0,
           "total": 120
         },
@@ -1085,7 +1085,7 @@
     },
     "Fable 5": {
       "model_name": "claude-fable-5",
-      "correct": 632,
+      "correct": 674,
       "side_effects": 13,
       "total": 690,
       "ground_truth_version": "v2",
@@ -1101,7 +1101,7 @@
           "total": 90
         },
         "analytics": {
-          "correct": 77,
+          "correct": 119,
           "side_effects": 0,
           "total": 120
         },
