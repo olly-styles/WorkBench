@@ -16,7 +16,7 @@ The best agent on WorkBench in March 2024, GPT-4, completed 43% of tasks and too
 
 The 2026 release also includes data and code quality improvements, new model scores, and analysis of agent progress since 2024. Read the full write-up in [`retro/main.pdf`](retro/main.pdf).
 
-All 2026 per-task results are committed under `data/results/` (gzipped CSVs plus `_meta.json` sidecars), and every figure in `retro/figs/` reads its numbers from [`retro/data/model_results.json`](retro/data/model_results.json), which [`scripts/evals/generate_results_summary.py`](scripts/evals/generate_results_summary.py) derives from those results via the same scoring pipeline as `workbench-evaluate`. No correctness or safety number is hand-maintained; the dollar costs in the cost figure are estimated from run traces by [`scripts/evals/estimate_model_costs.py`](scripts/evals/estimate_model_costs.py) (traces are not committed for size reasons).
+All 2026 per-task results are committed under `data/results/` (gzipped CSVs plus `_meta.json` sidecars), the per-task correct / side-effect verdicts for every model are exported to [`data/results/item_level_results.csv.gz`](data/results/item_level_results.csv.gz) (see [Item-level results](#item-level-results)), and every figure in `retro/figs/` reads its numbers from [`retro/data/model_results.json`](retro/data/model_results.json), which [`scripts/evals/generate_results_summary.py`](scripts/evals/generate_results_summary.py) derives from those results via the same scoring pipeline as `workbench-evaluate`. No correctness or safety number is hand-maintained; the dollar costs in the cost figure are estimated from run traces by [`scripts/evals/estimate_model_costs.py`](scripts/evals/estimate_model_costs.py) (traces are not committed for size reasons).
 
 ## About WorkBench
 
@@ -58,6 +58,21 @@ uv run workbench-evaluate --all_tools
 ```
 
 Note that results are not provided for the `all_tools` variant of GPT3.5 and LLama2-70B as the prompt does not fit into the context window for these models.
+
+#### Item-level results
+
+[`data/results/item_level_results.csv.gz`](data/results/item_level_results.csv.gz) holds the disaggregated verdicts: one row per (model run, task) for every results file committed under `data/results/`, with a `task_id` that is stable across ground-truth versions (the versioned task files are row-aligned; 56 tasks differ in wording between v1 and v2, 10 of them only in newline escaping), the task's `base_template`, `chosen_template` and domains, the ground-truth and predicted actions (as the scorer sees them, with newlines escaped), and the `correct` / `unwanted_side_effects` / `exact_match` verdicts plus the error-category flags used in the paper. `run_group` separates the 24 WorkBench Revisited runs (`revisited_2026`, which reproduce `retro/data/model_results.json` exactly), the March 2024 paper runs (`original_2024`), and any other committed runs (`other`). All rows are scored with the current evaluator, which is more lenient than the 2024 one (order-independent state comparison, either analytics chart end date accepted, analytics plots not counted as side effects), so the `original_2024` aggregates differ from the 2024 paper even though they use the v1 ground truth: GPT-4 with all tools scores 48% completion and 16% side effects here versus the 43% and 26% published in 2024. It is written by [`scripts/evals/export_item_level_results.py`](scripts/evals/export_item_level_results.py) via the same scoring pipeline as `workbench-evaluate`; re-run it after committing new results:
+
+```bash
+uv run scripts/evals/export_item_level_results.py
+```
+
+```python
+import pandas as pd
+df = pd.read_csv("data/results/item_level_results.csv.gz")
+revisited = df[df.run_group == "revisited_2026"]
+revisited.pivot_table(index="task_id", columns="model", values="correct")
+```
 
 Ground truth is versioned: the original March 2024 runs are scored against the pre-correction snapshot in `data/processed/tasks_and_outcomes/v1/`, while current runs use the top-level `data/processed/tasks_and_outcomes/` files (v2, which include the 2026 ground-truth corrections). `workbench-evaluate` picks the right version per results file from the `ground_truth_version` field in its `_meta.json` sidecar; runs without a sidecar predate the corrections and default to v1. This keeps published numbers reproducible after ground-truth fixes.
 

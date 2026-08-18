@@ -285,6 +285,15 @@ def get_latest_results_path(
     return latest, ground_truth_path(tool, version)
 
 
+def load_and_score_results(results_path: str, gt_path: str) -> pd.DataFrame:
+    """Load a results CSV and its ground truth and return the per-task scored dataframe."""
+    predictions = pd.read_csv(results_path, dtype=str, engine="python", on_bad_lines="warn")
+    ground_truth = pd.read_csv(gt_path, dtype=str)
+    ground_truth["outcome"] = ground_truth["outcome"].apply(ast.literal_eval)
+    predictions["function_calls"] = predictions["function_calls"].apply(ast.literal_eval)
+    return compute_metrics(ground_truth, predictions)
+
+
 def get_latest_results_from_dir(
     results_root_dir: str, model: str, tool: str, print_errors: bool = False, all_tools_in_prompt: bool = True
 ) -> ResultsSummary | None:
@@ -295,12 +304,12 @@ def get_latest_results_from_dir(
         return None
 
     model_results_path, gt_path = results
-    predictions = pd.read_csv(model_results_path, dtype=str, engine="python", on_bad_lines="warn")
-    ground_truth = pd.read_csv(gt_path, dtype=str)
-    ground_truth["outcome"] = ground_truth["outcome"].apply(ast.literal_eval)
-    predictions["function_calls"] = predictions["function_calls"].apply(ast.literal_eval)
     print(f"\nCalculating metrics for {tool} with {model}")
-    df = calculate_metrics(ground_truth, predictions, print_errors=print_errors)
+    df = load_and_score_results(model_results_path, gt_path)
+    if print_errors:
+        print_error_report(df)
+    else:
+        _print_accuracy_summary(df)
 
     gt_lengths = df["ground_truth"].apply(len)
     return ResultsSummary(
